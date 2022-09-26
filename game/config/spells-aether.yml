@@ -170,7 +170,6 @@ spells:
     is_potion: true
     level: 4
     name: 'Lightning Weapon '
-    notes: Weapon special config'd, but needs the stun portion
     range: Touch
     rounds: 100
     school: Aether

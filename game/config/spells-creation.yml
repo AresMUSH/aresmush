@@ -274,23 +274,6 @@ spells:
     range: Short
     school: Creation
     target_num: 1
-  Stone Shackles:
-    available: true
-    casting_time: 1 round
-    damage_type: None
-    desc: The caster subdues the target with rock bindings, entrapping their hands and feet to immobilize them briefly.
-    duration: 3 rounds
-    effect: Stun
-    fs3_attack: true
-    is_stun: true
-    level: 5
-    line_of_sight: true
-    name: Stone Shackles
-    range: Long
-    rounds: 3
-    school: Creation
-    target_num: 1
-    weapon: Stun (Creation)
   Revive:
     available: true
     casting_time: 1 round
@@ -350,6 +333,23 @@ spells:
     school: Creation
     target_num: 1
     weapon: Stalagmite
+  Stone Shackles:
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: The caster subdues the targets with rock bindings, entrapping their hands and feet to immobilize them briefly.
+    duration: 2 rounds
+    effect: Stun
+    fs3_attack: true
+    is_stun: true
+    level: 6
+    line_of_sight: true
+    name: Stone Shackles
+    range: Long
+    rounds: 2
+    school: Creation
+    target_num: 2
+    weapon: Stun (Creation)
 #---------------
 # LEVEL 7
 #---------------

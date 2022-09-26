@@ -58,6 +58,10 @@ spells:
     name: Wither
     range: Short
     school: Entropy
+
+#---------------
+# LEVEL 3
+#---------------
   Drowsy:
     available: true
     casting_time: 1 round
@@ -73,9 +77,6 @@ spells:
     rounds: 1
     target_num: 1
     school: Entropy
-#---------------
-# LEVEL 3image.png
-#---------------
   Ice Talons:
     available: true
     casting_time: 1 round
@@ -89,7 +90,24 @@ spells:
     name: Ice Talons
     range: Self
     school: Entropy
-    weapon: Ice Talons
+    weapon: Ice
+  Slow:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    defense_mod: -1
+    desc: Slow a target's reactions for a time, reducing their initiative and defensive reflexes.
+    duration: 3 rounds
+    effect: Debuff
+    init_mod: -1
+    level: 3
+    name: Slow
+    range: Short
+    rounds: 3
+    school: Entropy
+    target_num: 1
+
+
 #---------------
 # LEVEL 4
 #---------------
@@ -188,7 +206,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Bypass
-    desc: Subdue an enemy by paralyzing their limbs, immobilizing them briefly.
+    desc: Subdue enemies by paralyzing their limbs, immobilizing them briefly.
     duration: 2 rounds
     effect: Stun
     is_stun: true
@@ -197,7 +215,7 @@ spells:
     name: Paralyze
     range: Long
     rounds: 2
-    target_num: 1
+    target_num: 2
     school: Entropy
   Ice Block:
     available: true
@@ -248,6 +266,19 @@ spells:
     school: Entropy
     target_num: 3
     weapon: Cone Of Cold
+  Glacial Armor:
+    armor: Glacial
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice.
+    duration: 8 hours
+    effect: Armor
+    damage_type: Cold
+    level: 6
+    name: Glacial Armor
+    range: Self
+    school: Entropy
 #---------------
 # LEVEL 7
 #---------------

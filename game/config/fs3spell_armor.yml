@@ -59,8 +59,33 @@ fs3combat:
       allowed_specials:
       - Weaken
     # LEVEL 6
-    Diamond Armor:
+    Diamond:
       description: Level 6 Creation spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 7
+        Neck: 7
+        Chest: 7
+        Abdomen: 7
+        Left Leg: 7
+        Right Leg: 7
+        Groin: 7
+        Left Arm: 7
+        Right Arm: 7
+        Left Hand: 7
+        Right Hand: 7
+        Left Foot: 7
+        Right Foot: 7
+        Tail: 7
+        Front Right Leg: 7
+        Rear Right Leg: 7
+        Front Left Leg: 7
+        Read Left Leg: 7
+        Right Wing: 7
+        Left Wing: 7
+    Glacial:
+      description: Level 6 Entropy spell
       is_magic: true
       defense: 0
       protection:
