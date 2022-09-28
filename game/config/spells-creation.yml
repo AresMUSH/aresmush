@@ -397,20 +397,20 @@ spells:
     range: Touch
     school: Creation
     target_num: 1
-  Earth Bolt:
+  Meteor:
     area: 15 yard radius
     available: true
     casting_time: 1 round
-    desc: A ball of jagged earth and stone flies toward a point the caster can see, exploding on impact and hitting up to 3 targets.
+    desc: The caster calls down a ball of jagged earth and stone to a point they can see. It explodes on impact, doing damage to up to 3 targets and throwing up shrapnel.
     effect: AOE Damage
     fs3_attack: true
     level: 8
     line_of_sight: true
-    name: Exploding Earth
+    name: Meteor
     range: Long
     school: Creation
     target_num: 3
-    weapon: Exploding Earth
+    weapon: Meteor
   Group Revive:
     area: 15 yard radius
     available: true

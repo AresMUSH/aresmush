@@ -286,7 +286,7 @@ spells:
     area: Direct line from caster, 5 yards wide
     available: true
     casting_time: 1 round
-    desc: Geomantic force travels through the earth in a straight line, causing rocks to fly into the air and hit up to 3 creatures along its path for one round.
+    desc: Geomantic force travels through the earth in a straight line, causing rocks to fly into the air and hit up to 3 creatures along its path. The rocks may ricochet to hit again, doing additional shrapnel damage.
     effect: AOE Damage
     fs3_attack: true
     level: 7

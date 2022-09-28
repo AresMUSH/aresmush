@@ -216,7 +216,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     #LEVEL 8
-    Earth Bolt:
+    Meteor:
       description: Level 8 Creation spell
       is_magic: true
       skill: Creation
