@@ -52,7 +52,7 @@ spells:
   Clear Mind:
     available: true
     casting_time: 1 round
-    desc: "The caster clears all thoughts from their mind and focuses on their aim"
+    desc: "The caster clears all thoughts from their mind and focuses on their aim."
     duration: 2 rounds
     effect: Buff
     is_potion: true
