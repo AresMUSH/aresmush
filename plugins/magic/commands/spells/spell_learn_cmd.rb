@@ -54,7 +54,7 @@ module AresMUSH
 
         #       Magic.handle_spell_learn_achievement(enactor)
         #     end
-        #   end
+          end
         # elsif Magic.new_char_can_learn(enactor, self.spell)
 
         #   SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: 0, learning_complete: true)
