@@ -9,9 +9,7 @@ module AresMUSH
     end
 
     def self.format_msg(event)
-      "#{event.title}\n#{t('events.starts_at_title')} #{event.start_datetime_standard}\n
-      #{t('events.who_title')} #{event.organizer_name}\nContent Warning: #{event.content_warning}\n
-      #{t('events.tags_title')} #{event.tags.join(" ")}\n\n#{event.description}\n\n#{Game.web_portal_url}\/event\/#{event.id}"
+      "#{event.title}\n#{t('events.starts_at_title')} #{event.start_datetime_standard}\n#{t('events.who_title')} #{event.organizer_name}\nContent Warning: #{event.content_warning}\n#{t('events.tags_title')} #{event.tags.join(" ")}\n\n#{event.description}\n\n#{Game.web_portal_url}\/event\/#{event.id}"
     end
 
     def self.reply_to_forum_post(event)
