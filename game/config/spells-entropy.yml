@@ -291,11 +291,11 @@ spells:
     fs3_attack: true
     level: 7
     line_of_sight: true
-    name: Earth Bolt
+    name: Exploding Earth
     range: Short
     school: Entropy
     target_num: 3
-    weapon: Earth Bolt
+    weapon: Exploding Earth
   Exhaustion:
     attack_mod: -2
     available: true
