@@ -189,7 +189,6 @@ spells:
     range: Self
     rounds: 3
     school: Creation
-    weapon: Spell
   Minor Group Heal:
     area: 10 yard radius
     available: true

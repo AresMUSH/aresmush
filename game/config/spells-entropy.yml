@@ -170,7 +170,6 @@ spells:
     rounds: 100
     school: Entropy
     weapon_specials: Ice
-    weapon: Spell
   Weaken Weapon:
     available: true
     casting_time: 1 round
@@ -184,7 +183,6 @@ spells:
     rounds: 100
     school: Entropy
     weapon_specials: Weaken
-    weapon: Spell
   Weaken Armor:
     available: true
     armor_specials: Weaken

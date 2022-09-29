@@ -57,12 +57,33 @@ module AresMUSH
         weapon: data['weapon'],
         armor: data['armor'],
         armor_specials: data['armor_specials'],
-        weapon_specials: data['weapon_special'],
+        weapon_specials: data['weapon_specials'],
         effect: data['effect'],
         damage_type: data['damage_type'],
         shields_against: data['shields_against']
         }
       }
+    end
+
+    def self.spell_xp(spell)
+      if spell[:level] == 8
+        xp = 12
+      elsif spell[:level] == 7
+        xp = 8
+      elsif spell[:level] == 6
+        xp = 7
+      elsif spell[:level] == 5
+        xp = 6
+      elsif spell[:level] == 4
+        xp = 5
+      elsif spell[:level] == 3
+        xp = 4
+      elsif spell[:level] == 2
+        xp = 3
+      elsif spell[:level] == 1
+        xp = 2
+      end
+      return xp
     end
 
     def self.spell_list_all_data(list)
@@ -72,31 +93,17 @@ module AresMUSH
         spells = Magic.spell_data_from_set(list)
       end
       spells.each do |s|
-        weapon = Global.read_config("spells", s[:name], "weapon")
-        weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
-        armor = Global.read_config("spells", s[:name], "armor")
-        armor_specials = Global.read_config("spells", s, "armor_specials")
-        attack = Global.read_config("spells", s[:name], "attack_mod")
-        lethal = Global.read_config("spells", s[:name], "lethal_mod")
-        spell = Global.read_config("spells", s[:name], "spell_mod")
-        defense = Global.read_config("spells", s[:name], "defense_mod")
+        # weapon = Global.read_config("spells", s[:name], "weapon")
+        # weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
+        # armor = Global.read_config("spells", s[:name], "armor")
+        # armor_specials = Global.read_config("spells", s, "armor_specials")
+        # attack = Global.read_config("spells", s[:name], "attack_mod")
+        # lethal = Global.read_config("spells", s[:name], "lethal_mod")
+        # spell = Global.read_config("spells", s[:name], "spell_mod")
+        # defense = Global.read_config("spells", s[:name], "defense_mod")
+        s[:xp] = Magic.spell_xp(s)
         if s[:level] == 8
           s[:level_8] = true
-          s[:xp] = 12
-        elsif s[:level] == 7
-          s[:xp] = 8
-        elsif s[:level] == 6
-          s[:xp] = 7
-        elsif s[:level] == 5
-          s[:xp] = 6
-        elsif s[:level] == 4
-          s[:xp] = 5
-        elsif s[:level] == 3
-          s[:xp] = 4
-        elsif s[:level] == 2
-          s[:xp] = 3
-        elsif s[:level] == 1
-          s[:xp] = 2
         end
         if s[:range] == "Massive"
           s[:range_desc] = "(2 miles)"
@@ -105,6 +112,8 @@ module AresMUSH
         elsif s[:range] == "Long"
           s[:range_desc] = "(100 yards)"
         end
+        s[:weapon_or_specials] = true if s[:weapon] || s[:weapon_specials]
+        weapon = s[:weapon]
         s[:weapon_lethality] = FS3Combat.weapon_stat(weapon, "lethality")
         s[:weapon_penetration] = FS3Combat.weapon_stat(weapon, "penetration")
         s[:weapon_type] = FS3Combat.weapon_stat(weapon, "weapon_type")
@@ -112,22 +121,29 @@ module AresMUSH
         s[:weapon_shrapnel] = FS3Combat.weapon_stat(weapon, "has_shrapnel")
         s[:weapon_init] = FS3Combat.weapon_stat(weapon, "init_mod")
         s[:weapon_damage_type] = FS3Combat.weapon_stat(weapon, "damage_type")
-        if weapon_specials
-          weapon_special = "Spell+#{weapon_specials}"
-          s[:weapon_special_lethality] = FS3Combat.weapon_stat(weapon_special, "lethality")
-          s[:weapon_special_penetration] = FS3Combat.weapon_stat(weapon_special, "penetration")
-          s[:weapon_special_init] = FS3Combat.weapon_stat(weapon_special, "init_mod")
-          s[:weapon_special_accuracy] = FS3Combat.weapon_stat(weapon_special, "accuracy")
+        if s[:weapon_specials]
+          weapon_special = s[:weapon_specials]
+          s[:weapon_special_lethality] = FS3Combat.weapon_specials[weapon_special]["lethality"]
+          s[:weapon_special_penetration] = FS3Combat.weapon_specials[weapon_special]["penetration"]
+          s[:weapon_special_init] = FS3Combat.weapon_specials[weapon_special]["init_mod"]
+          s[:weapon_special_accuracy] = FS3Combat.weapon_specials[weapon_special]["accuracy"]
         end
-        if (attack || defense || lethal || spell)
+
+        if (s[:attack_mod] || s[:defense_mod] || s[:lethal_mod] || s[:spell_mod] || s[:init_mod])
           s[:mod] = true
         end
-        protection = FS3Combat.armor_stat(armor, "protection")
+        s[:armor_or_specials] = true if s[:armor] || s[:armor_specials]
+        if s[:armor_specials]
+          armor_special = s[:armor_specials]
+          s[:armor_special_protection] = FS3Combat.armor_specials[armor_special]["protection"].values.first
+          s[:armor_special_defense] = FS3Combat.armor_specials[armor_special]["defense"]
+        end
+        protection = FS3Combat.armor_stat(s[:armor], "protection")
         if protection
           protection = protection["Chest"]
         end
         s[:armor_protection] = protection
-        s[:armor_defense] = FS3Combat.armor_stat(armor, "defense")
+        s[:armor_defense] = FS3Combat.armor_stat(s[:armor], "defense")
         if s[:targets] == nil
 
         elsif s[:targets] == 1
