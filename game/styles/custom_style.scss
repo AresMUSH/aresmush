@@ -22,8 +22,6 @@ $manilla: #cfc4b9;
 $manilla-dark: #b09d8c;
 $manilla-darker: #8e7762;
 
-$darkest-blue: #141D2A;
-
 $darkest-rust: #522617;
 $darker-rust: #903A19;
 $rust: #B0543E;
@@ -36,13 +34,13 @@ $lighter-rose: #C8757F;
 $dark-rose: #61111A;
 $darker-rose: #3D0007;
 
-$slate: #5b6d8b;
-$light-slate: #505B7E;
+$slate: #466592;
+$light-slate: #6c8bb9;
 $lighter-slate: #8494ae;
 $lightest-slate: #b2bccc;
-$dark-slate: #3d495d;
-$darker-slate: #121C3E;
-$darkest-slate: #1f252f;
+$dark-slate: #25354d;
+$darker-slate: #141d2a;
+$darkest-slate: #0c1119;
 
 $dusky-purple: #554665;
 $light-purple: #6E607D;
@@ -71,7 +69,7 @@ body {
 }
 
 .body-wrap {
-	background-color: $darkest-blue;
+	background-color: #141D2A;
 }
 
 .left-body {
@@ -351,8 +349,8 @@ code {
 }
 
 .dropdown-menu {
-	background-color: $darkest-blue;
-	background-image: url('/game/uploads/theme_files/rust-texture_50opac-half.png');
+	background-color: $darkest-slate;
+	background-image: url('/game/uploads/theme_files/rust-texture_50opac.png');
 	background-repeat: no-repeat;
 	background-position: top right;
 	background-size: 200px;
@@ -446,7 +444,7 @@ code {
 }
 
 .plot-box {
-	background: $darkest-blue;
+	background: #141d2a;
 	padding: 5px 15px;
 	font-size: 90%;
 	text-align: initial;
@@ -1384,7 +1382,7 @@ button {
 
 h1,
 .h1 {
-	background-color: $slate;
+	background-color: #5b6d8b;
 	background-image: url(/game/uploads/css_files/h1-left.png), url(/game/uploads/css_files/h1-right.png);
 	background-size: contain, contain;
 	background-repeat: no-repeat;
@@ -1451,7 +1449,7 @@ h6, .h6 {
 //SIDEBAR
 
 .right-sidebar {
-	background-color: $darkest-blue;
+	background-color: #141D2A;
 }
 
 .sidebar-heading h2 {
@@ -1491,6 +1489,10 @@ h6, .h6 {
 	vertical-align: middle;
 }
 
+.scene-pose-header {
+	border-top: 1px dashed #4e5954;
+}
+
 .scene-ooc-pose p {
 	margin-bottom: 4px;
 	margin-left: 5px;
@@ -1502,18 +1504,6 @@ h6, .h6 {
 	margin: 5px;
 	margin-right: 10px;
 	vertical-align: top;
-}
-
-.scene-set-pose {
-  margin: 15px 20px 20px 0px;
-	border: 0px;
-	background: $darkest-blue;
-	padding: 5px;
-	border-radius: 5px;
-	padding-left: 40px;
-	-webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
-	-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
-	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
 }
 
 .badge-likes {
@@ -1539,7 +1529,7 @@ h6, .h6 {
 
 .scene-controls-box {
 	border: transparent;
-	background: $darkest-blue;
+	background: $darker-slate;
 }
 
 .profile-image {
@@ -1567,8 +1557,19 @@ h6, .h6 {
     color: #090909;
 }
 
-.log-box .icon-gallery {
+.log-participants-box > .icon-gallery {
     justify-content: center;
+}
+
+.hint.float-right,
+.hint.float-end {
+    padding-top: 1em;
+    text-align: right;
+    float: right
+}
+
+#chat-window {
+    border: none;
 }
 
 //LIVE SCENES
@@ -1696,7 +1697,7 @@ h6, .h6 {
 }
 
 .live-scenes-heading {
-	background-color: $darkest-blue;
+	background-color: #141D2A;
 	padding: 8px 0px 8px 0px;
 }
 
@@ -1781,27 +1782,27 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 
 .play-sidebar a .fa-plus-circle {
     color: $slate!important;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .play-sidebar a .fa-caret-square-up {
     color: $slate!important;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .play-sidebar a .fa-caret-square-down {
     color: $slate!important;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .play-sidebar a .fa-users {
     color: $slate!important;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .play-sidebar a .fa-share-square {
     color: $slate!important;
-    font-size: 16px
+    font-size: 16px;
 }
 
 .play-sidebar a .fa-play-circle {
@@ -1828,15 +1829,15 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 }
 
 .play-section-title a:nth-of-type(2) {
-    right: 1.9em
+    right: 2em;
 }
 
 .play-section-title a:nth-of-type(3) {
-    right: 2.9em
+    right: 3.1em
 }
 
 .play-section-title a:nth-of-type(4) {
-    right: 3.96em
+    right: 4.4em
 }
 
 @media(max-width:992px) {
@@ -1928,7 +1929,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 //CARD & MODAL
 
 .card {
-	background-color: $darkest-blue;
+	background-color: $darker-slate;
 	border-color: transparent;
 }
 
@@ -1944,7 +1945,6 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 
 .modal-content {
     background-image: url('/game/uploads/theme_images/leatherbg.jpg');
-	width: 600px;
 }
 
 .modal-content .row {
@@ -2096,7 +2096,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	bottom: 0;
 }
 
-//TOC AND BLOCKQUOTE
+//TOC, BLOCKQUOTE AND BREADCRUMBS
 
 .toc {
 	--paper-color: var(--antique-white);
@@ -2206,6 +2206,33 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	word-spacing: 10px;
 	color: $darkest-rust;
+}
+
+.wiki-breadcrumbs {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px 0;
+    background-color: #141D2A;
+}
+
+.wiki-breadcrumbs > .col-xs-2 {
+    text-align: right;
+}
+
+.jump-to-top {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #141D2A;
+}
+
+.jump-to-top {
+    text-align: right;
+}
+
+.jump-to-top p {
+    line-height: 0;
+    margin: 0
 }
 
 //TABLES
@@ -2374,7 +2401,7 @@ th,
 	}
 
   .short-desc {
-	  background: $darkest-blue;
+	  background: $darker-slate;
 	  opacity: 85%;
 	  padding: 10px;
 	  margin: 15px;
@@ -2390,13 +2417,13 @@ th,
  }
 
  .infobox-body {
-	 background: $darkest-slate;
+	 background: $darker-slate;
 	 padding: 20px;
 	 border-radius: 0px 0px 5px 5px;
  }
 
  .infobox-heading {
-	 background-color: $darkest-blue;
+	 background-color: $darker-slate;
 	 border-bottom: 4px solid #293038;
 	 border-radius: 8px 8px 0px 0px;
  }
@@ -2541,4 +2568,27 @@ th,
 .ansi > .ember-view > .char-ability-title,
 .ansi > .ember-view > .char-ability-list > tr > td {
 	color: $light-grey;
+}
+
+// ONE SHOT (PIAB)
+
+.piab-name {
+    color: $light-grey;
+    font-weight: bold;
+    vertical-align: middle;
+    text-shadow: 1px 1px 5px $gutter-color;
+    font-size: 1.50em;
+    font-family: 'Courier Prime', monospace;
+    text-transform: uppercase;
+    border-bottom: 1px solid $light-grey;
+}
+
+.piab {
+    background: #141D2A;
+    width: 100%;
+    box-shadow: 0 0 1px 1px $darker-slate;
+}
+
+.table-width {
+    width: 100%;
 }
