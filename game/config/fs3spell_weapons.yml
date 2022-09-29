@@ -411,7 +411,7 @@ fs3combat:
       is_magic: true
       lethality: 10
       accuracy: 1
-    Clear:
+    Clear Mind:
       description: Level 2 Arcane spell
       is_magic: true
       lethality: 0

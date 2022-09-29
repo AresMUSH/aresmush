@@ -62,7 +62,7 @@ spells:
     range: Self
     school: Arcane
     target_num: 1
-    weapon_special: Focus
+    weapon_specials: Clear Mind
   Telepathic Reading:
     available: true
     casting_time: 1 round
