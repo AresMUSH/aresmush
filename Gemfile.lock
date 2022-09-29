@@ -62,12 +62,14 @@ GEM
       kramdown (~> 2.0)
     libv8 (3.16.14.19)
     log4r (1.1.10)
+    mini_portile2 (2.8.0)
     minitest (5.16.2)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
     nest (3.2.0)
       redic
-    nokogiri (1.13.6-x86_64-darwin)
+    nokogiri (1.13.8)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     ohm (3.1.1)
       nest (~> 3)
@@ -197,4 +199,4 @@ DEPENDENCIES
   timezone (~> 1.2.10)
 
 BUNDLED WITH
-   2.3.14
+   2.3.19
