@@ -80,6 +80,8 @@ website:
       route: play
     - title: Active Scenes
       route: scenes-live
+   - route: scenes-unshared
+      title: Unshared Scenes
     - title: Start New Scene
       route: scene-create
     - divider: true
