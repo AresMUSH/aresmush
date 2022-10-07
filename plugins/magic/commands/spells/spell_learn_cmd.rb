@@ -34,26 +34,26 @@ module AresMUSH
           time_left = (Magic.time_to_next_learn_spell(spell_learned) / 86400)
           if spell_learned.learning_complete
             client.emit_failure t('magic.already_know_spell', :spell => self.spell)
-        #   elsif time_left > 0
-        #     client.emit_failure t('magic.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
-        #   else
-        #     client.emit_success t('magic.additional_learning', :spell => self.spell)
-        #     xp_needed = spell_learned.xp_needed.to_i - 1
-        #     spell_learned.update(xp_needed: xp_needed)
-        #     spell_learned.update(last_learned: Time.now)
-        #     FS3Skills.modify_xp(enactor, -1)
-        #     if xp_needed < 1
-        #       spell_learned.update(learning_complete: true)
-        #       client.emit_success t('magic.complete_learning', :spell => self.spell)
-        #       message = t('magic.xp_learned_spell', :name => enactor.name, :spell => self.spell, :level => self.spell_level, :school => self.school)
-        #       category = Jobs.system_category
-        #       status = Jobs.create_job(category, t('magic.xp_learned_spell_title', :name => enactor.name, :spell => self.spell), message, Game.master.system_character)
-        #       if (status[:job])
-        #         Jobs.close_job(Game.master.system_character, status[:job])
-        #       end
+          elsif time_left > 0
+            client.emit_failure t('magic.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
+          else
+            client.emit_success t('magic.additional_learning', :spell => self.spell)
+            xp_needed = spell_learned.xp_needed.to_i - 1
+            spell_learned.update(xp_needed: xp_needed)
+            spell_learned.update(last_learned: Time.now)
+            FS3Skills.modify_xp(enactor, -1)
+            if xp_needed < 1
+              spell_learned.update(learning_complete: true)
+              client.emit_success t('magic.complete_learning', :spell => self.spell)
+              message = t('magic.xp_learned_spell', :name => enactor.name, :spell => self.spell, :level => self.spell_level, :school => self.school)
+              category = Jobs.system_category
+              status = Jobs.create_job(category, t('magic.xp_learned_spell_title', :name => enactor.name, :spell => self.spell), message, Game.master.system_character)
+              if (status[:job])
+                Jobs.close_job(Game.master.system_character, status[:job])
+              end
 
-        #       Magic.handle_spell_learn_achievement(enactor)
-        #     end
+              Magic.handle_spell_learn_achievement(enactor)
+            end
           end
         # elsif Magic.new_char_can_learn(enactor, self.spell)
 
@@ -64,10 +64,10 @@ module AresMUSH
         #   client.emit t('magic.starting_spell', :spell => self.spell, :time => time_left, :num => num)
 
         else
-          # xp_needed = Magic.spell_xp_needed(self.spell)
-          # FS3Skills.modify_xp(enactor, -1)
-          xp_needed = 0
-          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: true)
+          xp_needed = Magic.spell_xp_needed(self.spell)
+          FS3Skills.modify_xp(enactor, -1)
+          puts "CREATING SPELL"
+          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: false)
           client.emit_success t('magic.start_learning', :spell => self.spell)
         end
 
