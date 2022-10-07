@@ -51,14 +51,13 @@ module AresMUSH
 
         targets = Magic.parse_spell_targets(target_name_string, )
         error = Magic.spell_target_errors(enactor, targets, spell)
-        return error if error
+        return { error: error } if error
+
         print_names = Magic.print_target_names(targets)
 
         success = Magic.roll_noncombat_spell(caster, spell, mod)
-
-
         if success[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(caster.name, self.targets, spell, mod, success[:result])
+          message = Magic.cast_noncombat_spell(caster.name, targets, spell, mod, success[:result])
           Magic.handle_spell_cast_achievement(caster)
         else
           if target_name_arg.blank?
@@ -69,7 +68,6 @@ module AresMUSH
         end
         message.each do |msg|
           Scenes.add_to_scene(scene, msg)
-
           if (scene.room)
             scene.room.emit msg
           end
