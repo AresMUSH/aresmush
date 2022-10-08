@@ -84,7 +84,6 @@ spells:
     desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
     duration: 1 round
     effect: Weapon
-    fs3_attack: true
     is_potion: true
     level: 3
     name: Ice Talons
