@@ -296,7 +296,7 @@ spells:
   Exhaustion:
     attack_mod: -2
     available: true
-    casting_time: 1 Round
+    casting_time: 1 round
     damage_type: Bypass
     defense_mod: -2
     desc: "The caster weakens the bodies of up to 3 targets. They suddenly feel faint, losing their strength and becoming fatigued."
