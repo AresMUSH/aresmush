@@ -52,7 +52,7 @@ spells:
   Clear Mind:
     available: true
     casting_time: 1 round
-    desc: "The caster clears all thoughts from their mind and focuses on their aim"
+    desc: "The caster clears all thoughts from their mind and focuses on their aim."
     duration: 2 rounds
     effect: Buff
     is_potion: true
@@ -62,7 +62,7 @@ spells:
     range: Self
     school: Arcane
     target_num: 1
-    weapon_special: Focus
+    weapon_specials: Clear Mind
   Telepathic Reading:
     available: true
     casting_time: 1 round
@@ -142,24 +142,7 @@ spells:
     school: Arcane
     spell_mod: -1
     target_num: 1
-  Focus:
-    attack_mod: 1
-    available: true
-    casting_time: 1 round
-    damage_type: Psionic
-    defense_mod: 1
-    desc: The target's mind focuses sharply, increasing their chance of succeeding in their intended action.
-    duration: 2 rounds
-    effect: Buff
-    is_potion: true
-    level: 3
-    line_of_sight: true
-    name: Focus
-    range: Short
-    rounds: 2
-    school: Arcane
-    spell_mod: 1
-    target_num: 1
+
 
 #---------------
 # LEVEL 4
@@ -177,6 +160,24 @@ spells:
     rounds: 3
     school: Arcane
     spell_mod: -3
+    target_num: 1
+  Focus:
+    attack_mod: 1
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    defense_mod: 1
+    desc: The target's mind focuses sharply, increasing their chance of succeeding in their intended action.
+    duration: 2 rounds
+    effect: Buff
+    is_potion: true
+    level: 4
+    line_of_sight: true
+    name: Focus
+    range: Short
+    rounds: 2
+    school: Arcane
+    spell_mod: 1
     target_num: 1
   Mind Shield:
     available: true
@@ -253,7 +254,7 @@ spells:
     target_num: 1
   Dream Walk:
     available: true
-    casting_time: 1 round
+    casting_time: 30 seconds
     damage_type: Psionic
     desc: "The caster enters the current dream of a target. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 1 hour
@@ -355,7 +356,7 @@ spells:
     target_num: 1
   Dispel Magic:
     available: true
-    casting_time: 1 round
+    casting_time: 30 seconds
     damage_type: Psionic
     desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
@@ -367,12 +368,12 @@ spells:
     target_num: 1
   Pass Unseen:
     available: true
-    casting_time: 1 round
+    casting_time: 30 seconds
     damage_type: Psionic
     desc: "The caster's presence is completely ignored by all thinking beings or creatures. There is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell.  \n\nLarge disruptions or sudden violence by the caster will break the spell. Other Arcane users who are either actively wary or who pass an Alertness roll (with modifiers where appropriate) may see through the spell with a successful roll of the caster's Arcane vs their Arcane-4. A draw goes to the caster.\n\nAlthough Pass Unseen may only be cast on oneself in order to obtain the effects, the code allows the spell to target other characters for those times when a Mind Shield check is needed."
     duration: 10 minutes
     effect: Defense
-    level: 5
+    level: 7
     name: Pass Unseen
     range: Self
     roll: true

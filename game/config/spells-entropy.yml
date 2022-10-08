@@ -58,6 +58,10 @@ spells:
     name: Wither
     range: Short
     school: Entropy
+
+#---------------
+# LEVEL 3
+#---------------
   Drowsy:
     available: true
     casting_time: 1 round
@@ -73,9 +77,6 @@ spells:
     rounds: 1
     target_num: 1
     school: Entropy
-#---------------
-# LEVEL 3image.png
-#---------------
   Ice Talons:
     available: true
     casting_time: 1 round
@@ -89,7 +90,24 @@ spells:
     name: Ice Talons
     range: Self
     school: Entropy
-    weapon: Ice Talons
+    weapon: Ice
+  Slow:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    defense_mod: -1
+    desc: Slow a target's reactions for a time, reducing their initiative and defensive reflexes.
+    duration: 3 rounds
+    effect: Debuff
+    init_mod: -1
+    level: 3
+    name: Slow
+    range: Short
+    rounds: 3
+    school: Entropy
+    target_num: 1
+
+
 #---------------
 # LEVEL 4
 #---------------
@@ -152,7 +170,6 @@ spells:
     rounds: 100
     school: Entropy
     weapon_specials: Ice
-    weapon: Spell
   Weaken Weapon:
     available: true
     casting_time: 1 round
@@ -166,7 +183,6 @@ spells:
     rounds: 100
     school: Entropy
     weapon_specials: Weaken
-    weapon: Spell
   Weaken Armor:
     available: true
     armor_specials: Weaken
@@ -188,7 +204,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Bypass
-    desc: Subdue an enemy by paralyzing their limbs, immobilizing them briefly.
+    desc: Subdue enemies by paralyzing their limbs, immobilizing them briefly.
     duration: 2 rounds
     effect: Stun
     is_stun: true
@@ -197,7 +213,7 @@ spells:
     name: Paralyze
     range: Long
     rounds: 2
-    target_num: 1
+    target_num: 2
     school: Entropy
   Ice Block:
     available: true
@@ -205,14 +221,14 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "Deflect attacks with a wall of ice that shields up to 3 targets in its range."
-    duration: 5 rounds
+    duration: 3 rounds
     effect: Shield
     is_shield: true
     level: 5
     line_of_sight: true
     name: Ice Block
     range: Short
-    rounds: 5
+    rounds: 3
     school: Entropy
     shields_against: All
     target_num: 3
@@ -248,29 +264,42 @@ spells:
     school: Entropy
     target_num: 3
     weapon: Cone Of Cold
+  Glacial Armor:
+    armor: Glacial
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice.
+    duration: 8 hours
+    effect: Armor
+    damage_type: Cold
+    level: 6
+    name: Glacial Armor
+    range: Self
+    school: Entropy
 #---------------
 # LEVEL 7
 #---------------
-  Earth Bolt:
+  Exploding Earth:
     area: Direct line from caster, 5 yards wide
     available: true
     casting_time: 1 round
-    desc: Geomantic force travels through the earth in a straight line, causing rocks to fly into the air and hit up to 3 creatures along its path for one round.
+    desc: Geomantic force travels through the earth in a straight line, causing rocks to fly into the air and hit up to 3 creatures along its path. The rocks may ricochet to hit again, doing additional shrapnel damage.
     effect: AOE Damage
     fs3_attack: true
     level: 7
     line_of_sight: true
-    name: Earth Bolt
+    name: Exploding Earth
     range: Short
     school: Entropy
     target_num: 3
-    weapon: Earth Bolt
+    weapon: Exploding Earth
   Exhaustion:
-    attack_mod: -3
+    attack_mod: -2
     available: true
     casting_time: 1 Round
     damage_type: Bypass
-    defense_mod: -3
+    defense_mod: -2
     desc: "The caster weakens the bodies of up to 3 targets. They suddenly feel faint, losing their strength and becoming fatigued."
     duration: 3 rounds
     effect: Debuff
@@ -306,6 +335,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall, shielding up to 5 targets in its range. It remains until melted or destroyed."
+    duration: Until melted or destroyed
     effect: Shield
     is_shield: true
     level: 8
@@ -313,6 +343,7 @@ spells:
     name: Ice Wall
     range: Long
     roll: true
+    rounds: 100
     school: Entropy
     shields_against: All
     target_num: 5

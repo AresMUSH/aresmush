@@ -3,7 +3,7 @@ module AresMUSH
   module FS3Skills
     class LearnAbilityCmd
       include CommandHandler
-      
+
       attr_accessor :name
 
       def parse_args
@@ -13,16 +13,22 @@ module AresMUSH
       def required_args
         [ self.name ]
       end
-      
+
+      #Magic changes
+      def check_if_spell
+        return t('magic.do_spell_learn') if Magic.is_spell?(self.name)
+      end
+      #/Magic changes
+
       def check_chargen_locked
         return t('fs3skills.must_be_approved') if !enactor.is_approved?
         return nil
       end
-      
+
       def check_xp
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
       end
-      
+
       def handle
         error = FS3Skills.learn_ability(enactor, self.name)
         if (error)

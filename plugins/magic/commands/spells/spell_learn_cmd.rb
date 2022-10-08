@@ -14,9 +14,9 @@ module AresMUSH
       def check_errors
         return "What spell do you want to learn?" if !self.spell
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
-        return t('magic.request_spell') if (self.spell == "Wild Shape" || self.spell == "Greater Wild Shape" || self.spell == "Half Shift")
+        # return t('magic.request_spell') if (self.spell == "Wild Shape" || self.spell == "Greater Wild Shape" || self.spell == "Half Shift")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
-        return t('fs3skills.not_enough_xp') if enactor.xp <= 0
+        # return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('magic.too_many_spells', :spell_max => Magic.spell_max) if Magic.count_spells_total(enactor) >= Magic.spell_max
         previous = Magic.previous_level_spell?(enactor, self.spell)
         return t('magic.need_previous_level') if Magic.previous_level_spell?(enactor, self.spell) == false
@@ -55,17 +55,18 @@ module AresMUSH
               Magic.handle_spell_learn_achievement(enactor)
             end
           end
-        elsif Magic.new_char_can_learn(enactor, self.spell)
+        # elsif Magic.new_char_can_learn(enactor, self.spell)
 
-          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: 0, learning_complete: true)
-          
-          time_left = Magic.new_spells_time_left(enactor)
-          num = Global.read_config("magic", "cg_spell_max")
-          client.emit t('magic.starting_spell', :spell => self.spell, :time => time_left, :num => num)
+        #   SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: 0, learning_complete: true)
+
+        #   time_left = Magic.new_spells_time_left(enactor)
+        #   num = Global.read_config("magic", "cg_spell_max")
+        #   client.emit t('magic.starting_spell', :spell => self.spell, :time => time_left, :num => num)
 
         else
           xp_needed = Magic.spell_xp_needed(self.spell)
           FS3Skills.modify_xp(enactor, -1)
+          puts "CREATING SPELL"
           SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: false)
           client.emit_success t('magic.start_learning', :spell => self.spell)
         end

@@ -11,26 +11,26 @@ fs3combat:
       is_magic: true
       defense: 0
       protection:
-        Head: 5
-        Neck: 5
-        Chest: 5
-        Abdomen: 5
-        Left Leg: 5
-        Right Leg: 5
-        Groin: 5
-        Left Arm: 5
-        Right Arm: 5
-        Left Hand: 5
-        Right Hand: 5
-        Left Foot: 5
-        Right Foot: 5
-        Tail: 5
-        Front Right Leg: 5
-        Rear Right Leg: 5
-        Front Left Leg: 5
-        Read Left Leg: 5
-        Right Wing: 5
-        Left Wing: 5
+        Head: 4
+        Neck: 4
+        Chest: 4
+        Abdomen: 4
+        Left Leg: 4
+        Right Leg: 4
+        Groin: 4
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Foot: 4
+        Right Foot: 4
+        Tail: 4
+        Front Right Leg: 4
+        Rear Right Leg: 4
+        Front Left Leg: 4
+        Read Left Leg: 4
+        Right Wing: 4
+        Left Wing: 4
     Stone Skin:
       description: Level 4 Creation spell
       is_magic: true
@@ -59,8 +59,33 @@ fs3combat:
       allowed_specials:
       - Weaken
     # LEVEL 6
-    Diamond Armor:
+    Diamond:
       description: Level 6 Creation spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 7
+        Neck: 7
+        Chest: 7
+        Abdomen: 7
+        Left Leg: 7
+        Right Leg: 7
+        Groin: 7
+        Left Arm: 7
+        Right Arm: 7
+        Left Hand: 7
+        Right Hand: 7
+        Left Foot: 7
+        Right Foot: 7
+        Tail: 7
+        Front Right Leg: 7
+        Rear Right Leg: 7
+        Front Left Leg: 7
+        Read Left Leg: 7
+        Right Wing: 7
+        Left Wing: 7
+    Glacial:
+      description: Level 6 Entropy spell
       is_magic: true
       defense: 0
       protection:

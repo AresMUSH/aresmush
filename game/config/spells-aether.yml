@@ -131,7 +131,7 @@ spells:
     school: Aether
     target_num: 1
     weapon: Stun (Aether)
-  Wind Wall:
+  Wind Shield:
     available: true
     casting_time: 1 round
     desc: "Deflect ranged projectile attacks directed against you or a single comrade with gusting winds."
@@ -140,7 +140,7 @@ spells:
     is_shield: true
     level: 3
     line_of_sight: true
-    name: Wind Wall
+    name: Wind Shield
     range: Short
     rounds: 3
     school: Aether
@@ -170,7 +170,6 @@ spells:
     is_potion: true
     level: 4
     name: 'Lightning Weapon '
-    notes: Weapon special config'd, but needs the stun portion
     range: Touch
     rounds: 100
     school: Aether
@@ -230,16 +229,31 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Fire
-    desc: A ball of fire hurls toward a target, doing damage.
-    effect: Damage
+    desc: A ball of fire hurls toward two targets in its path, doing fire damage.
+    effect: AOE Damage
     fs3_attack: true
     level: 5
     line_of_sight: true
     name: Fireball
     range: Short
     school: Aether
-    target_num: 3
+    target_num: 2
     weapon: Fireball
+  Wind Wall:
+    available: true
+    casting_time: 1 round
+    desc: "Deflect ranged projectile attacks directed against up to 3 targets with gusting winds."
+    duration: 3 rounds
+    effect: Shield
+    is_shield: true
+    level: 5
+    line_of_sight: true
+    name: Wind Wall
+    range: Short
+    rounds: 3
+    school: Aether
+    shields_against: All
+    target_num: 3
 #---------------
 # LEVEL 6
 #---------------

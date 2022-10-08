@@ -2,12 +2,24 @@ spells:
 #---------------
 # LEVEL 1
 #---------------
+  Bioluminescence:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster imbues up to 1 cubic foot of pre-existing rock, gemstone, or flora with a bioluminescent glow in a single phosphorescent color. The light is dim, equivalent to a small candle flame (12 lumens).
+    duration: 30 minutes
+    effect: Flora
+    level: 1
+    line_of_sight: true
+    name: Bioluminescence
+    range: Short
+    roll: true
+    school: Creation
   Create Bloom:
     available: true
     casting_time: 1 round
     damage_type: Bypass
-    desc: Cause a flowering plant to grow and bloom from a seed.
-    duration: 10 minutes
+    desc: Cause a budding plant to bloom.
     effect: Flora
     level: 1
     line_of_sight: true
@@ -95,7 +107,7 @@ spells:
     effect: Heal
     heal_points: 3
     is_potion: true
-    level: 2
+    level: 3
     line_of_sight: true
     name: Minor Heal
     range: Short
@@ -105,7 +117,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
-    duration: 1 round
+    duration: 3 rounds
     effect: Shield
     is_shield: true
     level: 3
@@ -177,7 +189,6 @@ spells:
     range: Self
     rounds: 3
     school: Creation
-    weapon: Spell
   Minor Group Heal:
     area: 10 yard radius
     available: true
@@ -262,23 +273,6 @@ spells:
     range: Short
     school: Creation
     target_num: 1
-  Stone Shackles:
-    available: true
-    casting_time: 1 round
-    damage_type: None
-    desc: The caster subdues the target with rock bindings, entrapping their hands and feet to immobilize them briefly.
-    duration: 3 rounds
-    effect: Stun
-    fs3_attack: true
-    is_stun: true
-    level: 5
-    line_of_sight: true
-    name: Stone Shackles
-    range: Long
-    rounds: 3
-    school: Creation
-    target_num: 1
-    weapon: Stun (Creation)
   Revive:
     available: true
     casting_time: 1 round
@@ -338,6 +332,23 @@ spells:
     school: Creation
     target_num: 1
     weapon: Stalagmite
+  Stone Shackles:
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: The caster subdues the targets with rock bindings, entrapping their hands and feet to immobilize them briefly.
+    duration: 2 rounds
+    effect: Stun
+    fs3_attack: true
+    is_stun: true
+    level: 6
+    line_of_sight: true
+    name: Stone Shackles
+    range: Long
+    rounds: 2
+    school: Creation
+    target_num: 2
+    weapon: Stun (Creation)
 #---------------
 # LEVEL 7
 #---------------
@@ -359,15 +370,15 @@ spells:
   Stone Daggers:
     available: true
     casting_time: 1 round
-    desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward the target with speed and force, automatically seeking weak spots in the foe's armor.
-    effect: Damage
+    desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward up to 3 targets with speed and force, automatically seeking weak spots in the foe's armor.
+    effect: AOE Damage
     fs3_attack: true
     level: 7
     line_of_sight: true
     name: Stone Daggers
     range: Long
     school: Creation
-    target_num: 1
+    target_num: 3
     weapon: Stone Daggers
 #---------------
 # LEVEL 8
@@ -385,20 +396,20 @@ spells:
     range: Touch
     school: Creation
     target_num: 1
-  Exploding Earth:
+  Meteor:
     area: 15 yard radius
     available: true
     casting_time: 1 round
-    desc: A ball of jagged earth and stone flies toward a point the caster can see, exploding on impact and hitting up to 3 targets.
+    desc: The caster calls down a ball of jagged earth and stone to a point they can see. It explodes on impact, doing damage to up to 3 targets and throwing up shrapnel.
     effect: AOE Damage
     fs3_attack: true
     level: 8
     line_of_sight: true
-    name: Exploding Earth
+    name: Meteor
     range: Long
     school: Creation
     target_num: 3
-    weapon: Exploding Earth
+    weapon: Meteor
   Group Revive:
     area: 15 yard radius
     available: true
