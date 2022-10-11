@@ -196,12 +196,12 @@ module AresMUSH
         name: spell['weapon_specials'],
         rounds: spell['rounds'],
         weapon: target.weapon,
-        combatant: combatant
+        combatant: target
       }
       MagicWeaponSpecials.create(weapon_special)
       end
 
-      Magic.set_magic_weapon(target, combatant.weapon)
+      Magic.set_magic_weapon(target, target.weapon)
 
       if (spell['heal_points'] && wound)
         message = []
@@ -233,7 +233,7 @@ module AresMUSH
       end
       puts "Armor specials: #{combatant.magic_armor_specials.to_a}"
 
-      FS3Combat.set_armor(combatant, target, combatant.armor)
+      FS3Combat.set_armor(combatant, target, target.armor)
 
       if (spell['heal_points'] && wound)
         message = []

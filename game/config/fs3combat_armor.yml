@@ -7,6 +7,7 @@ fs3combat:
     Dragon:
       description: Dragon hide
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 7
@@ -23,6 +24,7 @@ fs3combat:
     Griffon:
       description: Griffon hide
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 5
@@ -55,6 +57,7 @@ fs3combat:
     Pantherine:
       description: Dragon hide
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 5
@@ -71,6 +74,7 @@ fs3combat:
     Pegasus:
       description: Pegasus hide
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 6
@@ -87,6 +91,7 @@ fs3combat:
     Roc:
       description: Roc hide
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 5
@@ -108,6 +113,7 @@ fs3combat:
   #--------------
     Shell:
       description: Low level animal shell armor
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 4
@@ -132,6 +138,7 @@ fs3combat:
         Abdomen: 3
     Thick Shell:
       description: Animal shell on par with plate armor
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 7
@@ -156,6 +163,7 @@ fs3combat:
         Abdomen: 7
     Tough Hide:
       description: Low level animal hide
+      special_group: Mundane
       is_magic: false
       defense: 0
       protection:
@@ -179,6 +187,7 @@ fs3combat:
         Fin: 3
     Very Tough Hide:
       description: Animal hide on par with chainmail armor
+      special_group: Mundane
       is_magic: false
       defense: 0
       protection:
@@ -202,6 +211,7 @@ fs3combat:
         Fin: 4
     Bird:
       description: Armor for feathered birds.
+      special_group: Mundane
       is_magic: false
       defense: 3
       protection:
@@ -222,6 +232,7 @@ fs3combat:
         Left Wing: 0
     Big Cat:
       description: Armor for lynx, panthera, etc.
+      special_group: Mundane
       is_magic: false
       protection:
         Head: 0
@@ -240,7 +251,7 @@ fs3combat:
       defense: 2
 
   #--------------
-  # MUNDANE HUMAN ARMOR
+  # Mundane HUMAN ARMOR
   #--------------
     None:
       description: In case you need to take off armor
@@ -251,6 +262,7 @@ fs3combat:
     Tactical:
       description: Military-Grade Kevlar Vest and Helmet
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Head: 7
@@ -260,6 +272,7 @@ fs3combat:
     Chainmail:
       description: Chainmail shirt & gambeson
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 6
@@ -273,6 +286,7 @@ fs3combat:
     Plate:
       description: Full plate armor with no helmet
       is_magic: false
+      special_group: Mundane
       defense: -1
       protection:
         Chest: 7
@@ -289,6 +303,7 @@ fs3combat:
     Leather:
       description: Leather armor
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 5
@@ -302,6 +317,7 @@ fs3combat:
     Police:
       description: Police-Grade Kevlar Vest
       is_magic: false
+      special_group: Mundane
       defense: 0
       protection:
         Chest: 7
@@ -341,5 +357,15 @@ fs3combat:
       protection:
         Head: -3
 
-    #ITEM ARMOR SPECIALS
-
+#---------------
+# ARMOR SPECIAL GROUPS
+#---------------
+  armor special groups:
+    Mundane:
+    - modern helmet
+    - leather helmet
+    - metal helmet
+    - chainmail coif
+    - weaken
+    Magic:
+    - weaken

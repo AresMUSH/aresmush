@@ -123,6 +123,7 @@ module AresMUSH
     # end
 
     def self.magic_armor_specials(combatant, armor)
+      puts "Armor specials in Magic.magic_armor_specials: #{combatant.magic_armor_specials.to_a}"
       #Returns all specials gained by magical means
       specials = []
 
@@ -136,6 +137,7 @@ module AresMUSH
       if !magic_armor_specials.empty?
         specials = specials.concat magic_armor_specials
       end
+      puts "Magic_armor_specials #{specials}"
       return specials
     end
 

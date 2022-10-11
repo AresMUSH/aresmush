@@ -9,6 +9,7 @@ fs3combat:
     Ice:
       description: Level 4 Entropy spell
       is_magic: true
+      special_group: Magic
       defense: 0
       protection:
         Head: 4
@@ -34,6 +35,7 @@ fs3combat:
     Stone Skin:
       description: Level 4 Creation spell
       is_magic: true
+      special_group: Magic
       defense: 0
       protection:
         Head: 5
@@ -62,6 +64,7 @@ fs3combat:
     Diamond:
       description: Level 6 Creation spell
       is_magic: true
+      special_group: Magic
       defense: 0
       protection:
         Head: 7
@@ -87,6 +90,7 @@ fs3combat:
     Glacial:
       description: Level 6 Entropy spell
       is_magic: true
+      special_group: Magic
       defense: 0
       protection:
         Head: 7

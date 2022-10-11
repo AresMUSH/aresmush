@@ -57,8 +57,10 @@ module AresMUSH
 
           if spell['armor_specials']
             # return "This spell is currently broken. Don't worry, I know."
-            armor_allowed_specials = FS3Combat.armor_stat(target.armor, "allowed_specials") || []
-            return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(spell['armor_specials'])
+            armor_special_group = FS3Combat.armor_stat(target.armor, "special_group") || ""
+            armor_allowed_specials = Global.read_config("fs3combat", "armor special groups", armor_special_group) || []
+            puts "Target: #{target.armor} #{armor_special_group} ALLOWED: #{armor_allowed_specials}"
+            return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(spell['armor_specials'].downcase)
           end
 
         end

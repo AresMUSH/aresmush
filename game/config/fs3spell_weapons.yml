@@ -376,6 +376,7 @@ fs3combat:
     - ice
     - lightning
     - scope
+    - weaken
     Melee:
     - fire
     - focus
