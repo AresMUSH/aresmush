@@ -84,7 +84,6 @@ spells:
     desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
     duration: 1 round
     effect: Weapon
-    fs3_attack: true
     is_potion: true
     level: 3
     name: Ice Talons
@@ -298,7 +297,7 @@ spells:
   Exhaustion:
     attack_mod: -2
     available: true
-    casting_time: 1 Round
+    casting_time: 1 round
     damage_type: Bypass
     defense_mod: -2
     desc: "The caster weakens the bodies of up to 3 targets. They suddenly feel faint, losing their strength and becoming fatigued."

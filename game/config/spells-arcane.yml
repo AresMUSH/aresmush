@@ -283,6 +283,7 @@ spells:
 #---------------
   Group Awaken Terror:
     available: true
+    casting_time: 1 round
     damage_type: Psionic
     desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
     duration: 2 rounds

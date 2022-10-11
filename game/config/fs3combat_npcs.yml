@@ -8,6 +8,7 @@ fs3combat:
       Archery: 3
       Melee: 3
       Brawl: 3
+      Magic: 3
       Wounds: 30
     Easy:
       Default: 4
@@ -15,6 +16,7 @@ fs3combat:
       Archery: 5
       Melee: 5
       Brawl: 5
+      Magic: 5
       Wounds: 20
     Normal:
       Default: 6
@@ -22,6 +24,7 @@ fs3combat:
       Brawl: 7
       Firearms: 7
       Melee: 7
+      Magic: 7
       Wounds: 10
     Moderate:
       Default: 8
@@ -29,6 +32,7 @@ fs3combat:
       Brawl: 9
       Firearms: 9
       Melee: 9
+      Magic: 9
       Wounds: 0
     Hard:
       Default: 10
@@ -36,6 +40,7 @@ fs3combat:
       Brawl: 11
       Firearms: 11
       Melee: 11
+      Magic: 11
       Wounds: -10
     Difficult:
       Default: 12
@@ -43,6 +48,8 @@ fs3combat:
       Brawl: 13
       Firearms: 13
       Melee: 13
+      Magic: 13
+      Magic: 13
       Wounds: -15
     Impossible:
       Default: 18
@@ -50,6 +57,7 @@ fs3combat:
       Brawl: 20
       Firearms: 20
       Melee: 20
+      Magic: 20
       Wounds: -25
 
 # MYTHICS
@@ -59,7 +67,8 @@ fs3combat:
       Brawl: 6
       Melee: 6
       Reflexes: 6
-      Altertness: 6
+      Alertness: 6
+      Magic:
       Wounds: 0
     Lupine:
       Default: 6
@@ -68,6 +77,7 @@ fs3combat:
       Melee: 6
       Reflexes: 6
       Altertness: 8
+      Magic: 6
       Wounds: 0
     Pantherine:
       Default: 6
@@ -76,6 +86,7 @@ fs3combat:
       Melee: 6
       Reflexes: 6
       Altertness: 9
+      Magic: 6
       Wounds: 0
     Pegasus:
       Default: 6
@@ -84,6 +95,7 @@ fs3combat:
       Melee: 7
       Reflexes: 6
       Altertness: 6
+      Magic: 6
       Wounds: 0
     Griffon:
       Default: 6
@@ -92,6 +104,7 @@ fs3combat:
       Melee: 7
       Reflexes: 6
       Altertness: 8
+      Magic: 6
       Wounds: 0
     Roc:
       Default: 6
@@ -100,4 +113,5 @@ fs3combat:
       Melee: 8
       Reflexes: 8
       Altertness: 6
+      Magic: 6
       Wounds: 0

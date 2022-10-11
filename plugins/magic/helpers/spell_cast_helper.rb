@@ -224,8 +224,8 @@ module AresMUSH
         name: spell['armor_specials'],
         rounds: spell['rounds'],
         armor: target.armor,
-        combatant: combatant,
-        mount: combatant,
+        combatant: target,
+        mount: target,
       }
       puts "Creating armor special:"
 
