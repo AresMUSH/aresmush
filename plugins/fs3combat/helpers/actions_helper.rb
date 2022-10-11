@@ -388,9 +388,9 @@ module AresMUSH
       else
         hit = true
       end
-
+      puts "++HIT: #{hit} MSG: #{message}+++"
       stopped_by_shield = Magic.determine_margin_with_shield(target, combatant, weapon, attack_roll, defense_roll)
-      if stopped_by_shield && hit = true
+      if stopped_by_shield && hit == true
         hit = stopped_by_shield[:hit]
         message = stopped_by_shield[:message]
       end
