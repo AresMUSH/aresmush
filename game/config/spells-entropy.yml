@@ -183,6 +183,7 @@ spells:
     rounds: 100
     school: Entropy
     weapon_specials: Weaken
+    target_num: 1
   Weaken Armor:
     available: true
     armor_specials: Weaken
