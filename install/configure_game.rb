@@ -165,7 +165,7 @@ module AresMUSH
         "website" => '',
         "public_game" => false,
         "game_status" => 'In Development',
-        "db_url" => db_url
+        "db_url" => "127.0.0.1:6379"
       }
     end
     
