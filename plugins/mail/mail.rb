@@ -102,6 +102,8 @@ module AresMUSH
         return MailIndexRequestHandler
       when "mailMessage"
         return MailMessageRequestHandler
+      when "mailSendOptions"
+        return MailSendOptionsRequestHandler
       when "sendMail"
         return MailSendRequestHandler
       when "archiveMail"
