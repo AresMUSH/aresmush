@@ -49,6 +49,7 @@ GEM
     jmespath (1.6.1)
     json (2.3.1)
     libv8-node (16.10.0.0-x86_64-darwin)
+    libv8-node (16.10.0.0-x86_64-darwin-19)
     log4r (1.1.10)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
@@ -106,6 +107,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  x86_64-darwin-19
   x86_64-darwin-21
 
 DEPENDENCIES
