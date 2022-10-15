@@ -43,14 +43,23 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 `mail/review <name>` - Shows messages you've sent to someone.
 `mail/unsend <name>/<# from mail review>` - Unsends a message if it hasn't already been read.  Use mail/review to find the message number you should use.
 
-## Deleting and Archiving Mail
+## Deleting and Organizing Mail
+
+You can add tags to mail messages to organize them.
+
+`mail/tag <#>=<tag>` - Adds a tag to a mail message.
+`mail/untag <#>=<tag>` - Removes a tag from a mail message.
+`mail/filter <tag>` - Shows mail matching the tag.  Remains in effect until you switch the filter or log out.
+
+Archived mail shows up under the 'archive' tag, separate from your regular mail.
 
 `mail/archive <#>` - Clears current tags and applies the Archive tag instead.
+
+Deleting mail puts it into the recycle bin, which is emptied when you log out.
+
 `mail/delete <#> or <start#>-<end#>` - Sends a message to the trash.
 `mail/undelete <#>` - Recovers a message from the trash.
 `mail/emptytrash` - Permanently deletes messages in the trash.
-
-> **Tip:** The trash is emptied when you log out, so you can recover a message until then.
 
 ## Reporting Offensive Mails
 
