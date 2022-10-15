@@ -1,0 +1,7 @@
+sudo ln -s /bin/mkdir /usr/bin/mkdir
+
+rvm install 3.1.2
+rvm use 3.1.2
+rvm default 3.1.2
+gem update bundler
+bundle install
