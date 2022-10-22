@@ -12,9 +12,6 @@ echo "Configuring with options ${CONFIG_OPTIONS}"
 
 export HOME_DIR="/home/ares"
 
-# Turn off need restart prompt
-export  NEEDRESTART_MODE=a
-
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Setup script to restart game when server restarts."
