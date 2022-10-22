@@ -1,6 +1,7 @@
 ---
 toc: ~admin~ Coding
 summary: Managing the game configuration.
+tutorial: true
 aliases:
 - cron
 ---
@@ -12,7 +13,7 @@ AresMUSH is ready to go out of the box with a default configuration based on a B
 
 For configuration tutorials, see [AresMUSH.com](https://aresmush.com/tutorials/config/).
 
-It is recommended that you make configuration changes through the web portal Admin screen, but you can also edit config files on-disk.
+**Tip:** For best results, make configuration changes through the web portal Admin screen.
 
 ## View Configuration
 

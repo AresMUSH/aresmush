@@ -35,7 +35,7 @@ module AresMUSH
               return
             end
             
-            if (scene.participants.include?(invitee))
+            if (scene.participants.include?(char))
               client.emit_failure t('scenes.scene_already_in_scene')
             end
           
