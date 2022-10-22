@@ -6,6 +6,9 @@ export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
+# Turn off need restart prompt
+export  NEEDRESTART_MODE=a
+
 # Set up redis PPA so we get a recent version
 
 add-apt-repository -y ppa:chris-lea/redis-server
