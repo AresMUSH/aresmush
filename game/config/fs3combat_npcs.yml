@@ -68,7 +68,7 @@ fs3combat:
       Melee: 6
       Reflexes: 6
       Alertness: 6
-      Magic:
+      Magic: 6
       Wounds: 0
     Lupine:
       Default: 6

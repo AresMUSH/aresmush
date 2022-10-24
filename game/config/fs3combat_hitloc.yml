@@ -134,6 +134,17 @@ fs3combat:
       - Groin
     Dragon:
       areas:
+        Chest:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Chest
+        - Chest
+        - Chest
         Rear Left Leg:
         - Chest
         - Rear Right Leg
@@ -233,7 +244,7 @@ fs3combat:
         - Abdomen
         - Abdomen
         - Abdomen
-        Tail: 
+        Tail:
         - Chest
         - Abdomen
         - Abdomen
@@ -252,8 +263,117 @@ fs3combat:
       - Head
       crew_areas:
       - Chest
+    Bird:
+      areas:
+        Chest:
+        - Left Leg
+        - Right Leg
+        - Left Leg
+        - Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Chest
+        - Chest
+        - Chest
+        Left Leg:
+        - Chest
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        Right Leg:
+        - Chest
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        Right Wing:
+        - Head
+        - Right Leg
+        - Right Leg
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Right Wing
+        - Right Wing
+        - Right Wing
+        Left Wing:
+        - Head
+        - Left Leg
+        - Left Leg
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Left Wing
+        - Left Wing
+        - Left Wing
+        Head:
+        - Front Right Leg
+        - Front Left Leg
+        - Neck
+        - Neck
+        - Chest
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Head
+        - Head
+        - Neck
+        - Neck
+        - Neck
+        Abdomen:
+        - Left Leg
+        - Right Leg
+        - Left Leg
+        - Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      - Chest
+      - Neck
+      critical_areas:
+      - Head
+      crew_areas:
+      - Chest
     Winged Mythic:
       areas:
+        Chest:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Chest
+        - Chest
+        - Chest
         Rear Left Leg:
         - Chest
         - Rear Right Leg
@@ -346,7 +466,7 @@ fs3combat:
       - Abdomen
       - Chest
       critical_areas:
-      - Head      
+      - Head
       crew_areas:
       - Chest
 
@@ -367,6 +487,17 @@ fs3combat:
   # ----------------------
     Crab:
       areas:
+        Abdomen:
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Carapace
+        - Carapace
+        - Abdomen
+        - Abdomen
+        - Abdomen
         Eyes:
         - Right Claw
         - Right Claw
@@ -389,17 +520,6 @@ fs3combat:
         - Leg
         - Leg
         - Leg
-        Abdomen:
-        - Leg
-        - Leg
-        - Leg
-        - Carapace
-        - Carapace
-        - Carapace
-        - Carapace
-        - Abdomen
-        - Abdomen
-        - Abdomen
         Carapace:
         - Leg
         - Leg
@@ -533,6 +653,17 @@ fs3combat:
       - Head
     Fish:
       areas:
+        Body:
+        - Fin
+        - Fin
+        - Tail
+        - Tail
+        - Head
+        - Head
+        - Body
+        - Body
+        - Body
+        - Body
         Head:
         - Fin
         - Fin
@@ -555,17 +686,6 @@ fs3combat:
         - Tail
         - Tail
         - Tail
-        Body:
-        - Fin
-        - Fin
-        - Tail
-        - Tail
-        - Head
-        - Head
-        - Body
-        - Body
-        - Body
-        - Body
         Fin:
         - Head
         - Tail
@@ -1070,17 +1190,6 @@ fs3combat:
       - Head
     Serpent:
       areas:
-        Head:
-        - Body
-        - Body
-        - Body
-        - Body
-        - Body
-        - Body
-        - Head
-        - Head
-        - Head
-        - Head
         Body:
         - Tail
         - Tail
@@ -1092,6 +1201,17 @@ fs3combat:
         - Body
         - Body
         - Body
+        Head:
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Head
+        - Head
+        - Head
+        - Head
         Tail:
         - Body
         - Body
@@ -1172,6 +1292,17 @@ fs3combat:
       critical_areas: []
     Insect:
       areas:
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
         Left Leg:
         - Thorax
         - Right Leg
@@ -1249,109 +1380,109 @@ fs3combat:
         - Head
         - Head
         - Head
-        Abdomen:
-        - Rear Left Leg
-        - Rear Right Leg
-        - Rear Left Leg
-        - Rear Right Leg
-        - Chest
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Abdomen
       vital_areas:
       - Abdomen
       critical_areas:
       - Thorax
-
-    Flying2LeggedCreature:
-      areas:
-        Left Leg:
-        - Neck
-        - Right Leg
-        - Right Leg
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Left Leg
-        - Left Leg
-        - Left Leg
-        Right Leg:
-        - Neck
-        - Left Leg
-        - Left Leg
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Right Leg
-        - Right Leg
-        - Right Leg
-        Right Wing:
-        - Head
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Front Right Leg
-        - Front Right Leg
-        - Right Wing
-        - Right Wing
-        - Right Wing
-        Left Wing:
-        - Head
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Front Left Leg
-        - Front Left Leg
-        - Left Wing
-        - Left Wing
-        - Left Wing
-        Neck:
-        - Right Leg
-        - Left Leg
-        - Head
-        - Head
-        - Chest
-        - Chest
-        - Chest
-        - Neck
-        - Neck
-        - Neck
-        Head:
-        - Right Leg
-        - Left Leg
-        - Neck
-        - Neck
-        - Chest
-        - Chest
-        - Chest
-        - Head
-        - Head
-        - Head
-        Abdomen:
-        - Left Leg
-        - Right Leg
-        - Left Leg
-        - Right Leg
-        - Chest
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Abdomen
-      vital_areas:
-      - Abdomen
-      - Chest
-      - Neck
-      critical_areas:
-      - Head
+# Just use bird
+    # Flying2LeggedCreature:
+    #   areas:
+    #     Left Leg:
+    #     - Neck
+    #     - Right Leg
+    #     - Right Leg
+    #     - Chest
+    #     - Chest
+    #     - Abdomen
+    #     - Abdomen
+    #     - Left Leg
+    #     - Left Leg
+    #     - Left Leg
+    #     Right Leg:
+    #     - Neck
+    #     - Left Leg
+    #     - Left Leg
+    #     - Chest
+    #     - Chest
+    #     - Abdomen
+    #     - Abdomen
+    #     - Right Leg
+    #     - Right Leg
+    #     - Right Leg
+    #     Right Wing:
+    #     - Head
+    #     - Chest
+    #     - Chest
+    #     - Abdomen
+    #     - Abdomen
+    #     - Front Right Leg
+    #     - Front Right Leg
+    #     - Right Wing
+    #     - Right Wing
+    #     - Right Wing
+    #     Left Wing:
+    #     - Head
+    #     - Chest
+    #     - Chest
+    #     - Abdomen
+    #     - Abdomen
+    #     - Front Left Leg
+    #     - Front Left Leg
+    #     - Left Wing
+    #     - Left Wing
+    #     - Left Wing
+    #     Neck:
+    #     - Right Leg
+    #     - Left Leg
+    #     - Head
+    #     - Head
+    #     - Chest
+    #     - Chest
+    #     - Chest
+    #     - Neck
+    #     - Neck
+    #     - Neck
+    #     Head:
+    #     - Right Leg
+    #     - Left Leg
+    #     - Neck
+    #     - Neck
+    #     - Chest
+    #     - Chest
+    #     - Chest
+    #     - Head
+    #     - Head
+    #     - Head
+    #     Abdomen:
+    #     - Left Leg
+    #     - Right Leg
+    #     - Left Leg
+    #     - Right Leg
+    #     - Chest
+    #     - Chest
+    #     - Chest
+    #     - Abdomen
+    #     - Abdomen
+    #     - Abdomen
+    #   vital_areas:
+    #   - Abdomen
+    #   - Chest
+    #   - Neck
+    #   critical_areas:
+    #   - Head
     FlyingInsect:
       areas:
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
         Left Leg:
         - Thorax
         - Right Leg
@@ -1451,17 +1582,6 @@ fs3combat:
         - Head
         - Head
         - Head
-        Abdomen:
-        - Rear Left Leg
-        - Rear Right Leg
-        - Rear Left Leg
-        - Rear Right Leg
-        - Chest
-        - Chest
-        - Chest
-        - Abdomen
-        - Abdomen
-        - Abdomen
       vital_areas:
       - Abdomen
       critical_areas:

@@ -68,7 +68,7 @@ fs3combat:
       hitloc: Winged Mythic
       armor: Tough Hide
       defense_skill: Reflexes
-    Patherine:
+    Pantherine:
       weapon: Sharp Claws
       hitloc: Winged Mythic
       armor: Tough Hide
@@ -79,6 +79,8 @@ fs3combat:
     Quadraped:
       hitloc: Quadraped
       defense_skill: Reflexes
+      weapon: Claws
+      armor: Tough Hide
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary
