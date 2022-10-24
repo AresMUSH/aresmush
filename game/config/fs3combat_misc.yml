@@ -56,7 +56,7 @@ fs3combat:
     Roc:
       weapon: Talons
       armor: Tough Hide
-      hitloc: Winged Mythic
+      hitloc: Bird
       defense_skill: Reflexes
     Pegasus:
       weapon: Hard Hooves
