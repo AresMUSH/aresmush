@@ -10,7 +10,11 @@ module AresMUSH
     end
 
     def is_on_mount?
-      self.riding || self.passenger_on
+      if self.riding || self.passenger_on
+        return true
+      else
+        return false
+      end
     end
 
     def is_mount?
