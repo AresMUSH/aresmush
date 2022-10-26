@@ -83,6 +83,7 @@ module AresMUSH
 
   def self.new_turn(combat)
     combat.mounts.each do |m|
+      puts "Mounts new turn"
       FS3Combat.check_for_ko(m)
       Magic.death_new_turn(m)
       m.update(freshly_damaged: false)
@@ -180,9 +181,10 @@ module AresMUSH
     end
     dice = (rider_dice + mount_dice) / 2
     if !no_log
-      char.combatant.log "TOTAL #{roll_params.ability.upcase} DICE: #{char.name}'s #{rider_dice} + #{mount.name}'s #{mount_dice} / 2 = #{dice}"
+      char.combatant.log "TOTAL #{roll_params.ability.upcase} DICE: #{char.name}'s #{rider_dice} (mod: #{roll_params.modifier}) + #{mount.name}'s #{mount_dice} / 2 = #{dice}"
     end
     puts "Grabbing rider and mount dice: #{rider_dice} + #{mount_dice} / 2 = #{dice}"
+
     return dice
   end
 

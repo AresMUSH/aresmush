@@ -79,6 +79,7 @@ module AresMUSH
       return if combatant.stress == 0
 
       composure = Global.read_config("fs3combat", "composure_skill")
+      puts "ROLL TO RESET STRESS"
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
 
@@ -100,7 +101,9 @@ module AresMUSH
       end
 
       if (roll <= 0)
+        #Magic changes
         Magic.death_one(combatant)
+        #/Magic Changes
         combatant.update(is_ko: true)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
@@ -143,32 +146,11 @@ module AresMUSH
       end
 
       damage_mod = combatant.total_damage_mod
-
+      #Yes damage_mod should be doubled here
       mod = damage_mod + damage_mod + pc_mod + vehicle_mod + ko_mod
-      puts "CHECKING MOUNT KOS"
-      # #EM Changes
-      # if combatant.is_mount?
-      #   rider_dice = FS3Skills.ability_rating(combatant.rider.associated_model, composure)
-      #   composure_dice = (rider_dice + combatant.composure) / 2
-      #   dice = composure_dice + mod
-      #   results = FS3Skills.roll_dice(dice)
-      #   roll = FS3Skills.get_success_level(results)
-      #   puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
-      # elsif combatant.riding
-      #   rider_dice = FS3Skills.ability_rating(combatant.associated_model, composure)
-      #   composure_dice = (rider_dice + combatant.riding.composure) / 2
-      #   dice = composure_dice + mod
-      #   results = FS3Skills.roll_dice(dice)
-      #   roll = FS3Skills.get_success_level(results)
-      #   puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
-      # else
-      #   roll = combatant.roll_ability(composure, mod)
-      # end
-      # #/EM
-      roll = combatant.roll_ability(composure, mod)
-      puts "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
 
-      combatant.log "#{combatant.name.upcase} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
+      roll = combatant.roll_ability(composure, mod)
+      combatant.log "#{combatant.name.upcase} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod}*2=#{damage_mod + damage_mod} vehicle=#{vehicle_mod}  pc=#{pc_mod} mod=#{ko_mod}"
 
       roll
     end
