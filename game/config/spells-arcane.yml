@@ -142,6 +142,21 @@ spells:
     school: Arcane
     spell_mod: -1
     target_num: 1
+  Manifest Spirit:
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "Give an incorporeal spirit a physical form, capable of both receiving and doing damage, for a short time."
+    duration: 6 rounds
+    effect: Other
+    is_potion: true
+    level: 3
+    line_of_sight: true
+    name: Manifest Spirit
+    range: Short
+    rounds: 6
+    school: Arcane
+    target_num: 1
 
 
 #---------------
@@ -195,6 +210,19 @@ spells:
     target_num: 1
     duration: 2 hours
     rounds: 7200
+  Restful Spirit:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Put a weak ghost to rest.
+    effect: Other
+    is_potion: true
+    level: 4
+    line_of_sight: true
+    name: Restful Spirit
+    range: Short
+    school: Arcane
+    target_num: 1
   Restore Mana:
     available: true
     casting_time: 1 round
