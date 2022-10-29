@@ -123,7 +123,7 @@ module AresMUSH
   
       def self.clean_anchor(text)
         anchor = (text || "").parameterize().downcase
-        URI.escape(anchor)
+        CGI.escape(anchor)
       end
     end
   end
