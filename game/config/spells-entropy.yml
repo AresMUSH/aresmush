@@ -240,7 +240,7 @@ spells:
     damage_type: Bypass
     desc: "Inflict an impaired wound, making it difficult for an enemy to use the affected body part. \n\nSpell ignores target's armor."
     effect: Damage
-    level: 4
+    level: 5
     line_of_sight: true
     name: Impair
     range: Short
