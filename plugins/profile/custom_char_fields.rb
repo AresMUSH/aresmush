@@ -29,7 +29,7 @@ module AresMUSH
           lore_hook_desc: char.lore_hook_desc,
           lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
           lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
-          # mythic_name: char.bonded.name,
+          mythic_name: char.bonded.name || nil,
         }
       end
 
