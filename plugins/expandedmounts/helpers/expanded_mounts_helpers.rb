@@ -211,7 +211,12 @@ module AresMUSH
     #     mount = Mount.named(vehicle.name)
     #     mount.update(vehicle: nil)
     #   end
-    # end
+    #
+
+    def self.bonded_name(char)
+      return char.bonded.name if char.bonded
+      return nil
+    end
 
 
 
