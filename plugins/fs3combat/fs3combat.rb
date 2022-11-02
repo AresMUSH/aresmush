@@ -5,15 +5,15 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
- 
+
     def self.shortcuts
       Global.read_config("fs3combat", "shortcuts")
     end
- 
+
     def self.achievements
       Global.read_config('fs3combat', 'achievements')
     end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when"damage"
@@ -46,14 +46,6 @@ module AresMUSH
          when "scan"
            return HealScanCmd
          end
-      #  when "mount"
-      #    if (cmd.args)
-      #      return MountDetailCmd
-      #    else
-      #      return MountsListCmd
-      #    end
-        when "test"
-          return ExpandedCombatMountCmd
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd
@@ -69,7 +61,7 @@ module AresMUSH
        when "combats"
          return CombatListCmd
        when "combat"
-         case cmd.switch        
+         case cmd.switch
          when "all", "list"
            return CombatListCmd
          when "ammo"
@@ -100,12 +92,14 @@ module AresMUSH
            return CombatLogCmd
          when "luck"
            return CombatLuckCmd
+          #EM Changes
          when "mount"
            return ExpandedMounts::ExpandedCombatMountCmd
          when "dismount"
            return ExpandedMounts::ExpandedCombatDismountCmd
          when "mounts"
             return ExpandedMounts::CombatExpandedMountsCmd
+          #/EM Changes
          when "npc"
            return CombatNpcCmd
          when "npcs"
@@ -153,7 +147,7 @@ module AresMUSH
            return CombatActionCmd
          end
        end
-       
+
        nil
     end
 
@@ -166,7 +160,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.get_web_request_handler(request)
       case request.cmd
       when "addCombatant"
@@ -207,7 +201,7 @@ module AresMUSH
         return StopCombatRequestHandler
       end
     end
-    
+
     def self.check_config
       validator = FS3CombatConfigValidator.new
       validator.validate

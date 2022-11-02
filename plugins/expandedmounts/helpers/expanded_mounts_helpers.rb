@@ -152,6 +152,57 @@ module AresMUSH
   end
 
   def self.dice_to_roll_for_ability(mount_or_rider, roll_params)
+    #out of combat roll
+    ability = roll_params.ability
+    mount_or_rider.class == Mount ? mount = mount_or_rider : mount = mount_or_rider.bonded
+    mount_or_rider.class == Character ? char = mount_or_rider : char = mount_or_rider.rider
+
+    if ability == "Reflexes"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "reflexes")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif ability == "Melee" ||  ability == "Brawl"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "attack")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif  ability == "Composure"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "composure")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif ability == "Stealth"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "stealth")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif ability == "Alertness"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "alertness")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    else
+      #Don't average skills that mounts don't affect
+      mount_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+      no_log = true
+    end
+
+    dice = (rider_dice + mount_dice) / 2
+    if !no_log
+     Global.logger.info "TOTAL #{roll_params.ability.upcase} DICE: #{char.name}'s #{rider_dice} (mod: #{roll_params.modifier}) + #{mount.name}'s #{mount_dice} / 2 = #{dice}"
+    end
+    puts "Grabbing rider and mount dice: #{rider_dice} + #{mount_dice} / 2 = #{dice}"
+
+    return dice
+  end
+
+  def self.parse_and_roll(char, roll_str)
+    if (roll_str.is_integer?)
+      dice = (roll_str.to_i) + 2
+      die_result = FS3Skills.roll_dice(dice)
+    else
+      roll_params = FS3Skills.parse_roll_params roll_str
+      if (!roll_params)
+        return nil
+      end
+      die_result = FS3Skills.roll_ability(char, roll_params)
+    end
+    die_result
+  end
+
+  def self.dice_to_roll_for_combat_ability(mount_or_rider, roll_params)
     #mount_or_rider must be in combat - if rider, their mount must also be in combat
     ability = roll_params.ability
     mount_or_rider.class == Mount ? mount = mount_or_rider : mount = mount_or_rider.bonded
@@ -170,7 +221,7 @@ module AresMUSH
     elsif ability == "Stealth"
       mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "stealth")
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
-    elsif ability == "Alterness"
+    elsif ability == "Alertness"
       mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "alertness")
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
     else
@@ -179,6 +230,7 @@ module AresMUSH
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
       no_log = true
     end
+
     dice = (rider_dice + mount_dice) / 2
     if !no_log
       char.combatant.log "TOTAL #{roll_params.ability.upcase} DICE: #{char.name}'s #{rider_dice} (mod: #{roll_params.modifier}) + #{mount.name}'s #{mount_dice} / 2 = #{dice}"
@@ -188,35 +240,10 @@ module AresMUSH
     return dice
   end
 
-    # def self.copy_damage_to_mount(vehicles)
-    #   vehicles.each do |vehicle|
-    #     vehicle.damage.each do |wound|
-    #       params = {
-    #       :description => wound.description,
-    #       :current_severity => wound.current_severity,
-    #       :initial_severity => wound.initial_severity,
-    #       :ictime_str => wound.ictime_str,
-    #       :healing_points => wound.healing_points,
-    #       :is_stun => wound.is_stun,
-    #       :is_mock => wound.is_mock,
-    #       :mount => Mount.named(vehicle.name)
-    #       }
-    #       Damage.create(params)
-    #     end
-    #   end
-    # end
-
-    # def self.remove_mount_link(vehicles)
-    #   vehicles.each do |vehicle|
-    #     mount = Mount.named(vehicle.name)
-    #     mount.update(vehicle: nil)
-    #   end
-    #
-
-    def self.bonded_name(char)
-      return char.bonded.name if char.bonded
-      return nil
-    end
+  def self.bonded_name(char)
+    return char.bonded.name if char.bonded
+    return nil
+  end
 
 
 

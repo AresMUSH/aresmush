@@ -83,3 +83,5 @@ expandedmounts:
     - 19
     minute:
     - 45
+  shortcuts:
+    roll/mount: mount/roll
