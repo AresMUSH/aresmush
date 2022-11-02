@@ -33,7 +33,7 @@ module AresMUSH
       return errors
     end
 
-    def self.save_mount(char, chargen_data)
+    def self.save_cg_mount(char, chargen_data)
       error = ExpandedMounts.required_mount_info(char, chargen_data)
       return error if !error.empty?
 
