@@ -30,6 +30,7 @@ module AresMUSH
           lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
           lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
           mythic_name: ExpandedMounts.bonded_name(char),
+          mythic: ExpandedMounts.mount_for_web(char),
         }
       end
 
@@ -43,7 +44,13 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
-        return {}
+        return {
+          mythic_name: char.bonded.name,
+          mythic_about: char.bonded.about,
+          mythic_desc: char.bonded.description,
+          mythic_shortdesc: char.bonded.shortdesc,
+
+        }
       end
 
       # Gets custom fields for character creation (chargen).
@@ -89,7 +96,7 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_profile_edit(char, char_data)
-
+        ExpandedMounts.save_mount(char, char_data)
         return []
       end
 
@@ -109,7 +116,7 @@ module AresMUSH
         Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school]
         starting_spells = Magic.starting_spell_names(chargen_data[:custom])
         Magic.save_starting_spells(char, starting_spells)
-        errors.concat ExpandedMounts.save_mount(char, chargen_data)
+        errors.concat ExpandedMounts.save_cg_mount(char, chargen_data)
         char.update(lore_hook_pref: chargen_data[:custom][:lore_hook_pref][:value])
         puts "Starting spell names: #{Magic.starting_spell_names(chargen_data[:custom][:starting_spells])}"
         errors.concat Magic.check_cg_spell_errors(char)
