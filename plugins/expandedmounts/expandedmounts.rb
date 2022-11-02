@@ -16,17 +16,17 @@ module AresMUSH
       when "mounts"
         return ExpandedMountsListCmd
       end
-      # case cmd.root
-      # when "combat"
-      #   case cmd.switch
-      #   when "mount"
-      #     return ExpandedCombatMountCmd
-      #   when "dismount"
-      #     return ExpandedCombatDismountCmd
-      #   when "test"
-      #     return ExpandedCombatMountCmd
-      #   end
-      # end
+      case cmd.root
+      when "mount"
+        case cmd.switch
+        when "roll"
+          if (cmd.args =~ / vs /)
+            return ExpandedMountsOpposedRollCmd
+          else
+            return ExpandedMountsRollCmd
+          end
+        end
+      end
       nil
     end
 
