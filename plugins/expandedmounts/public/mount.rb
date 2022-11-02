@@ -15,6 +15,7 @@ module AresMUSH
 
     attribute :birthdate, :type => DataType::Date
     attribute :expanded_mount_type
+    attribute :about
     attribute :description
     attribute :shortdesc
     attribute :details, :type => DataType::Hash, :default => {}
