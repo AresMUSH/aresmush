@@ -126,6 +126,20 @@ spells:
     range: Long
     school: Entropy
     target_num: 3
+  Flesh Wound:
+    available: false
+    casting_time: 1 round
+    damage_desc: Flesh Wound Spell
+    damage_inflicted: FLESH
+    damage_type: Bypass
+    desc: "Inflict a flesh wound. \n\nSpell ignores target's armor."
+    effect: Damage
+    level: 5
+    line_of_sight: true
+    name: Flesh Wound
+    range: Short
+    school: Entropy
+    target_num: 1
   Ice Armor:
     armor: Ice
     available: true
