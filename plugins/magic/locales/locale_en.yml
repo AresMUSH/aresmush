@@ -121,7 +121,7 @@ en:
       # stun_action_success: "%{name} successfully stuns %{target}."
       # stun_action_failed: "%{name} tries to stun %{target} but FAILS."
       stun_wore_off: "%{name} is no longer %xmstunned%xn."
-      still_stunned: "%{name} is %xmstunned%xn by %{stunned_by}. They will be %xmstunned for %{rounds} more round(s).%xn"
+      still_stunned: "%{name} is %xmstunned%xn by %{stunned_by}. They will be %xmstunned%xn for %{rounds} more round(s)."
       cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be %xmstunned%xn for %{rounds} more round(s)."
       cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
 
