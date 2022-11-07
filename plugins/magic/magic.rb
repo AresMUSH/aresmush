@@ -45,7 +45,7 @@ module AresMUSH
         when "give"
           return GiveItemCmd
         when 'buy'
-          return BuyItemCmd 
+          return BuyItemCmd
         end
       end
 
@@ -153,5 +153,9 @@ module AresMUSH
       nil
     end
 
+    def self.check_config
+      validator = SpellsConfigValidator.new
+      validator.validate
+    end
   end
 end
