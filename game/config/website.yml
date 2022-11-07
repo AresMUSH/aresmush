@@ -255,6 +255,10 @@ website:
     school: world:school
     staff: ooc:staff
     storytellers: ooc:staff
+    spirits: world:spirits
+    ghosts: world:spirits
+    spirit: world:spirits
+    ghost: world:spirits
     app_staff: ooc:staff
     sts: ooc:staff
     admin: ooc:staff
