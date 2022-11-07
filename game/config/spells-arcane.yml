@@ -364,7 +364,7 @@ spells:
     duration: 15 minutes
     effect: Communication
     level: 7
-    name: Clarity
+    name: Awareness
     range: Self
     roll: true
     school: Arcane
@@ -389,7 +389,7 @@ spells:
     desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 7
-    name: Dispel All Magic
+    name: Dispel Magic
     range: Short
     roll: true
     school: Arcane

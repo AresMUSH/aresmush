@@ -95,7 +95,7 @@ spells:
     effect: Flora
     level: 3
     line_of_sight: true
-    name: Shape Flora
+    name: Floramancy
     range: Short
     roll: true
     school: Creation

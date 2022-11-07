@@ -169,7 +169,7 @@ spells:
     duration: 3 hours
     is_potion: true
     level: 4
-    name: 'Lightning Weapon '
+    name: Lightning Weapon
     range: Touch
     rounds: 100
     school: Aether

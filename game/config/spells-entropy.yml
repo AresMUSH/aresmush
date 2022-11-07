@@ -77,6 +77,7 @@ spells:
     rounds: 1
     target_num: 1
     school: Entropy
+    weapon: Stun (Entropy)
   Ice Talons:
     available: true
     casting_time: 1 round
@@ -89,7 +90,7 @@ spells:
     name: Ice Talons
     range: Self
     school: Entropy
-    weapon: Ice
+    weapon: Ice Talons
   Slow:
     available: true
     casting_time: 1 round
@@ -115,15 +116,14 @@ spells:
     available: true
     casting_time: 1 round
     defense_mod: -2
-    desc: Cause the earth to shudder, making up to 3 enemies within its range lose their footing
-     and giving them a penalty to attack.
+    desc: Cause the earth to shudder, making up to 3 enemies within its range lose their footing and giving them a penalty to attack.
     duration: 1 round
     effect: Debuff
-    fs3_attack: true
     level: 4
     line_of_sight: true
     name: Earth Shudder
     range: Long
+    rounds: 1
     school: Entropy
     target_num: 3
   Flesh Wound:
@@ -229,6 +229,7 @@ spells:
     rounds: 2
     target_num: 2
     school: Entropy
+    weapon: Stun (Entropy)
   Ice Block:
     available: true
     area: 5 yard length
@@ -319,7 +320,7 @@ spells:
     effect: Debuff
     level: 7
     line_of_sight: true
-    name: Miasma
+    name: Exhaustion
     range: Long
     rounds: 3
     school: Entropy
