@@ -60,7 +60,7 @@ module AresMUSH
       # elsif (combatant.magic_stance_counter > 0 && combatant.magic_stance_spell)
       #   combatant.update(magic_stance_counter: combatant.magic_stance_counter - 1)
       # end
-      # byebug
+
       if combatant.magic_stun
         msg = Magic.stun_newturn(combatant)
         messages.concat [msg]
@@ -72,8 +72,8 @@ module AresMUSH
       end
 
       if combatant.magic_defense_mod != 0
-        # msg = Magic.magic_defense_mod_newturn(combatant)
-        mods.concat [Magic.magic_defense_mod_newturn(combatant)]
+        msg = Magic.magic_defense_mod_newturn(combatant)
+        mods.concat [msg]
       end
 
       if combatant.magic_init_mod > 0
@@ -96,8 +96,6 @@ module AresMUSH
         messages.concat [msg]
       end
 
-      puts "NEW TURN MAGIC ARMOR SPECIALS: #{combatant.magic_armor_specials.to_a}"
-
       if combatant.magic_weapon_specials
         combatant.magic_weapon_specials.each do |s|
           s.update(rounds: s.rounds - 1)
@@ -113,7 +111,6 @@ module AresMUSH
       if combatant.magic_armor_specials
         combatant.magic_armor_specials.each do |s|
           s.update(rounds: s.rounds - 1)
-          puts "ARMOR ROUNDS: #{s.name} #{s.rounds}"
           if s.rounds == 0
             s.delete
             puts "Armor specials after delete: #{combatant.magic_armor_specials.to_a}"
@@ -125,9 +122,9 @@ module AresMUSH
       end
 
       if mods.any? && mods.count > 1
-        messages.concat  [t('magic.mods_wore_off', :name => combatant.name, :mods => mods.join(", "))]
+        messages.concat  [t('magic.mods_wore_off', :name => combatant.name, :mods => mods.compact.join(", "))]
       elsif mods.any?
-        messages.concat  [t('magic.mod_wore_off', :name => combatant.name, :mods => mods.join())]
+        messages.concat  [t('magic.mod_wore_off', :name => combatant.name, :mods => mods.compact.join())]
       end
       # byebug
       FS3Combat.emit_to_combat combatant.combat, messages.join("\n"), nil, true
@@ -153,9 +150,8 @@ module AresMUSH
         return t('magic.stun_wore_off', :name => combatant.name)
       else
         subduer = combatant.subdued_by
-        #Does this return math right? Does the update need to go after the msg?
         combatant.update(magic_stun_counter: combatant.magic_stun_counter - 1)
-        return t('magic.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter)
+        return t('magic.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter + 1)
       end
     end
 
@@ -174,7 +170,6 @@ module AresMUSH
     def self.magic_defense_mod_newturn(combatant)
       if combatant.magic_defense_mod_counter == 0
         msg = "#{combatant.magic_defense_mod} defense"
-
         combatant.update(magic_defense_mod: 0)
         combatant.log "#{combatant.name} resetting defense mod to #{combatant.magic_defense_mod}."
         return msg
