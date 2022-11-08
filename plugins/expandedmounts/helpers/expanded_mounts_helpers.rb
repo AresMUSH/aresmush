@@ -40,7 +40,6 @@ module AresMUSH
     end
 
     def self.bonded_name(char)
-      return "BLEH"
       return char.bonded.name if char.bonded
       return nil
     end
