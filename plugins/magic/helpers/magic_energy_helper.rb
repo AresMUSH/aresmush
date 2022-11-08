@@ -29,32 +29,39 @@ module AresMUSH
       char = char_or_npc
       if (char.magic_energy <= char.total_magic_energy*0.8) && (char.magic_energy >= char.total_magic_energy*0.6)
         degree = "Mild"
+        color = "%xg"
         effect = Global.read_config("magic", "fatigue_effect", "Mild")
-        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xgMILD%xn", :effect => effect)
+        msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "MILD%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.6) && (char.magic_energy >= char.total_magic_energy*0.4)
         degree = "Moderate"
+        color = "%xc"
         effect = Global.read_config("magic", "fatigue_effect", "Moderate")
-        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xcMODERATE%xn", :effect => effect)
+        msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "MODERATE%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.4) && (char.magic_energy >= char.total_magic_energy*0.2)
         degree = "Severe"
+        color = "%xy"
         effect = Global.read_config("magic", "fatigue_effect", "Severe")
-        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xySEVERE%xn", :effect => effect)
+        msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "SEVERE%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.2) && (char.magic_energy >= char.total_magic_energy*0.1)
         degree = "Extreme"
+        color = "%xm"
         effect = Global.read_config("magic", "fatigue_effect", "Extreme")
-        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xmEXTREME%xn", :effect => effect)
+        msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "EXTREME%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.10)
         degree = "Total"
+        color = "%xr"
         effect = Global.read_config("magic", "fatigue_effect", "Total")
-        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xrTOTAL%xn", :effect => effect)
+        msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "TOTAL%xn", :effect => effect)
       else
         degree = "None"
+        color = "%xg"
         effect = Global.read_config("magic", "fatigue_effect", "None")
-        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xgno%xn", :effect => effect)
+        msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "no%xn", :effect => effect)
       end
       return {
         msg: msg,
-        degree: degree
+        degree: degree,
+        color: color
       }
     end
 
