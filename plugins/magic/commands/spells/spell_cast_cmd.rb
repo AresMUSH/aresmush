@@ -31,16 +31,14 @@ module AresMUSH
         return nil
       end
 
-      def handle      
+      def handle
         targets = Magic.parse_spell_targets(self.target_name_string)
         error = Magic.spell_target_errors(enactor, targets, self.spell)
         if error then return client.emit_failure error end
         print_names = Magic.print_target_names(targets)
 
         result = Magic.roll_noncombat_spell(enactor, self.spell, self.mod)
-        puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{enactor.magic_energy}"
-        Magic.subtract_magic_energy(enactor, self.spell, result[:succeeds])
-        puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{enactor.magic_energy}"
+
         if result[:succeeds] == "%xgSUCCEEDS%xn"
           message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)
@@ -53,10 +51,18 @@ module AresMUSH
           end
         end
 
+        puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{enactor.magic_energy}"
+        start_fatigue = Magic.get_fatigue_level(enactor)[:degree]
+        Magic.subtract_magic_energy(enactor, self.spell, result[:succeeds])
+        puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{enactor.magic_energy}"
         fatigue_msg = Magic.get_fatigue_level(enactor)[:msg]
-        if fatigue_msg
-          message.concat [fatigue_msg]
+        final_fatigue = Magic.get_fatigue_level(enactor)[:degree]
+        serious_degrees = ["Severe", "Extreme", "Total"]
+
+        if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
+          messages.concat [Magic.get_fatigue_level(enactor)[:msg]]
         end
+
         message.each do |msg|
           enactor.room.emit msg
           if enactor.room.scene

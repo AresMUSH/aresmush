@@ -217,11 +217,13 @@ module AresMUSH
           #End spell rolls
           end
         end
-
+        start_fatigue = Magic.get_fatigue_level(combatant.associated_model)[:degree]
         Magic.subtract_magic_energy(combatant.associated_model, self.spell_name, succeeds[:succeeds])
-        fatigue_msg = Magic.get_fatigue_level(combatant.associated_model)[:msg]
-        if fatigue_msg
-          messages.concat [fatigue_msg]
+        final_fatigue = Magic.get_fatigue_level(combatant.associated_model)[:degree]
+        serious_degrees = ["Severe", "Extreme", "Total"]
+
+        if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
+          messages.concat [Magic.get_fatigue_level(combatant.associated_model)[:msg]]
         end
         puts "Combatant energy end of action: #{combatant.associated_model.magic_energy}"
         level = Global.read_config("spells", self.spell_name, "level")
