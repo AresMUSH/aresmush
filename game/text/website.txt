@@ -1,7 +1,17 @@
 <div class="jumbotron-tagline">In the wake of its shattering, the world is born anew.</div>
 
-<div class="intro-txt"><p>Fifty years ago, the barrier between our world and theirs shattered. Monsters and magic ravaged humanity, tearing it apart.</p>
+<div class="intro-txt"><p>Fifty years ago, the barrier between our world and theirs shattered. <a href="/wiki/world:mythics">Monsters</a> and <a href="wiki/world:magic">magic</a> ravaged humanity, tearing it apart.</p>
 
 <p>But humanity will not go easily.</p>
 
-<p>Now, a thriving settlement of thousands has built a home in the valley of British Columbia, protected by the towering mountains and the Wardens who watch their passes. Mages who have bound themselves to the very monsters who seek to destroy us, the Wardens have vowed to use their magic and their bond to keep humanity safe - even if it means their own minds may shatter in the process.</p>
+<p>Now, a thriving <a href="/wiki/world:cradle">settlement</a> of thousands has built a home in the valley of British Columbia, protected by the towering mountains and the <a href="/wiki/world:wardens">Wardens</a> who watch their passes. Mages who have bound themselves to the very monsters who seek to destroy us, the Wardens have vowed to use their magic and their bond to keep humanity safe - even if it means their own minds may shatter in the process.</p>
+
+<div class="plotbox">
+  <h3 style="font-variant:small-caps; margin-top:10px;">Learn More</h3>
+    <ul>
+      <li><a href="/wiki/ooc:about_us">About Us</a></li>
+      <li><a href="/wiki/home">World Intro</a></li>
+      <li><a href="/wiki/ooc:policies">Policies</a></li>
+      <li><a href="/wiki/guide:join_us">Join Us</a></li>
+    </ul>
+</div>

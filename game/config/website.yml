@@ -44,18 +44,12 @@ website:
     - title: World Intro
       route: wiki-page
       id: home
-    - title: Magic
-      route: wiki-page
-      id: magic
     - title: Wardens
       route: wiki-page
       id: world:wardens
     - title: Mythics
       route: wiki-page
       id: world:mythics
-    - title: The Bond
-      route: wiki-page
-      id: world:bond
     - title: Cryptids
       route: wiki-page
       id: world:cryptids
@@ -69,6 +63,36 @@ website:
     - title: Prism Passes
       route: wiki-page
       id: world:prism_passes
+  - title: Magic
+    menu:
+    - title: Magic
+      route: wiki-page
+      id: magic
+    - title: 'School: Creation'
+      route: wiki-page
+      id: creation
+    - title: 'School: Entropy'
+      route: wiki-page
+      id: entropy
+    - title: 'School: Arcane'
+      route: wiki-page
+      id: arcane
+    - title: 'School: Aether'
+      route: wiki-page
+      id: aether
+    - divider: true
+    - title: The Bond
+      route: wiki-page
+      id: world:bond
+    - title: Telepathy
+      route: wiki-page
+      id: world:telepathy
+    - title: Telekinesis
+      route: wiki-page
+      id: world:telekinesis
+    - title: Blood Magic
+      route: wiki-page
+      id: world:blood_magic
   - title: Play
     menu:
     - title: Create a Character
@@ -84,6 +108,8 @@ website:
       route: scenes-unshared
     - title: Start New Scene
       route: scene-create
+   - title: Combats
+      route: combats
     - divider: true
     - title: Who's Online
       route: who
@@ -140,8 +166,6 @@ website:
       route: fs3-xp-costs
     - title: Skill Scan
       route: fs3skills-scan
-    - title: Roles
-      route: roles
     - divider: true
     - target: blank
       title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
