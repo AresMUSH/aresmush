@@ -108,7 +108,7 @@ website:
       route: scenes-unshared
     - title: Start New Scene
       route: scene-create
-   - title: Combats
+    - title: Combats
       route: combats
     - divider: true
     - title: Who's Online
