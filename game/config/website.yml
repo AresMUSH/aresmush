@@ -68,14 +68,14 @@ website:
     - title: Magic
       route: wiki-page
       id: magic
-    - title: 'School: Creation'
-      route: 'school/creation'
-    - title: 'School: Entropy'
-      route: 'school/entropy'
-    - title: 'School: Arcane'
-      route: 'school/arcane'
-    - title: 'School: Aether'
-      route: 'school/aether'
+    # - title: 'School: Creation'
+    #   route: 'school/creation'
+    # - title: 'School: Entropy'
+    #   route: 'school/entropy'
+    # - title: 'School: Arcane'
+    #   route: 'school/arcane'
+    # - title: 'School: Aether'
+    #   route: 'school/aether'
     - divider: true
     - title: The Bond
       route: wiki-page
