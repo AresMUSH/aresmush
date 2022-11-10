@@ -69,13 +69,13 @@ website:
       route: wiki-page
       id: magic
     - title: 'School: Creation'
-      route: school/creation
+      route: 'school/creation'
     - title: 'School: Entropy'
-      route: school/entropy
+      route: 'school/entropy'
     - title: 'School: Arcane'
-      route: school/arcane
+      route: 'school/arcane'
     - title: 'School: Aether'
-      route: school/aether
+      route: 'school/aether'
     - divider: true
     - title: The Bond
       route: wiki-page
