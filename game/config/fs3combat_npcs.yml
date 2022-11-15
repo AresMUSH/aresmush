@@ -62,56 +62,42 @@ fs3combat:
 
 # MYTHICS
     Dragon:
-      Default: 6
-      Composure: 8
-      Brawl: 6
-      Melee: 6
-      Reflexes: 6
-      Alertness: 6
-      Magic: 6
+      Default: 8
+      Composure: 10
+      Magic: 8
       Wounds: 0
     Lupine:
-      Default: 6
-      Composure: 7
-      Brawl: 6
-      Melee: 6
-      Reflexes: 6
-      Altertness: 8
-      Magic: 6
+      Default: 8
+      Composure: 9
+      Alertness: 10
+      Magic: 8
       Wounds: 0
     Pantherine:
-      Default: 6
-      Composure: 8
-      Brawl: 6
-      Melee: 6
-      Reflexes: 6
-      Altertness: 9
-      Magic: 6
+      Default: 8
+      Composure: 10
+      Altertness: 11
+      Magic: 8
       Wounds: 0
     Pegasus:
-      Default: 6
-      Composure: 7
-      Brawl: 7
-      Melee: 7
-      Reflexes: 6
-      Altertness: 6
-      Magic: 6
+      Default: 8
+      Composure: 9
+      Brawl: 9
+      Melee: 9
+      Magic: 8
       Wounds: 0
     Griffon:
-      Default: 6
-      Composure: 8
-      Brawl: 7
-      Melee: 7
-      Reflexes: 6
-      Altertness: 8
-      Magic: 6
+      Default: 8
+      Composure: 10
+      Brawl: 9
+      Melee: 9
+      Alertness: 10
+      Magic: 8
       Wounds: 0
     Roc:
-      Default: 6
-      Composure: 8
-      Brawl: 8
-      Melee: 8
-      Reflexes: 8
-      Altertness: 6
-      Magic: 6
+      Default: 8
+      Composure: 10
+      Brawl: 10
+      Melee: 10
+      Reflexes: 10
+      Magic: 8
       Wounds: 0
