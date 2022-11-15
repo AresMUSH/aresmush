@@ -36,7 +36,7 @@ fs3skills:
     linked_attr: Reflexes
   - name: Brawl
     desc: Grappling, wrestling, and fighting with fists.
-    linked_attr: Reflexes
+    linked_attr: Brawn
   - name: Medicine
     desc: Tending to the ill and injured.
     linked_attr: Wits
