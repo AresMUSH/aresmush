@@ -293,8 +293,8 @@ website:
     telepathic: magic:telepathy
     wardens: world:wardens
     warden: world:warden
-    faq: ooc:frequently_asked_questions
-    frequently_asked_questions: ooc:frequently_asked_questions
+    # faq: ooc:frequently_asked_questions
+    # frequently_asked_questions: ooc:frequently_asked_questions
   wiki_export_cron:
     hour:
     - 3
