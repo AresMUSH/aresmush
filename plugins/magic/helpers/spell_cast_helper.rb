@@ -8,9 +8,10 @@ module AresMUSH
         skill = Global.read_config("spells", spell, "school")
       else
         caster = Magic.get_associated_model(caster)
-        schools = [caster.group("Minor School"), caster.group("Major School")]
+
         school = Global.read_config("spells", spell, "school")
-        if schools.include?(school)
+        puts "School: #{school} Major #{caster.major_schools} Minor #{caster.minor_schools}"
+        if caster.major_schools.include?(school) || caster.minor_schools.include?(school)
           skill = school
         else
           skill = Global.read_config("magic", "magic_attribute")
