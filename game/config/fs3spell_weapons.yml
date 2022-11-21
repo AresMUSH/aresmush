@@ -98,7 +98,6 @@ fs3combat:
       init_mod: 0
       special_group: Spell
       magic_damage_type: Bypass
-
     Fireball:
       description: Level 5 Aether spell
       is_magic: true
@@ -113,11 +112,11 @@ fs3combat:
       special_group: Spell
     #LEVEL 6
     Cone Of Cold:
-      description: Level 5 Entropy spell
+      description: Level 6 Entropy spell
       is_magic: true
       skill: Entropy
       lethality: -5
-      penetration: 6
+      penetration: 8
       weapon_type: Explosive
       recoil: 0
       damage_type: Physical
@@ -131,7 +130,7 @@ fs3combat:
       is_magic: true
       skill: Aether
       lethality: 5
-      penetration: 5
+      penetration: 7
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -144,7 +143,7 @@ fs3combat:
       is_magic: true
       skill: Aether
       lethality: 15
-      penetration: 8
+      penetration: 9
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -156,7 +155,7 @@ fs3combat:
       is_magic: true
       skill: Creation
       lethality: 10
-      penetration: 7
+      penetration: 8
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -169,7 +168,7 @@ fs3combat:
       is_magic: true
       skill: Entropy
       lethality: -10
-      penetration: 5
+      penetration: 7
       weapon_type: Explosive
       recoil: 0
       damage_type: Physical
@@ -182,7 +181,7 @@ fs3combat:
       is_magic: true
       skill: Aether
       lethality: 15
-      penetration: 7
+      penetration: 9
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -207,7 +206,7 @@ fs3combat:
       is_magic: true
       skill: Creation
       lethality: 10
-      penetration: 7
+      penetration: 9
       weapon_type: Ranged
       is_automatic: true
       recoil: 0
@@ -221,7 +220,7 @@ fs3combat:
       is_magic: true
       skill: Creation
       lethality: 10
-      penetration: 8
+      penetration: 10
       weapon_type: Explosive
       is_automatic: true
       recoil: 0
@@ -235,7 +234,7 @@ fs3combat:
       is_magic: true
       skill: Entropy
       lethality: 10
-      penetration: 8
+      penetration: 10
       weapon_type: Explosive
       is_automatic: true
       recoil: 0
@@ -249,12 +248,12 @@ fs3combat:
       description: Level 8 Aether spell
       is_magic: true
       skill: Aether
-      lethality: 15
-      penetration: 10
+      lethality: 20
+      penetration: 11
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
-      accuracy: 0
+      accuracy: 1
       init_mod: 0
       special_group: Spell
     Suffocate:
