@@ -66,6 +66,10 @@ website:
     - title: Prism Passes
       route: wiki-page
       id: world:prism_passes
+    - divider: true
+    - title: Technology
+      route: wiki-page
+      id: world:technology
   - title: Magic
     menu:
     - title: Magic
