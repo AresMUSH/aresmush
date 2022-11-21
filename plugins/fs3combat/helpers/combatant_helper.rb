@@ -11,6 +11,7 @@ module AresMUSH
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
+      magic_energy_mod = Magic.get_magic_energy_mod(combatant.associated_model)
       if !combatant.is_npc?
         item_attack_mod  = Magic.item_attack_mod(combatant.associated_model)  ? Magic.item_attack_mod(combatant.associated_model) : 0
       else
@@ -26,10 +27,9 @@ module AresMUSH
         mount_mod = 0
       end
 
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} spell_luck=#{spell_luck_mod} item_attack=#{item_attack_mod} stress=#{stress_mod} attack=#{attack_mod} magic_attack=#{magic_attack_mod}"
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} spell_luck=#{spell_luck_mod} item_attack=#{item_attack_mod} stress=#{stress_mod} attack=#{attack_mod} magic_attack=#{magic_attack_mod} magic_energy=#{magic_energy_mod}"
 
-      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + attack_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + magic_attack_mod.to_i
-
+      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + attack_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + magic_attack_mod.to_i + magic_energy_mod
 
       combatant.roll_ability(ability, mod)
     end

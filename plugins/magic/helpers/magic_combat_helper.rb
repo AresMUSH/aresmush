@@ -19,6 +19,7 @@ module AresMUSH
 
       #Magic mods
       level_mod = Magic.spell_level_mod(spell)
+      magic_energy_mod = Magic.get_magic_energy_mod(combatant.associated_model)
       gm_spell_mod = combatant.gm_spell_mod
       magic_attack_mod = is_attack ? combatant.magic_attack_mod : 0
       off_school_cast_mod = Magic.spell_skill(combatant, spell)[:cast_mod]
@@ -34,11 +35,11 @@ module AresMUSH
 
       skill = Magic.spell_skill(combatant, spell)[:skill]
 
-      total_mod = accuracy_mod + attack_mod + damage_mod  + stance_mod - stress_mod + level_mod + gm_spell_mod + magic_attack_mod + off_school_cast_mod + spell_mod + item_attack_mod + item_spell_mod + attack_luck_mod + spell_luck_mod
+      total_mod = accuracy_mod + attack_mod + damage_mod  + stance_mod - stress_mod + level_mod + gm_spell_mod + magic_attack_mod + off_school_cast_mod + spell_mod + item_attack_mod + item_spell_mod + attack_luck_mod + spell_luck_mod + magic_energy_mod
 
       # + distraction_mod
 
-      combatant.log "SPELL ROLL for #{combatant.name} skill=#{skill} |FS3 MODS| accuracy=#{accuracy_mod} attack=#{attack_mod} damage=#{damage_mod} stance=#{stance_mod} stress=-#{stress_mod} |MAGIC_MODS| level=#{level_mod} gm_spell=#{gm_spell_mod} magic_attack=#{magic_attack_mod} off_school_cast=#{off_school_cast_mod} spell_mod=#{spell_mod} item_attack=#{item_attack_mod} item_spell_mod=#{item_spell_mod} |LUCK MODS| attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} total_mod=#{total_mod}"
+      combatant.log "SPELL ROLL for #{combatant.name} skill=#{skill} |FS3 MODS| accuracy=#{accuracy_mod} attack=#{attack_mod} damage=#{damage_mod} stance=#{stance_mod} stress=-#{stress_mod} |MAGIC_MODS| level=#{level_mod} magic_energy_mod=#{magic_energy_mod} gm_spell=#{gm_spell_mod} magic_attack=#{magic_attack_mod} off_school_cast=#{off_school_cast_mod} spell_mod=#{spell_mod} item_attack=#{item_attack_mod} item_spell_mod=#{item_spell_mod} |LUCK MODS| attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} total_mod=#{total_mod}"
 
       die_result = combatant.roll_ability(skill, total_mod)
       succeeds = Magic.spell_success(die_result)
