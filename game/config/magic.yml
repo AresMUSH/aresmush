@@ -82,7 +82,7 @@ magic:
     7: 30
     8: 70
     9: 90
-    10: 100
+    10: 110
   fatigue_effect:
     None: "They feel well-rested and capable."
     Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more
