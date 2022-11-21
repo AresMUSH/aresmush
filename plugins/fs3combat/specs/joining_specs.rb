@@ -87,6 +87,15 @@ module AresMUSH
           FS3Combat.join_combat(@combat, "Bob", "viper", @enactor, @client)
         end
         
+        it "should use a mount if specified" do
+          combatant = double
+          vehicle = double
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(@char) }
+          allow(Combatant).to receive(:create) { combatant }
+          allow(FS3Combat).to receive(:combatant_type_stat).with("cavalry", "mount") { "Horse" }
+          expect(combatant).to receive(:update).with( { :mount_type => "Horse" })
+          FS3Combat.join_combat(@combat, "Bob", "cavalry", @enactor, @client)
+        end
         
         it "should emit join message to combat" do
           combatant = double

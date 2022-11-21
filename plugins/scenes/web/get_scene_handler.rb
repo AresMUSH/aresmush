@@ -62,7 +62,8 @@ module AresMUSH
           can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
           can_delete: Scenes.can_delete_scene?(enactor, scene),
           has_liked: enactor && scene.has_liked?(enactor),
-          likes: scene.likes
+          likes: scene.likes,
+          current_version_id: scene.scene_log ? scene.scene_log.id : 0
         }
       end
     end

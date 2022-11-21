@@ -81,7 +81,7 @@ module AresMUSH
         end
         
         if (completed)
-          Scenes.share_scene(scene)
+          Scenes.share_scene(enactor, scene)
           
           participants.each do |p|
             split_log = log.split

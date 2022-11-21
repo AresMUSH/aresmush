@@ -120,7 +120,7 @@ module AresMUSH
     end
     
     def self.build_pose_order_web_data(scene)
-      return {} if !scene.room
+      return [] if !scene.room
       scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,

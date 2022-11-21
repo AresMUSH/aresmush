@@ -142,16 +142,15 @@ module AresMUSH
       puts "\nEnter the hostname, like yourmush.aresmush.com. You can use the server's IP address if you don't want a domain name."
       server_host = get_required_field "Server hostname (ex: yourmush.aresmush.com or an IP)"
       
-      puts "\nChoose the port that people will connect to from a MUSH client.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
+      puts "\nChoose the port that people will connect to from a MUSH client.  See https://aresmush.com/tutorials/install/ports.html for help."
       
       server_port = get_optional_field "Server telnet port", "4201"
 
-      puts "\nAres also uses other ports for the web portal, web-game communication, and database.  For typical systems, just accept the default values.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
+      puts "\nAres also uses other ports for the web portal, web-game communication, and database.  For typical systems, just accept the default values.  See https://aresmush.com/tutorials/install/ports.html for help."
 
       websocket_port = get_optional_field "Server web socket port", "4202"
       engine_api_port = get_optional_field "Server engine API port", "4203"
       web_portal_port = get_optional_field "Server website port", "80"
-      db_url = get_optional_field "Database url", '127.0.0.1:6379'
 
             
       {
@@ -166,7 +165,7 @@ module AresMUSH
         "website" => '',
         "public_game" => false,
         "game_status" => 'In Development',
-        "db_url" => db_url
+        "db_url" => "127.0.0.1:6379"
       }
     end
     

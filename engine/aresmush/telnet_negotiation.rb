@@ -12,8 +12,8 @@ module AresMUSH
     WILL = 251 # xFB
     WONT = 252 # xFC
     NOP = 241  # xF1
-    START_SUB_NEGOTIATION = 250 # xFA
-    END_SUB_NEGOTIATION = 240 # xF0
+    START_SUB_NEGOTIATION = 250 # xFA (SB)
+    END_SUB_NEGOTIATION = 240 # xF0 (SE)
     REQUEST = 1
     
     CHARSET = 42  # x2A
@@ -34,7 +34,7 @@ module AresMUSH
       # Get rid of the IAC control code      
       chars.shift
       
-      # Start of negotiation sequence
+      # Start of sub-negotiation sequence with accompanying end of sub-negotiation flag
       if (chars[0].ord == START_SUB_NEGOTIATION && chars.select { |c| c.ord ==  END_SUB_NEGOTIATION }.first )
         chars.shift # Ditch the sub-nego flag
           
@@ -47,7 +47,8 @@ module AresMUSH
         if (negotiation_options[0] == NAWS && negotiation_options.length > 4)
           @connection.window_width = negotiation_options[2]
           @connection.window_height = negotiation_options[4]
-        end       
+        end     
+        
       elsif (chars[0].ord == WILL && chars.length > 1)
         chars.shift  # Ditch the will code
         op = chars.shift.ord # The code being acknowledged
@@ -56,14 +57,19 @@ module AresMUSH
         if (op == CHARSET)
           send_telnet_control [ INTERPRET_AS_CONTROL, START_SUB_NEGOTIATION, CHARSET, REQUEST, 32, 'u'.ord, 't'.ord, 'f'.ord, '-'.ord, '8'.ord, INTERPRET_AS_CONTROL, END_SUB_NEGOTIATION ]
         end
+        
       elsif (chars[0].ord == WONT && chars.length > 1)
         chars.shift # Ditch the won't code
         op = chars.shift.ord
+
+        # Don't care about any WONT indications currently.
+
       elsif (chars[0].ord == DO && chars.length > 1)
         chars.shift # Ditch the do code
         op = chars.shift.ord
+        
       elsif (chars[0].ord == NOP)
-        # Do nothing
+        # No-op: Do nothing
         chars.shift
       end
       return handle_input(chars.join)
@@ -75,7 +81,7 @@ module AresMUSH
     
     def send_charset_request
       send_telnet_control [ INTERPRET_AS_CONTROL, DO, CHARSET ]
-    end      
+    end   
     
     private
     
