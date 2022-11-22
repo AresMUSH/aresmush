@@ -11,7 +11,7 @@ module AresMUSH
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
-      magic_energy_mod = Magic.get_magic_energy_mod(combatant.associated_model)
+      magic_energy_mod = Magic.get_magic_energy_mod(combatant.associated_model) / 2
       if !combatant.is_npc?
         item_attack_mod  = Magic.item_attack_mod(combatant.associated_model)  ? Magic.item_attack_mod(combatant.associated_model) : 0
       else
