@@ -47,14 +47,14 @@ module AresMUSH
     end
 
     def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
-      
+
       stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, combatant.weapon, attack_roll)
       if stopped_by_shield
         is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
         if stopped_by_shield[:hit] && is_stun
           attacker_net_successes = attack_roll - defense_roll
           hit = attacker_net_successes > 0
-        else 
+        else
           hit = stopped_by_shield[:hit]
         end
         return {
@@ -74,7 +74,7 @@ module AresMUSH
       puts "All shields: #{target.magic_shields.to_a}"
       if shield
         roll_name = FS3Combat.weapon_stat(weapon_or_spell, "skill") || Global.read_config("spells", weapon_or_spell, "school")
-        
+
         delta = shield.strength - result
         case delta
         when 0..99
@@ -127,7 +127,7 @@ module AresMUSH
         #shouldn't this also include weapons which ARE spells but are CAST by spells? IE Magic.is_spell?(weapon_or_spell) && !Global.read_config("spells", weapon_or_spell, "fs3_attack") || !Magic.is_spell?(weapon_or_spell)
         t('magic.shield_failed_against_attack', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       elsif type_does_damage
-        t('magic.shield_failed_against_spell', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => "Shield name", :target => target.name)
+        t('magic.shield_failed_against_spell', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       elsif is_stun
          t('magic.shield_failed_stun', :name => caster_name, :spell => weapon_or_spell, :shield=> shield.name, :mod => "", :target => target.name, :rounds => Global.read_config("spells", weapon_or_spell, "rounds"))
       else
