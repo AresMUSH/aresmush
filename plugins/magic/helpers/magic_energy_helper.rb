@@ -70,11 +70,11 @@ module AresMUSH
       if degree == "Mild"
         mod = -1
       elsif degree == "Moderate"
-        mod = -3
+        mod = -2
       elsif degree == "Severe"
-        mod = -5
+        mod = -3
       elsif degree == "Extreme"
-        mod = -7
+        mod = -4
       elsif degree == "Total"
         mod = -100
       else
