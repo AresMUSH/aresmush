@@ -89,13 +89,13 @@ website:
       id: world:bond
     - title: Telepathy
       route: wiki-page
-      id: world:telepathy
+      id: telepathy
     - title: Telekinesis
       route: wiki-page
-      id: world:telekinesis
+      id: telekinesis
     - title: Blood Magic
       route: wiki-page
-      id: world:blood_magic
+      id: blood_magic
   - title: Play
     menu:
     - title: Create a Character
