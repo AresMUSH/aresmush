@@ -1,7 +1,8 @@
 module AresMUSH
-  module Magic 
+  module Magic
 
     def self.death_new_turn(combatant)
+      Global.logger.debug "Checking death count for #{combatant.name}. KO=#{combatant.is_ko} NPC=#{combatant.is_npc?} count=#{combatant.death_count}"
       if (combatant.combat.is_real && combatant.is_ko && !combatant.is_npc?)
         Magic.death_counter(combatant)
       end
