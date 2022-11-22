@@ -19,7 +19,6 @@ module AresMUSH
 
     def self.required_mount_info(char, chargen_data)
       errors = []
-      puts "HELLO HERE MOUNT INFO"
       mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc]]
       if !mount_data.join.blank?
         errors.concat [t('expandedmounts.need_mount_type')] if chargen_data[:custom][:mount_type] == ""
@@ -37,20 +36,18 @@ module AresMUSH
       error = ExpandedMounts.required_mount_info(char, chargen_data)
       return error if !error.empty?
 
-      mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc]]
+      mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc], chargen_data[:custom][:mount_gender]]
       return [] if mount_data.join.blank?
 
       if char.bonded
-        "BONDED"
         mount = char.bonded
         mount.update(expanded_mount_type: chargen_data[:custom][:mount_type])
         mount.update(name: chargen_data[:custom][:mount_name].titlecase)
         mount.update(description: chargen_data[:custom][:mount_desc])
         mount.update(shortdesc: chargen_data[:custom][:mount_shortdesc])
+        mount.update(gender: chargen_data[:custom][:mount_gender])
       else
-        "NOT BONDED"
-
-        mount = Mount.create(bonded: char, name: chargen_data[:custom][:mount_name].titlecase, expanded_mount_type: chargen_data[:custom][:mount_type], description: chargen_data[:custom][:mount_desc], shortdesc: chargen_data[:custom][:mount_shortdesc])
+        mount = Mount.create(bonded: char, name: chargen_data[:custom][:mount_name].titlecase, expanded_mount_type: chargen_data[:custom][:mount_type], description: chargen_data[:custom][:mount_desc], shortdesc: chargen_data[:custom][:mount_shortdesc], gender: chargen_data[:custom][:mount_gender])
         char.update(bonded: mount)
         Global.logger.info "Creating new mount for #{char.name}: Name-#{mount.name} Type-#{mount.expanded_mount_type}"
       end

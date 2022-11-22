@@ -63,6 +63,7 @@ module AresMUSH
         type: mount.expanded_mount_type,
         about: mount.about,
         damage: damage,
+        gender: mount.gender,
       }
     end
 
@@ -75,6 +76,7 @@ module AresMUSH
         mount.update(description: char_data[:custom][:mythic_desc])
         mount.update(shortdesc: char_data[:custom][:mythic_shortdesc])
         mount.update(about: char_data[:custom][:mythic_about])
+        mount.update(gender: char_data[:custom][:mythic_gender])
     end
   end
 end

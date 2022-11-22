@@ -18,6 +18,7 @@ module AresMUSH
     attribute :about
     attribute :description
     attribute :shortdesc
+    attribute :gender
     attribute :details, :type => DataType::Hash, :default => {}
     reference :bonded, "AresMUSH::Character"
 
@@ -63,7 +64,6 @@ module AresMUSH
       "#{self.armor_name}#{special_text}"
     end
 
-
     def default_armor
       Global.read_config("expandedmounts", self.expanded_mount_type, "armor" )
     end
@@ -103,8 +103,6 @@ module AresMUSH
     end
 
     def roll_ability(ability, mod = 0)
-
-      #probably put methods here to determine reflexes, etc
       self.bonded.combatant.roll_ability(ability, mod)
     end
 
@@ -123,6 +121,14 @@ module AresMUSH
     end
 
       ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S
+    def magic_energy
+      self.bonded.magic_energy
+    end
+
+    def total_magic_energy
+      self.bonded.total_magic_energy
+    end
+
     def stance
       self.bonded.combatant.stance
     end

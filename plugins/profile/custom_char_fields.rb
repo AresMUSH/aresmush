@@ -49,7 +49,7 @@ module AresMUSH
           mythic_about: char.bonded.about,
           mythic_desc: char.bonded.description,
           mythic_shortdesc: char.bonded.shortdesc,
-
+          mythic_gender: char.bonded.gender,
         }
       end
 
@@ -76,6 +76,7 @@ module AresMUSH
           mount_type: ExpandedMounts.expanded_mount_type(char),
           mount_desc: ExpandedMounts.mount_desc(char),
           mount_shortdesc: ExpandedMounts.mount_shortdesc(char),
+          mount_gender: ["male, female"],
           lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
           lore_hook_prefs: Lorehooks.lore_hook_cg_prefs,
           magic_blurb: Global.read_config("magic", "cg_blurb"),
@@ -118,9 +119,7 @@ module AresMUSH
         Magic.save_starting_spells(char, starting_spells)
         errors.concat ExpandedMounts.save_cg_mount(char, chargen_data)
         char.update(lore_hook_pref: chargen_data[:custom][:lore_hook_pref][:value])
-        puts "Starting spell names: #{Magic.starting_spell_names(chargen_data[:custom][:starting_spells])}"
         errors.concat Magic.check_cg_spell_errors(char)
-        puts "Errors: #{errors}"
         return errors
       end
 
