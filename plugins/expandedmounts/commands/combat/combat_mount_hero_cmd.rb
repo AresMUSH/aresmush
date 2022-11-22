@@ -2,8 +2,6 @@ module AresMUSH
   module ExpandedMounts
     class CombatMountHeroCmd
       include CommandHandler
-      include FS3Combat::NotAllowedWhileTurnInProgress
-
 
       def check_points
         return t('fs3combat.no_luck') if enactor.luck < 1
