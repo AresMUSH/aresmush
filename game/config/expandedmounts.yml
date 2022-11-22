@@ -80,7 +80,7 @@ expandedmounts:
     heal_roll: 9
   healing_cron:
     hour:
-    - 14
+    - 24
     minute:
     - 47
   shortcuts:
