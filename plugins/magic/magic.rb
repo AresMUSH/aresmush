@@ -70,8 +70,6 @@ module AresMUSH
         end
       end
 
-
-
       #Spells
       case cmd.root
       when "spell"
@@ -84,6 +82,8 @@ module AresMUSH
           return SpellModIsCmd
         when "cast"
           return SpellCastCmd
+        when "fatigue"
+          return SpellFatigueCmd
         when "npc"
           return SpellNPCCmd
         when "learn"

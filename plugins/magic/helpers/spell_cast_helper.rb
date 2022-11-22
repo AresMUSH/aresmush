@@ -10,7 +10,6 @@ module AresMUSH
         caster = Magic.get_associated_model(caster)
 
         school = Global.read_config("spells", spell, "school")
-        puts "School: #{school} Major #{caster.major_schools} Minor #{caster.minor_schools}"
         if caster.major_schools.include?(school) || caster.minor_schools.include?(school)
           skill = school
         else
@@ -285,7 +284,7 @@ module AresMUSH
 
     def self.cast_revive(caster_name, combatant, target, spell)
       target.update(is_ko: false)
-      FS3Combat.emit_to_combatant target, t('magic.been_revive', :name => caster_name)
+      FS3Combat.emit_to_combatant target, t('magic.been_revived', :name => caster_name)
       message = [t('magic.cast_revive', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
       return message
     end

@@ -54,10 +54,11 @@ module AresMUSH
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "TOTAL%xn", :effect => effect)
       else
         degree = "None"
-        color = "%xg"
+        color = ""
         effect = Global.read_config("magic", "fatigue_effect", "None")
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "no%xn", :effect => effect)
       end
+      puts "COLOR: #{color}"
       return {
         msg: msg,
         degree: degree,
