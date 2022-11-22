@@ -1,0 +1,9 @@
+%lh
+<%= char.name.upcase -%>'S <%= left( t('magic.magic_energy_header'), 65 ) %>
+
+%xh<%= t('magic.magic_energy_mod') %>%xn <%= magic_energy_mod %> (magic) <%= magic_energy_attack_mod -%> (attack)
+
+<%=  magic_energy -%><%= "    " %><%= magic_energy_percent %><%= "% (" -%><%= spell_fatigue_degree -%><%= ")" %>
+
+<%= spell_fatigue_msg  %>
+%lf

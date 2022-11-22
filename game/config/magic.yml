@@ -53,6 +53,8 @@ magic:
   shortcuts:
     combat/cast: combat/spell
     cast: spell/cast
+    mana: spell/fatigue
+    spell/mana: spell/fatigue
   achievements:
     potions_made:
       type: potion
