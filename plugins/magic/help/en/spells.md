@@ -10,6 +10,8 @@ aliases:
 `spells [<name>]` - See a list of your spells or someone else's spells, including spells you are learning.
 `spell <spell>` - See the details of a spell.
 `spell/search <spell>` - See all characters who know a spell.
+`spell/fatigue [<name>]` - See the mana of a character.
+**Tip**: You can use `mana` instead of `spell/fatigue`
 
 `spell/learn <spell>` - Spends 1 XP to work toward learning a spell.
 `spell/luck <spell>` - Spend 2 luck to remove a week's learning time from a spell.
@@ -18,7 +20,7 @@ aliases:
 `spell/request <spell name>=<description>` - Request that a new spell be created. See [Creating Spells](http://spiritlakemu.com/wiki/magic_system) for more information.
 
 ##Casting Spells
-`spell/cast <spell>[+/-mod]` - Cast a spell on yourself, the environment, or an object.
+`spell/cast <spell>[+/-mod]` - Cast a spell on yourself, the environment, or an object. Alias:
 `spell/cast <spell>[+/-mod]/<target>[<target> <target>]` - Cast a spell on one or more targets.
 **Tip**: You can use `cast` instead of `spell/cast`
 `spell/npc <npc>/<dice>=<spell>[/<target> <target>]` - Have an NPC cast a spell. NPCs can cast any spell. The dice chosen should reflect their Magic attribute + their School rating.
