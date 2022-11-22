@@ -81,6 +81,11 @@ fs3combat:
       defense_skill: Reflexes
       weapon: Claws
       armor: Tough Hide
+    Winged Cryptid:
+      hitloc: Winged Mythic
+      defense_skill: Reflexes
+      weapon: Claws
+      armor: Tough Hide
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary
