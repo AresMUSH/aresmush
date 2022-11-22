@@ -5,7 +5,6 @@ module AresMUSH
     attribute :magic_stun, :type => DataType::Boolean, :default => false
     attribute :magic_stun_spell
     attribute :magic_stun_counter, :type => DataType::Integer, :default => 0
-    attribute :death_count, :type => DataType::Integer, :default => 0
     attribute :magic_stance_spell
     attribute :magic_stance_counter, :type => DataType::Integer, :default => 0
 
