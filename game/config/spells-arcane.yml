@@ -229,7 +229,7 @@ spells:
     damage_type: Psionic
     desc: Restore a portion of the target's mana. Cannot be cast on oneself.
     effect: Heal
-    energy_points: 10
+    energy_points: 15
     is_potion: true
     level: 4
     line_of_sight: true
