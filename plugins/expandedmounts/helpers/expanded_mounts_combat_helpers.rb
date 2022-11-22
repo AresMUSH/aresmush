@@ -77,7 +77,7 @@ module AresMUSH
 
     def self.target_rider(spell)
       puts "HELLO CHECKING THIS"
-      return true unless spell['fs3_attack'] || spell['heal_points'] || spell['damage_inflicted'] || spell['armor'] || spell['armor_specials']
+      return true unless spell['fs3_attack'] || spell['heal_points'] || spell['damage_inflicted'] || spell['armor'] || spell['armor_specials'] || spell['is_res'] || spell['is_revive']
       return false
     end
 
