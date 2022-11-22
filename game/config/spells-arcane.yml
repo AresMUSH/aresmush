@@ -235,7 +235,6 @@ spells:
     line_of_sight: true
     name: Restore Mana
     range: Short
-    roll: true
     school: Arcane
     target_num: 1
   Spirit Of Pacifism:
