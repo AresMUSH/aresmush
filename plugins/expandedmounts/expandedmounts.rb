@@ -19,6 +19,8 @@ module AresMUSH
       case cmd.root
       when "mount"
         case cmd.switch
+        when "hero"
+          return CombatMountHeroCmd
         when "roll"
           if (cmd.args =~ / vs /)
             return ExpandedMountsOpposedRollCmd
