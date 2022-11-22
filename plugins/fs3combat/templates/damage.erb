@@ -4,13 +4,14 @@
 <% damage.each_with_index do |d, index| %>
 <%= left(index + 1, 3) -%>
 <%= left( d.ictime_str, 13 ) -%>
-<%= left( d.description, 27 ) -%>
+<%= left( d.description, 25 ) -%>
 <%= left( severity(d), 19 ) -%>
 <%= center( treatable(d), 7 ) -%>
 <%= center( healing(d), 9) %>
 <% end %>
 
-%xh<%= t('fs3combat.wound_mod') %>%xn <%= wound_mod %>
+%xh<%= t('fs3combat.wound_mod') %>%xn <%= left(wound_mod, 25) -%>
+%xh<%= t('magic.magic_energy_mod') %>%xn <%= magic_energy_mod %> (magic) <%= magic_energy_attack_mod -%> (attk)
 
 %xh<%= t('fs3combat.healed_by_title')%>%xn <%= healed_by %>
 <% if vehicle_notice %>
