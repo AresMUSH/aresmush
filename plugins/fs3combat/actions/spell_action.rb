@@ -4,7 +4,7 @@ module AresMUSH
       attr_accessor  :spell_name, :target, :names, :has_target, :caster_name
 
       def prepare
-        puts "Combatant energy beginning of action: #{combatant.associated_model.magic_energy}"
+        puts "#{combatant.name.upcase} energy beginning of action: #{combatant.associated_model.magic_energy}"
         if (self.action_args =~ /\//)
           self.spell_name = self.action_args.before("/")
           self.names = self.action_args.after("/")
