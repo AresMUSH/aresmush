@@ -14,10 +14,10 @@ module AresMUSH
     end
 
     def total_magic_energy
-      magic = self.ability_rating("Magic")
       stats = FS3Combat.npc_type(self.level)
-      default = stats["Default"] || 4
-      return (magic + default) * 10
+      default = stats["Default"]
+      magic = self.ability_rating("Magic") || default
+      return magic * 10
     end
 
 
