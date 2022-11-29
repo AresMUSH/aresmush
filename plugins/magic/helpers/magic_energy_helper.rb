@@ -1,6 +1,11 @@
 module AresMUSH
   module Magic
 
+    def self.set_npc_energy(npc, percent)
+      new_energy = npc.total_magic_energy * percent
+      npc.update(magic_energy: new_energy)
+    end
+
     def self.subtract_magic_energy(char_or_npc, spell, success)
       char = char_or_npc
       puts "Magic energy before subtraction: #{char.name} #{char.magic_energy}"
