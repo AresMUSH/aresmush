@@ -24,7 +24,7 @@ module AresMUSH
           cost = cost + 3
         end
       end
-      success == "%xrFAILS%xn" ? cost = cost/2 : cost = cost
+      success == "%xrFAILS%xn" ? cost = cost/4 : cost = cost
       magic_energy = [(char.magic_energy - cost), 0].max
       char.update(magic_energy: magic_energy)
       puts "Cost: #{cost} Magic energy after subtraction: #{char.name} #{char.magic_energy}"
