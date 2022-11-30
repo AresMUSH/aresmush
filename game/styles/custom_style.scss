@@ -35,6 +35,7 @@ $dark-rose: #61111A;
 $darker-rose: #3D0007;
 
 $slate: #466592;
+$header-slate: #5b6d8b;
 $light-slate: #6c8bb9;
 $lighter-slate: #8494ae;
 $lightest-slate: #b2bccc;
@@ -793,7 +794,7 @@ button {
 
 .tab-content a:hover,
 .log-box a:hover {
-	color: $secondary-color;
+	color: $darker-green;
 }
 
 //THEME BOX
@@ -1387,7 +1388,7 @@ button {
 
 h1,
 .h1 {
-	background-color: #5b6d8b;
+	background-color: $header-slate;
 	background-image: url(/game/uploads/css_files/h1-left.png), url(/game/uploads/css_files/h1-right.png);
 	background-size: contain, contain;
 	background-repeat: no-repeat;
@@ -2106,6 +2107,10 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 }
 
 //TOC, BLOCKQUOTE AND BREADCRUMBS
+.blockquote {
+	background: $header-slate;
+	border-left: 5px solid $dark-rose;
+}
 
 .toc {
 	--paper-color: var(--antique-white);
