@@ -2263,6 +2263,10 @@ table a {
 	color: $darker-slate;
 }
 
+table a:active {
+	color: $darker-rust
+}
+
 .table {
 	color: $light-grey;
 	border-color: $blackest-grey;

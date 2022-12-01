@@ -273,13 +273,14 @@ website:
     weyrs: world:weyr
     mages: world:mages
     prism_passes: world:prism_passes
-    school: world:school
+    school: world:weyrling_school
+    weyrling_school: world:weyrling_school
     spirits: world:spirits
     ghosts: world:spirits
     spirit: world:spirits
     ghost: world:spirits
     wardens: world:wardens
-    warden: world:warden
+    warden: world:wardens
     technology: world:technology
     tech: world:technology
     magical: magic
@@ -291,6 +292,7 @@ website:
     telekinetic: magic:telekinesis
     telepathy: magic:telepathy
     telepathic: magic:telepathy
+    telepathically: magic:telepathy
     app_staff: ooc:staff
     staff: ooc:staff
     storytellers: ooc:staff
