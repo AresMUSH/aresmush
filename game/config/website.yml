@@ -256,13 +256,13 @@ website:
     history: world:history
     shattering: world:history
     cryptids: world:cryptids
-    mythic:  world:mythics
-    cryptid:  world:cryptids
+    mythic: world:mythics
+    cryptid: world:cryptids
     monsters: world:cryptids
-    mythics:  world:mythics
-    shattered_monsters:  world:cryptids
-    creatures:  world:cryptids
-    bonding:  world:bond
+    mythics: world:mythics
+    shattered_monsters: world:cryptids
+    creatures: world:cryptids
+    bonding: world:bond
     bond: world:bond
     bonded: world:bond
     locations: world:locations
@@ -271,34 +271,44 @@ website:
     cradle's: world:cradle
     weyr: world:weyr
     weyrs: world:weyr
-    prism_passes: world:prism_passes
-    magical:  magic
-    blood_magic: magic:blood_magic
-    blood:  magic:blood_magic
     mages: world:mages
-    one-shot_adventures: system:one-shot_adventures
-    potion: magic:potions
-    potions: magic:potions
+    prism_passes: world:prism_passes
     school: world:school
-    staff: ooc:staff
-    storytellers: ooc:staff
     spirits: world:spirits
     ghosts: world:spirits
     spirit: world:spirits
     ghost: world:spirits
-    app_staff: ooc:staff
-    sts: ooc:staff
-    admin: ooc:staff
+    wardens: world:wardens
+    warden: world:warden
     technology: world:technology
     tech: world:technology
+    magical: magic
+    blood_magic: magic:blood_magic
+    blood:  magic:blood_magic
+    potion: magic:potions
+    potions: magic:potions
     telekinesis: magic:telekinesis
     telekinetic: magic:telekinesis
     telepathy: magic:telepathy
     telepathic: magic:telepathy
-    wardens: world:wardens
-    warden: world:warden
+    app_staff: ooc:staff
+    staff: ooc:staff
+    storytellers: ooc:staff
+    sts: ooc:staff
+    admin: ooc:staff
+    story_so_far: ooc:story_so_far
+    hooks_hopes: ooc:hooks_hopes
+    policies: ooc:policies
     faq: ooc:faq
     frequently_asked_questions: ooc:faq
+    plot_system: system:plot_system
+    one-shot_adventures: system:one-shot_adventures
+    getting_started: guide:getting_started
+    join_us: guide:join_us
+    combat_guide: guide:combat_guide
+    combat_organizers_guide: guide:combat_organizers_guide
+    gm_guide: guide:gm_guide
+
   wiki_export_cron:
     hour:
     - 3
