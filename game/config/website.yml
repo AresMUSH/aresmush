@@ -301,8 +301,8 @@ website:
     story_so_far: ooc:story_so_far
     hooks_hopes: ooc:hooks_hopes
     policies: ooc:policies
-    faq: ooc:faq
-    frequently_asked_questions: ooc:faq
+    faq: faq
+    frequently_asked_questions: faq
     plot_system: system:plot_system
     one-shot_adventures: system:one-shot_adventures
     getting_started: guide:getting_started
