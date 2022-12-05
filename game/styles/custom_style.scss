@@ -2405,6 +2405,10 @@ th,
 	width: 97%;
   }
 
+	.directory-card a:hover {
+		color: $rust;
+	}
+
   .directory-info {
 	  background: $slate;
 	  opacity: 85%;
