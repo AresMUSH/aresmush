@@ -70,7 +70,7 @@ body {
 }
 
 .body-wrap {
-	background-color: #141D2A;
+	background-color: $darker-slate;
 }
 
 .left-body {
@@ -445,7 +445,7 @@ code {
 }
 
 .plot-box {
-	background: #141d2a;
+	background: $darker-slate;
 	padding: 5px 15px;
 	font-size: 90%;
 	text-align: initial;
@@ -597,6 +597,12 @@ button {
 	font-size: 16px;
 	letter-spacing: .03em;
 	text-shadow: 2px 2px $blackest-grey;
+}
+
+.collapse.show {
+	background: $darker-slate;
+	padding: 5px 15px;
+	margin-top: -10px;
 }
 
 //FS3
@@ -1455,7 +1461,7 @@ h6, .h6 {
 //SIDEBAR
 
 .right-sidebar {
-	background-color: #141D2A;
+	background-color: $darker-slate;
 }
 
 .sidebar-heading h2 {
@@ -1707,7 +1713,7 @@ h6, .h6 {
 }
 
 .live-scenes-heading {
-	background-color: #141D2A;
+	background-color: $darker-slate;
 	padding: 8px 0px 8px 0px;
 }
 
@@ -2226,7 +2232,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px 0;
-    background-color: #141D2A;
+    background-color: $darker-slate;
 }
 
 .wiki-breadcrumbs > .col-xs-2 {
@@ -2237,7 +2243,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 12px;
-    background-color: #141D2A;
+    background-color: $darker-slate;
 }
 
 .jump-to-top {
@@ -2602,7 +2608,7 @@ th,
 }
 
 .piab {
-    background: #141D2A;
+    background: $darker-slate;
     width: 100%;
     box-shadow: 0 0 1px 1px $darker-slate;
 }
