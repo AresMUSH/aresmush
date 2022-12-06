@@ -51,8 +51,9 @@ spells:
     target_num: 1
   Clear Mind:
     available: true
+    attack_mod: 1
     casting_time: 1 round
-    desc: "The caster clears all thoughts from their mind and focuses on their aim."
+    desc: "The caster clears all thoughts from their mind and focuses on their task, gaining a bonus to attack."
     duration: 2 rounds
     effect: Buff
     is_potion: true
@@ -62,7 +63,6 @@ spells:
     range: Self
     school: Arcane
     target_num: 1
-    weapon_specials: Clear Mind
   Telepathic Reading:
     available: true
     casting_time: 1 round

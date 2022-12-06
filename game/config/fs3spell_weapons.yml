@@ -366,30 +366,24 @@ fs3combat:
   weapon special groups:
     Body:
     - sparring
-    - clear mind
-    - focus
     - strength
     - weaken
     Ranged:
-    - clear mind
     - fire
-    - focus
     - ice
     - lightning
     - scope
     - weaken
     Melee:
-    - clear mind
     - fire
-    - focus
     - ice
     - lightning
     - sparring
     - strength
     - weaken
     Spell:
-    - clear mind
-    - focus
+    - nothing
+
 #---------------
 # WEAPON SPECIALS
 #---------------
@@ -414,11 +408,6 @@ fs3combat:
       description: Level 4 Aether spell
       is_magic: true
       lethality: 10
-      accuracy: 1
-    Clear Mind:
-      description: Level 2 Arcane spell
-      is_magic: true
-      lethality: 0
       accuracy: 1
     Ice:
       description: Level 4 Ice spell
