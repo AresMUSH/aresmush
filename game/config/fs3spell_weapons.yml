@@ -366,10 +366,12 @@ fs3combat:
   weapon special groups:
     Body:
     - sparring
+    - clear mind
     - focus
     - strength
     - weaken
     Ranged:
+    - clear mind
     - fire
     - focus
     - ice
@@ -377,6 +379,7 @@ fs3combat:
     - scope
     - weaken
     Melee:
+    - clear mind
     - fire
     - focus
     - ice
@@ -385,6 +388,7 @@ fs3combat:
     - strength
     - weaken
     Spell:
+    - clear mind
     - focus
 #---------------
 # WEAPON SPECIALS
