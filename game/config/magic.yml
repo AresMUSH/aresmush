@@ -89,14 +89,10 @@ magic:
     None: "They feel well-rested and capable."
     Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more
     difficult."
-    Moderate: "They are quite nauseous and feel increasingly tired. It's hard to focus, and
-     everything is substantially more difficult."
-    Severe: "They are severely nauseous and are starting to feel exhausted. It's very difficult to
-    focus."
-    Extreme: "They feel on the edge of collapse and even basic tasks are almost impossible. They
-    desperately need a rest."
-    Total: "They have stretched themselves to their limit and can manage nothing more than basic
-    movement."
+    Moderate: "They are nauseous and growing tired. Their focus is beginning to fray."
+    Severe: "They are quite nauseous and feel increasingly tired. It's hard to focus, and everything is substantially more difficult."
+    Extreme: "They are severely nauseous and are starting to feel exhausted. It's very difficult to focus."
+    Total: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
   item_category: LUCK
   cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/creation">Creation</a> magic.
     <ul><li>Spells cost 1 AP per level.</li>
