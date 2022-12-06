@@ -61,6 +61,7 @@ spells:
     line_of_sight: true
     name: Clear Mind
     range: Self
+    rounds: 2
     school: Arcane
     target_num: 1
   Telepathic Reading:
