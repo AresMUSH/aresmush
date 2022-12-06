@@ -60,7 +60,7 @@ module AresMUSH
         serious_degrees = ["Severe", "Extreme", "Total"]
 
         if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
-          messages.concat [Magic.get_fatigue_level(enactor)[:msg]]
+          message.concat [Magic.get_fatigue_level(enactor)[:msg]]
         end
 
         message.each do |msg|
