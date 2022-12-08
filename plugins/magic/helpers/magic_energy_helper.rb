@@ -34,7 +34,7 @@ module AresMUSH
       char = char_or_npc
       if (char.magic_energy <= char.total_magic_energy*0.8) && (char.magic_energy >= char.total_magic_energy*0.6)
         degree = "Mild"
-        color = "%xg"
+        color = "%x37"
         effect = Global.read_config("magic", "fatigue_effect", "Mild")
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "MILD%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.6) && (char.magic_energy >= char.total_magic_energy*0.4)
