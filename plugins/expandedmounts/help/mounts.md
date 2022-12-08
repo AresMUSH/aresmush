@@ -3,6 +3,7 @@ toc: FS3 Skills and Combat
 summary: Participating in combat scenes.
 aliases:
 - mount
+- mythic
 ---
 
 `mounts` - List all mounts and their mages

@@ -2,7 +2,6 @@
 toc: FS3 Skills and Combat
 summary: Riding mythics in combat
 tutorial: true
-order: 3
 ---
 ## Mythics in Combat
 
