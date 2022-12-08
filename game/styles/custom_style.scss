@@ -1755,6 +1755,10 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	border: 0
 }
 
+#sceneMenuCollapse {
+	background: unset;
+}
+
 .play-sidebar::after {
 	content: "";
 	position: absolute;
