@@ -353,7 +353,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Fire
-    desc: 'Gouts of flame are summoned up from the ground, engulfing the target.'
+    desc: 'Gouts of flame are summoned up from the air, engulfing the target.'
     effect: Damage
     fs3_attack: true
     level: 7
