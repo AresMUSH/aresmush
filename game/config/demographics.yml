@@ -29,6 +29,7 @@ demographics:
   - skin
   - height
   - physique
+  - weyr job
   - played by
   - birthdate
   disable_auto_shortcuts: false
@@ -39,6 +40,7 @@ demographics:
   - hair
   - skin
   - physique
+  - weyr job
   genders:
     Male:
       possessive_pronoun: his
@@ -57,14 +59,14 @@ demographics:
       noun: person
   groups:
     Organization:
-      desc: Most characters will be Wardens.
+      desc: All characters will be Wardens.
       wiki: ''
       values:
         Warden: Protect the Cradle.
-        Other: Less Cool.
+        Other: NPCs.
     Mythic:
       wiki: ''
-      desc: "What type of mythic is your character bonded with?"
+      desc: "What type of mythic is your character bonded to?"
       values:
         Griffon: Half bird of prey, half large cat.
         Pegasus: Flying horse, horn optional.
