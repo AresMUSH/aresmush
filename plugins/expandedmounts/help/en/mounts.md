@@ -5,6 +5,10 @@ aliases:
 - mount
 - mythic
 ---
+#Mounts
+Ride your mythic in combat.
+
+> Learn how the mount system works in the [Mount Tutorial](/help/mount_tutorial).
 
 `mounts` - List all mounts and their mages
 `damage <mount>` - See the damage for a mount
