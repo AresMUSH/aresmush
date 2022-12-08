@@ -39,12 +39,12 @@ module AresMUSH
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "MILD%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.6) && (char.magic_energy >= char.total_magic_energy*0.4)
         degree = "Moderate"
-        color = "%x6"
+        color = "%X6"
         effect = Global.read_config("magic", "fatigue_effect", "Moderate")
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "MODERATE%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.4) && (char.magic_energy >= char.total_magic_energy*0.2)
         degree = "Severe"
-        color = "%x57"
+        color = "%X57"
         effect = Global.read_config("magic", "fatigue_effect", "Severe")
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "SEVERE%xn", :effect => effect)
       elsif (char.magic_energy <= char.total_magic_energy*0.2) && (char.magic_energy >= char.total_magic_energy*0.1)
