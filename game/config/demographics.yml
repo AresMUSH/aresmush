@@ -29,7 +29,7 @@ demographics:
   - skin
   - height
   - physique
-  - weyr job
+  - weyr detail
   - played by
   - birthdate
   disable_auto_shortcuts: false
@@ -40,7 +40,7 @@ demographics:
   - hair
   - skin
   - physique
-  - weyr job
+  - weyr detail
   genders:
     Male:
       possessive_pronoun: his
