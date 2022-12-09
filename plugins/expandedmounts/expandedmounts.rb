@@ -15,6 +15,10 @@ module AresMUSH
       case cmd.root
       when "mounts"
         return ExpandedMountsListCmd
+        case cmd.switch
+        when "all"
+          return ExpandedMountsListAllCmd
+        end
       end
       case cmd.root
       when "mount"
