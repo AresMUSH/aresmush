@@ -1,10 +1,7 @@
 <%= header %>
-%xh<%= t('expandedmounts.combat_mounts_list_title') %>%xn
+%xh<%= t('expandedmounts.mounts_list_title') %>%xn
 
-<% mounts.each do |m| %>
-<%= left( format_mount(m), 25 ) -%>
-<%= left( format_damage(m), 10 ) -%>
-<%= left( rider(m), 20 ) -%>
-<%= passengers(m) %>
+<% mounts.each do |mount| %>
+%xh<%= left(format_mount(mount), 30)  -%>%xn   <%= format_char(mount) %>
 <% end %>
 <%= footer %>

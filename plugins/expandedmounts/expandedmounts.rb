@@ -14,10 +14,11 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "mounts"
-        return ExpandedMountsListCmd
         case cmd.switch
         when "all"
           return ExpandedMountsListAllCmd
+        when nil
+          return ExpandedMountsListCmd
         end
       end
       case cmd.root

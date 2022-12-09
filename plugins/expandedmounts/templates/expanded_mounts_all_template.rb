@@ -12,24 +12,32 @@ module AresMUSH
       def mounts
         mounts = []
         Chargen.approved_chars.each do |c|
-          mounts.concat [c.bonded]
-          puts "MOUNTS: #{mounts}"
+          mounts.concat [{mount: c.bonded, status: 'PC'}]
+          puts "MOUNTS1: #{mounts}"
         end
 
-        Character.all.select { |c| c.idle_state == 'Gone' || c.idle_state == 'Dead'}.each do |c|
-          mounts.concat [c.bonded] if c.bonded
+        Character.all.select { |c| c.idle_state == 'Gone'}.each do |c|
+          mounts.concat [{mount: c.bonded, status: 'Gone'}] if c.bonded
         end
 
-        NPC.all.each do |c|
-          mounts.concat [c.bonded] if c.bonded
+        Character.all.select { |c| c.idle_state == 'Dead'}.each do |c|
+          mounts.concat [{mount: c.bonded, status: 'Dead'}] if c.bonded
         end
 
-        mounts.sort_by { |a| a.name }
+        Character.all.select { |c| c.is_npc == true }.each do |c|
+          mounts.concat [{mount: c.bonded, status: 'NPC'}] if c.bonded
+        end
+        puts "Mounts: #{mounts}"
+        mounts.sort_by { |a| a[:mount].name }
         # Mount.all.to_a
       end
 
       def format_mount(mount)
-        "#{mount.name} (#{mount.expanded_mount_type})"
+        "#{mount[:mount].name} (#{mount[:mount].expanded_mount_type})"
+      end
+
+      def format_char(mount)
+        "#{mount[:mount].bonded.name} (#{mount[:status]})"
       end
     end
   end

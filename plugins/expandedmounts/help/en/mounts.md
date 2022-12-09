@@ -9,7 +9,8 @@ aliases:
 
 > Learn how the mount system works in the [Mount Tutorial](/help/mount_tutorial).
 
-`mounts` - List all mounts and their PC mages
+`mounts` - List all PC mounts and their PC mages
+`mounts/all` - Lists all mounts for PCs, NPCs, and idled-out characters.
 `damage <mount>` - See the damage for a mount
 
 ## Combat
