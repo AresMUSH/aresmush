@@ -3,38 +3,45 @@ module AresMUSH
     def self.can_idle_sweep?(actor)
       actor && actor.has_permission?("manage_idle")
     end
-    
+
     def self.can_manage_roster?(actor)
       actor && actor.has_permission?("manage_roster")
     end
-    
+
     def self.roster_enabled?
       Global.read_config("idle", "use_roster")
     end
-    
+
     def self.create_or_update_roster(client, enactor, name, contact)
       ClassTargetFinder.with_a_character(name, client, enactor) do |model|
         Idle.add_to_roster(model, contact)
         client.emit_success t('idle.roster_updated')
       end
     end
-    
+
     def self.add_to_roster(char, contact = nil)
       char.update(roster_contact: contact || Global.read_config("idle", "default_contact"))
       char.update(idle_state: "Roster")
       char.update(roster_played: char.is_approved?)  # Assume played if approved.
       char.update(roster_job: nil)
+      #My changes
+      char.update(chargen_locked: true)
+      char.update(approval_job: nil)
+      Roles.remove_role(char, "approved")
+
       Idle.idle_cleanup(char, "Roster")
     end
-    
+
     def self.remove_from_roster(char)
       char.update(idle_state: nil)
+      #My changes
+      char.update(charge_locked: false)
     end
-    
+
     def self.is_exempt?(actor)
       actor.has_any_role?(Global.read_config("idle", "idle_exempt_roles"))
     end
-    
+
     def self.idle_cleanup(char, idle_status)
       Global.logger.debug "Starting idle cleanup for #{char.name}"
       Login.set_random_password(char)
@@ -43,7 +50,7 @@ module AresMUSH
       end
       Global.dispatcher.queue_event CharIdledOutEvent.new(char.id, idle_status)
     end
-    
+
     def self.idle_action_color(action)
     	case action
          when "Destroy"
@@ -62,12 +69,12 @@ module AresMUSH
            color = "%xc"
        end
      end
-     
+
      def self.roster_app_required?(char)
        return true if Global.read_config('idle', 'restrict_roster')
        return char.roster_restricted
      end
-     
+
      def self.claim_roster(model, enactor, app_text = nil)
        enactor_name = enactor ? enactor.name : "Anonymous"
        if (!model.on_roster?)
@@ -76,7 +83,7 @@ module AresMUSH
        if (model.roster_job && model.roster_job.is_open?)
          return { error: t('idle.pending_roster_app') }
        end
-       
+
        if (Idle.roster_app_required?(model))
          if (app_text.blank?)
            return { error: t('idle.roster_app_required') }
@@ -85,48 +92,77 @@ module AresMUSH
            title = t('idle.roster_app_title', :name => model.name)
            body = t('idle.roster_app_body', :target => model.name, :name => enactor_name, :app => app_text )
            if (!enactor || enactor.is_guest?)
-             submitter = Game.master.system_character
+            #My Changes
+            submitter = model
+            #  submitter = Game.master.system_character
            else
              submitter = enactor
            end
            status = Jobs.create_job(category, title, body, submitter)
            if (status[:job])
              model.update(roster_job: status[:job])
+             #My Changes
+             model.update(approval_job: status[:job])
            end
-           return {}
+
+           password = Login.set_random_password(model)
+          return { password: password }
          end
        end
 
        Global.logger.info("#{enactor_name} claimed #{model.name} from the roster.")
-       
+
        Idle.welcome_roster(model)
-     end     
-     
-     def self.welcome_roster(model)
-       password = Login.set_random_password(model)
+     end
+
+    #My Changes
+     def self.welcome_roster_without_new_pass(model)
        model.update(idle_state: nil)
        model.update(terms_of_service_acknowledged: nil)
        model.update(roster_played: true)
-       
+
        welcome_message = Global.read_config("idle", "roster_welcome_msg")
-       Mail.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)          
-       
+       Mail.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)
+
        forum_category = Global.read_config("idle", "arrivals_category")
        if (!forum_category.blank?)
          arrival_message = Global.read_config("idle", "roster_arrival_msg")
          arrival_message_args = Chargen.welcome_message_args(model)
          post_body = arrival_message % arrival_message_args
-      
-         Forum.post(forum_category, 
-         t('idle.roster_post_subject'), 
-         post_body, 
+
+         Forum.post(forum_category,
+         t('idle.roster_post_subject'),
+         post_body,
          Game.master.system_character)
        end
-         
+
+     end
+
+     def self.welcome_roster(model)
+       password = Login.set_random_password(model)
+       model.update(idle_state: nil)
+       model.update(terms_of_service_acknowledged: nil)
+       model.update(roster_played: true)
+
+       welcome_message = Global.read_config("idle", "roster_welcome_msg")
+       Mail.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)
+
+       forum_category = Global.read_config("idle", "arrivals_category")
+       if (!forum_category.blank?)
+         arrival_message = Global.read_config("idle", "roster_arrival_msg")
+         arrival_message_args = Chargen.welcome_message_args(model)
+         post_body = arrival_message % arrival_message_args
+
+         Forum.post(forum_category,
+         t('idle.roster_post_subject'),
+         post_body,
+         Game.master.system_character)
+       end
+
        return { password: password }
      end
-     
-     
+
+
      def self.build_idle_queue
        queue = {}
        Idle.active_chars.each do |c|
@@ -146,7 +182,7 @@ module AresMUSH
        end
        Hash[ queue.sort_by { |k, v| v == "Warn" ? 0 : 1 } ]
      end
-     
+
      def self.execute_idle_sweep(enactor, queue)
        report = ""
        Global.logger.info "Idle sweep started by #{enactor}."
@@ -156,24 +192,24 @@ module AresMUSH
          chars = ids.map { |id, action| Character[id] }
 
          # Don't log destroyed chars who never hit the grid
-         if (action != "Destroy")   
+         if (action != "Destroy")
            title = t("idle.idle_#{action.downcase}")
            color = Idle.idle_action_color(action)
            report << "%R%r#{color}#{title}%xn"
          end
-         
+
          chars.sort_by { |c| c.name }.each do |idle_char|
 
            idle_name = idle_char.name
-           if (action != "Destroy")   
+           if (action != "Destroy")
              report << "%R#{idle_name}"
            end
-           
+
            case action
            when "Destroy"
              Global.logger.debug "#{idle_name} marked for termination."
              Idle.idle_cleanup(idle_char, action)
-             
+
              Global.logger.debug "Deleting #{idle_name}"
              idle_char.delete
            when "Roster"
@@ -186,7 +222,7 @@ module AresMUSH
              Idle.idle_cleanup(idle_char, action)
            when "Warn"
              Global.logger.debug "#{idle_name} idle warned."
-             Mail.send_mail([idle_name], t('idle.idle_warning_subject'), Global.read_config("idle", "idle_warn_msg"), nil)          
+             Mail.send_mail([idle_name], t('idle.idle_warning_subject'), Global.read_config("idle", "idle_warn_msg"), nil)
              idle_char.update(idle_warned: true)
            else
              Global.logger.debug "#{idle_name} idle status set to: #{action}."
@@ -195,42 +231,48 @@ module AresMUSH
            end
          end
        end
-       
+
        Forum.system_post(
-         Global.read_config("idle", "idle_category"), 
-         t('idle.idle_post_subject'), 
+         Global.read_config("idle", "idle_category"),
+         t('idle.idle_post_subject'),
          t('idle.idle_post_body', :report => report))
-       
+
        Manage.announce t('idle.idle_sweep_finished')
 
        report
      end
-     
+
      def self.approve_roster(enactor, model, comment)
        if (!model.on_roster?)
          return t('idle.not_on_roster', :name => model.name)
        end
-       
+
        job = model.roster_job
        if (!job)
          return t('idle.no_roster_app_pending')
        end
-       
-       response = Idle.welcome_roster(model)
-       newpass = response[:password]
-       message = "#{t('idle.roster_approval_msg')}%R%R" +
-                 "#{t('idle.roster_password_set', :password => newpass)}%R%R" +
-                 "#{comment}"
+
+       response = Idle.welcome_roster_without_new_pass(model)
+      #  newpass = response[:password]
+      #  message = "#{t('idle.roster_approval_msg')}%R%R" +
+      #            "#{t('idle.roster_password_set', :password => newpass)}%R%R" +
+      #            "#{comment}"
+      #My Changes
+        message = "#{t('idle.roster_approval_msg')}%R%R" +
+          "#{comment}"
        Jobs.close_job(enactor, job, message)
        model.update(roster_job: nil)
+       #My changes
+       model.update(approval_job: nil)
+       Roles.add_role(model, "approved")
        return nil
      end
-     
+
      def self.reject_roster(enactor, model, comment)
        if (!model.on_roster?)
          return t('idle.not_on_roster', :name => model.name)
        end
-       
+
        job = model.roster_job
        if (!job)
          return t('idle.no_roster_app_pending')

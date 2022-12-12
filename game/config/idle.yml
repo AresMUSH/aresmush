@@ -26,6 +26,7 @@ idle:
     %{name} has been claimed off the roster.
 
     RP Hooks:
+
     %{rp_hooks}
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
@@ -34,9 +35,9 @@ idle:
     Tell us why you want to play this character:
 
 
-    If you're submitting this from an existing character, check your messages to follow up. Otherwise, provide an email where we can get back to you:
+
   roster_app_category: APP
-  restrict_roster: false
+  restrict_roster: true
   roster_fields:
   - field: name
     width: 20
