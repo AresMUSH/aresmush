@@ -46,6 +46,9 @@ idle:
     width: 10
     title: Gender
     value: gender
+  - field: age
+    width: 5
+    title: Age
   - field: group
     width: 17
     title: Mythic
