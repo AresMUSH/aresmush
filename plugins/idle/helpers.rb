@@ -131,7 +131,7 @@ module AresMUSH
          post_body = arrival_message % arrival_message_args
 
          Forum.post(forum_category,
-         t('idle.roster_post_subject'),
+         t('idle.roster_post_subject', :name => model.name),
          post_body,
          Game.master.system_character)
        end
