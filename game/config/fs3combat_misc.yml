@@ -86,6 +86,10 @@ fs3combat:
       defense_skill: Reflexes
       weapon: Claws
       armor: Tough Hide
+    Warden:
+      hitloc: Humanoid
+      armor: Leather
+      weapon: Bow
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary
