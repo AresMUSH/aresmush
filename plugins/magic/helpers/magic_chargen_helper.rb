@@ -6,7 +6,7 @@ module AresMUSH
       spells = Magic.starting_spells(char)
       points = 0
       spells.each do |s|
-        points = points + s[:level]
+        points = points + (s[:level].to_f * 0.5)
       end
       points
     end
