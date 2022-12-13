@@ -99,9 +99,9 @@ module AresMUSH
         points = default_points
       elsif (26..30).include? char.age
         points = default_points + 3
-      elsif (31..35)
+      elsif (31..35).include? char.age
         points = default_points + 6
-      elsif (36..40)
+      elsif (36..40).include? char.age
         points = default_points + 9
       elsif (41..45).include? char.age
         points = default_points + 12
