@@ -134,7 +134,7 @@ spells:
     damage_type: Bypass
     desc: "Inflict a flesh wound. \n\nSpell ignores target's armor."
     effect: Damage
-    level: 5
+    level: 4
     line_of_sight: true
     name: Flesh Wound
     range: Short
