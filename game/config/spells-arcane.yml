@@ -5,7 +5,7 @@ spells:
   Dampen Emotion:
     available: true
     casting_time: 1 round
-    desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness."
     damage_type: Psionic
     duration: 10 minutes
     effect: Psionic
@@ -116,7 +116,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster senses whether magic is affecting or being performed by a sapient target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "The caster senses whether magic is affecting or being performed by a sapient target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
     effect: Psionic
     level: 3
     line_of_sight: true
@@ -284,7 +284,7 @@ spells:
     available: true
     casting_time: 30 seconds
     damage_type: Psionic
-    desc: "The caster enters the current dream of a target. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "The caster enters the current dream of a target. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location."
     duration: 1 hour
     effect: Psionic
     level: 5
@@ -297,7 +297,7 @@ spells:
     available: true
     casting_time: "1 round to cast, addition rounds to find a memory, at GM's discretion."
     damage_type: Psionic
-    desc: "Search someone's memory for specific events. Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. \n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'. \n\nWhen looking at a specific memory, the caster can sense whether that individual memory is original or if it has been magically adjusted, though they cannot see or retrieve the original version of a tampered memory. \n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "Search someone's memory for specific events. Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. \n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'. \n\nWhen looking at a specific memory, the caster can sense whether that individual memory is original or if it has been magically adjusted, though they cannot see or retrieve the original version of a tampered memory."
     duration: 30 minutes
     effect: Psionic
     level: 5
@@ -343,7 +343,7 @@ spells:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
     damage_type: Psionic
-    desc: "Rewrite or remove someone's memory of an event up to 1 hour long. The target's mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "Rewrite or remove someone's memory of an event up to 1 hour long. The target's mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
     duration: 30 minutes
     effect: Psionic
     level: 6
@@ -360,7 +360,7 @@ spells:
     area: 100 yard radius
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster extends their senses to identify the presence, quantity, and location of all living creatures within range.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "The caster extends their senses to identify the presence, quantity, and location of all living creatures within range."
     duration: 15 minutes
     effect: Communication
     level: 7
@@ -373,7 +373,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster senses whether magic is affecting, being performed by, or capable of being performed by any sapient, non-sapient, or inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "The caster senses whether magic is affecting, being performed by, or capable of being performed by any sapient, non-sapient, or inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
     effect: Psionic
     level: 7
     line_of_sight: true
@@ -386,7 +386,7 @@ spells:
     available: true
     casting_time: 30 seconds
     damage_type: Psionic
-    desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it."
     effect: Psionic
     level: 7
     name: Dispel Magic
@@ -411,7 +411,7 @@ spells:
     available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
     damage_type: Psionic
-    desc: "Search someone's memory for specific events. Easily locate any which have been overwritten or changed and restore them to their original state.\n\n Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. They can also filter to view only memories which have been altered. The caster can view original, altered, and restored memories.\n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'.\n\nThe process of restoring a memory once it has been located is simple and relatively quick. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "Search someone's memory for specific events. Easily locate any which have been overwritten or changed and restore them to their original state.\n\n Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. They can also filter to view only memories which have been altered. The caster can view original, altered, and restored memories.\n\nThe amount of time necessary to find a desired memory varies according to the caster's skill and the amount of information they possess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'.\n\nThe process of restoring a memory once it has been located is simple and relatively quick. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely."
     effect: Psionic
     level: 7
     name: Restore Memory
@@ -441,7 +441,7 @@ spells:
     available: true
     casting_time: 5 minutes
     damage_type: Psionic
-    desc: "The caster puts a target to sleep (if awake) and either draws them into a dream or enters their current dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "The caster puts a target to sleep (if awake) and either draws them into a dream or enters their current dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location."
     duration: 6 hours
     effect: Psionic
     level: 8
@@ -455,8 +455,7 @@ spells:
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
     damage_type: Psionic
     desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories related to a single person, topic, or location. More pervasive people, topics, or locations may require multiple casts of the spell.\n\n
-    The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\n
-    \n\nThose with Arcane may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Arcane vs the target's Arcane-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
     effect: Psionic
     level: 8
     name: Rewrite History
