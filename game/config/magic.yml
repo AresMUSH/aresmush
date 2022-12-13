@@ -55,6 +55,7 @@ magic:
     cast: spell/cast
     mana: spell/fatigue
     spell/mana: spell/fatigue
+    combat/spellmod: spell/mod
   achievements:
     potions_made:
       type: potion
