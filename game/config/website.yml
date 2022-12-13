@@ -293,6 +293,8 @@ website:
     telepathy: magic:telepathy
     telepathic: magic:telepathy
     telepathically: magic:telepathy
+    alarm: magic:alarm
+    nomad_alarm: magic:alarm
     app_staff: ooc:staff
     staff: ooc:staff
     storytellers: ooc:staff
