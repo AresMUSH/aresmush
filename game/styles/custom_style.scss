@@ -316,6 +316,10 @@ code {
 	background-image: url(/game/uploads/misc/h1-manilla-left.png), url(/game/uploads/misc/h1-manilla-right.png);
 }
 
+.tab-content.collapse.show {
+	background: #c6b2a3;
+}
+
 //DROPDOWN MENUS
 
 .navbar-dark .navbar-nav .show>.nav-link,
