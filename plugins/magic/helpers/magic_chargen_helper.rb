@@ -6,7 +6,7 @@ module AresMUSH
       spells = Magic.starting_spells(char)
       points = 0
       spells.each do |s|
-        points = points + s[:level]
+        points = points + (s[:level].to_f * 0.5)
       end
       points
     end
@@ -78,7 +78,7 @@ module AresMUSH
     end
 
     def self.check_points_on_spells(char)
-      points = 35
+      points = 20
       if Magic.points_on_spells(char) > points
         error = t('magic.too_many_points', :num => points)
       else
@@ -97,10 +97,14 @@ module AresMUSH
       default_points = Global.read_config("fs3skills", "max_ap")
       if !char.age || char.age < 25
         points = default_points
-      elsif (26..35).include? char.age
-        points = default_points + 5
-      elsif (36..45).include? char.age
-        points = default_points + 10
+      elsif (26..30).include? char.age
+        points = default_points + 3
+      elsif (31..35).include? char.age
+        points = default_points + 6
+      elsif (36..40).include? char.age
+        points = default_points + 9
+      elsif (41..45).include? char.age
+        points = default_points + 12
       elsif char.age > 45
         points = default_points + 15
       end

@@ -4,7 +4,7 @@ fs3skills:
   allow_incapable_action_skills: true
   free_backgrounds: 6
   free_languages: 3
-  max_ap: 70
+  max_ap: 55
   max_attr_rating: 4
   max_attrs_at_or_above:
     '3': 4
