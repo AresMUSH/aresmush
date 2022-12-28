@@ -428,6 +428,16 @@ code {
 	height: 147px;
 }
 
+.site-subtitle {
+	font-size: 1em;
+	text-transform: uppercase;
+	font-family: 'Noto Serif', Georgina, sans-serif;
+	word-spacing: 5px;
+	letter-spacing: 2px;
+	left: 10%;
+	position: relative;
+  }
+
 //JUMBOTRON
 .jumbotron img {
 	width: unset;
