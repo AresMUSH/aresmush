@@ -272,6 +272,9 @@ website:
     weyr: world:weyr
     weyrs: world:weyr
     mages: world:mages
+    unbonded_magic: world:mages
+    unbonded: world:mages
+    unbonded_mages: world:mages
     prism_passes: world:prism_passes
     school: world:weyrling_school
     weyrling_school: world:weyrling_school
