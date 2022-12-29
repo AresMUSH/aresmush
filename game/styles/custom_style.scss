@@ -782,7 +782,9 @@ button {
 }
 
 .pagebox-icon-container a > img,
-.pagebox-icon-container > img {
+.pagebox-icon-container > img,
+.pagebox-icon-container a > img,
+.pagebox-icon-container a > img {
 	width: 150px;
 	height: 150px;
 	margin-left: auto;
