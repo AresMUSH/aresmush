@@ -2248,6 +2248,12 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	color: $darkest-rust;
 }
 
+.wiki-image {
+	max-width: 400px;
+	float: right;
+	width: 40%;
+}
+
 .wiki-breadcrumbs {
     margin-bottom: 10px;
     margin-top: 10px;
