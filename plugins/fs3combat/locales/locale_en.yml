@@ -178,7 +178,7 @@ en:
         weapon_title_allowed_specials: "Allowed Specials:"
         weapon_title_init_mod: "Initiative Mod:"
         weapon_title_skill: "Skill:"
-        weapon_title_magic: "Is Magic?"
+        weapon_title_is_magic: "Is Magic?"
         invalid_weapon_special: "%{special} is not a valid special for that weapon."
         use_explode_command: "Use the combat/explode command for this weapon."
         use_suppress_command: "Use the combat/suppress command for this weapon."
@@ -197,6 +197,8 @@ en:
         armor_title_protection: "Protection:"
         armor_title_allowed_specials: "Allowed Specials:"
         armor_title_defense: "Defense Mod:"
+        armor_title_is_magic: "Is Magic?"
+        armor_title_special_group: "Group for specials:"
         invalid_armor_special: "%{special} is not a valid special for that armor."
 
         # ----------------------------
