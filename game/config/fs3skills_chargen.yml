@@ -14,8 +14,8 @@ fs3skills:
   max_points_on_attrs: 12
   max_skill_rating: 7
   max_skills_at_or_above:
-    '5': 9
-    '6': 5
+    '5': 8
+    '6': 3
     '7': 1
   min_backgrounds: 3
   starting_skills:
