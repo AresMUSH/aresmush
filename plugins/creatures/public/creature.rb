@@ -7,7 +7,7 @@ module AresMUSH
     attribute :name_upcase
     index :name_upcase
     attribute :sapient, :type => DataType::Boolean, :default => false
- 
+
     attribute :traits
     attribute :combat
     attribute :society
@@ -18,6 +18,9 @@ module AresMUSH
     attribute :short_desc
     attribute :banner_image
     attribute :profile_image
+    attribute :speed
+    attribute :height
+    attribute :length
     attribute :image_gallery, :type => DataType::Array, :default => []
     before_save :save_upcase
 
