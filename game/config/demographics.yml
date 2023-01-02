@@ -16,7 +16,7 @@ demographics:
     title: Mythic Type
     value: mythic
   - field: demographic
-    width: 10
+    width: 8
     title: Gender
     value: gender
   - field: age
