@@ -278,6 +278,10 @@ website:
     prism_passes: world:prism_passes
     school: world:weyrling_school
     weyrling_school: world:weyrling_school
+    laws: world:laws_morality
+    legal: world:laws_morality
+    morals: world:laws_morality
+    moral: world:laws_morality
     spirits: world:spirits
     ghosts: world:spirits
     spirit: world:spirits
