@@ -78,7 +78,7 @@ module AresMUSH
     end
 
     def self.check_points_on_spells(char)
-      points = 20
+      points = 25
       if Magic.points_on_spells(char) > points
         error = t('magic.too_many_points', :num => points)
       else
