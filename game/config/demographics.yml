@@ -12,7 +12,7 @@ demographics:
     width: 15
     title: Mythic Name
   - field: group
-    width: 15
+    width: 13
     title: Mythic Type
     value: mythic
   - field: demographic
