@@ -2,17 +2,17 @@
 demographics:
   census_fields:
   - field: name
-    width: 18
+    width: 15
     title: Name
   - field: demographic
-    width: 18
+    width: 15
     title: Callsign
     value: callsign
   - field: bonded
-    width: 18
+    width: 15
     title: Mythic Name
   - field: group
-    width: 15
+    width: 12
     title: Mythic Type
     value: mythic
   - field: demographic
