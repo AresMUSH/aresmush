@@ -8,9 +8,12 @@ demographics:
     width: 18
     title: Callsign
     value: callsign
+  - field: bonded
+    width: 18
+    title: Mythic Name
   - field: group
     width: 15
-    title: Mythic
+    title: Mythic Type
     value: mythic
   - field: demographic
     width: 10
