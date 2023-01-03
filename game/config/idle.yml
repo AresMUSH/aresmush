@@ -40,24 +40,24 @@ idle:
   restrict_roster: true
   roster_fields:
   - field: name
-    width: 20
+    width: 15
     title: Name
   - field: demographic
-    width: 10
+    width: 8
     title: Gender
     value: gender
   - field: age
     width: 5
     title: Age
   - field: group
-    width: 17
+    width: 13
     title: Mythic
     value: Mythic
   - field: major_school
-    width: 10
+    width: 13
     title: Mage School
   - field: minor_school
-    width: 10
+    width: 13
     title: Mythic School
   shortcuts:
     idle/add: idle/action
