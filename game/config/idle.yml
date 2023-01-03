@@ -53,6 +53,12 @@ idle:
     width: 17
     title: Mythic
     value: Mythic
+  - field: major_school
+    width: 10
+    title: Mage School
+  - field: minor_school
+    width: 10
+    title: Mythic School
   shortcuts:
     idle/add: idle/action
     roster/update: roster/add

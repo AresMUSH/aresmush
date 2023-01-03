@@ -7,6 +7,12 @@ module AresMUSH
       when 'bonded'
         char.bonded.name
 
+      when 'major_school'
+        char.major_schools.first
+
+      when 'minor_school'
+        char.minor_schools.first
+
       when 'demographic'
         char.demographic(value)
 
