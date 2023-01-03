@@ -265,6 +265,7 @@ module AresMUSH
        #My changes
        model.update(approval_job: nil)
        Roles.add_role(model, "approved")
+       Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
        return nil
      end
 
