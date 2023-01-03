@@ -26,7 +26,7 @@ module AresMUSH
       char.update(roster_job: nil)
       #My changes
       char.update(chargen_locked: true)
-      Jobs.close_job(enactor, char.approval_job, "Character added to roster.")
+      Jobs.close_job(Game.master.system_character, char.approval_job, "Character added to roster.")
       char.update(approval_job: nil)
       Roles.remove_role(char, "approved")
 
