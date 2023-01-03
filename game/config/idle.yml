@@ -40,7 +40,7 @@ idle:
   restrict_roster: true
   roster_fields:
   - field: name
-    width: 15
+    width: 10
     title: Name
   - field: demographic
     width: 8
