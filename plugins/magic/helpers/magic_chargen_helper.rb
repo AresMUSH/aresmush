@@ -183,7 +183,12 @@ module AresMUSH
     def self.mythic_cg_spells(char)
       level = Global.read_config("magic", "cg_max_spell_level")
       spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
-      spells = spells.select { |s| (s['school'] == "Aether" || s['school'] == "Entropy")}
+
+      if !char.minor_schools.empty?
+        spells = spells.select { |s| s['school'] == char.minor_schools.first}
+      else
+        spells = spells.select { |s| (s['school'] == "Aether" || s['school'] == "Entropy")}
+      end
 
       cg_spells = []
 
