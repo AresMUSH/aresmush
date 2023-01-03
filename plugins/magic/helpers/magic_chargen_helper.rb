@@ -166,7 +166,11 @@ module AresMUSH
     def self.mage_cg_spells(char)
       level = Global.read_config("magic", "cg_max_spell_level")
       spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
-      spells = spells.select { |s| (s['school'] == "Creation" || s['school'] == "Arcane")}
+      if !char.major_schools.empty?
+        spells = spells.select { |s| (s['school'] == char.major_schools.first}
+      else
+        spells = spells.select { |s| (s['school'] == "Creation" || s['school'] == "Arcane")}
+      end
 
       cg_spells = []
 
