@@ -1,7 +1,7 @@
 <%= header %>
 %xh<%= t('idle.roster_title') %>%xn
 
-%B%B%B%xh<% fields.each do |f| %><%= show_title(f) %> <% end %><%= t('idle.roster_column_titles') %>%xn
+%xh<% fields.each do |f| %><%= show_title(f) %> <% end %><%= t('idle.roster_column_titles') %>%xn
 <% paginator.items.each do |r| %>
 <% fields.each do |f| %><%= show_field(r, f) -%> <% end %> <%= -%>
 <%= center( r.roster_played.yesno, 5 ) %>

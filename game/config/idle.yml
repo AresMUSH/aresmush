@@ -57,7 +57,7 @@ idle:
     width: 13
     title: Mage School
   - field: minor_school
-    width: 13
+    width: 14
     title: Mythic School
   shortcuts:
     idle/add: idle/action
