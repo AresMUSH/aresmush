@@ -46,7 +46,7 @@ module AresMUSH
       end
 
       def app_required(char)
-        Idle.roster_app_required?(char) ? "" : ""
+        Idle.roster_app_required?(char) ? "(*)" : ""
       end
 
       def group(char, value)
