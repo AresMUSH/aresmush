@@ -45,20 +45,20 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 
 ## Deleting and Organizing Mail
 
-You can add tags to mail messages to organize them.
+You can add tags to mail messages to organize them. Most of the organization commands allow you do to a range of messages as well using `<start#>-<end#>`.
 
-`mail/tag <#>=<tag>` - Adds a tag to a mail message.
-`mail/untag <#>=<tag>` - Removes a tag from a mail message.
+`mail/tag <# or #-#>=<tag>` - Adds a tag to a mail message or range of messages.
+`mail/untag <# or #-#>=<tag>` - Removes a tag from a mail message or range of messages.
 `mail/filter <tag>` - Shows mail matching the tag.  Remains in effect until you switch the filter or log out.
 
 Archived mail shows up under the 'archive' tag, separate from your regular mail.
 
-`mail/archive <#>` - Clears current tags and applies the Archive tag instead.
+`mail/archive <# or #-#>` - Clears current tags and applies the Archive tag instead.
 
 Deleting mail puts it into the recycle bin, which is emptied when you log out.
 
-`mail/delete <#> or <start#>-<end#>` - Sends a message to the trash.
-`mail/undelete <#>` - Recovers a message from the trash.
+`mail/delete <# or #-#>` - Sends a message or range of messages to the trash.
+`mail/undelete <# or #-#>` - Recovers a message or range of messages from the trash.
 `mail/emptytrash` - Permanently deletes messages in the trash.
 
 ## Reporting Offensive Mails
