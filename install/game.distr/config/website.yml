@@ -163,3 +163,6 @@ website:
     - 4
     minute:
     - 37
+  shortcuts:
+    wiki: website
+    website/archive: website/export
