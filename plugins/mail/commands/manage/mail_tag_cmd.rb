@@ -16,23 +16,31 @@ module AresMUSH
       end
       
       def handle
-        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          
-          tags = delivery.tags || []
-          if (cmd.switch_is?("tag"))
-            tags << self.tag
-            tags.uniq!
-            delivery.update(tags: tags)
-            client.emit_success t('mail.tag_added', :name => self.tag)
-          else
-            tags.delete self.tag
-            if (tags.empty?)
-              client.emit_failure t('mail.tags_cant_be_empty')
-              return
-            end
-            delivery.update(tags: tags)
-            client.emit_success t('mail.tag_removed', :name => self.tag)
-          end          
+        
+        messages_to_tag = Mail.select_message_range(self.num)
+        if (!messages_to_tag)
+          client.emit_failure t('mail.invalid_message_number')
+          return
+        end
+        
+        messages_to_tag.each do |m|          
+          Mail.with_a_delivery(client, enactor, "#{m}") do |delivery|
+            tags = delivery.tags || []
+            if (cmd.switch_is?("tag"))
+              tags << self.tag
+              tags.uniq!
+              delivery.update(tags: tags)
+              client.emit_success t('mail.tag_added', :name => self.tag)
+            else
+              tags.delete self.tag
+              if (tags.empty?)
+                client.emit_failure t('mail.tags_cant_be_empty')
+                return
+              end
+              delivery.update(tags: tags)
+              client.emit_success t('mail.tag_removed', :name => self.tag)
+            end          
+          end
         end
       end
     end

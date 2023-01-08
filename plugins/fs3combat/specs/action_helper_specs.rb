@@ -548,6 +548,11 @@ module AresMUSH
           FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
         end
         
+        it "should get protection from combatant armor if in a vehicle and crew hit" do
+          expect(FS3Combat).to receive(:armor_stat).with("Tactical", "protection") { {} }
+          FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)
+        end
+        
         it "should bypass armor if not a protected location" do
           allow(FS3Combat).to receive(:armor_stat).with("Tactical", "protection") { { "Chest" => 2 } }
           expect(FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)).to eq 0
@@ -846,7 +851,7 @@ module AresMUSH
         end
         
         it "should return armor message if stopped by armor" do
-          expect(FS3Combat).to receive(:determine_armor).with(@target, "Chest", "Knife", 2) { 110 }
+          expect(FS3Combat).to receive(:determine_armor).with(@target, "Chest", "Knife", 2, false) { 110 }
           expect(FS3Combat.resolve_attack(@combatant, "A", @target, "Knife", 2)).to eq ["fs3combat.attack_stopped_by_armor"]
         end
         

@@ -28,6 +28,8 @@ module AresMUSH
           return IdlePreviewCmd
         when "remove"
           return IdleRemoveCmd
+        when "reset"
+          return IdleResetCmd
         when "start"
           return IdleStartCmd
         end

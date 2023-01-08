@@ -182,7 +182,8 @@ module AresMUSH
       end
       combatant.update(action_klass: action_klass)
       combatant.update(action_args: args)
-      FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
+      FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)      
+      return nil
     end
 
     def self.determine_damage(combatant, hitloc, weapon, mod = 0, crew_hit = false)
@@ -220,9 +221,9 @@ module AresMUSH
       damage
     end
     
-    def self.determine_armor(combatant, hitloc, weapon, attacker_net_successes)
+    def self.determine_armor(combatant, hitloc, weapon, attacker_net_successes, crew_hit = false)
       vehicle = combatant.vehicle
-      if (vehicle)
+      if (vehicle && !crew_hit)
         armor = vehicle.armor
       else
         armor = combatant.armor
@@ -392,7 +393,7 @@ module AresMUSH
     # Attacker may be nil for automated attacks like shrapnel
     def self.resolve_attack(attacker, attack_name, target, weapon, attacker_net_successes = 0, called_shot = nil, crew_hit = false)
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
-      armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
+      armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes, crew_hit)
         
       
       if (armor >= 100)
