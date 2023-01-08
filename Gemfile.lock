@@ -48,8 +48,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jmespath (1.6.1)
     json (2.3.1)
-    libv8-node (16.10.0.0-x86_64-darwin)
-    libv8-node (16.10.0.0-x86_64-darwin-19)
+    libv8-node (16.10.0.0-arm64-darwin)
     log4r (1.1.10)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
@@ -107,7 +106,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  ruby
+  arm64-darwin-22
 
 DEPENDENCIES
   activesupport (>= 6.0.3.1)
