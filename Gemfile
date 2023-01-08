@@ -17,7 +17,7 @@ gem 'timezone', '~> 1.2.10'
 gem 'dentaku', '~>3.1'
 gem 'json', '~> 2.3.1'
 gem 'redcarpet', '~> 3.5.1'
-gem 'sinatra', '~> 2.2.2'
+gem 'sinatra', '~> 2.2.3'
 gem 'thin', '~> 1.8.1'
 gem 'sinatra-cross_origin', '~>0.4.0'
 gem "ox", ">= 2.14.11"
