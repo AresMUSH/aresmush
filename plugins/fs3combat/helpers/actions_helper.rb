@@ -182,7 +182,8 @@ module AresMUSH
       end
       combatant.update(action_klass: action_klass)
       combatant.update(action_args: args)
-      FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
+      FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)      
+      return nil
     end
 
     def self.determine_damage(combatant, hitloc, weapon, mod = 0, crew_hit = false)
