@@ -92,6 +92,16 @@ module AresMUSH
           
         else
           Scenes.create_scene_temproom(scene)
+          
+          scene.watchers.add enactor
+          
+          scene_data = Scenes.build_live_scene_web_data(scene, enactor).to_json
+          alts = AresCentral.play_screen_alts(enactor)
+          Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
+            c && alts.include?(c)
+          end
+          
+          
         end
       
         

@@ -108,7 +108,7 @@ module AresMUSH
       char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
       char.update(description: Website.format_input_for_mush(chargen_data[:desc]))
       char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
-      char.update(profile_image: chargen_data[:profile_image])
+      char.update(profile_image: chargen_data[:profile_image].blank? ? nil : chargen_data[:profile_image])
       
       if FS3Skills.is_enabled?
         errors = FS3Skills.save_char(char, chargen_data)
