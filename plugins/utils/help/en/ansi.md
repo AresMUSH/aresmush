@@ -7,33 +7,29 @@ aliases:
 - fansi
 ---
 # Ansi Color
-You create a color in Ares using either \%x or \%c followed by the color code.  \%xn goes back to normal.  
+Ares' formatting lets you add color to your text. See [formatting options](https://aresmush.com/tutorials/code/formatting.html) for details.
 
-For example: \%xgGreen\%xn makes %xgGreen%xn.  
-
-Ares supports the standard Penn/Tiny color codes (g, b, c, etc.) as well as extended codes for FANSI support (http://www.fansi.org).  FANSI allows 256 colors, but it its not supported on all clients.
-
-You can change how the game shows you colors.  You can choose FANSI (256 colors), regular ansi (16 colors), or none.
+Ares supports the standard Penn/Tiny ANSI color codes (g for green, b for blue, c for cyan, etc.) as well as extended codes for FANSI support.  FANSI allows 256 colors, but it its not supported on all clients. You can choose which mode you want to use, and also see how each color will appear.
 
 `colors <fansi, ansi, none>` - Changes what colors you see.
-`colors` - View all color codes as they appear in your client.
+`colors` - View all color codes as they appear in your client. 
 
-Ansi codes can be nested within each other.
+You can set color in text using either \%x or \%c followed by the color code.  \%xn goes back to normal.  Ansi codes can also be nested within each other. 
 
-  \%xrRed on black\%xBRed on Blue\%xnBack to normal
-  %xrRed on black%xBRed on Blue%xnBack to normal
+  \%xgGreen\%xn --> %xgGreen%xn.
+  \%xrRed on black\%xBRed on Blue\%xnBack to normal -->  %xrRed on black%xBRed on Blue%xnBack to normal
 
 And codes like bold and underline can be stacked with other colors.
 
-  \%xh\%xbHighlighted blue.\%xn
-  %xh%xbHighlighted blue.%xn
+  \%xh\%xbHighlighted blue.\%xn --> %xh%xbHighlighted blue.%xn
 
 Additional ansi codes include:
 
     \%x! - A random color
-    \%xu - Start underline
-    \%xU - End underline (but doesn't end any colors)
-    \%xi - Inverse colors
-    \%xI - End inverse
-    \%xh - Highlight color (bold)
-    \%xH - End bold (but doesn't end any colors)
+    \%xu and %xU - Start and end underline (doesn't affect colors)
+    \%xU - End underline (but doesn't affect color)
+    \%xi and \%xI - Begin and end inverse colors (reversing foreground and background)
+    \%xh and \%xH - Begin and end highlight/bold (does not affect color)
+    \%xn - Ends all formatting
+    
+(https://aresmush.com/tutorials/code/formatting.html)
