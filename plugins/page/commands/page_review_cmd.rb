@@ -3,10 +3,16 @@ module AresMUSH
     class PageReviewCmd
       include CommandHandler
 
-      attr_accessor :names
+      attr_accessor :names, :num
       
       def parse_args
-        self.names = list_arg(cmd.args)
+        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+        self.names = list_arg(args.arg1)
+        self.num = integer_arg(args.arg2)
+      end
+      
+      def required_args
+        [ self.names ]
       end
       
       def check_guest
@@ -15,6 +21,15 @@ module AresMUSH
       end
       
       def handle
+        
+        if (client.screen_reader)
+          default_max_messages = 5
+        else
+          default_max_messages = 25
+        end
+        
+        max_messages = [ self.num || default_max_messages, 100 ].min
+        
         if (self.names.count == 1 && self.names[0].to_i > 0)
           list = enactor.sorted_page_threads
           thread = list[self.names[0].to_i - 1]
@@ -31,10 +46,10 @@ module AresMUSH
       
         messages = thread.sorted_messages
         total_messages = messages.count
-        start_message = [ (total_messages - 50), 0 ].max
+        start_message = [ (total_messages - max_messages), 0 ].max
         list = messages[start_message, total_messages]  
                 
-        template = PageReviewTemplate.new(enactor, thread, list, start_message)
+        template = PageReviewTemplate.new(enactor, thread, list, start_message, max_messages, total_messages)
         client.emit template.render
       end
     end

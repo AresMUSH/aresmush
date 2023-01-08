@@ -39,7 +39,7 @@ en:
         cannot_continue_conversation: "You cannot continue this conversation because one of the characters no longer exists."
         
         new_pm: "New private messages in %{thread}."
-        more_on_portal: "Full message history is available on the web portal."
+        more_on_portal: "Showing %{num} out of %{total} messages. Full history on web portal."
         
         no_unread_threads: "You have no new private messages."
         unread_threads: "%{count} private message conversations have new activity. %xh%xx(pm/review)%xn"
