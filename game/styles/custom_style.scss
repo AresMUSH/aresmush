@@ -439,6 +439,14 @@ code {
   }
 
 //JUMBOTRON
+.homebox {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 25px;
+	width: 75%;
+	margin: 15px auto;
+}
+
 .jumbotron img {
 	width: unset;
 	margin: 15px;
