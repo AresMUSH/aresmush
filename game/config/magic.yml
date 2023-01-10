@@ -7,7 +7,7 @@ magic:
   cg_days_to_choose_spells: 10
   days_between_learning_spells: 7
   item_category: "Luck"
-  potion_spell: "Potion"
+  potion_spell: "None"
   major_schools:
   - Arcane
   - Creation
