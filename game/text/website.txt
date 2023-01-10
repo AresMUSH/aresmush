@@ -8,6 +8,7 @@
 
 <div class="jumbotron-tagline">Shattered will open its doors in early 2023.</div>
 
+<div class="homebox">
 
 <div class="col col-sm-12 col-md-5 pagebox">
 <div class="pageboxh">
@@ -35,4 +36,6 @@
 <p><a href="/wiki/guide:join_us" title="Join Us">Join Us</a><a href="/wiki/guide:join_us" title="Read More"><span class="fas fa-angle-right"></span></a></p>
 </div>
 <div class="pageboxs"><p>A guide to character creation, claiming roster characters, and logging onto the game as a guest.</p></div>
+</div>
+
 </div>
