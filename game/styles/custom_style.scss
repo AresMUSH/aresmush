@@ -543,7 +543,7 @@ button {
 	font-size: 16px;
 	background-color: $rose;
 	border-color: $dark-rose;
-	color: $light-grey;
+	color: $light-grey!important;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -557,7 +557,7 @@ button {
 	text-shadow: none;
 	background-color: $darker-rose;
 	border-color: $dark-rose;
-	color: $light-grey;
+	color: $light-grey!important;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -575,7 +575,7 @@ button {
 .btn-primary {
 	background-color: $lighter-greyish-green;
 	border-color: $greyish-green;
-	color: $light-grey;
+	color: $light-grey!important;
 	border-color: #522617;
 	text-shadow: none;
 	outline: 0;
@@ -1312,6 +1312,23 @@ button {
     border: 6px solid transparent;
     box-shadow: 10px 10px 20px $almost-black;
     border: 6px solid $photo-box;
+}
+
+.roster-char-title {
+    font-size: 1.5em;
+    background-color: transparent;
+    padding: 0;
+    color: #090909;
+    font-weight: normal;
+    border: 0;
+    border-bottom: 1px solid #090909;
+    letter-spacing: 0.1em;
+    margin: 20px 0px 10px 10px;
+    font-family: 'Courier Prime';
+}
+
+.tab-content > .btn-secondary > a {
+     color: #ebebeb !important;
 }
 
 //TABS
