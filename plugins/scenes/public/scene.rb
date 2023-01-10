@@ -28,8 +28,9 @@ module AresMUSH
 
     collection :scene_poses, "AresMUSH::ScenePose"
     collection :scene_likes, "AresMUSH::SceneLike"
+    # Most recent scene log
     reference :scene_log, "AresMUSH::SceneLog"
-
+    collection :scene_log_versions, "AresMUSH::SceneLog"
     set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
@@ -53,11 +54,7 @@ module AresMUSH
       Scene.all.select { |s| s.shared && s.creatures.include?(creature) }
     end
 
-
     def self.shared_scenes
-      Scene.find(shared: true).to_a
-    end
-
     def self.scenes_starring(char)
       Scene.shared_scenes.select { |s| s.participants.include?(char) }
     end
@@ -91,11 +88,16 @@ module AresMUSH
       scene_poses.select { |p| !p.is_deleted? }.sort_by { |p| p.sort_order }
     end
 
-    def delete_poses_and_log
-      scene_poses.each { |p| p.delete }
+    def delete_logs
       if (self.scene_log)
         self.scene_log.delete
       end
+      self.scene_log_versions.each { |l| l.delete }
+    end
+
+    def delete_poses_and_log
+      scene_poses.each { |p| p.delete }
+      self.delete_logs
     end
 
     def on_delete
@@ -203,5 +205,11 @@ module AresMUSH
     def related_plots
       self.plot_links.map { |p| p.plot }
     end
+
+    def sorted_log_versions
+      self.scene_log_versions.to_a.sort_by { |v| v.created_at }
+    end
+
+
   end
 end

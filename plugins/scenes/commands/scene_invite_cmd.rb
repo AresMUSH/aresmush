@@ -34,6 +34,10 @@ module AresMUSH
               client.emit_failure t("db.object_not_found")
               return
             end
+            
+            if (scene.participants.include?(char))
+              client.emit_failure t('scenes.scene_already_in_scene')
+            end
           
             if (self.invited)
               Scenes.invite_to_scene(scene, char, enactor)

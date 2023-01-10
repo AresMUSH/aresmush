@@ -6,6 +6,13 @@ export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
+# Turn off need restart prompt
+NEEDRESTART_CONF_PATH=/etc/needrestart/needrestart.conf
+if test -f "$NEEDRESTART_CONF_PATH"; then
+  echo -e "${ARES_INSTALL_TEXT} Disabling needrestart prompts."
+  sed -i 's/#$nrconf{restart} = '"'"'i'"'"';/$nrconf{restart} = '"'"'a'"'"';/g' "$NEEDRESTART_CONF_PATH"
+fi
+
 # Set up redis PPA so we get a recent version
 
 add-apt-repository -y ppa:chris-lea/redis-server
@@ -94,6 +101,10 @@ usermod -p "$ENCRYPTEDPW" ${ARES_USERNAME}
 
 addgroup www
 usermod -a -G sudo,www,redis ${ARES_USERNAME}
+
+# Needed for Ubuntu 21+ to allow web access to game dir
+
+sudo chmod 755 /home/ares
 
 # #########################################################################################
 

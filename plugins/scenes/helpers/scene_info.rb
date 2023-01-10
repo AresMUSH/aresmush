@@ -65,7 +65,8 @@ module AresMUSH
         
         if (!scene.completed)
           scene_data = Scenes.build_live_scene_web_data(scene, char).to_json
-          alts = AresCentral.play_screen_alts(enactor)
+          alts = AresCentral.play_screen_alts(char)
+                    
           Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
             c && alts.include?(c)
           end

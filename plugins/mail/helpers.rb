@@ -24,12 +24,24 @@ module AresMUSH
       Global.read_config('mail', 'end_marker') || ']'
     end
         
+        
+    def self.tag_sort_weight(tag)
+      return 1 if tag == "Inbox"
+      return 3 if tag == "Sent"
+      return 4 if tag == "Archive"
+      return 5 if tag == "Trash"
+      return 2
+    end
+    
     def self.all_tags(char)
       all_tags = []
       char.mail.each do |msg|
         all_tags = all_tags.concat(msg.tags || [])
       end
-      all_tags.uniq
+      all_tags << "Archive"
+      all_tags << "Trash"
+      all_tags << "Sent"
+      all_tags.uniq.sort_by { |t| [ Mail.tag_sort_weight(t), t ] }
     end
     
     def self.filtered_mail(char, filter = Mail.inbox_tag)
@@ -131,6 +143,29 @@ module AresMUSH
       message.mark_read
       Login.mark_notices_read(message.character, :mail, message.id)
     end
+    
+    def self.select_message_range(range_param)
+      if (range_param =~ /\-/)
+        splits = range_param.split("-")
+        if (splits.count != 2)
+          return nil
+        end
+        start_message = splits[0].to_i
+        end_message = splits[1].to_i
+      
+        if (start_message <= 0 || end_message <= 0 || start_message > end_message)
+          return nil
+        end
+        (start_message..end_message).to_a.reverse
+      else
+        message = range_param.to_i
+        if (message == 0)
+          return nil
+        end
+          
+        return [ message ]
+      end
+   end
     
   end
 end

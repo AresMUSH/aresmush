@@ -28,7 +28,8 @@ en:
         use_npc_cmd: "Use the 'npc' command to make someone a NPC or not."
         use_roster_cmd: "Use the 'roster' command to add/remove someone from the roster."
         idle_status_set: "%{name}'s idle status is now %{status}."
-
+        idle_status_reset: "%{name} is no longer marked idle."
+        
         roster_disabled: "This game does not use the roster system."
         roster_title: "Character Roster"
         roster_app_required: "An application is required for this roster char."

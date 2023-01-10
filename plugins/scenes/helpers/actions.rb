@@ -33,7 +33,6 @@ module AresMUSH
         pose = Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
         if (pose)
           pose.update(restarted_scene_pose: true)
-          scene.scene_log.delete
         else 
           Global.logger.warn "Problem adding restarted scene pose."
         end
@@ -42,7 +41,7 @@ module AresMUSH
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
-    def self.share_scene(scene)
+    def self.share_scene(enactor, scene)
       if (!scene.all_info_set?)
         return false
       end
@@ -54,7 +53,7 @@ module AresMUSH
       
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
-      Scenes.create_log(scene)
+      Scenes.create_log(enactor, scene)
       Scenes.add_recent_scene(scene)
       
       Scenes.new_scene_activity(scene, :status_changed, nil)  

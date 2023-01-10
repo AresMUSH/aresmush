@@ -31,20 +31,13 @@ module AresMUSH
       end
             
       def handle
-        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|          
 
-          if (model.on_roster?)
-            client.emit_failure t('idle.use_roster_cmd')
-            return
-          end
-          if (model.is_npc?)
-            client.emit_failure t('idle.use_npc_cmd')
-            return
-          end
-          
           if (self.status == 'None')
             model.update(idle_state: nil)
+            model.update(is_npc: false)
           elsif (self.status == 'Npc')
+            model.update(idle_state: nil)
             model.update(is_npc: true)
             Idle.idle_cleanup(model, "Npc")
           else

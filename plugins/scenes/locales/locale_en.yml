@@ -133,6 +133,7 @@ en:
         scene_notify_invite: "You have been invited to scene %{num}.  Use scene/join %{num} to join in."
         scene_notify_uninvited: "%{name} has withdrawn the invitation to join scene %{num}."
         scene_notify_added_to_scene: "You have been added to scene %{num}."
+        scene_already_in_scene: "That person is already in the scene."
         
         no_talking_quiet_room: "Sssh.  This is the quiet room."
         no_talking_ooc_lounge: "Chatting in the OOC lounge is sent to the %{channel} channel so everyone can participate.  Make sure you've joined and un-muted that channel if you want to chat here."

@@ -18,4 +18,6 @@ Supported commands include:
     git status
     git diff
 
-`git/load` - Shortcut for a `git pull` followed by a `load all`. Be careful with this command, because if the 'load all' goes awry it can leave your system in an unpredictable state.
+`git/load` - Shortcut for a `git pull` followed by a `load all`. 
+
+**Note:** Be careful with `git/load`, because if the 'load all' goes awry it can leave your system in an unpredictable state.
