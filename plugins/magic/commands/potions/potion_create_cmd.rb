@@ -24,7 +24,12 @@ module AresMUSH
         spell_level = Global.read_config("spells", self.potion_name, "level")
         hours_to_create = spell_level * 48
         PotionsCreating.create(name: self.potion_name, hours_to_creation: hours_to_create, character: enactor)
-        client.emit_success t('magic.begun_creating_potion', :potion_name => potion_name, :hours_to_create => hours_to_create)
+        if hours_to_create < 24
+          time = "#{hours_to_create} hours"
+        else
+          time = "#{hours_to_create / 24} days"
+        end
+        client.emit_success t('magic.begun_creating_potion', :potion_name => potion_name, :time => time)
         Magic.handle_potions_made_achievement(enactor)
       end
 
