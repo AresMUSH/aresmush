@@ -16,6 +16,11 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
+      #TEPE COLOR
+      case cmd.root
+      when "tepecolor"
+        return TepeColorCmd
+      end
 
       #DEATHS
       case cmd.root
