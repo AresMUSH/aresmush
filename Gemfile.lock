@@ -50,6 +50,8 @@ GEM
     jmespath (1.6.1)
     json (2.3.1)
     libv8-node (16.10.0.0-arm64-darwin)
+    libv8-node (16.10.0.0-x86_64-darwin)
+    libv8-node (16.10.0.0-x86_64-linux)
     log4r (1.1.10)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
@@ -58,9 +60,6 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nest (3.2.0)
       redic
-    nokogiri (1.13.8)
-      mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
     ohm (3.1.1)
       nest (~> 3)
       redic (~> 1.5.0)
@@ -112,6 +111,7 @@ GEM
 PLATFORMS
   arm64-darwin-22
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   activesupport (>= 6.0.3.1)
