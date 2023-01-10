@@ -1,7 +1,7 @@
 module AresMUSH
   class Character < Ohm::Model
-    collection :potions_has, "AresMUSH::PotionsHas"
-    collection :potions_creating, "AresMUSH::PotionsCreating"
+    collection :potions_has, "AresMUSH::PotionsHas" || []
+    collection :potions_creating, "AresMUSH::PotionsCreating" || []
     #DO NOT USE THIS, IT IS ONLY HERE TO FIX THE ERROR KILLING NESSIE AND ALL RELATED THINGS.
     # attribute :creating_potions
     attribute :potions_used, :type => DataType::Integer
