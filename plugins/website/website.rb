@@ -10,7 +10,7 @@ module AresMUSH
     end
  
     def self.shortcuts
-      {}
+      Global.read_config('website', 'shortcuts')
     end
     
     def self.achievements
@@ -22,6 +22,8 @@ module AresMUSH
     end
     
     def self.get_cmd_handler(client, cmd, enactor)       
+      
+      puts cmd
       case cmd.root      
       when "website"
         if (cmd.switch_is?("deploy"))

@@ -6,6 +6,7 @@ module AresMUSH
     reference :approval_job, "AresMUSH::Job"
     attribute :bg_shared, :type => DataType::Boolean
     attribute :rp_hooks
+    attribute :approved_at, :type => DataType::Time
     
     def is_approved?
       return true if is_admin?

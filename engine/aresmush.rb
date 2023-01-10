@@ -18,7 +18,7 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'pp'
 require 'net/http'
-require 'handlebars'
+require 'handlebars-engine'
 require 'htmlentities'
 
 require 'erubis'

@@ -10,7 +10,7 @@ module AresMUSH
     before do
       @connection = double
       allow(@connection).to receive(:ip_addr) { "1.2.3.4" }
-      allow(Resolv).to receive(:getname).with("1.2.3.4") { "fake host" }
+      allow(Resolv::DNS).to receive(:open) { "fake host" }
       @client = Client.new(1, @connection)
       stub_translate_for_testing
       stub_global_objects

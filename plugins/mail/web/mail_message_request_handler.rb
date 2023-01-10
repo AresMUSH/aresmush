@@ -12,7 +12,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        if (message.character != enactor)
+        if (!AresCentral.is_alt?(message.character, enactor))
           return { error: t('dispatcher.not_allowed') }
         end
         
@@ -20,6 +20,7 @@ module AresMUSH
         
        {
             id: message.id,
+            recipient: message.character.name,
             subject: message.subject,
             to_list: message.to_list,
             reply_all:  Mail.reply_list(message, enactor, true),

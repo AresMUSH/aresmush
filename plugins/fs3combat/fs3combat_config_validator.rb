@@ -156,10 +156,14 @@ module AresMUSH
             verify_action_skill(name, data, 'pilot_skill')
           end
       
-          if (!FS3Combat.hitloc_charts.keys.include?(data['hitloc_chart']))
+          hitloc_chart = FS3Combat.hitloc_charts[data['hitloc_chart']]
+          if (!hitloc_chart)
             @validator.add_error "fs3combat:vehicles #{name}'s hit location chart doesn't exist."
           end
-      
+          if (!hitloc_chart['crew_areas'])
+            @validator.add_error "fs3combat #{name}'s hit location chart is missing crew areas."
+          end      
+          
           if (!FS3Combat.armors.keys.include?(data['armor']))
             @validator.add_error "fs3combat:vehicles #{name}'s armor type doesn't exist."
           end
@@ -259,6 +263,10 @@ module AresMUSH
           
           if (!data['vehicle'] && !data['weapon'] && name != "Observer")
             @validator.add_error "fs3combat:combatant_types #{name} needs either a weapon or a vehicle."
+          end
+          
+          if (data['vehicle'] && data['mount'])
+            @validator.add_error "fs3combat:combatant_types #{name} can't use both a vehicle and a mount."
           end
           
           specials = data['weapon_specials']

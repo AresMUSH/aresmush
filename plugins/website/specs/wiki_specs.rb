@@ -3,10 +3,43 @@ require_relative "../../plugin_test_loader"
 module AresMUSH
   module Website
     describe Website do
-      describe :is_restricted_wiki_page? do
+      describe :can_edit_wiki_file? do 
         before do
+          @enactor = double
+          allow(@enactor).to receive(:name) { "Bob" }
+          allow(Website).to receive(:can_manage_wiki?).with(@enactor) { false }
+          allow(Website).to receive(:can_manage_theme?).with(@enactor) { false }
         end
         
+        it "should allow a wiki manager to manage anything" do
+          allow(Website).to receive(:can_manage_wiki?).with(@enactor) { true }
+          expect(Website.can_edit_wiki_file?(@enactor, "anyfolder")).to be true
+        end
+
+        it "should allow a theme manager to manage a theme file" do
+          allow(Website).to receive(:can_manage_theme?).with(@enactor) { true }
+          expect(Website.can_edit_wiki_file?(@enactor, "theme_images")).to be true
+        end
+
+        it "should NOT allow a theme manager to manage another random file" do
+          allow(Website).to receive(:can_manage_theme?).with(@enactor) { true }
+          expect(Website.can_edit_wiki_file?(@enactor, "anyfolder")).to be false
+        end
+
+        it "should NOT allow a random person to manage a random file" do
+          expect(Website.can_edit_wiki_file?(@enactor, "anyfolder")).to be false
+        end
+
+        it "should NOT allow a random person to manage a theme image" do
+          expect(Website.can_edit_wiki_file?(@enactor, "theme_images")).to be false
+        end
+        
+        it "should allow a random person to manage their own files" do
+          expect(Website.can_edit_wiki_file?(@enactor, "bob")).to be true
+        end        
+      end
+      
+      describe :is_restricted_wiki_page? do
         context "single page" do
           it "should return true if page is restricted" do
             allow(Global).to receive(:read_config).with("website", "restricted_pages") { [ 'test' ] }

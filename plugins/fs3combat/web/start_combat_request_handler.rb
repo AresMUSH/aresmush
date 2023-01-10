@@ -35,9 +35,7 @@ module AresMUSH
         
         FS3Combat.emit_to_combat(combat, t('fs3combat.combat_scene_started', :name => enactor.name))
                 
-        {
-          id: combat.id
-        }
+        FS3Combat.build_combat_web_data(combat, enactor)
       end
     end
   end

@@ -5,6 +5,8 @@ aliases:
 - restart
 ---
 
+# Shutting Down the Game
+
 > **Permission Required:** These commands require the Admin role or the manage\_game permission.
 
 You can shut down the game using the `shutdown` command.  To restart it requires server shell access. 

@@ -212,10 +212,12 @@
 <div class="panel panel-default">
 
 {{#if char.profile_gallery}}
+  <div class="profile-gallery">
     {{#each char.profile_gallery as |gallery|}}
-        <a href="game/uploads/{{gallery.path}}"><img src="game/uploads/{{gallery.path}}" class="profile-gallery" alt="{{gallery.name}}" >
+        <a href="game/uploads/{{gallery.path}}"><img src="game/uploads/{{gallery.path}}" alt="{{gallery.name}}" >
         </a>
     {{/each}}
+  </div>
 {{/if}}
 </div>
 </div>

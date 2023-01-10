@@ -1,0 +1,10 @@
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+sudo ln -s /bin/mkdir /usr/bin/mkdir
+
+rvm install 3.1.2
+rvm use 3.1.2
+rvm --default use 3.1.2
+gem update bundler
+bundle install
+echo "rvm use 3.1.2" >> "$HOME/.profile"

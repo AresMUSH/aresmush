@@ -294,8 +294,14 @@ h2
     padding-bottom: 10px;
 }
 
+.table th {
+    padding: 5px;
+    vertical-align: middle;
+    color: $primary-words-color;
+}
 
-td, .table th, .table td {
+
+td, .table td {
     padding: 5px;
     vertical-align: middle;
     color: $text-color;
@@ -411,6 +417,7 @@ textarea,
   transition: border 0.3s linear;
   padding-top: 4px; 
   padding-bottom: 4px; 
+  max-width: 100%;
 }
 
 
@@ -1785,6 +1792,20 @@ JOBS SCREEN
 }
 
 /* -------------------------
+MAIL
+---------------------------- */
+
+.mail-selected-tag {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.mail-message-inbox {
+  font-size: 2em;
+  padding: 10px 0px 10px 0px;
+}
+
+/* -------------------------
 OTHER
 ------------------------- */
 
@@ -1830,6 +1851,10 @@ OTHER
 
 .xp-list h1 {
   font-size: 1em;
+}
+
+.fs3-damage-list {
+  margin-bottom: 20px;
 }
 
 .fs3-damage-block {
