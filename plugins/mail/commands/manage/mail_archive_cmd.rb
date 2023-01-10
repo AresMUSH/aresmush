@@ -14,9 +14,17 @@ module AresMUSH
       end
       
       def handle
-        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          Mail.archive_delivery(delivery)
-          client.emit_success t('mail.message_archived')
+        messages_to_archive = Mail.select_message_range(self.num)
+        if (!messages_to_archive)
+          client.emit_failure t('mail.invalid_message_number')
+          return
+        end
+        
+        messages_to_archive.each do |m|
+          Mail.with_a_delivery(client, enactor, "#{m}") do |delivery|
+            Mail.archive_delivery(delivery)
+            client.emit_success t('mail.message_archived')
+          end
         end
       end
     end

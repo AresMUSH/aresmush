@@ -17,7 +17,7 @@ Pages are private messages sent between players. The `pm` command is aliased to 
 
 `pm <list of names>=<message>` - Send a pm to a list of players.
 `pm/review` - Shows available conversations.
-`pm/review <names or #>` - Reviews a conversation.
+`pm/review <names or #>[=<messages to show>]` - Reviews a conversation.
 `pm/scan` - Shows if you have unread PMs. You can add this to your [onconnect](/help/onconnect).
 
 > **Note:** Conversations are automatically deleted (after 60 days by default) to prevent database clutter. 

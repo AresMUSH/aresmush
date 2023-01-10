@@ -144,5 +144,28 @@ module AresMUSH
       Login.mark_notices_read(message.character, :mail, message.id)
     end
     
+    def self.select_message_range(range_param)
+      if (range_param =~ /\-/)
+        splits = range_param.split("-")
+        if (splits.count != 2)
+          return nil
+        end
+        start_message = splits[0].to_i
+        end_message = splits[1].to_i
+      
+        if (start_message <= 0 || end_message <= 0 || start_message > end_message)
+          return nil
+        end
+        (start_message..end_message).to_a.reverse
+      else
+        message = range_param.to_i
+        if (message == 0)
+          return nil
+        end
+          
+        return [ message ]
+      end
+   end
+    
   end
 end
