@@ -75,6 +75,6 @@ Jobs are small and database space shouldn't ever be an issue.  But if it is, and
 
 [Request Commands](/help/requests) (for players)
 [Job Commands](/help/jobs) (for admin)
-[Managing Jobs](/help/requests) (for setting up the job system)
+[Managing Jobs](/help/manage_jobs) (for setting up the job system)
 
 

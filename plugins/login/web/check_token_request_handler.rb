@@ -37,7 +37,7 @@ module AresMUSH
           is_approved: char.is_approved?,
           is_admin: char.is_admin?,
           is_coder: char.is_coder?,
-          is_wiki_mgr: (!char.is_admin? && Website.can_manage_theme?(char))
+          is_theme_mgr: (!char.is_admin? && Website.can_manage_theme?(char))
         }
       end
     end

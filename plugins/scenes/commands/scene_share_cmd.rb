@@ -32,7 +32,7 @@ module AresMUSH
             return
           end
           
-          success = Scenes.share_scene(scene)
+          success = Scenes.share_scene(enactor, scene)
           
           if (!success)
             client.emit_failure Scenes.info_missing_message(scene)

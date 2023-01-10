@@ -30,6 +30,7 @@ _last_install.txt
 nginx.default
 sitemap.xml
 redis/
+.bundle
 
 # Process ID scripts
 # -----------------------------
@@ -56,4 +57,3 @@ Gemfile.lock
 game/scripts/aresconfig.js
 .byebug_history
 .vscode/settings.json
-

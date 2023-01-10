@@ -11,8 +11,9 @@ The export doesn’t fully re-create the web portal, and it’s not perfect. Gam
 
 Players can download the archive from the [wiki-archive](/wiki-archive) page.
 
-Admins can create an archive manually using the `website/export` command, or configure the game to run an export automatically every night using the `auto_wiki_export` config option.
+Admins can create an archive manually, or configure the game to run an export automatically every night using the `auto_wiki_export` config option.
 
+`website/export` - Exports the website to an archive.
 
 ## What to Do With Your Archive
 

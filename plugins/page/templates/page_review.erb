@@ -4,7 +4,9 @@
 <% messages.each_with_index do |p, i| %>
 <%= left("#{starting_index + i + 1}. ", 4) %> [<%= time(p) %>] <%= p.message %>
 <% end %>
+<% if more_messages %>
 
 %ld
-<%= t('page.more_on_portal') %>
+<%= more_messages %>
+<% end %>
 %lf

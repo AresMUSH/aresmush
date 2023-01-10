@@ -9,4 +9,30 @@
 <div class="jumbotron-tagline">Shattered will open its doors in early 2023.</div>
 
 
-<div class="plot-box" style="background: #303e4d; max-width: 50%;">  <h3 style="font-variant:small-caps; margin-top:10px;">Learn More</h3>    <ul>      <li><a href="/wiki/ooc:about_us">About Us</a></li>      <li><a href="/wiki/home">World Intro</a></li>      <li><a href="/wiki/ooc:policies">Policies</a></li>      <li><a href="/wiki/guide:join_us">Join Us</a></li>    </ul></div>
+<div class="col col-sm-12 col-md-5 pagebox">
+<div class="pageboxh">
+<p><a href="/wiki/ooc:about_us" title="About Shattered">About Shattered</a><a href="/wiki/ooc:about_us" title="Read More"><span class="fas fa-angle-right"></span></a></p>
+</div>
+<div class="pageboxs"><p>Our mission statement, inspirations, and summary of how we play. </p></div>
+</div>
+
+<div class="col col-sm-12 col-md-5 pagebox">
+<div class="pageboxh">
+<p><a href="/wiki/home" title="World Intro">World Intro</a><a href="/wiki/home" title="Read More"><span class="fas fa-angle-right"></span></a></p>
+</div>
+<div class="pageboxs"><p>An introduction to theme and the world we play in.</p></div>
+</div>
+
+<div class="col col-sm-12 col-md-5 pagebox">
+<div class="pageboxh">
+<p><a href="/wiki/ooc:policies" title="Policies">Policies</a><a href="/wiki/ooc:policies" title="Read More"><span class="fas fa-angle-right"></span></a></p>
+</div>
+<div class="pageboxs"><p>Our policies on characters, gameplay, OOC behavior, and more. Includes a social contract so that you know what to expect from certain types of IC behavior.</p></div>
+</div>
+
+<div class="col col-sm-12 col-md-5 pagebox">
+<div class="pageboxh">
+<p><a href="/wiki/guide:join_us" title="Join Us">Join Us</a><a href="/wiki/guide:join_us" title="Read More"><span class="fas fa-angle-right"></span></a></p>
+</div>
+<div class="pageboxs"><p>A guide to character creation, claiming roster characters, and logging onto the game as a guest.</p></div>
+</div>

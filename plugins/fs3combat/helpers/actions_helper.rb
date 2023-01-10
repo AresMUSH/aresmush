@@ -198,6 +198,7 @@ module AresMUSH
       combatant.update(action_klass: action_klass)
       combatant.update(action_args: args)
       FS3Combat.emit_to_combat combat, "#{action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
+      return nil
     end
 
     def self.determine_damage(combatant, hitloc, weapon, mod = 0, crew_hit = false)
@@ -235,9 +236,9 @@ module AresMUSH
       damage
     end
 
-    def self.determine_armor(combatant, hitloc, weapon, attacker_net_successes)
+    def self.determine_armor(combatant, hitloc, weapon, attacker_net_successes, crew_hit = false)
       vehicle = combatant.vehicle
-      if (vehicle)
+      if (vehicle && !crew_hit)
         armor = vehicle.armor
       else
         armor = combatant.armor
@@ -295,6 +296,7 @@ module AresMUSH
 
     def self.hit_mount?(attacker, defender, attacker_net_successes, mount_hit)
       return false if !defender.mount_type
+      return false if attacker_net_successes < 0
 
       # Bigger chance of hitting mount if you're on the ground.  Less chance if you rolled well - unless
       # of course you were aiming for the mount deliberately.
@@ -428,28 +430,9 @@ module AresMUSH
       #/EM Changes
 
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
-      armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
-
-
-      if (armor >= 100)
-        message = t('fs3combat.attack_stopped_by_armor', :name => attack_name, :weapon => weapon, :target => target.name, :hitloc => hitloc)
-        return [message]
-      end
-
-      reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
-
-      attack_luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
-
-      defense_luck_mod = target.luck == "Defense" ? 30 : 0
-
-      hit_mod = [(attacker_net_successes - 1) * 5, 0].max
-      hit_mod = [25, hit_mod].min
-
-      melee_damage_mod = 0
       weapon_type = FS3Combat.weapon_stat(weapon, "weapon_type")
 
       if (!weapon_type)
-        return [ t('fs3combat.attack_with_missing_weapon', :name => weapon) ]
       end
 
       weapon_type = weapon_type.titlecase
