@@ -28,9 +28,11 @@ module AresMUSH
 
     collection :scene_poses, "AresMUSH::ScenePose"
     collection :scene_likes, "AresMUSH::SceneLike"
+
     # Most recent scene log
     reference :scene_log, "AresMUSH::SceneLog"
     collection :scene_log_versions, "AresMUSH::SceneLog"
+
     set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
@@ -55,6 +57,9 @@ module AresMUSH
     end
 
     def self.shared_scenes
+      Scene.find(shared: true).to_a
+    end
+
     def self.scenes_starring(char)
       Scene.shared_scenes.select { |s| s.participants.include?(char) }
     end
