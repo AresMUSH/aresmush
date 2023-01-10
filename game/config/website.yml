@@ -70,6 +70,9 @@ website:
     - title: Technology
       route: wiki-page
       id: world:technology
+    - title: Laws & Morality
+      route: wiki-page
+      id: world:laws
   - title: Magic
     menu:
     - title: Magic
@@ -94,6 +97,9 @@ website:
       route: wiki-page
       id: telekinesis
     - title: Blood Magic
+      route: wiki-page
+      id: blood_magic
+    - title: Potions
       route: wiki-page
       id: blood_magic
   - title: Play

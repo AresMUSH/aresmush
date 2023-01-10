@@ -242,3 +242,9 @@ en:
       bought_magic_item_job: "%{name} has bought %{item} for %{luck} luck."
       item_not_available: "That item is not available for purchase."
       use_item: "Use 'item' in your command, not 'items'."
+
+      # ----------------------------
+      # TEPE COLOR
+      # ----------------------------
+      tepe_color_set: "You set your pose telepathy color to %xn%{option}this%xn."
+      tepe_color_cleared: "Telepathy color cleared."
