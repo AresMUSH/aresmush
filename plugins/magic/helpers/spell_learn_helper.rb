@@ -67,7 +67,7 @@ module AresMUSH
       item_spells = Magic.item_spells(char)
       list = spell_names.join " "
       potion_spell = Global.read_config("magic", "potion_spell")
-      potion = list.include?(potion_spell) || item_spells.include?(potion_spell)
+      potion = list.include?(potion_spell) || item_spells.include?(potion_spell) || potion_spell = "None"
       return potion
     end
 
@@ -126,7 +126,7 @@ module AresMUSH
     end
 
     def self.can_discard?(char, spell)
-      
+
       return true if spell.level == 1
       level = spell.level
       school = spell.school
