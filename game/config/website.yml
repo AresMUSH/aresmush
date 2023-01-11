@@ -119,7 +119,7 @@ website:
     - title: Telekinesis
       route: wiki-page
       id: telekinesis
-    -divider: true
+    - divider: true
     - title: Blood Magic
       route: wiki-page
       id: blood_magic
