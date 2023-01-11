@@ -445,6 +445,9 @@ module AresMUSH
       Magic.find_best_shield(target, damage_type) ? shield_mods = Magic.shield_mods(target, damage_type) : shield_mods = 0
       Magic.find_best_shield(target, damage_type) ? messages = [Magic.shield_failed_msgs(target, attack_name, weapon)] : messages = []
 
+      hit_mod = [(attacker_net_successes - 1) * 5, 0].max
+      hit_mod = [25, hit_mod].min
+
       total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + shield_mods
       target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod}
       melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor}
