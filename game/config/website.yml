@@ -30,7 +30,7 @@ website:
     - title: About Shattered
       route: wiki-page
       id: ooc:about_us
-    - title: Frequently Asked Questions
+    - title: FAQ
       route: wiki-page
       id: faq
     - title: Policies
@@ -42,6 +42,21 @@ website:
     - title: Staff Team
       route: wiki-page
       id: ooc:staff
+    - divider: true
+    - title: Getting Started
+      route: wiki-page
+      id: guide:getting_started
+    - title: Hooks
+      route: wiki-page
+      id: ooc:hooks
+    - title: Guides
+      route: wiki-page
+      id: guides
+    - divider: true
+    - title: Who's Online
+      route: who
+    - title: Forum
+      route: forum
   - title: World
     menu:
     - title: World Intro
@@ -56,6 +71,9 @@ website:
     - title: Cryptids
       route: wiki-page
       id: world:cryptids
+    - title: Spirits
+      route: wiki-page
+      id: world:spirits
     - divider: true
     - title: The Cradle
       route: wiki-page
@@ -63,6 +81,9 @@ website:
     - title: Weyr
       route: wiki-page
       id: world:weyr
+    - title: Weyrling School
+      route: wiki-page
+      id: world:weyrling_school
     - title: Prism Passes
       route: wiki-page
       id: world:prism_passes
@@ -120,29 +141,29 @@ website:
     - title: Combats
       route: combats
     - divider: true
-    - title: Who's Online
-      route: who
-    - title: Forum
-      route: forum
-    - title: Mail
-      route: mail
-    - title: Events
-      route: events
-    - divider: true
     - title: Web Client
       route: client
-  - title: Directory
+  - title: Story
     menu:
-    - title: Characters
-      route: characters
-    - title: Cryptids
-      route: creatures
-    - title: Spells
-      route: spells
     - title: Scenes
       route: scenes
     - title: Plots
       route: plots
+    - divider: true
+    - title: Story So Far
+      route: wiki-page
+      id: ooc:story_so_far
+  - title: Directory
+    menu:
+    - title: Characters
+      route: characters
+    - title: NPCs
+      route: wiki-page
+      id: world:npcs
+    - title: Cryptids
+      route: creatures
+    - title: Spells
+      route: spells
     - divider: true
     - title: Players
       route: players
@@ -150,31 +171,53 @@ website:
       route: admins
     - title: Census
       route: census
-    - title: Roster
-      route: roster
     - title: Locations
       route: locations
-    - title: Combats
-      route: combats
+    - title: Achievements
+      route: achievements
     - divider: true
     - title: Files
       route: files
   - title: System
     menu:
-    - title: Abilities List
-      route: fs3skills-abilities
+    - title: Combat Guide
+      route: wiki-page
+      id: guide:combat_guide
+    - title: Combat Organizer's Guide
+      route: wiki-page
+      id: guide:combat_organizers_guide
+    - title: Balancing Combat
+      route: wiki-page
+      id: guide:balancing_combat
+    - divider: true
+    - title: Spells
+      route: spells
+    - title: Magic
+      route: wiki-page
+      id: world:magic
+    - divider: true
+    - title: Luck Points
+      route: wiki-page
+      id: system:luck_points
+    - title: XP
+      route: wiki-page
+      id: system:xp
+    - divider: true
+      - title: Plot System
+      route: wiki-page
+      id: system:plot
+      - title: Player Run Plots
+      route: wiki-page
+      id: system:player_run_plots
+      - title: One-Shot Adventures
+      route: wiki-page
+      id: system:one_shot_adventures
+    - divider: true
+    - title: Abilities & Skills
+      route: wiki-page
+      id: system:abilities_skills
     - title: Gear List
       route: fs3combat-gear
-    - title: Groups List
-      route: groups
-    - title: Achievements
-      route: achievements
-    - title: Skill Limits
-      route: fs3-limits
-    - title: XP Costs
-      route: fs3-xp-costs
-    - title: Skill Scan
-      route: fs3skills-scan
     - divider: true
     - target: blank
       title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
