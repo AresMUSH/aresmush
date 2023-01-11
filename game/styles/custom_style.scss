@@ -443,11 +443,12 @@ code {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 25px;
-	width: 75%;
+	max-width: 720px;
 	margin: 15px auto;
 
 	.pagebox {
 		width: 48%;
+		height: 150px;
 	}
 }
 
