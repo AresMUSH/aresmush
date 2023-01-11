@@ -204,14 +204,14 @@ website:
       id: system:xp
     - divider: true
     - title: Plot System
-    route: wiki-page
-    id: system:plot
+      route: wiki-page
+      id: system:plot
     - title: Player Run Plots
-    route: wiki-page
-    id: system:player_run_plots
+      route: wiki-page
+      id: system:player_run_plots
     - title: One-Shot Adventures
-    route: wiki-page
-    id: system:one_shot_adventures
+      route: wiki-page
+      id: system:one_shot_adventures
     - divider: true
     - title: Abilities & Skills
       route: wiki-page
