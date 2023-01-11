@@ -48,7 +48,7 @@ website:
       id: guide:getting_started
     - title: Guides
       route: wiki-page
-      id: guides
+      id: guide
     - divider: true
     - title: Who's Online
       route: who
@@ -95,7 +95,7 @@ website:
       id: world:technology
     - title: Laws & Morality
       route: wiki-page
-      id: world:laws
+      id: laws
   - title: Magic
     menu:
     - title: Magic
@@ -200,7 +200,7 @@ website:
       route: spells
     - title: Magic
       route: wiki-page
-      id: world:magic
+      id: magic
     - divider: true
     - title: Luck Points
       route: wiki-page
@@ -211,13 +211,13 @@ website:
     - divider: true
     - title: Plot System
       route: wiki-page
-      id: system:plot
+      id: system:plot_system
     - title: Player Run Plots
       route: wiki-page
       id: system:player_run_plots
     - title: One-Shot Adventures
       route: wiki-page
-      id: system:one_shot_adventures
+      id: system:one-shot_adventures
     - divider: true
     - title: Abilities & Skills
       route: wiki-page
