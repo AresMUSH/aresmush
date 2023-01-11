@@ -4,11 +4,17 @@ summary: Ares privacy practices.
 title: Data and Privacy on Ares Games
 tutorial: true
 ---
+
+# Data and Privacy on Shattered
+
+On Shattered, no staff member will spy on player activities. They have no access to a 'dark' setting, no way to view private scenes, and no access to private communication such as mail or pages.
+
+The following information provides more details about how Ares works in terms of privacy. Spirit Lake has not made any changes to these functions.
+
+The game admin (Nessie) is the only staff member with access to error logs.
 # Data and Privacy on Ares Games
 
-It's up to each individual Ares game to determine their privacy policies.  Ideally this will be conveyed to players in the terms of service acknowledgement or a policy file on the wiki.  This article provides some **general** information about privacy on Ares games.
-
-> Note: This article is about the Ares game server.  For AresCentral and aresmush.com privacy practices, see the [website privacy policy](https://aresmush.com/privacy.html).
+> Note: This article is about the Ares game server.  For AresCentral and aresmush.com privacy practices, see the [website privacy policy](http://aresmush.com/privacy.html).
 
 **Ares has no built-in commands to support admins spying on players.**  That means there's no SUSPECT flag or DARK power for spying, and no admin commands to view private scenes, mail, or private messages.  Just as with any online service, though, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with. They may install custom loggers or custom commands, or crack open the database manually. Sensitive information is best kept off-game.
 
@@ -21,7 +27,7 @@ Here are the types of personal data that can be stored by the game:
 * Your Ares **player handle**, friends list and handle preferences are saved if you choose to link a character to your handle.
 * **Conversations**--channel chat, private messages, poses and OOC chat (if scene logging is enabled) and mail messages--are all saved to the database and may contain personal information. (i.e. if you're chatting with your buddy about your family/job/hometown/etc.)
 
-Permission controls limit who can see this data, described in "Who Can View Your Data" below. 
+Permission controls limit who can see this data, described in "Who Can View Your Data" below.
 
 ## How Data Is Stored
 
@@ -45,9 +51,9 @@ Anyone on the channel may elect to report a channel conversation to the game adm
 
 ### Private Messages
 
-Private messages are visible both in a MU client and on the web portal to players involved in the conversation.  If someone is added mid-conversation, a new conversation is started (i.e. the new person won't see what came before).  
+Private messages are visible both in a MU client and on the web portal to players involved in the conversation.  If someone is added mid-conversation, a new conversation is started (i.e. the new person won't see what came before).
 
-Any party to the conversation may elect to report all or part of the conversation to the game admin in the case of harassment or abuse.  
+Any party to the conversation may elect to report all or part of the conversation to the game admin in the case of harassment or abuse.
 
 There is no built-in command allowing game admins to view private message chats.
 

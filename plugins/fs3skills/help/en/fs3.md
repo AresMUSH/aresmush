@@ -1,5 +1,5 @@
 ---
-toc: FS3 Skills and Combat
+toc: 5 - Magic, FS3 Skills, and Combat
 order: 1
 tutorial: true
 summary: Skills and Combat System
@@ -16,11 +16,11 @@ This game uses the FS3 system, Third Edition.  The complete guide can be found o
 
 FS3 has several basic types of abilities:
 
-* **Attributes** represent basic abilities that everyone has to some extent. Attributes boost related skills, and come into play when no skill directly applies. Attributes are rated from 1-4. 
-* **Action Skills** represent your ability in areas deemed important for gameplay. Action Skills are rated from 0-8. 
-* **Background Skills** represent arts, sports, hobbies, professions and any other skills your character possesses that are not already covered by Action Skills.  Background Skills are rated from 1-3. Background Skills are free-form, so there is no set list. 
-* **Languages** represent your ability to speak and read other languages. Languages are rated from 1-3. 
-* Some games also have **Advantages**, which are rated like background skills but are not skills.  
+* **Attributes** represent basic abilities that everyone has to some extent. Attributes boost related skills, and come into play when no skill directly applies. Attributes are rated from 1-4.
+* **Action Skills** represent your ability in areas deemed important for gameplay. Action Skills are rated from 0-8.
+* **Background Skills** represent arts, sports, hobbies, professions and any other skills your character possesses that are not already covered by Action Skills.  Background Skills are rated from 1-3. Background Skills are free-form, so there is no set list.
+* **Languages** represent your ability to speak and read other languages. Languages are rated from 1-3.
+* Some games also have **Advantages**, which are rated like background skills but are not skills.
 
 For a list of specific abilities available on your game, you can use the `abilities` command or the web portal abilities page (usually under System -> Abilities List).
 
@@ -72,7 +72,7 @@ You can see your available luck points on your character sheet.
 
 ## Experience Points
 
-Experience Points (XP) are gained periodically to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.  
+Experience Points (XP) are gained periodically to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.
 
 > **Tip:** See the [Experience](https://aresmush.com/fs3/fs3-3/experience.html) section of the player's guide for details about how to use experience points.
 
