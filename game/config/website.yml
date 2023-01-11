@@ -46,9 +46,6 @@ website:
     - title: Getting Started
       route: wiki-page
       id: guide:getting_started
-    - title: Hooks
-      route: wiki-page
-      id: ooc:hooks
     - title: Guides
       route: wiki-page
       id: guides
@@ -57,6 +54,11 @@ website:
       route: who
     - title: Forum
       route: forum
+    - title: Game Help
+      route: help
+    - title: Wiki Menu
+      route: wiki-page
+      id: ooc:wiki_menu
   - title: World
     menu:
     - title: World Intro
@@ -117,6 +119,7 @@ website:
     - title: Telekinesis
       route: wiki-page
       id: telekinesis
+    -divider: true
     - title: Blood Magic
       route: wiki-page
       id: blood_magic
@@ -150,6 +153,9 @@ website:
     - title: Plots
       route: plots
     - divider: true
+    - title: Hooks
+      route: wiki-page
+      id: ooc:hooks
     - title: Story So Far
       route: wiki-page
       id: ooc:story_so_far
@@ -229,51 +235,6 @@ website:
       title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
         aria-hidden="true">
       url: http://aresmush.com/fs3/fs3-3/combat-walkthrough.html
-  - title: Wiki
-    menu:
-    - title: Home
-      route: wiki
-    - divider: true
-    - title: Create New Page
-      route: wiki-create
-    - title: All Pages
-      route: wiki-all
-    - title: Search Wiki
-      route: search-wiki
-    - title: Tags
-      route: wiki-tags
-    - title: Recent Changes
-      route: recent-changes
-    - divider: true
-    - title: Files
-      route: files
-    - id: markdown
-      title: Editing Help
-      route: help-topic
-    - title: Wiki Archive
-      route: wiki-archive
-  - title: Help
-    menu:
-    - title: Requests
-      route: jobs
-    - title: Account
-      route: account
-    - divider: true
-    - title: Game Help
-      route: help
-    - title: Search
-      route: search-help
-    - id: markdown
-      title: Markdown Reference
-      route: help-topic
-    - title: Emoji Reference
-      route: emoji
-    - title: Terms of Service
-      route: tos
-    - divider: true
-    - target: blank
-      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
-      url: https://aresmush.com/mush-101/
   - title: Search
     menu:
     - title: Spells
@@ -292,7 +253,6 @@ website:
       route: search-locations
     - title: Jobs & Requests
       route: search-jobs
-
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -359,7 +319,7 @@ website:
     sts: ooc:staff
     admin: ooc:staff
     story_so_far: ooc:story_so_far
-    hooks_hopes: ooc:hooks_hopes
+    hooks: ooc:hooks
     policies: ooc:policies
     faq: faq
     frequently_asked_questions: faq
