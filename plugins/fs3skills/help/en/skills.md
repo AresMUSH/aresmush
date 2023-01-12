@@ -1,5 +1,5 @@
 ---
-toc: FS3 Skills and Combat
+toc: 5 - Magic, FS3 Skills, and Combat
 summary: Choosing your character's skills.
 order: 2
 aliases:

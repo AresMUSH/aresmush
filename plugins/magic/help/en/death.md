@@ -1,8 +1,8 @@
 ---
-toc: Magic
+toc: 5 - Magic, FS3 Skills, and Combat
 summary: Death and dying
 aliases:
-- dying 
+- dying
 - dead
 ---
 #Death

@@ -1,5 +1,5 @@
 ---
-toc: FS3 Skills and Combat
+toc: 5 - Magic, FS3 Skills, and Combat
 summary: Using luck points.
 ---
 # FS3 - Luck

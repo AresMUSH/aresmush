@@ -1,5 +1,5 @@
 ---
-toc: Magic
+toc: 5 - Magic, FS3 Skills, and Combat
 summary: Creating and using potions
 ---
 # Potions
@@ -9,7 +9,7 @@ Potions can only be made from certain spells marked in the database. They take 1
 
 `potion/create <name>` - Create a potion. This spends a luck point.
 `luck/give <name>=<reason>` - Give someone a luck point so they can create a potion for you. Specify the potion name in 'reason'.
-`item/buy <potion>` - Buy a potion which is available for sale. 
+`item/buy <potion>` - Buy a potion which is available for sale.
 
 `potions [<name>]` - See the potions you or someone else has, as well as in-progress potions.
 `potion/give <name>=<potion>` - Give a potion to someone else.
