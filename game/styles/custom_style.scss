@@ -2650,14 +2650,20 @@ th,
 
 .job-category-BUILD {
 	background-color: $lighter-purple;
+	color: white;
 }
 
 .job-category-CODE {
-	background-color: $pink-brown;
+	background-color: $rust;
+	color: white;
 }
 
 .job-category-LOREHOOK {
 	background: $dark-slate;
+}
+
+.job-category-MISC {
+	background: $manilla-darker;
 }
 
 .job-category-SYSTEM {
@@ -2685,7 +2691,7 @@ th,
 }
 
 .job-category-REQ {
-	$background-color: $manilla-darker
+	$background-color: $manilla-darker;
 
 }
 
