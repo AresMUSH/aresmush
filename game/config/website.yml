@@ -32,7 +32,7 @@ website:
       id: join_us
     - title: Create a Character
       route: chargen
-    - title: Roster
+    - title: Roster Characters
       route: roster
     - divider: true
     - title: About Shattered
@@ -107,13 +107,13 @@ website:
     - title: Magic
       route: wiki-page
       id: magic
-    - title: 'School: Creation'
+    - title: Creation
       route: school-creation
-    - title: 'School: Entropy'
+    - title: Entropy
       route: school-entropy
-    - title: 'School: Arcane'
+    - title: Arcane
       route: school-arcane
-    - title: 'School: Aether'
+    - title: Aether
       route: school-aether
     - divider: true
     - title: The Bond
@@ -164,7 +164,7 @@ website:
     menu:
     - title: Characters
       route: characters
-    - title: Roster
+    - title: Roster Characters
       route: roster
     - title: NPCs
       route: wiki-page
