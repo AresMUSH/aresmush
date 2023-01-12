@@ -24,7 +24,7 @@ $manilla-darker: #8e7762;
 
 $darkest-rust: #522617;
 $darker-rust: #903A19;
-$rust: #B0543E;
+$rust: #B78483;
 $brass: #CD9671;
 $ruddy-brown: #B25A27;
 
@@ -176,6 +176,7 @@ pre {
 code {
 	background-color: $almost-black;
 	color: $lightest-teal;
+	padding: 1px;
 }
 
 .status-message p {
@@ -386,15 +387,17 @@ code {
 	color: $light-grey;
 }
 
-#navbar .navbar-nav>li:nth-of-type(10) {
+// Search menu
+
+#navbar .navbar-nav>li:nth-of-type(9) {
     margin-top: -1px
 }
 
-#navbar .navbar-nav>li:nth-of-type(10) .dropdown-toggle {
+#navbar .navbar-nav>li:nth-of-type(9) .dropdown-toggle {
     font-size: 0
 }
 
-#navbar .navbar-nav>li:nth-of-type(10) .dropdown-toggle:before {
+#navbar .navbar-nav>li:nth-of-type(9) .dropdown-toggle:before {
     font-size: 1rem;
     content: "\f002";
     font-weight: 400;
@@ -2690,4 +2693,13 @@ th,
 
 .table-width {
     width: 100%;
+}
+
+/* --------------------------
+ALERTIFY DIALOGS
+---------------------------*/
+
+.alertify-notifier .ajs-message.ajs-success {
+  background-color: $darkest-slate;
+  color: $primary-words-color;
 }
