@@ -2656,6 +2656,52 @@ th,
 
 // JOBS
 
+.job-category-APP {
+	background: $dusky-purple;
+}
+
+.job-category-BUG {
+	background-color: $lighter-rose;
+
+}
+
+.job-category-BUILD {
+	background-color: $lighter-purple;
+}
+
+.job-category-CODE {
+	background-color: $rust;
+}
+
+.job-category-LORE HOOK {
+	background: $dark-slate;
+}
+
+.job-category-LUCK {
+	background: $light-green;
+}
+
+.job-category-PLAYER {
+	background: $darker-rose;
+}
+
+.job-category-PLOT {
+	background: $slate;
+}
+
+.job-category-PRP {
+	background: $darker-slate;
+}
+
+.job-category-SPELL {
+	background: $darker-purple;
+}
+
+.job-category-REQ {
+	$background: $manilla-darker
+
+}
+
 .admin-only-reply, .admin-only-reply .markdown-editor {
     background-color: $dark-slate;
     border-color: $darker-slate;
