@@ -27,6 +27,13 @@ website:
   top_navbar:
   - title: Game
     menu:
+    - title: Join Us
+      route: wiki-page
+    - title: Create a Character
+      route: chargen
+    - title: Roster
+      route: roster
+    - divider: true
     - title: About Shattered
       route: wiki-page
       id: ooc:about_us
@@ -36,8 +43,6 @@ website:
     - title: Policies
       route: wiki-page
       id: policies
-    - title: Join Us
-      route: wiki-page
       id: guide:join_us
     - title: Staff Team
       route: wiki-page
@@ -128,11 +133,6 @@ website:
       id: blood_magic
   - title: Play
     menu:
-    - title: Create a Character
-      route: chargen
-    - title: Pre-Made Characters
-      route: roster
-    - divider: true
     - title: Play
       route: play
     - title: Active Scenes
@@ -163,6 +163,8 @@ website:
     menu:
     - title: Characters
       route: characters
+    - title: Roster
+      route: roster
     - title: NPCs
       route: wiki-page
       id: world:npcs
