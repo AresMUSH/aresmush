@@ -2638,6 +2638,17 @@ th,
 }
 
 // JOBS
+.job-status-OPEN {
+	background-color: $green;
+}
+
+.job-status-NEW {
+	background-color: $yellow;
+}
+
+.job-status-HOLD {
+	background-color: $red;
+}
 
 .job-category-APP {
 	background: $dusky-purple;
@@ -2645,7 +2656,6 @@ th,
 
 .job-category-BUG {
 	background-color: $red;
-
 }
 
 .job-category-BUILD {
