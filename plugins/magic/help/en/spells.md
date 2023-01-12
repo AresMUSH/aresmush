@@ -1,5 +1,5 @@
 ---
-toc: Magic
+toc: 5 - Magic, FS3 Skills, and Combat
 summary: Learning & casting spells
 aliases:
 - magic

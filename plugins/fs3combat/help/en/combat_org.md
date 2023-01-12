@@ -1,5 +1,5 @@
 ---
-toc: FS3 Skills and Combat
+toc: 5 - Magic, FS3 Skills, and Combat
 summary: Managing combat scenes.
 aliases:
 - combat_organizer
@@ -22,13 +22,13 @@ aliases:
 
 # Organizing Combat
 
-This is a quick reference for combat organizer commands.  
+This is a quick reference for combat organizer commands.
 
 > Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
 
 `combat/start [<mock or real>]` - Starts a combat (default real).
-`combat/stop <combat #>` - Stops a combat. 
-`combats` - Shows all combats going on. 
+`combat/stop <combat #>` - Stops a combat.
+`combats` - Shows all combats going on.
 `combat/newturn` - Starts the first turn.
 
 `combat/join <list of names>=<combat #>[/<type>]` - Adds people to combats.
@@ -50,7 +50,7 @@ This is a quick reference for combat organizer commands.
 
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
 
-`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
+`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.
     This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
 
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
@@ -60,9 +60,9 @@ This is a quick reference for combat organizer commands.
 
 `combat/targets` - See a breakdown of who's targeting whom.
 
-`combat/team <list of names>=<team#>` - Switches teams. 
-`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 
-    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target 
+`combat/team <list of names>=<team#>` - Switches teams.
+`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only
+    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target
     people on teams 1 and 4.
 
 `combat/ai` - Selects actions/targets for any NPCs who don't have actions yet.
