@@ -2644,7 +2644,7 @@ th,
 }
 
 .job-category-BUG {
-	background-color: $lighter-rose;
+	background-color: $red;
 
 }
 
@@ -2653,19 +2653,23 @@ th,
 }
 
 .job-category-CODE {
-	background-color: $rust;
+	background-color: $pink-brown;
 }
 
-.job-category-LORE HOOK {
+.job-category-LOREHOOK {
 	background: $dark-slate;
 }
 
-.job-category-LUCK {
+.job-category-SYSTEM {
 	background: $light-green;
 }
 
 .job-category-PLAYER {
 	background: $darker-rose;
+}
+
+.job-category-ALERT {
+	background: $dark-rose;
 }
 
 .job-category-PLOT {
@@ -2681,7 +2685,7 @@ th,
 }
 
 .job-category-REQ {
-	$background: $manilla-darker
+	$background-color: $manilla-darker
 
 }
 
