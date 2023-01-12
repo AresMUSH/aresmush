@@ -4,7 +4,7 @@ summary: Learning & casting spells
 aliases:
 - magic
 ---
-For a full explanation of the Magic system, see the Magic wiki page.
+For a full explanation of the Magic system, see the [Magic wiki page](/magic).
 # Spells
 
 ##Information & Learning Spells
@@ -25,7 +25,7 @@ For a full explanation of the Magic system, see the Magic wiki page.
 
 `spell/npc <npc>/<dice>=<spell>[/<target> <target>]` - Have an NPC cast a spell. NPCs can cast any spell. The dice chosen should reflect their Magic attribute + their School rating.
 
-`shield/off <shield>` - Out of combat, turn off a protective shield such as Mind Shield, Endure Fire, or Endure Cold.
+`shield/off <shield>` - Out of combat, turn off a protective shield such as Mind Shield.
 
 `combat/spell <spell>` - Cast a spell on yourself, the environment, or an object in combat.
 `combat/spell <spell>/<target>[<target> <target>]` - Cast a spell on one or more targets in combat.
