@@ -29,37 +29,11 @@ website:
     menu:
     - title: Join Us
       route: wiki-page
+    - title: Create a Character
+      route: chargen
+    - title: Roster
+      route: roster
     - divider: true
-    - title: About Shattered
-      route: wiki-page
-      id: ooc:about_us
-    - title: FAQ
-      route: wiki-page
-      id: faq
-    - title: Policies
-      route: wiki-page
-      id: policies
-      id: guide:join_us
-    - title: Staff Team
-      route: wiki-page
-      id: ooc:staff
-    - divider: true
-    - title: Getting Started
-      route: wiki-page
-      id: guide:getting_started
-    - title: Guides
-      route: wiki-page
-      id: guide
-    - divider: true
-    - title: Who's Online
-      route: who
-    - title: Forum
-      route: forum
-    - title: Game Help
-      route: help
-    - title: Wiki Menu
-      route: wiki-page
-      id: ooc:wiki_menu
   - title: World
     menu:
     - title: World Intro
