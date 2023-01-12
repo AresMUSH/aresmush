@@ -107,16 +107,16 @@ website:
     - title: Magic
       route: wiki-page
       id: magic
-    - title: Creation
+    - title: - Creation
       route: school
       id: creation
-    - title: Entropy
+    - title: - Entropy
       route: school
       id: entropy
-    - title: Arcane
+    - title: - Arcane
       route: school
       id: arcane
-    - title: Aether
+    - title: - Aether
       route: school
       id: aether
     - divider: true
