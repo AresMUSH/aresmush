@@ -29,11 +29,6 @@ website:
     menu:
     - title: Join Us
       route: wiki-page
-    - title: Create a Character
-      route: chargen
-    - title: Roster
-      route: roster
-    - divider: true
   - title: World
     menu:
     - title: World Intro
