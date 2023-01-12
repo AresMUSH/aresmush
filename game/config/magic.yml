@@ -94,7 +94,7 @@ magic:
     Severe: "They are quite nauseous and feel increasingly tired. It's hard to focus, and everything is substantially more difficult."
     Extreme: "They are severely nauseous and are starting to feel exhausted. It's very difficult to focus."
     Total: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
-  item_category: LUCK
+  item_category: SYS
   cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/creation">Creation</a> magic.
     <ul><li>Spells cost 1 AP per level.</li>
     <li>You can spend 25 AP on spells (both mage and mythic).</li>
