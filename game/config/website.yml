@@ -109,7 +109,7 @@ website:
       id: magic
     - title: Creation
       route: school
-      id: aether
+      id: creation
     - title: Entropy
       route: school
       id: entropy
