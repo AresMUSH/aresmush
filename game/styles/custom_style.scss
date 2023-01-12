@@ -23,8 +23,8 @@ $manilla-dark: #b09d8c;
 $manilla-darker: #8e7762;
 
 $darkest-rust: #522617;
-$darker-rust: #903A19;
-$rust: #B78483;
+$darker-rust: #8f5150;
+$rust: #ab6463;
 $brass: #CD9671;
 $ruddy-brown: #B25A27;
 
@@ -2328,6 +2328,10 @@ table a {
 
 table a:active {
 	color: $darker-rust
+}
+
+table a:hover {
+	color: $darkest-rust
 }
 
 .table {
