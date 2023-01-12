@@ -108,13 +108,17 @@ website:
       route: wiki-page
       id: magic
     - title: Creation
-      route: school-creation
+      route: school
+      id: aether
     - title: Entropy
-      route: school-entropy
+      route: school
+      id: entropy
     - title: Arcane
-      route: school-arcane
+      route: school
+      id: arcane
     - title: Aether
-      route: school-aether
+      route: school
+      id: aether
     - divider: true
     - title: The Bond
       route: wiki-page
