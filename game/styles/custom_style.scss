@@ -2161,8 +2161,8 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 }
 
 //TOC, BLOCKQUOTE AND BREADCRUMBS
-.blockquote {
-	background: purple;
+blockquote {
+	background: $header-slate;
 	border-left: 5px solid $dark-rose;
 }
 
