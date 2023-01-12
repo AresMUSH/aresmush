@@ -102,6 +102,9 @@ website:
     - title: Laws & Morality
       route: wiki-page
       id: laws
+    - title: Pegasus
+      route: creature
+      id: pegasus
   - title: Magic
     menu:
     - title: Magic
