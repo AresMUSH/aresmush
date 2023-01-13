@@ -2471,6 +2471,10 @@ th,
 
 // CREATURE PAGES
 
+.creature-stats, .creature-gear {
+	justify-content: space-between;
+}
+
 .directory-card {
 	background-color: $dark-slate;
 	opacity: 85%;
@@ -2517,7 +2521,7 @@ th,
 
 .infobox {
 	margin: 15px 15px 0px 5px;
-	width: 350px;
+	width: 410px;
 	border-radius: 10px;
 	border: 2px solid #293038;
  }
