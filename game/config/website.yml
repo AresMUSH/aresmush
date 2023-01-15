@@ -135,7 +135,7 @@ website:
       id: blood_magic
     - title: Potions
       route: wiki-page
-      id: blood_magic
+      id: potions
   - title: Play
     menu:
     - title: Play
