@@ -448,6 +448,7 @@ code {
 	margin-bottom: 25px;
 	max-width: 720px;
 	margin: 15px auto;
+	min-width: 290px;
 
 	.pagebox {
 		width: 48%;
@@ -2331,6 +2332,10 @@ table a:active {
 }
 
 table a:hover {
+	color: $darkest-rust
+}
+
+table .user-bar a:hover, a:focus {
 	color: $darkest-rust
 }
 
