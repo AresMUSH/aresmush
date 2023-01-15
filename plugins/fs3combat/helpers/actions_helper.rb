@@ -430,9 +430,28 @@ module AresMUSH
       #/EM Changes
 
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
+      armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes, crew_hit)
+
+
+      if (armor >= 100)
+        message = t('fs3combat.attack_stopped_by_armor', :name => attack_name, :weapon => weapon, :target => target.name, :hitloc => hitloc)
+        return [message]
+      end
+
+      reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
+
+      attack_luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
+
+      defense_luck_mod = target.luck == "Defense" ? 30 : 0
+
+      hit_mod = [(attacker_net_successes - 1) * 5, 0].max
+      hit_mod = [25, hit_mod].min
+
+      melee_damage_mod = 0
       weapon_type = FS3Combat.weapon_stat(weapon, "weapon_type")
 
       if (!weapon_type)
+        return [ t('fs3combat.attack_with_missing_weapon', :name => weapon) ]
       end
 
       weapon_type = weapon_type.titlecase
@@ -444,12 +463,6 @@ module AresMUSH
       damage_type = Magic.magic_damage_type(weapon)
       Magic.find_best_shield(target, damage_type) ? shield_mods = Magic.shield_mods(target, damage_type) : shield_mods = 0
       Magic.find_best_shield(target, damage_type) ? messages = [Magic.shield_failed_msgs(target, attack_name, weapon)] : messages = []
-
-      attack_luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
-      defense_luck_mod = target.luck == "Defense" ? 30 : 0
-
-      hit_mod = [(attacker_net_successes - 1) * 5, 0].max
-      hit_mod = [25, hit_mod].min
 
       total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + shield_mods
       target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod}
