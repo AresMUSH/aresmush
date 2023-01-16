@@ -343,4 +343,4 @@ website:
     - 3
     minute:
     - 37
-  story: <span class="torn_container torn_left"> A new civilization rises in the wake of the Shattered world, and exiled mages and their bonded mythic partners stand at the crossroads.</span>
+  story: <div class="torn_container torn_left"> A new civilization rises in the wake of the Shattered world, and exiled mages and their bonded mythic partners stand at the crossroads.</div>
