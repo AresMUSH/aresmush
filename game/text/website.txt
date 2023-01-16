@@ -40,7 +40,7 @@
 
 <div id="torn_edge_banner" class="torn_container torn_left torn_right">
 	<div></div>
-	<div><span class="banner_text">Torn Edge Banner</span></div>
+	<div><span class="banner_text">Torn Edge Banner<p></p><p></p><p></p></span></div>
 </div>
 
 </div>
