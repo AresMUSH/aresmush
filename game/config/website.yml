@@ -172,7 +172,7 @@ website:
       route: roster
     - title: NPCs
       route: wiki-page
-      id: world:npcs
+      id: npc
     - title: Cryptids
       route: creatures
     - title: Spells
