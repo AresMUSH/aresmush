@@ -343,6 +343,6 @@ website:
     - 3
     minute:
     - 37
-  story: <div id="torn_edge_banner" class="torn_container torn_left torn_right"> <div></div> <div><span class="banner_text">A new civilization rises in the wake of the Shattered world, and exiled mages and their bonded mythic partners stand at the crossroads.</span></div></div>
+  story: <div id="torn_edge_banner" class="torn_container torn_left torn_right"> <div></div> <div><p>A new civilization rises in the wake of the Shattered world, and exiled mages and their bonded mythic partners stand at the crossroads.</p></div></div>
 
 

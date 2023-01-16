@@ -489,13 +489,14 @@ code {
 	margin: auto;
 }
 
-// .plot-box p {
-// 	color: $blackest-grey;
-// 	background-color: $manilla;
-// 	padding: 15px;
-// 	margin: 10px;
-// 	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
-// }
+.plot-box p {
+	// color: $blackest-grey;
+	// background-color: $manilla;
+	// padding: 15px;
+	// margin: 10px;
+	// box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+	padding: 10px 5px 5px 25px;
+}
 
 /*
  Torn left edge banner
@@ -525,6 +526,7 @@ body{
 	clear:both;
 	margin-bottom:1.2em;
 	position:relative;
+	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 .torn_container>div:first-child{
 	margin-left:var(--torn-shadow-offset-x);
