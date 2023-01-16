@@ -462,9 +462,18 @@ code {
 }
 
 .jumbotron-tagline {
-	font-size: 2em;
-	color: $secondary-color;
+  font-size: 1.8em;
+  color: #ebebeb;
+  // font-family: courier;
+  margin: 15px;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
+	word-spacing: 3px;
 }
+
+// .jumbotron-tagline {
+// 	font-size: 2em;
+// 	color: $secondary-color;
+// }
 
 .jumbotron .splash {
 	width: 90%;
