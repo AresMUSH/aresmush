@@ -499,6 +499,7 @@ body{
 	--torn-background-color: #cfc4b9;
 	--torn-left-width:3px;
 	--torn-left-clip-path:polygon(46% 0%, 7% 3%, 78% 5%, 41% 8%, 82% 10%, 31% 13%, 55% 15%, 93% 18%, 90% 20%, 41% 23%, 4% 25%, 99% 28%, 4% 30%, 23% 33%, 33% 35%, 46% 38%, 17% 40%, 55% 43%, 45% 45%, 13% 48%, 59% 50%, 41% 53%, 8% 55%, 89% 57%, 4% 60%, 94% 63%, 64% 65%, 29% 68%, 49% 70%, 88% 73%, 82% 75%, 81% 78%, 76% 80%, 15% 83%, 60% 85%, 59% 88%, 25% 90%, 57% 93%, 97% 95%, 34% 98%, 70% 100%, calc(100% + 1px) 100%, calc(100% + 1px) 0%);
+	--torn-right-clip-path:polygon(73% 0%, 35% 3%, 8% 5%, 47% 8%, 66% 10%, 49% 13%, 17% 15%, 4% 18%, 63% 20%, 27% 23%, 45% 25%, 85% 28%, 44% 30%, 39% 33%, 98% 35%, 95% 38%, 4% 40%, 6% 43%, 49% 45%, 79% 48%, 98% 50%, 14% 53%, 51% 55%, 36% 57%, 87% 60%, 84% 63%, 3% 65%, 57% 68%, 28% 70%, 46% 73%, 13% 75%, 32% 78%, 60% 80%, 33% 83%, 29% 85%, 45% 88%, 55% 90%, 99% 93%, 86% 95%, 48% 98%, 72% 100%, -10% 100%, -10% 0%);
 }
 
 .torn_container{
@@ -545,6 +546,20 @@ body{
 }
 .torn_container>div:first-child, .torn_left>div:first-child:before, .torn_right>div:first-child:after{
 	background-color:var(--torn-shadow-background-color);
+}
+
+.torn_right>div:nth-child(2):after, .torn_right>div:first-child:after{
+	content:'';
+	position:absolute;
+	left:100%;
+	top:0px;
+	right:calc(0px - var(--torn-right-width));
+	bottom:0px;
+	-webkit-clip-path:var(--torn-right-clip-path);
+	clip-path:var(--torn-right-clip-path);
+}
+.torn_right>div:nth-child(2):after{
+	left:calc(100% - 0.5px);
 }
 
 .plot-box {
