@@ -414,7 +414,8 @@ code {
 
 .site-title a,
 .site-title a:hover,
-.site-title a:active {
+.site-title a:active,
+.site-title a:focus  {
 	color: #fff;
 	text-decoration: none;
 	text-shadow: 2px 2px $almost-black;
