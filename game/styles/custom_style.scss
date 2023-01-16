@@ -526,6 +526,7 @@ body{
 	clear:both;
 	margin-bottom:1.2em;
 	position:relative;
+	width: 100%;
 	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 .torn_container>div:first-child{
@@ -550,6 +551,7 @@ body{
 	position:relative;
 	z-index:2;
 	padding:0.4em;
+	width:100%;
 }
 .torn_left>div:nth-child(2):before, .torn_left>div:first-child:before{
 	content:'';
