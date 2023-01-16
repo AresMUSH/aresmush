@@ -497,6 +497,72 @@ code {
 	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
+/*
+ Torn left edge banner
+
+ License: GPL 3.0
+ License URL: https://www.gnu.org/licenses/gpl-3.0.en.html
+
+ Structure:
+ <div class="torn_container torn_left torn_right">
+	<div></div>
+	<div>Torn Edge Banner</div>
+ </div>
+*/
+
+body{
+	/* Settings */
+	--torn-shadow-offset-x:-2px;
+	--torn-shadow-offset-y:2px;
+	--torn-shadow-background-color:rgba(0,0,0,0.25);
+	--torn-background-color:#f15a2b;
+	--torn-left-width:3px;
+	--torn-left-clip-path:polygon(46% 0%, 7% 3%, 78% 5%, 41% 8%, 82% 10%, 31% 13%, 55% 15%, 93% 18%, 90% 20%, 41% 23%, 4% 25%, 99% 28%, 4% 30%, 23% 33%, 33% 35%, 46% 38%, 17% 40%, 55% 43%, 45% 45%, 13% 48%, 59% 50%, 41% 53%, 8% 55%, 89% 57%, 4% 60%, 94% 63%, 64% 65%, 29% 68%, 49% 70%, 88% 73%, 82% 75%, 81% 78%, 76% 80%, 15% 83%, 60% 85%, 59% 88%, 25% 90%, 57% 93%, 97% 95%, 34% 98%, 70% 100%, calc(100% + 1px) 100%, calc(100% + 1px) 0%);
+}
+
+.torn_container{
+	float:left;
+	clear:both;
+	margin-bottom:1.2em;
+	position:relative;
+}
+.torn_container>div:first-child{
+	margin-left:var(--torn-shadow-offset-x);
+	margin-top:var(--torn-shadow-offset-y);
+	left:0px;
+	top:0px;
+	right:calc(0px - var(--torn-shadow-offset-x));
+	bottom:calc(0px - var(--torn-shadow-offset-y));
+	position:absolute;
+	z-index:1;
+	filter:blur(var(--torn-shadow-blur));
+}
+.torn_container>div:nth-child(2), .torn_container>div:nth-child(2)>span{
+	vertical-align:middle;
+}
+.torn_container>div:nth-child(2), .torn_left>div:nth-child(2):before, .torn_right>div:nth-child(2):after{
+	background-color:var(--torn-background-color);
+}
+.torn_container>div:nth-child(2), .torn_container>div:nth-child(2){
+	display:inline-block;
+	position:relative;
+	z-index:2;
+	padding:0.4em;
+}
+.torn_left>div:nth-child(2):before, .torn_left>div:first-child:before{
+	content:'';
+	position:absolute;
+	left:calc(0em - var(--torn-left-width));
+	top:0px;
+	width:var(--torn-left-width);
+	bottom:0px;
+	-webkit-clip-path:var(--torn-left-clip-path);
+	clip-path:var(--torn-left-clip-path);
+}
+.torn_container>div:first-child, .torn_left>div:first-child:before, .torn_right>div:first-child:after{
+	background-color:var(--torn-shadow-background-color);
+}
+
 .plot-box a {
 	font-size: 110%;
 }
