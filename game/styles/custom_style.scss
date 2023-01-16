@@ -478,7 +478,7 @@ code {
 }
 
 .plot-box {
-	background: $darker-slate;
+	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
 	padding: 5px 15px;
 	font-size: 90%;
 	text-align: initial;
@@ -490,12 +490,15 @@ code {
 }
 
 .plot-box p {
-	font-size: 95%;
+	color: $blackest-grey;
+	background-color: $manilla;
+	padding: 15px;
+	margin: 10px;
+	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 .plot-box a {
 	font-size: 110%;
-	font-variant: small-caps;
 }
 
 .plot-title {
