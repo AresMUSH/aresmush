@@ -448,11 +448,11 @@ code {
 	margin-bottom: 25px;
 	max-width: 720px;
 	margin: 15px auto;
-	min-width: 290px;
 
 	.pagebox {
 		width: 48%;
 		height: 150px;
+		min-width: 200px !important;
 	}
 }
 
@@ -2168,6 +2168,15 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 blockquote {
 	background: $darkest-slate;
 	border-left: 5px solid $dark-rose;
+	color: $light-grey;
+}
+
+blockquote a {
+	color: $secondary-color;
+}
+
+blockquote a:hover {
+	color: $rust;
 }
 
 .toc {
