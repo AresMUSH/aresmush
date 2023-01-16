@@ -477,26 +477,6 @@ code {
 	text-align: left;
 }
 
-.plot-box {
-	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
-	padding: 5px 15px;
-	font-size: 90%;
-	text-align: initial;
-	-webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
-	-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
-	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
-	max-width: 80%;
-	margin: auto;
-}
-
-.plot-box p {
-	color: $blackest-grey;
-	// background-color: $manilla;
-	// padding: 15px;
-	// margin: 10px;
-	// box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
-	padding: 10px 5px 5px 25px;
-}
 
 /*
  Torn left edge banner
@@ -567,13 +547,48 @@ body{
 	background-color:var(--torn-shadow-background-color);
 }
 
-.plot-box a {
-	font-size: 110%;
-}
+.plot-box {
+	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
+	padding: 5px 15px;
+	font-size: 90%;
+	text-align: initial;
+	-webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+	max-width: 80%;
+	margin: auto;
 
-.plot-title {
-	font-style: bold;
-	font-variant: small-caps;
+	p {
+		color: $blackest-grey;
+		// background-color: $manilla;
+		// padding: 15px;
+		// margin: 10px;
+		// box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+		padding: 10px 5px 5px 25px;
+	}
+
+	a {
+		font-size: 110%;
+	}
+
+	h3 {
+		margin: 0px;
+		text-transform: uppercase;
+		font-family: "Courier Prime", monospace !important;
+		text-shadow: 2px 2px 5px black;
+	}
+
+	.plot-title {
+		font-style: bold;
+		font-variant: small-caps;
+	}
+
+	.more-story {
+		text-transform: uppercase;
+		font-size: 90%;
+		text-align: right;
+	}
+
 }
 
 //BUTTONS
