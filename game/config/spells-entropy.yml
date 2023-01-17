@@ -39,7 +39,6 @@ spells:
     desc: 'Target loses their strength, becoming physically weak and fatigued. '
     duration: 1 round
     effect: Debuff
-    is_potion: true
     level: 2
     line_of_sight: true
     name: Touch of Enfeeblement
