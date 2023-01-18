@@ -134,7 +134,6 @@ spells:
     desc: "The target's is distracted, reducing their chance of success in their intended action."
     duration: 2 rounds
     effect: Psionic
-    is_potion: true
     level: 3
     line_of_sight: true
     name: Distract
@@ -150,7 +149,6 @@ spells:
     desc: "Give an incorporeal spirit a physical form, capable of both receiving and doing damage, for a short time."
     duration: 6 rounds
     effect: Other
-    is_potion: true
     level: 3
     line_of_sight: true
     name: Manifest Spirit
@@ -186,7 +184,6 @@ spells:
     desc: The target's mind focuses sharply, increasing their chance of succeeding in their intended action.
     duration: 2 rounds
     effect: Buff
-    is_potion: true
     level: 4
     line_of_sight: true
     name: Focus
@@ -217,7 +214,6 @@ spells:
     damage_type: Psionic
     desc: Put a weak ghost to rest.
     effect: Other
-    is_potion: true
     level: 4
     line_of_sight: true
     name: Restful Spirit

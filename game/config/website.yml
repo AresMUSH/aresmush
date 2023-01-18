@@ -44,7 +44,7 @@ website:
     - title: Policies
       route: wiki-page
       id: policies
-      id: guide:join_us
+      id: ooc:policies
     - title: Staff Team
       route: wiki-page
       id: ooc:staff
@@ -172,7 +172,7 @@ website:
       route: roster
     - title: NPCs
       route: wiki-page
-      id: world:npcs
+      id: npc
     - title: Cryptids
       route: creatures
     - title: Spells
@@ -281,6 +281,7 @@ website:
     bonding: world:bond
     bond: world:bond
     bonded: world:bond
+    focus: world:bond
     locations: world:locations
     cradle: world:cradle
     cradle_s: world:cradle

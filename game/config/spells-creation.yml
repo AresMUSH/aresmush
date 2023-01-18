@@ -266,7 +266,6 @@ spells:
     desc: Provide a middling amount of healing magic to a target's most severe treatable wound, speeding their healing by up to nearly a week and restoring some of their vigor.
     effect: Heal
     heal_points: 7
-    is_potion: true
     level: 5
     line_of_sight: true
     name: Medium Heal

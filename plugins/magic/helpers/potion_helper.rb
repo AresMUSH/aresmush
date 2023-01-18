@@ -18,7 +18,8 @@ module AresMUSH
           if hours_to_creation < 1
             PotionsHas.create(name: p.name, character: char)
             message = t('magic.potion_completed', :potion => p.name)
-            Mail.send_mail([char.name], t('magic.potion_completed_subj', :potion => p.name), message, nil)
+            Login.emit_if_logged_in self.target, message
+            Login.notify(self.target, :item, message, nil)
             p.delete
           else
             p.update(hours_to_creation: hours_to_creation)
