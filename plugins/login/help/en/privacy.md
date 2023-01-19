@@ -9,7 +9,7 @@ tutorial: true
 
 On Shattered, no staff member will spy on player activities. They have no access to a 'dark' setting, no way to view private scenes, and no access to private communication such as mail or pages.
 
-The following information provides more details about how Ares works in terms of privacy. Spirit Lake has not made any changes to these functions.
+The following information provides more details about how Ares works in terms of privacy. Shattered has not made any changes to these functions.
 
 The game admin (Nessie) is the only staff member with access to error logs.
 # Data and Privacy on Ares Games
