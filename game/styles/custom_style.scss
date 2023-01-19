@@ -781,6 +781,20 @@ button {
 
 //WIKI INCLUDES
 
+//ENCLAVE BOX
+
+.enclave-box {
+	max-width: 50%;
+	float: right;
+	background-image: url(/game/uploads/theme_images/leatherbg.jpg)
+}
+
+@media only screen and (max-width:767px) {
+	.enclave-box {
+		max-width: unset;
+	}
+}
+
 //PAGE BOX (SMALL)
 
 .pagebox {
