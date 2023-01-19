@@ -126,7 +126,7 @@ spells:
     school: Entropy
     target_num: 3
   Flesh Wound:
-    available: false
+    available: true
     casting_time: 1 round
     damage_desc: Flesh Wound Spell
     damage_inflicted: FLESH
