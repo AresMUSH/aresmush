@@ -26,7 +26,9 @@ module AresMUSH
       char.update(roster_job: nil)
       #My changes
       char.update(chargen_locked: true)
-      Jobs.close_job(Game.master.system_character, char.approval_job, "Character added to roster.")
+      if char.approval_job
+        Jobs.close_job(Game.master.system_character, char.approval_job, "Character added to roster.")
+      end
       char.update(approval_job: nil)
       Roles.remove_role(char, "approved")
 
@@ -92,13 +94,13 @@ module AresMUSH
            category = Global.read_config('idle', 'roster_app_category') || "APP"
            title = t('idle.roster_app_title', :name => model.name)
            body = t('idle.roster_app_body', :target => model.name, :name => enactor_name, :app => app_text )
-           if (!enactor || enactor.is_guest?)
+          #  if (!enactor || enactor.is_guest?)
             #My Changes
             submitter = model
             #  submitter = Game.master.system_character
-           else
-             submitter = enactor
-           end
+          #  else
+          #    submitter = enactor
+          #  end
            status = Jobs.create_job(category, title, body, submitter)
            if (status[:job])
              model.update(roster_job: status[:job])
