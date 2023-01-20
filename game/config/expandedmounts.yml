@@ -1,7 +1,7 @@
 ---
 expandedmounts:
   magic_blurb: 'Mythics have access to either <a href="/school/aether">Aether</a> or <a href="/school/entropy">Entropy</a> magic.
-    <ul><li>Spells cost 1 AP per level.</li>
+    <ul><li>Spells cost 1/2 AP per level.</li>
     <li>You can spend 25 AP on spells (both mage and mythic).</li>
     <li>Spells must be in your mythic school.</li>
     <li>You must have a spell in each previous level.</li></ul>'
