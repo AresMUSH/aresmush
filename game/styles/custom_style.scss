@@ -595,6 +595,11 @@ body{
 
 	a {
 		font-size: 110%;
+		color: $darker-green;
+	}
+
+	a:hover {
+		color: $darker-rust;
 	}
 
 	h3 {
