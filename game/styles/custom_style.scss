@@ -520,6 +520,10 @@ body{
 	position:relative;
 	width: 100%;
 	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+
+	a {
+		color: $darker-green;
+	}
 }
 .torn_container>div:first-child{
 	margin-left:var(--torn-shadow-offset-x);
@@ -595,7 +599,6 @@ body{
 
 	a {
 		font-size: 110%;
-		color: $darker-green;
 	}
 
 	a:hover {
