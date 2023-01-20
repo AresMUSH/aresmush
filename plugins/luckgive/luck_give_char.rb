@@ -8,15 +8,17 @@ module AresMUSH
       luck_record.each { |r| r.delete }
     end
   end
+
+  class LuckRecord < Ohm::Model
+    include ObjectModel
+
+    index :character
+    reference :character, "AresMUSH::Character"
+    attribute :reason
+    attribute :from
+
+  end
 end
 
 
-class LuckRecord < Ohm::Model
-  include ObjectModel
 
-  index :character
-  reference :character, "AresMUSH::Character"
-  attribute :reason
-  attribute :from
-
-end
