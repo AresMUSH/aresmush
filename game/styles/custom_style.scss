@@ -1139,14 +1139,14 @@ button {
 	text-align: right;
 }
 
-.user-bar a:hover, a:focus {
+.user-bar a:hover, .user-bar a:hover a:focus {
 	color: $secondary-color;
 }
 
 //CHAR PAGES
 
 .profile-box {
-	background-color: $darker-grey;
+	background-color: rgba(35, 39, 42, 0.9);
 }
 
 .profile-divider {
@@ -1156,6 +1156,28 @@ button {
 
 .profile-box .row {
     border-bottom: 1px solid #191919;
+    margin: 0;
+    padding: 10px;
+}
+
+.profile-box>.row:first-child {
+    font-weight: 400;
+    font-size: 1.75em;
+    padding: 25px 25px 15px;
+    margin: 0 0 11px;
+    background-color: $slate;
+    color: $light-grey;
+    letter-spacing: .1em;
+    font-family: 'Homemade Apple', monospace;
+    border: 0;
+}
+
+.profile-box>.row:first-child>div:nth-child(2) {
+     width: 100%!important;
+}
+
+.profile-box>.row:first-child>div:first-child {
+    display: none
 }
 
 .profile-tab .nav-tabs > .nav-item:first-child > .nav-link {
@@ -2493,7 +2515,7 @@ table a:hover {
 	color: $darkest-rust
 }
 
-table .user-bar a:hover, a:focus {
+table .user-bar a:hover, table .user-bar a:focus {
 	color: $darkest-rust
 }
 
