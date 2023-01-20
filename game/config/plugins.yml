@@ -20,6 +20,7 @@ plugins:
   - postevent
   - openweather
   - compliments
+  - luckgive
   optional_plugins:
   - achievements
   - chargen

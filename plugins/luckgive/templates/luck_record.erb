@@ -1,0 +1,16 @@
+%lh
+<%= "%xc" -%>
+<%= t('luckgive.luck_record_title', :name => char.name.upcase)  -%>
+<%= " ("  -%>
+<%= luck -%>
+<%= " LP)%xn"  %>
+
+<% paginator.page_items.each do |a| -%>
+<%= "%xcLuck from "  -%>
+<%=  a.from -%>
+<%=  right(a.created_at.strftime("%Y-%m-%d"), 62 ) -%>
+<%= "%xn"  %>
+<%=  a.reason %>
+
+<% end %>
+<%= paginator.page_footer %>
