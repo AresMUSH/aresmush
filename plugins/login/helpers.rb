@@ -194,11 +194,11 @@ module AresMUSH
       return nil if !name
 
       # EM Changes
-      found = Character.find_one_by_name(name) || Mount.named(name)
+      found = Character.find_one_by_name(name)
       #/EM Changes
 
       # They can have their own name
-      return nil if enactor && found == enactor || enactor && found == enactor.bonded
+      return nil if enactor && found == enactor
 
       # Only look for an exact name match.
       if (found && (found.name_upcase == name.upcase || found.alias_upcase == name.upcase))
