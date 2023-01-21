@@ -2,7 +2,7 @@
 expandedmounts:
   magic_blurb: 'Mythics have access to either <a href="/school/aether">Aether</a> or <a href="/school/entropy">Entropy</a> magic.
     <ul><li>Spells cost 1/2 AP per level.</li>
-    <li>You can spend 25 AP on spells (both mage and mythic).</li>
+    <li>You can spend 25 AP on spells (mage and mythic combined).</li>
     <li>Spells must be in your mythic school.</li>
     <li>You must have a spell in each previous level.</li></ul>'
   cg_blurb: All Wardens are bonded to a creature known as a mythic. Through this bond, they share their magic. You'll create your mythic in CG, though you can flesh them out later.

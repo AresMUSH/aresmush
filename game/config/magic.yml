@@ -96,8 +96,8 @@ magic:
     Total: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
   item_category: SYS
   cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/creation">Creation</a> magic.
-    <ul><li>Spells cost 1 AP per level.</li>
-    <li>You can spend 25 AP on spells (both mage and mythic).</li>
+    <ul><li>Spells cost 1/2 AP per level.</li>
+    <li>You can spend 25 AP on spells (mage and mythic combined).</li>
     <li>Spells must be in your mage school.</li>
     <li>You must have a spell in each previous level.</li></ul>'
   lorehook_blurb: 'Lore Hooks are bits of fun lore that are unique to you. Storytellers begin working
