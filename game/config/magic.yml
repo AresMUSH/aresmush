@@ -1,7 +1,7 @@
 ---
 magic:
   magic_attribute: "Magic"
-  spell_max: 20
+  spell_max: 30
   cg_spell_max: 7
   cg_max_spell_level: 5
   cg_days_to_choose_spells: 10
