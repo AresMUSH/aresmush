@@ -24,8 +24,8 @@ module AresMUSH
         errors.concat [t('expandedmounts.need_mount_type')] if chargen_data[:custom][:mount_type] == ""
         errors.concat [t('expandedmounts.need_mount_name')] if chargen_data[:custom][:mount_name] == ""
         mount =  Mount.named(chargen_data[:custom][:mount_name])
-        char = Character.named(chargen_data[:custom][:mount_name])
-        errors.concat [t('expandedmounts.already_mount_named')] if (mount && mount.bonded != char) || char
+        char_named = Character.named(chargen_data[:custom][:mount_name])
+        errors.concat [t('expandedmounts.already_mount_named')] if (mount && mount.bonded != char) || (char_named && char.name != char_named)
         #Minor school can be set separately from the mount, so is not in mount_data
         errors.concat [t('expandedmounts.need_school')] if chargen_data[:custom][:minor_school]  == ""
       end
