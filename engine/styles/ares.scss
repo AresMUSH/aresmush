@@ -294,15 +294,17 @@ h2
     padding-bottom: 10px;
 }
 
-
-td, .table th, .table td {
-      padding: 5px;
-      vertical-align: middle;
+.table th {
+    padding: 5px;
+    vertical-align: middle;
+    color: $primary-words-color;
 }
 
-.table-striped > tbody > tr:nth-of-type(odd),
-.table-striped > tbody > tr:nth-of-type(even) {
-  color: $text-color;
+
+td, .table td {
+    padding: 5px;
+    vertical-align: middle;
+    color: $text-color;
 }
 
 textarea.pre {
@@ -415,6 +417,7 @@ textarea,
   transition: border 0.3s linear;
   padding-top: 4px; 
   padding-bottom: 4px; 
+  max-width: 100%;
 }
 
 
@@ -1789,6 +1792,20 @@ JOBS SCREEN
 }
 
 /* -------------------------
+MAIL
+---------------------------- */
+
+.mail-selected-tag {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.mail-message-inbox {
+  font-size: 2em;
+  padding: 10px 0px 10px 0px;
+}
+
+/* -------------------------
 OTHER
 ------------------------- */
 
@@ -1834,6 +1851,10 @@ OTHER
 
 .xp-list h1 {
   font-size: 1em;
+}
+
+.fs3-damage-list {
+  margin-bottom: 20px;
 }
 
 .fs3-damage-block {
@@ -1907,6 +1928,10 @@ ul.reference-help-list > li:not(:last-child)::after {
   padding-right: 10px;
 }
 
+.server-plugin {
+  padding-right: 15px;
+}
+
 .prefs-list-item {
   display: flex;
   flex-direction: row;
@@ -1917,6 +1942,20 @@ ul.reference-help-list > li:not(:last-child)::after {
   padding-left: 20px;
 }
 /*.char-scene-list li:before { content: "\2666  "; }*/
+
+.event-signup-details {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.event-signup-item {
+  margin: 10px;
+}
+
+.event-signup-char {
+  flex-basis: 30%;
+}
 
 @media (max-width:992px)  { 
 

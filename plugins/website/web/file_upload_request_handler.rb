@@ -5,6 +5,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         name = (request.args[:name] || "").downcase
+        description = request.args[:description]
         allow_overwrite = request.args[:allow_overwrite] ? request.args[:allow_overwrite] : false
         folder = (request.args[:folder] || "").downcase
         size_kb = (request.args[:size_kb] || "").to_i
@@ -20,6 +21,7 @@ module AresMUSH
         end
         
         is_wiki_admin = Website.can_manage_wiki?(enactor)
+        is_theme_admin = Website.can_manage_theme?(enactor)
         extension = File.extname(name) || ""
 
         allowed_extensions = (Global.read_config("website", "uploadable_extensions") || []).map { |e| e.downcase }
@@ -36,7 +38,7 @@ module AresMUSH
           allow_overwrite = true
         end
         
-        if (folder && folder.downcase == "theme_images" && !is_wiki_admin)
+        if (folder && folder.downcase == "theme_images" && !is_theme_admin)
           return { error: t('webportal.theme_locked_to_admin') }
         end
         
@@ -66,6 +68,12 @@ module AresMUSH
           return { error: t('webportal.file_already_exists')  }
         end
         
+        file_meta = WikiFileMeta.find_meta(folder, name)
+        if (file_meta)
+          file_meta.update(uploaded_by: enactor, description: description)
+        else
+          WikiFileMeta.create(name: name, folder: folder, description: description, uploaded_by: enactor)
+        end
         
         File.open(path, 'wb') {|f| f.write Base64.decode64(data.after(',')) }
         

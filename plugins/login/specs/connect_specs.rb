@@ -10,8 +10,8 @@ module AresMUSH
         stub_global_objects      
         @found_char = double
         @client = double
-        allow(@client).to receive(:ip_addr) { "" }
-        allow(@client).to receive(:hostname) { "" }
+        allow(@client).to receive(:ip_addr) { "ip" }
+        allow(@client).to receive(:hostname) { "host" }
         allow(@found_char).to receive(:login_failures) { 0 }
         allow(@found_char).to receive(:is_statue?) { false }
         allow(@found_char).to receive(:name) { "" }
@@ -67,42 +67,27 @@ module AresMUSH
           allow(Login).to receive(:terms_of_service) { nil }
           allow(@client).to receive(:program) { {} }       
           allow(Login).to receive(:can_login?) { true }
+          allow(@found_char).to receive(:boot_timeout) { nil }
           @handler.parse_args
         end
              
         context "failure" do
-          it "should fail if there isn't a matching char" do
-            expect(Character).to receive(:find_any_by_name).with("Bob") { [] }
+          it "should fail if char not found" do
+            expect(Character).to receive(:find_any_by_name).with("Bob") { [ ] }
             expect(Global).to_not receive(:queue_event)
             expect(@client).to receive(:emit_failure).with("db.object_not_found")
             @handler.handle
           end
-                         
-          it "should fail if the passwords don't match" do
-            expect(@found_char).to receive(:compare_password).with("password") { false }
-            expect(Character).to receive(:find_any_by_name).with("Bob") { [@found_char] }
-            expect(@client).to receive(:emit_failure).with("login.password_incorrect")
-            expect(@found_char).to receive(:update).with(login_failures: 1)
+                      
+          it "should fail if check login fails" do
+            expect(Character).to receive(:find_any_by_name).with("Bob") { [ @found_char ] }
+            fail_status = { status: 'error', error: 'error' }
+            expect(Login).to receive(:check_login).with(@found_char, "password", "ip", "host") { fail_status }
             expect(Global).to_not receive(:queue_event)
+            expect(@client).to receive(:emit_failure).with("error")
             @handler.handle
           end
-          
-          it "should fail if char is a statue" do
-            expect(Character).to receive(:find_any_by_name).with("Bob") { [@found_char] }
-            expect(@found_char).to receive(:is_statue?) { true }
-            expect(@client).to receive(:emit_failure).with("dispatcher.you_are_statue")            
-            expect(Global).to_not receive(:queue_event)
-            @handler.handle
-          end
-          
-          it "should fail if the char isn't allowed to log in" do
-            allow(Character).to receive(:find_any_by_name) { [ @found_char ] }
-            expect(Login).to receive(:can_login?) { false }
-            expect(Login).to receive(:restricted_login_message) { "" }
-            expect(@client).to receive(:emit_failure).with("login.login_restricted")
-            @handler.handle
-          end
-          
+                      
         end
      
         context "success" do
@@ -110,10 +95,11 @@ module AresMUSH
             allow(Login).to receive(:find_client).with(@found_char) { nil }
             allow(@found_char).to receive(:id) { 3 }
             expect(Character).to receive(:find_any_by_name) { [ @found_char ] }
-            allow(@found_char).to receive(:compare_password).with("password") { true }  
-            allow(@found_char).to receive(:update) {}
             allow(dispatcher).to receive(:queue_event)  
-            allow(@client).to receive(:char_id=)      
+            allow(@client).to receive(:char_id=)    
+            allow(@found_char).to receive(:update)
+            ok_status = { status: 'ok' }  
+            allow(Login).to receive(:check_login) { ok_status }
           end
           
           it "should disconnect an existing client" do
@@ -125,21 +111,23 @@ module AresMUSH
             @handler.handle            
           end
           
-          it "should compare passwords" do
-            expect(@found_char).to receive(:compare_password).with("password")
+          it "should check login details" do
+            ok_status = { status: 'ok' }  
+            expect(Login).to receive(:check_login).with(@found_char, "password", "ip", "host") { ok_status }
             @handler.handle
           end        
        
+          it "should reset login failures and boot timeout" do
+            expect(@found_char).to receive(:update).with({login_failures: 0})
+            expect(@found_char).to receive(:update).with({boot_timeout: nil})
+            @handler.handle
+          end
+                        
           it "should set the char on the client" do
             expect(@client).to receive(:char_id=).with(3)
             @handler.handle
           end
           
-          it "should reset login failures" do
-            expect(@found_char).to receive(:update).with(login_failures: 0)
-            @handler.handle
-          end
-
           it "should announce the char connected event" do
             expect(dispatcher).to receive(:queue_event) do |event|
               expect(event.class).to eq CharConnectedEvent
@@ -147,7 +135,6 @@ module AresMUSH
             end
             @handler.handle
           end
-          
         
           it "should prompt with the terms of service if defined and not acknowledged" do
             allow(Login).to receive(:terms_of_service) { "tos text" }
@@ -163,7 +150,6 @@ module AresMUSH
             expect(@client).to receive(:char_id=).with(3)
             @handler.handle
           end
-          
         end      
       end
     end

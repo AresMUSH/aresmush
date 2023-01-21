@@ -141,9 +141,7 @@ module AresMUSH
       end
       
       def exit_name(e)
-        start_bracket = Global.read_config("describe", "exit_start_bracket")
-        end_bracket = Global.read_config("describe", "exit_end_bracket")
-        "#{start_bracket}#{e.name}#{end_bracket}"
+        Describe.format_exit_name(e)
       end
       
       def exit_destination(e)

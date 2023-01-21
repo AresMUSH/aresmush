@@ -9,6 +9,8 @@ module AresMUSH
         desc = request.args[:desc]
         can_join = request.args[:can_join] || []
         can_talk = request.args[:can_talk] || []
+        discord_webhook = request.args[:discord_webhook]
+        discord_channel = request.args[:discord_channel]
         
         error = Website.check_login(request)
         return error if error
@@ -36,8 +38,12 @@ module AresMUSH
         channel.set_roles(can_join, :join)
         channel.set_roles(can_talk, :talk)
         
-        channel.update(name: name, color: color, description: desc ? Website.format_input_for_mush(desc) : "")
-        
+        channel.update(name: name,
+           color: color, 
+             description: desc ? Website.format_input_for_mush(desc) : "",
+             discord_webhook: discord_webhook,
+             discord_channel: discord_channel)
+
         channel.characters.each do |c|
           if (!Channels.can_join_channel?(c, channel))
             Channels.leave_channel(c, channel)

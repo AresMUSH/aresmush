@@ -51,9 +51,7 @@ module AresMUSH
     end
     
     def is_signed_up?(char)
-      return nil if !char
-      return true if self.character == char
-      return self.signups.any? { |e| e.character == char }
+      Events.is_signed_up?(self, char)
     end
     
     def is_past?

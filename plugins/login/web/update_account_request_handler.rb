@@ -7,7 +7,7 @@ module AresMUSH
         email = request.args[:email]
         timezone = request.args[:timezone]
         pw = request.args[:confirm_password]
-        unified_play_screen = request.args[:unified_play_screen]
+        unified_play_screen = (request.args[:unified_play_screen] || "").to_bool
 
         error = Website.check_login(request)
         return error if error
@@ -44,7 +44,9 @@ module AresMUSH
           end
         end
         
-        enactor.update(unified_play_screen: unified_play_screen)
+        AresCentral.alts(enactor).each do |alt|
+          alt.update(unified_play_screen: unified_play_screen)
+        end
         
         {
         }

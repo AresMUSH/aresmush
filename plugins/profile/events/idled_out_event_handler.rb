@@ -11,6 +11,11 @@ module AresMUSH
         if (char.content_tags.any? { |t| t.start_with?("player")})
           Website.update_tags(char, char.content_tags.select { |t| !t.start_with?("player:") })
         end
+        
+        # Bit random for this to be here, but there's no better place to put it.
+        char.update(screen_reader: false)
+        char.update(color_mode: "FANSI")
+        
       end
     end
   end

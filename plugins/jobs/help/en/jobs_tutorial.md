@@ -46,7 +46,7 @@ You can loop in other players to a job by adding them as 'participants'. These p
 
 Anyone with the `can_acess_jobs` permission has access to the jobs system, but you can fine-tune access using roles.  Admins have access to all job categories, you can customize what other roles can access using the `job/categoryroles` command.
 
-For example, you might add the 'builder' role to the BUILD category to allow builders to see building-related jobs.  If you create [custom roles](/tutorials/manage/roles.html) for app/plot staff, you could assign those roles to their respective job categories. They will not have access to other categories.
+For example, you might add the 'builder' role to the BUILD category to allow builders to see building-related jobs.  If you create [custom roles](https://aresmush.com/tutorials/manage/roles.html) for app/plot staff, you could assign those roles to their respective job categories. They will not have access to other categories.
 
 ## Filtering and Searching
 
@@ -75,6 +75,6 @@ Jobs are small and database space shouldn't ever be an issue.  But if it is, and
 
 [Request Commands](/help/requests) (for players)
 [Job Commands](/help/jobs) (for admin)
-[Managing Jobs](/help/requests) (for setting up the job system)
+[Managing Jobs](/help/manage_jobs) (for setting up the job system)
 
 

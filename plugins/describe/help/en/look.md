@@ -18,3 +18,4 @@ The `look` command is used to look around.  You can also look at a particular ob
 > **Tip:** You can also specify a list of things to look at, separated by commas.  For example:  `look here/photos,here/big sign`.
 
 `glance` - Takes a quick look at everyone in your room.
+`exits` - Takes a quick look at just the exits in your room.

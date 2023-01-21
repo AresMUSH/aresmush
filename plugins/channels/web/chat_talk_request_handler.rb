@@ -25,6 +25,11 @@ module AresMUSH
         options = Channels.get_channel_options(sender, channel)
         message = Channels.pose_to_channel channel, sender, message, options.title   
         
+        # Update last online time for alts who maybe didn't log in directly
+        if (Time.now - sender.last_on > 86400)
+          Login.update_site_info(request.ip_addr, request.hostname, sender)
+        end
+        
         {
           message: Website.format_markdown_for_html(message)
         }

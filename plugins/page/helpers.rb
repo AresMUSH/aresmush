@@ -230,7 +230,9 @@ module AresMUSH
     
     def self.build_poseable_web_chars_data(enactor, thread)
       alts = AresCentral.play_screen_alts(enactor)
-      alts.select { |a| thread.characters.include?(a) }.map { |a| {
+      alts.select { |a| thread.characters.include?(a) }
+        .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
+        .map { |a| {
                  name: a.name,
                  icon: Website.icon_for_char(a),
                  id: a.id

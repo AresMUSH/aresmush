@@ -145,7 +145,11 @@ module AresMUSH
     
     def self.lookup_hostname(ip)
       begin
-        return Resolv.getname ip
+        Resolv::DNS.open do |dns|
+          dns.timeouts = 1
+          host = dns.getname ip
+          return host.to_s
+        end
       rescue
         return ""
       end
