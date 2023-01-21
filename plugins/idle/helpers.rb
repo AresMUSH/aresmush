@@ -261,7 +261,7 @@ module AresMUSH
       #            "#{t('idle.roster_password_set', :password => newpass)}%R%R" +
       #            "#{comment}"
       #My Changes
-        message = "#{t('idle.roster_approval_msg')}%R%R" +
+        message = "#{Global.read_config("chargen", "approval_message")}%R%R" +
           "#{comment}"
        Jobs.close_job(enactor, job, message)
        model.update(roster_job: nil)
