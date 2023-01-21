@@ -30,7 +30,7 @@ en:
 #--------------------------
         mount_created: "%{name} created."
         mount_updated: "%{name} updated."
-        already_mount_named: "There is already a mythic using that name."
+        already_mount_named: "There is already a character or mythic using that name."
         need_mount_type: "You must set the mythic type before saving."
         need_mount_name: "You must set the mythic name before saving."
         need_minor_school: "You must set the mythic school before saving."
