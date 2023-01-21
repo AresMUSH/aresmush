@@ -15,7 +15,7 @@ chargen:
   - bg %{name}
   - hooks %{name}
   - sheet %{name}
-  approval_message: "Congratulations, your application has been approved! Welcome to the Wardens.\n\nCheck out the [Getting Started](/wiki/guide:getting_started) guide for more help, including information on how Ares works, how to find RP and get involved in the story, and more."
+  approval_message: "Welcome to the Wardens! At North Weyr, things are currently in upheaval after the death of the respected Warden Commander Morrow and the subsequent controversial election of Warden Commander Warner. Warden posts are being shuffled, with many long-time weyr residents posted elsewhere while new faces populate the weyr.\n\nCheck out the [Getting Started](/wiki/guide:getting_started) guide for more help, including where to set your home, how to find RP and get involved in the story, and more."
   arrivals_category: New Arrivals
   bg_blurb: "A background is your character's backstory or history.  Please keep backgrounds to
     4,000 characters (about 700 words) for readability.<br><br>Some questions to consider in your background
