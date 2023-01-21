@@ -3,6 +3,9 @@ channels:
   announce_channel: Game
   approved_channels:
   - RP Requests
+  - Big Scene
+  - Chat
+  - Game
   clear_history_cron:
     hour:
     - 4
@@ -10,7 +13,7 @@ channels:
     - 47
   default_channels:
   - Questions
-  - Chat
+  - New Characters
   discord_gravatar_style: retro
   discord_prefix: "[D]"
   end_marker: "]"
