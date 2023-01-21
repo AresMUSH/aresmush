@@ -45,11 +45,11 @@ module AresMUSH
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
         return {
-          mythic_name: char.bonded.name,
-          mythic_about: char.bonded.about,
-          mythic_desc: char.bonded.description,
-          mythic_shortdesc: char.bonded.shortdesc,
-          mythic_gender: char.bonded.gender,
+          mythic_name: char.bonded.name || nil,
+          mythic_about: char.bonded.about || nil,
+          mythic_desc: char.bonded.description || nil,
+          mythic_shortdesc: char.bonded.shortdesc || nil,
+          mythic_gender: char.bonded.gender || nil,
         }
       end
 
