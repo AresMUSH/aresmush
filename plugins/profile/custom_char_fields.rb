@@ -99,7 +99,9 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_profile_edit(char, char_data)
-        ExpandedMounts.save_mount(char, char_data)
+        if char.bonded
+          ExpandedMounts.save_mount(char, char_data)
+        end
         return []
       end
 
