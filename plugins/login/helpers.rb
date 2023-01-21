@@ -198,7 +198,7 @@ module AresMUSH
       #/EM Changes
 
       # They can have their own name
-      return nil if enactor && found == enactor
+      return nil if enactor && found == enactor || enactor && found == enactor.bonded
 
       # Only look for an exact name match.
       if (found && (found.name_upcase == name.upcase || found.alias_upcase == name.upcase))
