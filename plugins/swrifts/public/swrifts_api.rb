@@ -717,13 +717,14 @@ module AresMUSH
 						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the traits's to find the one(s) that have been selected
 						if (edgsel)
 							cgdesc = edgsel['description']
+							cgpoints = edgsel['hind_points']
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
 							else
 								trexcludes = 'false';
 							end
 						end
-						cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}
+						cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, points: cgpoints, trexcludes: trexcludes}
 				end
 			end
 
@@ -742,6 +743,7 @@ module AresMUSH
 						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first
 						if (edgsel)
 							cgdesc = edgsel['description']
+							cgpoints = edgsel['hind_points']
 							trdisabled = true;
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
@@ -751,7 +753,7 @@ module AresMUSH
 						else
 							trexcludes = 'false';
 						end
-						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes }
+						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, points: cgpoints, trexcludes: trexcludes }
 					end
 				end
 			end
