@@ -1,5 +1,5 @@
 module AresMUSH
-  module Demographics    
+  module Demographics
 
     def self.can_set_demographics?(char)
       char && char.has_permission?("manage_demographics")
@@ -12,17 +12,17 @@ module AresMUSH
     def self.all_demographics
       Global.read_config("demographics", "demographics") || []
     end
-    
+
     def self.all_groups
       Global.read_config("demographics", "groups") || {}
     end
-    
+
     def self.genders
-      gender_config = Global.read_config("demographics", "genders") 
+      gender_config = Global.read_config("demographics", "genders")
       return [ 'Male', 'Female', 'Other' ] if !gender_config
       gender_config.keys
     end
-    
+
     def self.gender_config(gender)
       all_config = Global.read_config("demographics", "genders") || {}
       default_config = {
@@ -34,14 +34,14 @@ module AresMUSH
       return default_config if !gender
       all_config[gender.titlecase] || default_config
     end
-    
+
     def self.get_group(name)
       return nil if !name
       key = all_groups.keys.find { |g| g.downcase == name.downcase }
       return nil if !key
       return all_groups[key]
     end
-    
+
     def self.census_types
       types = Demographics.all_groups.keys.map { |t| t.titlecase }
       if (Demographics.all_demographics.include?('gender'))
@@ -54,9 +54,10 @@ module AresMUSH
       if (Ranks.is_enabled?)
         types << 'Rank'
       end
+      types << 'Mage School'
       types.sort
     end
-    
+
     def self.census_by(&block)
       counts = {}
       Chargen.approved_chars.each do |c|
@@ -68,12 +69,12 @@ module AresMUSH
       end
       counts.sort
     end
-    
+
     def self.set_group(char, group_name, group)
       groups = char.groups
       groups[group_name.downcase] = group
-      char.update(groups: groups)      
+      char.update(groups: groups)
     end
-    
+
   end
 end
