@@ -16,6 +16,8 @@ module AresMUSH
           groups = Chargen.approved_chars.group_by { |c| c.rank}
         elsif (filter == 'Mage School')
           groups = Chargen.approved_chars.group_by { |c| c.major_schools.first}
+        elsif (filter == 'Mythic School')
+          groups = Chargen.approved_chars.group_by { |c| c.minor_schools.first}
         else
           groups = Chargen.approved_chars.group_by { |c| c.group(filter)}
         end
