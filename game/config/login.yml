@@ -3,8 +3,8 @@ login:
   activity_cron:
     minute:
     - 0
-  allow_creation: true
-  allow_web_registration: true
+  allow_creation: false
+  allow_web_registration: false
   blacklist_cron:
     day:
     - 1
