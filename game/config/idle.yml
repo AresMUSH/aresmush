@@ -15,7 +15,7 @@ idle:
   monthly_reminder_title: Monthly Chores
   monthly_reminder: It's time to run the idle sweep!
   reminder_category: MISC
-  use_roster: true
+  use_roster: false
   idle_category: Announcements
   days_before_idle: 30
   arrivals_category: New Arrivals
