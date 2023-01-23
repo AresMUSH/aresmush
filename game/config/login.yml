@@ -13,7 +13,7 @@ login:
     - 3
     minute:
     - 0
-  creation_not_allowed_message: 'Shattered will open Saturday, January 21.'
+  creation_not_allowed_message: 'Shattered is currently full. We hope to re-open applications sometime in February.'
   guest_disabled_message: 'Shattered will open Saturday, January 21.'
   guest_role: guest
   login_not_allowed_message: 'Shattered will open Saturday, January 21.'
