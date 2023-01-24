@@ -6,7 +6,9 @@ openweather:
 
   # Default climate for rooms without an area set.
   default_climate:
-      zip: '78132'
+    coords:
+      lat: 50.992625
+      lon: -118.193042
 
   # List of ares. Provide none for no weather, a zip code, or even coordinates
   # For openweather to pull weather data.
@@ -15,8 +17,8 @@ openweather:
       Offstage: none
       Polar:
         coords:
-            lat: -74.7
-            lon: 40.92
+          lat: -74.7
+          lon: 40.92
       Vegas:
         zip: '89109'
       Revelstoke:
