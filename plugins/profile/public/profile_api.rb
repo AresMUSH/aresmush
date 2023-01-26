@@ -5,7 +5,7 @@ module AresMUSH
       case field_type
 
       when 'bonded'
-        char.bonded.name
+        char.bonded&.name
 
       when 'major_school'
         char.major_schools.first
