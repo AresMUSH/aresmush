@@ -86,3 +86,4 @@ expandedmounts:
     - 37
   shortcuts:
     roll/mount: mount/roll
+    mythic: warden
