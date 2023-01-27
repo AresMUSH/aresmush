@@ -22,6 +22,10 @@ module AresMUSH
         end
       end
       case cmd.root
+      when "warden"
+        return WardenInfoCmd
+      end
+      case cmd.root
       when "mount"
         case cmd.switch
         when "hero"
