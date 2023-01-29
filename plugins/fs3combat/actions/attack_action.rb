@@ -5,10 +5,11 @@ module AresMUSH
       attr_accessor :mod, :is_burst, :called_shot, :crew_hit, :mount_hit, :mounted_names
       #/EM changes
       def prepare
+        #Magic changes
         if (self.action_args =~ /\>/)
           names = self.action_args.before(">")
           specials = self.action_args.after(">").split(",")
-          puts "Specials: #{specials}"
+        #/Magic Changes
         else
           names = self.action_args
           specials = []
