@@ -25,7 +25,7 @@ module AresMUSH
       def handle
         char = Character.named(self.name) || Mount.named(self.name)
         if (char)
-          die_result = FS3Skills.parse_and_roll(char, self.roll_str)
+          die_result = FS3Skills.parse_and_roll(char, self.roll_str, true)
 
         elsif (self.roll_str.is_integer?)
           die_result = FS3Skills.parse_and_roll(enactor, self.roll_str)
