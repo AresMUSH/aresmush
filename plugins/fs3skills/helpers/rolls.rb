@@ -13,7 +13,7 @@ module AresMUSH
       #EM Changes
       if char.combat && (char.combatant.is_mount? || char.bonded)
         dice = ExpandedMounts.dice_to_roll_for_combat_ability(char, roll_params)
-      elsif char.bonded || char.is_mount?
+      elsif (char.bonded && char.combat) || char.is_mount?
         dice = ExpandedMounts.dice_to_roll_for_ability(char, roll_params)
       else
         dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
