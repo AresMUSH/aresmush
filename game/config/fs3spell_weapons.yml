@@ -388,6 +388,9 @@ fs3combat:
 # WEAPON SPECIALS
 #---------------
   weapon specials:
+    Sparring:
+      description: Padded sparring equipment
+      lethality: -50
     #---------------
     # MAGIC ITEMS
     #---------------
