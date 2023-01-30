@@ -193,9 +193,9 @@ module AresMUSH
         FS3Combat.set_weapon(enactor, combatant, weapon, weapon_specials)
       end
 
-
       special_group = FS3Combat.armor_stat(weapon, "special_group") || ""
       allowed_specials = Global.read_config("fs3combat", "armor special groups", special_group) || []
+      armor_specials = []
       selected_armor_specials.each do |name|
         if (allowed_specials.include?(name))
           armor_specials << name
