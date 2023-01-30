@@ -316,7 +316,14 @@ module AresMUSH
       damaged_by = target.damaged_by
       damaged_by << caster_name
       target.update(damaged_by: damaged_by.uniq)
-      message = [t('magic.cast_damage', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :damage_desc => spell.downcase)]
+      if damage_inflicted.downcase == "impair"
+        desc = "%xyImpaired%xn"
+      elsif damage_inflicted.downcase == "flesh"
+        desc = "%xgFlesh Wound%xn"
+      else
+        desc = ""
+      end
+      message = [t('magic.cast_damage', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :damage_desc => desc)]
       return message
     end
 

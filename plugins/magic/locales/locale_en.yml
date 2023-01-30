@@ -65,7 +65,7 @@ en:
       will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
       not_ko: "%{target} is not knocked out."
 
-      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
+      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %{damage_desc} wound."
       cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod_msg} modification%xn."
       # cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
       not_spell: "That is not a spell."
