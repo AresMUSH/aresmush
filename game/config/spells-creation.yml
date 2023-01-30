@@ -355,6 +355,7 @@ spells:
     area: 10 yard radius
     available: true
     casting_time: 1 round
+    damage_type: Bypass
     desc: Grow an area of mushrooms in an area that you can see. As they grow, they release a poisonous gas into the surrounding air, affecting up to 3 targets.
     duration: 1 round
     effect: AOE Damage
