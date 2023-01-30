@@ -44,6 +44,7 @@ en:
       potion_ko: "You cannot use a potion while Knocked Out."
       potion: "%{name} uses a %xM%{potion}%xn potion."
       potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
+      potion_fatigue_heal: "%{name} uses a %xB%{potion}%xn potion. %{target} recovers %{points} points of mana."
       potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
       potion_shield: "%{name} uses a %xM%{potion}%xn potion. %{target} is protected against %{type} attacks."
       potion_heal_ko_target: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
