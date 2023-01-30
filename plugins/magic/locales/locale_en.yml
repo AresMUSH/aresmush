@@ -80,6 +80,7 @@ en:
     # HeALING. RES'ING, AND REVIVING
     # ----------------------------
       cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
+      treat_success_not_dying: "%{healer} tends to %{patient} and treats their worst wound successfully. They are no longer dying."
       no_healable_wounds: "%{target} has no healable wounds."
       cast_heal_no_effect: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}, but %{target} has no healable wounds. The spell has no effect."
       cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
