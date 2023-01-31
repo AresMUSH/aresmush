@@ -490,3 +490,6 @@ randomscene:
   - "worry"
   - "write"
   - "yes"
+  shortcuts:
+    random: randomscene
+    rs: randomscene
