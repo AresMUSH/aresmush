@@ -1791,6 +1791,49 @@ JOBS SCREEN
   margin: 5px 0px 15px 0px;
 }
 
+.create-job-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  align-items: center;
+}
+
+.create-job-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
+
+.create-job-row .job-category {
+  height: 1.5em;
+}
+
+
+.display-job-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.display-job-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
+
+.display-job-row .display-job-selection {
+  align-self: center;
+  flex-basis: 400px;
+  flex-grow: 2;
+}
+
+.display-job-row .display-job-controls {
+  flex-basis: 200px;
+}
+
 /* -------------------------
 MAIL
 ---------------------------- */
