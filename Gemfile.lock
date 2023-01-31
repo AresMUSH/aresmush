@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (6.0.6)
+    activesupport (6.0.6.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -25,7 +25,7 @@ GEM
     aws-sigv4 (1.5.1)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     daemons (1.4.1)
     dentaku (3.5.0)
       concurrent-ruby
@@ -49,10 +49,11 @@ GEM
     jmespath (1.6.1)
     json (2.3.1)
     libv8-node (16.10.0.0-arm64-darwin)
+    libv8-node (16.10.0.0-x86_64-linux)
     log4r (1.1.10)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
-    minitest (5.16.3)
+    minitest (5.17.0)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
     nest (3.2.0)
@@ -101,12 +102,13 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.11)
     timezone (1.2.12)
-    tzinfo (1.2.10)
+    tzinfo (1.2.11)
       thread_safe (~> 0.1)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   activesupport (>= 6.0.3.1)
