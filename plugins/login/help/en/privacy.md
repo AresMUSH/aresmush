@@ -14,14 +14,16 @@ It's up to each individual Ares game to determine their privacy policies.  Ideal
 
 ## What Data Is Stored
 
-Here are the types of personal data that can be stored by the game:
+It’s important to draw a distinction between *logged* and *stored* data.
+
+Debug logs are plain-text, accessible by any admin, to track and troubleshoot what happens on the game. *Certain commands are not logged for privacy reasons*: connect/create (due to passwords), mails, pages/pms, poses, oocs, channel chat, and others.
+
+Stored data (in the database) is for the purpose of game features. This enables things like the web portal play screen, channel recall, sharing scenes on the wiki, etc. *All built-in commands limit stored data to people who should have access to it.* Game admin do not have ready access to everything, not even headwiz. See "Who Can View Your Data" below for details.
 
 * The **IP Address** and hostname you're connecting from is saved every time you connect.
 * Your **email address** and timezone is saved if you choose to provide it.
 * Your Ares **player handle**, friends list and handle preferences are saved if you choose to link a character to your handle.
 * **Conversations**--channel chat, private messages, poses and OOC chat (if scene logging is enabled) and mail messages--are all saved to the database and may contain personal information. (i.e. if you're chatting with your buddy about your family/job/hometown/etc.)
-
-Permission controls limit who can see this data, described in "Who Can View Your Data" below. 
 
 ## How Data Is Stored
 
@@ -33,7 +35,7 @@ Neither the database nor the log files are encrypted.  Passwords are hashed.
 
 ## Who Can View Your Data
 
-Debug logs and everything in the database is accessible to the game owner and players with coder privileges.  Beyond that, Ares commands limit who can view what.  But again we'll reiterate:
+All built-in commands limit stored data to people who should have access to it, as described below. But again we'll reiterate:
 
 > Just as with any online service, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with. Sensitive information is best kept off-game.
 
