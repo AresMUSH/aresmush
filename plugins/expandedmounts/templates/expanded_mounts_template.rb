@@ -12,7 +12,7 @@ module AresMUSH
       def mounts
         mounts = []
         Chargen.approved_chars.each do |c|
-          mounts.concat [c.bonded]
+          mounts.concat [c.bonded] if c.bonded
           puts "MOUNTS: #{mounts}"
         end
         mounts.sort_by { |a| a.name }
