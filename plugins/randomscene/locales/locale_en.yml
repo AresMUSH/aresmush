@@ -1,0 +1,8 @@
+---
+en:
+  randomscene:
+    invalid_name: "%xrCharacter not found.%xn"
+    random_scenario: "%xmRandom scenario:%xn %xh%{scenario}%xn %xmYour location is %xn%xh%{area}/%{room}.%xn"
+    npc_scenario: "%xmRandom scenario:%xn %xh%{npc} %{action}.%xn %xmYour location is %xn%xh%{area}/%{room}.%xn"
+    prompt_total: "%{prompts}%xmYour location is %xn%xh%{area}/%{room}.%xn"
+    prompt_piece: "%xm%{name}'s prompt is%xn %xh%{word}%xn. "

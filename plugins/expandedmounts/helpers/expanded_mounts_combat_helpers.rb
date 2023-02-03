@@ -97,6 +97,15 @@ module AresMUSH
         m.update(is_ko: false)
         m.update(rider: nil)
         m.update(passengers: nil)
+      if !combat.is_real?
+        wounds = m.damage
+        wounds.each do |d|
+          if (d.is_mock)
+            d.delete
+          end
+        end
+      end
+
       end
     end
 

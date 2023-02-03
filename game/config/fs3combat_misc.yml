@@ -1,6 +1,6 @@
 ---
 fs3combat:
-  default_type: Unarmed Combatant
+  default_type: Warden
   allow_vehicles: true
   allow_mounts: false
   stances:

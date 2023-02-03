@@ -22,7 +22,7 @@ module AresMUSH
         return t('magic.need_same_level', :spell => self.spell) if Magic.equal_level_spell?(enactor, self.spell) == false
         return t('magic.no_xp') if enactor.xp < 1
         return t('magic.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
-        if enactor.groups.values.include? self.school
+        if (enactor.major_schools.include? self.school) || (enactor.minor_schools.include? self.school)
           return nil
         else
           return t('magic.wrong_school')

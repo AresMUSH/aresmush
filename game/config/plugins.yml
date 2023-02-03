@@ -21,6 +21,7 @@ plugins:
   - openweather
   - compliments
   - luckgive
+  - randomscene
   optional_plugins:
   - achievements
   - chargen

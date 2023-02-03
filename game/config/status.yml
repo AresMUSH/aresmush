@@ -9,7 +9,7 @@ status:
     ADM: "%xb"
     WEB: "%xh"
   minutes_before_idle: 45
-  minutes_before_idle_disconnect: 300
+  minutes_before_idle_disconnect: 500
   afk_cron:
     minute:
     - 20
