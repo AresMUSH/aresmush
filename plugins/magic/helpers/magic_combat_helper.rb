@@ -2,6 +2,12 @@ require 'byebug'
 module AresMUSH
   module Magic
 
+    def self.combat_stop(combat)
+      combat.combatants.each do |c|
+        Magic.reset_magic_energy(c.associated_model)
+      end
+    end
+
     def self.get_associated_model(char_or_combatant)
       return char_or_combatant.associated_model if char_or_combatant.class == Combatant
       return char_or_combatant

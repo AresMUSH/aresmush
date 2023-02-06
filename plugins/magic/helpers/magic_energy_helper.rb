@@ -1,6 +1,12 @@
 module AresMUSH
   module Magic
 
+    def self.reset_magic_energy(char)
+      puts "Char: #{char.name}: #{char.magic_energy}"
+      char.update(magic_energy: char.total_magic_energy)
+      puts "Char: #{char.name}: #{char.magic_energy}"
+    end
+
     def self.set_npc_energy(npc, percent)
       new_energy = npc.total_magic_energy * percent
       npc.update(magic_energy: new_energy)
