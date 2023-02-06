@@ -38,6 +38,11 @@ fs3combat:
       armor: None
       hitloc: Humanoid
       defense_skill: Reflexes
+    Humanoid:
+      weapon: Unarmed
+      armor: None
+      hitloc: Humanoid
+      defense_skill: Reflexes
     # Unarmed:
     #   weapon: Unarmed
     #   armor: None
