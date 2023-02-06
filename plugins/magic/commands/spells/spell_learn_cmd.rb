@@ -67,7 +67,7 @@ module AresMUSH
           xp_needed = Magic.spell_xp_needed(self.spell)
           FS3Skills.modify_xp(enactor, -1)
           puts "CREATING SPELL"
-          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: false)
+          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed - 1, learning_complete: false)
           client.emit_success t('magic.start_learning', :spell => self.spell)
         end
 

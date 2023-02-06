@@ -85,13 +85,13 @@ module AresMUSH
       def detail(spell)
         total_xp_needed = Magic.spell_xp_needed(spell.name)
         xp = total_xp_needed - spell.xp_needed
-        detail = "(#{xp + 1}/#{total_xp_needed + 1})"
+        detail = "(#{xp}/#{total_xp_needed})"
         detail.ljust(10)
       end
 
       def progress(spell)
         Global.logger.debug "SPELL: #{spell.name}"
-        total_xp_needed = Magic.spell_xp_needed(spell.name) + 1
+        total_xp_needed = Magic.spell_xp_needed(spell.name)
         xp = (total_xp_needed - spell.xp_needed)
         ProgressBarFormatter.format(xp, total_xp_needed)
       end
