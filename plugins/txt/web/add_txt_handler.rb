@@ -84,19 +84,19 @@ module AresMUSH
                   scene_id_display = scene_id
                 end
 
-                recipients.each do |char|
-                  can_txt_scene = Scenes.can_read_scene?(char, scene)
+                recipients.each do |r|
+                  can_txt_scene = Scenes.can_read_scene?(r, scene)
                   #If they aren't in the scene currently, add them
                   if (!can_txt_scene)
                     Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
-                    :name => char.name ),
-                    char, nil, true )
+                    :name => r.name ),
+                    r, nil, true )
 
                     Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
-                    :name => char.name )
+                    :name => r.name )
 
-                    if (!scene.participants.include?(char))
-                      Scenes.add_participant(scene, char, enactor)
+                    if (!scene.participants.include?(r))
+                      Scenes.add_participant(scene, r, enactor)
                     end
 
                     # if (!scene.watchers.include?(char))
@@ -105,24 +105,24 @@ module AresMUSH
                   end
 
                   txt_received = "#{recipient_names}"
-                  txt_received.slice! "#{char.name}"
-                  char.update(txt_received: (txt_received.squish))
-                  char.update(txt_received_scene: scene_id)
+                  txt_received.slice! "#{r.name}"
+                  r.update(txt_received: (txt_received.squish))
+                  r.update(txt_received_scene: scene_id)
 
                   #Emit to online players
 
 
-                  if Login.is_online?(char)
+                  if Login.is_online?(r)
                     recipient_txt = t('txt.txt_with_scene_id',
                     :txt => Txt.format_txt_indicator(char, recipient_display_names),
                     :sender => sender_display_name,
                     :message => message,
                     :scene_id => scene_id_display)
 
-                    if (char.page_do_not_disturb)
+                    if (r.page_do_not_disturb)
                       nil
-                    elsif char.room.scene_id != scene_id
-                      client = Login.find_client(char)
+                    elsif r.room.scene_id != scene_id
+                      client = Login.find_client(r)
                       client.emit recipient_txt
                     else
                       nil
