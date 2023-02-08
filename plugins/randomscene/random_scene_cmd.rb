@@ -11,6 +11,7 @@ module AresMUSH
           args = cmd.parse_args(ArgParser.arg1_slash_optional_arg2)
           names = list_arg(args.arg1)
           self.names = names.concat [enactor.name]
+          self.names = self.names.uniq { |name| name.titlecase }
           self.area = titlecase_arg(args.arg2)
         else
           self.names = [enactor.name]
@@ -48,7 +49,6 @@ module AresMUSH
         else
           room_list = Room.all.select { |r| (r.room_type == "IC" && r.area && !all_excluded_areas.include?(r.area_name)) }
         end
-        puts "Room list: #{room_list}"
         room = room_list.sample
 
         type = rand(3)

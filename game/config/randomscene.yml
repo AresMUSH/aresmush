@@ -5,6 +5,7 @@ randomscene:
   - "Ground-Level Weyrs"
   - "Ridge Weyrs"
   - "Treetop Weyrs"
+  - "OOC"
   scenarios:
   - "A case of mistaken identity."
   - "A fresh kill."
