@@ -7,12 +7,9 @@ module AresMUSH
           attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient, :use_only_nick
 
         def parse_args
-          # if (!cmd.args)
-          #   #why is this here?
-          #   self.names = []
-          #  IF YOU PUT THIS BACK IN, CHANGE NEXT LINE TO ELSIF
-
-          if (cmd.args.start_with?("="))
+          if (!cmd.args)
+            return t('dispatcher.invalid_syntax', :cmd => 'txt')
+          elsif (cmd.args.start_with?("="))
             self.names = enactor.txt_last
             self.scene_id = enactor.txt_scene
             self.message = cmd.args.after("=")
