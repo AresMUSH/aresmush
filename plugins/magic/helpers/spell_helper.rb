@@ -74,7 +74,7 @@ module AresMUSH
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
       targets = []
       target_names.each do |name|
-        target = Character.named(name)
+        target = Character.named(name) || Mount.named(name)
         return t('magic.invalid_name') if (!target && !npc)
         return "npc_target" if npc
         targets << target
