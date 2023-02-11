@@ -51,7 +51,7 @@ module AresMUSH
             # return "This spell is currently broken. Don't worry, I know."
             weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""
             weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
-            return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(spell['weapon_specials'].downcase)
+            return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "#{target.weapon} weapon") if !weapon_allowed_specials.include?(spell['weapon_specials'].downcase)
           end
           #Check that armor specials can be added to weapon
 
@@ -60,7 +60,7 @@ module AresMUSH
             armor_special_group = FS3Combat.armor_stat(target.armor, "special_group") || ""
             armor_allowed_specials = Global.read_config("fs3combat", "armor special groups", armor_special_group) || []
             puts "Target: #{target.armor} #{armor_special_group} ALLOWED: #{armor_allowed_specials}"
-            return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(spell['armor_specials'].downcase)
+            return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "#{target.armor} armor") if !armor_allowed_specials.include?(spell['armor_specials'].downcase)
           end
 
         end
