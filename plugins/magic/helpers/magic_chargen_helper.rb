@@ -97,7 +97,7 @@ module AresMUSH
 
     def self.cg_max_points_by_age(char)
       default_points = Global.read_config("fs3skills", "max_ap")
-      if !char.age || char.age < 25
+      if !char.age || char.age < 26
         points = default_points
       elsif (26..30).include? char.age
         points = default_points + 3
