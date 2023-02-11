@@ -40,13 +40,13 @@ module AresMUSH
           if weapon_specials_str
             weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""
             weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
-            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
+            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "#{target.weapon} weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
           end
           #Check that armor specials can be added to weapon
           armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
           if armor_specials_str
             armor_allowed_specials = FS3Combat.armor_stat(target.armor, "allowed_specials") || []
-            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
+            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "#{target.armor} armor") if !armor_allowed_specials.include?(armor_specials_str)
           end
         end
 
