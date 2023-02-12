@@ -4,7 +4,7 @@ summary: Learning & casting spells
 aliases:
 - magic
 ---
-For a full explanation of the Magic system, see the [Magic wiki page](/magic).
+For a full explanation of the Magic system, see the [Magic wiki page](/wiki/magic).
 # Spells
 
 ##Information & Learning Spells
