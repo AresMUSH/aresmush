@@ -127,20 +127,23 @@ module AresMUSH
 
           #Equip Weapon Specials
           if weapon_specials_str
-            weapon = target.weapon.before("+")
-            Magic.magic_weapon_specials(target, self.spell)
-            Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
-            if (heal_points && wound)
+            message = Magic.cast_weapon_specials(combatant.name, combatant, target, self.spell, true)
+            messages.concat message
 
-            elsif lethal_mod || defense_mod || attack_mod || spell_mod
+            # weapon = target.weapon.before("+")
+            # Magic.magic_weapon_specials(target, self.spell)
+            # Magic.set_magic_weapon(target, weapon)
+            # if (heal_points && wound)
 
-            else
-              if target.name == combatant.name
-                messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
-              else
-                messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
-              end
-            end
+            # elsif lethal_mod || defense_mod || attack_mod || spell_mod
+
+            # else
+            #   if target.name == combatant.name
+            #     messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
+            #   else
+            #     messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+            #   end
+            # end
           end
 
           #Equip Armor

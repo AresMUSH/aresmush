@@ -186,7 +186,7 @@ module AresMUSH
       return message
     end
 
-    def self.cast_weapon_specials(caster_name, combatant, target, spell_name)
+    def self.cast_weapon_specials(caster_name, combatant, target, spell_name, is_potion = false)
       spell = Global.read_config("spells", spell_name)
       weapon_special = Magic.find_weapon_special_named(target, spell['weapon_specials'])
       if weapon_special
@@ -208,9 +208,17 @@ module AresMUSH
       elsif spell['lethal_mod'] || spell['defense_mod'] || spell['attack_mod'] || spell['spell_mod']
         message = []
       elsif combatant != target
-        message = [t('magic.casts_spell_on_target', :name => caster_name, :spell => spell_name, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+        if is_potion
+          message = [t('magic.potion_target', :name => caster_name, :target => target.name, :potion => spell_name)]
+        else
+          message = [t('magic.casts_spell_on_target', :name => caster_name, :spell => spell_name, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+        end
       else
-        message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+        if is_potion
+          message = [t('magic.potion', :name => caster_name, :potion => spell_name)]
+        else
+          message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+        end
       end
     end
 
