@@ -18,7 +18,7 @@ module AresMUSH
     attribute :about
     attribute :description
     attribute :shortdesc
-    attribute :gender
+    attribute :gender, :default => ""
     attribute :details, :type => DataType::Hash, :default => {}
     reference :bonded, "AresMUSH::Character"
 
