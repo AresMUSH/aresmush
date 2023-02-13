@@ -15,14 +15,14 @@ magic:
   - Aether
   - Entropy
   xp_per_level:
-    1: 1
-    2: 2
-    3: 3
-    4: 4
-    5: 5
-    6: 6
-    7: 7
-    8: 8
+    1: 2
+    2: 3
+    3: 4
+    4: 5
+    5: 6
+    6: 7
+    7: 8
+    8: 10
   shield_base_defense: 20
   shield_strength_multiplier: 5
   potion_spell: Potions
