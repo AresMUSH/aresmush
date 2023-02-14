@@ -17,7 +17,7 @@ idle:
   reminder_category: MISC
   use_roster: true
   idle_category: Announcements
-  days_before_idle: 30
+  days_before_idle: 20
   arrivals_category: New Arrivals
   default_contact: Admin
   idle_warn_msg: You haven't played in awhile and your character is in danger of idling
