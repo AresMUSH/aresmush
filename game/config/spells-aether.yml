@@ -242,7 +242,7 @@ spells:
   Wind Wall:
     available: true
     casting_time: 1 round
-    desc: "Deflect ranged projectile attacks directed against up to 3 targets with gusting winds."
+    desc: "Deflect attacks directed against up to 3 targets with gusting winds."
     duration: 3 rounds
     effect: Shield
     is_shield: true
