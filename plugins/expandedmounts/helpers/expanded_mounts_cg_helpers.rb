@@ -5,6 +5,10 @@ module AresMUSH
       char.bonded.name if char.bonded
     end
 
+    def self.mount_gender(char)
+      char.bonded.gender if char.bonded
+    end
+
     def self.expanded_mount_type(char)
       char.bonded.expanded_mount_type if char.bonded
     end
@@ -34,12 +38,15 @@ module AresMUSH
     end
 
     def self.save_cg_mount(char, chargen_data)
+      puts "SAVING MOUNT"
       error = ExpandedMounts.required_mount_info(char, chargen_data)
+      puts "MOUNT ERROR #{error} #{error.empty?}"
       return error if !error.empty?
+      puts "GETTING HERE"
 
       mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc], chargen_data[:custom][:mount_gender]]
       return [] if mount_data.join.blank?
-
+      puts "MOUNT GENDER: #{chargen_data[:custom][:mythic_gender]}"
       if char.bonded
         mount = char.bonded
         mount.update(expanded_mount_type: chargen_data[:custom][:mount_type])

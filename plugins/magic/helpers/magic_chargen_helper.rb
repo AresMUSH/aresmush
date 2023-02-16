@@ -233,7 +233,6 @@ module AresMUSH
       else
         starting_spells = Magic.starting_spells(char).map {|s| s[:name]}
         starting_spells.each do |s|
-          puts "Checking whether to delete a spell in CG. #{s}"
           if !spells.include?(s)
             spell = Magic.find_spell_learned(char, s)
             spell.delete
@@ -242,7 +241,6 @@ module AresMUSH
 
         spells.each do |spell|
           if !starting_spells.include?(spell)
-          puts "Adding a new spell #{spell} - #{spell.titlecase}"
             Magic.add_spell(char, spell.titlecase)
           end
         end

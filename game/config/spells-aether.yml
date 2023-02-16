@@ -161,6 +161,22 @@ spells:
     range: Short
     roll: true
     school: Aether
+  Fire Weapon:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Augment one specified pre-existing weapon with dancing flames, increasing its damage.
+    duration: 3 hours
+    effect: Buff
+    is_potion: true
+    level: 4
+    name: Fire Weapon
+    range: Touch
+    rounds: 100
+    school: Aether
+    target_num: 1
+    weapon_specials: Fire
+    weapon: Spell
   Lightning Weapon:
     available: true
     casting_time: 1 round
