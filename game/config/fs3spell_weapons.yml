@@ -322,7 +322,7 @@ fs3combat:
       skill: Aether
       lethality: 0
       penetration: 0
-      weapon_type: Melee
+      weapon_type: Stun
       recoil: 0
       damage_type: Physical
       accuracy: 0
@@ -333,7 +333,7 @@ fs3combat:
       skill: Arcane
       lethality: 0
       penetration: 0
-      weapon_type: Melee
+      weapon_type: Stun
       recoil: 0
       damage_type: Physical
       accuracy: 0
@@ -344,7 +344,7 @@ fs3combat:
       skill: Creation
       lethality: 0
       penetration: 0
-      weapon_type: Melee
+      weapon_type: Stun
       recoil: 0
       damage_type: Physical
       accuracy: 0
@@ -355,7 +355,7 @@ fs3combat:
       skill: Entropy
       lethality: 0
       penetration: 0
-      weapon_type: Melee
+      weapon_type: Stun
       recoil: 0
       damage_type: Physical
       accuracy: 0

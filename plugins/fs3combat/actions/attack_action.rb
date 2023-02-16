@@ -18,6 +18,7 @@ module AresMUSH
         weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
         return t('fs3combat.use_explode_command') if weapon_type == "Explosive"
         return t('fs3combat.use_suppress_command') if weapon_type == "Suppressive"
+        return t('magic.change_weapon') if weapon_type == "Stun"
 
         error = self.parse_targets(names)
         return error if error
