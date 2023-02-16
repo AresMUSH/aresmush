@@ -394,10 +394,10 @@ fs3combat:
     #---------------
     # MAGIC ITEMS
     #---------------
-    Guilt-Weighted Gloves:
-      description: Magic item
-      is_magic: true
-      lethality: 5
+    # Guilt-Weighted Gloves:
+    #   description: Magic item
+    #   is_magic: true
+    #   lethality: 5
     #---------------
     # SPELLS
     #---------------

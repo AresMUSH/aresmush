@@ -356,6 +356,25 @@ fs3combat:
       is_magic: true
       protection:
         Head: -3
+        Neck: -3
+        Chest: -3
+        Abdomen: -3
+        Left Leg: -3
+        Right Leg: -3
+        Groin: -3
+        Left Arm: -3
+        Right Arm: -3
+        Left Hand: -3
+        Right Hand: -3
+        Left Foot: -3
+        Right Foot: -3
+        Tail: -3
+        Front Right Leg: -3
+        Rear Right Leg: -3
+        Front Left Leg: -3
+        Read Left Leg: -3
+        Right Wing: -3
+        Left Wing: -3
 
 #---------------
 # ARMOR SPECIAL GROUPS
