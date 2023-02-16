@@ -128,7 +128,7 @@ en:
       still_stunned: "%{name} is %xmstunned%xn by %{stunned_by}. They will be %xmstunned%xn for %{rounds} more round(s)."
       cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be %xmstunned%xn for %{rounds} more round(s)."
       cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
-      change_weapon: "You have a stun spell weapon equipped. Equip a different weapon to attack with."
+      change_weapon: "You have a stun spell weapon equipped. Equip a different weapon to attack."
 
       # ----------------------------
       # SPELLs WEAR OFF
