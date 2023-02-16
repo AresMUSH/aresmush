@@ -337,7 +337,7 @@ fs3combat:
         Head: 4
         Neck: 3
     Weaken:
-      description: Weakens armor
+      description: Level 4 Entropy spell
       is_magic: true
       protection:
         Head: -3
