@@ -279,10 +279,6 @@ fs3combat:
         Abdomen: 5
         Left Arm: 6
         Right Arm: 6
-      allowed_specials:
-      - Leather Helmet
-      - Metal Helmet
-      - Chainmail Coif
     Plate:
       description: Full plate armor with no helmet
       is_magic: false
@@ -295,11 +291,6 @@ fs3combat:
         Right Arm: 7
         Right Leg: 5
         Left Leg: 5
-      allowed_specials:
-      - Leather Helmet
-      - Metal Helmet
-      - Chainmail Coif
-      - Weaken
     Leather:
       description: Leather armor
       is_magic: false
@@ -310,10 +301,6 @@ fs3combat:
         Abdomen: 4
         Left Arm: 5
         Right Arm: 5
-      allowed_specials:
-      - Leather Helmet
-      - Metal Helmet
-      - Chainmail Coif
     Police:
       description: Police-Grade Kevlar Vest
       is_magic: false
@@ -322,8 +309,6 @@ fs3combat:
       protection:
         Chest: 7
         Abdomen: 6
-      allowed_specials:
-      - Modern Helmet
 
   #--------------
   # ARMOR SPECIALS
