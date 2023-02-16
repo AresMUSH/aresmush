@@ -314,18 +314,13 @@ fs3combat:
   # ARMOR SPECIALS
   #--------------
   armor specials:
-    Modern Helmet:
-      description: A modern combat or police helmet
-      is_magic: false
-      protection:
-        Head: 4
     Leather Helmet:
       description: A leather helmet
       is_magic: false
       protection:
         Head: 3
     Metal Helmet:
-      description: A leather helmet
+      description: A metal helmet
       is_magic: false
       protection:
         Head: 4
