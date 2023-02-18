@@ -47,7 +47,7 @@ jobs:
     ARCHIVED:
       color: "%xx%xh"
   system_category: SYS
-  trouble_category: PLAYER
+  trouble_category: REQ
   permissions:
     access_jobs: Allows non-admins to access jobs in categories allowed for their
       roles.
