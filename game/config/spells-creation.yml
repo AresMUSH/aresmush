@@ -141,20 +141,6 @@ spells:
     school: Creation
     target_num: 1
     weapon: Stone Slam
-  Terramancy:
-    available: true
-    area: 2 cubic feet
-    casting_time: 1 round
-    damage_type: Bypass
-    desc: "For the duration of the spell, the caster can move around and shape up to a total of 2 cubic feet of pre-existing dirt, rock, or stone. The caster can sculpt detailed, non-weaponized shapes that animate at their direction. Earth returns to its natural, but not necessarily original, state when the spell ends. "
-    duration: 30 minutes
-    effect: Manipulation
-    level: 3
-    line_of_sight: true
-    name: Terramancy
-    range: Short
-    roll: true
-    school: Creation
   Water Cannon:
     available: true
     casting_time: 1 round

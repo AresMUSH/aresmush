@@ -29,7 +29,33 @@ spells:
 #---------------
 # LEVEL 2
 #---------------
-
+  Shadow Cloak:
+    area: 5 ft radius
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: "The caster expands the shadows in an area to hide them from view. They follow the caster as they move, but a strong light will pierce through them. The shadows are deep enough that night vision can perceive only vague shapes and movement. \n\nThe shadows obscures all sight in up to a 5 ft radius, effectively making the caster hidden as long as they make no noise and cast no magic."
+    duration: 15 minutes
+    effect: Defense
+    is_potion: true
+    level: 2
+    name: Shadow Cloak
+    range: Self
+    school: Shadow Cloak
+    target_num: 1
+  Lighten Load:
+    available: true
+    area: 100 cubic ft
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Reduce the pull of gravity on a single object or group of touching objects no larger than 100 cubic feet, practically cutting its weight by 25%, up to a reduction of 1,000 lbs.\n\nCannot be used in conjunction with other gravity-based spells."
+    duration: 15 minutes
+    effect: Manipulation
+    level: 2
+    line_of_sight: true
+    name: Lighten Load
+    range: Short
+    school: Entropy
   Touch Of Enfeeblement:
     attack_mod: -1
     available: true
@@ -61,6 +87,20 @@ spells:
 #---------------
 # LEVEL 3
 #---------------
+  Cryomancy:
+    available: true
+    area: 5 cubic feet
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can influence up to a total of 5 cubic feet of pre-existing snow or ice, or freeze existing water to create ice. The caster can move and shape it to create detailed, non-weaponized shapes that animate at their direction. Water, ice, or snow returns to its natural, but not necessarily original, state when the spell ends."
+    duration: 30 minutes
+    effect: Manipulation
+    level: 3
+    line_of_sight: true
+    name: Cryomancy
+    range: Short
+    roll: true
+    school: Entropy
   Drowsy:
     available: true
     casting_time: 1 round
@@ -77,6 +117,20 @@ spells:
     target_num: 1
     school: Entropy
     weapon: Stun (Entropy)
+  Gravity Cling:
+    area: 2 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can redirect the field of gravity around their hands and feet, allowing them to cling to vertical surfaces and maintain surer footing on horizontal ones.\n\nThis allows them to climb vertically across solid surfaces, including flat surfaces where there are no obvious hand or foot holds.\n\nThe gravity field is strong enough to bear their weight plus 20 lbs. A strong enough force, such as heavy wind or the pull of another being, can break their grip.\n\nCannot be used in conjunction with other gravity-based spells."
+    duration: 30 minutes
+    effect: Other
+    is_potion: true
+    level: 3
+    name: Gravity Cling
+    range: Self
+    roll: true
+    school: Entropy
   Ice Talons:
     available: true
     casting_time: 1 round
@@ -105,11 +159,67 @@ spells:
     rounds: 3
     school: Entropy
     target_num: 1
+  Shadowmancy:
+    area: 2 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can influence up to 2 cubic feet of darkness, creating and forming shadows into simple non-weaponized shapes that animate at their direction. The darkness can hide small objects from view. When the spell ends, the shadows fade or return to their natural state in their current location."
+    duration: 30 minutes
+    effect: Manipulation
+    level: 3
+    name: Shadowmancy
+    range: Short
+    roll: true
+    school: Entropy
+  Terramancy:
+    available: true
+    area: 2 cubic feet
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can break apart up to a total of 2 cubic feet of pre-existing dirt, rock, or stone, turning it into loose soil or sand in order to manipulate it. The caster can create detailed, non-weaponized shapes that animate at their direction. Loose soil or sand returns to its natural state when the spell ends. "
+    duration: 30 minutes
+    effect: Manipulation
+    level: 3
+    line_of_sight: true
+    name: Terramancy
+    range: Short
+    roll: true
+    school: Entropy
 
 
 #---------------
 # LEVEL 4
 #---------------
+  Create Ice:
+    available: true
+    area: 60 gallons
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Instantly freeze up to 60 gallons of pre-existing water solid. The magically-frozen water melts more slowly than usual, making it useful for reducing the temperature of rooms and root cellars up to 3 days in warmer months. Frozen water can bear weight up to 300 lbs."
+    duration: 15 minutes
+    effect: Manipulation
+    level: 3
+    line_of_sight: true
+    name: Create Ice
+    range: Long
+    roll: true
+    school: Entropy
+  Death-Touched Weapon:
+    available: true
+    casting_time: 1 round
+    desc: Imbue an existing weapon with the draining touch of death, increasing the damage against living opponents.
+    effect: Buff
+    duration: 3 hours
+    is_potion: true
+    level: 4
+    name: Death-Touched Weapon
+    range: Touch
+    rounds: 100
+    school: Entropy
+    target_num: 1
+    weapon_specials: Death-Touched
+    weapon: Spell
   Earth Shudder:
     area: 10 yard radius
     available: true
@@ -131,7 +241,7 @@ spells:
     damage_desc: Flesh Wound Spell
     damage_inflicted: FLESH
     damage_type: Bypass
-    desc: "Inflict a flesh wound. \n\nSpell ignores target's armor."
+    desc: "Cause a target's body to slice open, inflicting a flesh wound. \n\nSpell ignores target's armor."
     effect: Damage
     level: 4
     line_of_sight: true
@@ -186,7 +296,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Bypass
-    desc: Weaken a weapon by blunting sharp edges or weakening it's structural integrity.
+    desc: Weaken a weapon by blunting sharp edges or weakening it's structural integrity. This can include man-made weapons or natural animal and cryptids weapons like teeth and claws.
     duration: 3 hours
     effect: Debuff
     level: 4
@@ -201,7 +311,7 @@ spells:
     armor_specials: Weaken
     casting_time: 1 round
     damage_type: Bypass
-    desc: Make a target's armor less protective by weakening it's structural integrity.
+    desc: Make a target's armor less protective by softening it or weakening its structural integrity. This can include man-made armors or natural animal and cryptids hides.
     duration: 30 seconds
     effect: Debuff
     level: 4
@@ -213,6 +323,19 @@ spells:
 #---------------
 # LEVEL 5
 #---------------
+  Gravity Crush:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Concentrate the forces of gravity on a single target, crushing them and doing damage. "
+    effect: Damage
+    fs3_attack: true
+    level: 5
+    name: 'Gravity Crush '
+    range: Long
+    school: Entropy
+    weapon: Gravity Crush
+    target_num: 1
   Paralyze:
     available: true
     casting_time: 1 round
@@ -229,6 +352,22 @@ spells:
     target_num: 2
     school: Entropy
     weapon: Stun (Entropy)
+  Heavy:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    defense_mod: -1
+    desc: "Increase the pull of gravity on a target, making it more difficult for them to act, react, or cast magic. Flying targets find it more difficult to stay aloft."
+    duration: 3 rounds
+    effect: Debuff
+    level: 5
+    line_of_sight: true
+    name: Heavy
+    range: Long
+    rounds: 3
+    school: Entropy
+    target_num: 1
   Ice Block:
     available: true
     area: 5 yard length
@@ -265,13 +404,29 @@ spells:
     school: Entropy
     target_num: 3
     weapon: Cone Of Cold
+  Deep Freeze:
+    attack_mod: -2
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    defense_mod: -2
+    desc: "Dramatically drop the surrounding temperature around three targets, making it difficult for them to move or react. "
+    duration: 2 rounds
+    effect: Debuff
+    level: 6
+    line_of_sight: true
+    name: Deep Freeze
+    range: Long
+    rounds: 2
+    school: Entropy
+    target_num: 3
   Impair:
     available: true
     casting_time: 1 round
     damage_desc: Impair Spell
     damage_inflicted: IMPAIR
     damage_type: Bypass
-    desc: "Inflict an impaired wound, making it difficult for an enemy to use the affected body part. \n\nSpell ignores target's armor."
+    desc: "Cause a target's body to rip itself apart, inflicting an impaired wound and making it difficult for them to use the affected body part. \n\nSpell ignores target's armor."
     effect: Damage
     level: 6
     line_of_sight: true

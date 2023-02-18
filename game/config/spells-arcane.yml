@@ -16,6 +16,19 @@ spells:
     roll: true
     school: Arcane
     target_num: 1
+  Glimpse Dream:
+    available: true
+    casting_time: 1 round
+    desc: "The caster can observe 1 hour of a dream from an unguarded mind, or a mind that has left their dreams open to observation, within 100 yards. The caster cannot control the dream. They can communicate with the dreamer, though the dreamer's subconscious may not recognize them as real or remember what was said when they awake. "
+    damage_type: Psionic
+    duration: 1 hour
+    effect: Psionic
+    level: 1
+    name: Glimpse Dream
+    range: Long
+    roll: true
+    school: Arcane
+    target_num: 1
   Restful Sleep:
     available: true
     casting_time: 1 round
@@ -64,6 +77,59 @@ spells:
     rounds: 2
     school: Arcane
     target_num: 1
+  Group Telepathy:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "Up to 6 targets, including the caster, are able to hold a telepathic conversation together. All targets are part of a single conversation for the duration of the spell. Conversation is limited to words and brief, simple images. A bonded mage/mythic pair counts as one target. "
+    duration: 1 hour
+    effect: Communication
+    level: 2
+    name: Group Telepathy
+    range: Long
+    roll: true
+    school: Arcane
+    target_num: 6
+  Impart Dream:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster impresses a single person, place, thing, or five-word concept on the mind of a target, causing the target to dream of this thing the next time they sleep. The caster cannot control the nature of the dream, how the target's mind interacts with this prompt, or whether it takes the form of pleasant dream or a nightmare. "
+    duration: 1 hour
+    effect: Psionic
+    is_potion: true
+    level: 2
+    name: Impart Dream
+    range: Touch
+    roll: true
+    school: Arcane
+    target_num: 1
+  Local Locate:
+    available: true
+    area: 1 mile
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster is able to sense the direction of an object, person, or animal with which they are familiar.
+    duration: 10 minutes
+    effect: Other
+    level: 2
+    name: Local Locate
+    range: Short
+    roll: true
+    school: Arcane
+  Object Whisper:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Caster hears a random, uncontrollable thought (no more than a short sentence of up to 10 words) from an object touched by a person in the past 48 hours. The caster can choose to focus their attention on a 2 hour window within that 48 hours. \n\nThe spell can be cast on the object up to 5 times, receiving a different thought each time. Each subsequent thought uncovered via the spell becomes less and less clear, until the psychometric imprint on the object is erased all together.\n\nWhen possible, the sentence should be chosen by a GM or someone other than the caster."
+    effect: Communication
+    is_potion: true
+    level: 2
+    line_of_sight: true
+    name: Object Whisper
+    range: Touch
+    roll: true
+    school: Arcane
   Telepathic Reading:
     available: true
     casting_time: 1 round
@@ -112,6 +178,20 @@ spells:
     school: Arcane
     target_num: 1
     weapon: Stun (Arcane)
+  Corporeal Ghost:
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "Give an incorporeal ghost a physical form, making it capable of both receiving and doing damage.\n\nThe spell must be cast either in the presence of a ghost, and the attempt to cast this spell can confirm whether a ghost is present."
+    duration: 6 rounds
+    effect: Other
+    level: 3
+    line_of_sight: true
+    name: Corporeal Ghost
+    range: Short
+    rounds: 6
+    school: Arcane
+    target_num: 1
   Detect Magic:
     available: true
     casting_time: 1 round
@@ -142,21 +222,6 @@ spells:
     school: Arcane
     spell_mod: -1
     target_num: 1
-  Manifest Spirit:
-    available: true
-    casting_time: 1 round
-    defense_mod: -1
-    desc: "Give an incorporeal spirit a physical form, capable of both receiving and doing damage, for a short time."
-    duration: 6 rounds
-    effect: Other
-    level: 3
-    line_of_sight: true
-    name: Manifest Spirit
-    range: Short
-    rounds: 6
-    school: Arcane
-    target_num: 1
-
 
 #---------------
 # LEVEL 4
@@ -208,11 +273,27 @@ spells:
     target_num: 1
     duration: 2 hours
     rounds: 7200
+  Reset Target:
+    available: true
+    attack_mod: 0
+    casting_time: 1 round
+    defense_mod: 0
+    desc: "The caster resets all modifying magic on a target, restoring their attack, defense, initiative, and spell casting abilities to their natural state."
+    duration: 2 rounds
+    effect: Debuff
+    init_mod: 0
+    level: 4
+    line_of_sight: true
+    name: Reset Target
+    range: Short
+    school: Arcane
+    spell_mod: 0
+    target_num: 1
   Restful Spirit:
     available: true
-    casting_time: 1 round
+    casting_time: 5 minutes
     damage_type: Psionic
-    desc: Put a weak ghost to rest.
+    desc: "Put a weak ghost to rest. \n\nThe attempt to cast this spell can confirm whether a ghost is present."
     effect: Other
     level: 4
     line_of_sight: true
@@ -267,13 +348,26 @@ spells:
     available: true
     casting_time: 1 round to conjure, 1 round per question.
     damage_type: Bypass
-    desc: "The caster may may contact a spirit for a time and ask them one question per round. The spirit may have an appearance like they had in life or be indistinct, depending on how much of their sense of self remains. The spirit's knowledge is limited to matters within their immediate area or expertise. Only the caster communes with the spirit, outside observers cannot see or hear anything communicated by the spirit. "
+    desc: "The caster may may contact a spirit at rest or a ghost for a time and ask them one question per round. The spirit may have an appearance like they had in life or be indistinct, depending on how much of their sense of self remains. The spirit's knowledge is limited to matters within their immediate area or expertise. \n\nIf the spirit is at rest, their memories ended with their death. If the spirit is a ghost, they have developed new memories during their time as a ghost, but they may be uncooperative, confused, or have an extremely broken sense of self.\n\nOnly the caster communes with the spirit, outside observers cannot see or hear anything communicated by the spirit. The attempt to cast this spell can confirm whether a ghost is present. "
     duration: 15 minutes
     effect: Communication
     level: 5
     name: Commune with Local Spirit
     range: Short
     roll: true
+    school: Arcane
+    target_num: 1
+  Drain Mana:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Drain a portion of the target's mana.
+    effect: Heal
+    energy_points: -20
+    level: 5
+    line_of_sight: true
+    name: Drain Mana
+    range: Short
     school: Arcane
     target_num: 1
   Dream Walk:
@@ -465,5 +559,3 @@ spells:
 #---------------
 # LEVEL 10
 #---------------
-
-
