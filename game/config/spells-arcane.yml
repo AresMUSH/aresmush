@@ -192,6 +192,20 @@ spells:
     rounds: 6
     school: Arcane
     target_num: 1
+  Manifest Spirit:
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "Give an incorporeal ghost a physical form, making it capable of both receiving and doing damage.\n\nThe spell must be cast either in the presence of a ghost, and the attempt to cast this spell can confirm whether a ghost is present."
+    duration: 6 rounds
+    effect: Other
+    level: 3
+    line_of_sight: true
+    name: Corporeal Ghost
+    range: Short
+    rounds: 6
+    school: Arcane
+    target_num: 1
   Detect Magic:
     available: true
     casting_time: 1 round
