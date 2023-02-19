@@ -40,7 +40,9 @@ module AresMUSH
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
-        charabils = charabils.join(" ") #removes the comma's that seperates the entries
+		if (charabils.length > 0 )
+	        charabils = charabils.join(" ") #removes the comma's that seperates the entries
+		end
 
         charedges = returnedgesforweb(char,'edge')
         charedges = charedges.join(" ") #removes the comma's that seperates the entries
