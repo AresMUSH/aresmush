@@ -942,9 +942,9 @@ module AresMUSH
   				end
 			end
 
-			if (c_charhindpoints) #Is there perk points on the character?
-				dbstr << "Perks: #{c_charhindpoints}"
-			end
+			# if (c_charhindpoints) #Is there perk points on the character?
+			# 	dbstr << "Perks: #{c_charhindpoints}"
+			# end
 
 			if (c_hj) #If there are heroes journey tables, save them.
 				c_hj.each do |key, value| #cycle through each one
