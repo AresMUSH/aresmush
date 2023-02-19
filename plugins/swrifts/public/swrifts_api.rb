@@ -40,7 +40,7 @@ module AresMUSH
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
-		if (charabils.length > 0 )
+		if (charabils )
 	        charabils = charabils.join(" ") #removes the comma's that seperates the entries
 		end
 
