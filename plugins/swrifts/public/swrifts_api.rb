@@ -888,14 +888,14 @@ module AresMUSH
 		else
 			race_downcase = ''
 		end
-		c_edges = chargen_data[:custom][:cgedges]
-		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
-		c_edgesfw = chargen_data[:custom][:cgedgesfw]
-		c_hind = chargen_data[:custom][:cghind]
-		c_hindnofw = chargen_data[:custom][:cghindnofw]
-		c_hindfw = chargen_data[:custom][:cghindfw]
-        c_charhindpoints = chargen_data[:custom][:charhindpoints]
-		c_hj = chargen_data[:custom][:hjtables]
+		# c_edges = chargen_data[:custom][:cgedges]
+		# c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
+		# c_edgesfw = chargen_data[:custom][:cgedgesfw]
+		# c_hind = chargen_data[:custom][:cghind]
+		# c_hindnofw = chargen_data[:custom][:cghindnofw]
+		# c_hindfw = chargen_data[:custom][:cghindfw]
+        # c_charhindpoints = chargen_data[:custom][:charhindpoints]
+		# c_hj = chargen_data[:custom][:hjtables]
 
 
 		## ----- Update Iconic Framework
