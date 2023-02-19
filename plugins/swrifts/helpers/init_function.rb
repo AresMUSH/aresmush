@@ -41,7 +41,7 @@ module AresMUSH
 				# client.emit_success ("Base Traits Set!")
 			else 
 				# If the this field isn't in swrifts_init.yml, skip and emit to enactor
-				client.emit_failure ("Init_char Error - Traits")
+				# client.emit_failure ("Init_char Error - Traits")
 			end				
 			
 			#----- This sets the default stats field on the collection -----				
@@ -53,7 +53,7 @@ module AresMUSH
 					SwriftsStats.create(name: setthing, rating: setrating, character: model)
 				end
 			else 
-				client.emit_failure ("Init_char Error - Stats")
+				# client.emit_failure ("Init_char Error - Stats")
 			end
 						
 			#----- This sets the maximum stats field on the collection -----				
@@ -66,7 +66,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Stat Maximums Set!")
 			else 
-				client.emit_failure ("Init_char Error - Stat_max")
+				# client.emit_failure ("Init_char Error - Stat_max")
 			end
 						
 			# ----- This sets the default minimums on the Character -----				
@@ -79,7 +79,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Chargen Mins Set!")
 			else 
-				client.emit_failure ("Init_char Error - Chargen_Min")
+				# client.emit_failure ("Init_char Error - Chargen_Min")
 			end  			 						
 						
 			#----- This sets the default Advances on the Character -----				
@@ -92,7 +92,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Advances Set!")
 			else 
-				client.emit_failure ("Init_char Error - Advances")
+				# client.emit_failure ("Init_char Error - Advances")
 			end 		
 						
 			#----- This sets the default derived stats field on the collection -----				
@@ -105,7 +105,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Derived Stats Set!")
 			else 
-				client.emit_failure ("Init_char Error - DStats")
+				# client.emit_failure ("Init_char Error - DStats")
 			end
 
 			# ----- This sets the default skills on the Character -----				
@@ -118,7 +118,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Skills Set!")
 			else 
-				client.emit_failure ("Init_char Error - Skills")
+				# client.emit_failure ("Init_char Error - Skills")
 			end 					
 				
 
@@ -132,7 +132,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Chargen Points Set!")
 			else 
-				client.emit_failure ("Init_char Error - Chargen Points")
+				# client.emit_failure ("Init_char Error - Chargen Points")
 			end			
 
 			#----- This sets the default counters field on the collection -----				
@@ -145,7 +145,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Counters Set!")
 			else 
-				 #client.emit_failure ("Init_char Error - Counters")
+				 # client.emit_failure ("Init_char Error - Counters")
 			end
 			
 		end
