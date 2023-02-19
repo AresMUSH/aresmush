@@ -962,5 +962,5 @@ module AresMUSH
 			end
 			return (dbgstr)
 	end #save
-#   end #end Swrifts
+  end #end Swrifts
 end
