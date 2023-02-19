@@ -314,8 +314,8 @@ module AresMUSH
 		# hjtables = hjtables.inspect
 
     #Get the Perk points set on the character
-    #charhindpoints = char.swrifts_charhindpoints
-	charhindpoints = 4
+    charhindpoints = char.swrifts_charhindpoints
+	# charhindpoints = 4
 
 
 		return {
@@ -352,7 +352,7 @@ module AresMUSH
 		desc = charcgicf['description']
 		ifstring = "#{ifname}"
 		book = charcgicf['book_reference']
-    abilities = charcgicf['abilities']
+    	abilities = charcgicf['abilities']
 		if book
 			ifstring << " ~ ("
 			ifstring << book
@@ -938,13 +938,13 @@ module AresMUSH
   					edge_name = "#{value['name']}" #set the name to all lowercase
   					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
   					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
-            dbgstr << "hinderances"
+           			dbgstr << "hinderances"
   				end
 			end
 
 			if (c_charhindpoints) #Is there perk points on the character?
-				# ss = Swrifts.
-
+			
+				dbstr << "Perks: #{c_charhindpoints}"
 			end
 
 			if (c_hj) #If there are heroes journey tables, save them.
@@ -962,8 +962,6 @@ module AresMUSH
 				end
 			end
 			return (dbgstr)
-	end
-
-#   end #end Swrifts
-
+	end #save
+  end #end Swrifts
 end
