@@ -145,7 +145,7 @@ module AresMUSH
 				end
 				# client.emit_success ("Counters Set!")
 			else 
-				# client.emit_failure ("Init_char Error - Counters")
+				 client.emit_failure ("Init_char Error - Counters")
 			end
 			
 		end
