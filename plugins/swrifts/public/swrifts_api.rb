@@ -187,7 +187,7 @@ module AresMUSH
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
-      if ( mycharicf.length > 0 )
+      if ( mycharicf.length > 0 || mycharicf != "None")
         mycharicf[:abilities].each
           .map do | aa |
             aaname = aa.gsub("*", "")
