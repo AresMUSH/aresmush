@@ -5,7 +5,7 @@ module AresMUSH
 		## ----- Generic group update
 		def self.element_update(model, set, charhash)
 			set.each do |key, rating|
-				#return (set)
+				return (set)
 				element_name = "#{key}".downcase
 				#return (element_name)
 				mod = "#{rating}".to_i
