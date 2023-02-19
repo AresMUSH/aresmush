@@ -934,7 +934,7 @@ module AresMUSH
 				end
 			end
 
-			Save the no framework hinderance
+			# Save the no framework hinderance
 
 			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
          		# dbgstr << "Hind: #{c_hindnofw.inspect}"
