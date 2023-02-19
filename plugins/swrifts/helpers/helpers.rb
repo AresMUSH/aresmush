@@ -14,7 +14,7 @@ module AresMUSH
 				#return (element.inspect)
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
-				return (new_rating)
+				# return (new_rating)
 				element.update(rating: new_rating)
 			end
 		end
