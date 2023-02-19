@@ -5,7 +5,7 @@ swrifts:
             iconicf: None
             race: None
             rank: Novice  
-        counters:
+            counters:
             bennies_current: 3
             bennies_max: 3
             conviction: 0

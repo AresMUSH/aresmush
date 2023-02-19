@@ -26,11 +26,11 @@ module AresMUSH
 
     def self.get_abilities_for_web_viewing(char, viewer)
 	    # Format skill table
-    		skills = returnskillsforweb(char.swrifts_skills)
-    		skills = skills.join(" ") #removes the comma's that seperates the entries
+    	skills = returnskillsforweb(char.swrifts_skills)
+    	skills = skills.join(" ") #removes the comma's that seperates the entries
 
-    		stats = returnstatsforweb(char.swrifts_stats)
-    		stats = stats.join(" ") #removes the comma's that seperates the entries
+    	stats = returnstatsforweb(char.swrifts_stats)
+    	stats = stats.join(" ") #removes the comma's that seperates the entries
 
         bennies = returnbandcforweb(char.swrifts_counters, 'bennies')
         bennies = bennies.join(" ") #removes the comma's that seperates the entries
@@ -50,13 +50,13 @@ module AresMUSH
 
         return {
           skills: skills,
-		      stats: stats,
+		  stats: stats,
           charicf: charicf,
           charabils: charabils,
           charedges: charedges,
           charhind: charhind,
-		      bennies: bennies,
-		      conviction: conviction,
+		  bennies: bennies,
+		  conviction: conviction,
         }
 	  end
 
@@ -229,7 +229,7 @@ module AresMUSH
   end
 
 
-	#### CHARGEN ####
+#### CHARGEN ####
 
 	def self.get_abilities_for_chargen(char)
 
@@ -890,7 +890,7 @@ module AresMUSH
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
-    c_charhindpoints = chargen_data[:custom][:charhindpoints]
+        c_charhindpoints = chargen_data[:custom][:charhindpoints]
 		c_hj = chargen_data[:custom][:hjtables]
 
 
