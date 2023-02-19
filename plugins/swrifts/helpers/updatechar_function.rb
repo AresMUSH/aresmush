@@ -100,9 +100,9 @@ module AresMUSH
 				system_edges.each do |key|
 					edge_name = "#{key}"
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-					 dbgstr << "Set:, #{ss}%r"
+					#  dbgstr << "Set:, #{ss}%r"
 				end
-				 return dbgstr
+				#  return dbgstr
 			else
 			end
 

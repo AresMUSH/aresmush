@@ -59,7 +59,7 @@ module AresMUSH
 							Swrifts.run_init(model, init)	
 
 							ss = Swrifts.run_system(model, iconicf)
-							client.emit (ss)
+							# client.emit (ss)
 							iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
 							iconicf_trait.update(rating: self.iconicf_name)
 

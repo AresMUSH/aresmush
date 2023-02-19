@@ -55,8 +55,9 @@ module AresMUSH
 			if (group['counters'])
 				set=group['counters']
 				charhash = model.swrifts_counters
-				return (set)
-				ss = Swrifts.element_update(model, set, charhash)
+				if (set) #is there an element to update?
+					ss = Swrifts.element_update(model, set, charhash)
+				end
 				# return (ss.inspect)
 			else
 
