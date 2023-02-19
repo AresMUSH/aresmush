@@ -925,45 +925,45 @@ module AresMUSH
 			end
 
 			#Save the no framework edges
-		# 	if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
-		# 		c_edgesnofw.each do |key,value|  #Cycle through each one
-		# 			edge_name = "#{value['name']}" #set the name to all lowercase
-		# 			ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name) #Call the add_feature function helpers.rb
-		# 			dbgstr << "Edge name: #{edge_name}, SS: #{ss}"  #For troubleshooting.
-        #   #dbgstr << "Edge name: #{edge_name}"
-		# 		end
-		# 	end
+			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
+				c_edgesnofw.each do |key,value|  #Cycle through each one
+					edge_name = "#{value['name']}" #set the name to all lowercase
+					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name) #Call the add_feature function helpers.rb
+					dbgstr << "Edge name: #{edge_name}, SS: #{ss}"  #For troubleshooting.
+          #dbgstr << "Edge name: #{edge_name}"
+				end
+			end
 
-			#Save the no framework hinderance
+			Save the no framework hinderance
 
-			# if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
-         	# 	# dbgstr << "Hind: #{c_hindnofw.inspect}"
-  			# 	c_hindnofw.each do |key, value| #Cycle through each one
-  			# 		edge_name = "#{value['name']}" #set the name to all lowercase
-  			# 		ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
-  			# 		dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
-           	# 		dbgstr << "hinderances"
-  			# 	end
+			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
+         		# dbgstr << "Hind: #{c_hindnofw.inspect}"
+  				c_hindnofw.each do |key, value| #Cycle through each one
+  					edge_name = "#{value['name']}" #set the name to all lowercase
+  					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
+  					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
+           			dbgstr << "hinderances"
+  				end
+			end
+
+			# if (c_charhindpoints) #Is there perk points on the character?
+			# 	dbstr << "Perks: #{c_charhindpoints}"
 			# end
 
-			# # if (c_charhindpoints) #Is there perk points on the character?
-			# # 	dbstr << "Perks: #{c_charhindpoints}"
-			# # end
+			if (c_hj) #If there are heroes journey tables, save them.
+				c_hj.each do |key, value| #cycle through each one
+					element_name = "#{value['name']}" #hj1
+					element_table = "#{value['table']}" #Body Armor
+					if (element_table) != 'None'
+						element_desc = Swrifts.hj_desc(char, element_name, element_table)
+						hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
+						hj_element.update(table: element_table)
+						hj_element.update(description: element_desc)
+						dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
+					end
 
-			# if (c_hj) #If there are heroes journey tables, save them.
-			# 	c_hj.each do |key, value| #cycle through each one
-			# 		element_name = "#{value['name']}" #hj1
-			# 		element_table = "#{value['table']}" #Body Armor
-			# 		if (element_table) != 'None'
-			# 			element_desc = Swrifts.hj_desc(char, element_name, element_table)
-			# 			hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
-			# 			hj_element.update(table: element_table)
-			# 			hj_element.update(description: element_desc)
-			# 			dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
-			# 		end
-
-			# 	end
-			# end
+				end
+			end
 			return (dbgstr)
 	end #save
   end #end Swrifts
