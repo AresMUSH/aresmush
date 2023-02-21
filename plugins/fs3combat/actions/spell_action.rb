@@ -4,7 +4,7 @@ module AresMUSH
       attr_accessor  :spell_name, :target, :names, :has_target, :caster_name
 
       def prepare
-        puts "#{combatant.name.upcase} energy beginning of action: #{combatant.associated_model.magic_energy}"
+        puts "#{combatant.name.upcase} energy beginning of action! #{combatant.associated_model.magic_energy}"
         if (self.action_args =~ /\//)
           self.spell_name = self.action_args.before("/")
           self.names = self.action_args.after("/")
@@ -191,7 +191,8 @@ module AresMUSH
 
               #Inflict Damage
               if spell['damage_inflicted']
-                message = Magic.cast_inflict_damage(self.caster_name, combatant, target, self.spell_name, spell['damage_inflicted'], spell['damage_desc'])
+                is_mock = !combat.is_real?
+                message = Magic.cast_inflict_damage(self.caster_name, combatant, target, self.spell_name, spell['damage_inflicted'], spell['damage_desc'], is_mock)
                 messages.concat message
               end
 
