@@ -318,8 +318,8 @@ module AresMUSH
       return message
     end
 
-    def self.cast_inflict_damage(caster_name, combatant, target, spell, damage_inflicted, damage_desc)
-      FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
+    def self.cast_inflict_damage(caster_name, combatant, target, spell, damage_inflicted, damage_desc, is_mock = false)
+      FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc, is_stun = false, is_mock = is_mock)
       target.update(freshly_damaged: true)
       damaged_by = target.damaged_by
       damaged_by << caster_name

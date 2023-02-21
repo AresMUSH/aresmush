@@ -1,17 +1,17 @@
 module AresMUSH
   module Magic
     describe Magic do
-      before do 
+      before do
         @char = double
         allow(@char).to receive(:name)
         stub_translate_for_testing
       end
 
       describe :spell_skill do
-        before do 
-          allow(@char).to receive(:is_npc?) 
+        before do
+          allow(@char).to receive(:is_npc?)
           allow(Global).to receive(:read_config).with("spells", "Spell", "school") {"Fire"}
-          
+
         end
 
         subject do
@@ -19,7 +19,7 @@ module AresMUSH
         end
 
         context "when the caster is an npc" do
-          it "returns the spell's school" do 
+          it "returns the spell's school" do
             allow(@char).to receive(:is_npc?) {true}
             expect(subject[:cast_mod]).to eq 0
             expect(subject[:skill]).to eq "Fire"
@@ -27,7 +27,7 @@ module AresMUSH
         end
 
         context "when the caster has the spell's school" do
-          it "returns the spell's school" do      
+          it "returns the spell's school" do
             allow(@char).to receive(:group) {"Fire"}
             expect(subject[:cast_mod]).to eq 0
             expect(subject[:skill]).to eq "Fire"
@@ -49,18 +49,18 @@ module AresMUSH
       describe :cast_noncombat_spell do
         before do
           @spell = {:is_shield => false, rounds: 10, heal_points: nil}
-          
+
           @bob = double
           allow(Character).to receive(:named).with("Jane") {@char}
           allow(Character).to receive(:named).with("Bob") {@bob}
-          allow(Character).to receive(:named).with("Jill") 
-          allow(Global).to receive(:read_config).with("spells", "Spell") {@spell}          
+          allow(Character).to receive(:named).with("Jill")
+          allow(Global).to receive(:read_config).with("spells", "Spell") {@spell}
           allow(@char).to receive(:name) {"Jane"}
           allow(@bob).to receive(:name) {"Bob"}
           stub_translate_for_testing
         end
 
-        subject do 
+        subject do
           Magic.cast_noncombat_spell("Jill", [@char, @bob], "Spell")
         end
 
@@ -71,7 +71,7 @@ module AresMUSH
         end
 
         context "when a relevant shield is active" do
-          
+
           context "when the caster is targeting themselves" do
             it "returns a casts spell msg" do
               expect(Magic.cast_noncombat_spell("Jane", [@char], "Spell")).to eq ["magic.casts_spell"]
@@ -88,7 +88,7 @@ module AresMUSH
 
           context "when the shield fails" do
 
-            before do 
+            before do
               allow(Magic).to receive(:stopped_by_shield?) {{hit: true, msg: "Shield fails"}}
             end
 
@@ -124,8 +124,8 @@ module AresMUSH
           before do
             allow(Magic).to receive(:stopped_by_shield?) {nil}
           end
-          it "returns relevant spell messages" do 
-            
+          it "returns relevant spell messages" do
+
             @spell = {"is_shield" => true, "rounds" => 10, "heal_points" => 1}
             allow(Magic).to receive(:cast_shield) {["Cast Shield"]}
             allow(Magic).to receive(:cast_heal) {["Cast Heal"]}
@@ -147,7 +147,7 @@ module AresMUSH
           context "when the caster is one of many targets" do
             it "returns casts_spell_on_target" do
               expect(Magic.cast_noncombat_spell("Jane", [@char, @bob], "Spell")).to eq ["magic.casts_spell_on_target"]
-            end            
+            end
           end
 
         end
@@ -156,7 +156,7 @@ module AresMUSH
 
       describe :cast_shield do
         before do
-          @target = double          
+          @target = double
           allow(Magic).to receive(:get_associated_model) {@target}
           @shield = double
           allow(@shield).to receive(:strength)
@@ -165,15 +165,15 @@ module AresMUSH
           allow(Magic).to receive(:log_magic_msg)
           allow(Global).to receive(:read_config) {"Type"}
           allow(@shield).to receive(:update)
-          
+
         end
 
-        subject do 
+        subject do
           Magic.cast_shield("Jane", @target, "Spell", 20, 3)
         end
 
         context "when a matching shield already exists" do
-          it "updates the shield's strength and rounds" do            
+          it "updates the shield's strength and rounds" do
             expect(@shield).to receive(:update).with(strength: 3)
             expect(@shield).to receive(:update).with(rounds: 20)
             subject
@@ -202,9 +202,9 @@ module AresMUSH
 
       describe :cast_heal do
 
-        before do 
+        before do
           allow(Magic).to receive(:associated_model) {@char}
-          @wound = double          
+          @wound = double
           stub_translate_for_testing
         end
 
@@ -213,7 +213,7 @@ module AresMUSH
         end
 
         it "returns cast_heal_no_effect if there is no healable wound" do
-          allow(FS3Combat).to receive(:worst_treatable_wound) {nil} 
+          allow(FS3Combat).to receive(:worst_treatable_wound) {nil}
           expect(subject).to eq ["magic.cast_heal_no_effect"]
         end
 
@@ -234,20 +234,20 @@ module AresMUSH
         end
 
         it "returns cast_heal and applies heal points to the wound" do
-          allow(FS3Combat).to receive(:worst_treatable_wound) {@wound} 
-          expect(FS3Combat).to receive(:heal).with(@wound, 2) 
+          allow(FS3Combat).to receive(:worst_treatable_wound) {@wound}
+          expect(FS3Combat).to receive(:heal).with(@wound, 2)
           expect(subject).to eq ["magic.cast_heal"]
         end
 
       end
 
       describe :cast_weapon do
-        before do 
+        before do
           allow(Magic).to receive(:set_magic_weapon)
         end
 
         subject do
-          Magic.cast_weapon(@char, @char, "Spell", "Weapon")          
+          Magic.cast_weapon(@char, @char, "Spell", "Weapon")
         end
 
         before do
@@ -256,10 +256,10 @@ module AresMUSH
 
         it "sets the weapon" do
           expect(Magic).to receive(:set_magic_weapon).with(@char, @char, "Weapon")
-          subject        
+          subject
         end
 
-        it "returns an empty array if the spell also sets armor" do 
+        it "returns an empty array if the spell also sets armor" do
           allow(Global).to receive(:read_config).with("spells", "Spell", "armor") {"Armor"}
           expect(subject).to eq []
         end
@@ -282,7 +282,7 @@ module AresMUSH
           allow(FS3Combat).to receive(:worst_treatable_wound) {nil}
         end
 
-        subject do 
+        subject do
           Magic.cast_weapon_specials(@char, @target, "Spell", "Specials")
         end
 
@@ -333,17 +333,17 @@ module AresMUSH
       end
 
       describe :cast_armor do
-        before do 
+        before do
           allow(FS3Combat).to receive(:set_armor)
         end
 
         subject do
-          Magic.cast_armor(@char, @char, "Spell", "Armor")          
+          Magic.cast_armor(@char, @char, "Spell", "Armor")
         end
 
         it "sets the armor" do
           expect(FS3Combat).to receive(:set_armor).with(@char, @char, "Armor")
-          subject        
+          subject
         end
         context "when the caster is the target " do
           it "returns casts_spell" do
@@ -358,12 +358,12 @@ module AresMUSH
             expect(Magic.cast_armor(@char, @target, "Spell", "Armor")).to eq ["magic.casts_spell_on_target"]
           end
         end
-        
+
       end
 
 
       describe :cast_armor_specials do
-        
+
       end
 
       describe :cast_auto_revive do
@@ -372,7 +372,7 @@ module AresMUSH
           allow(FS3Combat).to receive(:emit_to_combatant)
         end
 
-        subject do 
+        subject do
           Magic.cast_revive(@char, @char, "Spell")
         end
 
@@ -416,7 +416,7 @@ module AresMUSH
 
       end
 
-      describe :cast_inflict_damage do 
+      describe :cast_inflict_damage do
         before do
           @target = double
           allow(@target).to receive(:associated_model)
@@ -428,10 +428,10 @@ module AresMUSH
 
         end
 
-        subject do 
+        subject do
           Magic.cast_inflict_damage(@char, @target, "Spell", "FLESH", "Spell inflicted damage")
         end
-
+        # Should delete damage if ocmbat is mock
         it "sets the target to freshly damaged" do
           expect(@target).to receive(:update).with(freshly_damaged: true)
           subject
@@ -445,7 +445,7 @@ module AresMUSH
         it "returns cast_damage" do
           expect(subject).to eq ["magic.cast_damage"]
         end
-      
+
 
       end
 
@@ -463,7 +463,7 @@ module AresMUSH
       end
 
       describe :update_spell_mods do
-        
+
       end
 
       describe :cast_stance do
@@ -485,11 +485,11 @@ module AresMUSH
       describe :cast_suppress do
 
       end
-       
-      describe :cast_attack_target do 
+
+      describe :cast_attack_target do
 
       end
-    
+
     end
   end
 end
