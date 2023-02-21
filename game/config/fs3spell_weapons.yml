@@ -381,12 +381,14 @@ fs3combat:
     - strength
     - weaken
     Ranged:
+    - death-touched
     - fire
     - ice
     - lightning
     - scope
     - weaken
     Melee:
+    - death-touched
     - fire
     - ice
     - lightning
