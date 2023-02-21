@@ -191,7 +191,7 @@ module AresMUSH
 
               #Inflict Damage
               if spell['damage_inflicted']
-                message = Magic.cast_inflict_damage(self.caster_name, combatant, target, self.spell_name, spell['damage_inflicted'], spell['damage_desc'], is_stun = false, is_mock = !combat.is_real?)
+                message = Magic.cast_inflict_damage(self.caster_name, combatant, target, self.spell_name, spell['damage_inflicted'], spell['damage_desc'])
                 messages.concat message
               end
 
