@@ -9,7 +9,7 @@ en:
         invalid_action: "Not a valid idle action.  Try one of these: %{actions}"
 
         idle_roster: "Added to roster"
-        idle_warn: "In danger of idling out.  Please come back!"
+        idle_warn: "In danger of idling out.  Characters who are not played for more than six weeks will be marked 'Gone' and moved off-camera. "
         idle_dead: "Dead"
         idle_gone: "Left the Grid"
         idle_reset: "No Longer Idle"
@@ -29,7 +29,7 @@ en:
         use_roster_cmd: "Use the 'roster' command to add/remove someone from the roster."
         idle_status_set: "%{name}'s idle status is now %{status}."
         idle_status_reset: "%{name} is no longer marked idle."
-        
+
         roster_disabled: "This game does not use the roster system."
         roster_title: "Character Roster"
         roster_app_required: "An application is required for this roster char."
