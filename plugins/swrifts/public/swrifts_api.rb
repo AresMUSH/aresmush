@@ -321,6 +321,10 @@ module AresMUSH
     charhindpoints = char.swrifts_charhindpoints
 	# charhindpoints = 4
 
+	#Get the Perks chosen for the character
+	charperks - char.swrifts_charperks
+
+
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -345,6 +349,7 @@ module AresMUSH
 		  hjslots: hjslots,
 		  hjtables: hjtables,
       	  charhindpoints: charhindpoints,
+		  charperks: charperks
 		}
 	end
 

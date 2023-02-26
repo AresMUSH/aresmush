@@ -21,7 +21,7 @@ module AresMUSH
 		collection :swrifts_randnum, "AresMUSH::SwriftsRandnum"
 		collection :swrifts_fandg, "AresMUSH::SwriftsFandg"
 		collection :swrifts_charhindpoints, "AresMUSH::SwriftsCharHindPoints"
-
+		collection :swrifts_charperks, "AresMUSH::SwriftsCharPerks"
 
 		attribute :swrifts_iconicf
 		attribute :swrifts_race
@@ -217,6 +217,14 @@ module AresMUSH
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
+
+	class SwriftsCharPerks < Ohm::Model
+		include ObjectModel
+
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end	
 
 
 end
