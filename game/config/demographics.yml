@@ -69,7 +69,7 @@ demographics:
         Other: NPCs.
     Mythic:
       wiki: ''
-      desc: "What type of mythic is your character bonded to?"
+      desc: What type of mythic is your character bonded to?
       values:
         Griffon: Half bird of prey, half large cat.
         Pegasus: Flying horse, horn optional.

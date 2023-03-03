@@ -82,19 +82,6 @@ body {
 	z-index: 1;
 }
 
-.ansi-green-bg {
-	background-color: #8bb678;
-}
-
-.ansi-green-fg {
-	color: #8bb678;
-}
-
-#jobMenuBottom {
-	float: left;
-	margin-top: 5px;
-}
-
 body>.container-fluid {
 	padding: 0;
 	margin: 0;
@@ -103,8 +90,8 @@ body>.container-fluid {
 }
 
 p {
-	margin: 0 0 16px;
-	line-height: 1.6;
+	margin: 0 0 20px;
+	line-height: 1.75;
 }
 
 a {
@@ -181,6 +168,17 @@ code {
 }
 
 .status-message p {
+	margin: 1em;
+	line-height: 1;
+}
+
+.scene-alerts,
+.chat-alerts {
+    padding: 5px;
+}
+
+.scene-alerts p,
+.chat-alerts p {
 	margin: 1em;
 	line-height: 1;
 }
@@ -672,11 +670,6 @@ button {
 	background-size: 500px;
 }
 
-#jobMenuBottom + .action-buttons {
-	float: right;
-	width: fit-content;
-}
-
 .btn-secondary,
 .btn-collapse,
 .btn-default {
@@ -743,7 +736,6 @@ button {
 	border-color: #c69163;
 	padding-top: 8px;
 	letter-spacing: .03em;
-	text-shadow: 1px 1px 1px $blackest-grey;
 }
 
 .btn-warning:disabled {
@@ -761,8 +753,8 @@ button {
 
 .collapse.show {
 	background: $darker-slate;
-	padding: 5px 15px;
-	margin-top: -10px;
+	padding: 20px 15px 5px;
+        margin-top: 10px;
 }
 
 //FS3
@@ -1707,6 +1699,11 @@ h6, .h6 {
 	border-left: none;
 }
 
+.sidebar-box-right p {
+        line-height: 1.6;
+        margin: 0 0 10px;
+}
+
 .sidebar-box {
 	border-top: none;
 }
@@ -1723,6 +1720,17 @@ h6, .h6 {
 
 .scene-text {
 	background: #953535;
+}
+
+.scene-set-pose {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    border-left: 0;
+    font-style: normal;
+    padding: 20px;
+    background-color: $dark-slate;
+    box-shadow: 2px 2px 5px #191919;
 }
 
 .scene-ooc-pose {
@@ -1817,6 +1825,31 @@ h6, .h6 {
 }
 
 //LIVE SCENES
+
+.form-group:nth-of-type(6)>.col-sm-9>p {
+	width: 50%;
+	float: left;
+	min-width: 200px;
+	margin: 0;
+}
+
+p:nth-of-type(2)>#location {
+	width: calc(100% - .5em);
+	margin-left: .5em;
+}
+
+#limit,
+#title,
+#icdate,
+#tags,
+#content_warning {
+	padding: 6px 12px;
+	width: 100%;
+}
+
+#content_warning {
+	margin-top: 15px;
+}
 
 @media screen and (min-width:768px) {
 	.live-scenes-heading .col-sm-6 {
@@ -1981,6 +2014,11 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	padding-right: 10px;
 	overflow-y: auto;
 	border: 0
+}
+
+.play-sidebar > .collapse.show {
+        padding: 0;
+        margin: 0;
 }
 
 #sceneMenuCollapse {
@@ -2697,6 +2735,7 @@ th,
 
 
 .infobox {
+        background: $darker-slate;
 	margin: 15px 15px 0px 5px;
 	width: 410px;
 	border-radius: 10px;
@@ -2907,6 +2946,12 @@ th,
 
 }
 
+.inline-response {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
 .admin-only-reply, .admin-only-reply .markdown-editor {
     background-color: $dark-slate;
     border-color: $darker-slate;
@@ -2953,4 +2998,40 @@ ALERTIFY DIALOGS
 .alertify-notifier .ajs-message.ajs-success {
   background-color: $darkest-slate;
   color: $primary-words-color;
+}
+
+/* --------------------------
+ANSI COLORS
+---------------------------*/
+
+.ansi-blue-bg {
+    background-color: #344a92;
+    color: $light-grey;
+}
+
+.ansi-red-bg {
+    background-color: #d16e66;
+    color: $light-grey;
+}
+
+.ansi-red {
+    color: #d16e66;
+}
+
+.ansi-green-bg {
+	background-color: #8bb678;
+        color: $light-grey;
+}
+
+.ansi-green-fg {
+	color: #8bb678;
+}
+
+.ansi-magenta-fg {
+     color: #ffabff;
+}
+
+.ansi-magneta-fg-bg {
+     background-color: #ffabff;
+     color: $light-grey;
 }
