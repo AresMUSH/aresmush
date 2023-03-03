@@ -6,7 +6,7 @@
 
 <p>Now, a thriving <a href="/wiki/world:cradle">settlement</a> of thousands has built a home in the valley of British Columbia, protected by the towering mountains and the <a href="/wiki/world:wardens">Wardens</a> who watch their passes. Mages who have bound themselves to the very monsters who seek to destroy us, the Wardens have vowed to use their magic and their bond to keep humanity safe - even if it means their own minds may shatter in the process.</p>
 
-<div class="jumbotron-tagline" style="font-family:Courier Prime, monospace;">Shattered is <a href="https://shatteredmu.com/forum/1/115">currently full</a>. </div>
+<div class="jumbotron-tagline" style="font-family:Courier Prime, monospace;">Shattered is <a href="https://shatteredmu.com/forum/1/115">currently full</a>. Character creation for March 3 has been turned off. We hope to open again sometime in early May.</div>
 
 <div class="homebox">
 
