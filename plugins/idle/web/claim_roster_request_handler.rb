@@ -17,7 +17,7 @@ module AresMUSH
 
         if !Login.creation_allowed?
           reason = Global.read_config('login', 'creation_not_allowed_message')
-          return { status: 'error' error: t('login.creation_restricted', :reason => reason)}
+          return { status: 'error', error: t('login.creation_restricted', :reason => reason)}
         end
 
         char = Character[request.args[:id]]
