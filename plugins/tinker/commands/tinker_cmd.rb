@@ -9,12 +9,9 @@ module AresMUSH
       end
 
       def handle
-        Character.all.each do |c|
-          c.spells_learned.each do |s|
-            s.delete
-          end
+        Character.all.select { | c | !c.demographic('enclave') }.each do |c|
+           client.emit c.name
         end
-        client.emit_success "Done!"
       end
 
     end
