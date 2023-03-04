@@ -56,6 +56,7 @@ module AresMUSH
       end
       types << 'Mage School'
       types << 'Mythic School'
+      types << 'Enclave'
       types.sort
     end
 

@@ -18,6 +18,8 @@ module AresMUSH
           groups = Chargen.approved_chars.group_by { |c| c.major_schools.first}
         elsif (filter == 'Mythic School')
           groups = Chargen.approved_chars.group_by { |c| c.minor_schools.first}
+        elsif (filter == 'Enclave')
+          groups = Chargen.approved_chars.group_by { |c| c.demographic('enclave')}
         else
           groups = Chargen.approved_chars.group_by { |c| c.group(filter)}
         end
