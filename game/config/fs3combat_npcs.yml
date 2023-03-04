@@ -74,8 +74,7 @@ fs3combat:
       Wounds: -10
     Pantherine:
       Default: 10
-      Composure: 11
-      Altertness: 13
+      Alertness: 13
       Magic: 10
       Wounds: -10
     Pegasus:
@@ -95,7 +94,6 @@ fs3combat:
       Wounds: -10
     Roc:
       Default: 10
-      Composure: 12
       Brawl: 12
       Melee: 12
       Reflexes: 12

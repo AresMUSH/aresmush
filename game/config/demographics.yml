@@ -32,6 +32,7 @@ demographics:
   - skin
   - height
   - physique
+  - enclave
   - weyr detail
   - played by
   - birthdate
@@ -43,6 +44,7 @@ demographics:
   - hair
   - skin
   - physique
+  - enclave
   - weyr detail
   genders:
     Male:
@@ -69,7 +71,7 @@ demographics:
         Other: NPCs.
     Mythic:
       wiki: ''
-      desc: "What type of mythic is your character bonded to?"
+      desc: What type of mythic is your character bonded to?
       values:
         Griffon: Half bird of prey, half large cat.
         Pegasus: Flying horse, horn optional.
@@ -87,6 +89,7 @@ demographics:
     skin: "%xcskin <complexion>%xn"
     birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
     full name: "%xcfullname <name>%xn - Your character's full name."
+    enclave: "%xcenclaive <native enclave>%xn"
   max_age: 65
   min_age: 20
   nickname_field: ''

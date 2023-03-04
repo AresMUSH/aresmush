@@ -3,25 +3,27 @@ module AresMUSH
   module Idle
     class RosterClaimCmd
       include CommandHandler
-      
+
       attr_accessor :name, :app
-      
+
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = titlecase_arg(args.arg1)
         self.app = trim_arg(args.arg2)
       end
-       
+
       def required_args
         [ self.name ]
       end
-      
+
       def check_roster_enabled
+        reason = Global.read_config('login', 'creation_not_allowed_message')
         return t('idle.roster_disabled') if !Idle.roster_enabled?
+        return t('login.creation_restricted', :reason => reason) if !Login.creation_allowed?
         return nil
       end
-      
-      
+
+
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           response = Idle.claim_roster(model, enactor, self.app)
