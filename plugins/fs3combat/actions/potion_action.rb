@@ -113,7 +113,7 @@ module AresMUSH
 
           #Equip Weapon
           if (weapon && weapon != "Spell")
-            Magic.set_magic_weapon(combatant, target, weapon)
+            Magic.set_magic_weapon(target, weapon)
             if armor
 
             else
