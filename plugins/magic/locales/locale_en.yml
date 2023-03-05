@@ -51,8 +51,8 @@ en:
       potion_ko_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       # potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
       # potion_stance_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance} It will last for %{rounds} more round(s)."
-      potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification."
-      potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification."
+      potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %xg%{mod_msg} modification%xn."
+      potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %xg%{mod_msg} modification%xn."
       not_character: "%xr%{name} is not a character.%xn"
 
     # ----------------------------
