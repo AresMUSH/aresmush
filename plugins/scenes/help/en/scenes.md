@@ -65,14 +65,6 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scene/share [scene #]` - Shares the log to the web portal.
 `scene/unshare [scene #]` - Unshares a log.
 
-## Disabling and Clearing the Log
-
-`scene/disablelog [scene #]` - Stops logging. Note: This also clears any existing poses from the log.
-`scene/clearlog [scene #]` - Clears current poses from the log but keeps logging enabled.
-`scene/enablelog [scene #]` - Restarts logging. Note: This starts the scene fresh.
-
-> **Note:** If the scene log is disabled, characters cannot join from the web portal.
-
 ## Setting Scene Info
 
 `scene <#>` - Views scene info, without poses.
