@@ -75,9 +75,6 @@ scenes:
     repose/reset: repose/clear
     repose/gag: repose/nudge mute
     logs: scene
-    log/on: scene/startlog
-    log/off: scene/stoplog
-    log/clear: scene/clearlog
     log/undo: scene/undo
     scene/proxy: scene/spoof
     scene/amend: scene/replace

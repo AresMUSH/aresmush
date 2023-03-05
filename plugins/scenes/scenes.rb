@@ -102,10 +102,6 @@ module AresMUSH
           return SceneTypesCmd
         when "log"
           return SceneLogCmd
-        when "clearlog"
-          return SceneLogClearCmd
-        when "enablelog", "disablelog"
-          return SceneLogEnableCmd
         when "repose"
           return SceneReposeCmd
         when "report"
