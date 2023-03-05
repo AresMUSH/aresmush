@@ -113,16 +113,9 @@ module AresMUSH
 
           #Equip Weapon
           if (weapon && weapon != "Spell")
-            Magic.set_magic_weapon(target, weapon)
-            if armor
+            message = Magic.cast_weapon(combatant.name, combatant, target, self.spell, weapon, true)
+            messages.concat message
 
-            else
-              if target.name == combatant.name
-                messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
-              else
-                messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
-              end
-            end
           end
 
           #Equip Weapon Specials
