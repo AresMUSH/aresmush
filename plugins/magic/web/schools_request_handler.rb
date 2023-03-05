@@ -6,7 +6,7 @@ module AresMUSH
         all_spells = Global.read_config("spells")
         school = request.args['school'].titlecase || ""
         school_spells = all_spells.select { |name, data|  data['school'] == school }
-        spells = Magic.spell_list_all_data(all_spells)
+        spells = Magic.spell_list_all_data(school_spells)
 
         spells_by_level = spells.group_by { |s| s[:level] }
         blurb = Global.read_config("magic", "schools", school)['blurb']
