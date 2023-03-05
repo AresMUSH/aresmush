@@ -14,7 +14,7 @@ module AresMUSH
         @validator.check_cron('blacklist_cron')
         @validator.require_text('creation_not_allowed_message')
         @validator.require_text('guest_disabled_message')
-        @validator.check_role_exists('guest_role')
+        @validator.check_role_exists('guest_role', true)
         @validator.require_text('login_not_allowed_message')
         @validator.check_cron('notice_cleanup_cron')
         @validator.require_int('notice_timeout_days', 1)
