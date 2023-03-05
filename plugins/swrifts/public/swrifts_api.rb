@@ -236,7 +236,6 @@ module AresMUSH
 #### CHARGEN ####
 
 	def self.get_abilities_for_chargen(char)
-
 		# Get the base CGen slots that might be filled
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init)
@@ -819,7 +818,7 @@ module AresMUSH
 				charhjicf.each do |k,v|
 					tempcifstring = []
 					hjopt = k.split("_")[0]
-          hjname = hjopt.gsub("hj","")
+          			hjname = hjopt.gsub("hj","")
 					v.each do |k1,v1|
 						tempcifstring << {table: k1, name: hjopt, tablename: hjname}
 					end
@@ -830,18 +829,18 @@ module AresMUSH
 		return (cifstring);
 	end
 
-	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
-		txtstring = []
-		hjstr = []
-		tempcifstring =  Hash.new
+	# def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
+	# 	txtstring = []
+	# 	hjstr = []
+	# 	tempcifstring =  Hash.new
 
-		hjstring = hjtables.to_a.sort_by { |a| a.name }
-			.each_with_index
-				.map do |a, i|
-					tempcifstring[a.name] = {table: a.table, name: a.name}
-				end
-		return (tempcifstring)
-	end
+	# 	hjstring = hjtables.to_a.sort_by { |a| a.name }
+	# 		.each_with_index
+	# 			.map do |a, i|
+	# 				tempcifstring[a.name] = {table: a.table, name: a.name}
+	# 			end
+	# 	return (tempcifstring)
+	# end
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
 		traitnamedc = traitname.downcase
@@ -854,6 +853,36 @@ module AresMUSH
 				end
 			end
 	end
+
+	# def self.acl_get_charperk_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+
+	# 	# attribute :name #Raise an Edge, Raise a Skill, Add an Edge, etc.
+	# 	# attribute :rating, :type => DataType::Integer #cost of the perk chosen
+	# 	# attribute :description #what does it mean?
+	# 	# reference :character, "AresMUSH::Character"
+
+	# 	if charicf #has there an ICF selected?
+	# 		cifstring = Hash.new
+	# 		tempcifstring = []
+
+	# 		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
+	# 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+	# 		pattern = 'hj'
+	# 		charhjicf = charcgicf.select{ |k,v| k[pattern] }
+	# 		if (charhjicf.length > 0)
+	# 			charhjicf.each do |k,v|
+	# 				tempcifstring = []
+	# 				hjopt = k.split("_")[0]
+    #       			hjname = hjopt.gsub("hj","")
+	# 				v.each do |k1,v1|
+	# 					tempcifstring << {table: k1, name: hjopt, tablename: hjname}
+	# 				end
+	# 				cifstring[hjopt] = tempcifstring
+	# 			end
+	# 		end
+	# 	end
+	# 	return (cifstring);
+	# end	
 
 
   ####### This is probably not needed - I still have to calculate the points dynamically ####

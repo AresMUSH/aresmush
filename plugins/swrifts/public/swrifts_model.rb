@@ -220,9 +220,10 @@ module AresMUSH
 
 	class SwriftsCharPerks < Ohm::Model
 		include ObjectModel
-
-		attribute :name
-		reference :character, "AresMUSH::Character"
+		attribute :name #Raise An Edge etc.
+		attribute :cost, :type => DataType::Integer #how many perk points it is
+		attribute :description #What is in 
+		reference :character, "AresMUSH::Character"		
 		index :name
 	end	
 
