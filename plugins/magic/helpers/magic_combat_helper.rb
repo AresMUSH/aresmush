@@ -3,8 +3,10 @@ module AresMUSH
   module Magic
 
     def self.combat_stop(combat)
-      combat.combatants.each do |c|
-        Magic.reset_magic_energy(c.associated_model)
+      if !combat.is_real
+        combat.combatants.each do |c|
+          Magic.reset_magic_energy(c.associated_model)
+        end
       end
     end
 
