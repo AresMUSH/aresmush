@@ -141,20 +141,20 @@ You can include a tab view with multiple tab selections.
 
 ## Includes
 
-If you have a common snippet that you want to use in multiple places, you can put it into a wiki page of its own and then include it in other pages with the include tag.
+Includes let you define a component in one place and re-use it across many other pages. See [Wiki](/help/wiki) for more details about how to use includes.
 
-`[[include PageName]]`
+To include the contents of page "MyIncludePage" in another page:
 
-Includes can have parameters, like so:
+`[[include MyIncludePage]]`
 
-`[[include PageName`
+If the included page has variables defined (like `%{foo}`), specify values for each variable like so:
+
+`[[include MyIncludePage`
 `|foo=Foo Value`
 `|bar=Bar value`
 `]]`
 
-In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to separate the parameters with "|".
-
-Tip: If the page you're including has an actual % in it, you'll need to format it as two percents (%%) otherwise the variable processing will get confused.
+In the page, `%{foo}` will be replaced with "Foo Value". Be sure to separate the parameters with "|". If the page you're including has an actual % in it, you'll need to format it as two percents (%%).
 
 ## Templates
 
