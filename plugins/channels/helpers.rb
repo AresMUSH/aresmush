@@ -89,7 +89,7 @@ module AresMUSH
       original_msg = "#{original_msg}".gsub(/%R/i, " ")
       original_msg = "#{original_msg}".gsub(/[\r\n]/i, " ")
 
-      channel.add_to_history "#{title} #{original_msg}", enactor
+      channel_message = channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
           
@@ -108,6 +108,7 @@ module AresMUSH
         title: channel.name,
         author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
         message: Website.format_markdown_for_html(formatted_msg),
+        message_id: channel_message.id,
         is_page: false
       }
       
