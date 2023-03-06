@@ -10,6 +10,8 @@ module AresMUSH
         char = Character[event.char_id]
         char.update(login_email: nil)
         char.update(login_api_token: nil)
+        char.update(last_ip: '')
+        char.update(last_hostname: '')
       end
     end
   end

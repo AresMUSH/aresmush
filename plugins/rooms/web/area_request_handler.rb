@@ -39,9 +39,11 @@ module AresMUSH
               id: r.id,
               name_and_area: r.name_and_area
             }},
-          children: area.sorted_children.map { |a| { id: a.id, name: a.name } }
+          children: area.sorted_children.map { |a| { id: a.id, name: a.name } },
         },
-          can_manage: Rooms.can_build?(enactor)
+          can_manage: Rooms.can_build?(enactor),
+          all_areas: Rooms.area_directory_web_data
+          
         }
         
       end
