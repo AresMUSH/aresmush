@@ -122,6 +122,8 @@ module AresMUSH
       case request.cmd
       when "area"
         return AreaRequestHandler
+      when "createArea"
+        return AreaCreateRequestHandler
       when "deleteArea"
         return AreaDeleteRequestHandler
       when "editArea"
@@ -132,6 +134,8 @@ module AresMUSH
         return LocationsRequestHandler
       when "location"
         return LocationRequestHandler
+      when "manageLocations"
+        return ManageLocationsRequestHandler
       when "searchLocations"
         return SearchLocationsRequestHandler
       end
