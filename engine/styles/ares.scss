@@ -1848,6 +1848,55 @@ MAIL
   padding: 10px 0px 10px 0px;
 }
 
+
+/* -------------------------
+LOCATIONS SCREEN
+------------------------- */
+  
+.area-directory {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}  
+
+.area-entry {
+  width: 300px;
+  border: 1px solid $border-color;
+  min-height: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.area-entry-summary {
+  padding: 10px;  
+}
+
+.area-entry h2 {
+  font-size: 1.25em;
+  background-color: $primary-color;
+  color: $primary-words-color;
+  padding: 5px;
+  margin: 0px;
+}
+
+.area-entry h3 {
+  font-size: 1em;
+  margin: 0px;
+}
+
+.area-view-detail {
+  align-self: center;
+  margin: 10px;
+}
+
+.area-quickjump {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
 /* -------------------------
 OTHER
 ------------------------- */
