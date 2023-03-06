@@ -332,6 +332,7 @@ website:
     faq: faq
     frequently_asked_questions: faq
     plot_system: system:plot_system
+    luck_points: system:luck_points
     one-shot_adventures: system:one-shot_adventures
     getting_started: guide:getting_started
     join_us: guide:join_us
