@@ -25,7 +25,7 @@
 %xh<%= left( t('profile.timezone'), 12 ) %>%xn <%= left( timezone, 25 ) -%>
 %xh<%= left( t('profile.unread_mail'), 12 ) %>%xn <%= unread_mail %>
 %xh<%= left( t('profile.last_on'), 12 ) %>%xn <%= last_on %>
-<% if char.idle_notes %>
+<% if !char.idle_notes.blank? %>
 <%= divider %>
 <%= char.idle_notes %>
 <% end %>
