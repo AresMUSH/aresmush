@@ -29,6 +29,15 @@ module AresMUSH
     def full_name
       self.parent ? "#{self.parent.full_name} - #{self.name}" : self.name
     end
+    
+    def sorted_descendants
+      descendants = []
+      self.sorted_children.each do |child|
+        descendants.push(child)
+        descendants.push(*child.sorted_descendants)
+      end
+      descendants
+    end
   end
 end
 
