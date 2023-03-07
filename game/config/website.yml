@@ -196,6 +196,9 @@ website:
     - title: Combat Guide
       route: wiki-page
       id: guide:combat_guide
+    - title: Combat Tactics Guide
+      route: wiki-page
+      id: guide:combat_tactics_guide
     - title: Combat Organizer's Guide
       route: wiki-page
       id: guide:combat_organizers_guide
@@ -294,6 +297,7 @@ website:
     unbonded: world:mages
     unbonded_mages: world:mages
     prism_passes: world:prism_passes
+    prism: world:prism_passes
     school: world:weyrling_school
     weyrling_school: world:weyrling_school
     crime: world:laws_morality
@@ -338,6 +342,8 @@ website:
     join_us: guide:join_us
     combat_guide: guide:combat_guide
     combat_organizers_guide: guide:combat_organizers_guide
+    combat_tactics: guide:combat_tactics
+    combat_tactics_guide: guide:combat_tactics
     gm_guide: guide:gm_guide
 
   wiki_export_cron:
