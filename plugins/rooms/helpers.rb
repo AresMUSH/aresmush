@@ -87,16 +87,21 @@ module AresMUSH
     end
     
     def self.area_directory_web_data
-      Area.all.to_a.sort_by { |a| a.full_name }.map{ |area|
-          {
-            id: area.id,
-            name: area.full_name,
-            summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
-            children: area.children.to_a.sort_by { |a| a.name }.map { |a| { id: a.id, name: a.name } },
-            rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| { name: r.name, id: r.id } },
-            is_top_level: area.parent ? false : true
-          }
-        }
+      Area.all.to_a.sort_by { |a| a.full_name }.map{ |area| Rooms.area_web_data(area) }
     end
+    
+    def self.area_web_data(area)
+      {
+        id: area.id,
+        name: area.name,
+        full_name: area.full_name,
+        summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
+        children: area.sorted_children.map { |a| Rooms.area_web_data(a) },
+        descendants: area.sorted_descendants.map { |a| Rooms.area_web_data(a) },
+        rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| { name: r.name, id: r.id, summary: Website.format_markdown_for_html(r.shortdesc) } },
+        is_top_level: area.parent ? false : true
+      }
+    end
+    
   end
 end

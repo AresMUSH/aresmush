@@ -51,6 +51,7 @@ module AresMUSH
           id: room.id,
           name: room.name,
           descs: edit_mode ? Describe.get_web_descs_for_edit(room) : Describe.get_web_descs_for_display(room),
+          summary: edit_mode ? Website.format_input_for_html(room.shortdesc) : Website.format_markdown_for_html(room.shortdesc),
           owners: owners,
           area: area,
           name_and_area: room.name_and_area,
