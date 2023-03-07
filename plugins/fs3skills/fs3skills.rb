@@ -52,6 +52,10 @@ module AresMUSH
         end
       when "ability"
         return SetAbilityCmd
+      when "renameability"
+        return RenameAbilityCmd
+      when "wipeability"
+        return WipeAbilityCmd
       when "xp"
         case cmd.switch
         when "award", "remove"
