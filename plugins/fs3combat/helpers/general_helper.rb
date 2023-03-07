@@ -214,7 +214,11 @@ module AresMUSH
           
           # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.                    
           combat.log "---- Resetting Actions ----"
-          combat.active_combatants.each { |c| c.action }
+          combat.active_combatants.each do |c|
+            if (c.action_error?)
+              c.reset_action
+            end
+          end
     
           FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor.name)
           

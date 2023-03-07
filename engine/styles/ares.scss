@@ -191,6 +191,9 @@ p {
   align-items: center;
 }
 
+label {
+  font-weight: bold;
+}
 
 
 /* -------------------------
@@ -1863,11 +1866,12 @@ LOCATIONS SCREEN
 .area-entry {
   width: 300px;
   border: 1px solid $border-color;
-  min-height: 200px;
-  height: 100%;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-self: stretch;
+  
 }
 
 .area-entry-summary {
@@ -1887,12 +1891,56 @@ LOCATIONS SCREEN
   margin: 0px;
 }
 
-.area-view-detail {
+.area-buttons {
   align-self: center;
   margin: 10px;
 }
 
 .area-quickjump {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+  
+.location-directory {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}  
+
+.location-entry {
+  width: 400px;
+  border: 1px solid $border-color;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.location-entry-summary {
+  padding: 10px;  
+}
+
+.location-entry h2 {
+  font-size: 1.25em;
+  background-color: $primary-color;
+  color: $primary-words-color;
+  padding: 5px;
+  margin: 0px;
+}
+
+.location-entry h3 {
+  font-size: 1em;
+  margin: 0px;
+}
+
+.location-buttons {
+  align-self: center;
+  margin: 10px;
+}
+
+.location-quickjump {
   margin-left: 10px;
   margin-bottom: 10px;
 }
