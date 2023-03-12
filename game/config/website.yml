@@ -210,7 +210,7 @@ website:
       id: guide:combat_guide
     - title: Combat Tactics Guide
       route: wiki-page
-      id: guide:combat_tactics_guide
+      id: guide:combat_tactics
     - title: Combat Organizer's Guide
       route: wiki-page
       id: guide:combat_organizers_guide
