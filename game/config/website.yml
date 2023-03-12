@@ -25,7 +25,7 @@ website:
     minute:
     - 17
   top_navbar:
-  - title: Game
+  - title: Intro
     menu:
     - title: Join Us
       route: wiki-page
@@ -38,9 +38,12 @@ website:
     - title: About Shattered
       route: wiki-page
       id: ooc:about_us
-    - title: FAQ
+    - divider: true
+    - title: Getting Started
       route: wiki-page
-      id: faq
+      id: guide:getting_started
+  - title: Game
+    menu:
     - title: Policies
       route: wiki-page
       id: policies
@@ -49,9 +52,6 @@ website:
       route: wiki-page
       id: ooc:staff
     - divider: true
-    - title: Getting Started
-      route: wiki-page
-      id: guide:getting_started
     - title: Guides
       route: wiki-page
       id: guide
@@ -60,6 +60,8 @@ website:
       route: who
     - title: Forum
       route: forum
+    - title: Events
+      route: events
     - title: Game Help
       route: help
     - title: Wiki Menu
@@ -86,6 +88,9 @@ website:
     - title: The Cradle
       route: wiki-page
       id: world:cradle
+    - title: Beyond the Cradle
+      route: wiki-page
+      id: world:beyond_the_cradle
     - title: Weyr
       route: wiki-page
       id: world:weyr
@@ -102,6 +107,13 @@ website:
     - title: Laws & Morality
       route: wiki-page
       id: laws
+    - title: Holidays
+      route: wiki-page
+      id: holidays
+    - divider: true
+    - title: FAQ
+      route: wiki-page
+      id: faq
   - title: Magic
     menu:
     - title: Magic
@@ -289,6 +301,7 @@ website:
     cradle: world:cradle
     cradle_s: world:cradle
     cradle's: world:cradle
+    holidays: world:holidays
     weyr: world:weyr
     weyrs: world:weyr
     north_weyr: world:weyr
@@ -337,6 +350,7 @@ website:
     frequently_asked_questions: faq
     plot_system: system:plot_system
     luck_points: system:luck_points
+    luck_point: system:luck_points
     one-shot_adventures: system:one-shot_adventures
     getting_started: guide:getting_started
     join_us: guide:join_us
