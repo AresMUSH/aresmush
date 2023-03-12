@@ -389,15 +389,15 @@ code {
 
 // Search menu
 
-#navbar .navbar-nav>li:nth-of-type(9) {
+#navbar .navbar-nav>li:nth-of-type(10) {
     margin-top: -1px
 }
 
-#navbar .navbar-nav>li:nth-of-type(9) .dropdown-toggle {
+#navbar .navbar-nav>li:nth-of-type(10) .dropdown-toggle {
     font-size: 0
 }
 
-#navbar .navbar-nav>li:nth-of-type(9) .dropdown-toggle:before {
+#navbar .navbar-nav>li:nth-of-type(10) .dropdown-toggle:before {
     font-size: 1rem;
     content: "\f002";
     font-weight: 400;
@@ -406,7 +406,7 @@ code {
     line-height: 18px
 }
 
-.nav.navbar-right li:nth-of-type(9) .dropdown-toggle .caret {
+.nav.navbar-right li:nth-of-type(10) .dropdown-toggle .caret {
     display: none
 }
 
