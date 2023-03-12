@@ -65,19 +65,28 @@ module AresMUSH
     
     def action
       return nil if !self.action_klass
-      klass = FS3Combat.const_get(self.action_klass)
-      a = klass.new(self, self.action_args)
-      error = a.prepare
+      a = get_action_instance
       
+      error = a.prepare
       if (error)
         self.combat.log "Action Reset: #{self.name} #{self.action_klass} #{self.action_args} #{error}"
-        FS3Combat.emit_to_combat self.combat, t('fs3combat.resetting_action', :name => self.name, :error => error)
-        self.update(action_klass: nil)
-        self.update(action_args: nil)
+        FS3Combat.emit_to_combat self.combat, t('fs3combat.invalid_action', :name => self.name, :error => error)
         return nil
       end
+      
       a
     end
+    
+    def action_error?
+      a = get_action_instance
+      a.prepare
+    end
+    
+    def reset_action
+      FS3Combat.emit_to_combat self.combat, t('fs3combat.resetting_action', :name => self.name)
+      self.update(action_klass: nil)
+      self.update(action_args: nil)
+    end      
       
     def is_subdued?
       self.subdued_by && self.subdued_by.is_subduing?(self)
@@ -191,5 +200,14 @@ module AresMUSH
     def log(msg)
       self.combat.log(msg)
     end
+    
+    # Private
+    
+    def get_action_instance
+      return nil if !self.action_klass
+      klass = FS3Combat.const_get(self.action_klass)
+      a = klass.new(self, self.action_args)
+    end
+    
   end
 end

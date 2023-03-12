@@ -41,3 +41,12 @@ See [Manage Luck](/help/manage_luck).
 ## Managing XP
 
 See [Manage XP](/help/manage_xp).
+
+## Removing and Renaming Abilities
+
+If you want to remove or rename an ability in your skills configuration, you need to update any existing characters. Two commands can help with this:
+
+`wipeability <name>` - Will remove an ability from **ALL** characters. Checks all ability types (action/bg/lang/adv).
+`renameability <old name>=<new name>` - Will rename an ability for **ALL** characters. Checks all ability types (action/bg/lang/adv).
+
+If you need to do more sophisticated processing (such as moving an ability from an action skill to a background skill or vice-versa), it will require custom code. See [Changing Existing Abilities](https://aresmush.com/tutorials/config/fs3skills_skills.html#changing-an-existing-ability) in the FS3 config help.

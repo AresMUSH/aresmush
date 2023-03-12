@@ -3,6 +3,11 @@ module AresMUSH
     class DummyClient
       attr_accessor :success, :message
       
+      def emit(message)
+        self.success = true
+        self.message = message
+      end
+      
       def emit_success(message)
         self.success = true
         self.message = message
@@ -46,6 +51,11 @@ module AresMUSH
         
         client = DummyClient.new
         handler_class = FS3Combat.get_cmd_handler(client, cmd, sender)
+        
+        if (!handler_class || handler_class == CombatHudCmd)
+          return { error: t('fs3combat.unrecognized_combat_cmd') }
+        end
+        
         handler = handler_class.new(client, cmd, sender)
         handler.on_command
          
