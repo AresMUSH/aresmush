@@ -25,7 +25,7 @@ module AresMUSH
           add_alt(players, player_tag.titleize, c)
         end
         
-        players.sort_by { |key, data| data[:name] }.map { |key, data| data }
+        players.sort_by { |key, data| data[:name].upcase }.map { |key, data| data }
       end
       
       def add_alt(players, player_name, alt)

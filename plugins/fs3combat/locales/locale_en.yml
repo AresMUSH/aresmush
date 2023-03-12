@@ -271,7 +271,8 @@ en:
         new_turn: "%{name} has started a new turn!  Pose and pick your actions."
         starting_turn_resolution: "Starting turn resolution..."
         turn_in_progress: "Turn in progress.  Please wait."
-        resetting_action: "Resetting %{name}'s action because it is no longer valid: %{error}"
+        resetting_action: "Resetting %{name}'s action because it's no longer valid."
+        invalid_action: "ATTENTION! %{name}'s action is no longer valid: %{error}"
         
         # ----------------------------
         # STANCE
@@ -409,3 +410,4 @@ en:
         cant_reload: "That weapon can't be reloaded."      
         
         cant_link_scene: "You are not a part of that scene, so you can't link combat to it."
+        unrecognized_combat_cmd: "That is not a valid combat command."

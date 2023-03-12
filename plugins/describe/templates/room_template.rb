@@ -95,7 +95,7 @@ module AresMUSH
         else
           status = t('describe.foyer_room_occupied')
         end
-        linebreak = i % 2 == 0 ? "%R          " : ""
+        linebreak = i % 2 == 0 ? "%R" : ""
         room_name = "#{exit_destination(e)} (#{status})"
         "#{linebreak}%xh#{exit_name(e)}%xn #{left(room_name,29)}"
       end

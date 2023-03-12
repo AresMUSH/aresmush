@@ -17,6 +17,10 @@ Any approved player can contribute to the wiki.  The 'Edit' button will appear a
 
 Changes will appear in the 'Recent Changes' page, which admins can use for review or moderation purposes.
 
+## Categories
+
+You can include a category name in front of the page name. For example, naming a page `theme:Setting` will put it in the "Theme" category. This can be helpful for keeping track of things, and also affects how the page appears in the breadcrumbs (at the top of each wiki page) and "All Pages" list.
+
 ## Markdown
 
 Wiki pages use [markdown formatting](/help/markdown), with various "extensions" available for MUSH-specific things like dynamic character or scene lists.
