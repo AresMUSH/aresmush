@@ -172,7 +172,7 @@ spells:
     is_potion: true
     level: 4
     name: Agility
-    range: Self
+    range: Touch
     rounds: 3
     school: Creation
   Minor Group Heal:
@@ -225,7 +225,7 @@ spells:
     is_potion: true
     level: 4
     name: Strength
-    range: Self
+    range: Touch
     rounds: 100
     school: Creation
     weapon_specials: Strength
