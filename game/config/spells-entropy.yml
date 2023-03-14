@@ -294,7 +294,7 @@ spells:
     weapon_specials: Ice
   Weaken Weapon:
     available: true
-    casting_time: 1 round
+    casting_time: 3 rounds
     damage_type: Bypass
     desc: Weaken a weapon by blunting sharp edges or weakening it's structural integrity. This can include man-made weapons or natural animal and cryptids weapons like teeth and claws.
     duration: 3 hours
@@ -302,7 +302,7 @@ spells:
     level: 4
     name: Weaken Weapon
     range: Short
-    rounds: 100
+    rounds: 3
     school: Entropy
     weapon_specials: Weaken
     target_num: 1
@@ -312,7 +312,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: Make a target's armor less protective by softening it or weakening its structural integrity. This can include man-made armors or natural animal and cryptids hides.
-    duration: 30 seconds
+    duration: 3 rounds
     effect: Debuff
     level: 4
     name: Weaken Armor
