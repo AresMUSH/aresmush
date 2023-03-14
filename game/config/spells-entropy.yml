@@ -225,7 +225,7 @@ spells:
     available: true
     casting_time: 1 round
     defense_mod: -2
-    desc: Cause the earth to shudder, making up to 3 enemies within its range lose their footing and giving them a penalty to attack.
+    desc: Cause the earth to shudder, making up to 3 enemies within its range lose their footing and giving them a penalty to defense.
     duration: 1 round
     effect: Debuff
     level: 4
