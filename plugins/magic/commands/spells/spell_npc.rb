@@ -31,7 +31,7 @@ module AresMUSH
 
       def handle
         targets = Magic.parse_spell_targets(self.target_name_string, )
-        error = Magic.spell_target_errors(targets, spell)
+        error = Magic.spell_target_errors(enactor, targets, spell)
         if error then return client.emit_failure error end
         print_names = Magic.print_target_names(targets)
 
