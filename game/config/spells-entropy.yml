@@ -294,10 +294,10 @@ spells:
     weapon_specials: Ice
   Weaken Weapon:
     available: true
-    casting_time: 3 rounds
+    casting_time: 1 round
     damage_type: Bypass
     desc: Weaken a weapon by blunting sharp edges or weakening it's structural integrity. This can include man-made weapons or natural animal and cryptids weapons like teeth and claws.
-    duration: 3 hours
+    duration: 3 rounds
     effect: Debuff
     level: 4
     name: Weaken Weapon
