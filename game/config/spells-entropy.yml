@@ -302,7 +302,7 @@ spells:
     level: 4
     name: Weaken Weapon
     range: Short
-    rounds: 3
+    rounds: 6
     school: Entropy
     weapon_specials: Weaken
     target_num: 1
