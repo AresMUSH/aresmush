@@ -1855,16 +1855,16 @@ MAIL
 /* -------------------------
 LOCATIONS SCREEN
 ------------------------- */
-  
+
+
 .area-directory {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-}  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1em;
+}
 
 .area-entry {
-  width: 300px;
+  height: 100%;
   border: 1px solid $border-color;
   min-height: 300px;
   display: flex;
@@ -1873,6 +1873,7 @@ LOCATIONS SCREEN
   align-self: stretch;
   
 }
+
 
 .area-entry-summary {
   padding: 10px;  
@@ -1886,6 +1887,10 @@ LOCATIONS SCREEN
   margin: 0px;
 }
 
+.area-entry h2 a {
+  color: $primary-words-color;  
+}
+
 .area-entry h3 {
   font-size: 1em;
   margin: 0px;
@@ -1897,7 +1902,7 @@ LOCATIONS SCREEN
 }
 
 .area-quickjump {
-  margin-left: 10px;
+  margin-left: 5px;
   margin-bottom: 10px;
 }
 
