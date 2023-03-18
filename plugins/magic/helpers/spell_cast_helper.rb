@@ -200,7 +200,8 @@ module AresMUSH
       else
         weapon_special = {
         name: spell['weapon_specials'],
-        rounds: spell['rounds'],
+        # Needs to be +1 because the newturn immediately after cast will do -1
+        rounds: spell['rounds'] + 1,
         weapon: target.weapon,
         combatant: target
       }
