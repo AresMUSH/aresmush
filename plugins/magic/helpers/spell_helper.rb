@@ -85,7 +85,7 @@ module AresMUSH
     def self.spell_target_errors(enactor, targets, spell)
       # spell/npc is targeting the npc who cast the spell
       return false if targets == "npc_target"
-      puts "CHECKING SPELL ERRORS"
+      return t('magic.invalid_name') if targets == t('magic.invalid_name')
       target_num = Global.read_config("spells", spell, "target_num") || 1
       return t('magic.too_many_targets', :spell => spell, :num => target_num ) if targets.count > target_num
       energy_points = Global.read_config("spells", spell, "energy_points")
@@ -110,6 +110,7 @@ module AresMUSH
     end
 
     def self.print_target_names(targets)
+      return nil if targets == "npc_target"
       target_names = targets.map { |t| t.name}
       target_names.join(", ")
     end
@@ -158,11 +159,11 @@ module AresMUSH
       }
     end
 
-    def roll_npc_spell(npc_name, spell, dice)
+    def self.roll_npc_spell(npc_name, spell, dice)
       #spell/npc out of combat roll
       roll = FS3Skills.roll_dice(dice)
       die_result = FS3Skills.get_success_level(roll)
-      succeeds = Magic.spell_success(spell, die_result)
+      succeeds = Magic.spell_success(die_result)
       Global.logger.info "#{npc_name} (NPC) rolling #{dice} dice to cast #{spell}. Result: #{roll} (#{die_result} successes)"
       return {:succeeds => succeeds, :result => die_result}
     end
