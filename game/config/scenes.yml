@@ -64,6 +64,8 @@ scenes:
   - Event
   - Vignette
   - Text
+  - Journal
+  - Letter
   shortcuts:
     scenes: scene
     scene/close: scene/stop

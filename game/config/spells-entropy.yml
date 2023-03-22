@@ -218,7 +218,22 @@ spells:
     rounds: 100
     school: Entropy
     target_num: 1
-    weapon_specials: Death-Touched
+    weapon_specials: Death Touched
+    weapon: Spell
+  Death Touched Weapon:
+    available: true
+    casting_time: 1 round
+    desc: Imbue an existing weapon with the draining touch of death, increasing the damage against living opponents.
+    effect: Buff
+    duration: 3 hours
+    is_potion: true
+    level: 4
+    name: Death-Touched Weapon
+    range: Touch
+    rounds: 100
+    school: Entropy
+    target_num: 1
+    weapon_specials: Death Touched
     weapon: Spell
   Earth Shudder:
     area: 10 yard radius

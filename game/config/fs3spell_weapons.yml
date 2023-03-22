@@ -381,14 +381,14 @@ fs3combat:
     - strength
     - weaken
     Ranged:
-    - death-touched
+    - death touched
     - fire
     - ice
     - lightning
     - scope
     - weaken
     Melee:
-    - death-touched
+    - death touched
     - fire
     - ice
     - lightning
@@ -421,7 +421,7 @@ fs3combat:
       lethality: 5
       penetration: 1
       init_mod: 2
-    Death-Touched:
+    Death Touched:
       description: Level 4 Entropy Spell
       is_magic: true
       lethality: 20

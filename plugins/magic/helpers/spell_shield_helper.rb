@@ -94,7 +94,7 @@ module AresMUSH
           msg = Magic.shield_success_msgs(target, caster_name, weapon_or_spell, shield.name)
           hit = false
         else
-          msg = Magic.shield_failed_msgs(target, caster_name, weapon_or_spell),
+          msg = Magic.shield_failed_msgs(target, caster_name, weapon_or_spell)
           hit = true
         end
 
