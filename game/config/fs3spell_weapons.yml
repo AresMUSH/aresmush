@@ -424,7 +424,7 @@ fs3combat:
     Death-Touched:
       description: Level 4 Entropy Spell
       is_magic: true
-      lethality: 25
+      lethality: 20
     Fire:
       description: Level 4 Aether spell
       is_magic: true
