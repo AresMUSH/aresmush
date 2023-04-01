@@ -8,8 +8,7 @@ module AresMUSH
         Global.logger.debug "Resetting login info for #{event.char_id}"
 
         char = Character[event.char_id]
-        char.update(login_email: nil)
-        char.update(login_api_token: nil)
+        char.wipe_login_data
       end
     end
   end

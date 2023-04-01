@@ -13,10 +13,15 @@ module AresMUSH
       
       def preprocess(text)
         return text if text =~ /\[\[disableWikiExtensions\]\]/
-                
+              
         @pre_tag_blocks.each do |tag|
-          text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
+          begin
+            text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
+          rescue Exception => e
+            Global.logger.warn "Error in wiki extension.  error=#{e} backtrace=#{e.backtrace[0,10]}"
+          end
         end
+        
         text
       end
       
@@ -30,7 +35,11 @@ module AresMUSH
         text = text.gsub(/\&quot\;/i, '"')
         
         @post_tag_blocks.each do |tag|
-          text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
+          begin
+            text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
+          rescue Exception => e
+            Global.logger.warn "Error in wiki extension.  error=#{e} backtrace=#{e.backtrace[0,10]}"
+          end
         end
         
         text

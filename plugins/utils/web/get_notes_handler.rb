@@ -3,7 +3,7 @@ module AresMUSH
     class GetNotesRequestHandler
       def handle(request)
         char = Character.find_one_by_name request.args[:id]
-        edit_mode = request.args[:edit_mode]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         enactor = request.enactor
         
         if (!char)
@@ -30,7 +30,7 @@ module AresMUSH
           id: char.id,
           name: char.name,
           notes: notes,
-          can_edit: char == enactor || Utils.can_manage_notes?(enactor)
+          can_edit: AresCentral.is_alt?(char, enactor) || Utils.can_manage_notes?(enactor)
         }
       end
     end

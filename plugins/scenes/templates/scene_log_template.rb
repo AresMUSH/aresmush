@@ -53,6 +53,10 @@ module AresMUSH
         end
         text
       end
+      
+      def content_tags
+        @scene.content_tags.join(" ")
+      end
     end
   end
   

@@ -6,6 +6,13 @@ export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
+# Turn off need restart prompt
+NEEDRESTART_CONF_PATH=/etc/needrestart/needrestart.conf
+if test -f "$NEEDRESTART_CONF_PATH"; then
+  echo -e "${ARES_INSTALL_TEXT} Disabling needrestart prompts."
+  sed -i 's/#$nrconf{restart} = '"'"'i'"'"';/$nrconf{restart} = '"'"'a'"'"';/g' "$NEEDRESTART_CONF_PATH"
+fi
+
 # Set up redis PPA so we get a recent version
 
 add-apt-repository -y ppa:chris-lea/redis-server
@@ -95,6 +102,10 @@ usermod -p "$ENCRYPTEDPW" ${ARES_USERNAME}
 addgroup www
 usermod -a -G sudo,www,redis ${ARES_USERNAME}
 
+# Needed for Ubuntu 21+ to allow web access to game dir
+
+sudo chmod 755 /home/ares
+
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots"
@@ -133,7 +144,16 @@ sudo chmod g+rwx /etc/nginx/sites-available/default
 echo -e "${ARES_INSTALL_TEXT} RVM needs some libs."
 
 sudo apt-get update
-sudo apt-get install -y autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libreadline-dev libssl-dev
+sudo apt-get install -y autoconf automake bison libc6-dev libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Setup certbot requirements"
+
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 # #########################################################################################
 

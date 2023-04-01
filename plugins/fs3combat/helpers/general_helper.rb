@@ -209,10 +209,16 @@ module AresMUSH
       
           FS3Combat.emit_to_combat combat, all_messages.join("\n"), nil, true, true
 
-          combat.log "---- Resolutions ----"
+          combat.log "---- Resolutions ----"          
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
-          # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
-          combat.active_combatants.each { |c| c.action }
+          
+          # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.                    
+          combat.log "---- Resetting Actions ----"
+          combat.active_combatants.each do |c|
+            if (c.action_error?)
+              c.reset_action
+            end
+          end
     
           FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor.name)
           
@@ -272,13 +278,26 @@ module AresMUSH
         team: combatant.team,
         ammo: combatant.ammo ? "(#{combatant.ammo})" : '',
         damage_boxes: ([-combatant.total_damage_mod.floor, 5].min).times.map { |d| d },
-        wound_display: combatant.associated_model.damage.map { |d| "#{d.current_severity} #{d.description}"}.join("\n"),
-        damage: combatant.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
+        damage: FS3Combat.damage_list_web_data(combatant.associated_model, false),
+        damage_mod: combatant.total_damage_mod.floor,
         vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
+        mount: combatant.mount_type,
         stance: combatant.stance,
         action: combatant.action ? combatant.action.print_action_short : "",
         can_edit: can_manage || (viewer && viewer.name == combatant.name)
       }
+    end
+    
+    def self.damage_list_web_data(model, include_healed = true)
+      model.damage
+        .select { |d| include_healed ? true : !d.healed }
+        .sort { |d| d.created_at }
+        .map { |d| {
+                  date: d.ictime_str,
+                  description: d.description,
+                  original_severity: MushFormatter.format(FS3Combat.display_severity(d.initial_severity)),
+                  severity: MushFormatter.format(FS3Combat.display_severity(d.current_severity))
+                  }}
     end
   end
 end

@@ -2,7 +2,7 @@ module AresMUSH
   module Scenes
     class PlotRequestHandler
       def handle(request)
-        edit_mode = request.args[:edit_mode]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         plot = Plot[request.args[:id]]
         enactor = request.enactor
         

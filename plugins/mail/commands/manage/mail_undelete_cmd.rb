@@ -14,9 +14,17 @@ module AresMUSH
       end
         
       def handle
-        Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          Mail.remove_from_trash(delivery)
-          client.emit_ooc t("mail.message_undeleted", :subject => delivery.subject)
+        messages_to_undelete = Mail.select_message_range(self.num)
+        if (!messages_to_undelete)
+          client.emit_failure t('mail.invalid_message_number')
+          return
+        end
+        
+        messages_to_undelete.each do |m|
+          Mail.with_a_delivery(client, enactor, "#{m}") do |delivery|
+            Mail.remove_from_trash(delivery)
+            client.emit_ooc t("mail.message_undeleted", :subject => delivery.subject)
+          end
         end
       end
     end

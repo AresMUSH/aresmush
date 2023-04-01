@@ -70,7 +70,7 @@ _Developed with assistance from Ashen Shugar@RhostMUSH._
 
 If someone is using a proxy server, banning them can be like playing whack-a-mole as they keep switching IPs.  An extreme measure is to ban all known proxy sites.  This can make things more difficult for a troll, but at a risk of blocking users who are running a proxy server for legitimate reasons.  We recommend not enabling this feature unless you're having serious trouble with a proxy troll.
 
-To ban proxy sites, simply enable the option in the [Web Portal banned/suspect sites configuration](/tutorials/config/sites.html)
+To ban proxy sites, simply enable the option in the [Web Portal banned/suspect sites configuration](https://aresmush.com/tutorials/config/sites.html)
 
 Game admin and approved characters can connect from a proxy site, even if the proxy blacklist is enabled. If you need to ban someone who's admin/approved, be sure to unapprove or remove their admin privileges first.
 
@@ -80,12 +80,12 @@ Game admin and approved characters can connect from a proxy site, even if the pr
 
 Suspect sites are ones that aren't banned, but you want to be alerted (via staff job) if anyone new comes from that site.  You might use this if someone is on probation and you want to know if they try to create a new alt.
 
-In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as suspect sites.
+In the [Web Portal banned/suspect sites configuration](https://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as suspect sites.
 
 > **Note:** Setting a site suspect does not enact any special logging, unlike the SUSPECT flag in other MU servers.
 
 ### Monitoring Trolls
 
-General commands appear in the [game log](http://aresmush.com/tutorials/code/logs.html), but private conversations (pages, poses, mail and channels) are not.  Players have tools to report page and channel harassment, as explained in the *Player Commands* section above.
+General commands appear in the [game log](https://aresmush.com/tutorials/code/logs.html), but private conversations (pages, poses, mail and channels) are not.  Players have tools to report page and channel harassment, as explained in the *Player Commands* section above.
 
 Ares does not have a 'SUSPECT' flag in the way you might be used to from other MU* servers.  It is often used for malicious purposes and rarely for good.

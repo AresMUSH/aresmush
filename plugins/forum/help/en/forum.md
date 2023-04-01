@@ -33,7 +33,7 @@ Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firs
 
 `forum/new` - Reads the first unread message on any category.
 `forum/catchup <category>` - Marks all unread messages in that category as read.
-`forum/mute` - Mutes notifications about a forum until your next login.
+`forum/mute` - Mutes all forum notifications until your next login.
 `forum/unmute` - Unmutes notifications.
 
 > Tip:  If you link your characters to a [Player Handle](/help/handles), the game will automatically mark a post as read on all your characters when you read it on one.

@@ -26,8 +26,8 @@ module AresMUSH
         :room_type => "OOC", 
         :area => offstage,
         :description => "Welcome!%R%R" + 
-        "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
-        "New to Ares?  http://aresmush.com/tutorials/play/ares-for-vets.html for a quick intro geared towards veteran players.%R%R" +
+        "New to MUSHing?  Visit https://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
+        "New to Ares?  https://aresmush.com/tutorials/play/ares-for-vets.html for a quick intro geared towards veteran players.%R%R" +
         "You may need to configure your MU Client to take full advantage of Ares' features.  See https://aresmush.com/clients.html for details.%R%R" +
         "Type %xcchannels%xn for a list of available chat channels and the commands to speak on them.")
 

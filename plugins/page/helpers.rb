@@ -74,7 +74,7 @@ module AresMUSH
         end
       end
       
-      PageMessage.create(author: enactor, message: message, page_thread: thread)
+      page_message = PageMessage.create(author: enactor, message: message, page_thread: thread)
             
       # Send to the enactor.
       if (client)
@@ -120,6 +120,7 @@ module AresMUSH
             author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
 	    poseable_chars: Page.build_poseable_web_chars_data(char, thread),
+            message_id: page_message.id,
             is_page: true
           }
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
@@ -230,7 +231,9 @@ module AresMUSH
     
     def self.build_poseable_web_chars_data(enactor, thread)
       alts = AresCentral.play_screen_alts(enactor)
-      alts.select { |a| thread.characters.include?(a) }.map { |a| {
+      alts.select { |a| thread.characters.include?(a) }
+        .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
+        .map { |a| {
                  name: a.name,
                  icon: Website.icon_for_char(a),
                  id: a.id

@@ -4,17 +4,33 @@ if [[ $EUID == 0 ]]; then
 fi
 
 if [[ $# -eq 0 ]] ; then
-  echo 'Please specify the domain name of your certificate.'
-  exit 0
+  echo "Enter the hostname, like yourmush.aresmush.com."
+  read HOST_NAME
+  if [ -z "$HOST_NAME" ]
+  then
+    echo "ERROR! Host name required."
+    exit
+  fi
+else
+  HOST_NAME=$1
 fi
 
+sudo service nginx restart
+sudo certbot --nginx -d $HOST_NAME
+
 mkdir /home/ares/certs
-sudo cp /etc/letsencrypt/live/$1/fullchain.pem /home/ares/certs
-sudo cp /etc/letsencrypt/live/$1/privkey.pem /home/ares/certs
+sudo cp /etc/letsencrypt/live/$HOST_NAME/fullchain.pem /home/ares/certs
+sudo cp /etc/letsencrypt/live/$HOST_NAME/privkey.pem /home/ares/certs
 sudo echo "#!/bin/sh" > /home/ares/certs/update_certs.sh
-sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/fullchain.pem /home/ares/certs" > /home/ares/certs/update_certs.sh
-sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/privkey.pem /home/ares/certs" >> /home/ares/certs/update_certs.sh
+sudo echo -e "sudo cp /etc/letsencrypt/live/${HOST_NAME}/fullchain.pem /home/ares/certs" > /home/ares/certs/update_certs.sh
+sudo echo -e "sudo cp /etc/letsencrypt/live/${HOST_NAME}/privkey.pem /home/ares/certs" >> /home/ares/certs/update_certs.sh
 sudo chown -R ares /home/ares/certs
 sudo chgrp -R ares /home/ares/certs
 sudo chmod -R 740 /home/ares/certs
 sudo certbot renew --force-renewal --deploy-hook /home/ares/certs/update_certs.sh
+
+bin/script enable_https
+
+echo "=============================================================================="
+echo "You must restart your server using 'sudo reboot' to complete the installation."
+echo "=============================================================================="

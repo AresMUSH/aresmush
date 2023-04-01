@@ -77,6 +77,7 @@ module AresMUSH
       Login.emit_ooc_if_logged_in(char, t('scenes.scene_notify_uninvited', :name => enactor.name, :num => scene.id))
     end
     
+    # Note: Not used for web-created scenes since they have some different variations.
     def self.start_scene(enactor, location, private_scene, scene_type, temp_room)
       scene = Scene.create(owner: enactor, 
           location: location, 
@@ -103,6 +104,7 @@ module AresMUSH
       
 
       scene_data = Scenes.build_live_scene_web_data(scene, enactor).to_json
+      
       alts = AresCentral.play_screen_alts(enactor)
       Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
         c && alts.include?(c)
@@ -128,7 +130,7 @@ module AresMUSH
     
     def self.build_web_profile_data(char, viewer)
       # Note: The scenes themselves come in a different request. This is just misc scene-related stats info.
-      return {} if (char != viewer)
+      return {} if !AresCentral.is_alt?(char, viewer)
         
       words = char.pose_word_count
       scenes = char.scenes_participated_in.count

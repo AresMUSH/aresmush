@@ -176,9 +176,10 @@ module AresMUSH
         demographics[d.downcase] = 
           {
             name: d.titlecase,
-            value: char.demographic(d)
+            value: "#{char.demographic(d)}"
           }
       end
+      puts props
       {
         demographics: demographics,
         genders: Demographics.genders
@@ -216,7 +217,7 @@ module AresMUSH
         demographics <<  {
             name: d.titleize,
             key: d.titleize,
-            value: char.demographic(d)
+            value: "#{char.demographic(d)}"
           }
           
         if (d == "birthdate")

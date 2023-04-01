@@ -75,9 +75,6 @@ scenes:
     repose/reset: repose/clear
     repose/gag: repose/nudge mute
     logs: scene
-    log/on: scene/startlog
-    log/off: scene/stoplog
-    log/clear: scene/clearlog
     log/undo: scene/undo
     scene/proxy: scene/spoof
     scene/amend: scene/replace
@@ -100,6 +97,7 @@ scenes:
     scene/addpose: scene/emit
     scene/pose: scene/emit
     scene/mine: scene/unshared
+    scene/create: scene/start
   trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:

@@ -76,6 +76,10 @@ module AresMUSH
           @errors << "#{field_key(field)} is not a hash." 
           return
         end
+        
+        # Empty hash is OK
+        return if value.empty?
+        
         value.each do |k, v|
           if !['day', 'day_of_week', 'hour', 'minute'].include?(k)
             @errors << "#{field_key(field)} - #{k} is not a valid setting."
@@ -123,8 +127,9 @@ module AresMUSH
         end
       end
       
-      def check_role_exists(field)
+      def check_role_exists(field, optional = false)
         name = @config[field] || ""
+        return if (optional && name.blank?)          
         if (!Role.named(name))
           self.add_error("#{field_key(field)} - #{name} is not a valid role.")
         end
@@ -132,6 +137,7 @@ module AresMUSH
       
       def check_roles_exist(field)
         names = @config[field] || ""
+        
         names.each do |name|
           if (!Role.named(name))
             self.add_error("#{field_key(field)} - #{name} is not a valid role.")

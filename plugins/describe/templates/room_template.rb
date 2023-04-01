@@ -95,7 +95,7 @@ module AresMUSH
         else
           status = t('describe.foyer_room_occupied')
         end
-        linebreak = i % 2 == 0 ? "%R          " : ""
+        linebreak = i % 2 == 0 ? "%R" : ""
         room_name = "#{exit_destination(e)} (#{status})"
         "#{linebreak}%xh#{exit_name(e)}%xn #{left(room_name,29)}"
       end
@@ -141,9 +141,7 @@ module AresMUSH
       end
       
       def exit_name(e)
-        start_bracket = Global.read_config("describe", "exit_start_bracket")
-        end_bracket = Global.read_config("describe", "exit_end_bracket")
-        "#{start_bracket}#{e.name}#{end_bracket}"
+        Describe.format_exit_name(e)
       end
       
       def exit_destination(e)

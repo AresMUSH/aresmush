@@ -37,11 +37,14 @@ module AresMUSH
             rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| {
               name: r.name,
               id: r.id,
-              name_and_area: r.name_and_area
+              name_and_area: r.name_and_area,
+              summary: edit_mode ? Website.format_input_for_html(r.shortdesc) : Website.format_markdown_for_html(r.shortdesc),
             }},
-          children: area.sorted_children.map { |a| { id: a.id, name: a.name } }
+          children: area.sorted_children.map { |a| { id: a.id, name: a.name } },
         },
-          can_manage: Rooms.can_build?(enactor)
+          can_manage: Rooms.can_build?(enactor),
+          all_areas: Rooms.area_directory_web_data
+          
         }
         
       end

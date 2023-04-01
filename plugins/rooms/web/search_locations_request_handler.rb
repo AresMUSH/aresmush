@@ -5,6 +5,7 @@ module AresMUSH
 
         search_name = request.args[:searchName] || ""
         search_area = request.args[:searchArea] || ""
+        search_owner = request.args[:searchOwner] || ""
         rooms = Room.all.to_a
         
         if (!search_name.blank?)
@@ -12,6 +13,9 @@ module AresMUSH
         end
         if (!search_area.blank?)
           rooms = rooms.select { |r| (r.area_name || "") =~ /#{search_area}/i }
+        end
+        if (!search_owner.blank?)
+          rooms = rooms.select { |r| (r.room_owners.any? { |o| o.name_upcase == search_owner.upcase } ) }
         end
         
         rooms.sort_by { |r| r.name_and_area }.map { |r| {

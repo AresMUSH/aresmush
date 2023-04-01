@@ -13,6 +13,7 @@ module AresMUSH
     attribute :last_ip
     attribute :last_hostname
     attribute :last_on, :type => DataType::Time
+    attribute :boot_timeout, :type => DataType::Time
     
     attribute :notices_events, :type => DataType::Boolean, :default => true
   
@@ -77,6 +78,16 @@ module AresMUSH
     
     def token_secs_remaining
       self.login_api_token_expiry - Time.now
+    end
+    
+    def wipe_login_data(wipe_ip = false)
+      self.update(login_email: nil)
+      self.update(login_api_token: nil)
+      
+      if (wipe_ip)
+        self.update(last_ip: '')
+        self.update(last_hostname: '')
+      end
     end
     
   end  

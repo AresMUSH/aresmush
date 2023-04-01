@@ -9,16 +9,8 @@ module AresMUSH
         
         {
           can_manage: Rooms.can_build?(enactor),
-          directory: Area.all.to_a.sort_by { |a| a.full_name }.map{ |area|
-            {
-              id: area.id,
-              name: area.full_name,
-              summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
-              children: area.children.to_a.sort_by { |a| a.name }.map { |a| { id: a.id, name: a.name } },
-              rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| { name: r.name, id: r.id } },
-              is_top_level: area.parent ? false : true
-            }
-          },
+          directory: Rooms.area_directory_web_data,
+          display_sections: Global.read_config("rooms", "area_display_sections"),
           orphan_rooms: Room.all.select { |r| is_orphan?(r) }.sort_by { |r| r.name }.map { |r| 
              { 
                name: r.name,

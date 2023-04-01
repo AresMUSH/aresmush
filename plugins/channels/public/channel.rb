@@ -10,6 +10,8 @@ module AresMUSH
     attribute :announce, :type => DataType::Boolean, :default => true
     attribute :default_alias, :type => DataType::Array
     attribute :recall_enabled, :type => DataType::Boolean, :default => true
+    attribute :discord_channel
+    attribute :discord_webhook
     
     index :name_upcase
     
@@ -53,10 +55,11 @@ module AresMUSH
     
     def add_to_history(msg, author)
       return if !self.recall_enabled
-      ChannelMessage.create(message: msg, character: author, channel: self )
+      message = ChannelMessage.create(message: msg, character: author, channel: self )
       if (self.channel_messages.count > Channels.recall_buffer_size)
         self.sorted_channel_messages.first.delete
       end
+      return message
     end      
     
     def last_activity
