@@ -2815,6 +2815,9 @@ th,
      font-size: 1.2em;
 }
 
+.card-title-left {flex-basis: calc(100% - 200px)}
+.card-title-right {flex-basis: 200px; text-align: right;}
+
 .spell-stats {
     display: flex;
     flex-flow: row nowrap;
