@@ -1743,6 +1743,17 @@ h6, .h6 {
 
 .scene-pose-header {
 	border-top: 1px dashed #4e5954;
+	margin: 0px;
+	padding-top: 10px;
+}
+
+.scene-pose {
+	margin: 0px;
+	padding: 5px;
+
+	p {
+		margin: 10px
+	}
 }
 
 .scene-ooc-pose p {
@@ -2023,6 +2034,16 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 
 #sceneMenuCollapse {
 	background: unset;
+}
+
+.play-selector {
+	padding: 2px;
+}
+
+.scene-pose-box {
+	.markdown-editor {
+		margin-bottom: 0px;
+	}
 }
 
 .play-sidebar::after {
