@@ -65,8 +65,9 @@ $darkest-red: #380c14;
 
 // MAIN BODY
 ::-webkit-scrollbar {
-	width: 9px;
-	background-color: white;
+	-webkit-appearance: none;
+	width: 17px;
+	background-color: red;
 }
 
 body {
