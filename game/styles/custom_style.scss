@@ -66,13 +66,13 @@ $darkest-red: #380c14;
 // MAIN BODY
 ::-webkit-scrollbar {
 	-webkit-appearance: none;
-	width: 17px;
-	background-color: red;
+	width: 10px;
+	background-color: #ebebeb;
 }
 
 html, body {
-	scrollbar-width: 17px;          /* "auto" or "thin" */
-  scrollbar-color:red;   /* scroll thumb and track */
+	scrollbar-width: auto;          /* "auto" or "thin" */
+  scrollbar-color: #ebebeb #1f252f;   /* scroll thumb and track */
 }
 
 
