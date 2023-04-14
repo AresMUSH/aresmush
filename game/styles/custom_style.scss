@@ -64,6 +64,10 @@ $dark-red: #621624;
 $darkest-red: #380c14;
 
 // MAIN BODY
+::-webkit-scrollbar {
+	width: 9px;
+	background-color: white;
+}
 
 body {
 	font-family: Verdana, Geneva, sans-serif;
