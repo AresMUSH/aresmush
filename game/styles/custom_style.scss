@@ -70,9 +70,14 @@ $darkest-red: #380c14;
 	background-color: red;
 }
 
+
+
+
 body {
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: .9em;
+	scrollbar-width: 17px;          /* "auto" or "thin" */
+  scrollbar-color:red;   /* scroll thumb and track */
 }
 
 .body-wrap {
