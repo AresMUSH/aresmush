@@ -23,7 +23,7 @@ module AresMUSH
       def self.activity_status(char)
         client = Login.find_client(char)
         if (client)
-          return 'inactive' if char.is_afk?
+          return 'game-inactive' if char.is_afk?
           return Status.is_idle?(client) ? 'game-inactive' : 'game-active'
         end
         client = Login.find_web_client(char)

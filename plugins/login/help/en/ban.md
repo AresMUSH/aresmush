@@ -19,11 +19,11 @@ The `ban` command will block a player's IP address. It also boots them if they'r
 
 `ban <name>=<reason>` - Bans a player's site, including all their alts.
 `ban/list` - Shows the ban list.
-`ban/delete <#>`  - Deletes an entry from the banned list.
 
-You can also manually add a site to the banned list without specifying a particular player. You can use this to ban people preemptively, or to manually tweak the host/IP on someone's ban (after deleting the old one).
+You can also manually add and remove a site to the banned list without specifying a particular player. You can use this to ban people preemptively, or to manually tweak the host/IP on someone's ban (after deleting the old one).
 
 `ban/add <site>=<note>` - Adds an entry to the banned list.
+`ban/delete <site>`  - Deletes an entry from the banned list.
 
 A few notes about `ban/add`:
 
