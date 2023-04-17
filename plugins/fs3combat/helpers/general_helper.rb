@@ -70,8 +70,8 @@ module AresMUSH
       end
 
       web_msg = "#{combat.id}|#{Website.format_markdown_for_html(message)}"
-       Global.client_monitor.notify_web_clients(:combat_activity, web_msg, true) do |c|
-         c && c.combatant && c.combatant.combat == combat
+      Global.client_monitor.notify_web_clients(:combat_activity, web_msg, true) do |c|
+        c && c.combatant && c.combatant.combat == combat
       end
 
       messages = combat.messages
@@ -220,21 +220,27 @@ module AresMUSH
 
           FS3Combat.emit_to_combat combat, all_messages.join("\n"), nil, true, true
 
-          combat.log "------ Resolutions ------"
+          combat.log "---- Resolutions ----"
           #EM Changes
           ExpandedMounts.new_turn(combat)
           #/EM Changes
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
+
           # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
-          combat.active_combatants.each { |c| c.action }
+          combat.log "---- Resetting Actions ----"
+          combat.active_combatants.each do |c|
+            if (c.action_error?)
+              c.reset_action
+            end
+          end
 
           FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor.name)
 
           combat_data = FS3Combat.build_combat_web_data(combat, nil)
 
           web_msg = "#{combat.id}|#{combat_data[:teams].to_json}"
-           Global.client_monitor.notify_web_clients(:new_combat_turn, web_msg, true) do |c|
-             c && c.combatant && c.combatant.combat == combat
+          Global.client_monitor.notify_web_clients(:new_combat_turn, web_msg, true) do |c|
+            c && c.combatant && c.combatant.combat == combat
           end
 
         rescue Exception => ex
@@ -289,12 +295,13 @@ module AresMUSH
         damage: FS3Combat.damage_list_web_data(combatant.associated_model, false),
         damage_mod: combatant.total_damage_mod.floor,
         vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
+        mount: combatant.mount_type,
         stance: combatant.stance,
         action: combatant.action ? combatant.action.print_action_short : "",
         can_edit: can_manage || (viewer && viewer.name == combatant.name)
       }
     end
-    
+
     def self.damage_list_web_data(model, include_healed = true)
       model.damage
         .select { |d| include_healed ? true : !d.healed }

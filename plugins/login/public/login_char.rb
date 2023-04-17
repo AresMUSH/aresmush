@@ -80,5 +80,15 @@ module AresMUSH
       self.login_api_token_expiry - Time.now
     end
     
+    def wipe_login_data(wipe_ip = false)
+      self.update(login_email: nil)
+      self.update(login_api_token: nil)
+      
+      if (wipe_ip)
+        self.update(last_ip: '')
+        self.update(last_hostname: '')
+      end
+    end
+    
   end  
 end

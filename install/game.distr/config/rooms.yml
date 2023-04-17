@@ -1,5 +1,6 @@
 ---
 rooms:
+  area_display_sections: true
   room_lock_cron:
     minute:
     - 0

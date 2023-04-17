@@ -191,6 +191,9 @@ p {
   align-items: center;
 }
 
+label {
+  font-weight: bold;
+}
 
 
 /* -------------------------
@@ -1187,8 +1190,8 @@ SCENES SCREEN
 
     background-color: white;
     margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     padding: 10px;    
 }
 
@@ -1791,6 +1794,49 @@ JOBS SCREEN
   margin: 5px 0px 15px 0px;
 }
 
+.create-job-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  align-items: center;
+}
+
+.create-job-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
+
+.create-job-row .job-category {
+  height: 1.5em;
+}
+
+
+.display-job-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.display-job-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
+
+.display-job-row .display-job-selection {
+  align-self: center;
+  flex-basis: 400px;
+  flex-grow: 2;
+}
+
+.display-job-row .display-job-controls {
+  flex-basis: 200px;
+}
+
 /* -------------------------
 MAIL
 ---------------------------- */
@@ -1803,6 +1849,105 @@ MAIL
 .mail-message-inbox {
   font-size: 2em;
   padding: 10px 0px 10px 0px;
+}
+
+
+/* -------------------------
+LOCATIONS SCREEN
+------------------------- */
+
+
+.area-directory {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1em;
+}
+
+.area-entry {
+  height: 100%;
+  border: 1px solid $border-color;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  
+}
+
+
+.area-entry-summary {
+  padding: 10px;  
+}
+
+.area-entry h2 {
+  font-size: 1.25em;
+  background-color: $primary-color;
+  color: $primary-words-color;
+  padding: 5px;
+  margin: 0px;
+}
+
+.area-entry h2 a {
+  color: $primary-words-color;  
+}
+
+.area-entry h3 {
+  font-size: 1em;
+  margin: 0px;
+}
+
+.area-buttons {
+  align-self: center;
+  margin: 10px;
+}
+
+.area-quickjump {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+  
+.location-directory {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}  
+
+.location-entry {
+  width: 400px;
+  border: 1px solid $border-color;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.location-entry-summary {
+  padding: 10px;  
+}
+
+.location-entry h2 {
+  font-size: 1.25em;
+  background-color: $primary-color;
+  color: $primary-words-color;
+  padding: 5px;
+  margin: 0px;
+}
+
+.location-entry h3 {
+  font-size: 1em;
+  margin: 0px;
+}
+
+.location-buttons {
+  align-self: center;
+  margin: 10px;
+}
+
+.location-quickjump {
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 /* -------------------------
