@@ -13,6 +13,8 @@ en:
       too_many_spells_cg: "You have selected too many spells. You may only know %{num} spells in chargen."
       starting_spell: "You have added %{spell} to your starting spell list. You have %{time_left} days to add %{num} a total of free starting spells."
       too_many_points: "You cannot spend more than %{num} points on spells."
+      points_in_wrong_school: "You have points in %{school} but it is not one of your schools."
+      skill_too_high_for_age: "Your %{skill} is probably too high for your age. See the Join Us page for info."
 
     # ----------------------------
     # ENERGY & FATIGUE
