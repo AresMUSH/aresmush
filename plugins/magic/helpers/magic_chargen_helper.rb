@@ -1,3 +1,4 @@
+
 require 'byebug'
 module AresMUSH
   module Magic
@@ -15,14 +16,61 @@ module AresMUSH
     def self.check_cg_spell_errors(char)
       errors = []
       errors.concat [Magic.check_points_on_spells(char)[:error]]
-      errors.concat [Magic.check_wrong_school(char)[:error]]
-      errors.concat [Magic.check_wrong_levels(char)[:error]]
+      puts "1: #{errors}"
+      errors.concat [Magic.check_spells_in_wrong_school(char)[:error]]
+      puts "2: #{errors}"
+      errors.concat [Magic.check_wrong_spell_levels(char)[:error]]
+      puts "3: #{errors}"
       errors.concat [Magic.check_points_on_spells(char)[:error]]
+      puts "4: #{errors}"
+      errors.concat [Magic.check_points_in_wrong_school(char)[:error]]
+      errors.concat [Magic.check_skill_levels_against_age(char)[:error]]
+      puts "5: #{errors}"
       # errors.concat Magic.check_spell_numbers(char)
       puts "Errors 1 #{errors}"
       errors = errors.reject { |e| e == "%xh%xg< OK! >%xn"}
       puts "Errors 2 #{errors}"
       return errors
+    end
+
+    def self.check_skill_levels_against_age(char)
+      msg = "Checking Points Against Age"
+      char.fs3_action_skills.each do |s|
+        puts "SKill: #{s.name} Age: #{char.age} Level #{FS3Skills.ability_rating(char, s.name)}"
+        if FS3Skills.ability_rating(char, s.name) > 4 && char.age < 23
+          error = t('magic.skill_too_high_for_age', :skill => s.name)
+          puts "23 #{error}"
+          return {
+            error: t('magic.skill_too_high_for_age', :skill => s.name),
+            msg: msg
+          }
+
+        elsif FS3Skills.ability_rating(char, s.name) > 5 && char.age < 26
+          puts "26 #{error}"
+          return {
+            error: t('magic.skill_too_high_for_age', :skill => s.name),
+            msg: msg
+          }
+
+        elsif FS3Skills.ability_rating(char, s.name) > 6 && char.age < 31
+          return {
+            error: t('magic.skill_too_high_for_age', :skill => s.name),
+            msg: msg
+          }
+          puts "31 #{error}"
+        elsif FS3Skills.ability_rating(char, s.name) > 7 && char.age < 36
+          return {
+            error: t('magic.skill_too_high_for_age', :skill => s.name),
+            msg: msg
+          }
+          puts "36 #{error}"
+        end
+      end
+      return {
+        error: t('chargen.ok'),
+        msg: msg
+      }
+
     end
 
     def self.check_spell_numbers(char)
@@ -31,7 +79,25 @@ module AresMUSH
       return []
     end
 
-    def self.check_wrong_school(char)
+    def self.check_points_in_wrong_school(char)
+      reset_needed = !char.fs3_attributes.map { |a| a.rating > 1 }.any?
+      return if reset_needed
+      error = t('chargen.ok')
+      schools = Global.read_config('magic', 'major_schools') + Global.read_config('magic', 'minor_schools')
+      schools.each do |s|
+        if FS3Skills.ability_rating(char, s) > 0 && !char.schools.include?(s)
+          error =  t('magic.points_in_wrong_school', :school => s)
+        else
+          error = t('chargen.ok')
+        end
+      end
+      return {
+        error: error,
+        msg: "Checking School Points"
+      }
+    end
+
+    def self.check_spells_in_wrong_school(char)
       spell_schools = char.spells_learned.map {|s| s.school}
       if !spell_schools.all? { |s| char.schools.include?(s)}
         return {
@@ -45,7 +111,7 @@ module AresMUSH
       }
     end
 
-    def self.check_wrong_levels(char)
+    def self.check_wrong_spell_levels(char)
       spell_names = char.spells_learned.map {|s| s.name}
       spell_names.each do |s|
         if !Magic.previous_level_spell?(char, s)
