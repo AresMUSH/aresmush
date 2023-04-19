@@ -24,6 +24,7 @@ expandedmounts:
     - Sharp Claws
     - Sharp Teeth
     - Strong Beak
+    - Sharp Talons
     hitloc_chart: Flying Mythic
     attack: 9
     reflexes: 9
@@ -58,7 +59,7 @@ expandedmounts:
   Roc:
     armor: Roc
     weapons:
-    - Sharp Claws
+    - Sharp Talons
     - Strong Beak
     hitloc_chart: Flying Mythic
     attack: 10
