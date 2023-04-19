@@ -3,6 +3,7 @@ jobs:
   active_statuses:
   - NEW
   - OPEN
+  - WAITING
   archive_cron:
     hour:
     - 4
@@ -40,6 +41,8 @@ jobs:
       color: "%xg"
     OPEN:
       color: "%xb"
+    WAITING:
+      color: "%x61"
     HOLD:
       color: "%xx%xh"
     DONE:
