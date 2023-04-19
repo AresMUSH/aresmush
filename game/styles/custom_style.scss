@@ -2927,6 +2927,11 @@ th,
 	background-color: $red;
 }
 
+.job-status-WAITING {
+	background-color: $dark-purple;
+	color: white;
+}
+
 .job-category-APP {
 	background: $dusky-purple;
 }
