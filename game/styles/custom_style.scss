@@ -2802,6 +2802,11 @@ th,
 
  .creature-wrap {
 	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
+
+	.card-header {
+		height: 60px;
+		background: linear-gradient(#fefbf7, #fefbf7 57px, pink 59px, pink 60px);
+	}
  }
 
 
