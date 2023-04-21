@@ -2814,9 +2814,24 @@ th,
  .creature-wrap {
 	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
 
+	.index-card {
+		width:95%;
+		margin: auto;
+		margin-bottom:30px;
+	}
+
+	.card-title {
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
 	.card-header {
 		height: 60px;
 		background: linear-gradient(#fefbf7, #fefbf7 57px, pink 59px, pink 60px);
+	}
+
+	.col-md-4 {
+		padding: 0px;
 	}
  }
 
