@@ -209,10 +209,16 @@ module AresMUSH
       
           FS3Combat.emit_to_combat combat, all_messages.join("\n"), nil, true, true
 
-          combat.log "---- Resolutions ----"
+          combat.log "---- Resolutions ----"          
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
-          # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
-          combat.active_combatants.each { |c| c.action }
+          
+          # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.                    
+          combat.log "---- Resetting Actions ----"
+          combat.active_combatants.each do |c|
+            if (c.action_error?)
+              c.reset_action
+            end
+          end
     
           FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor.name)
           
@@ -275,6 +281,7 @@ module AresMUSH
         damage: FS3Combat.damage_list_web_data(combatant.associated_model, false),
         damage_mod: combatant.total_damage_mod.floor,
         vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
+        mount: combatant.mount_type,
         stance: combatant.stance,
         action: combatant.action ? combatant.action.print_action_short : "",
         can_edit: can_manage || (viewer && viewer.name == combatant.name)

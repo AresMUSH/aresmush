@@ -74,7 +74,7 @@ module AresMUSH
         end
       end
       
-      PageMessage.create(author: enactor, message: message, page_thread: thread)
+      page_message = PageMessage.create(author: enactor, message: message, page_thread: thread)
             
       # Send to the enactor.
       if (client)
@@ -120,6 +120,7 @@ module AresMUSH
             author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
 	    poseable_chars: Page.build_poseable_web_chars_data(char, thread),
+            message_id: page_message.id,
             is_page: true
           }
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
