@@ -23,8 +23,8 @@ module AresMUSH
       puts "3: #{errors}"
       errors.concat [Magic.check_points_on_spells(char)[:error]]
       puts "4: #{errors}"
-      errors.concat [Magic.check_points_in_wrong_school(char)[:error]]
-      errors.concat [Magic.check_skill_levels_against_age(char)[:error]]
+      # errors.concat [Magic.check_points_in_wrong_school(char)[:error]]
+      # errors.concat [Magic.check_skill_levels_against_age(char)[:error]]
       puts "5: #{errors}"
       # errors.concat Magic.check_spell_numbers(char)
       puts "Errors 1 #{errors}"
