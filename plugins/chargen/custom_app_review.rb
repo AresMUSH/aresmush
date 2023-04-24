@@ -13,9 +13,9 @@ module AresMUSH
       messages.concat [Chargen.bg_too_long(char)]
       messages.concat [Magic.check_magic_attribute_rating(char)]
       messages.concat [Magic.check_points_on_spells(char)]
-      messages.concat [Magic.check_points_in_wrong_school(char)]
+      # messages.concat [Magic.check_points_in_wrong_school(char)]
       messages.concat [Magic.check_wrong_spell_levels(char)]
-      messages.concat [Magic.check_skill_levels_against_age(char)]
+      # messages.concat [Magic.check_skill_levels_against_age(char)]
 
       msg = []
       if !messages.empty?
