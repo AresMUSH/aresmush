@@ -22,7 +22,7 @@ module AresMUSH
       def error_str
         return nil if is_success?
         @response["error"]
-      end
+      end      
     end
   
     class AresConnector
@@ -95,8 +95,13 @@ module AresMUSH
       end
       
       def register_plugin(params)
-        json = @rest.post("plugins/register", params)
-        AresResponse.new(json)
+        begin
+          json = @rest.post("plugins/register", params)
+          return AresResponse.new(json)
+        rescue Exception => e
+          Global.logger.warn "Couldn't register plugin install with AresCentral: #{e.message}"
+          return AresResponse.new({"status" => "success","data" => {}})
+        end
       end
       
     end
