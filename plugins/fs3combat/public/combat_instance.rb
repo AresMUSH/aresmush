@@ -67,7 +67,7 @@ module AresMUSH
     end
     
     def team_name(number)
-      self.team_names["#{number}"]
+      (self.team_names || {})["#{number}"]
     end
   end
 end
