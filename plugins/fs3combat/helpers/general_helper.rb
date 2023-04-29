@@ -246,13 +246,13 @@ module AresMUSH
         .map { |team, members| 
           { 
             team: team,
+            name: combat.team_name(team),
             combatants: members.map { |c| 
               FS3Combat.build_combatant_summary_data(combat, c, viewer)
             }
           }
         }
-      
-      
+        
       {
         id: combat.id,
         organizer: combat.organizer.name,
