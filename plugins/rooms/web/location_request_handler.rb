@@ -53,6 +53,7 @@ module AresMUSH
           descs: edit_mode ? Describe.get_web_descs_for_edit(room) : Describe.get_web_descs_for_display(room),
           summary: edit_mode ? Website.format_input_for_html(room.shortdesc) : Website.format_markdown_for_html(room.shortdesc),
           owners: owners,
+          starred: room.room_starred,
           area: area,
           name_and_area: room.name_and_area,
           can_edit: enactor && (room.room_owners.include?(enactor) || Rooms.can_build?(enactor)),

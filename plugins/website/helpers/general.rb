@@ -180,7 +180,7 @@ module AresMUSH
         end
       end
       raise "File #{search_name} not found in editable file list."
-    end
+    end    
     
     def self.editable_code_files
       web_code_path = File.join(AresMUSH.website_code_path, 'app')

@@ -81,7 +81,12 @@ module AresMUSH
           return OwnerListCmd
         end
       when "room"
-        return RoomsCmd
+        case cmd.switch
+        when "starred"
+          return RoomStarredCmd
+        else
+          return RoomsCmd
+        end
       when "roomtype"
         return RoomTypeCmd
       when "teleport"
