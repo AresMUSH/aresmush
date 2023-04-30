@@ -80,5 +80,5 @@ en:
        
        cant_delete_area: "You can't delete an area that is used by rooms or is the parent of another area."
        
-       starred_set: "Room starred."
-       starred_cleared: "Room no longer starred."
+       icon_set: "Room icon set."
+       invalid_icon_type: "Invalid icon type. Try one of these: %{types}"

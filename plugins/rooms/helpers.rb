@@ -129,7 +129,7 @@ module AresMUSH
         parent: area.parent ? { name: area.parent.name, id: area.parent.id } : nil,                
         descendants: area.sorted_descendants.map { |a| Rooms.build_area_web_data(a) },
         rooms: area.rooms.select { |r| !r.is_temp_room? }
-          .sort_by { |r| [r.room_starred ? 0 : 1, r.name] }
+          .sort_by { |r| [r.room_icon || 'zzz', r.name] }
           .map { |r| Rooms.build_room_summary_web_data(r) },
         is_top_level: !area.parent
       }
@@ -147,7 +147,8 @@ module AresMUSH
         name_and_area: room.name_and_area,
         id: room.id, 
         summary: summary, 
-        starred: room.room_starred 
+        icon_type: room.room_icon,
+        icon_display: Rooms.icon_display(room.room_icon)
       }           
     end
     
@@ -159,6 +160,11 @@ module AresMUSH
       else 
         return shortdesc
       end
+    end
+    
+    def self.icon_display(icon_type)
+      types = Global.read_config('rooms', 'icon_types') || {}
+      types[icon_type] || "fas fa-star"
     end
     
   end

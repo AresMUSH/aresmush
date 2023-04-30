@@ -1,7 +1,7 @@
 module AresMUSH  
 
   module Migrations
-    class Migration1x0x5Update
+    class Migration1x0x6Update
       def require_restart
         false
       end
@@ -15,6 +15,7 @@ module AresMUSH
         Global.logger.debug "Add area config."
         config = DatabaseMigrator.read_config_file("rooms.yml")
         config['rooms']['area_directory_order'] = []
+        config['rooms']['icon_types'] = { "star" => "fas fa-star" }
         DatabaseMigrator.write_config_file("rooms.yml", config)  
       end
     end

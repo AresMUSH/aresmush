@@ -82,8 +82,8 @@ module AresMUSH
         end
       when "room"
         case cmd.switch
-        when "starred"
-          return RoomStarredCmd
+        when "icon"
+          return RoomIconCmd
         else
           return RoomsCmd
         end

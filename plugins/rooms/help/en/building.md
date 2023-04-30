@@ -69,7 +69,7 @@ Areas are used to group rooms together to represent different regions of the gam
 `roomtype [<room name>=]<IC, OOC or RPR>` - Sets a room as part of the IC, OOC or RPR (Roleplay Room) zone.
 `foyer <on or off` - Marks whether a room is a foyer, like an apartment or a RP room hub.  Numbered exits in foyers will be shown in a special way.
 `icstart <room name>` - Resets the IC starting location.
-`room/starred <on or off>` - Marks whether a room is starred, making it highlighted on the locations directory.
+`room/icon <type>` - Sets a room's icon type for the web portal locations directory. Set the available icon types in the game configuration.
 
 ## Owners
 
