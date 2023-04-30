@@ -39,4 +39,4 @@ jobs:
     - name: Run bundle
       run: bundle install
     - name: Run tests
-      run: bundle exec rspec $*
+      run: bundle exec rake
