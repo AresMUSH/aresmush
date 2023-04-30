@@ -69,7 +69,7 @@ module AresMUSH
       
       error = a.prepare
       if (error)
-        self.combat.log "Rooms.build_area_web_data: #{self.name} #{self.action_klass} #{self.action_args} #{error}"
+        self.combat.log "Action Reset: #{self.name} #{self.action_klass} #{self.action_args} #{error}"
         #FS3Combat.emit_to_combat self.combat, t('fs3combat.invalid_action', :name => self.name, :error => error)
         return nil
       end
@@ -79,7 +79,7 @@ module AresMUSH
     
     def action_error?
       a = get_action_instance
-      a.prepare
+      a && a.prepare
     end
     
     def reset_action
