@@ -34,5 +34,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Copy config
+      run: cp -R install/game.distr game
     - name: Run tests
       run: bin/test
