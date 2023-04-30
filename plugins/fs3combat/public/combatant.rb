@@ -79,7 +79,8 @@ module AresMUSH
     
     def action_error?
       a = get_action_instance
-      a && a.prepare
+      return nil if !a
+      a.prepare
     end
     
     def reset_action
