@@ -19,6 +19,11 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        existing_page = WikiPage.find_by_name_or_id(name)
+        if (existing_page && (existing_page.id != page.id))
+          return { error: t('webportal.page_already_exists')}
+        end
+        
         if ((Website.is_restricted_wiki_page?(page) && !Website.can_manage_wiki?(enactor)) ||
           !enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }

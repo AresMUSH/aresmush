@@ -149,7 +149,8 @@ website:
     main: home
   permissions:
     manage_theme: Edit web portal CSS, colors, and theme images.
-    manage_wiki: Create and delete restricted wiki pages and override folder and file upload limits.
+    manage_wiki: Create and delete restricted wiki pages and override folder and file
+      upload limits.
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -166,3 +167,4 @@ website:
   shortcuts:
     wiki: website
     website/archive: website/export
+  hide_searchbox: false

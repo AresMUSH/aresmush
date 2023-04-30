@@ -79,3 +79,6 @@ en:
        circular_area_parentage: "You can't parent an area to one of its descendants."
        
        cant_delete_area: "You can't delete an area that is used by rooms or is the parent of another area."
+       
+       icon_set: "Room icon set."
+       invalid_icon_type: "Invalid icon type. Try one of these: %{types}"

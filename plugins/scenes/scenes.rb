@@ -155,6 +155,8 @@ module AresMUSH
         return CreatePlotRequestHandler
       when "createScene"
         return CreateSceneRequestHandler
+      when "customSceneData"
+        return CustomSceneDataHandler
       when "editScenePose"
         return EditScenePoseRequestHandler
       when "deleteScenePose"

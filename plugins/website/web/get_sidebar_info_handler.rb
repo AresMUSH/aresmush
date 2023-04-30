@@ -50,6 +50,7 @@ module AresMUSH
           happenings: Who::WhoRequestHandler.new.handle(request),
           recent_changes: Website.recent_changes(enactor, true, 10),
           left_sidebar: Global.read_config('website', 'left_sidebar'),
+          hide_searchbox: Global.read_config('website', 'hide_searchbox'),
           top_navbar: Global.read_config('website', 'top_navbar'),
           registration_required: Global.read_config("login", "portal_requires_registration"),
           server_time: OOCTime.server_timestr,
