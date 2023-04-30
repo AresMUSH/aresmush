@@ -1,4 +1,4 @@
-require_relative "../../plugin_test_loader"
+require "plugin_test_loader"
 
 module AresMUSH
   module Login
