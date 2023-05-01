@@ -205,6 +205,7 @@ module AresMUSH
           expect(FS3Combat).to_not receive(:heal)
           expect(FS3Combat.treat(@patient, @doctor)).to eq "fs3combat.treat_failed"
         end
+
       end
     end
   end

@@ -666,6 +666,7 @@ module AresMUSH
           expect(result[:hit]).to eq false
         end
 
+
         it "should be a dodge if the defender wins when in vehicle" do
           allow(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Ranged" }
           allow(FS3Combat).to receive(:roll_attack) { 1 }

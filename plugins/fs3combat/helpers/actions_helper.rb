@@ -1,6 +1,7 @@
 module AresMUSH
   module FS3Combat
 
+
     def self.action_klass_map
       actions = {
         "aim" => AimAction,

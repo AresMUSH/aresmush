@@ -200,7 +200,5 @@ module AresMUSH
          end
        end
      end
-
-
   end
 end

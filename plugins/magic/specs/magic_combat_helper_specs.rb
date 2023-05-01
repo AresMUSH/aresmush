@@ -180,7 +180,6 @@ module AresMUSH
           Magic.roll_combat_spell(@combatant, @spell)
         end
 
-
         it 'accounts for luck spent on spells' do
           allow(@combatant).to receive(:luck) { 'Spell' }
           expect(@combatant).to receive(:roll_ability).with('Fire', 3)

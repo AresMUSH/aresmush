@@ -144,6 +144,7 @@ module AresMUSH
     def self.cast_heal(caster_name, target_char_or_combatant, spell, heal_points)
       target = Magic.get_associated_model(target_char_or_combatant)
       wound = FS3Combat.worst_treatable_wound(target)
+
       if wound.blank?
         message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
       elsif target.combat && target_char_or_combatant.death_count > 0
