@@ -224,6 +224,9 @@ module AresMUSH
         damage = "GRAZE"
       elsif (total < FS3Combat.damage_table["FLESH"])
         damage = "FLESH"
+      elsif
+        (total < FS3Combat.damage_table["MODERATE"])
+        damage = "MODERATE"
       elsif (total < FS3Combat.damage_table["IMPAIR"])
         damage = "IMPAIR"
       else
@@ -554,6 +557,8 @@ module AresMUSH
           shrapnel = 0
         when "FLESH"
           shrapnel = rand(1)
+        when "MODERATE"
+          shrapnel = rand(2)
         when "IMPAIR"
           shrapnel = rand(3)
         when "INCAP"
