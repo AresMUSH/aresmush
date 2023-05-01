@@ -31,9 +31,17 @@ module AresMUSH
           model.award_luck(self.luck.to_f)
           Global.logger.info "#{self.luck} Luck Points Awarded by #{enactor_name} to #{model.name} for #{self.reason}"
 
+          job_message = t('custom.awarded_luck', :name => enactor.name, :target => model.name, :luck => self.luck, :reason => self.reason)
+          category = Global.read_config("jobs", "luck_category")
+
+          status = Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model)
+          if (status[:job])
+            Jobs.close_job(Game.master.system_character, status[:job])
+          end
+
           message = t('fs3skills.luck_awarded', :name => model.name, :luck => self.luck, :reason => self.reason)
           client.emit_success message
-          Mail.send_mail([model.name], t('fs3skills.luck_award_mail_subject'), message, nil)
+          Login.notify(model, :luck, message, nil)
 
         end
       end
