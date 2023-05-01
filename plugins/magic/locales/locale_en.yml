@@ -3,7 +3,7 @@ en:
   magic:
       invalid_name: "%xrCharacter or mount not found.%xn"
       updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
-
+      dont_target_koed: "%{name} is KO'd. Choose a different target."
 
     # ----------------------------
     # CG
@@ -63,7 +63,6 @@ en:
     # ----------------------------
       use_combat_spell: "Use combat/spell when you are in combat."
       dont_target_self: "Be sure to specify a target when using a stun or attack spell so you don't attack yourself. "
-      dont_attack_koed: "%{target} is KO'd. Choose a different target."
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."

@@ -16,7 +16,6 @@ en:
         healed_wound: "%xh%xxHealed%xn"
         graze_wound: "%xhGraze%xn"
         flesh_wound: "%xgFlesh Wound%xn"
-        moderate_wound: "%xcModerate%xn"
         impaired_wound: "%xyImpaired%xn"
         incap_wound: "%xrIncapacitated%xn"
 
