@@ -39,7 +39,6 @@ module AresMUSH
 
         targets.each do |target|
           return t('magic.dont_target_self') if target == combatant && (spell['fs3_attack'] || spell['is_stun'])
-          return t('magic.dont_attack_koed', :target => target.name) if ((spell['fs3_attack'] || spell['is_stun']) && target.is_ko)
           return t('expandedmounts.cast_on_rider') if target.is_mount? && ExpandedMounts.target_rider(spell)
           # Don't let people waste a spell that won't have an effect
           return t('magic.not_dead', :target => target.name) if (spell['is_res'] && !target.associated_model.dead)
