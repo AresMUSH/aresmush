@@ -57,6 +57,7 @@ en:
       potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %xg%{mod_msg} modification%xn."
       not_character: "%xr%{name} is not a character.%xn"
 
+
     # ----------------------------
     # SPELL CASTING
     # ----------------------------

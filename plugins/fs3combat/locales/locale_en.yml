@@ -308,7 +308,6 @@ en:
         attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc}. %{armor}"
         attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         attack_hits_mount: "%{name} attacks %{target} with %{weapon} and hits their MOUNT. %{effect}"
-
         mount_ko: "(Mount %xrKOed%xn - %xyImpaired%xn wound from fall damage)"
         mount_injured: "(Mount INJURED)"
 
