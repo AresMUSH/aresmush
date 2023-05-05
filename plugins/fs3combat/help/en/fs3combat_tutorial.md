@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 toc: 5 - Magic, FS3 Skills, and Combat
-=======
-toc: FS3 Skills and Combat
->>>>>>> upstream/master
 summary: Playing combat scenes.
 tutorial: true
 order: 2
@@ -11,11 +7,7 @@ order: 2
 
 # FS3 Combat
 
-<<<<<<< HEAD
 The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion.
-=======
-The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. 
->>>>>>> upstream/master
 
 ![Combat Page Screenshot](https://aresmush.com/images/help-images/combat.png)
 
