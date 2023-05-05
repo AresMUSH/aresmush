@@ -89,10 +89,6 @@ module AresMUSH
       self.update(action_args: nil)
     end
 
-    def is_subdued?
-      self.subdued_by && self.subdued_by.is_subduing?(self)
-    end
-
     def reset_action
       FS3Combat.emit_to_combat self.combat, t('fs3combat.resetting_action', :name => self.name)
       self.update(action_klass: nil)
