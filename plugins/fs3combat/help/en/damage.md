@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 toc: 5 - Magic, FS3 Skills, and Combat
+=======
+toc: FS3 Skills and Combat
+>>>>>>> upstream/master
 summary: Damage and healing in combat.
 aliases:
 - treat
@@ -14,7 +18,11 @@ The damage commands are part of the FS3Combat system.
 
 > Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
 
+<<<<<<< HEAD
 `damage` - Views your damage.
+=======
+`damage` - Views your damage. 
+>>>>>>> upstream/master
 `damage <name>` - Views someone else's damage.
 
 > **Note:** The healing progress bar on the damage display just shows how close you are to reducing the wound by one level. It may take several levels before you're fully healed.
@@ -27,7 +35,11 @@ The damage commands are part of the FS3Combat system.
 
 ## Healing
 
+<<<<<<< HEAD
 > **Note:** Healing is more of ongoing care, like a nurse or doctor might give. You will continue healing someone until they are well.
+=======
+> **Note:** Healing is more of ongoing care, like a nurse or doctor might give. You will continue healing someone until they are well. 
+>>>>>>> upstream/master
 
 `heal/start <name>` - Takes someone as a patient.
 `heal/stop <name>` - Removes a patient.

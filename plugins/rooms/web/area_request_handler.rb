@@ -17,6 +17,7 @@ module AresMUSH
         if (edit_mode && !Rooms.can_build?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
+<<<<<<< HEAD
                 
         if (edit_mode) 
            desc = Website.format_input_for_html(area.description)
@@ -47,6 +48,15 @@ module AresMUSH
           
         }
         
+=======
+        
+        {
+          area: Rooms.build_area_web_data(area, edit_mode),
+          children: area.sorted_children.map { |a| { id: a.id, name: a.name } },
+          can_manage: Rooms.can_build?(enactor),
+          all_areas: Rooms.area_directory_web_data
+        }
+>>>>>>> upstream/master
       end
     end
   end

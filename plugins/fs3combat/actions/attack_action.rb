@@ -92,7 +92,6 @@ module AresMUSH
         if (self.mount_hit)
           msg << " #{t('fs3combat.attack_special_mount')}"
         end
-
         msg
       end
 

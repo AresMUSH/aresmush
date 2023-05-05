@@ -22,7 +22,11 @@ module AresMUSH
 
       def handle
         FS3Combat.with_a_combatant(enactor_name, client, enactor) do |combat, combatant|
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> upstream/master
           if (!combatant.luck)
             if (enactor.luck >= 1)
               enactor.spend_luck(1)

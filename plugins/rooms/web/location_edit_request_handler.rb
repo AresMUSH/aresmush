@@ -7,6 +7,10 @@ module AresMUSH
         descs = request.args[:descs]
         summary = request.args[:summary]
         area_id = request.args[:area_id]
+<<<<<<< HEAD
+=======
+        icon_type = request.args[:icon_type]
+>>>>>>> upstream/master
         owner_names = request.args[:owners] || []
         enactor = request.enactor
                 
@@ -52,7 +56,12 @@ module AresMUSH
 
         room.update(name: name, 
            area: area, 
+<<<<<<< HEAD
            shortdesc: Website.format_input_for_mush(summary))
+=======
+           shortdesc: Website.format_input_for_mush(summary),
+           room_icon: icon_type)
+>>>>>>> upstream/master
            
          Describe.save_web_descs(room, descs)
         

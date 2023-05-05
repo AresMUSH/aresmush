@@ -81,7 +81,16 @@ module AresMUSH
           return OwnerListCmd
         end
       when "room"
+<<<<<<< HEAD
         return RoomsCmd
+=======
+        case cmd.switch
+        when "icon"
+          return RoomIconCmd
+        else
+          return RoomsCmd
+        end
+>>>>>>> upstream/master
       when "roomtype"
         return RoomTypeCmd
       when "teleport"

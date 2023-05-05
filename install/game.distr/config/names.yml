@@ -2,5 +2,9 @@
 names:
   restricted:
   - me
+<<<<<<< HEAD
   - here
   - joel
+=======
+  - here
+>>>>>>> upstream/master

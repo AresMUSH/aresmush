@@ -1,5 +1,6 @@
 module AresMUSH
   module Chargen
+<<<<<<< HEAD
 
     def self.bg_too_long(char)
       msg = "Checking Background Length"
@@ -33,11 +34,24 @@ module AresMUSH
 
       # Otherwise, return a message to display.  Here's an example of how to
       # give an alert if the character has chosen an invalid position for their
+=======
+    def self.custom_app_review(char)
+            
+      # If you don't want to have any custom app review steps, return nil
+      return nil
+            
+      # Otherwise, return a message to display.  Here's an example of how to 
+      # give an alert if the character has chosen an invalid position for their 
+>>>>>>> upstream/master
       # faction.
       #
       #  faction = char.group("Faction")
       #  position = char.group("Position")
+<<<<<<< HEAD
       #
+=======
+      #  
+>>>>>>> upstream/master
       #  if (position == "Knight" && faction != "Noble")
       #    msg = "%xrOnly nobles can be knights.%xn"
       #  else
@@ -46,7 +60,11 @@ module AresMUSH
       #
       #  return Chargen.format_review_status "Checking groups.", msg
       #
+<<<<<<< HEAD
       # You can also use other built-in chargen status messages, like t('chargen.not_set').
+=======
+      # You can also use other built-in chargen status messages, like t('chargen.not_set').  
+>>>>>>> upstream/master
       # See https://www.aresmush.com/tutorials/config/chargen.html for details.
     end
   end

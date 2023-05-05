@@ -4,6 +4,7 @@ summary: Ares privacy practices.
 title: Data and Privacy on Ares Games
 tutorial: true
 ---
+<<<<<<< HEAD
 
 # Data and Privacy on Shattered
 
@@ -92,10 +93,16 @@ Many games keep around character objects even after the player has left.  If you
 This is not really Ares-specific, but it's good to be aware of: If you're using a MU client, your connection is extremely insecure.  Data is transmitted from your PC to the game in plain text with no encryption, and could easily be intercepted.
 
 Most Ares web portals will use HTTPS for security.  Those that don't are just as insecure as a MU client.
+=======
+>>>>>>> upstream/master
 # Privacy
 
 It's up to each individual Ares game to determine their privacy policies.  Ideally this will be conveyed to players in the terms of service acknowledgement or a policy file on the wiki. If there isn't one, nag your game admins. It's important. It may even be the law, depending on where your game is running and/or where your players are from.
 
 For **general** information about how data is stored in Ares, see [Data and Privacy on Ares Games](https://aresmush.com/game_privacy.html). Bear in mind that your game may have custom code that modifies this core behavior.
 
+<<<<<<< HEAD
 For AresCentral and aresmush.com privacy practices, see the [AresMUSH.com privacy policy](https://aresmush.com/privacy.html).
+=======
+For AresCentral and aresmush.com privacy practices, see the [AresMUSH.com privacy policy](https://aresmush.com/privacy.html).
+>>>>>>> upstream/master

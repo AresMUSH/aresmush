@@ -19,6 +19,10 @@ module AresMUSH
         @validator.require_list('top_navbar')
         @validator.require_nonblank_text('website_code_path')
         @validator.require_hash('wiki_aliases')
+<<<<<<< HEAD
+=======
+        @validator.require_boolean('hide_searchbox')
+>>>>>>> upstream/master
         
         begin
           gallery_group = Global.read_config('website', 'character_gallery_group')

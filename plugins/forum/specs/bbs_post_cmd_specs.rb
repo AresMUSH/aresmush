@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 require_relative "../../plugin_test_loader"
+=======
+require "plugin_test_loader"
+>>>>>>> upstream/master
 
 module AresMUSH
   module Forum

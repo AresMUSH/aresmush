@@ -1,16 +1,23 @@
 module AresMUSH
   module FS3Skills
     class SheetTemplate < ErbTemplateRenderer
+<<<<<<< HEAD
 
 
       attr_accessor :char, :client, :section
 
+=======
+      
+      attr_accessor :char, :client, :section
+      
+>>>>>>> upstream/master
       def initialize(char, client, section = nul)
         @char = char
         @client = client
         @section = section
         super File.dirname(__FILE__) + "/sheet.erb"
       end
+<<<<<<< HEAD
 
       def approval_status
         Chargen.approval_status(@char)
@@ -21,6 +28,17 @@ module AresMUSH
       end
 
 
+=======
+     
+      def approval_status
+        Chargen.approval_status(@char)
+      end
+      
+      def luck
+        @char.luck.floor
+      end
+      
+>>>>>>> upstream/master
       def show_section(section)
         sections = ['attributes', 'action', 'background', 'languages', 'advantages']
         return true if self.section.blank?
@@ -28,6 +46,7 @@ module AresMUSH
         return true if !sections.include?(self.section)
         return section == self.section
       end
+<<<<<<< HEAD
 
 
       def attrs
@@ -59,18 +78,41 @@ module AresMUSH
               list << format_attr(a, i)
             end
           end
+=======
+      
+      def attrs
+       list = []        
+        @char.fs3_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i| 
+          list << format_attr(a, i)
+        end   
+        list     
+      end
+        
+      def action_skills
+        list = []
+        @char.fs3_action_skills.sort_by(:name, :order => "ALPHA").each_with_index do |s, i| 
+           list << format_skill(s, i, true)
+>>>>>>> upstream/master
         end
         list
       end
 
       def background_skills
         list = []
+<<<<<<< HEAD
         @char.fs3_background_skills.sort_by(:name, :order => "ALPHA").each_with_index do |s, i|
+=======
+        @char.fs3_background_skills.sort_by(:name, :order => "ALPHA").each_with_index do |s, i| 
+>>>>>>> upstream/master
            list << format_skill(s, i)
         end
         list
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       def languages
         list = []
         @char.fs3_languages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
@@ -78,7 +120,11 @@ module AresMUSH
         end
         list
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       def advantages
         list = []
         @char.fs3_advantages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
@@ -86,11 +132,19 @@ module AresMUSH
         end
         list
       end
+<<<<<<< HEAD
 
       def use_advantages
         FS3Skills.use_advantages?
       end
 
+=======
+      
+      def use_advantages
+        FS3Skills.use_advantages?
+      end
+      
+>>>>>>> upstream/master
       def specialties
         spec = {}
         @char.fs3_action_skills.each do |a|
@@ -103,7 +157,11 @@ module AresMUSH
         return nil if (spec.keys.count == 0)
         spec.map { |spec, ability| "#{spec} (#{ability})"}.join(", ")
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
@@ -111,7 +169,11 @@ module AresMUSH
         rating_dots = @client.screen_reader ? a.rating : a.print_rating
         "#{linebreak}#{left(name, 14)} #{left(rating_dots, 8)} #{left(rating_text,16)}"
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       def format_skill(s, i, show_linked_attr = false)
         name = "%xh#{s.name}:%xn"
         linked_attr = show_linked_attr ? print_linked_attr(s) : ""
@@ -120,12 +182,20 @@ module AresMUSH
         rating_dots = @client.screen_reader ? s.rating : s.print_rating
         "#{linebreak}#{left(name, 14)} #{left(rating_dots, 8)} #{left(rating_text, 16)}"
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       def print_linked_attr(skill)
         apt = FS3Skills.get_linked_attr(skill.name)
         !apt ? "" : " %xh%xx(#{apt[0..2].upcase})%xn"
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       def section_line(title)
         @client.screen_reader ? title : line_with_text(title)
       end

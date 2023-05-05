@@ -1,6 +1,10 @@
 module AresMUSH
   module FS3Skills
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
     def self.backgrounds_review(char)
       FS3Skills.min_item_review(char.fs3_background_skills.count, "min_backgrounds", "fs3skills.backgrounds_added")
     end
@@ -23,6 +27,7 @@ module AresMUSH
 
       error = FS3Skills.check_attr_points(char)
       too_high << error if error
+<<<<<<< HEAD
 
       error = FS3Skills.check_action_points(char)
       too_high << error if error
@@ -31,6 +36,16 @@ module AresMUSH
       too_high << error if error
 
 
+=======
+      
+      error = FS3Skills.check_action_points(char)
+      too_high << error if error
+      
+      error = FS3Skills.check_advantage_points(char)
+      too_high << error if error
+      
+      
+>>>>>>> upstream/master
       if (too_high.count == 0)
         Chargen.format_review_status(message, t('chargen.ok'))
       else
@@ -46,7 +61,11 @@ module AresMUSH
       all_skills = char.fs3_background_skills.map { |s| s.name }
       all_skills.concat char.fs3_action_skills.select { |s| s.rating > 1 }.map { |s| s.name }
       all_skills.concat char.fs3_languages.map { |s| s.name }
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> upstream/master
       uncommon_skills = Global.read_config("fs3skills", "unusual_skills") || []
       uncommon_skills.each do |s|
         if (all_skills.include?(s))
@@ -73,19 +92,31 @@ module AresMUSH
       max = Global.read_config("fs3skills", "max_points_on_attrs")
       points > max ? t('fs3skills.too_many_attributes', :max => max) : nil
     end
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
     def self.check_action_points(char)
       points = AbilityPointCounter.points_on_action(char)
       max = Global.read_config("fs3skills", "max_points_on_action")
       points > max ? t('fs3skills.too_many_action_skills', :max => max) : nil
     end
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
     def self.check_advantage_points(char)
       points = AbilityPointCounter.points_on_advantages(char)
       max = Global.read_config("fs3skills", "max_points_on_advantages") || 99
       points > max ? t('fs3skills.too_many_advantages', :max => max) : nil
     end
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> upstream/master
     def self.total_point_review(char)
       points =  AbilityPointCounter.total_points(char)
       #Magic changes
@@ -95,7 +126,11 @@ module AresMUSH
       error = points > max ? t('chargen.too_many') : t('chargen.ok')
       Chargen.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
     def self.starting_skills_check(char)
       message = t('fs3skills.starting_skills_check')
       missing = []
@@ -133,7 +168,11 @@ module AresMUSH
         "#{message}%r#{error}"
       end
     end
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> upstream/master
     def self.check_high_abilities(abilities, top_rating, num_abilities_max, prompt)
       ratings = abilities.map { |a| a.rating }
       # Goofiness needed because the config keys could be strings or ints.

@@ -33,6 +33,9 @@ en:
         updated_job_category: "%{name} has updated the category of job #%{number} \"%{title}\"."
         requests_cmd_hint: "Use the requests command to view your requests."
         request_use_respond: "I think you meant to respond to a request.  Use request/respond <#>=<msg>"
+        reply_moved: "Reply moved from job %{from}."
+        jobs_merged_to: "Job merged to %{to}. All comments have been moved there."
+        jobs_merged_from: "Job merged from %{from}. All comments from the other job have been moved to this one."
         
         closed_job: "%{name} has closed this job."
         changed_job_status: "%{name} has changed the job status to \"%{status}\"."

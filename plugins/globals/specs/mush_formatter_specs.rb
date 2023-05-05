@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
+=======
+
+>>>>>>> upstream/master
 
 require "aresmush"
 

@@ -1,4 +1,3 @@
-require 'byebug'
 module AresMUSH
   module FS3Combat
 
@@ -70,8 +69,8 @@ module AresMUSH
       end
 
       web_msg = "#{combat.id}|#{Website.format_markdown_for_html(message)}"
-      Global.client_monitor.notify_web_clients(:combat_activity, web_msg, true) do |c|
-        c && c.combatant && c.combatant.combat == combat
+       Global.client_monitor.notify_web_clients(:combat_activity, web_msg, true) do |c|
+         c && c.combatant && c.combatant.combat == combat
       end
 
       messages = combat.messages
@@ -239,8 +238,8 @@ module AresMUSH
           combat_data = FS3Combat.build_combat_web_data(combat, nil)
 
           web_msg = "#{combat.id}|#{combat_data[:teams].to_json}"
-          Global.client_monitor.notify_web_clients(:new_combat_turn, web_msg, true) do |c|
-            c && c.combatant && c.combatant.combat == combat
+           Global.client_monitor.notify_web_clients(:new_combat_turn, web_msg, true) do |c|
+             c && c.combatant && c.combatant.combat == combat
           end
 
         rescue Exception => ex
@@ -260,12 +259,12 @@ module AresMUSH
         .map { |team, members|
           {
             team: team,
+            name: combat.team_name(team),
             combatants: members.map { |c|
               FS3Combat.build_combatant_summary_data(combat, c, viewer)
             }
           }
         }
-
 
       {
         id: combat.id,

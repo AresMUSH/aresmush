@@ -60,6 +60,7 @@ module AresMUSH
 
       vehicle_type = FS3Combat.combatant_type_stat(combatant_type, "vehicle")
       mount_type = FS3Combat.combatant_type_stat(combatant_type, "mount")
+
       if (vehicle_type)
         vehicle = FS3Combat.find_or_create_vehicle(combat, vehicle_type)
         FS3Combat.join_vehicle(combat, combatant, vehicle, "Pilot")

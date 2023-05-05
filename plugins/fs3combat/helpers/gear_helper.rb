@@ -63,7 +63,6 @@ module AresMUSH
       name = name_with_specials.before("+")
       armor = FS3Combat.armor(name)
       return nil if !armor
-
       if (stat == "protection")
         value = armor[stat].dup
       else

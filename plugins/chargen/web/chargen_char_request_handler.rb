@@ -11,9 +11,9 @@ module AresMUSH
 
         error = Website.check_login(request)
         return error if error
-                
 
-        
+
+
         if (Chargen.can_approve?(enactor))
           can_approve = true
         else
@@ -25,28 +25,28 @@ module AresMUSH
           if (char.is_approved?)
             return { error: t('chargen.you_are_already_approved')}
           end
-                
+
           return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
         end
-        
+
         all_demographics = Demographics.all_demographics
         demographics = {}
-        
-        all_demographics.select { |d| d != 'birthdate' }.each do |d| 
-          demographics[d.downcase] = 
+
+        all_demographics.select { |d| d != 'birthdate' }.each do |d|
+          demographics[d.downcase] =
             {
               name: d.titleize,
               value: char.demographic(d)
             }
         end
-        
+
         if (Demographics.age_enabled?)
           demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }
         end
-        
+
         groups = {}
-        
-        Demographics.all_groups.sort.each do |k, v| 
+
+        Demographics.all_groups.sort.each do |k, v|
           group_val = char.group(k)
           groups[k.downcase] = {
             name: k.titleize,
@@ -54,31 +54,31 @@ module AresMUSH
             desc: (v['values'] || {})[group_val]
           }
         end
-        
+
         if (Ranks.is_enabled?)
           groups['rank'] = { name: t("profile.rank_title"), key: 'Rank', value: char.rank }
         end
-        
+
         if (FS3Skills.is_enabled?)
           fs3 = FS3Skills::ChargenCharRequestHandler.new.handle(request)
         else
           fs3 = nil
         end
-        
+
         if Manage.is_extra_installed?("traits")
           traits = Traits.get_traits_for_web_editing(char, enactor)
         else
           traits = nil
         end
-        
+
         if Manage.is_extra_installed?("rpg")
           rpg = Rpg.get_sheet_for_web_editing(char, enactor)
         else
           rpg = nil
         end
-          
+
         hooks = Website.format_input_for_html(char.rp_hooks)
-        
+
         {
           id: char.id,
           chargen_locked: false,

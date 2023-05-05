@@ -50,10 +50,13 @@ website:
     menu:
     - title: Characters
       route: characters
+<<<<<<< HEAD
     - title: Cryptids
       route: creatures
     - title: Spells
       route: spells      
+=======
+>>>>>>> upstream/master
     - title: Scenes
       route: scenes
     - title: Plots
@@ -151,6 +154,7 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
+<<<<<<< HEAD
     shattering: history
     monsters: cryptids
     mythics: cryptids
@@ -167,6 +171,12 @@ website:
   permissions:
     manage_theme: Edit web portal CSS, colors, and theme images.
     manage_wiki: Create and delete restricted wiki pages and override folder and file upload limits.
+=======
+  permissions:
+    manage_theme: Edit web portal CSS, colors, and theme images.
+    manage_wiki: Create and delete restricted wiki pages and override folder and file
+      upload limits.
+>>>>>>> upstream/master
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -182,4 +192,9 @@ website:
     - 37
   shortcuts:
     wiki: website
+<<<<<<< HEAD
     website/archive: website/export
+=======
+    website/archive: website/export
+  hide_searchbox: false
+>>>>>>> upstream/master
