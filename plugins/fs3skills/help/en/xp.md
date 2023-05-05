@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 toc: 5 - Magic, FS3 Skills, and Combat
-=======
-toc: FS3 Skills and Combat
->>>>>>> upstream/master
 summary: Improving your character with experience.
 aliases:
 - experience
