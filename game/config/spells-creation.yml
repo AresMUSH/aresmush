@@ -1,0 +1,420 @@
+spells:
+#---------------
+# LEVEL 1
+#---------------
+  Bioluminescence:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster imbues up to 1 cubic foot of pre-existing rock, gemstone, or flora with a bioluminescent glow in a single phosphorescent color. The light is dim, equivalent to a small candle flame (12 lumens).
+    duration: 30 minutes
+    effect: Flora
+    level: 1
+    line_of_sight: true
+    name: Bioluminescence
+    range: Short
+    roll: true
+    school: Creation
+  Create Bloom:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Cause a budding plant to bloom.
+    effect: Flora
+    level: 1
+    line_of_sight: true
+    name: Create Bloom
+    range: Short
+    roll: true
+    school: Creation
+  Create Water:
+    area: 1-5 ft radius
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Draw up to 2 gallons of clean drinking water from the moisture in the air\u2014possibly creating a downpour or filling many small receptacles.\n\nThe water is generally reflective of the temperature in which it is created, but it is always liquid on creation. The temperature around it may freeze or heat the water after creation."
+    effect: Manipulation
+    level: 1
+    name: Create Water
+    range: Short
+    roll: true
+    school: Creation
+#---------------
+# LEVEL 2
+#---------------
+  Ripen:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce a small amount of edible food, no more than a handful, even out of season.
+    effect: Flora
+    level: 2
+    line_of_sight: true
+    name: Ripen
+    range: Touch
+    roll: true
+    school: Creation
+  Sling Barb:
+    available: true
+    casting_time: 1 round
+    desc: Caster grows a natural barb from any flora in the surrounding environment and flings it at target.
+    effect: Damage
+    fs3_attack: true
+    level: 2
+    line_of_sight: true
+    name: Sling Barb
+    range: Short
+    school: Creation
+    target_num: 1
+    weapon: Sling Barb
+    effect: Damage
+#---------------
+# LEVEL 3
+#---------------
+  Aquamancy:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of preexisting water, moving and shaping it into simple non-weaponized shapes that animates at their direction. The caster can control the flow, density, and dispersion of water to form dry spots, move puddles, or reroute small streams. When the spell ends, the water returns to its natural state in its current location."
+    duration: 1 hour
+    effect: Manipulation
+    level: 3
+    line_of_sight: true
+    name: Aquamancy
+    range: Short
+    roll: true
+    school: Creation
+  Floramancy:
+    area: 2 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can cause up to 2 cubic feet of pre-existing flexible vegetation such as vines and grasses to form into simple non-weaponized shapes that animate at their direction. Can include accelerating growth by up to 15 days in the span of a few seconds. Flora returns to its natural - but not necessarily original - state when the spell ends."
+    duration: 30 minutes
+    effect: Flora
+    level: 3
+    line_of_sight: true
+    name: Floramancy
+    range: Short
+    roll: true
+    school: Creation
+  Minor Heal:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Provide a minor amount of healing magic to a target's most severe treatable wound, speeding their healing by up to a couple of days and restoring some of their vigor.
+    effect: Heal
+    heal_points: 3
+    is_potion: true
+    level: 3
+    line_of_sight: true
+    name: Minor Heal
+    range: Short
+    school: Creation
+    target_num: 1
+  Shield Of The Forest:
+    available: true
+    casting_time: 1 round
+    desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
+    duration: 3 rounds
+    effect: Shield
+    is_shield: true
+    level: 3
+    line_of_sight: true
+    name: Shield of the Forest
+    range: Short
+    rounds: 3
+    school: Creation
+    shields_against: All
+    target_num: 1
+  Stone Slam:
+    available: true
+    casting_time: 1 round
+    desc: Slam a stone the size of a basketball into an opponent with force.
+    effect: Damage
+    fs3_attack: true
+    level: 3
+    line_of_sight: true
+    name: Stone Slam
+    range: Short
+    school: Creation
+    target_num: 1
+    weapon: Stone Slam
+  Water Cannon:
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: The caster blasts a target with a powerful water attack, knocking them off their feet and incapacitating them for one round.
+    duration: 1 round
+    effect: Stun
+    is_stun: true
+    rounds: 1
+    level: 3
+    line_of_sight: true
+    name: Water Cannon
+    range: Short
+    school: Creation
+    target_num: 1
+    weapon: Stun (Creation)
+#---------------
+# LEVEL 4
+#---------------
+  Agility:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    defense_mod: 2
+    desc: The caster's reflexes are improved, increasing their defensive abilities and their reaction speed.
+    duration: 5 rounds
+    effect: Buff
+    init_mod: 1
+    is_potion: true
+    level: 4
+    name: Agility
+    range: Touch
+    rounds: 3
+    school: Creation
+  Minor Group Heal:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: 'Provide a minor amount of healing magic to the most severe treatable wound of up to three targets the caster can see, speeding their healing by up to a couple of days and restoring some of their vigor. '
+    effect: Heal
+    heal_points: 3
+    level: 4
+    line_of_sight: true
+    name: Minor Group Heal
+    range: Short
+    school: Creation
+    target_num: 3
+  Purify Water:
+    available: true
+    casting_time: 10 minutes
+    damage_type: Bypass
+    desc: "The caster can purify up to 30 cubic feet (225 gallons) of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
+    effect: Manipulation
+    level: 4
+    name: Purify Water
+    range: Short
+    roll: true
+    school: Creation
+  Stone Skin:
+    armor: Stone Skin
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Caster weaponizes and protects their own body by augmenting it with stone and rock.
+    duration: 3 hours
+    effect: Armor
+    is_potion: true
+    level: 4
+    name: Stone Skin
+    range: Self
+    school: Creation
+    target_num: 1
+    weapon: Stone Skin
+  Strength:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster's strength is increased. They can lift up to an additional 150 lbs, and they hit harder when attacking with brawl or melee weapons.
+    duration: 1 hour
+    effect: Buff
+    is_potion: true
+    level: 4
+    name: Strength
+    range: Touch
+    rounds: 100
+    school: Creation
+    weapon_specials: Strength
+    weapon: Spell
+#---------------
+# LEVEL 5
+#---------------
+  Germinate:
+    available: true
+    casting_time: 10 minutes
+    damage_type: Bypass
+    desc: Speed the growth of any kind of plant by a year.  It may bloom, but will not produce fruit without either more time or magic. There must be sufficient and appropriate resources for the plant to grow.
+    effect: Flora
+    level: 5
+    line_of_sight: true
+    name: Germinate
+    range: Short
+    roll: true
+    school: Creation
+  Medium Heal:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Provide a middling amount of healing magic to a target's most severe treatable wound, speeding their healing by up to nearly a week and restoring some of their vigor.
+    effect: Heal
+    heal_points: 7
+    level: 5
+    line_of_sight: true
+    name: Medium Heal
+    range: Short
+    school: Creation
+    target_num: 1
+  Revive:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: 'Return a knocked out comrade to the fight.'
+    effect: Revive
+    is_revive: true
+    level: 5
+    line_of_sight: true
+    name: Revive
+    range: Short
+    school: Creation
+    target_num: 1
+  Stone Wall:
+    available: true
+    area: 5 yard length
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Creates a low wall of stone to deflect or reduce damage from attacks directed against up to three targets in its range."
+    effect: Shield
+    duration: 3 rounds
+    is_shield: true
+    level: 5
+    line_of_sight: true
+    name: Stone Wall
+    rounds: 5
+    school: Creation
+    range: Short
+    shields_against: All
+    target_num: 3
+#---------------
+# LEVEL 6
+#---------------
+  Diamond Armor:
+    armor: Diamond
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster protects the target's body by augmenting it with a layer of hard diamond armor. Coloring may vary.
+    duration: 8 hours
+    effect: Armor
+    level: 6
+    name: Diamond Armor
+    range: Touch
+    school: Creation
+    target_num: 1
+  Stalagmite:
+    available: true
+    casting_time: 1 round
+    desc: A jagged piece of earth juts up beneath an enemy, doing damage.
+    effect: Damage
+    fs3_attack: true
+    level: 6
+    line_of_sight: true
+    name: Stalagmite
+    range: Long
+    school: Creation
+    target_num: 1
+    weapon: Stalagmite
+  Stone Shackles:
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: The caster subdues the targets with rock bindings, entrapping their hands and feet to immobilize them briefly.
+    duration: 2 rounds
+    effect: Stun
+    fs3_attack: true
+    is_stun: true
+    level: 6
+    line_of_sight: true
+    name: Stone Shackles
+    range: Long
+    rounds: 2
+    school: Creation
+    target_num: 2
+    weapon: Stun (Creation)
+#---------------
+# LEVEL 7
+#---------------
+  Poison Puffs:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Grow an area of mushrooms in an area that you can see. As they grow, they release a poisonous gas into the surrounding air, affecting up to 3 targets.
+    duration: 1 round
+    effect: AOE Damage
+    fs3_attack: true
+    level: 7
+    line_of_sight: true
+    name: Poison Puffs
+    range: Long
+    school: Creation
+    target_num: 3
+    weapon: Poison Puffs
+  Stone Daggers:
+    available: true
+    casting_time: 1 round
+    desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward up to 3 targets with speed and force, automatically seeking weak spots in the foe's armor.
+    effect: AOE Damage
+    fs3_attack: true
+    level: 7
+    line_of_sight: true
+    name: Stone Daggers
+    range: Long
+    school: Creation
+    target_num: 3
+    weapon: Stone Daggers
+#---------------
+# LEVEL 8
+#---------------
+  Brink Of Death:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Return someone who has died in the last 30 seconds to life at the cost of the caster''s own stamina.  \n\n A revived target is unable to return to the fight without further healing. They are both incapacitated and suffering from spell fatigue.\n\n
+    The caster is unable to fight or cast spells for 24 hours.\n\n"
+    effect: Resurrection
+    is_res: true
+    level: 8
+    name: Brink Of Death
+    range: Touch
+    school: Creation
+    target_num: 1
+  Meteor:
+    area: 15 yard radius
+    available: true
+    casting_time: 1 round
+    desc: The caster calls down a ball of jagged earth and stone to a point they can see. It explodes on impact, doing damage to up to 3 targets and throwing up shrapnel.
+    effect: AOE Damage
+    fs3_attack: true
+    level: 8
+    line_of_sight: true
+    name: Meteor
+    range: Long
+    school: Creation
+    target_num: 3
+    weapon: Meteor
+  Group Revive:
+    area: 15 yard radius
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Return up to three knocked out comrades to the fight.
+    effect: Revive
+    is_res: false
+    is_revive: true
+    level: 8
+    line_of_sight: true
+    name: Group Revive
+    range: Long
+    roll: false
+    school: Creation
+    target_num: 3
+#---------------
+# LEVEL 9
+#---------------
+#---------------
+# LEVEL 10
+#---------------

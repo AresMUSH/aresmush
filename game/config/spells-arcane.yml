@@ -1,0 +1,561 @@
+spells:
+#---------------
+# LEVEL 1
+#---------------
+  Dampen Emotion:
+    available: true
+    casting_time: 1 round
+    desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness."
+    damage_type: Psionic
+    duration: 10 minutes
+    effect: Psionic
+    level: 1
+    line_of_sight: true
+    name: Dampen Emotion
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Glimpse Dream:
+    available: true
+    casting_time: 1 round
+    desc: "The caster can observe 1 hour of a dream from an unguarded mind, or a mind that has left their dreams open to observation, within 100 yards. The caster cannot control the dream. They can communicate with the dreamer, though the dreamer's subconscious may not recognize them as real or remember what was said when they awake. "
+    damage_type: Psionic
+    duration: 1 hour
+    effect: Psionic
+    level: 1
+    name: Glimpse Dream
+    range: Long
+    roll: true
+    school: Arcane
+    target_num: 1
+  Restful Sleep:
+    available: true
+    casting_time: 1 round
+    desc: "Cast a spell on a target that helps ease the mind toward sleep. Falling asleep becomes easy. For the duration, sleep is undisturbed by natural dreams, letting the target rest easy. When the spell is ended, sleep becomes natural and continues or is ended according to natural means.\n\n
+    Has no noticeable effect on those who do not attempt to sleep."
+    duration: 1 hour
+    damage_type: Psionic
+    effect: Other
+    is_potion: true
+    level: 1
+    line_of_sight: true
+    name: Restful Sleep
+    range: Touch
+    roll: true
+    school: Arcane
+    target_num: 1
+#---------------
+# LEVEL 2
+#---------------
+  Calm Animal:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Render a single animal docile and harmless. Acts of aggression towards the animal negate the spell.
+    duration: 15 minutes
+    effect: Defense
+    level: 2
+    line_of_sight: true
+    name: Calm Animal
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Clear Mind:
+    available: true
+    attack_mod: 1
+    casting_time: 1 round
+    desc: "The caster clears all thoughts from their mind and focuses on their task, gaining a bonus to attack."
+    duration: 2 rounds
+    effect: Buff
+    is_potion: true
+    level: 2
+    line_of_sight: true
+    name: Clear Mind
+    range: Self
+    rounds: 2
+    school: Arcane
+    target_num: 1
+  Group Telepathy:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "Up to 6 targets, including the caster, are able to hold a telepathic conversation together. All targets are part of a single conversation for the duration of the spell. Conversation is limited to words and brief, simple images. A bonded mage/mythic pair counts as one target. "
+    duration: 1 hour
+    effect: Communication
+    level: 2
+    name: Group Telepathy
+    range: Long
+    roll: true
+    school: Arcane
+    target_num: 6
+  Impart Dream:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster impresses a single person, place, thing, or five-word concept on the mind of a target, causing the target to dream of this thing the next time they sleep. The caster cannot control the nature of the dream, how the target's mind interacts with this prompt, or whether it takes the form of pleasant dream or a nightmare. "
+    duration: 1 hour
+    effect: Psionic
+    is_potion: true
+    level: 2
+    name: Impart Dream
+    range: Touch
+    roll: true
+    school: Arcane
+    target_num: 1
+  Local Locate:
+    available: true
+    area: 1 mile
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster is able to sense the direction of an object, person, or animal with which they are familiar.
+    duration: 10 minutes
+    effect: Other
+    level: 2
+    name: Local Locate
+    range: Short
+    roll: true
+    school: Arcane
+  Object Whisper:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Caster hears a random, uncontrollable thought (no more than a short sentence of up to 10 words) from an object touched by a person in the past 48 hours. The caster can choose to focus their attention on a 2 hour window within that 48 hours. \n\nThe spell can be cast on the object up to 5 times, receiving a different thought each time. Each subsequent thought uncovered via the spell becomes less and less clear, until the psychometric imprint on the object is erased all together.\n\nWhen possible, the sentence should be chosen by a GM or someone other than the caster."
+    effect: Communication
+    is_potion: true
+    level: 2
+    line_of_sight: true
+    name: Object Whisper
+    range: Touch
+    roll: true
+    school: Arcane
+  Telepathic Reading:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Read someone's surface thoughts. Can penetrate the innate shield of a bonded mage.
+    duration: 30 minutes
+    effect: Psionic
+    level: 2
+    name: Telepathic Reading
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+#---------------
+# LEVEL 3
+#---------------
+  Awaken Terror:
+    available: true
+    casting_time: 1 round
+    desc: Target becomes afraid of the caster and attempts to flee to the nearest place they could safely hide. They will not move in the direction of the caster for the duration of the spell unless forced.
+    damage_type: Psionic
+    duration: 1 round
+    effect: Stun
+    is_stun: true
+    rounds: 1
+    level: 3
+    line_of_sight: true
+    name: Awaken Terror
+    range: Short
+    school: Arcane
+    target_num: 1
+    weapon: Stun (Arcane)
+  Charm:
+    available: true
+    casting_time: 1 round
+    desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell.
+    damage_type: Psionic
+    duration: 1 round
+    effect: Psionic
+    is_stun: true
+    rounds: 1
+    level: 3
+    line_of_sight: true
+    name: Charm
+    range: Short
+    school: Arcane
+    target_num: 1
+    weapon: Stun (Arcane)
+  Corporeal Ghost:
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "Give an incorporeal ghost a physical form, making it capable of both receiving and doing damage.\n\nThe spell must be cast either in the presence of a ghost, and the attempt to cast this spell can confirm whether a ghost is present."
+    duration: 6 rounds
+    effect: Other
+    level: 3
+    line_of_sight: true
+    name: Corporeal Ghost
+    range: Short
+    rounds: 6
+    school: Arcane
+    target_num: 1
+  Detect Magic:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster senses whether magic is affecting or being performed by a sapient target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
+    effect: Psionic
+    level: 3
+    line_of_sight: true
+    name: Detect Magic
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Distract:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    defense_mod: -1
+    desc: "The target's is distracted, reducing their chance of success in their intended action."
+    duration: 2 rounds
+    effect: Psionic
+    level: 3
+    line_of_sight: true
+    name: Distract
+    range: Short
+    rounds: 2
+    school: Arcane
+    spell_mod: -1
+    target_num: 1
+
+#---------------
+# LEVEL 4
+#---------------
+  Dampen Magic:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The target's ability to cast spells is made more difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 4
+    name: Dampen Magic
+    range: Long
+    rounds: 3
+    school: Arcane
+    spell_mod: -3
+    target_num: 1
+  Focus:
+    attack_mod: 1
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    defense_mod: 1
+    desc: The target's mind focuses sharply, increasing their chance of succeeding in their intended action.
+    duration: 2 rounds
+    effect: Buff
+    level: 4
+    line_of_sight: true
+    name: Focus
+    range: Short
+    rounds: 2
+    school: Arcane
+    spell_mod: 1
+    target_num: 1
+  Mind Shield:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Arcane roll. When the target is targeted by another spell with a psionic effect or doing psionic damage, the opposing caster rolls Arcane vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. The shield raises an alarm which informs the target that a psionic spell of some sort has been cast on them, whether the spell succeeds in bypassing the shield or not."
+    effect: Shield
+    is_shield: true
+    level: 4
+    line_of_sight: true
+    name: Mind Shield
+    range: Short
+    school: Arcane
+    shields_against: Psionic
+    target_num: 1
+    duration: 2 hours
+    rounds: 7200
+  Reset Target:
+    available: true
+    attack_mod: 0
+    casting_time: 1 round
+    defense_mod: 0
+    desc: "The caster resets all modifying magic on a target, restoring their attack, defense, initiative, and spell casting abilities to their natural state."
+    duration: 2 rounds
+    effect: Debuff
+    init_mod: 0
+    level: 4
+    line_of_sight: true
+    name: Reset Target
+    range: Short
+    school: Arcane
+    spell_mod: 0
+    target_num: 1
+  Restful Spirit:
+    available: true
+    casting_time: 5 minutes
+    damage_type: Psionic
+    desc: "Put a weak ghost to rest. \n\nThe attempt to cast this spell can confirm whether a ghost is present."
+    effect: Other
+    level: 4
+    line_of_sight: true
+    name: Restful Spirit
+    range: Short
+    school: Arcane
+    target_num: 1
+  Restore Mana:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Restore a portion of the target's mana. Cannot be cast on oneself.
+    effect: Heal
+    energy_points: 15
+    is_potion: true
+    level: 4
+    line_of_sight: true
+    name: Restore Mana
+    range: Short
+    school: Arcane
+    target_num: 1
+  Spirit Of Pacifism:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "For the duration of the spell the caster is not seen as an viable threat or target by aggressors, as long as they do not attack or threaten the aggressor in any way. This includes casting debuffs on the aggressor or stopping their attacks with magical cover or shield spells. Casting buffs or healing spells on friendly targets does not break the spell. The caster is not immune to damage from unintended AoE attacks."
+    duration: 10 minutes
+    effect: Defense
+    is_potion: true
+    level: 4
+    name: Spirit of Pacifism
+    range: Self
+    roll: true
+    school: Arcane
+  Trick Senses:
+    available: true
+    casting_time: 30 seconds
+    damage_type: Psionic
+    desc: "The caster convinces a sapient target's mind of a single sensory input (a smell, taste, sound, texture, temperature, or visual image) to trick their senses into believing it is real. The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
+    duration: 5 minutes
+    effect: Illusion
+    level: 4
+    name: Trick Senses
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+#---------------
+# LEVEL 5
+#---------------
+  Commune With Local Spirit:
+    available: true
+    casting_time: 1 round to conjure, 1 round per question.
+    damage_type: Bypass
+    desc: "The caster may may contact a spirit at rest or a ghost for a time and ask them one question per round. The spirit may have an appearance like they had in life or be indistinct, depending on how much of their sense of self remains. The spirit's knowledge is limited to matters within their immediate area or expertise. \n\nIf the spirit is at rest, their memories ended with their death. If the spirit is a ghost, they have developed new memories during their time as a ghost, but they may be uncooperative, confused, or have an extremely broken sense of self.\n\nOnly the caster communes with the spirit, outside observers cannot see or hear anything communicated by the spirit. The attempt to cast this spell can confirm whether a ghost is present. "
+    duration: 15 minutes
+    effect: Communication
+    level: 5
+    name: Commune with Local Spirit
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Drain Mana:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Drain a portion of the target's mana.
+    effect: Heal
+    energy_points: -20
+    level: 5
+    line_of_sight: true
+    name: Drain Mana
+    range: Short
+    school: Arcane
+    target_num: 1
+  Dream Walk:
+    available: true
+    casting_time: 30 seconds
+    damage_type: Psionic
+    desc: "The caster enters the current dream of a target. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location."
+    duration: 1 hour
+    effect: Psionic
+    level: 5
+    name: Dream Walk
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Memory Dive:
+    available: true
+    casting_time: "1 round to cast, addition rounds to find a memory, at GM's discretion."
+    damage_type: Psionic
+    desc: "Search someone's memory for specific events. Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. \n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'. \n\nWhen looking at a specific memory, the caster can sense whether that individual memory is original or if it has been magically adjusted, though they cannot see or retrieve the original version of a tampered memory."
+    duration: 30 minutes
+    effect: Psionic
+    level: 5
+    name: Memory Dive
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+#---------------
+# LEVEL 6
+#---------------
+  Group Awaken Terror:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
+    duration: 2 rounds
+    effect: Stun
+    is_stun: true
+    level: 6
+    name: Group Awaken Terror
+    range: Short
+    rounds: 2
+    roll: true
+    school: Arcane
+    target_num: 3
+    weapon: Stun (Arcane)
+  Group Dampen Magic:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The targets' ability to cast spells is made very difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 7
+    name: Group Dampen Magic
+    range: Long
+    rounds: 3
+    school: Arcane
+    spell_mod: -3
+    target_num: 3
+  Rewrite Memory:
+    available: true
+    casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
+    damage_type: Psionic
+    desc: "Rewrite or remove someone's memory of an event up to 1 hour long. The target's mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
+    duration: 30 minutes
+    effect: Psionic
+    level: 6
+    name: Rewrite Memory
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+#---------------
+# LEVEL 7
+#---------------
+  Awareness:
+    available: true
+    area: 100 yard radius
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster extends their senses to identify the presence, quantity, and location of all living creatures within range."
+    duration: 15 minutes
+    effect: Communication
+    level: 7
+    name: Awareness
+    range: Self
+    roll: true
+    school: Arcane
+    target_num: 100
+  Detect All Magic:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster senses whether magic is affecting, being performed by, or capable of being performed by any sapient, non-sapient, or inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
+    effect: Psionic
+    level: 7
+    line_of_sight: true
+    name: Detect All Magic
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Dispel Magic:
+    available: true
+    casting_time: 30 seconds
+    damage_type: Psionic
+    desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it."
+    effect: Psionic
+    level: 7
+    name: Dispel Magic
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Pass Unseen:
+    available: true
+    casting_time: 30 seconds
+    damage_type: Psionic
+    desc: "The caster's presence is completely ignored by all thinking beings or creatures. There is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell.  \n\nLarge disruptions or sudden violence by the caster will break the spell. Other Arcane users who are either actively wary or who pass an Alertness roll (with modifiers where appropriate) may see through the spell with a successful roll of the caster's Arcane vs their Arcane-4. A draw goes to the caster.\n\nAlthough Pass Unseen may only be cast on oneself in order to obtain the effects, the code allows the spell to target other characters for those times when a Mind Shield check is needed."
+    duration: 10 minutes
+    effect: Defense
+    level: 7
+    name: Pass Unseen
+    range: Self
+    roll: true
+    school: Arcane
+    target_num: 100
+  Restore Memory:
+    available: true
+    casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
+    damage_type: Psionic
+    desc: "Search someone's memory for specific events. Easily locate any which have been overwritten or changed and restore them to their original state.\n\n Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. They can also filter to view only memories which have been altered. The caster can view original, altered, and restored memories.\n\nThe amount of time necessary to find a desired memory varies according to the caster's skill and the amount of information they possess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'.\n\nThe process of restoring a memory once it has been located is simple and relatively quick. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely."
+    effect: Psionic
+    level: 7
+    name: Restore Memory
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Restrain Magic:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The target's ability to cast spells is made very difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 7
+    name: Restrain Magic
+    range: Long
+    rounds: 3
+    school: Arcane
+    spell_mod: -5
+    target_num: 1
+
+#---------------
+# LEVEL 8
+#---------------
+  Dream Trap:
+    available: true
+    casting_time: 5 minutes
+    damage_type: Psionic
+    desc: "The caster puts a target to sleep (if awake) and either draws them into a dream or enters their current dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location."
+    duration: 6 hours
+    effect: Psionic
+    level: 8
+    name: Dream Trap
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+  Rewrite History:
+    available: true
+    casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
+    damage_type: Psionic
+    desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories related to a single person, topic, or location. More pervasive people, topics, or locations may require multiple casts of the spell.\n\n
+    The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
+    effect: Psionic
+    level: 8
+    name: Rewrite History
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1
+#---------------
+# LEVEL 9
+#---------------
+#---------------
+# LEVEL 10
+#---------------

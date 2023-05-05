@@ -1,0 +1,107 @@
+---
+magic:
+  magic_attribute: "Magic"
+  spell_max: 30
+  cg_spell_max: 7
+  cg_max_spell_level: 5
+  cg_days_to_choose_spells: 10
+  days_between_learning_spells: 7
+  item_category: "Luck"
+  potion_spell: "None"
+  major_schools:
+  - Arcane
+  - Creation
+  minor_schools:
+  - Aether
+  - Entropy
+  xp_per_level:
+    1: 2
+    2: 3
+    3: 4
+    4: 5
+    5: 6
+    6: 7
+    7: 8
+    8: 10
+  shield_base_defense: 20
+  shield_strength_multiplier: 5
+  potion_spell: Potions
+  shields_against_all_exceptions:
+  - Bypass
+  - Psionic
+  - None Bypass
+  default_damage_type:
+    Physical
+  type_does_damage:
+    Cold: true
+    Fire: true
+    Physical: true
+    Bypass: true
+  shield_cron:
+    hour:
+    - 02
+    minute:
+    - 01
+  potion_cron:
+    minute:
+    - 00
+  energy_cron:
+    minute:
+    - 00
+  permissions:
+    manage_magic: Add and remove magic items, potions, and spells to and from characters.
+  shortcuts:
+    combat/cast: combat/spell
+    cast: spell/cast
+    mana: spell/fatigue
+    spell/mana: spell/fatigue
+    combat/spellmod: spell/mod
+  achievements:
+    potions_made:
+      type: potion
+      message: Made %{count} potions.
+    potions_used:
+      type: potion
+      message: Used %{count} potions.
+    spells_learned:
+      type: spell
+      message: Learned %{count} spells.
+    spells_discarded:
+      type: spell
+      message: Discarded %{count} spells.
+    spells_cast:
+      type: spell
+      message: Cast %{count} spells.
+    equipped_magic_item:
+      type: spell
+      message: "Equipped a magic item."
+  energy_cost_by_level:
+    1: 2
+    2: 3
+    3: 5
+    4: 8
+    5: 10
+    6: 15
+    7: 30
+    8: 70
+    9: 90
+    10: 110
+  fatigue_effect:
+    None: "They feel well-rested and capable."
+    Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more
+    difficult."
+    Moderate: "They are nauseous and growing tired. Their focus is beginning to fray."
+    Severe: "They are quite nauseous and feel increasingly tired. It's hard to focus, and everything is substantially more difficult."
+    Extreme: "They are severely nauseous and are starting to feel exhausted. It's very difficult to focus."
+    Total: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
+  item_category: SYS
+  cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/creation">Creation</a> magic.
+    <ul><li>Spells cost 1/2 AP per level.</li>
+    <li>You can spend 25 AP on spells (mage and mythic combined).</li>
+    <li>Spells must be in your mage school.</li>
+    <li>You must have a spell in each previous level.</li></ul>'
+  lorehook_blurb: 'Lore Hooks are bits of fun lore that are unique to you. Storytellers begin working
+  on Lore Hooks when a character has been played for at least two months. Most Lore Hooks are handed
+  out after 4-6 months of play.<br><br>If you have preferences for the sort of Lore Hook you receive,
+  feel free to leave them in the comments before submitting your application. You can also set or
+  change your preference any time after CG.'
