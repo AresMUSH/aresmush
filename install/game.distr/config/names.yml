@@ -2,9 +2,13 @@
 names:
   restricted:
   - me
+<<<<<<< Updated upstream
 <<<<<<< HEAD
   - here
   - joel
 =======
   - here
 >>>>>>> upstream/master
+=======
+  - here
+>>>>>>> Stashed changes
