@@ -1,27 +1,15 @@
 module AresMUSH
-<<<<<<< HEAD
 
   class Scene < Ohm::Model
     include ObjectModel
     include HasContentTags
 
-=======
-  
-  class Scene < Ohm::Model
-    include ObjectModel
-    include HasContentTags
-    
->>>>>>> upstream/master
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
     attribute :date_completed, :type => DataType::Time
     attribute :date_shared, :type => DataType::Time
     attribute :last_activity, :type => DataType::Time
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
     attribute :title
     attribute :private_scene, :type => DataType::Boolean
     attribute :temp_room, :type => DataType::Boolean
@@ -37,7 +25,6 @@ module AresMUSH
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
     attribute :content_warning
-<<<<<<< HEAD
 
     collection :scene_poses, "AresMUSH::ScenePose"
     collection :scene_likes, "AresMUSH::SceneLike"
@@ -46,34 +33,19 @@ module AresMUSH
     reference :scene_log, "AresMUSH::SceneLog"
     collection :scene_log_versions, "AresMUSH::SceneLog"
 
-=======
-    
-    collection :scene_poses, "AresMUSH::ScenePose"
-    collection :scene_likes, "AresMUSH::SceneLike"
-    
-    # Most recent scene log
-    reference :scene_log, "AresMUSH::SceneLog"
-    collection :scene_log_versions, "AresMUSH::SceneLog"
-            
->>>>>>> upstream/master
     set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
-<<<<<<< HEAD
 
     set :creatures, "AresMUSH::Creature"
 
-=======
-    
->>>>>>> upstream/master
     # DEPRECATED - DO NOT USE (replaced by plot links)
     reference :plot, "AresMUSH::Plot"
     set :plots, "AresMUSH::Plot"
 
     # DEPRECATED - replaced by content tags
     attribute :tags, :type => DataType::Array, :default => []
-<<<<<<< HEAD
 
     before_delete :on_delete
 
@@ -96,32 +68,10 @@ module AresMUSH
       self.private_scene
     end
 
-=======
-        
-    before_delete :on_delete
-    
-    index :shared
-    index :completed
-
-    
-    def self.shared_scenes
-      Scene.find(shared: true).to_a
-    end
-    
-    def self.scenes_starring(char)
-      Scene.shared_scenes.select { |s| s.participants.include?(char) }
-    end
-    
-    def is_private?
-      self.private_scene
-    end
-    
->>>>>>> upstream/master
     def last_posed
       last_pose = self.poses_in_order.to_a[-1]
       last_pose ? last_pose.character : nil
     end
-<<<<<<< HEAD
 
     def created_date_str(char)
       OOCTime.local_short_timestr(char, self.created_at)
@@ -139,25 +89,6 @@ module AresMUSH
       Scenes.mark_unread(self, except_for_char)
     end
 
-=======
-    
-    def created_date_str(char)
-      OOCTime.local_short_timestr(char, self.created_at)
-    end
-    
-    def mark_read(char)
-      Scenes.mark_read(self, char)
-    end
-    
-    def is_unread?(char)
-      Scenes.is_unread?(self, char)
-    end
-    
-    def mark_unread(except_for_char = nil)
-      Scenes.mark_unread(self, except_for_char)
-    end
-    
->>>>>>> upstream/master
     def poses_in_order
       scene_poses.select { |p| !p.is_deleted? }.sort_by { |p| p.sort_order }
     end
@@ -168,30 +99,18 @@ module AresMUSH
       end
       self.scene_log_versions.each { |l| l.delete }
     end
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
     def delete_poses_and_log
       scene_poses.each { |p| p.delete }
       self.delete_logs
     end
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
     def on_delete
       delete_poses_and_log
       Scenes.find_all_scene_links(self).each { |s| s.delete }
       self.plot_links.each { |p| p.delete }
     end
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
     def all_info_set?
       missing_fields = self.title.blank? || self.location.blank? || self.scene_type.blank? || self.summary.blank? || self.icdate.blank?
       !missing_fields
@@ -200,19 +119,11 @@ module AresMUSH
     def date_title
       "#{self.icdate} - #{self.title}"
     end
-<<<<<<< HEAD
 
     def owner_name
       self.owner ? self.owner.name : t('scenes.organizer_deleted')
     end
 
-=======
-    
-    def owner_name
-      self.owner ? self.owner.name : t('scenes.organizer_deleted')
-    end
-    
->>>>>>> upstream/master
     def related_scenes
       links1 = SceneLink.find(log1_id: self.id)
       links2 = SceneLink.find(log2_id: self.id)
@@ -220,19 +131,11 @@ module AresMUSH
       list2 = links2.map { |l| l.log1 }
       list1.concat(list2).uniq
     end
-<<<<<<< HEAD
 
     def participant_names
       self.participants.sort { |p| p.name }.map { |p| p.name }
     end
 
-=======
-    
-    def participant_names
-      self.participants.sort { |p| p.name }.map { |p| p.name }
-    end
-    
->>>>>>> upstream/master
     def find_link(other_scene)
       link = SceneLink.find(log1_id: self.id).combine(log2_id: other_scene.id).first
       if (!link)
@@ -240,19 +143,11 @@ module AresMUSH
       end
       link
     end
-<<<<<<< HEAD
 
     def has_liked?(char)
       self.scene_likes.any? { |s| s.character == char }
     end
 
-=======
-    
-    def has_liked?(char)
-      self.scene_likes.any? { |s| s.character == char }
-    end
-    
->>>>>>> upstream/master
     def like(char)
       if (!self.has_liked?(char))
         SceneLike.create(character: char, scene: self)
@@ -265,7 +160,6 @@ module AresMUSH
         like.delete
       end
     end
-<<<<<<< HEAD
 
     def likes
       self.scene_likes.count
@@ -283,30 +177,10 @@ module AresMUSH
       !self.limit.blank?
     end
 
-=======
-    
-    def likes
-      self.scene_likes.count
-    end
-    
-    def live_url
-      "#{Game.web_portal_url}/scene-live/#{self.id}"
-    end
-    
-    def url
-      "#{Game.web_portal_url}/scene/#{self.id}"
-    end
-    
-    def has_notes?
-      !self.limit.blank?
-    end
-    
->>>>>>> upstream/master
     def days_since_shared
       return nil if !self.date_shared
       (Time.now - self.date_shared) / 86400
     end
-<<<<<<< HEAD
 
     def days_since_last_activity
       (Time.now - self.last_activity)/86400
@@ -316,17 +190,6 @@ module AresMUSH
       last_pose = self.poses_in_order.to_a[-1]
       return nil if !last_pose
 
-=======
-    
-    def days_since_last_activity
-      (Time.now - self.last_activity)/86400
-    end    
-    
-    def last_pose_time_str(viewer)
-      last_pose = self.poses_in_order.to_a[-1]
-      return nil if !last_pose
-      
->>>>>>> upstream/master
       elapsed = Time.now - last_pose.updated_at
       if (elapsed < 86400 * 30)
         TimeFormatter.format(elapsed)
@@ -334,16 +197,11 @@ module AresMUSH
         OOCTime.local_short_timestr(viewer, last_pose.updated_at)
       end
     end
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> upstream/master
     def is_participant?(char)
       return false if !char
       char == self.owner || self.participants.include?(char)
     end
-<<<<<<< HEAD
 
     def plot_links
       PlotLink.find_by_scene(self)
@@ -358,21 +216,5 @@ module AresMUSH
     end
 
 
-=======
-    
-    def plot_links
-      PlotLink.find_by_scene(self)
-    end
-    
-    def related_plots
-      self.plot_links.map { |p| p.plot }
-    end
-    
-    def sorted_log_versions
-      self.scene_log_versions.to_a.sort_by { |v| v.created_at }
-    end
-    
-    
->>>>>>> upstream/master
   end
 end

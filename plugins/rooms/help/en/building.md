@@ -38,7 +38,7 @@ You can create a room and optionally specify an outgoing exit (from your current
 `unlink <exit>` - Unlinks an exit from its destination.
 
 `alias <exit name>=<exit alias>` - Sets a **single** alias for the exit.
-`shortdesc <exit name>=<short description>` - Sets the destination description that appears next to the exit name. 
+`shortdesc <exit name>=<short description>` - Sets the destination description that appears next to the exit name.
 
 > **Tip:** Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit it can find.
 
@@ -67,14 +67,9 @@ Areas are used to group rooms together to represent different regions of the gam
 
 `grid [<room name>=]<x>/<y>` - Sets the grid coordinates.  Leave blank to clear.
 `roomtype [<room name>=]<IC, OOC or RPR>` - Sets a room as part of the IC, OOC or RPR (Roleplay Room) zone.
-<<<<<<< HEAD
-`foyer <on or off` - Marks whether a room is a foyer, like an apartment or the RP room hub.  Numbered exits will be shown in a special way.
-`icstart <room name>` - Resets the IC starting location.
-=======
 `foyer <on or off` - Marks whether a room is a foyer, like an apartment or a RP room hub.  Numbered exits in foyers will be shown in a special way.
 `icstart <room name>` - Resets the IC starting location.
 `room/icon <type>` - Sets a room's icon type for the web portal locations directory. Set the available icon types in the game configuration.
->>>>>>> upstream/master
 
 ## Owners
 
