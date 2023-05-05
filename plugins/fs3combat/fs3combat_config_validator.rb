@@ -206,8 +206,8 @@ module AresMUSH
             if (!v.kind_of? Integer)
               @validator.add_error "fs3combat:npc_types #{name}'s #{k} should be a whole number."
             end
-            if (k != 'Wounds' && (v > 15 || v < 0))
-              @validator.add_error "fs3combat:npc_types #{name}'s #{k} should be 1 to 15."
+            if (k != 'Wounds' && (v > 25 || v < 0))
+              @validator.add_error "fs3combat:npc_types #{name}'s #{k} should be 1 to 25."
             end
           end
         end
