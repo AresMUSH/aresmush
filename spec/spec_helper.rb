@@ -24,26 +24,26 @@ if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
 end
 
 module AresMUSH
-  
+
   module SpecHelpers
-        
+
     def stub_translate_for_testing
-      # Simple helper to stub out translations.  Only works well if you 
+      # Simple helper to stub out translations.  Only works well if you
       # have a simple string because it doesn't do anything with the args
       allow(AresMUSH::Locale).to receive(:translate) do |str|
         "#{str}"
       end
-    end    
-    
+    end
+
     def setup_mock_client(client, char)
       allow(client).to receive(:char) { char }
       allow(char).to receive(:client) { client }
     end
-  end  
-  
+  end
+
   module GlobalTestHelper
     attr_accessor :config_reader, :client_monitor, :dispatcher, :plugin_manager, :dispatcher, :locale, :help_reader, :notifier
-    
+
     def stub_global_objects
       @config_reader = double
       @client_monitor = double
@@ -52,7 +52,7 @@ module AresMUSH
       @locale = double
       @help_reader = double
       @notifier = double
-      
+
       allow(Global).to receive(:notifier) { @notifier }
       allow(Global).to receive(:config_reader) { @config_reader }
       allow(Global).to receive(:client_monitor) { @client_monitor }
@@ -61,17 +61,12 @@ module AresMUSH
       allow(Global).to receive(:locale) { @locale }
       allow(Global).to receive(:help_reader) { @help_reader }
     end
-  end  
+  end
 end
 
 
 RSpec.configure do |c|
   c.include AresMUSH::SpecHelpers
-<<<<<<< HEAD
-  c.filter_run focus: true
-  c.run_all_when_everything_filtered = true
-=======
   $:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
   $:.unshift File.join(File.dirname(__FILE__), *%w[.. plugins])
->>>>>>> upstream/master
 end
