@@ -73,11 +73,6 @@ module AresMUSH
       max = Global.read_config("fs3skills", "max_points_on_attrs")
       points > max ? t('fs3skills.too_many_attributes', :max => max) : nil
     end
-<<<<<<< HEAD
-
-=======
-
->>>>>>> upstream/master
     def self.check_action_points(char)
       points = AbilityPointCounter.points_on_action(char)
       max = Global.read_config("fs3skills", "max_points_on_action")
