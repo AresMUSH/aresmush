@@ -14,6 +14,4 @@ To apply, claim the roster. You will receive the character's password and be pro
 
 Use the character's web profile or the `sheet` and `bg` commands to view their stats and background.
 
-Use the character's web profile or the `sheet` and `bg` commands to view their stats and background.
-
 `roster/claim <name>=app` or claim on the web - Claims a character.

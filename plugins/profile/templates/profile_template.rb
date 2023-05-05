@@ -12,7 +12,6 @@ module AresMUSH
 
       def approval_status
         Profile.get_profile_status_message(@char)
-<<<<<<< HEAD
       end
 
       def visible_demographics
@@ -27,39 +26,15 @@ module AresMUSH
         Demographics.name_and_nickname(@char)
       end
 
-=======
-      end
-      
-      def visible_demographics
-        Demographics.visible_demographics(@char, @enactor).select { |d| d != 'birthdate' }
-      end
-      
-      def demographic(d)
-        @char.demographic(d)
-      end
-
-      def name
-        Demographics.name_and_nickname(@char)
-      end
-      
->>>>>>> upstream/master
       def age
         age = @char.age
         age == 0 ? "" : age
       end
-<<<<<<< HEAD
 
       def show_age
         Demographics.age_enabled?
       end
 
-=======
-      
-      def show_age
-        Demographics.age_enabled?
-      end
-      
->>>>>>> upstream/master
       def birthdate
         @char.formatted_birthdate
       end
@@ -68,13 +43,10 @@ module AresMUSH
         Demographics.all_groups.keys
       end
 
-<<<<<<< HEAD
       def bonded_name
         @char.bonded&.name
       end
 
-=======
->>>>>>> upstream/master
       def group(g)
         @char.group(g)
       end
@@ -96,13 +68,8 @@ module AresMUSH
         alt_list.delete(@char.name)
         alt_list.join(" ")
       end
-<<<<<<< HEAD
 
       def hooks
-=======
-      
-      def hooks        
->>>>>>> upstream/master
         formatter = MarkdownFormatter.new
         formatter.to_mush @char.rp_hooks
       end
@@ -140,11 +107,7 @@ module AresMUSH
         arescentral = Global.read_config("arescentral", "arescentral_url")
         "#{arescentral}/handle/#{@char.handle.name}"
       end
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> upstream/master
       def profile_title
         Profile.profile_title(@char)
       end

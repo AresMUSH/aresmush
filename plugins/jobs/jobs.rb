@@ -8,11 +8,11 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
- 
+
     def self.shortcuts
       Global.read_config("jobs", "shortcuts")
     end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "job"
@@ -57,11 +57,6 @@ module AresMUSH
           return JobsFilterCmd
         when "mail"
           return JobMailCmd
-<<<<<<< HEAD
-=======
-        when "merge"
-          return JobMergeCmd
->>>>>>> upstream/master
         when "new"
           return JobsNewCmd
         when "purge"
@@ -89,7 +84,7 @@ module AresMUSH
             return ListJobsCmd
           end
         end
-         
+
       when "request"
         case cmd.switch
         when "addparticipant", "removeparticipant"
@@ -116,11 +111,11 @@ module AresMUSH
           end
         end
       end
-       
+
       nil
     end
 
-    def self.get_event_handler(event_name) 
+    def self.get_event_handler(event_name)
       case event_name
       when "CronEvent"
         return JobArchiveCronHandler
@@ -130,7 +125,7 @@ module AresMUSH
         return nil
       end
     end
-    
+
     def self.get_web_request_handler(request)
       case request.cmd
       when "jobs"
@@ -174,7 +169,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.check_config
       validator = JobsConfigValidator.new
       validator.validate

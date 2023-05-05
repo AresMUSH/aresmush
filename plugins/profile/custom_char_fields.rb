@@ -1,27 +1,17 @@
 module AresMUSH
   module Profile
     class CustomCharFields
-<<<<<<< HEAD
-
-=======
-      
->>>>>>> upstream/master
       # Gets custom fields for display in a character profile.
       #
       # @param [Character] char - The character being requested.
       # @param [Character] viewer - The character viewing the profile. May be nil if someone is viewing
       #    the profile without being logged in.
       #
-<<<<<<< HEAD
       # @return [Hash] - A hash containing custom fields and values.
-=======
-      # @return [Hash] - A hash containing custom fields and values. 
->>>>>>> upstream/master
       #    Ansi or markdown text strings must be formatted for display.
       # @example
       #    return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
-<<<<<<< HEAD
         spells = Magic.spell_list_all_data(char.spells_learned)
         return {
           comps: Compliments.get_comps(char),
@@ -43,26 +33,16 @@ module AresMUSH
         }
       end
 
-=======
-        return {}
-      end
-    
->>>>>>> upstream/master
       # Gets custom fields for the character profile editor.
       #
       # @param [Character] char - The character being requested.
       # @param [Character] viewer - The character editing the profile.
       #
-<<<<<<< HEAD
       # @return [Hash] - A hash containing custom fields and values.
-=======
-      # @return [Hash] - A hash containing custom fields and values. 
->>>>>>> upstream/master
       #    Multi-line text strings must be formatted for editing.
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
-<<<<<<< HEAD
         if char.bonded
           return {
             mythic_name: char.bonded.name,
@@ -72,25 +52,17 @@ module AresMUSH
             mythic_gender: char.bonded.gender,
           }
         end
-=======
-        return {}
->>>>>>> upstream/master
       end
 
       # Gets custom fields for character creation (chargen).
       #
       # @param [Character] char - The character being requested.
       #
-<<<<<<< HEAD
       # @return [Hash] - A hash containing custom fields and values.
-=======
-      # @return [Hash] - A hash containing custom fields and values. 
->>>>>>> upstream/master
       #    Multi-line text strings must be formatted for editing.
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_chargen(char)
-<<<<<<< HEAD
         return {
           major_school: Website.format_input_for_html(char.major_schools.join()),
           major_schools: Global.read_config("magic", "major_schools"),
@@ -116,11 +88,6 @@ module AresMUSH
         }
       end
 
-=======
-        return {}
-      end
-      
->>>>>>> upstream/master
       # Saves fields from profile editing.
       #
       # @param [Character] char - The character being updated.
@@ -132,18 +99,12 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_profile_edit(char, char_data)
-<<<<<<< HEAD
         if char.bonded
           ExpandedMounts.save_mount(char, char_data)
         end
         return []
       end
 
-=======
-        return []
-      end
-      
->>>>>>> upstream/master
       # Saves fields from character creation (chargen).
       #
       # @param [Character] char - The character being updated.
@@ -155,7 +116,6 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(chargen_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_chargen(char, chargen_data)
-<<<<<<< HEAD
         errors = []
         Magic.save_major_school(char, chargen_data[:custom][:major_school]) if chargen_data[:custom][:major_school]
         Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school]
@@ -167,11 +127,6 @@ module AresMUSH
         return errors
       end
 
-=======
-        return []
-      end
-      
->>>>>>> upstream/master
     end
   end
 end
