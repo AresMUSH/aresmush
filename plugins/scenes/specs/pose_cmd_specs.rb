@@ -1,20 +1,16 @@
-<<<<<<< HEAD
-require_relative "../../plugin_test_loader"
-=======
 require "plugin_test_loader"
->>>>>>> upstream/master
 
 module AresMUSH
   module Scenes
     describe PoseCmd do
-  
+
       before do
         @client = double
         @enactor = double
         allow(@enactor).to receive(:name) { "Bob" }
         stub_translate_for_testing
       end
-      
+
       describe :handle do
         it "should emit a pose" do
           room = double
@@ -25,7 +21,7 @@ module AresMUSH
           expect(Scenes).to receive(:emit_pose).with(@enactor, "Bob a message", false, false)
           @handler.handle
         end
-        
+
         it "should emit a say" do
           room = double
           @handler = PoseCmd.new(@client, Command.new("say a message"), @enactor)
@@ -35,7 +31,7 @@ module AresMUSH
           expect(Scenes).to receive(:emit_pose).with(@enactor, "Bob says a message", false, false)
           @handler.handle
         end
-        
+
         it "should emit an emit" do
           room = double
           @handler = PoseCmd.new(@client, Command.new("emit a message"), @enactor)
@@ -44,7 +40,7 @@ module AresMUSH
           expect(Scenes).to receive(:emit_pose).with(@enactor, "a message", true, false)
           @handler.handle
         end
-        
+
         it "should emit an ooc" do
           room = double
           @handler = PoseCmd.new(@client, Command.new("ooc a message"), @enactor)
@@ -54,7 +50,7 @@ module AresMUSH
           expect(Scenes).to receive(:emit_pose).with(@enactor, "OOC Bob a message", false, true)
           @handler.handle
         end
-        
+
         it "should emit an ooc pose" do
           room = double
           @handler = PoseCmd.new(@client, Command.new("ooc :a message"), @enactor)
@@ -64,7 +60,7 @@ module AresMUSH
           expect(Scenes).to receive(:emit_pose).with(@enactor, "OOC Bob sends a message", false, true)
           @handler.handle
         end
-        
+
         it "should not emit if ooc chat channel eats the message" do
           room = double
           @handler = PoseCmd.new(@client, Command.new("pose a message"), @enactor)
@@ -74,7 +70,7 @@ module AresMUSH
           expect(Scenes).to_not receive(:emit_pose)
           @handler.handle
         end
-      end   
+      end
     end
   end
 end

@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-require_relative "../../plugin_test_loader"
-=======
 require "plugin_test_loader"
->>>>>>> upstream/master
 
 module AresMUSH
   module Scenes
-    describe LiveScenesRequestHandler do      
+    describe LiveScenesRequestHandler do
       describe :sort_scene do
         before do
           @private1 = double("private1")
@@ -23,7 +19,7 @@ module AresMUSH
           allow(Scenes).to receive(:is_participant?).with(@yours2, @enactor) { true }
           allow(Scenes).to receive(:is_participant?).with(@private1, @enactor) { false }
           allow(Scenes).to receive(:is_participant?).with(@private2, @enactor) { false }
-          
+
           allow(@open1).to receive(:private_scene) { false }
           allow(@open2).to receive(:private_scene) { false }
           allow(@yours1).to receive(:private_scene) { false }
@@ -43,7 +39,7 @@ module AresMUSH
             expect(sorted[2]).to eq @private1
           end
         end
-        
+
         context "prefer open" do
           it "should sort your open scenes ahead of your private scenes" do
             allow(@yours1).to receive(:private_scene) { true }
@@ -54,7 +50,7 @@ module AresMUSH
             expect(sorted[2]).to eq @open1
           end
         end
-        
+
         context "sort by date" do
           it "should sort recent updated scenes first" do
             allow(@private1).to receive(:updated_at) { DateTime.new(2021, 2, 6) }
@@ -66,7 +62,7 @@ module AresMUSH
             expect(sorted[1]).to eq @private2
           end
         end
-        
+
         context "sort combined" do
           it "should sort all scenes" do
 
@@ -87,7 +83,7 @@ module AresMUSH
             expect(sorted[5]).to eq @private1
           end
         end
-        
+
       end
     end
   end

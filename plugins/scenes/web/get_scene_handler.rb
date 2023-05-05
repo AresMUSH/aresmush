@@ -8,29 +8,17 @@ module AresMUSH
 
         error = Website.check_login(request, !edit_mode)
         return error if error
-<<<<<<< HEAD
 
         if (!scene)
           return { error: t('webportal.not_found') }
         end
 
-=======
-        
-        if (!scene)
-          return { error: t('webportal.not_found') }
-        end
-        
->>>>>>> upstream/master
         if (edit_mode)
           can_edit = scene.shared ? Scenes.can_edit_scene?(enactor, scene) : Scenes.can_read_scene?(enactor, scene)
           if (!can_edit)
             return { error: t('dispatcher.not_allowed') }
           end
-<<<<<<< HEAD
         else
-=======
-        else          
->>>>>>> upstream/master
           if (!scene.shared)
             return { unshared: true }
           end
@@ -39,11 +27,7 @@ module AresMUSH
             Login.mark_notices_read(enactor, :scene, scene.id)
           end
         end
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> upstream/master
         if (edit_mode)
           log = scene.shared ? scene.scene_log.log : nil
           summary = Website.format_input_for_html(scene.summary)
@@ -51,7 +35,6 @@ module AresMUSH
           log = Website.format_markdown_for_html(scene.scene_log.log)
           summary = Website.format_markdown_for_html(scene.summary)
         end
-<<<<<<< HEAD
 
         participants = scene.participants.to_a
             .sort_by {|p| p.name }
@@ -61,13 +44,6 @@ module AresMUSH
             .sort_by {|creature| creature.name }
             .map { |creature| { name: creature.name, id: creature.id }}
 
-=======
-        
-        participants = scene.participants.to_a
-            .sort_by {|p| p.name }
-            .map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
-            
->>>>>>> upstream/master
         {
           id: scene.id,
           title: scene.title,
@@ -86,10 +62,7 @@ module AresMUSH
           scene_pacing: scene.scene_pacing,
           log: log,
           plots: scene.related_plots.map { |plot| { title: plot.title, id: plot.id } },
-<<<<<<< HEAD
           creatures: creatures,
-=======
->>>>>>> upstream/master
           related_scenes: scene.related_scenes.sort_by { |r| r.date_title }.map { |r| { title: r.date_title, id: r.id }},
           can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
           can_delete: Scenes.can_delete_scene?(enactor, scene),

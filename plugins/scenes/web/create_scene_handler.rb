@@ -7,7 +7,6 @@ module AresMUSH
         completed = (request.args[:completed] || "").to_bool
         privacy = request.args[:privacy] || "Private"
         log = request.args[:log] || ""
-<<<<<<< HEAD
 
         error = Website.check_login(request)
         return error if error
@@ -16,16 +15,6 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-=======
-        
-        error = Website.check_login(request)
-        return error if error
-        
-        if (!enactor.is_approved?)
-          return { error: t('dispatcher.not_allowed') }
-        end
-        
->>>>>>> upstream/master
         if (completed)
           [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
             if (request.args[field].blank?)
@@ -33,11 +22,7 @@ module AresMUSH
             end
           end
         end
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> upstream/master
         scene = Scene.create(
         location: request.args[:location],
         summary: Website.format_input_for_mush(request.args[:summary]),
@@ -53,11 +38,7 @@ module AresMUSH
         private_scene: completed ? false : (privacy == "Private"),
         owner: enactor
         )
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> upstream/master
         Global.logger.info "Web scene #{scene.id} created by #{enactor.name}."
 
         plot_ids = request.args[:plots] || []
@@ -68,19 +49,11 @@ module AresMUSH
             plots << plot
           end
         end
-<<<<<<< HEAD
 
         plots.each do |p|
           PlotLink.create(plot: p, scene: scene)
         end
 
-=======
-        
-        plots.each do |p|
-          PlotLink.create(plot: p, scene: scene)
-        end
-                    
->>>>>>> upstream/master
         participant_names = request.args[:participants] || []
         participants = []
         participant_names.each do |p|
@@ -90,22 +63,15 @@ module AresMUSH
             participants << participant
           end
         end
-<<<<<<< HEAD
 
         related_scene_ids = request.args[:related_scenes] || []
 
-=======
-      
-        related_scene_ids = request.args[:related_scenes] || []
-      
->>>>>>> upstream/master
         # New additions
         related_scene_ids.each do |s|
           related = Scene[s]
           if (related)
             SceneLink.create(log1: scene, log2: related)
           end
-<<<<<<< HEAD
         end
 
         Website.update_tags(scene, request.args[:tags])
@@ -126,58 +92,28 @@ module AresMUSH
         if (completed)
           Scenes.share_scene(enactor, scene)
 
-=======
-        end      
-      
-        Website.update_tags(scene, request.args[:tags])
-      
-        if (!log.blank?)
-          Scenes.add_to_scene(scene, log, enactor)
-        end
-        
-        if (completed)
-          Scenes.share_scene(enactor, scene)
-          
->>>>>>> upstream/master
           participants.each do |p|
             split_log = log.split
             split_log = split_log[0..split_log.count/participants.count].join(" ")
             Scenes.handle_word_count_achievements(p, split_log)
             Scenes.handle_scene_participation_achievement(p, scene)
           end
-<<<<<<< HEAD
 
         else
           Scenes.create_scene_temproom(scene)
 
           scene.watchers.add enactor
 
-=======
-          
-        else
-          Scenes.create_scene_temproom(scene)
-          
-          scene.watchers.add enactor
-          
->>>>>>> upstream/master
           scene_data = Scenes.build_live_scene_web_data(scene, enactor).to_json
           alts = AresCentral.play_screen_alts(enactor)
           Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
             c && alts.include?(c)
           end
-<<<<<<< HEAD
 
 
         end
 
 
-=======
-          
-          
-        end
-      
-        
->>>>>>> upstream/master
         { id: scene.id }
       end
     end
