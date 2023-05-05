@@ -1,8 +1,0 @@
-
----
-lorehooks:
-  lore_hook_prefs:
-    None: No Lore Hook at all
-    Mythic Artifact: You come into possession of an artifact crafted by mythics.
-    Human Artifact: You come into possession of an artifact from the human world that was.
-    Storyteller: Let Storytellers decide your Lore Hook.
