@@ -3,7 +3,7 @@ module AresMUSH
     def self.damage_severities
       # Deliberately leaves off GRAZE wounds as they're not tracked and shouldn't
       # ever be assigned through damage/inflict.
-      [ 'HEAL', 'FLESH', 'MODERATE,' 'IMPAIR', 'INCAP' ]
+      [ 'HEAL', 'FLESH', 'MODERATE', 'IMPAIR', 'INCAP' ]
     end
 
     def self.can_manage_damage?(actor)
