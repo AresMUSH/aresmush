@@ -192,15 +192,9 @@ module AresMUSH
        if (!job)
          return t('chargen.no_app_submitted', :name => model.name)
        end
-<<<<<<< HEAD
 
        model.update(chargen_locked: false)
 
-=======
-
-       model.update(chargen_locked: false)
-
->>>>>>> upstream/master
        Jobs.change_job_status(enactor,
          job,
          Global.read_config("chargen", "app_hold_status"),
