@@ -6,21 +6,21 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
- 
+
     def self.shortcuts
       Global.read_config("scenes", "shortcuts")
     end
-    
+
     def self.achievements
       list = Global.read_config("scenes", "achievements") || {}
-      
+
       # Automatically add achievements for the various scene types.
       Scenes.scene_types.each do |type|
         list["scene_participant_#{type.downcase}"] = { 'type' => 'story', 'message' => "Participated in a #{type} scene." }
       end
       list
     end
-    
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "autospace"
@@ -58,10 +58,10 @@ module AresMUSH
         when "ordertype"
           return PoseOrderTypeCmd
         end
-        
+
       when "quotecolor"
         return QuoteColorCmd
-      
+
       when "scene"
         case cmd.switch
         when "all", "open"
@@ -116,7 +116,7 @@ module AresMUSH
           return SceneWebStartCmd
         end
       end
-      
+
       if (cmd.raw.start_with?("\"") ||
           cmd.raw.start_with?("\\") ||
           cmd.raw.start_with?(":") ||
@@ -125,11 +125,11 @@ module AresMUSH
           cmd.raw.start_with?(";"))
         return PoseCatcherCmd
       end
-      
+
       nil
     end
 
-    def self.get_event_handler(event_name) 
+    def self.get_event_handler(event_name)
       case event_name
       when "CronEvent"
         return CronEventHandler
@@ -140,7 +140,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.get_web_request_handler(request)
       case request.cmd
       when "addScenePose"
@@ -155,6 +155,8 @@ module AresMUSH
         return CreatePlotRequestHandler
       when "createScene"
         return CreateSceneRequestHandler
+      when "customSceneData"
+        return CustomSceneDataHandler
       when "editScenePose"
         return EditScenePoseRequestHandler
       when "deleteScenePose"
@@ -178,13 +180,13 @@ module AresMUSH
       when "likeScene"
         return LikeSceneRequestHandler
       when "liveScenes"
-        return LiveScenesRequestHandler        
+        return LiveScenesRequestHandler
       when "liveScene"
-        return LiveSceneRequestHandler  
+        return LiveSceneRequestHandler
       when "markSceneRead"
         return MarkSceneReadRequestHandler
       when "myScenes"
-        return MyScenesRequestHandler     
+        return MyScenesRequestHandler
       when "plots"
         return PlotsRequestHandler
       when "plot"
@@ -218,7 +220,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.check_config
       validator = ScenesConfigValidator.new
       validator.validate

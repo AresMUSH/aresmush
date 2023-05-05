@@ -70,7 +70,6 @@ module AresMUSH
         end
         list
       end
-
       def languages
         list = []
         @char.fs3_languages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
@@ -78,7 +77,6 @@ module AresMUSH
         end
         list
       end
-
       def advantages
         list = []
         @char.fs3_advantages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|

@@ -1,11 +1,10 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
 
 require "aresmush"
 
 module AresMUSH
 
   describe PoseFormatter do
-        
+
     describe :format do
 
       it "should parse a say for a string starting with a quote" do

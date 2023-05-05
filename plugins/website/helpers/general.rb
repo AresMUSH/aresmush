@@ -1,11 +1,11 @@
 module AresMUSH
   module Website
     mattr_accessor :emoji_regex
-    
+
     def self.is_restricted_wiki_page?(page)
       restricted_pages = Global.read_config("website", "restricted_pages") || ['home']
       restricted_pages.each do |p|
-        if (p =~ /.+\:\*/) 
+        if (p =~ /.+\:\*/)
           category = WikiPage.sanitize_page_name(p.before(':'))
           return true if category == page.category
         else
@@ -15,11 +15,11 @@ module AresMUSH
       end
       false
     end
-    
+
     def self.can_manage_wiki?(actor)
       actor && actor.has_permission?("manage_wiki")
     end
-    
+
     def self.can_manage_textfile?(enactor, file_type)
       case file_type
       when "text"
@@ -34,35 +34,35 @@ module AresMUSH
         false
       end
     end
-    
+
     def self.check_login(request, allow_anonymous = false)
       return nil if allow_anonymous
       return { error: "You need to log in first." } if !request.enactor
       token = request.auth[:token]
       if !request.enactor.is_valid_api_token?(token)
-        return { error: t('webportal.session_expired') } 
+        return { error: t('webportal.session_expired') }
       end
       if !Website.is_valid_api_key?(request.enactor, request.api_key)
-        return { error: t('webportal.invalid_api_key') } 
+        return { error: t('webportal.invalid_api_key') }
       end
       return nil
     end
-    
+
     def self.is_valid_api_key?(enactor, api_key)
       return true if Website.engine_api_keys.include?(api_key)
       player_key = Game.master.player_api_keys[api_key]
       return false if !player_key
       player_key == enactor.id.to_s
     end
-    
+
     def self.get_file_info(file_path)
       return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
       folder = File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
       name = File.basename(relative_path)
       file_meta = WikiFileMeta.find_meta(folder, name)
-      description = (file_meta && file_meta.description) ? file_meta.description : '' 
-      
+      description = (file_meta && file_meta.description) ? file_meta.description : ''
+
       {
         path: relative_path,
         name: name,
@@ -71,8 +71,8 @@ module AresMUSH
         title: description.blank? ? '' : description
       }
     end
-    
-    
+
+
     def self.rebuild_css
       engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
       scss_path = File.join(engine_styles_path, 'ares.scss')
@@ -81,11 +81,11 @@ module AresMUSH
       css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
       File.open(css_path, "wb") {|f| f.write(css) }
     end
-    
+
     def self.deploy_portal(client = nil)
       Website.redeploy_portal(nil, false)
     end
-    
+
     def self.redeploy_portal(enactor, from_web)
       Global.dispatcher.spawn("Deploying website", nil) do
         Website.rebuild_css
@@ -105,16 +105,16 @@ module AresMUSH
         end
       end
     end
-    
+
     def self.welcome_text
       text = Global.config_reader.get_text('website.txt')
       Website.format_markdown_for_html(text)
     end
-    
+
     def self.engine_api_keys
       Global.read_config("secrets", "engine_api_keys") || []
     end
-    
+
     def self.can_edit_wiki_file?(actor, folder)
       return false if !actor
       return true if Website.can_manage_wiki?(actor)
@@ -122,19 +122,19 @@ module AresMUSH
       return true if ((folder.downcase == "theme_images") && Website.can_manage_theme?(actor))
       return false
     end
-    
+
     def self.folder_size_kb(folder)
       files = Dir["#{folder}/*"].select { |f| File.file?(f) }
       files.sum { |f| File.size(f) } / 1024
     end
-    
+
     def self.webportal_version
       install_path = Global.read_config('website', 'website_code_path')
       version_path = File.join(install_path, 'public', 'scripts', 'aresweb_version.js')
       version = File.read(version_path)
       version = version.gsub('var aresweb_version = "', '').gsub('";', '').chomp
     end
-    
+
     def self.wiki_templates
       templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
         title: p.title.gsub("template:", ""),
@@ -145,14 +145,14 @@ module AresMUSH
       templates << { title: 'blank', name: 'blank', text: '' }
       templates
     end
-    
+
     def self.get_emoji_regex
       if (!Website.emoji_regex)
         Website.emoji_regex = EmojiFormatter.emoji_regex
       end
       Website.emoji_regex
     end
-    
+
     def self.export_wiki(client = nil)
       Global.dispatcher.spawn("Performing wiki export.", client) do
         Global.logger.debug "Exporting wiki."
@@ -170,7 +170,7 @@ module AresMUSH
         end
       end
     end
-    
+
     def self.find_code_file_path(search_name)
       Website.editable_code_files.each do |section|
         section[:files].each do |name, path|
@@ -181,18 +181,18 @@ module AresMUSH
       end
       raise "File #{search_name} not found in editable file list."
     end
-    
+
     def self.editable_code_files
       web_code_path = File.join(AresMUSH.website_code_path, 'app')
       plugin_code_path = AresMUSH.plugin_path
-      
+
       [
         {
           name: "Profile Display",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'profile-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom-tabs.hbs'),  
-            'profile-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom.hbs'),  
+            'profile-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom-tabs.hbs'),
+            'profile-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom.hbs'),
             'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -209,18 +209,18 @@ module AresMUSH
           }
         },
 
-        
+
         {
           name: "Chargen",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'chargen-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom.hbs'),  
-            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom-tabs.hbs'),  
+            'chargen-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom.hbs'),
+            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom-tabs.hbs'),
             'chargen-custom.js' => File.join(web_code_path, 'components', 'chargen-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
         },
-        
+
         {
           name: "Chargen App Review",
           help: "https://aresmush.com/tutorials/code/hooks/app-review.html",
@@ -228,7 +228,7 @@ module AresMUSH
             'custom_app_review.rb' => File.join(plugin_code_path, 'chargen', 'custom_app_review.rb'),
           }
         },
-        
+
         {
           name: "Chargen Approval Triggers",
           help: "https://aresmush.com/tutorials/code/hooks/approval-triggers.html",
@@ -236,28 +236,30 @@ module AresMUSH
             'custom_approval.rb' => File.join(plugin_code_path, 'chargen', 'custom_approval.rb'),
           }
         },
-        
+
         {
           name: "Scene Actions",
           help: "https://aresmush.com/tutorials/code/hooks/scene-buttons.html",
           files: {
-            'live-scene-custom-play.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-play.hbs'),  
+            'live-scene-custom-play.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-play.hbs'),
             'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
-            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
+            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),
             'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+            'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
+
           }
         },
-        
+
         {
           name: "Scene Character Cards",
           help: "https://aresmush.com/tutorials/code/hooks/char-cards.html",
           files: {
-            'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),  
+            'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),
             'char-card-custom.js' => File.join(web_code_path, 'components', 'char-card-custom.js'),
             'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),
           }
         },
-        
+
         {
           name: "Combat Actions",
           help: "https://aresmush.com/tutorials/code/hooks/fs3-actions.html",
@@ -265,7 +267,7 @@ module AresMUSH
             'custom_hooks.rb' => File.join(plugin_code_path, 'fs3combat', 'custom_hooks.rb'),
             }
         },
-        
+
         {
           name: "Combat New Turn Triggers",
           help: "https://aresmush.com/tutorials/code/hooks/fs3-new-turn.html",
@@ -273,7 +275,7 @@ module AresMUSH
             'custom_hooks.rb' => File.join(plugin_code_path, 'fs3combat', 'custom_hooks.rb'),
           }
         },
-        
+
       ]
     end
   end

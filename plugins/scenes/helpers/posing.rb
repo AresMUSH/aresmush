@@ -173,7 +173,7 @@ module AresMUSH
         # (Group 2: Quote -- Multiple letters not quote -- Quote )
         # /([^"]+)?("[^"]+")?/
         quote_matches = pose.scan(/([^#{quote_markers}]+)?([#{quote_markers}][^#{quote_markers}]+[#{quote_markers}]?)?/)
-        puts "quote matches #{quote_matches}"
+
         colored_pose = ""
         quote_matches.each do |m|
           if (m[0])

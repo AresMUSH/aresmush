@@ -128,6 +128,8 @@ module AresMUSH
            return CombatTargetCmd
          when "team"
            return CombatTeamCmd
+         when "teamname"
+           return CombatTeamnameCmd
          when "transfer"
            return CombatTransferCmd
          when "types"
@@ -160,7 +162,6 @@ module AresMUSH
       end
       nil
     end
-
     def self.get_web_request_handler(request)
       case request.cmd
       when "addCombatant"
@@ -203,7 +204,6 @@ module AresMUSH
         return StopCombatRequestHandler
       end
     end
-
     def self.check_config
       validator = FS3CombatConfigValidator.new
       validator.validate

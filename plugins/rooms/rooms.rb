@@ -5,11 +5,11 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
- 
+
     def self.shortcuts
       Global.read_config("rooms", "shortcuts")
     end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "areas"
@@ -81,7 +81,12 @@ module AresMUSH
           return OwnerListCmd
         end
       when "room"
-        return RoomsCmd
+        case cmd.switch
+        when "icon"
+          return RoomIconCmd
+        else
+          return RoomsCmd
+        end
       when "roomtype"
         return RoomTypeCmd
       when "teleport"
@@ -102,11 +107,11 @@ module AresMUSH
           return WorkCmd
         end
       end
-      
+
       nil
     end
-    
-    def self.get_event_handler(event_name) 
+
+    def self.get_event_handler(event_name)
       case event_name
       when "CharConnectedEvent"
         return CharConnectedEventHandler
@@ -117,7 +122,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.get_web_request_handler(request)
       case request.cmd
       when "area"

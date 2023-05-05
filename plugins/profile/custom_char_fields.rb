@@ -1,7 +1,6 @@
 module AresMUSH
   module Profile
     class CustomCharFields
-
       # Gets custom fields for display in a character profile.
       #
       # @param [Character] char - The character being requested.

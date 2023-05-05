@@ -24,3 +24,6 @@ rooms:
     build: Access build commands to create rooms and exits.
     go_home: Use the home and work commands.
     teleport: Can teleport anywhere.
+  area_directory_order: []
+  icon_types:
+    star: fas fa-star

@@ -7,23 +7,24 @@ module AresMUSH
         descs = request.args[:descs]
         summary = request.args[:summary]
         area_id = request.args[:area_id]
+        icon_type = request.args[:icon_type]
         owner_names = request.args[:owners] || []
         enactor = request.enactor
-                
+
         error = Website.check_login(request)
         return error if error
-        
+
         request.log_request
-        
+
         room = Room[id]
         if (!room)
           return { error: t('webportal.not_found') }
         end
-        
+
         if (!(room.room_owners.include?(enactor) || Rooms.can_build?(enactor)))
           return { error: t('dispatcher.not_allowed') }
         end
-        
+
         if (!area_id.blank?)
           area = Area[area_id]
           if (!area)
@@ -32,7 +33,7 @@ module AresMUSH
         else
           area = nil
         end
-        
+
         if (name.blank?)
           return { error: t('webportal.missing_required_fields') }
         end
@@ -50,12 +51,13 @@ module AresMUSH
           end
         end
 
-        room.update(name: name, 
-           area: area, 
-           shortdesc: Website.format_input_for_mush(summary))
-           
+        room.update(name: name,
+           area: area,
+           shortdesc: Website.format_input_for_mush(summary),
+           room_icon: icon_type)
+
          Describe.save_web_descs(room, descs)
-        
+
         {}
       end
     end

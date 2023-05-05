@@ -15,7 +15,6 @@ module AresMUSH
       def required_args
         [ self.level ]
       end
-
       def check_reason
         levels = FS3Combat.npc_type_names
         return t('fs3combat.invalid_npc_level', :levels => levels.join(", ")) if !levels.include?(self.level)
@@ -30,7 +29,6 @@ module AresMUSH
               client.emit_failure t('fs3combat.only_organizer_can_do')
               return
             end
-
             if (!combatant.is_npc?)
               client.emit_failure t('fs3combat.not_a_npc')
               return

@@ -1,4 +1,3 @@
-require 'byebug'
 module AresMUSH
   module Profile
     class CharacterGroupsRequestHandler
@@ -18,6 +17,7 @@ module AresMUSH
         char_group_names = char_groups.keys
         npc_group_names = npc_groups.keys
         group_names = char_group_names.concat(npc_group_names).uniq
+
         group = Demographics.all_groups.select { |k, v| k.downcase == group_key }.values.first
         group_order = (( group["values"] || {} ).keys || []).map { |g| g.downcase }
         group_names = group_names.sort_by { |g| [group_order.find_index(g.downcase) || 99, g] }

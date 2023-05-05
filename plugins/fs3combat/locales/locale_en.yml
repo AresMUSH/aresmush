@@ -124,6 +124,7 @@ en:
         everyone_posed: "Everyone has posed!"
         team_target_set: "Team %{team} will now pick targets from teams %{targets}."
         team_targets: "Team     Targeted Team(s)"
+        team_name_set: "%{enactor} has set team %{team}'s name to %{name}."
 
         random_targets: "Suggested Targets: %{targets}"
         no_targets_specified: "No targets specified."
@@ -233,6 +234,21 @@ en:
         mount_title_mod_vs_unmounted: "Mod vs Unmounted:"
 
         # ----------------------------
+        # MOUNTS
+        # ----------------------------
+
+        dismounted: "%{name} has dismounted."
+        mounted: "%{name} has mounted a %{mount}."
+        invalid_mount: "That is not a valid mount type."
+        not_mounted: "You are not mounted."
+        cant_be_in_both_vehicle_and_mount: "%{name} can't be in both a vehicle and on a mount at the same time."
+        mounts_disabled: "Mounts are disabled here."
+        mounts_title: "Mounts List"
+        mount_title_description: "Description:"
+        mount_title_toughness: "Toughness:"
+        mount_title_mod_vs_unmounted: "Mod vs Unmounted:"
+
+        # ----------------------------
         # HITLOCS
         # ----------------------------
 
@@ -308,6 +324,7 @@ en:
         attack_hits: "%{name} attacks %{target} with %{weapon} and HITS!  %{damage} wound to %{hitloc}. %{armor}"
         attack_hits_cover: "%{name} attacks %{target} with %{weapon} but hits the COVER they're behind."
         attack_hits_mount: "%{name} attacks %{target} with %{weapon} and hits their MOUNT. %{effect}"
+
         mount_ko: "(Mount %xrKOed%xn - %xyImpaired%xn wound from fall damage)"
         mount_injured: "(Mount INJURED)"
 

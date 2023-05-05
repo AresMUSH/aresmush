@@ -3,7 +3,6 @@ module AresMUSH
     class CombatArmorCmd
       include CommandHandler
       include NotAllowedWhileTurnInProgress
-
       attr_accessor :names, :armor, :specials
 
       def parse_args

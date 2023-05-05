@@ -17,7 +17,7 @@ module AresMUSH
       end
 
       def check_luck
-        # return t('fs3skills.invalid_luck_points') if self.luck == 0
+        return t('fs3skills.invalid_luck_points') if self.luck == 0
         return nil
       end
 

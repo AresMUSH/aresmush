@@ -6,13 +6,13 @@ module AresMUSH
 
         error = Website.check_login(request, true)
         return error if error
-        
-        
+
+
         disabled = {}
         Global.read_config('plugins', 'disabled_plugins').each do |p|
           disabled[p] = true
         end
-        
+
         active_scenes = Scene.all.select { |s| !s.completed }
         if (enactor)
           unread_scenes = active_scenes.select { |s| s.participants.include?(enactor) && Scenes.can_read_scene?(enactor, s) && s.is_unread?(enactor) }
@@ -23,14 +23,14 @@ module AresMUSH
         else
           unread_scenes = []
         end
-        
+
         search_id = Global.read_config("secrets", "gcse", "search_id")
         if (search_id.blank?)
           search_id = nil
         end
 
         story = Global.read_config('website', 'story')
-        
+
         {
           type: 'game',
           id: 1,
@@ -50,7 +50,7 @@ module AresMUSH
           roster_enabled: Idle.roster_enabled?,
           gcse_search_id: search_id,
           story: Website.format_markdown_for_html(story)
-        } 
+        }
       end
     end
   end

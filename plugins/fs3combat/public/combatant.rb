@@ -79,7 +79,14 @@ module AresMUSH
 
     def action_error?
       a = get_action_instance
+      return nil if !a
       a.prepare
+    end
+
+    def reset_action
+      FS3Combat.emit_to_combat self.combat, t('fs3combat.resetting_action', :name => self.name)
+      self.update(action_klass: nil)
+      self.update(action_args: nil)
     end
 
     def reset_action

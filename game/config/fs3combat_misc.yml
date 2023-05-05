@@ -106,6 +106,7 @@ fs3combat:
     healing: heal/list
     weapons: weapon
     newturn: combat/newturn
+    mounts: mount
 
   achievements:
     fs3_hero:

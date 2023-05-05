@@ -83,7 +83,6 @@ module AresMUSH
       puts "ROLL TO RESET STRESS"
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
-
       combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old_stress=#{combatant.stress} new_stress=#{new_stress}."
       combatant.update(stress: new_stress)
     end
@@ -155,7 +154,6 @@ module AresMUSH
 
       roll
     end
-
     def self.ai_action(combat, combatant, enactor = nil)
       if (combatant.is_subdued?)
         FS3Combat.set_action(enactor, combat, combatant, FS3Combat::EscapeAction, "")
@@ -189,7 +187,6 @@ module AresMUSH
       possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) && t.stance != "Hidden"}
       possible_targets.shuffle.first
     end
-
     def self.set_action(enactor, combat, combatant, action_klass, args)
       action = action_klass.new(combatant, args)
       error = action.prepare
@@ -236,7 +233,6 @@ module AresMUSH
 
       damage
     end
-
     def self.determine_armor(combatant, hitloc, weapon, attacker_net_successes, crew_hit = false)
       vehicle = combatant.vehicle
       if (vehicle && !crew_hit)
@@ -247,7 +243,6 @@ module AresMUSH
 
       # Not wearing armor at all.
       return 0 if armor.blank?
-
       pen = FS3Combat.weapon_stat(weapon, "penetration")
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
       puts "~~~~~~~~~~~~#{combatant.name}'s armor is #{combatant.armor}: pen #{pen} protect #{protect}"
@@ -340,7 +335,6 @@ module AresMUSH
       hit = false
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
-
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
@@ -348,7 +342,6 @@ module AresMUSH
       elsif (hit_mount)
         mount_ko = FS3Combat.resolve_mount_ko(target)
         if (mount_ko)
-
           mount_effect = t('fs3combat.mount_ko')
           target.inflict_damage('IMPAIR', 'Fall Damage', true, false)
           target.update(mount_type: nil)
@@ -567,6 +560,27 @@ module AresMUSH
         end
       end
 
+      messages
+    end
+
+    def self.resolve_explosion(combatant, target)
+      messages = []
+      margin = FS3Combat.determine_attack_margin(combatant, target)
+      if (margin[:hit])
+        attacker_net_successes = margin[:attacker_net_successes]
+        messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
+        max_shrapnel = [ 5, attacker_net_successes + 2 ].min
+      else
+        messages << margin[:message]
+        max_shrapnel = 2
+      end
+
+      if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
+        shrapnel = rand(max_shrapnel)
+        shrapnel.times.each do |s|
+          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
+        end
+      end
       messages
     end
 

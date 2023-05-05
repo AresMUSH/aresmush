@@ -1,13 +1,13 @@
-require_relative "../../plugin_test_loader"
+require "plugin_test_loader"
 
 module AresMUSH
   module Scenes
     describe Scenes do
       include GlobalTestHelper
-      
+
       describe :emit_pose do
         before do
-          stub_global_objects      
+          stub_global_objects
           stub_translate_for_testing
 
           @enactor = double
@@ -16,7 +16,7 @@ module AresMUSH
           @char2 = double
           @client1 = double
           @client2 = double
-          
+
           allow(@client1).to receive(:emit)
           allow(@client2).to receive(:emit)
           allow(@enactor).to receive(:room) { @enactor_room }
@@ -29,7 +29,7 @@ module AresMUSH
           allow(Scenes).to receive(:update_pose_order)
           allow(@enactor_room).to receive(:id) { 12 }
           allow(@enactor).to receive(:id) { 34 }
-          
+
         end
 
         context "general" do
@@ -40,14 +40,14 @@ module AresMUSH
             expect(@client2).to receive(:emit).with("Formatted pose")
             Scenes.emit_pose(@enactor, "A pose", false, false)
           end
-          
+
         end
-        
+
         context "ooc comment" do
           before do
             allow(Global).to receive(:read_config).with("scenes", "ooc_color") { "%xb" }
           end
-          
+
           it "should format with color and <OOC> tag" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
             expect(Scenes).to receive(:custom_format).with("%xb<OOC>%xn A pose", @enactor_room, @char1, @enactor, false, true, nil)
@@ -65,24 +65,24 @@ module AresMUSH
             end
             Scenes.emit_pose(@enactor, "A pose", false, true)
           end
-          
+
           it "should not trigger pose order" do
             expect(Scenes).not_to receive(:update_pose_order)
             Scenes.emit_pose(@enactor, "A pose", false, true)
           end
         end
-        
+
         context "system pose" do
           before do
             allow(@enactor_room).to receive(:update)
           end
-          
+
           it "should format a set pose with bracketed lines" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
             expect(Scenes).to receive(:custom_format).with("%R%xh%xc%% #{'-'.repeat(75)}%xn%R%RA pose%R%R%xh%xc%% #{'-'.repeat(75)}%xn%R", @enactor_room, @char1, @enactor, true, false, nil)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
-          
+
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
               expect(event.enactor_id).to eq 34
@@ -94,27 +94,27 @@ module AresMUSH
             end
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
-          
+
           it "should update pose order" do
             expect(Scenes).to receive(:update_pose_order).with(@enactor, @enactor_room)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
-          
+
           it "should not update the room's set pose" do
             expect(@enactor_room).to_not receive(:update).with(:scene_set => "A pose")
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
-          
+
         end
-        
+
         context "regular pose" do
-          
+
           it "should format a regular pose normally" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
             expect(Scenes).to receive(:custom_format).with("A pose", @enactor_room, @char1, @enactor, false, false, nil)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false)
           end
-          
+
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
               expect(event.enactor_id).to eq 34
@@ -126,26 +126,26 @@ module AresMUSH
             end
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false)
           end
-          
+
           it "should update pose order" do
             expect(Scenes).to receive(:update_pose_order).with(@enactor, @enactor_room)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false)
           end
-          
+
           it "should not update pose order in an OOC room" do
             expect(@enactor_room).to receive(:room_type) { "OOC" }
             expect(Scenes).to_not receive(:update_pose_order)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false)
           end
-          
+
           it "should use the place name in formatting" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
             expect(Scenes).to receive(:custom_format).with("A pose", @enactor_room, @char1, @enactor, false, false, "A place")
             Scenes.emit_pose(@enactor, "A pose", false, false, "A place", false)
           end
         end
-        
-        
+
+
         context "scene room" do
           before do
             @scene_room = double
@@ -153,13 +153,13 @@ module AresMUSH
             allow(@scene_room).to receive(:characters) { [] }
             allow(@scene_room).to receive(:id) { 56 }
           end
-          
+
           it "should format a regular pose normally" do
             allow(@scene_room).to receive(:characters) { [ @char1 ] }
             expect(Scenes).to receive(:custom_format).with("A pose", @scene_room, @char1, @enactor, false, false, nil)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false, @scene_room)
           end
-          
+
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
               expect(event.enactor_id).to eq 34
@@ -171,35 +171,35 @@ module AresMUSH
             end
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false, @scene_room)
           end
-          
+
           it "should update pose order" do
             expect(Scenes).to receive(:update_pose_order).with(@enactor, @scene_room)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false, @scene_room)
           end
-          
+
           it "should not update pose order in an OOC room" do
             expect(@scene_room).to receive(:room_type) { "OOC" }
             expect(Scenes).to_not receive(:update_pose_order)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false, @scene_room)
-          end          
+          end
         end
-        
+
       end
-      
+
       describe :handle_scene_participation_achievement do
-        before do 
+        before do
           @char = double
           @scene = double
           allow(@scene).to receive(:id) { 123 }
           allow(@scene).to receive(:scene_type) { "event" }
         end
-        
+
         it "should not award anything if char already participated in scene." do
           expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { true }
           expect(Achievements).to_not receive(:award_achievement).with(@char, "scene_participant", 1)
           Scenes.handle_scene_participation_achievement(@char, @scene)
         end
-        
+
         it "should use the level not the count for awards." do
           expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { false }
           expect(@char).to receive(:scenes_participated_in) { [ "1", "2" ]}
@@ -208,7 +208,7 @@ module AresMUSH
           expect(@char).to receive(:update).with(:scenes_participated_in => [ "1", "2", "123" ])
           Scenes.handle_scene_participation_achievement(@char, @scene)
         end
-        
+
         it "should award new level once they get enough scenes" do
           expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { false }
           expect(@char).to receive(:scenes_participated_in) { [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]}
@@ -217,7 +217,7 @@ module AresMUSH
           expect(@char).to receive(:update).with(:scenes_participated_in => [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "123" ])
           Scenes.handle_scene_participation_achievement(@char, @scene)
         end
-        
+
         it "should award type achievement" do
           expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { false }
           expect(@char).to receive(:scenes_participated_in) { [] }

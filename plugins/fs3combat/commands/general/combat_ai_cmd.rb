@@ -34,14 +34,12 @@ module AresMUSH
           self.names.each do |raw_name|
             name = raw_name.before(":")
             target = raw_name.after(":")
-
             combatant = combat.find_combatant(name)
 
             if (!combatant)
               client.emit_failure t('fs3combat.not_in_combat', :name => name)
               next
             end
-
             if (!target.blank?)
               error = FS3Combat.set_action(enactor, combat, combatant, FS3Combat::AttackAction, target)
               if (error)
