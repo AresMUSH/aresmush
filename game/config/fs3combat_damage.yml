@@ -9,7 +9,7 @@ fs3combat:
   damage_table:
     GRAZE: 20
     FLESH: 70
-    MODERATE: 80
+    MODERATE: 83
     IMPAIR: 98
   healing_cron:
     hour:
