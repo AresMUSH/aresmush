@@ -1,8 +1,8 @@
 ---
 compliments:
   give_luck: true
-  target_luck_amount: 0.25
-  comper_luck_amount: 0.25
+  target_luck_amount: 0.1
+  comper_luck_amount: 0.1
   comp_scenes: true
   achievements:
     gave_comps:
