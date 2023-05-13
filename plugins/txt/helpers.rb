@@ -74,7 +74,7 @@ module AresMUSH
         client = Login.find_client(sender)
         recipient_client  = Login.find_client(recipient)
         Login.emit_if_logged_in recipient, message
-        Page.send_afk_message(client, recipient_client, recipient)
+        # Page.send_afk_message(client, recipient_client, recipient)
       end
 
 
