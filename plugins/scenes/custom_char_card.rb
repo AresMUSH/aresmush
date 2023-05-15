@@ -14,6 +14,7 @@ module AresMUSH
         magic_items: Magic.get_magic_items(char),
         potions: Magic.get_potions(char),
         potions_creating: Magic.get_potions_creating(char),
+        bonded: !char.bonded.nil?,
         mythic_name: char.bonded&.name,
         mythic_type: char.bonded&.expanded_mount_type,
       }
