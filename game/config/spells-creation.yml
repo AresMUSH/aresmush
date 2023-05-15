@@ -116,7 +116,7 @@ spells:
   Shield Of The Forest:
     available: true
     casting_time: 1 round
-    desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
+    desc: 'Swiftly grow a barrier that protects the caster or their target.'
     duration: 3 rounds
     effect: Shield
     is_shield: true
