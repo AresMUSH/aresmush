@@ -120,7 +120,7 @@ scenes:
     - 2
   unshared_scene_deletion_days: 20
   unshared_scene_warning_days: 13
-  use_custom_char_cards: false
+  use_custom_char_cards: true
   permissions:
     control_npcs: Pose from NPCs in scenes.
     manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.
