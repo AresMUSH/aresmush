@@ -17,6 +17,7 @@ aliases:
 
 `combat/mount <name>` - Mount a mythic in combat
 `combat/dismount` - Dismount a mythic in combat
+`combat/mounthero` - Spends a luck point to un-KO your mythic.
 
 ## Rolling
 

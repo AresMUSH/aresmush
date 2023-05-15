@@ -72,6 +72,7 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 
 `combat/luck <spell, attack, defense or initiative>` - Spend a luck point this turn.
 `combat/hero` - Spends a luck point to un-KO yourself.
+`combat/mounthero` - Spends a luck point to un-KO your mythic.
 
 ## Organizing
 
