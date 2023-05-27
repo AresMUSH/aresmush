@@ -32,7 +32,7 @@ en:
       potions_creating_title: "Potions Currently Creating"
       potions_has_title: "Potions Inventory"
       no_potions_spell: "You have not learned how to make potions."
-      not_potion: "That spell cannot be made into a potion."
+      not_potion: "That is not a potion."
       dont_have_potion: "You don't have that potion. Type 'potions' to see what potions you have."
       begun_creating_potion: "You have begun to create a %{potion_name} potion. It will be ready in %{time}. Type 'potions' to track the potions you are creating."
       potion_completed: "Your %{potion} potion is ready for use."

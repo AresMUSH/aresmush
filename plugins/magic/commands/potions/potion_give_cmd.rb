@@ -15,8 +15,9 @@ module AresMUSH
       end
 
       def check_errors
-        return t('magic.dont_have_potion') if !Magic.find_potion_has(enactor, self.potion_name)
+        return t('magic.not_potion') if !Magic.is_potion?(self.potion_name)
         return t('magic.invalid_name') if !self.target
+        return t('magic.dont_have_potion') if !Magic.find_potion_has(enactor, self.potion_name)
         return nil
       end
 
