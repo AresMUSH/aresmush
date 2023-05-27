@@ -70,6 +70,8 @@ module AresMUSH
           return PotionGiveCmd
         when "add"
           return PotionAddCmd
+        when "remove"
+          return PotionRemoveCmd
         when "use"
           return PotionUseCmd
         end

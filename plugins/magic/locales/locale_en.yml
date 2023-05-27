@@ -39,6 +39,8 @@ en:
       potion_completed_subj: "%{potion} Potion Ready"
       added_potion: "You have added a %{potion} potion to %{target}'s inventory."
       potion_has_been_added: "%{name} has added a #{potion_name} potion to your inventory."
+      removed_potion: "You have removed a %{potion} potion from %{target}'s inventory."
+      potion_has_been_removed: "%{name} has removed a #{potion_name} potion from your inventory."
       give_potion: "You have given %{target} a %{potion} potion."
       given_potion: "%{name} has given you a %{potion} potion."
       given_potion_subj: "%{potion} recieved"
