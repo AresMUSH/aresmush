@@ -38,32 +38,33 @@ module AresMUSH
         print_names = Magic.print_target_names(targets)
 
         result = Magic.roll_noncombat_spell(enactor, self.spell, self.mod)
+        messages = result[:messages]
 
         if result[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
+          messages.concat Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)
         else
           #Spell fails
           if !self.has_target
-            message = [t('magic.casts_spell', :name => enactor.name, :spell => spell, :mod => mod, :succeeds => result[:succeeds])]
+            messages.concat [t('magic.casts_spell', :name => enactor.name, :spell => spell, :mod => mod, :succeeds => result[:succeeds])]
           else
-            message = [t('magic.casts_spell_on_target', :name => enactor.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => result[:succeeds])]
+            messages.concat [t('magic.casts_spell_on_target', :name => enactor.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => result[:succeeds])]
           end
         end
 
-        puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{enactor.magic_energy}"
-        start_fatigue = Magic.get_fatigue_level(enactor)[:degree]
-        Magic.subtract_magic_energy(enactor, self.spell, result[:succeeds])
-        puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{enactor.magic_energy}"
-        fatigue_msg = Magic.get_fatigue_level(enactor)[:msg]
-        final_fatigue = Magic.get_fatigue_level(enactor)[:degree]
-        serious_degrees = ["Severe", "Extreme", "Total"]
+        # puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{enactor.magic_energy}"
+        # start_fatigue = Magic.get_fatigue_level(enactor)[:degree]
+        # Magic.subtract_magic_energy(enactor, self.spell, result[:succeeds])
+        # puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{enactor.magic_energy}"
+        # fatigue_msg = Magic.get_fatigue_level(enactor)[:msg]
+        # final_fatigue = Magic.get_fatigue_level(enactor)[:degree]
+        # serious_degrees = ["Severe", "Extreme", "Total"]
 
-        if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
-          message.concat [Magic.get_fatigue_level(enactor)[:msg]]
-        end
+        # if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
+        #   message.concat [Magic.get_fatigue_level(enactor)[:msg]]
+        # end
 
-        message.each do |msg|
+        messages.each do |msg|
           enactor.room.emit msg
           if enactor.room.scene
             Scenes.add_to_scene(enactor.room.scene, msg)
