@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class PotionAddCmd
+    class PotionRemoveCmd
       include CommandHandler
 # potion/add <name>=<potion> - Give someone a potion.
 
@@ -20,28 +20,21 @@ module AresMUSH
         return t('magic.invalid_name') if !self.target
         return t('magic.not_spell') if !Magic.is_spell?(self.potion_name)
         return t('magic.not_potion') if !Magic.is_potion?(self.potion_name)
+        return t('magic.dont_have_potion') if !Magic.find_potion_has(self.target, self.potion_name)
         return nil
       end
 
       def handle
+        potion = Magic.find_potion_has(enactor, self.potion_name)
+        potion.delete
 
-        PotionsHas.create(name: potion_name, character: self.target)
-
-        client.emit_success t('magic.added_potion', :potion => potion_name, :target => target.name)
+        client.emit_success t('magic.removed_potion', :potion => potion_name, :target => target.name)
 
         other_client = Login.find_client(self.target)
-        message = t('magic.potion_has_been_added', :name => enactor.name, :potion_name => potion_name)
+        message = t('magic.potion_has_been_removed', :name => enactor.name, :potion_name => potion_name)
         Login.emit_if_logged_in(self.target, message)
         Login.notify(self.target, :potion, message, nil)
-        # Mail.send_mail([target.name], t('magic.given_potion_subj', :potion => potion_name), message, nil)
-
-
       end
-
-
-
-
-
 
     end
   end

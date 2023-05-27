@@ -206,7 +206,7 @@ spells:
     roll: true
     school: Entropy
   Death-Touched Weapon:
-    available: true
+    available: false
     casting_time: 1 round
     desc: Imbue an existing weapon with the draining touch of death, increasing the damage against living opponents.
     effect: Buff
@@ -228,7 +228,7 @@ spells:
     duration: 3 hours
     is_potion: true
     level: 4
-    name: Death-Touched Weapon
+    name: Death Touched Weapon
     range: Touch
     rounds: 100
     school: Entropy
@@ -266,7 +266,7 @@ spells:
     target_num: 1
   Ice Armor:
     armor: Ice
-    available: true
+    available: false
     casting_time: 1 round
     damage_type: Bypass
     desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.

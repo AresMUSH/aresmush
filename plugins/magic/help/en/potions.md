@@ -20,4 +20,9 @@ See [Potions](/wiki/potions) for more info.
 `combat/potion <potion>` - Use a potion on yourself in combat.
 `combat/potion <potion>/<name>` - Use a potion on someone else in combat.
 
-`potion/update <name>=<#>/<hours left>` - Admin-only command to adjust the hours left in potion creating.
+
+## Admin Commands
+`potion/update <name>=<#>/<hours left>` - Adjust the hours left in potion creating.
+`potion/add <name>=<potion>` - Add a potion to a character's inventory.
+`potion/remove <name>=<potion>` - Remove a potion from a character's inventory.
+

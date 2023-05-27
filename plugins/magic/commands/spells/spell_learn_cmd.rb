@@ -23,6 +23,8 @@ module AresMUSH
         num_can_learn = Magic.num_can_learn(enactor)
         return t('magic.learning_too_many_spells', :num_can_learn => num_can_learn) if (Magic.count_spells_learning(enactor) > (num_can_learn - 1) && !Magic.find_spell_learned(enactor, self.spell))
         return t('magic.wrong_school') if !enactor.schools.keys.include? self.school
+        available = Global.read_config("spells", self.spell, "available")
+        return "That spell isn't available to learn." if !available
         return "Level 9 & 10 spells aren't available to PCs." if self.spell_level > 8
         return nil
       end
