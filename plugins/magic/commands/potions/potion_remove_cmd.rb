@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
 # potion/add <name>=<potion> - Give someone a potion.
 
-      attr_accessor :target, :potion_name
+      attr_accessor :target, :potion_name, :potion
 
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
