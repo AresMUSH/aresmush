@@ -150,12 +150,29 @@ module AresMUSH
       Global.logger.info "#{caster.name} rolling #{skill} to cast #{spell}. Level Mod=#{level_mod} Mod=#{mod} Item Mod=#{item_spell_mod} Off-school cast mod=#{cast_mod} Magic Energy Mod=#{magic_energy_mod} total=#{total_mod}"
       #result is logged in Character.roll_ability
 
+
+
       roll = caster.roll_ability(skill, total_mod)
       die_result = roll[:successes]
       succeeds = Magic.spell_success(die_result)
+
+      messages = []
+      puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{caster.magic_energy}"
+      start_fatigue = Magic.get_fatigue_level(caster)[:degree]
+      Magic.subtract_magic_energy(caster, spell, succeeds)
+      puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{caster.magic_energy}"
+      fatigue_msg = Magic.get_fatigue_level(caster)[:msg]
+      final_fatigue = Magic.get_fatigue_level(caster)[:degree]
+      serious_degrees = ["Severe", "Extreme", "Total"]
+
+      if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
+        messages.concat [Magic.get_fatigue_level(caster)[:msg]]
+      end
+
       return {
         succeeds: succeeds,
-        result: die_result
+        result: die_result,
+        messages: messages,
       }
     end
 
