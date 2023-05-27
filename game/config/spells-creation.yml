@@ -202,7 +202,7 @@ spells:
     school: Creation
   Stone Skin:
     armor: Stone Skin
-    available: true
+    available: false
     casting_time: 1 round
     damage_type: Bypass
     desc: Caster weaponizes and protects their own body by augmenting it with stone and rock.
