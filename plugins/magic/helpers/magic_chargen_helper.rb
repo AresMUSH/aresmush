@@ -244,7 +244,9 @@ module AresMUSH
       cg_spells = []
 
       spells.each do |k, v|
-        cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+        if k['available'] == true
+          cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+        end
       end
       cg_spells.sort_by { |s| [s[:school], s[:level]] }
     end
@@ -262,7 +264,9 @@ module AresMUSH
       cg_spells = []
 
       spells.each do |k, v|
-        cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+        if k['available'] == true
+          cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+        end
       end
       cg_spells.sort_by { |s| [s[:school], s[:level]] }
     end
