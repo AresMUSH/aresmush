@@ -46,7 +46,6 @@ website:
     menu:
     - title: Policies
       route: wiki-page
-      id: policies
       id: ooc:policies
     - title: Staff Team
       route: wiki-page
@@ -119,16 +118,16 @@ website:
     - title: Magic
       route: wiki-page
       id: magic
-    - title: '- Creation'
+    - title: "- Creation"
       route: school
       id: creation
-    - title: '- Entropy'
+    - title: "- Entropy"
       route: school
       id: entropy
-    - title: '- Arcane'
+    - title: "- Arcane"
       route: school
       id: arcane
-    - title: '- Aether'
+    - title: "- Aether"
       route: school
       id: aether
     - divider: true
@@ -329,7 +328,7 @@ website:
     tech: world:technology
     magical: magic
     blood_magic: magic:blood_magic
-    blood:  magic:blood_magic
+    blood: magic:blood_magic
     potion: magic:potions
     potions: magic:potions
     telekinesis: magic:telekinesis
@@ -364,12 +363,19 @@ website:
     combat_tactics: guide:combat_tactics
     combat_tactics_guide: guide:combat_tactics
     gm_guide: guide:gm_guide
-
   wiki_export_cron:
     hour:
     - 3
     minute:
     - 37
-  story: <div class="torn_container torn_left"><div></div> <div><p><a href="https://shatteredmu.com/forum/6/78">Changing of the Guard</a></p><p>It's been seventy years since the world Shattered, and the Cradle has been thriving for over five decades. The Wardens have grown with them, settling into their magic, their bond, and their sworn oath to protect the Cradle and its citizens.</p><p>Two months ago, the Wardens were shocked when Warden Commander Morrow and his bonded pegasus, Barak, rode into battle. Their deaths and the subsequent controversial election of Warden Commander Warner have thrown many Wardens into a state of uneasy change. Warner's views on the role of the Wardens in the Cradle is far different from Morrow's. What does this mean for the future of the Wardens?</p></div></div>
-
-
+  story: <div class="torn_container torn_left"><div></div> <div><p><a href="https://shatteredmu.com/forum/6/78">Changing
+    of the Guard</a></p><p>It's been seventy years since the world Shattered, and
+    the Cradle has been thriving for over five decades. The Wardens have grown with
+    them, settling into their magic, their bond, and their sworn oath to protect the
+    Cradle and its citizens.</p><p>Two months ago, the Wardens were shocked when Warden
+    Commander Morrow and his bonded pegasus, Barak, rode into battle. Their deaths
+    and the subsequent controversial election of Warden Commander Warner have thrown
+    many Wardens into a state of uneasy change. Warner's views on the role of the
+    Wardens in the Cradle is far different from Morrow's. What does this mean for
+    the future of the Wardens?</p></div></div>
+  hide_searchbox: false
