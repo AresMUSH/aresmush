@@ -31,7 +31,7 @@ module AresMUSH
         client.emit_success t('magic.removed_potion', :potion => potion_name, :target => target.name)
 
         other_client = Login.find_client(self.target)
-        message = t('magic.potion_has_been_removed', :name => enactor.name, :potion => potion_name)
+        message = t('magic.potion_has_been_removed', :name => enactor.name, :potion_name => potion_name)
         Login.emit_if_logged_in(self.target, message)
         Login.notify(self.target, :potion, message, nil)
       end
