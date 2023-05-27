@@ -218,13 +218,16 @@ module AresMUSH
 
     def self.cg_spells(char)
       level = Global.read_config("magic", "cg_max_spell_level")
-      spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
+      spells = Global.read_config("spells").values.select { |s| (s['level'] <= level )}
       spells = spells.select { |s| char.schools.include?(s['school'])} if !char.schools.empty?
 
       cg_spells = []
 
       spells.each do |k, v|
-        cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+        puts "AVAILABLE? #{k['available']}"
+        if k['available'] == true
+          cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+        end
       end
       cg_spells.sort_by { |s| [s[:school], s[:level]] }
     end
