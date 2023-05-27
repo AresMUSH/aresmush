@@ -21,12 +21,12 @@ module AresMUSH
         return t('magic.invalid_name') if !self.target
         return t('magic.not_spell') if !Magic.is_spell?(self.potion_name)
         return t('magic.not_potion') if !Magic.is_potion?(self.potion_name)
-        return t('magic.dont_have_potion') if !potion
+        return t('magic.dont_have_potion') if !self.potion
         return nil
       end
 
       def handle
-        potion.delete
+        self.potion.delete
         client.emit_success t('magic.removed_potion', :potion => potion_name, :target => target.name)
 
         other_client = Login.find_client(self.target)
