@@ -10,6 +10,7 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.target = Character.named(args.arg1)
         self.potion_name = titlecase_arg(args.arg2)
+        self.potion = Magic.find_potion_has(self.target, self.potion_name)
       end
 
       def check_can_set
@@ -20,14 +21,12 @@ module AresMUSH
         return t('magic.invalid_name') if !self.target
         return t('magic.not_spell') if !Magic.is_spell?(self.potion_name)
         return t('magic.not_potion') if !Magic.is_potion?(self.potion_name)
-        return t('magic.dont_have_potion') if !Magic.find_potion_has(self.target, self.potion_name)
+        return t('magic.dont_have_potion') if !potion
         return nil
       end
 
       def handle
-        potion = Magic.find_potion_has(enactor, self.potion_name)
         potion.delete
-
         client.emit_success t('magic.removed_potion', :potion => potion_name, :target => target.name)
 
         other_client = Login.find_client(self.target)
