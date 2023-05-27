@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Skills
     class AddSceneRollRequestHandler
       def handle(request)
-        puts request.args
         scene = Scene[request.args[:id]]
         enactor = request.enactor
         sender_name = request.args[:sender]
