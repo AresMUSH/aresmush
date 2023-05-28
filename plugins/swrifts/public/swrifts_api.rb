@@ -980,7 +980,7 @@ module AresMUSH
 			end
 
 			if (c_charhindpoints) #Is there perk points on the character?
-				trait = Swrifts.find_traits(char, 'charhindpoints')   #Calls find_traits in helpers.rb
+				trait = Swrifts.find_traits(char, 'perks')   #Calls find_traits in helpers.rb
 				trait.update(rating: c_charhindpoints)  #Update the Charhindpoints
 				dbgstr << " Perks: #{c_charhindpoints}"
 			end

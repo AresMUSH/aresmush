@@ -25,7 +25,7 @@ module AresMUSH
 
 		attribute :swrifts_iconicf
 		attribute :swrifts_race
-		attribute :swrifts_charhindpoints
+		attribute :swrifts_perks
 
 		before_delete :delete_swrifts_chargen
 
