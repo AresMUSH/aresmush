@@ -18,7 +18,7 @@ module AresMUSH
 			# return (systemhash.inspect)
 			#return (system_name)
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
-		  #return (newsh)
+		  	#return (newsh)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
 			#return ( group.inspect );
 			if (!group) #If the feature has been entered incorrectly in the yml file, do nothing with it.
