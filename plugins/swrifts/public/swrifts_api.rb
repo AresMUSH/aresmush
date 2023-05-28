@@ -321,7 +321,7 @@ module AresMUSH
 	# charhindpoints = 4
 
 	#Get the Perks chosen for the character
-	charperks = char.swrifts_charperks
+	charperks = char.swrifts_perks
 
 
 
