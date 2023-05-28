@@ -977,7 +977,7 @@ module AresMUSH
 			end
 
 			if (c_charhindpoints) #Is there perk points on the character?
-				ss = Swrifts.add_feature(char, SwriftsCharPerks, "perks", c_charhindpoints) #Call the add_feature function helpers.rb
+				char.update(swrifts_perkpoints: c_charhindpoints )
 				dbgstr << " Perks: #{c_charhindpoints}"
 			end
 
