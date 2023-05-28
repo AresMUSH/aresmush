@@ -347,7 +347,7 @@ module AresMUSH
 		  syshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
-      	  charperkpoints: charhindpoints,
+      	  charperkpoints: charperkpoints,
 		  charperks: charperks
 		}
 	end
