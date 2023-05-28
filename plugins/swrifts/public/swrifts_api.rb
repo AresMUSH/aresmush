@@ -317,7 +317,7 @@ module AresMUSH
 		# hjtables = hjtables.inspect
 
     #Get the Perk points set on the character
-    charperkpoints = char.swrifts_charperks
+    charperkpoints = char.swrifts_perkpoints
 	# charhindpoints = 4
 
 
