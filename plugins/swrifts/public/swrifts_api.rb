@@ -252,7 +252,6 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits
 		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits
-		rawcharperks = acl_return_traits(swriftstraits,'perks') #Get the character perk total from the traits.
 
 		cgedges1 = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
@@ -318,11 +317,9 @@ module AresMUSH
 		# hjtables = hjtables.inspect
 
     #Get the Perk points set on the character
-    charperkpoints = char.swrifts_perks
+    charperkpoints = char.swrifts_charperks
 	# charhindpoints = 4
 
-	#Get the Perks chosen for the character
-	charperks = rawcharperks
 
 
 
@@ -348,8 +345,7 @@ module AresMUSH
 		  syshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
-      	  charperkpoints: charperkpoints,
-		  charperks: charperks
+      	  charperkpoints: charperkpoints
 		}
 	end
 
