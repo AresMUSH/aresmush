@@ -829,18 +829,18 @@ module AresMUSH
 		return (cifstring);
 	end
 
-	# def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
-	# 	txtstring = []
-	# 	hjstr = []
-	# 	tempcifstring =  Hash.new
+	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
+	 	txtstring = []
+	 	hjstr = []
+	 	tempcifstring =  Hash.new
 
-	# 	hjstring = hjtables.to_a.sort_by { |a| a.name }
-	# 		.each_with_index
-	# 			.map do |a, i|
-	# 				tempcifstring[a.name] = {table: a.table, name: a.name}
-	# 			end
-	# 	return (tempcifstring)
-	# end
+	 	hjstring = hjtables.to_a.sort_by { |a| a.name }
+	 		.each_with_index
+	 			.map do |a, i|
+	 				tempcifstring[a.name] = {table: a.table, name: a.name}
+	 			end
+	 	return (tempcifstring)
+	 end
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
 		traitnamedc = traitname.downcase
