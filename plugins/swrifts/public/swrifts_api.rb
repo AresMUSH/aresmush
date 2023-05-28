@@ -252,6 +252,7 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits
 		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits
+		rawcharperks = acl_return_traits(swriftstraits,'perks') #Get the character perk total from the traits.
 
 		cgedges1 = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
@@ -317,11 +318,11 @@ module AresMUSH
 		# hjtables = hjtables.inspect
 
     #Get the Perk points set on the character
-    charperkpoints = char.swrifts_perks
+    #charperkpoints = char.swrifts_perks
 	# charhindpoints = 4
 
 	#Get the Perks chosen for the character
-	charperks = char.swrifts_perks
+	charperks = rawcharperks
 
 
 
@@ -842,7 +843,7 @@ module AresMUSH
 	 	return (tempcifstring)
 	 end
 
-	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
+	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits or perks.
 		traitnamedc = traitname.downcase
 		txtstring = ''
 		st.to_a.sort_by { |a| a.name }
