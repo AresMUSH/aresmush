@@ -976,12 +976,11 @@ module AresMUSH
   					edge_name = "#{value['name']}" #set the name to all lowercase
   					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
   					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
-					dbgstr << "Perks: #{c_charhindpoints}"
   				end
 			end
 
 			if (c_charhindpoints) #Is there perk points on the character?
-				dbgstr << "Perks: #{c_charhindpoints}"
+				dbgstr << " Perks: #{c_charhindpoints}"
 			end
 
 			if (c_hj) #If there are heroes journey tables, save them.
