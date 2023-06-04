@@ -248,6 +248,7 @@ module AresMUSH
 		# Get the Characters Traits
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		swrifts_race = Global.read_config('swrifts', 'races')
+		swrifts_perks = Global.read_config('swrifts', 'perks')
 
 		swriftstraits = char.swrifts_traits
 		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
@@ -345,7 +346,8 @@ module AresMUSH
 		  syshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
-      	  charperkpoints: charperkpoints
+      	  charperkpoints: charperkpoints,
+		  swperks: swrifts_perks
 		}
 	end
 
