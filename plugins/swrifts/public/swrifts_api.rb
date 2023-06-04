@@ -975,10 +975,10 @@ module AresMUSH
   				end
 			end
 
-			if (c_charhindpoints) #Is there perk points on the character?
-				char.update(swrifts_perkpoints: c_charhindpoints )
-				dbgstr << " Perks: #{c_charhindpoints}"
-			end
+			#if (c_charhindpoints) #Is there perk points on the character?
+			#	char.update(swrifts_perkpoints: c_charhindpoints )
+			#	dbgstr << " Perks: #{c_charhindpoints}"
+			#end
 
 			#if (c_charperkpoints) #If there are heroes journey tables, save them.
 				#c_charperkpoints.each do |key, value| #cycle through each one
