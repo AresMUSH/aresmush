@@ -924,7 +924,7 @@ module AresMUSH
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
         c_charhindpoints = chargen_data[:custom][:charhindpoints]
-		c_charperkpoints = chargen_data[:custom][:charperkpoints]
+		#c_charperkpoints = chargen_data[:custom][:charperkpoints]
 		c_hj = chargen_data[:custom][:hjtables]
 
 
@@ -975,10 +975,10 @@ module AresMUSH
   				end
 			end
 
-			#if (c_charhindpoints) #Is there perk points on the character?
-			#	char.update(swrifts_perkpoints: c_charhindpoints )
-			#	dbgstr << " Perks: #{c_charhindpoints}"
-			#end
+			if (c_charhindpoints) #Is there perk points on the character?
+				char.update(swrifts_perkpoints: c_charhindpoints )
+				dbgstr << " Perks: #{c_charhindpoints}"
+			end
 
 			#if (c_charperkpoints) #If there are heroes journey tables, save them.
 				#c_charperkpoints.each do |key, value| #cycle through each one
