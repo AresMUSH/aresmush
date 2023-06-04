@@ -317,12 +317,8 @@ module AresMUSH
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
 
-    #Get the Perk points set on the character
-    charperkpoints = char.swrifts_perkpoints
-	# charhindpoints = 4
-
-
-
+		#Get the Perk points set on the character
+		charperkpoints = char.swrifts_perkpoints
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -928,6 +924,7 @@ module AresMUSH
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
         c_charhindpoints = chargen_data[:custom][:charhindpoints]
+		c_charperkpoints = chargen_data[:custom][:charperkpoints]
 		c_hj = chargen_data[:custom][:hjtables]
 
 
@@ -983,6 +980,20 @@ module AresMUSH
 				dbgstr << " Perks: #{c_charhindpoints}"
 			end
 
+			#if (c_charperkpoints) #If there are heroes journey tables, save them.
+				#c_charperkpoints.each do |key, value| #cycle through each one
+				#	element_name = "#{value['name']}" #Raise An Attribute
+				#	element_table = "#{value['cost']}" #cost
+				#	if (element_table) != 'None'
+				#		element_desc = Swrifts.hj_desc(char, element_name, element_table)
+				#		hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
+				#		hj_element.update(table: element_table)
+				#		hj_element.update(description: element_desc)
+				#		dbgstr << "Charperkpoints: #{element_name}, #{element_table}, #{element_desc}"
+				#	end
+				#end
+			#end
+			
 			if (c_hj) #If there are heroes journey tables, save them.
 				c_hj.each do |key, value| #cycle through each one
 					element_name = "#{value['name']}" #hj1
