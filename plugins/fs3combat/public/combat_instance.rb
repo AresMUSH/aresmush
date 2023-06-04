@@ -7,6 +7,7 @@ module AresMUSH
     attribute :turn_in_progress, :type => DataType::Boolean
     attribute :first_turn, :type => DataType::Boolean, :default => true
     attribute :team_targets, :type => DataType::Hash, :default => {}
+    attribute :team_names, :type => DataType::Hash, :default => {}
     attribute :everyone_posed, :type => DataType::Boolean, :default => false
     attribute :messages, :type => DataType::Array, :default => []
     
@@ -63,6 +64,10 @@ module AresMUSH
       end
       Global.logger.debug msg
       self.debug_log.add msg
+    end
+    
+    def team_name(number)
+      (self.team_names || {})["#{number}"]
     end
   end
 end

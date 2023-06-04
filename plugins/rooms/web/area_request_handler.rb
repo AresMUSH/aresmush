@@ -17,36 +17,13 @@ module AresMUSH
         if (edit_mode && !Rooms.can_build?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
-                
-        if (edit_mode) 
-           desc = Website.format_input_for_html(area.description)
-           summary = Website.format_input_for_html(area.summary)
-        else
-          desc = area.description ? Website.format_markdown_for_html(area.description) : ""
-          summary = area.summary ? Website.format_markdown_for_html(area.summary) : ""
-        end
         
         {
-          area: { 
-            full_name: area.full_name,
-            name: area.name,
-            id: area.id,
-            parent: area.parent ? { name: area.parent.name, id: area.parent.id } : nil,
-            summary: summary,
-            description: desc,
-            rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| {
-              name: r.name,
-              id: r.id,
-              name_and_area: r.name_and_area,
-              summary: edit_mode ? Website.format_input_for_html(r.shortdesc) : Website.format_markdown_for_html(r.shortdesc),
-            }},
+          area: Rooms.build_area_web_data(area, edit_mode),
           children: area.sorted_children.map { |a| { id: a.id, name: a.name } },
-        },
           can_manage: Rooms.can_build?(enactor),
           all_areas: Rooms.area_directory_web_data
-          
         }
-        
       end
     end
   end

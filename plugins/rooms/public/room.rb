@@ -4,6 +4,7 @@ module AresMUSH
     attribute :room_grid_y
     attribute :room_type, :default => "IC"
     attribute :room_is_foyer, :type => DataType::Boolean
+    attribute :room_icon
          
     index :room_type
         

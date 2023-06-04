@@ -1,5 +1,3 @@
-$:.unshift File.join(File.dirname(__FILE__), *%w[.. engine])
-
 require "aresmush"
 
 bootstrapper = AresMUSH::Bootstrapper.new

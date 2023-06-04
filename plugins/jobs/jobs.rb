@@ -57,6 +57,8 @@ module AresMUSH
           return JobsFilterCmd
         when "mail"
           return JobMailCmd
+        when "merge"
+          return JobMergeCmd
         when "new"
           return JobsNewCmd
         when "purge"

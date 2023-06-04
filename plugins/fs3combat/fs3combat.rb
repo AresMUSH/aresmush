@@ -128,6 +128,8 @@ module AresMUSH
            return CombatTargetCmd
          when "team"
            return CombatTeamCmd
+         when "teamname"
+           return CombatTeamnameCmd
          when "transfer"
            return CombatTransferCmd
          when "types"

@@ -61,6 +61,7 @@ This is a quick reference for combat organizer commands.
 `combat/targets` - See a breakdown of who's targeting whom.
 
 `combat/team <list of names>=<team#>` - Switches teams. 
+`combat/teamname <team>=<name>` - Names a team. Leave blank to clear the name.
 `combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 
     target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target 
     people on teams 1 and 4.

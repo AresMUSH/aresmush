@@ -180,7 +180,7 @@ module AresMUSH
         end
       end
       raise "File #{search_name} not found in editable file list."
-    end
+    end    
     
     def self.editable_code_files
       web_code_path = File.join(AresMUSH.website_code_path, 'app')
@@ -245,6 +245,8 @@ module AresMUSH
             'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
             'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
             'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+            'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
+            
           }
         },
         
