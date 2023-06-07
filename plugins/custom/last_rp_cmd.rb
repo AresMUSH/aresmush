@@ -5,7 +5,7 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        client.emit "Date | Name | Scene Title | Total Scenes"
+        client.emit "Date | Name | Handle | Scene Title | Total Scenes"
         chars = Chargen.approved_chars
         chars.each do |c|
           last_scene = c.scenes_starring.sort_by { |s| s.created_at }.reverse[0]
