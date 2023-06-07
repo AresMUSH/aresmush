@@ -87,11 +87,11 @@ magic:
     9: 75
     10: 100
   fatigue_mod:
-    Mild:
-    Moderate:
-    Severe:
-    Extreme:
-    Total:
+    Mild: -1
+    Moderate: -2
+    Severe: -4
+    Extreme: -7
+    Total: -100
   fatigue_effect:
     None: "They feel well-rested and capable."
     Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more
