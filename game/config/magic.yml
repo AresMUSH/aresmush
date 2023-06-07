@@ -77,15 +77,21 @@ magic:
       message: "Equipped a magic item."
   energy_cost_by_level:
     1: 2
-    2: 3
-    3: 5
-    4: 8
-    5: 10
-    6: 15
+    2: 6
+    3: 8
+    4: 10
+    5: 15
+    6: 20
     7: 30
-    8: 70
-    9: 90
-    10: 110
+    8: 50
+    9: 75
+    10: 100
+  fatigue_mod:
+    Mild: -1
+    Moderate: -2
+    Severe: -4
+    Extreme: -7
+    Total: -100
   fatigue_effect:
     None: "They feel well-rested and capable."
     Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more

@@ -16,7 +16,7 @@ module AresMUSH
         current = char.magic_energy
         total = char.total_magic_energy
         puts "Current: #{current} Total: #{total}"
-        ((current.to_f/total.to_f)*100).to_i
+        ((current.to_f/total.to_f)*100).round
       end
 
       def spell_fatigue_degree
