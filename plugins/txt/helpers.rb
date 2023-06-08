@@ -1,6 +1,19 @@
 module AresMUSH
     module Txt
 
+      def self.notify_if_portal_pose(room, char)
+        poses = room.sorted_pose_order
+
+        if poses[0][0] != char.name
+          is_in_room = room.scene.room && room.scene.room == char.room
+          client = Login.find_client(char)
+          message = t('txt.pose_in_portal', :id => room.scene.id)
+          client.emit_ooc message
+          Login.notify(char, :scene, message, room.scene.id, "", !is_in_room)
+        end
+
+      end
+
       def self.format_txt_indicator(char, names)
         t('txt.txt_indicator',
        :start_marker => Global.read_config("txt", "txt_start_marker") || "(", :end_marker => Global.read_config("txt", "txt_end_marker") || ")",  :preface => Global.read_config("txt", "txt_preface"),  :recipients => names, :color => Txt.txt_color(char) )

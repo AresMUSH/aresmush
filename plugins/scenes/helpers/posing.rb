@@ -32,6 +32,15 @@ module AresMUSH
       if (is_ooc)
         color = Global.read_config("scenes", "ooc_color")
         formatted_pose = "#{color}<OOC>%xn #{pose}"
+
+        if room.scene.scene_type == "Text"
+          room.scene.participants.each do |char|
+            if char.room.scene.nil? || (!char.room.scene.nil? && room.scene.id != char.room.scene.id)
+              Txt.notify_if_portal_pose(room, char)
+            end
+          end
+        end
+
       end
       if (system_pose)
         line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
@@ -79,6 +88,15 @@ module AresMUSH
     def self.notify_next_person(room)
 
       poses = room.sorted_pose_order
+
+      if room.scene.scene_type == "Text" && poses.count < 2
+        room.scene.participants.each do |char|
+          if char.room.scene.nil? || (!char.room.scene.nil? && room.scene.id != char.room.scene.id)
+            Txt.notify_if_portal_pose(room, char)
+          end
+        end
+      end
+
       return if poses.count < 2
 
       if (room.pose_order_type == '3-per')
