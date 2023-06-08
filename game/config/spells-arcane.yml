@@ -400,7 +400,7 @@ spells:
 # LEVEL 6
 #---------------
   Group Awaken Terror:
-    available: true
+    available: false
     casting_time: 1 round
     damage_type: Psionic
     desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
@@ -413,7 +413,7 @@ spells:
     rounds: 2
     roll: true
     school: Arcane
-    target_num: 3
+    target_num: 2
     weapon: Stun (Arcane)
   Group Dampen Magic:
     available: true
@@ -442,6 +442,22 @@ spells:
     roll: true
     school: Arcane
     target_num: 1
+  Terrify:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
+    duration: 2 rounds
+    effect: Stun
+    is_stun: true
+    level: 6
+    name: Terrify
+    range: Short
+    rounds: 2
+    roll: true
+    school: Arcane
+    target_num: 2
+    weapon: Stun (Arcane)
 #---------------
 # LEVEL 7
 #---------------

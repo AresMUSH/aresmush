@@ -364,7 +364,7 @@ spells:
     name: Paralyze
     range: Long
     rounds: 2
-    target_num: 2
+    target_num: 1
     school: Entropy
     weapon: Stun (Entropy)
   Heavy:
