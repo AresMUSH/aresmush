@@ -6,6 +6,7 @@ en:
       txt_no_scene_id_nick: "%{txt} %xh%w%{sender}:%xn %{message} %xx%xh(%{sender_char})%xn"
       txt_with_scene_id: "%{txt} %xh%xw%{sender}:%xn %{message} %xx%xh(Scene %{scene_id})%xn"
 
+      pose_in_portal: "There is a pose or OOC comment in text [scene %{id}](https://shatteredmu.com/scene/%{id})."
 
       txt_target_missing: "To whom shall I send this message? See `help txt`."
       cant_txt_ignored: "You can't txt %{names} because you're on their ignore list."
