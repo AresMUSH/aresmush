@@ -64,10 +64,11 @@ demographics:
       noun: person
   groups:
     Organization:
-      desc: All characters will be Wardens.
+      desc: All first characters must be Wardens. Secondary alts may be weyr staff.
       wiki: ''
       values:
         Warden: Protect the Cradle.
+        Weyr Staff: Work in the weyr.
         Other: NPCs.
     Mythic:
       wiki: ''
