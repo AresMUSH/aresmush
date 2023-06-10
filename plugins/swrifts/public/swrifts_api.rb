@@ -853,13 +853,13 @@ module AresMUSH
 
 		txtstring = []
 		perkstr = []
-		tempcperkstring =  Hash.new
+		tempperkstring =  Hash.new
 		x = 0
 
 		perkstring = perktable.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i|
-					tempcperkstring[x+1] = {name: a.name, cost: a.cost}
+					tempperkstring[x+1] = {name: a.name, cost: a.cost}
 				end
 		return (tempperkstring)
 	end	 
