@@ -977,6 +977,7 @@ module AresMUSH
 
 			if (c_charhindpoints) #Is there perk points on the character?
 				char.update(swrifts_perkpoints: c_charhindpoints )
+				char.update(swrifts_charhindpoints: c_charhindpoints )				
 				dbgstr << " Perks: #{c_charhindpoints}"
 			end
 
