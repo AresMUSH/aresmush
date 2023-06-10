@@ -862,7 +862,7 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i|
 					ctr = x+1
-					perkname = "Perk "+ctr
+					perkname = "Perk #{ctr}"
 					tempperkstring[ctr] = {name: a.name, cost: a.cost, perknumber: ctr }
 				end
 		return (tempperkstring)
