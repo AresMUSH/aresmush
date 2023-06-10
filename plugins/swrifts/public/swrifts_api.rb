@@ -798,7 +798,9 @@ module AresMUSH
 		return (cgedgearray)
 	end
 
-  def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+  def self.acl_get_hj_slots(swrifts_iconicf, charicf) 
+		#swrifts_icf is the system icf's
+		#charicf is the one selected by the player
 
 		# attribute :name #hj1, hj2, etc.
 		# attribute :rating, :type => DataType::Integer #the random roll
@@ -859,7 +861,9 @@ module AresMUSH
 		perkstring = perktable.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i|
-					tempperkstring[x+1] = {name: a.name, cost: a.cost}
+					ctr = x+1
+					perkname = "Perk "+ctr
+					tempperkstring[ctr] = {name: a.name, cost: a.cost, perknumber: ctr }
 				end
 		return (tempperkstring)
 	end	 
