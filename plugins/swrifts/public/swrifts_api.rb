@@ -318,8 +318,12 @@ module AresMUSH
 		# hjtables = hjtables.inspect
 
 		#Get the Perk points set on the character
-		charperkpoints = char.swrifts_perkpoints
 		charhindpoints = char.swrifts_perkpoints
+		
+		#Get the Perks saved to the character
+		charperks = char.swrifts_charperks
+		charperktable = acl_get_charperks(charperks)
+		charperks = ("{charperktable}")
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -343,8 +347,8 @@ module AresMUSH
 		  syshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
-      	  charperkpoints: charperkpoints,
-		  charhindpoints: charhindpoints,
+      	  charperks: charperks, #The perks set on the character
+		  charhindpoints: charhindpoints, #The number perks points calculated from the hinderances selected
 		  swperks: swrifts_perks
 		}
 	end
@@ -838,6 +842,27 @@ module AresMUSH
 	 			end
 	 	return (tempcifstring)
 	 end
+
+	 def self.acl_get_charperks(perktable) 
+		#perktable is the Perks set on the char
+		#swperks is the system perks
+		### End array should look like: ###
+		#perkname: An integer
+		#name: The name of the Perk
+		#cost: the cost of the perk
+
+		txtstring = []
+		perkstr = []
+		tempcperkstring =  Hash.new
+		x = 0
+
+		perkstring = perktables.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i|
+					tempcperkstring[x+1] = {name: a.name, cost: a.cost}
+				end
+		return (tempperkstring)
+	end	 
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits or perks.
 		traitnamedc = traitname.downcase
