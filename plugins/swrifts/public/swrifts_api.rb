@@ -319,7 +319,7 @@ module AresMUSH
 
 		#Get the Perk points set on the character
 		charperkpoints = char.swrifts_perkpoints
-		charhindpoints = char.swrifts_charhindpoints
+		charhindpoints = char.swrifts_perkpoints
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -979,7 +979,7 @@ module AresMUSH
 
 			if (c_charhindpoints) #Is there perk points on the character?
 				char.update(swrifts_perkpoints: c_charhindpoints )
-				char.update(swrifts_charhindpoints: c_charhindpoints )				
+				#dchar.update(swrifts_charhindpoints: c_charhindpoints )				
 				dbgstr << " Perks: #{c_charhindpoints}"
 			end
 
