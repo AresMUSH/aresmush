@@ -312,7 +312,7 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, charicf, charrace, 'hind')
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
-		#hjslots = ("#{hjslots}");
+		hjslots = ("#{hjslots}");
 
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
@@ -1008,19 +1008,19 @@ module AresMUSH
 				dbgstr << " Perks: #{c_charhindpoints}"
 			end
 
-			#if (c_charperkpoints) #If there are heroes journey tables, save them.
-				#c_charperkpoints.each do |key, value| #cycle through each one
-				#	element_name = "#{value['name']}" #Raise An Attribute
-				#	element_table = "#{value['cost']}" #cost
-				#	if (element_table) != 'None'
-				#		element_desc = Swrifts.hj_desc(char, element_name, element_table)
-				#		hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
-				#		hj_element.update(table: element_table)
-				#		hj_element.update(description: element_desc)
-				#		dbgstr << "Charperkpoints: #{element_name}, #{element_table}, #{element_desc}"
-				#	end
-				#end
-			#end
+			if (c_charperkpoints) #If there are heroes journey tables, save them.
+				c_charperkpoints.each do |key, value| #cycle through each one
+					element_name = "#{value['name']}" #Raise An Attribute
+					element_table = "#{value['cost']}" #cost
+					if (element_table) != 'None'
+						element_desc = Swrifts.hj_desc(char, element_name, element_table)
+						hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
+						hj_element.update(table: element_table)
+						hj_element.update(description: element_desc)
+						dbgstr << "Charperkpoints: #{element_name}, #{element_table}, #{element_desc}"
+					end
+				end
+			end
 			
 			if (c_hj) #If there are heroes journey tables, save them.
 				c_hj.each do |key, value| #cycle through each one
