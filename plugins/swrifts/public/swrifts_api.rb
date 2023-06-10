@@ -319,6 +319,7 @@ module AresMUSH
 
 		#Get the Perk points set on the character
 		charperkpoints = char.swrifts_perkpoints
+		charhindpoints = char.swrifts_charhindpoints
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -343,6 +344,7 @@ module AresMUSH
 		  hjslots: hjslots,
 		  hjtables: hjtables,
       	  charperkpoints: charperkpoints,
+		  charhindpoints: charhindpoints,
 		  swperks: swrifts_perks
 		}
 	end
