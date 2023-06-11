@@ -212,7 +212,7 @@ module AresMUSH
 		include ObjectModel
 		attribute :name #Raise An Edge etc.
 		attribute :cost, :type => DataType::Integer #how many perk points it is
-		attribute :perknumber, type => DataType::Integer #which perk number is this
+		attribute :perknumber, :type => DataType::Integer #which perk number is this
 		reference :character, "AresMUSH::Character"		
 		index :name
 	end	
