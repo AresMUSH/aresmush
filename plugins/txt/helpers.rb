@@ -4,7 +4,7 @@ module AresMUSH
       def self.notify_if_portal_pose(room, char)
         poses = room.sorted_pose_order
 
-        if poses[0][0] != char.name
+        if poses.empty? || poses[0][0] != char.name
           is_in_room = room.scene.room && room.scene.room == char.room
           client = Login.find_client(char)
           message = t('txt.pose_in_portal', :id => room.scene.id)
