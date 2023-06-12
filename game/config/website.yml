@@ -8,7 +8,7 @@ website:
       type: portal
       message: Edited a wiki page.
   allow_html_in_markdown: true
-  auto_wiki_export: true
+  auto_wiki_export: false
   character_gallery_group: Organization
   character_gallery_subgroup: Mythic
   left_sidebar: false
