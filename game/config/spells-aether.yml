@@ -100,7 +100,21 @@ spells:
     name: Aeromancy
     range: Short
     roll: true
+    school:
+  Flame Dart:
+    available: true
+    casting_time: 1 round
+    damage_type: Fire
+    desc: Launches a single small, flaming projectile at a target, doing damage.
+    fs3_attack: true
+    effect: Damage
+    level: 3
+    line_of_sight: true
+    name: Flame Dart
+    range: Short
     school: Aether
+    target_num: 1
+    weapon: Flame Dart
   Pyromancy:
     area: 5 cubic feet
     available: true
@@ -177,6 +191,20 @@ spells:
     target_num: 1
     weapon_specials: Fire
     weapon: Spell
+  Lightning Ball:
+    available: true
+    casting_time: 1 round
+    damage_type: Physical
+    desc: Send a small sphere of electrical energy at a target, doing damage.
+    fs3_attack: true
+    effect: Damage
+    level: 4
+    line_of_sight: true
+    name: Lightning Ball
+    range: Short
+    school: Aether
+    target_num: 1
+    weapon: Lightning Ball
   Lightning Weapon:
     available: true
     casting_time: 1 round
