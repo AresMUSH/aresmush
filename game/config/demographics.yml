@@ -80,6 +80,7 @@ demographics:
         Pantherine: A great winged cat.
         Lupine: An enormous winged wolf.
         Dragon: Four legs, leathery wings, and a tail.
+        None: Not bonded to any mythic.
   help_text:
     played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
