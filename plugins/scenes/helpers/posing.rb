@@ -33,7 +33,7 @@ module AresMUSH
         color = Global.read_config("scenes", "ooc_color")
         formatted_pose = "#{color}<OOC>%xn #{pose}"
 
-        if room.scene.scene_type == "Text"
+        if room.scene && room.scene.scene_type == "Text"
           room.scene.participants.each do |char|
             if char.room.scene.nil? || (!char.room.scene.nil? && room.scene.id != char.room.scene.id)
               Txt.notify_if_portal_pose(room, char)
