@@ -248,8 +248,6 @@ module AresMUSH
       return 0 if armor.blank?
       pen = FS3Combat.weapon_stat(weapon, "penetration")
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
-      puts "~~~~~~~~~~~~#{combatant.name}'s armor is #{combatant.armor}: pen #{pen} protect #{protect}"
-
 
       # Armor doesn't cover this hit location
       return 0 if !protect
@@ -369,7 +367,6 @@ module AresMUSH
       else
         hit = true
       end
-      puts "++HIT: #{hit} MSG: #{message}+++"
       stopped_by_shield = Magic.determine_margin_with_shield(target, combatant, weapon, attack_roll, defense_roll)
       if stopped_by_shield && hit == true
         hit = stopped_by_shield[:hit]
@@ -490,7 +487,11 @@ module AresMUSH
         original_target = target
         target = hit_expanded_mount_or_rider[:target]
       end
-      attack_name = ExpandedMounts.mounted_names(attacker)
+      Global.logger.debug "++ Attacker #{attacker}"
+      if attacker
+        attack_name = ExpandedMounts.mounted_names(attacker)
+      end
+      Global.logger.debug "ATTACK NAME: #{attack_name}"
       #/EM changes
 
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
