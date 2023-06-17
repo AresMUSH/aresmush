@@ -279,13 +279,13 @@ spells:
     casting_time: 1 round
     defense_mod: 0
     desc: "The caster resets all modifying magic on a target, restoring their attack, defense, initiative, and spell casting abilities to their natural state."
-    duration: 2 rounds
     effect: Debuff
     init_mod: 0
     level: 4
     line_of_sight: true
     name: Reset Target
     range: Short
+    rounds: 100
     school: Arcane
     spell_mod: 0
     target_num: 1

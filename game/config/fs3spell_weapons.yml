@@ -21,6 +21,18 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     # LEVEL 3
+    Flame Dart:
+      description: Level 3 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 15
+      penetration: 3
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Fire
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
     Ice Talons:
       description: Level 3 Entropy spell
       is_magic: true
@@ -72,6 +84,18 @@ fs3combat:
       init_mod: 0
       special_group: Spell
       magic_damage_type: Cold
+    Lightning Ball:
+      description: Level 4 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 0
+      penetration: 6
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
     Stone Skin:
       description: Level 4 Creation spell
       is_magic: true

@@ -20,7 +20,9 @@ module AresMUSH
       return magic * 10
     end
 
-
+    def combatant
+      Combatant.find(npc_id: self.id).first
+    end
 
   end
 end
