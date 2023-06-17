@@ -54,12 +54,12 @@ fs3combat:
       hitloc: Dragon
       defense_skill: Reflexes
     Griffon:
-      weapon: Talons
+      weapon: Sharp Talons
       armor: Tough Hide
       hitloc: Winged Mythic
       defense_skill: Reflexes
     Roc:
-      weapon: Talons
+      weapon: Sharp Talons
       armor: Tough Hide
       hitloc: Bird
       defense_skill: Reflexes
