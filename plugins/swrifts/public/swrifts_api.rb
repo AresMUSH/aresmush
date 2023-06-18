@@ -890,7 +890,8 @@ module AresMUSH
 			k.each do |k1,v1|
 				tempstr << {"#{k1}": v1}
 			end
-			tempperkstring[x] = tempstr
+			perkstr.merge(tempstr)
+			tempperkstring[x] = perkstr
 		end
 
 		return (tempperkstring)
