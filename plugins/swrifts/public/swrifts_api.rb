@@ -887,8 +887,8 @@ module AresMUSH
 		
 		swperks.each do |k,v|
 			tempstr = []
-			k.each_with_index do |k1,v1|
-				tempstr << {k1: k1.name}
+			k.each do |k1,v1|
+				tempstr << {"#{k1}": v1}
 			end
 			tempperkstring[x] = tempstr
 		end
