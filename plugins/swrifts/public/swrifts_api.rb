@@ -879,7 +879,7 @@ module AresMUSH
 			#end
 		#return (cifstring);		
 
-		tmpstr = ''
+		tempstr = ''
 		txtstring = []
 		perkstr = []
 		tempperkstring =  Hash.new
