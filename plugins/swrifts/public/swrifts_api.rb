@@ -845,7 +845,7 @@ module AresMUSH
 	 	return (tempcifstring)
 	 end
 
-	 def self.acl_get_charperks(swperks, cghjtables, perktable) 
+	 def self.acl_get_charperks(swperks, hjtables, perktable) 
 		#perktable is the Perks set on the char
 		#swperks is the system perks
 		### End array should look like: ###
@@ -853,7 +853,7 @@ module AresMUSH
 		#name: The name of the Perk
 		#cost: the cost of the perk
 
-		return (cghjtables)
+		return (hjtables)
 		txtstring = []
 		perkstr = []
 		tempperkstring =  Hash.new
