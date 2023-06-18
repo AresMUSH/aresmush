@@ -890,7 +890,6 @@ module AresMUSH
 				.map do |k1,v1|
 					tempstr << {name: k1.name, cost: k1.cost}
 				end
-			end
 			tempperkstring[x] = tempstr
 		end
 		#perkstring = swperks.to_a.sort_by { |a| a.name }
