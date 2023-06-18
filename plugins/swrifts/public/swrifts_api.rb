@@ -888,6 +888,7 @@ module AresMUSH
 			k.each do |k1,v1|
 				tempstr << "#{k1}: #{v1}"
 			end
+			tempperkstring[x] = tempstr
 		end
 		#perkstring = swperks.to_a.sort_by { |a| a.name }
 		#	.each_with_index
@@ -896,7 +897,7 @@ module AresMUSH
 		#			perkname = "Perk #{ctr}"
 		#			tempperkstring[perkname] = {name: a.name, cost: a.cost, perknumber: ctr }
 		#		end
-		return (tempstr)
+		return (tempperkstring)
 	end	 
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits or perks.
