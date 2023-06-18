@@ -313,7 +313,7 @@ module AresMUSH
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
 		#hjslots = ("#{hjslots}");
-		
+
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
 
@@ -322,7 +322,7 @@ module AresMUSH
 		
 		#Get the Perks saved to the character
 		charperks = char.swrifts_charperks
-		charperktable = acl_get_charperks(charperks)
+		charperktable = acl_get_charperks(swrifts_perks, charperks)
 		charperks = ("#{charperktable}")
 
 		return {
@@ -845,7 +845,7 @@ module AresMUSH
 	 	return (tempcifstring)
 	 end
 
-	 def self.acl_get_charperks(perktable) 
+	 def self.acl_get_charperks(swperks, perktable) 
 		#perktable is the Perks set on the char
 		#swperks is the system perks
 		### End array should look like: ###
@@ -858,12 +858,12 @@ module AresMUSH
 		tempperkstring =  Hash.new
 		x = 0
 
-		perkstring = perktable.to_a.sort_by { |a| a.name }
+		perkstring = swperks.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i|
 					ctr = x+1
 					perkname = "Perk #{ctr}"
-					tempperkstring[ctr] = {name: a.name, cost: a.cost, perknumber: ctr }
+					tempperkstring[perkname] = {name: a.name, cost: a.cost, perknumber: ctr }
 				end
 		return (tempperkstring)
 	end	 
