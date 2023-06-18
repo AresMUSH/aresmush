@@ -853,6 +853,7 @@ module AresMUSH
 		#name: The name of the Perk
 		#cost: the cost of the perk
 
+		return (swperks)
 		txtstring = []
 		perkstr = []
 		tempperkstring =  Hash.new
