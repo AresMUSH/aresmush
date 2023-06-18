@@ -322,7 +322,7 @@ module AresMUSH
 		
 		#Get the Perks saved to the character
 		charperks = char.swrifts_charperks
-		charperktable = acl_get_charperks(swrifts_perks, charperks)
+		charperktable = acl_get_charperks(swrifts_perks, cghjtables, charperks)
 		charperks = ("#{charperktable}")
 
 		return {
@@ -845,7 +845,7 @@ module AresMUSH
 	 	return (tempcifstring)
 	 end
 
-	 def self.acl_get_charperks(swperks, perktable) 
+	 def self.acl_get_charperks(swperks, cghjtables, perktable) 
 		#perktable is the Perks set on the char
 		#swperks is the system perks
 		### End array should look like: ###
@@ -853,7 +853,7 @@ module AresMUSH
 		#name: The name of the Perk
 		#cost: the cost of the perk
 
-		return (swperks)
+		return (cghjtables)
 		txtstring = []
 		perkstr = []
 		tempperkstring =  Hash.new
