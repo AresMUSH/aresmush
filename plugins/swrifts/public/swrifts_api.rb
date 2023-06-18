@@ -312,8 +312,8 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, charicf, charrace, 'hind')
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
-		hjslots = ("#{hjslots}");
-
+		#hjslots = ("#{hjslots}");
+		
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
 
