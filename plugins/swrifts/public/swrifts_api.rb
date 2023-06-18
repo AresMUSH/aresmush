@@ -885,6 +885,7 @@ module AresMUSH
 		tempperkstring =  Hash.new
 		x = 0
 		swperks.each do |k,v|
+			tempstr = []
 			k.each do |k1,v1|
 				tempstr << {k1: v1}
 			end
