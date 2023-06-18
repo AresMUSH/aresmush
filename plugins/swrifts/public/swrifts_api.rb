@@ -885,7 +885,9 @@ module AresMUSH
 		tempperkstring =  Hash.new
 		x = 0
 		swperks.each do |k,v|
-			tempstr << "k: #{k} v: #{v}"
+			k.each do |k1,v1|
+				tempstr << "k1: #{k1} v1: #{v1}"
+			end
 		end
 		#perkstring = swperks.to_a.sort_by { |a| a.name }
 		#	.each_with_index
