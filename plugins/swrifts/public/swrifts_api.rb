@@ -852,9 +852,6 @@ module AresMUSH
 		#perkname: An integer
 		#name: The name of the Perk
 		#cost: the cost of the perk
-
-		return(swperks)		
-
 		tempstr = ''
 		txtstring = []
 		perkstr = []
@@ -868,6 +865,7 @@ module AresMUSH
 			tempperkstring[perkname] = swperks
 			x = x + 1
 		end
+		return(tempperkstring)	
 
 	end	 
 
