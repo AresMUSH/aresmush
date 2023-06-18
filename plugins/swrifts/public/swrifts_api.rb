@@ -884,28 +884,23 @@ module AresMUSH
 		perkstr = []
 		tempperkstring =  Hash.new
 		x = 0
-		swperks.each_with_index
-			.map do |k2, v2|
-				perkname = "Perk #{x}"
-				perkstr = {name: k2.name, cost: k2.cost, perknumber: x }
-			end	
-			tempperkstring[x] = perkstr
 		
-		return tempperkstring
-		#swperks.each do |k,v|
-		#	tempstr = []
-		#	k.each do |k1,v1|
-		#		tempstr << {k1: v1}
-		#	end
-		#	tempperkstring[x] = tempstr
-		#end
-		#perkstring = swperks.to_a.sort_by { |a| a.name }
-		#	.each_with_index
-		#		.map do |a, i|
-		#			ctr = x+1
-		#			perkname = "Perk #{ctr}"
-		#			tempperkstring[perkname] = {name: a.name, cost: a.cost, perknumber: ctr }
-		#		end
+		swperks.each do |k,v|
+			tempstr = []
+			k.each do |k1,v1|
+				tempstr << {k1: v1}
+			end
+			tempperkstring[x] = tempstr
+		end
+
+		return (tempperkstring)
+		perkstring = swperks.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i|
+					ctr = x+1
+					perkname = "Perk #{ctr}"
+					tempperkstring[perkname] = {name: a.name, cost: a.cost, perknumber: ctr }
+				end
 		return (tempperkstring)
 	end	 
 
