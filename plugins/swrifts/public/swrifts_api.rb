@@ -863,7 +863,7 @@ module AresMUSH
 		maxperks = 4
 		perkname = ''
 
-		while x < = maxperks
+		while x <= maxperks
 			perkname = "Perk #{x}"
 			tempperkstring[perkname] = swperks
 			x = x + 1
