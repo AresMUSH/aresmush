@@ -857,7 +857,7 @@ module AresMUSH
 		perkstr = []
 		tempperkstring =  Hash.new
 		x = 0
-
+		return (swperks)
 		perkstring = swperks.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i|
