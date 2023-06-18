@@ -853,31 +853,7 @@ module AresMUSH
 		#name: The name of the Perk
 		#cost: the cost of the perk
 
-		#swrifts_icf is the system icf's
-		#charicf is the one selected by the player
-
-		# attribute :name #hj1, hj2, etc.
-		# attribute :rating, :type => DataType::Integer #the random roll
-		# attribute :table #Body Armor, etc.
-		# attribute :description #text from table
-		# reference :character, "AresMUSH::Character"
-
-
-			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
-			#pattern = 'hj'
-			#charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			#if (charhjicf.length > 0)
-			#	charhjicf.each do |k,v|
-			#		tempcifstring = []
-			#		hjopt = k.split("_")[0]
-          	#		hjname = hjopt.gsub("hj","")
-			#		v.each do |k1,v1|
-			#			tempcifstring << {table: k1, name: hjopt, tablename: hjname}
-			#		end
-			#		cifstring[hjopt] = tempcifstring
-			#	end
-			#end
-		#return (cifstring);		
+		return(swperks)		
 
 		tempstr = ''
 		txtstring = []
