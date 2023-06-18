@@ -859,26 +859,16 @@ module AresMUSH
 		txtstring = []
 		perkstr = []
 		tempperkstring =  Hash.new
-		x = 0
-		
-		swperks.each do |k,v|
-			tempstr = []
-			k.each do |k1,v1|
-				tempstr << {"#{k1}": v1}
-			end
-			perkstr.merge(tempstr)
-			tempperkstring[x] = perkstr
+		x = 1
+		maxperks = 4
+		perkname = ''
+
+		while x < = maxperks
+			perkname = "Perk #{x}"
+			tempperkstring[perkname] = swperks
+			x = x + 1
 		end
 
-		return (tempperkstring)
-		perkstring = swperks.to_a.sort_by { |a| a.name }
-			.each_with_index
-				.map do |a, i|
-					ctr = x+1
-					perkname = "Perk #{ctr}"
-					tempperkstring[perkname] = {name: a.name, cost: a.cost, perknumber: ctr }
-				end
-		return (tempperkstring)
 	end	 
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits or perks.
