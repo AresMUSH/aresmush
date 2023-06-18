@@ -323,7 +323,8 @@ module AresMUSH
 		#Get the Perks saved to the character
 		charperks = char.swrifts_charperks
 		charperktable = acl_get_charperks(swrifts_perks, charperks)
-		charperks = ("#{charperktable}")
+		#charperks = ("#{charperktable}")
+		charperks = charperktable
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
