@@ -53,7 +53,7 @@ module AresMUSH
         :combat => combat)
         # Magic Changes - required to set the magic energy to the correct number when combat is starting.
         npc.update(magic_energy: npc.total_magic_energy)
-        puts "Setting #{npc.name}'s magic energy to #{npc.magic_energy} (total: #{npc.total_magic_energy})"
+        Global.logger.debug "Setting #{npc.name}'s magic energy to #{npc.magic_energy} (total: #{npc.total_magic_energy})"
         # /Magic changes
       end
       FS3Combat.emit_to_combat combat, t('fs3combat.has_joined', :name => name, :type => combatant_type)
