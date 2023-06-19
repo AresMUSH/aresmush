@@ -4,7 +4,7 @@ module AresMUSH
       attr_accessor  :spell_name, :target, :names, :has_target, :caster_name
 
       def prepare
-        puts "#{combatant.name.upcase} energy beginning of action! #{combatant.associated_model.magic_energy}"
+        Global.logger.debug "#{combatant.name.upcase} magic energy beginning of action! #{combatant.associated_model.magic_energy}"
         if (self.action_args =~ /\//)
           self.spell_name = self.action_args.before("/")
           self.names = self.action_args.after("/")
@@ -144,13 +144,13 @@ module AresMUSH
               end
 
               if spell['energy_points']
-                puts "Magic energy before heal method: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
+                Global.logger.debug "Magic energy before heal method: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
                 message = Magic.cast_fatigue_heal(self.caster_name, target.associated_model, self.spell_name)
                 if combatant == target
                   combatant.associated_model.update(magic_energy: target.associated_model.magic_energy)
                 end
                 messages.concat message
-                puts "Magic energy after heal method!: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
+                Global.logger.debug "Magic energy after heal method!: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
               end
 
               if spell['is_revive']
@@ -227,7 +227,7 @@ module AresMUSH
         if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)
           messages.concat [Magic.get_fatigue_level(combatant.associated_model)[:msg]]
         end
-        puts "Combatant energy end of action: #{combatant.associated_model.magic_energy}"
+        Global.logger.debug "Combatant energy end of action: #{combatant.associated_model.magic_energy}"
         level = Global.read_config("spells", self.spell_name, "level")
         # if level == 8
         #   messages.concat [t('magic.level_eight_fatigue', :name => self.name)]
