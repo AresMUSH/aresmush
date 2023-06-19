@@ -2,9 +2,9 @@ module AresMUSH
   module Magic
 
     def self.reset_magic_energy(char)
-      puts "Char: #{char.name}: #{char.magic_energy}"
+      Global.logger.debug "Magic energy before reset: #{char.name}: #{char.magic_energy}"
       char.update(magic_energy: char.total_magic_energy)
-      puts "Char: #{char.name}: #{char.magic_energy}"
+      Global.logger.debug  "Magic energy after reset: #{char.name}: #{char.magic_energy}"
     end
 
     def self.set_npc_energy(npc, percent)
@@ -14,11 +14,11 @@ module AresMUSH
 
     def self.subtract_magic_energy(char_or_npc, spell, success)
       char = char_or_npc
-      puts "Magic energy before subtraction: #{char.name} #{char.magic_energy}"
+      Global.logger.debug  "Magic energy before subtraction: #{char.name} #{char.magic_energy}"
       level = Global.read_config("spells", spell, "level")
       spell_school = Global.read_config("spells", spell, "school")
       cost = Global.read_config("magic", "energy_cost_by_level", level)
-      puts "Level: #{level} Starting Cost: #{cost}"
+      Global.logger.debug  "Level: #{level} Starting Cost: #{cost}"
       if (char.class == Npc)
         cost = cost + 1
       else
@@ -33,7 +33,7 @@ module AresMUSH
       success == "%xrFAILS%xn" ? cost = cost/4 : cost = cost
       magic_energy = [(char.magic_energy - cost), 0].max
       char.update(magic_energy: magic_energy)
-      puts "Cost: #{cost} Magic energy after subtraction: #{char.name} #{char.magic_energy}"
+      Global.logger.debug  "Cost: #{cost} Magic energy after subtraction: #{char.name} #{char.magic_energy}"
     end
 
     def self.get_fatigue_level(char_or_npc)
@@ -69,6 +69,7 @@ module AresMUSH
         effect = Global.read_config("magic", "fatigue_effect", "None")
         msg = t('magic.magic_fatigue', :name => char.name, :color => color, :degree => "no%xn", :effect => effect)
       end
+      Global.logger.debug "Magic energy fatigue level: #{msg}, #{degree}"
       return {
         msg: msg,
         degree: degree,
@@ -95,15 +96,15 @@ module AresMUSH
     end
 
     def self.magic_energy_cron(char)
-      puts "Magic energy before cron: #{char.name} #{char.magic_energy} Rate #{char.magic_energy_rate}"
+      Global.logger.debug  "Magic energy before cron: #{char.name} #{char.magic_energy} Rate #{char.magic_energy_rate}"
       new_magic_energy =  char.magic_energy + char.magic_energy_rate
-      puts "New energy #{new_magic_energy}"
+      Global.logger.debug  "New energy #{new_magic_energy}"
       if new_magic_energy < char.total_magic_energy
         char.update(magic_energy: new_magic_energy )
       else
         char.update(magic_energy: char.total_magic_energy)
       end
-      puts "Magic energy after: #{char.magic_energy}"
+      Global.logger.debug  "Magic energy after: #{char.magic_energy}"
     end
 
   end
