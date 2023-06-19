@@ -157,12 +157,12 @@ module AresMUSH
       succeeds = Magic.spell_success(die_result)
 
       messages = []
-      puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{caster.magic_energy}"
       start_fatigue = Magic.get_fatigue_level(caster)[:degree]
+      Global.logger.debug "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{caster.magic_energy} #{start_fatigue}"
       Magic.subtract_magic_energy(caster, spell, succeeds)
-      puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{caster.magic_energy}"
       fatigue_msg = Magic.get_fatigue_level(caster)[:msg]
       final_fatigue = Magic.get_fatigue_level(caster)[:degree]
+      Global.logger.debug "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{caster.magic_energy} #{final_fatigue}"
       serious_degrees = ["Severe", "Extreme", "Total"]
 
       if start_fatigue != final_fatigue || serious_degrees.include?(final_fatigue)

@@ -38,7 +38,7 @@ module AresMUSH
             percent = combatant.npc.magic_energy.to_f / combatant.npc.total_magic_energy
             combatant.npc.update(level: self.level)
             Magic.set_npc_energy(combatant.npc, percent)
-            puts "Setting #{combatant.npc.name}'s magic energy to #{combatant.npc.magic_energy} (total: #{combatant.npc.total_magic_energy} percent: #{percent})"
+            Global.logger.debug "Setting #{combatant.npc.name}'s magic energy to #{combatant.npc.magic_energy} (total: #{combatant.npc.total_magic_energy} percent: #{percent}) because the NPC level was changed. "
             # /Magic changes
             client.emit_success t('fs3combat.npc_skill_set', :name => name, :level => self.level)
           end

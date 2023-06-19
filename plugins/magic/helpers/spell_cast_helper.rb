@@ -159,6 +159,7 @@ module AresMUSH
     end
 
     def self.cast_fatigue_heal(caster_name, target, spell, is_potion = false)
+      Global.logger.debug "Casting magic energy heal. Before heal #{target.name} #{target.magic_energy}"
       energy_points = Global.read_config("spells", spell, "energy_points")
       new_magic_energy = [(target.magic_energy + energy_points), (target.total_magic_energy * 0.8)].min
       target.update(magic_energy: new_magic_energy)
@@ -167,6 +168,7 @@ module AresMUSH
       else
         message = [t('magic.cast_fatigue_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => energy_points)]
       end
+      Global.logger.debug "Casting magic energy heal. After heal #{target.name} #{target.magic_energy}"
       return message
     end
 
