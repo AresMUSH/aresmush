@@ -6,11 +6,19 @@
 <%= " LP)%xn"  %>
 
 <% paginator.page_items.each do |a| -%>
+<% if from(a.from)%>
 <%= "%xcLuck from "  -%>
 <%=  a.from -%>
 <%=  right(a.created_at.strftime("%Y-%m-%d"), 62 ) -%>
 <%= "%xn"  %>
 <%=  a.reason %>
+<% else %>
+<%= "%xcLuck given to "  -%>
+<%=  a.to -%>
+<%=  right(a.created_at.strftime("%Y-%m-%d"), 62 ) -%>
+<%= "%xn"  %>
+<%=  a.reason %>
+<% end %>
 
 <% end %>
 <%= paginator.page_footer %>

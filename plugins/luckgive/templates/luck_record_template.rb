@@ -17,6 +17,14 @@ module AresMUSH
         @char.luck.floor
       end
 
+      def from(char_name)
+        if char_name != char.name
+          true
+        else
+          false
+        end
+      end
+
     end
   end
 end
