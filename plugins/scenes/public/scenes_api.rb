@@ -56,7 +56,7 @@ module AresMUSH
         end
       end
 
-      Scenes.create_new_pose_notification(scene, character.name)
+      Scenes.create_new_pose_notification(scene, character)
             
       return scene_pose
     end
