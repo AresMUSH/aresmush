@@ -4,12 +4,8 @@
 BASIC CONTAINERS
 ------------------------- */
 
-.container {
-    background-color: $gutter-color;
-    margin: 0;
-    width: 100%;
-    padding-left: 25px;
-    padding-right: 25px;
+.container-fluid {
+  max-width: 1600px;
 }
 
 ::-webkit-scrollbar {
