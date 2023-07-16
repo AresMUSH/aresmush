@@ -10,6 +10,7 @@ module AresMUSH
     attribute :api_key
     
     attribute :player_api_keys, :type => DataType::Hash, :default => {}
+    attribute :applied_migrations, :type => DataType::Array, :default => []
     
     # There's only one game document and this is it!
     def self.master
