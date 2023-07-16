@@ -12,7 +12,11 @@ module AresMUSH
     end
     
     def self.can_login?(actor)
-      actor && actor.has_permission?("login")
+      return false if !actor
+      return true if actor.is_admin?
+      return false if Global.read_config('login', 'disable_nonadmin_logins')
+      
+      actor.has_permission?("login")
     end
     
     def self.creation_allowed?
