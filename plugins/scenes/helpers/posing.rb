@@ -4,7 +4,6 @@ module AresMUSH
     def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed
       last_posed_name = last_posed ? last_posed.name : ""
-      puts last_posed.inspect
       
       # **NOTE** Don't add any more pipes after 'data' because poses can contain pipes.
       web_msg = "#{scene.id}|#{last_posed_name}|#{activity_type}|#{data}"
