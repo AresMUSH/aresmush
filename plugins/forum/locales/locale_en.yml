@@ -27,6 +27,7 @@ en:
         no_delete_in_progress: "You were not trying to delete a category."
         post_deleted: "Post %{num} deleted from %{category}."
         post_moved: "Post moved."
+        post_moved_to_category: "%{name} moved this post from %{old_category} to %{new_category}."
         category_renamed: "Category renamed."
         scan_title: "Unread Posts"
         scan_summary: "%{count} unread posts on %{name}(%{num})"
