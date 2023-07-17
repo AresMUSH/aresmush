@@ -21,11 +21,11 @@ module AresMUSH
       end
       
       def active_scenes
-        @scenes.select { |s| !s.private_scene || s.is_participant?(enactor) }
+        @scenes.select { |s| !s.private_scene || s.is_participant?(enactor) }.sort_by { |s| [s.is_participant?(enactor) ? 0 : 1, s.id] }
       end
       
       def private_scenes
-        @scenes.select { |s| s.private_scene && !s.is_participant?(enactor) }
+        @scenes.select { |s| s.private_scene && !s.is_participant?(enactor) }.sort_by { |s| s.id }
       end
       
       def title(scene)

@@ -4,12 +4,8 @@
 BASIC CONTAINERS
 ------------------------- */
 
-.container {
-    background-color: $gutter-color;
-    margin: 0;
-    width: 100%;
-    padding-left: 25px;
-    padding-right: 25px;
+.container-fluid {
+  max-width: 1600px;
 }
 
 ::-webkit-scrollbar {
@@ -594,6 +590,8 @@ form.gsc-search-box {
 
 
 /* Fixes the search box icon */
+/* !important needed because of google search */
+
 .cse .gsc-search-button input.gsc-search-button-v2,
     input.gsc-search-button-v2 {
         height: 26px !important;

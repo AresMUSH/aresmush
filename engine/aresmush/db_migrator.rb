@@ -11,16 +11,16 @@ module AresMUSH
       Dir["#{self.migrations_path}/*.rb"].sort
     end
     
-    def applied_migrations_path
-      File.join(self.migrations_path, 'applied.txt')
-    end
-    
     def read_applied_migrations
-      if (File.exist?(self.applied_migrations_path))
-        return File.readlines(applied_migrations_path).map { |l| l.chomp }
+      old_applied_file_path = File.join(self.migrations_path, 'applied.txt')
+      
+      if (File.exist?(old_applied_file_path))
+        migrations = File.readlines(old_applied_file_path).map { |l| l.chomp }
       else
-        return []
+        migrations = []
       end
+      
+      migrations.concat(Game.master.applied_migrations || []).uniq
     end
     
     def init_migrations
@@ -33,10 +33,8 @@ module AresMUSH
         end
       end
       
-      File.open(self.applied_migrations_path, 'w') do |file|
-        file.write applied_migrations.join("\n")
-      end
-      
+      Game.master.update(applied_migrations: applied_migrations)
+            
       Global.logger.info "Applying initial migrations."
     end
     
@@ -82,12 +80,10 @@ module AresMUSH
         migrator.migrate
 
         applied_migrations << migration_name
+        Game.master.update(applied_migrations: applied_migrations)
         
         Global.logger.info "Migration #{migration_name} applied."
 
-        File.open(self.applied_migrations_path, 'w') do |file|
-          file.write applied_migrations.join("\n")
-        end
       end
 
       Global.logger.info "Migrations complete."
