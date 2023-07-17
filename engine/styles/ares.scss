@@ -590,6 +590,8 @@ form.gsc-search-box {
 
 
 /* Fixes the search box icon */
+/* !important needed because of google search */
+
 .cse .gsc-search-button input.gsc-search-button-v2,
     input.gsc-search-button-v2 {
         height: 26px !important;
