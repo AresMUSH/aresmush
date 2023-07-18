@@ -53,7 +53,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 ## Stopping a Scene
 
 `scene/stop [<#>]` - Stops a scene and recycles the room (if it was a temporary one).
-`scene/delete <#>` - Deletes a scene.
+`scene/delete <#>` - Marks a scene for deletion. If there are poses, other players will have a chance to save or share it before it is actually deleted. Restarting or sharing a scene will cancel its pending deletion.
 `scene/restart <#>` - Restarts a scene.
 `scene/home <home, work, ooc>` - Sets your scene home preference.
 

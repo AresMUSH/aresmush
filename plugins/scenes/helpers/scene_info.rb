@@ -180,8 +180,6 @@ module AresMUSH
     def self.is_unread?(scene, char)
       tracker = char.get_or_create_read_tracker
       tracker.is_scene_unread?(scene)
-    end
-    
-    
+    end            
   end
 end

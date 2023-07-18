@@ -34,7 +34,10 @@ module AresMUSH
              last_posed: s.last_posed ? s.last_posed.name : nil,
              can_edit: Scenes.can_edit_scene?(enactor, s),
              can_share: s.completed && !s.location.blank? && !s.summary.blank? && !s.title.blank?,
-             last_pose_time_str: s.last_pose_time_str(enactor)
+             last_pose_time_str: s.last_pose_time_str(enactor),
+             in_trash: s.in_trash,
+             trash_date: OOCTime.local_long_timestr(enactor, s.trash_date)
+             
 
             }}
 

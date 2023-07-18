@@ -52,8 +52,10 @@ en:
         cant_collapse_until_completed: "You can't do that until the scene is stopped."
         grid_location_change_warning: "This is a grid room.  You can note a location change in the scene log, but new arrivals may think you're still in the original location.  It may be better to stop the scene and restart it in a temp room."
         
-        scene_delete_warn: "Scene %{id} will be deleted soon. Save or share it."
-        scene_delete_warn_subject: "Unshared Scene Deletion"
+        scene_trash_warn: "Scene %{id} was marked for deletion by %{name}. Download, share, or restart it before it's deleted on %{date}."
+        scene_trashed: "Scene %{id} has been marked for deletion. The other players will have until %{date} to download, share, or restart it before it's deleted."
+        in_trash: "Marked for Deletion"
+        unshared: "Unshared"
         
         logging_not_enabled: "The scene log is not on."
         log_cleared: "You clear the scene log."
