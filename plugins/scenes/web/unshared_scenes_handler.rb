@@ -36,7 +36,8 @@ module AresMUSH
              can_share: s.completed && !s.location.blank? && !s.summary.blank? && !s.title.blank?,
              last_pose_time_str: s.last_pose_time_str(enactor),
              in_trash: s.in_trash,
-             trash_date: OOCTime.local_long_timestr(enactor, s.trash_date)
+             trash_date: OOCTime.local_long_timestr(enactor, s.trash_date),
+             content_warning: s.content_warning
              
 
             }}

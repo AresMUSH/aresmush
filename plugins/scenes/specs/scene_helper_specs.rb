@@ -243,7 +243,7 @@ module AresMUSH
           allow(@pose2).to receive(:is_real_pose?) { false }
           allow(@scene).to receive(:scene_poses) { [@pose1, @pose2] }
 
-          trash_timeout_days = 10
+          trash_timeout_days = 15
           @now_time = Time.new(2023, 01, 02, 3, 0, 0)
           @trash_time = @now_time + (trash_timeout_days*86400)
           allow(Time).to receive(:now) { @now_time }
@@ -274,6 +274,15 @@ module AresMUSH
           Scenes.move_to_trash(@scene, @enactor)
         end
         
+        it "should not allow timeout less than 14 days" do
+          allow(Global).to receive(:read_config).with("scenes", "scene_trash_timeout_days") { 5 } 
+          @trash_time = @now_time + (14*86400)
+          expect(@scene).to receive(:update).with({ :in_trash => true })
+          expect(@scene).to receive(:update).with({ :trash_date => @trash_time })
+          expect(@scene).to_not receive(:delete)
+          Scenes.move_to_trash(@scene, @enactor)
+        end
+        
         it "should notify participants" do
           ppt1 = double("PPT1")
           ppt2 = double("PPT2")
@@ -293,6 +302,42 @@ module AresMUSH
         end
           
         
+      end
+      
+      describe :mark_unread do
+        before do 
+          @char1 = double("Char1")
+          @char2 = double("Char2")
+          @tracker1 = double("Tracker1")
+          @tracker2 = double("Tracker2")
+          @scene = double
+          allow(@tracker1).to receive(:character) { @char1 }
+          allow(@tracker2).to receive(:character) { @char2 }
+          allow(ReadTracker).to receive(:all) { [ @tracker1, @tracker2 ]}
+          
+        end
+        
+        it "should mark unread only for someone who has already read it" do
+          
+          expect(@tracker1).to receive(:is_scene_unread?).with(@scene) { false }
+          expect(@tracker2).to receive(:is_scene_unread?).with(@scene) { true }
+          
+          expect(@tracker1).to receive(:mark_scene_unread).with(@scene)
+          expect(@tracker2).to_not receive(:mark_scene_unread).with(@scene)
+          Scenes.mark_unread(@scene)          
+        end
+        
+        it "should not mark unread if exception char specified" do
+          
+          expect(@tracker1).to receive(:is_scene_unread?).with(@scene) { false }
+          expect(@tracker2).to receive(:is_scene_unread?).with(@scene) { true }
+          
+          expect(AresCentral).to receive(:is_alt?).with(@char1, @char1) { true }
+          
+          expect(@tracker1).to_not receive(:mark_scene_unread).with(@scene)
+          expect(@tracker2).to_not receive(:mark_scene_unread).with(@scene)
+          Scenes.mark_unread(@scene, @char1) 
+        end
       end
       
     end

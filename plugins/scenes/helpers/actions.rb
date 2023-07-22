@@ -181,6 +181,9 @@ module AresMUSH
       end
       
       trash_days = Global.read_config('scenes', 'scene_trash_timeout_days') || 14
+      if (trash_days < 14)
+        trash_days = 14
+      end
       trash_date = Time.now + (trash_days * 86400)
       scene.participants.each do |participant|
         next if !participant

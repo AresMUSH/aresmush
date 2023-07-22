@@ -169,10 +169,10 @@ module AresMUSH
     end
     
     def self.mark_unread(scene, except_for_char = nil)
-      chars = Character.all.select { |c| !Scenes.is_unread?(scene, c) }
-      chars.each do |char|
-        next if except_for_char && char == except_for_char
-        tracker = char.get_or_create_read_tracker
+      trackers = ReadTracker.all.select { |r| !r.is_scene_unread?(scene) }
+      trackers.each do |tracker|
+        char = tracker.character
+        next if except_for_char && AresCentral.is_alt?(char, except_for_char)
         tracker.mark_scene_unread(scene)
       end
     end

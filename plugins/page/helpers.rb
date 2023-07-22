@@ -165,10 +165,11 @@ module AresMUSH
     end
     
     def self.mark_thread_unread(thread, except_for_char = nil)
-      chars = Character.all.select { |c| !Page.is_thread_unread?(thread, c) }
-      chars.each do |char|
-        next if except_for_char && char == except_for_char
-        tracker = char.get_or_create_read_tracker
+      
+      trackers = ReadTracker.all.select { |r| !r.is_page_thread_unread?(thread) }
+      trackers.each do |tracker|
+        char = tracker.character
+        next if except_for_char && AresCentral.is_alt?(char, except_for_char)
         tracker.mark_page_thread_unread(thread)
       end
     end
