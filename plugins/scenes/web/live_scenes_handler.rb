@@ -22,8 +22,7 @@ module AresMUSH
         
         {
           active: open_scenes,
-          unshared: unshared,
-          unshared_deletion_days: Global.read_config('scenes', 'unshared_scene_deletion_days')
+          unshared: unshared
         }
   
       end

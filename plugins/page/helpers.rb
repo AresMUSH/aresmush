@@ -165,10 +165,11 @@ module AresMUSH
     end
     
     def self.mark_thread_unread(thread, except_for_char = nil)
-      chars = Character.all.select { |c| !Page.is_thread_unread?(thread, c) }
-      chars.each do |char|
-        next if except_for_char && char == except_for_char
-        tracker = char.get_or_create_read_tracker
+      
+      trackers = ReadTracker.all.select { |r| !r.is_page_thread_unread?(thread) }
+      trackers.each do |tracker|
+        char = tracker.character
+        next if except_for_char && AresCentral.is_alt?(char, except_for_char)
         tracker.mark_page_thread_unread(thread)
       end
     end
@@ -188,6 +189,17 @@ module AresMUSH
       Jobs.create_job(Jobs.trouble_category, t('page.page_reported_title'), body, Game.master.system_character)
     end
     
+    def self.delete_page_thread(thread, skip_notifying_char = nil)
+      thread.characters.each do |char|
+        next if char == skip_notifying_char
+        
+        title = thread.title_customized(char)
+        messages = thread.page_messages.map { |msg| "[#{OOCTime.local_long_timestr(char, msg.created_at)}] #{msg.message}"}
+        body = "#{t('page.deleted_thread_mail_body')}%R%R#{messages.join("%R")}"
+        Mail.send_mail([char.name], t('page.deleted_thread_mail_title', :title => title), body, nil, Game.master.system_character)
+      end
+      thread.delete
+    end
     
     def self.build_page_web_data(thread, enactor, lazy_load = false)
       if (lazy_load)

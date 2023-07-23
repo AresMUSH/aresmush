@@ -4,10 +4,6 @@
 BASIC CONTAINERS
 ------------------------- */
 
-.container-fluid {
-  max-width: 1600px;
-}
-
 ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
@@ -20,6 +16,10 @@ BASIC CONTAINERS
     padding: 0px;
 }
 
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
 .header-wrap
 {
     background-image: url('/game/uploads/theme_images/background.png');
@@ -44,12 +44,16 @@ body {
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.428571429;
+  background-color: $background-color;
+  color: $text-color;
 }
 
 .body-wrap
 {
     padding: 0px 20px 0px 20px;
     background-color: $background-color;
+    margin: auto;
+    max-width: 2500px;    
 }
 
 .body-container {
@@ -391,11 +395,6 @@ textarea {
 }
 
 
-body {
-    color: $text-color;
-    background-color: $gutter-color;
-}
-
 
 form {
     padding-bottom: 50px;
@@ -700,12 +699,11 @@ HEADER
 FOOTER
 ------------------------- */
 
-.footer {
+footer {
     font-size: 0.9em;
     color: $faded-text-color;    
-    border-top: 1px solid $faded-text-color;
-    margin-top: 40px;
-    padding-top: 10px;
+    margin-top: 10px;
+    padding: 20px;
 }
 
 
@@ -1150,15 +1148,15 @@ SCENES SCREEN
 }
 
 .scene-social {
-    background-color: #5cb85c;
+    background-color: #408040;
 }
 
 .scene-vignette {
-    background-color: #f0ad4e;
+    background-color: #b7337a;
 }
 
 .scene-privacy-open {
-  background-color: #5cb85c;
+  background-color: #408040;
 }
 
 .scene-privacy-private {
@@ -1170,17 +1168,17 @@ SCENES SCREEN
 }
 
 .scene-pacing-traditional {
-  background-color: #5cb85c;
+  background-color: #408040;
   color: white;
 }
 
 .scene-pacing-asynchronous {
-  background-color: #5bc0de;
+  background-color: #337ab7;
   color: white;
 }
 
 .scene-pacing-distracted {
-  background-color: #f0ad4e;
+  background-color: #b7337a;
   color: white;
 }
 
@@ -1336,7 +1334,7 @@ SCENES SCREEN
 
 .content-warning-label {
   margin: 0px 5px;
-  background-color: #ffc107;
+  background-color: #e69138;
 }
 
 

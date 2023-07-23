@@ -50,15 +50,28 @@ scenes:
       - 4000
       - 4500
       - 5000
-  delete_unshared_scenes: false
+  content_warnings:
+  - graphic violence
+  - sexual assault
+  - nsfw
+  - self-harm
+  - suicide
+  - bigotry
+  - torture
+  delete_unshared_scenes: true
   idle_scene_timeout_days: 4
   include_pose_separator: false
   ooc_color: "%xc"
+  permissions:
+    control_npcs: Pose from NPCs in scenes.
+    manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.
+  delete_scenes_on_idle_out: false
   related_scenes_filter_days: 90
   room_cleanup_cron:
     minute:
     - 15
     - 45
+  scene_trash_timeout_days: 14
   scene_types:
   - Social
   - Event
@@ -113,17 +126,5 @@ scenes:
     - 22
     minute:
     - 2
-  unshared_scene_deletion_days: 20
-  unshared_scene_warning_days: 13
+  unshared_scene_warning_days: 30
   use_custom_char_cards: false
-  permissions:
-    control_npcs: Pose from NPCs in scenes.
-    manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.
-  content_warnings:
-  - graphic violence
-  - sexual assault
-  - nsfw
-  - self-harm
-  - suicide
-  - bigotry
-  - torture

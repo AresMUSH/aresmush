@@ -36,7 +36,7 @@ module AresMUSH
         room = Room.create(name: name, 
            area: area, 
            shortdesc: Website.format_input_for_mush(summary),
-           room_icon: icon_type)
+           room_icon: icon_type.blank? ? nil : icon_type)
            
          Describe.save_web_descs(room, descs)
          

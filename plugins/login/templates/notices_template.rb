@@ -34,7 +34,7 @@ module AresMUSH
       end
       
       def notice_timestamp(notice)
-        OOCTime.local_long_timestr(@char, notice.timestamp)
+        OOCTime.local_short_timestr(@char, notice.timestamp)
       end
       
       def motd

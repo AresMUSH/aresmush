@@ -29,15 +29,14 @@ module AresMUSH
     end
     
     def self.has_alt_in_scene?(actor, scene)
+      return false if !actor
       participants = scene.participants.to_a.push(scene.owner).uniq
       (participants & AresCentral.play_screen_alts(actor)).any?
     end
     
     def self.can_delete_scene?(actor, scene)
-      return false if !actor
-      real_poses = scene.scene_poses.select { |p| p.is_real_pose? }
-      return true if (scene.owner == actor && (real_poses.count == 0) && !scene.shared)
-      return false
+      return true if Scenes.can_manage_scenes?(actor)
+      Scenes.has_alt_in_scene?(actor, scene)
     end
     
     def self.can_pose_char?(actor, char)
