@@ -13,6 +13,14 @@ module AresMUSH
         config['scenes']['delete_scenes_on_idle_out'] = false
         config['scenes'].delete('unshared_scene_deletion_days')
         DatabaseMigrator.write_config_file("scenes.yml", config)  
+        
+        Global.logger.debug "Fix blank room icons."
+        Room.all.each do |room|
+          if (room.room_icon == '')
+            room.update(room_icon: nil)
+          end
+        end
+        
       end
     end
   end    
