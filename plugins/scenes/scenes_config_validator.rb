@@ -19,7 +19,8 @@ module AresMUSH
         @validator.check_cron('unshared_scene_cleanup_cron')
         @validator.require_int('unshared_scene_warning_days', 1)
         @validator.require_boolean('use_custom_char_cards')
-        @validator.require_int('scene_trash_timeout_days', 7)
+        @validator.require_int('scene_trash_timeout_days', 14)
+        @validator.require_boolean('delete_scenes_on_idle_out')
         
         begin
           @validator.check_forum_exists('trending_scenes_category')
