@@ -189,6 +189,17 @@ module AresMUSH
       Jobs.create_job(Jobs.trouble_category, t('page.page_reported_title'), body, Game.master.system_character)
     end
     
+    def self.delete_page_thread(thread, skip_notifying_char = nil)
+      thread.characters.each do |char|
+        next if char == skip_notifying_char
+        
+        title = thread.title_customized(char)
+        messages = thread.page_messages.map { |msg| "[#{OOCTime.local_long_timestr(char, msg.created_at)}] #{msg.message}"}
+        body = "#{t('page.deleted_thread_mail_body')}%R%R#{messages.join("%R")}"
+        Mail.send_mail([char.name], t('page.deleted_thread_mail_title', :title => title), body, nil, Game.master.system_character)
+      end
+      thread.delete
+    end
     
     def self.build_page_web_data(thread, enactor, lazy_load = false)
       if (lazy_load)
