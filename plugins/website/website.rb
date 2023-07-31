@@ -23,7 +23,6 @@ module AresMUSH
     
     def self.get_cmd_handler(client, cmd, enactor)       
       
-      puts cmd
       case cmd.root      
       when "website"
         if (cmd.switch_is?("deploy"))
