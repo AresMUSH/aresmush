@@ -26,12 +26,7 @@ module AresMUSH
         end
         
         Manage.save_db
-        
-        # Don't use dispatcher here because we want a hard kill
-        EventMachine.add_timer(1) do
-          EventMachine.stop_event_loop
-          raise SystemExit.new
-        end
+        Global.shutdown
       end
     end
   end

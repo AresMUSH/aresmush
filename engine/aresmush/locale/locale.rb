@@ -1,10 +1,10 @@
 # Short global alias for translate and localize
-def t(str, *args)
-  AresMUSH::Locale.translate(str, *args)
+def t(str, **args)
+  AresMUSH::Locale.translate(str, **args)
 end
 
-def l(object, options = {})
-  AresMUSH::Locale.localize(object, options)
+def l(object, **options)
+  AresMUSH::Locale.localize(object, **options)
 end
   
 module AresMUSH  
@@ -40,9 +40,9 @@ module AresMUSH
       reload
     end
     
-    def self.translate(str, *args)  
+    def self.translate(str, **args)  
       begin
-        I18n.t(str, *args)
+        I18n.t(str, **args)
       rescue I18n::InvalidLocaleData => ex
         I18n.load_path.delete ex.filename
         Global.logger.error "Error in translations file! #{ex}"
@@ -50,9 +50,9 @@ module AresMUSH
       end
     end
     
-    def self.localize(object, *args)
+    def self.localize(object, **args)
       if (object.is_a?(Date) || object.is_a?(Time))
-        I18n.l(object, *args)
+        I18n.l(object, **args)
       else
         sep = t('number.format.separator')
         object.to_s.gsub(/\./, sep)

@@ -179,7 +179,6 @@ module AresMUSH
             value: "#{char.demographic(d)}"
           }
       end
-      puts props
       {
         demographics: demographics,
         genders: Demographics.genders

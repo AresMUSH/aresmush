@@ -21,13 +21,13 @@ module AresMUSH
   
     collection :login_notices, "AresMUSH::LoginNotice"
     
-    before_delete :cleanup_login
+    before_delete :cleanup_login_notices
     
     def unread_notifications
       self.login_notices.find(is_unread: true)
     end
     
-    def cleanup_login
+    def cleanup_login_notices
       self.login_notices.each { |n| n.delete }
     end
     
