@@ -70,7 +70,7 @@ module AresMUSH
       it "should pass along variables in the string" do
         args = { :arg => "the arg" }
         expect(I18n).to receive(:t).with('hello arg', args) { "Hello World with the arg!" }
-        t('hello arg', args )
+        t('hello arg', :arg => "the arg" )
       end      
     end
     
@@ -82,13 +82,13 @@ module AresMUSH
       
       it "should return the I18n localization of a date" do
         date = Date.new
-        expect(I18n).to receive(:l).with(date, {}) { "abc" }
+        expect(I18n).to receive(:l).with(date) { "abc" }
         expect(l(date)).to eq "abc"
       end
       
       it "should return the I18n localization of a time" do
         time = Time.new
-        expect(I18n).to receive(:l).with(time, {}) { "abc" }
+        expect(I18n).to receive(:l).with(time) { "abc" }
         expect(l(time)).to eq "abc"
       end
     end
