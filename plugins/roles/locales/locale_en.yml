@@ -17,7 +17,7 @@ en:
         role_deleted: "Role %{name} deleted.  Make sure if you have any plugins configured to use that role that you remove it from them."
         permissions_title: "Permissions"
         players_title: "Players"
-        role_list_title: "Role                 Permissions"
+        role_list_title: "All Roles"
         role_list_footer: "Use %xcrole/info <name>%xn for details about a role."
         permissions_list_title: "Permission           Plugin       Description"
         

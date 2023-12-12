@@ -27,7 +27,7 @@ module AresMUSH
           return
         end
            
-        template = RoleInfoTemplate.new(role)
+        template = RoleInfoTemplate.new(role, Roles.all_permissions)
         client.emit template.render
       end
     end

@@ -1,7 +1,7 @@
 <%= header %>
 %xh<%= t('roles.role_list_title') %>%xn
 <% roles.each do |r|%>
-<%= left(r.name,20) %> <%= permissions(r) %>
+<%= r.name %>
 <% end %>
 %l1
 <%= t('roles.role_list_footer') %>
