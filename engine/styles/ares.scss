@@ -2008,6 +2008,12 @@ OTHER
   font-weight: bold;
 }
 
+.wiki-page-nav {
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-between;
+}
+
 .wiki-breadcrumbs {
   margin-bottom: 10px;
 }
