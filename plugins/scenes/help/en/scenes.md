@@ -85,6 +85,6 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 
 ## Reporting Abuse
 
-If someone is behaving badly in a scene, you can bring it to the game admin's attention - along with an automatic, verified log of the scene (including OOC chat and any previously-edited or deleted poses).  
+If someone is behaving badly in a scene, you can bring it to the game admin's attention - along with an automatic, verified log of the scene. For unshared scenes, this also includes OOC chat and any previously-edited or deleted poses.
 
 `scene/report <scene#>=<explanation>`
