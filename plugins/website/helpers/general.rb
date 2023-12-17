@@ -278,5 +278,11 @@ module AresMUSH
         
       ]
     end
+    
+    def self.build_top_navbar(viewer)
+      navbar = Global.read_config('website', 'top_navbar')
+      navbar.select { |n| !n['roles'] || viewer.has_any_role?(n['roles']) }
+    end
+      
   end
 end
