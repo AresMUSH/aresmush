@@ -1774,12 +1774,25 @@ JOBS SCREEN
 }
 
 .admin-only-reply-label {
-  background-color: #f0ad4e;
+  background-color: #977b62;
+  font-size: 1em;
 }
 
 .admin-only-reply, .admin-only-reply .markdown-editor {
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+  background-color: #f3e7dc;
+  border-color: #f3e7dc;
+  padding: 8px;
+}
+
+.player-reply-label {
+  background-color: #0F6466;
+  font-size: 1em;
+}
+
+.player-reply, .player-reply .markdown-editor {
+  background-color: #cfe0e0;
+  border-color: #cfe0e0;
+  padding: 8px;
 }
 
 .job-template-editor {

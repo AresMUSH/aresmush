@@ -51,7 +51,7 @@ module AresMUSH
           recent_changes: Website.recent_changes(enactor, true, 10),
           left_sidebar: Global.read_config('website', 'left_sidebar'),
           hide_searchbox: Global.read_config('website', 'hide_searchbox'),
-          top_navbar: Global.read_config('website', 'top_navbar'),
+          top_navbar: Website.build_top_navbar(enactor),
           registration_required: Global.read_config("login", "portal_requires_registration"),
           server_time: OOCTime.server_timestr,
           jobs_admin: Jobs.can_access_jobs?(enactor),

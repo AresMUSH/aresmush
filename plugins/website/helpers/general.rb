@@ -276,7 +276,24 @@ module AresMUSH
           }
         },
         
+        {
+          name: "Job Actions",
+          help: "https://aresmush.com/tutorials/code/hooks/job-menu.html",
+          files: {
+            'job-menu-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'job-menu-custom.hbs'),  
+            'job-menu-custom.js' => File.join(web_code_path, 'components', 'job-menu-custom.js'),
+            'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),
+            
+          }
+        },
+        
       ]
     end
+    
+    def self.build_top_navbar(viewer)
+      navbar = Global.read_config('website', 'top_navbar')
+      navbar.select { |n| !n['roles'] || (viewer && viewer.has_any_role?(n['roles'])) }
+    end
+      
   end
 end
