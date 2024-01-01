@@ -276,6 +276,17 @@ module AresMUSH
           }
         },
         
+        {
+          name: "Job Actions",
+          help: "https://aresmush.com/tutorials/code/hooks/job-menu.html",
+          files: {
+            'job-menu-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'job-menu-custom.hbs'),  
+            'job-menu-custom.js' => File.join(web_code_path, 'components', 'job-menu-custom.js'),
+            'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),
+            
+          }
+        },
+        
       ]
     end
     
