@@ -148,6 +148,51 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
+  - title: Admin
+    roles: 
+    - admin
+    - coder
+    menu:
+    - title: Jobs
+      route: jobs
+    - title: Setup
+      route: setup
+    - title: Manage
+      route: manage
+    - title: Logs
+      route: logs
+    - title: Files
+      route: files
+    - title: Roles
+      route: roles
+    - title: Server
+      route: server-info
+  - title: Code
+    roles:
+    - coder
+    menu:
+    - title: Tinker
+      route: tinker
+    - title: Custom Code
+      route: custom-code
+  - title: Theme
+    roles:
+    - admin
+    menu:
+    - title: Theme Colors
+      route: setup-colors
+    - title: Home Page Text
+      route: textfile
+      ids: 
+        - text
+        - website.txt
+    - title: Custom Styles
+      route: textfile
+      ids:
+        - style
+        - custom_style.scss
+    - title: Files
+      route: files
   - title: "<i class='fas fa-magnifying-glass'/>"
     menu:
     - title: Search Characters
@@ -164,6 +209,8 @@ website:
       route: search-forum
     - title: Search Jobs/Requests
       route: search-jobs
+
+  
       
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
