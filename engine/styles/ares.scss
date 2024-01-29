@@ -437,9 +437,17 @@ li hr {
   font-size: 1.5em;
   vertical-align: middle;
 }
+
 /* -------------------------
 BOOTSTRAP OVERRIDES
 ------------------------- */
+
+
+:root {
+  --bs-body-bg: #{$background-color};
+  --bs-body-color: #{$text-color};
+  --bs-border-color: #{$border-color};
+}
 
 .navbar {
     margin-bottom: 0px;
