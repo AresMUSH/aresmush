@@ -282,8 +282,15 @@ module AresMUSH
           files: {
             'job-menu-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'job-menu-custom.hbs'),  
             'job-menu-custom.js' => File.join(web_code_path, 'components', 'job-menu-custom.js'),
-            'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),
-            
+            'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),            
+          },
+        },
+          
+        {
+          name: "Custom Routes",
+          help: "https://aresmush.com/tutorials/code/hooks/custom-routes.html",
+          files: {
+            'custom-routes.js' => File.join(web_code_path, 'custom-routes.js')
           }
         },
         
