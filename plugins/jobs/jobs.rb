@@ -120,7 +120,7 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       case event_name
       when "CronEvent"
-        return JobArchiveCronHandler
+        return JobCronEventHandler
       when "RoleDeletedEvent"
         return RoleDeletedEventHandler
       else

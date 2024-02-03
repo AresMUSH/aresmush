@@ -20,6 +20,14 @@ module AresMUSH
         @validator.require_in_list("system_category", Jobs.categories)
         @validator.require_in_list("trouble_category", Jobs.categories)
         
+        schedules = Global.read_config("jobs", "scheduled_jobs") || []
+        schedules.each do |sched|
+          @validator.require_nonblank_text(sched["title"])
+          @validator.check_cron(sched["cron"])
+          @validator.require_nonblank_text(sched["message"])
+          @validator.require_in_list(sched["category"], Jobs.categories)          
+        end
+        
         begin
          
           statuses = Global.read_config('jobs', 'active_statuses')
