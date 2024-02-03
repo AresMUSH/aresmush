@@ -10,7 +10,8 @@ module AresMUSH
         Global.logger.debug "Add scheduled jobs."
         config = DatabaseMigrator.read_config_file("jobs.yml")
         config["scheduled_jobs"] = []
-        DatabaseMigrator.write_config_file("jobs.yml", config)        
+        config["custom_fields"] = []
+        DatabaseMigrator.write_config_file("jobs.yml", config)    
       end
     end
   end    

@@ -71,9 +71,14 @@ module AresMUSH
       end
       
       def check_cron(field)
-        value = @config[field]
+        if (field.kind_of?(Hash))
+          value = field
+        else
+          value = @config[field]
+        end
+
         if !value || !value.kind_of?(Hash)
-          @errors << "#{field_key(field)} is not a hash." 
+          @errors << "#{field_key(field)} cron is not a hash." 
           return
         end
         

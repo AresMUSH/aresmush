@@ -22,11 +22,31 @@ module AresMUSH
         
         schedules = Global.read_config("jobs", "scheduled_jobs") || []
         schedules.each do |sched|
-          @validator.require_nonblank_text(sched["title"])
+          if (sched["title"].blank?)
+            @validator.add_error "jobs:Schedule missing title."
+          end
+          if (sched["message"].blank?)
+            @validator.add_error "jobs:Schedule #{sched['title']} missing message."
+          end
+          if (!Jobs.categories.include?(sched["category"]))
+            @validator.add_error "jobs:Invalid schedule category #{sched['category']} for #{sched['title']}"
+          end
+          
           @validator.check_cron(sched["cron"])
-          @validator.require_nonblank_text(sched["message"])
-          @validator.require_in_list(sched["category"], Jobs.categories)          
         end
+        
+        custom_fields = Global.read_config("jobs", "custom_fields") || []
+        custom_fields.each do |custom|
+          if (custom['name'].blank?)
+            @validator.add_error "jobs:Custom field missing name."
+          end
+          if (!['dropdown', 'text', 'date'].include?(custom['field_type']))
+            @validator.add_error "jobs:Custom field #{custom['name']} has an invalid field_type."
+          end
+          if (custom['field_type'] == 'dropdown' && ((custom['dropdown_values'] || []).count == 0))
+            @validator.add_error "jobs:Custom field #{custom['name']} missing dropdown values."
+          end
+        end        
         
         begin
          

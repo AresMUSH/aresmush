@@ -28,7 +28,7 @@ module AresMUSH
       
       def check_date
         begin
-          day = Date.strptime(self.ictime_str, Global.read_config("datetime", "short_date_format"))
+          day = OOCTime.parse_date(self.ictime_str)
           return nil
         rescue
           return t('fs3combat.invalid_damage_date', 

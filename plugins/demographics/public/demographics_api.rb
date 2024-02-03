@@ -133,7 +133,7 @@ module AresMUSH
     
     def self.set_birthday(model, date_str)
       begin
-        bday = Date.strptime(date_str, Global.read_config("datetime", "short_date_format"))
+        bday = OOCTime.parse_date(date_str)
       rescue
         return { error: t('demographics.invalid_birthdate', 
            :format_str => Global.read_config("datetime", "date_entry_format_help")) }

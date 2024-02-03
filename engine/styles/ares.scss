@@ -1724,6 +1724,10 @@ JOBS SCREEN
   margin-left: 10px;
 }
 
+.job-custom {
+  background-color: $primary-color;
+}
+
 .job-status {
   background-color: gray;
 }
@@ -1816,7 +1820,9 @@ JOBS SCREEN
   flex-direction: row;
   gap: 10px;
   margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
   align-items: center;
+  border-bottom: 1px solid $border-color;
 }
 
 .create-job-row label {
@@ -1828,6 +1834,20 @@ JOBS SCREEN
   height: 1.5em;
 }
 
+.edit-job-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.edit-job-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
 
 .display-job-row {
   display: flex;

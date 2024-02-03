@@ -33,6 +33,10 @@ module AresMUSH
       Time.strptime(datetime, OOCTime.date_and_time_entry_format)
     end
     
+    def self.parse_date(date)
+      Time.strptime(date, Global.read_config("datetime", "short_date_format"))
+    end
+    
     def self.format_date_time_for_entry(datetime)
       datetime.strftime OOCTime.date_and_time_entry_format
     end

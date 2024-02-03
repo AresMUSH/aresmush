@@ -307,5 +307,36 @@ module AresMUSH
       return false
     end
     
+    def self.custom_field_id(name)
+      name.strip.downcase
+    end
+    
+    def self.map_custom_fields(job, enactor)
+      values = job.custom_fields || {}
+      fields = Global.read_config('jobs', 'custom_fields')
+      
+      data = {}
+      
+      fields.each do |f|
+        id = Jobs.custom_field_id(f['name'])
+        value = values[id]
+        if (f['field_type'] == 'date' && !value.blank?)
+          date = DateTime.parse(value)
+          date_value = OOCTime.local_long_timestr(enactor, date)
+          date_input = OOCTime.format_date_for_entry(date)
+        end
+                
+        data[id] = {
+          name: f['name'],
+          field_type: f['field_type'],
+          value: value,
+          dropdown_values: f['dropdown_values'],
+          date_display: date_value,
+          date_input: date_input
+        }
+      end
+      data
+    end
+    
   end
 end
