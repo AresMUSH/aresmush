@@ -54,9 +54,12 @@ module AresMUSH
             if (!field['search'].blank?)
               if (field['field_type'] == 'date')
                 search_date = OOCTime.parse_date(field['search'])
-                jobs = jobs.select { |j| (j.custom_fields || {})[key] == search_date.to_s }
+                if (search_date)
+                  Global.logger.warn "Invalid format for custom date search: #{search_date}."
+                  jobs = jobs.select { |j| Jobs.get_custom_field(j, key) == search_date.to_s }
+                end
               else
-                jobs = jobs.select { |j| (j.custom_fields || {})[key] == field['search'] }
+                jobs = jobs.select { |j| (Jobs.get_custom_field(j, key) || "").upcase == field['search'].upcase }
               end
             end
           end

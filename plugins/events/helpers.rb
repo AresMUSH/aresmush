@@ -27,9 +27,11 @@ module AresMUSH
           raise "Unrecognized date time separator.  Check your 'short' date format in datetime.yml."
         end
 
-        
-        
         date_time = OOCTime.parse_datetime(date.strip.downcase)
+        if (!date_time)
+          raise "Invalid date format."
+        end
+        
         if (date_time < DateTime.now)
           return nil, nil, t('events.no_past_events')
         end

@@ -8,6 +8,10 @@
 %xh<%= left( t('jobs.other_participants_title'), 15 ) %>%xn <%= participants %>
 %xh<%= left( t('jobs.status_title'), 15 ) %>%xn <%= status_color %><%= left( job.status, 20) %>%xn <% -%>
 %xh<%= left( t('jobs.handled_by_title'), 15 ) %>%xn <%= handled_by %>
+<% custom_fields.each do |id, field| %>
+%xh<%= left(custom_title(field), 15) %>%xn <%= custom_value(field) %>
+<% end %>
+
 %xh<%= t('jobs.description') %>%xn
 <%= job.description %>
 <% replies.each_with_index do |r, index| -%> 

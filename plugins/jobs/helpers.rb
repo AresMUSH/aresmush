@@ -274,6 +274,30 @@ module AresMUSH
       Jobs.notify(job, notification, enactor)
     end
     
+    def self.set_custom_field(enactor, job, field_name, value)
+      id = Jobs.custom_field_id(field_name)
+      field_info = Jobs.get_custom_field_info(field_name)
+      return t('jobs.invalid_custom_field', :field => field_name) if !field_info
+      
+      custom_fields = job.custom_fields || {}
+      if (field_info['field_type'] == 'date')
+        date = OOCTime.parse_date(value)
+        return t('jobs.invalid_custom_field_value', :field => field_name) if !date
+        custom_fields[id] = date
+      elsif (field_info['field_type'] == 'dropdown')
+        selected = field_info['dropdown_values'].select { |v| v.upcase == "#{value}".upcase }.first
+        return t('jobs.invalid_custom_field_value', :field => field_name) if !selected
+        custom_fields[id] = selected
+      else
+        custom_fields[id] = value
+      end
+      job.update(custom_fields: custom_fields)
+
+      notification = t('jobs.updated_job_custom_field', :number => job.id, :title => job.title, :name => enactor.name, :field => field_name)
+      Jobs.notify(job, notification, enactor)
+      return nil
+    end
+    
     def self.check_filter_type(filter)
       types = Jobs.categories.concat(Jobs.status_filters)
       return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
@@ -311,7 +335,25 @@ module AresMUSH
       name.strip.downcase
     end
     
-    def self.map_custom_fields(job, enactor)
+    def self.get_custom_field_info(name)
+      id = Jobs.custom_field_id(name)
+      Global.read_config('jobs', 'custom_fields').select { |f| Jobs.custom_field_id(f['name']) == id }.first
+    end
+    
+    def self.get_custom_field(job, field_name)
+      id = Jobs.custom_field_id(field_name)
+      value = (job.custom_fields || {})[id]
+      field_info = Jobs.get_custom_field_info(field_name)
+      
+      if (field_info[:field_type] == 'date')
+        date = DateTime.parse(value)
+        return OOCTime.short_timestr(date)
+      else
+        return value
+      end
+    end
+    
+    def self.map_custom_fields(job)
       values = job.custom_fields || {}
       fields = Global.read_config('jobs', 'custom_fields')
       
@@ -322,7 +364,7 @@ module AresMUSH
         value = values[id]
         if (f['field_type'] == 'date' && !value.blank?)
           date = DateTime.parse(value)
-          date_value = OOCTime.local_long_timestr(enactor, date)
+          date_value = OOCTime.short_timestr(date)
           date_input = OOCTime.format_date_for_entry(date)
         end
                 

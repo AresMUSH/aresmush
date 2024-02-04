@@ -71,6 +71,8 @@ module AresMUSH
           return JobScanCmd
         when "search"
           return JobSearchCmd
+        when "setcustom"
+          return ChangeCustomJobCmd
         when "status"
           return JobStatusCmd
         when "subscribe", "unsubscribe"

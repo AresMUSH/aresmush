@@ -60,6 +60,22 @@ module AresMUSH
       def job_url
         "#{AresMUSH::Game.web_portal_url}/job/#{@job.id}"
       end
+      
+      def custom_fields
+        Jobs.map_custom_fields(@job)
+      end
+      
+      def custom_title(field)
+        "#{field[:name]}:"
+      end
+      
+      def custom_value(field)
+        if (field[:field_type] == 'date')
+          field[:date_display]
+        else
+          field[:value]
+        end
+      end
     end
   end
 end
