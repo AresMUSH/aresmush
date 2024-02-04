@@ -239,11 +239,11 @@ module AresMUSH
           expect(@validator.errors).to eq ["foo:some_val - hour is not a list."]
         end
 
-        it "should fail if not a hash" do 
+        it "should fail if cron is not a hash" do 
           expect(Global).to receive(:read_config).with("foo") { { "some_val" => 123 } }
           @validator = ConfigValidator.new("foo")
           @validator.check_cron("some_val")
-          expect(@validator.errors).to eq ["foo:some_val is not a hash."]
+          expect(@validator.errors).to eq ["foo:some_val cron is not a hash."]
         end
 
         it "should fail if invalid hash setting" do 
