@@ -342,15 +342,7 @@ module AresMUSH
     
     def self.get_custom_field(job, field_name)
       id = Jobs.custom_field_id(field_name)
-      value = (job.custom_fields || {})[id]
-      field_info = Jobs.get_custom_field_info(field_name)
-      
-      if (field_info[:field_type] == 'date')
-        date = DateTime.parse(value)
-        return OOCTime.short_timestr(date)
-      else
-        return value
-      end
+      (job.custom_fields || {})[id]
     end
     
     def self.map_custom_fields(job)
@@ -362,10 +354,12 @@ module AresMUSH
       fields.each do |f|
         id = Jobs.custom_field_id(f['name'])
         value = values[id]
+        
         if (f['field_type'] == 'date' && !value.blank?)
-          date = DateTime.parse(value)
-          date_value = OOCTime.short_timestr(date)
+          # DON'T use OOCTime.parse_date here because it's not in the right input format.
+          date = Date.parse(value)
           date_input = OOCTime.format_date_for_entry(date)
+          date_display = OOCTime.short_timestr(date)
         end
                 
         data[id] = {
@@ -373,7 +367,7 @@ module AresMUSH
           field_type: f['field_type'],
           value: value,
           dropdown_values: f['dropdown_values'],
-          date_display: date_value,
+          date_display: date_display,
           date_input: date_input
         }
       end

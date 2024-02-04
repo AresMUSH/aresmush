@@ -34,17 +34,19 @@ module AresMUSH
       timezone.time datetime      
     end
     
-    def self.parse_datetime(datetime)
+    # Date string must be in the expected input format.
+    def self.parse_datetime(datetime_str)
       begin
-        Time.strptime(datetime, OOCTime.date_and_time_entry_format)
+        Time.strptime(datetime_str, OOCTime.date_and_time_entry_format)
       rescue
         nil
       end
     end
     
-    def self.parse_date(date)
+    # Date string must be in the expected input format.    
+    def self.parse_date(date_str)
       begin
-        Date.strptime(date, Global.read_config("datetime", "short_date_format"))
+        Date.strptime(date_str, Global.read_config("datetime", "short_date_format"))
       rescue
         nil
       end
