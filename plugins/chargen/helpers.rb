@@ -161,20 +161,26 @@ module AresMUSH
       unless (model.on_roster? || model.is_npc?)
         Achievements.award_achievement(model, "created_character")
 
-        welcome_message = Global.read_config("chargen", "welcome_message")
-        welcome_message_args = Chargen.welcome_message_args(model)
-        post_body = welcome_message % welcome_message_args
-      
-        Forum.system_post(
-          Global.read_config("chargen", "arrivals_category"),
-          t('chargen.approval_post_subject', :name => model.name), 
-          post_body)
+        arrivals_category = Global.read_config("chargen", "arrivals_category")
+        if (!arrivals_category.blank?)
+          welcome_message = Global.read_config("chargen", "welcome_message")
+          welcome_message_args = Chargen.welcome_message_args(model)
+          post_body = welcome_message % welcome_message_args
+
+          Forum.system_post(
+            arrivals_category,
+            t('chargen.approval_post_subject', :name => model.name), 
+            post_body)
+        end
       end
       
-      Jobs.create_job(Global.read_config("chargen", "app_category"), 
-         t('chargen.approval_post_subject', :name => model.name), 
-         Global.read_config("chargen", "post_approval_message"), 
-         Game.master.system_character)
+      post_approval_msg = Global.read_config("chargen", "post_approval_message")
+      if (!post_approval_msg.blank?)
+        Jobs.create_job(Global.read_config("chargen", "app_category"), 
+           t('chargen.approval_post_subject', :name => model.name), 
+           post_approval_msg, 
+           Game.master.system_character)
+       end
       
        Chargen.custom_approval(model)
        
