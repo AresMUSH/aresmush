@@ -9,6 +9,7 @@ module AresMUSH
         search_status = (request.args[:searchStatus] || "").strip
         search_token = request.args[:searchToken] || ""
         search_tag = request.args[:searchTag] || ""
+        search_custom = request.args[:searchCustom] || {}
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -49,6 +50,22 @@ module AresMUSH
             jobs = jobs.select { |c| jobs_with_tag.include?("#{c.id}") }
           end
         
+          search_custom.each do |key, field|
+            if (!field['search'].blank?)
+              if (field['field_type'] == 'date')
+                search_date = OOCTime.parse_date(field['search'])
+                if (!search_date)
+                  Global.logger.warn "Invalid format for custom date search: #{search_date}."
+                  jobs = []
+                else
+                  jobs = jobs.select { |j| Jobs.get_custom_field(j, key) == search_date.to_s }
+                end
+              else
+                jobs = jobs.select { |j| (Jobs.get_custom_field(j, key) || "").upcase == field['search'].upcase }
+              end
+            end
+          end
+          
           data = jobs.sort_by { |j| j.created_at }.reverse.map { |j| {
               id: j.id,
               title: j.title,

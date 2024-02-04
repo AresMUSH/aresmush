@@ -51,5 +51,31 @@ module AresMUSH
       end
     end
     
+    class ChangeCustomJobCmd
+      include SingleJobCmd
+      
+      attr_accessor :value, :field
+
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+        self.number = trim_arg(args.arg1)
+        self.field = trim_arg(args.arg2)
+        self.value = trim_arg(args.arg3)
+      end
+      
+      def required_args
+        [ self.number, self.field, self.value ]
+      end
+      
+      def handle
+        Jobs.with_a_job(enactor, client, self.number) do |job|
+          error = Jobs.set_custom_field(enactor, job, field, self.value)
+          if (error)
+            client.emit_failure error
+          end
+        end
+      end
+    end
+    
   end
 end

@@ -9,6 +9,7 @@ module AresMUSH
         description = request.args[:description]
         submitter_name = request.args[:submitter]
         tags = request.args[:tags]
+        custom_fields = request.args[:custom_fields] || {}
         
         error = Website.check_login(request)
         return error if error
@@ -43,6 +44,16 @@ module AresMUSH
         job = result[:job]
         
         Website.update_tags(job, tags)
+        
+        custom_field_data = {}
+        custom_fields.each do |k, v|
+          if (v['field_type'] == 'date')
+            custom_field_data[k] = OOCTime.parse_date(v['date_input'])
+          else
+            custom_field_data[k] = v['value']
+          end
+        end
+        job.update(custom_fields: custom_field_data)
         
         if (participant_ids)
           participant_ids.each do |p|
