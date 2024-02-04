@@ -763,6 +763,21 @@ SIDEBAR
     font-style: italic;
 }
 
+.search-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
+  align-items: center;
+  border-bottom: 1px solid $border-color;  
+}
+
+.search-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
+
 /* -------------------------
 GENERAL UTILITIES
 ------------------------- */
