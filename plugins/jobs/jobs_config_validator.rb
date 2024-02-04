@@ -36,6 +36,10 @@ module AresMUSH
         end
         
         custom_fields = Global.read_config("jobs", "custom_fields") || []
+        if (custom_fields.map { |f| (f['name'] || "").upcase }.uniq.count != custom_fields.count)
+          @validator.add_error "jobs: Each custom field must have a unique name."
+        end
+        
         custom_fields.each do |custom|
           if (custom['name'].blank?)
             @validator.add_error "jobs:Custom field missing name."

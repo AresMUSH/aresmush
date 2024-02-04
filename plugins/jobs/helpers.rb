@@ -332,7 +332,7 @@ module AresMUSH
     end
     
     def self.custom_field_id(name)
-      name.strip.downcase
+      name.strip.downcase.gsub(/\s+/, "_")
     end
     
     def self.get_custom_field_info(name)
