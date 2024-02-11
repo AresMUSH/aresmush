@@ -137,6 +137,8 @@ module AresMUSH
         return PoseEventHandler
       when "CharConnectedEvent"
         return CharConnectedEventHandler
+      when "CharIdledOutEvent"
+        return CharIdledOutEventHandler
       end
       nil
     end

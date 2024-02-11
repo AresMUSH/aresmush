@@ -14,21 +14,23 @@ module AresMUSH
         end
 
         combat = combatant.combat
-        can_manage = FS3Combat.can_manage_combat?(enactor, combat) || (enactor.name == combatant.name)
+        acting_for_self = enactor.name == combatant.name
+        can_manage = FS3Combat.can_manage_combat?(enactor, combat)
         
-        if (!can_manage)
+        if (! (can_manage || acting_for_self) )
           return { error: t('dispatcher.not_allowed') }
         end
 
         if (combat.turn_in_progress)
           return { error: t('fs3combat.turn_in_progress') }
         end
-
+        
+        
         team = request.args[:team].to_i
         stance = request.args[:stance]
         weapon = request.args[:weapon]
         action = request.args[:action] || "pass"
-        if (action.blank?)
+        if (action.blank? || (acting_for_self && combatant.is_ko))
           action = "pass"
         end
         action_args = (request.args[:action_args] || "").strip

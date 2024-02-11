@@ -320,6 +320,12 @@ module AresMUSH
        hashtags = (post.message || "").scan(/\s#[^#]\S+/).map { |t| t.after('#') }
        Website.update_tags(post, hashtags)
      end
+     
+     def self.move_topic_to_category(author, topic, category)
+       message = t('forum.post_moved_to_category', :name => author.name, :old_category => topic.bbs_board.name, :new_category => category.name)
+       topic.update(bbs_board: category)
+       Forum.reply(category, topic, author, message)
+     end
   end
 end
   

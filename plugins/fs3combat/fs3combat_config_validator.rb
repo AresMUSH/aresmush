@@ -90,6 +90,11 @@ module AresMUSH
             if (!data['skill'].kind_of?(Integer))
               verify_action_skill(name, data, 'skill')
             end
+            
+            
+            if (!FS3Combat.weapon_types.include?((data['weapon_type'] || "").downcase))
+              @validator.add_error "fs3combat:weapons The #{name} weapon has an invalid weapon type."
+            end
         
         end
       

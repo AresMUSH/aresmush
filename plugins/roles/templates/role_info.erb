@@ -1,0 +1,17 @@
+<%= header %>
+%xh<%= center(role.name,78) %>%xn
+
+%xh<%= t('roles.permissions_title') %>%xn 
+
+<% if role.name == "admin" %>
+* ALL
+<% else %>
+<% role.permissions.sort.each do |permission| %>
+* <%= permission %> - <%= permission_desc(permission) %>
+<% end %>
+<% end %>
+
+%xh<%= t('roles.players_title') %>%xn
+
+<%= players %>
+<%= footer %>

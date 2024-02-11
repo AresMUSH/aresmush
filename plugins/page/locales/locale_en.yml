@@ -43,3 +43,6 @@ en:
         
         no_unread_threads: "You have no new private messages."
         unread_threads: "%{count} private message conversations have new activity. %xh%xx(pm/review)%xn"
+        
+        deleted_thread_mail_title: "Page Thread Deleted - %{title}"
+        deleted_thread_mail_body: "This page thread was deleted (probably due to a player idling out or being deleted), so it is archived here for your reference."

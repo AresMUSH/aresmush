@@ -163,6 +163,7 @@ module AresMUSH
     end
     
     def self.icon_display(icon_type)
+      return nil if !icon_type
       types = Global.read_config('rooms', 'icon_types') || {}
       types[icon_type] || "fas fa-star"
     end

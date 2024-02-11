@@ -10,6 +10,7 @@ module AresMUSH
     attribute :api_key
     
     attribute :player_api_keys, :type => DataType::Hash, :default => {}
+    attribute :applied_migrations, :type => DataType::Array, :default => []
     
     # There's only one game document and this is it!
     def self.master
@@ -25,6 +26,7 @@ module AresMUSH
     def self.web_portal_url
       host = Global.read_config('server', 'hostname')
       port = Global.read_config('server', 'web_portal_port')
+      use_https = Global.read_config('server', 'use_https')
       
       if (port.to_s == '80')
         port_str = ""
@@ -35,7 +37,7 @@ module AresMUSH
       website = Global.read_config("game", "website") 
       
       if (website.blank?)
-        return "http://#{host}#{port_str}"
+        return "#{use_https ? 'https' : 'http'}://#{host}#{port_str}"
       else
         return website
       end

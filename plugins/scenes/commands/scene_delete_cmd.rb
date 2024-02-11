@@ -30,8 +30,8 @@ module AresMUSH
             return
           end
           
-          scene.delete
-          client.emit_success t('scenes.scene_deleted')
+          trash_date = Scenes.move_to_trash(scene, enactor)
+          client.emit_success t('scenes.scene_trashed', :id => scene.id, :date => OOCTime.local_short_timestr(enactor, trash_date))
         end
       end
     end

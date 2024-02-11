@@ -39,6 +39,7 @@ The Jobs system is used by the game administrators to track work requests and to
 `job/status <#>=<status>` - Change job status.
 `job/cat <#>=<category>` - Change job category.
 `job/title <#>=<title>` - Change job title.
+`job/setcustom <#>=<field name>/<value>` - Sets a custom job field.
 
 `jobs/catchup` - Marks all jobs as read.
 `jobs/catchup <number>` - Mark a specific job as read.

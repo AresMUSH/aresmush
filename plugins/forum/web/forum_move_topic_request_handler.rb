@@ -26,7 +26,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
-        topic.update(bbs_board: category)
+        Forum.move_topic_to_category(enactor, topic, category)
         {
           post_id: topic.id,
           category_id: category.id

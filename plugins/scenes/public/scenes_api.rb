@@ -56,7 +56,7 @@ module AresMUSH
         end
       end
 
-      Scenes.create_new_pose_notification(scene, character.name)
+      Scenes.create_new_pose_notification(scene, character)
             
       return scene_pose
     end
@@ -66,8 +66,11 @@ module AresMUSH
         scene.invited.add char
       end
       message = t('scenes.scene_notify_invite', :name => enactor.name, :num => scene.id)
-      Login.emit_ooc_if_logged_in(char, message)        
-      Login.notify(char, :scene, message, scene.id, "", false)
+      Global.notifier.notify_ooc(:scene_message, message) do |notify_char|
+        notify_char == char
+      end
+      
+      Login.notify(char, :scene, message, scene.id)
     end
     
     def self.uninvite_from_scene(scene, char, enactor)

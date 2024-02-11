@@ -9,12 +9,10 @@ module AresMUSH
           clear_rooms
         end
         
-        if (Global.read_config("scenes", "delete_unshared_scenes"))
-          config = Global.read_config("scenes", "unshared_scene_cleanup_cron")
-          if Cron.is_cron_match?(config, event.time)
-             Global.logger.debug "Unshared scenes cleanup."
-             delete_unshared_scenes
-          end
+        config = Global.read_config("scenes", "unshared_scene_cleanup_cron")
+        if Cron.is_cron_match?(config, event.time)
+           Global.logger.debug "Unshared scenes cleanup."
+           delete_unshared_scenes
         end
         
         trending_category = Global.read_config("scenes", "trending_scenes_category")
@@ -49,25 +47,22 @@ module AresMUSH
       end
       
       def delete_unshared_scenes
-        # Completed scenes that haven't been shared are deleted after a few days.
+        # Completed scenes that haven't been shared are marked for deletion after a few days.
 
+        delete_unshared = Global.read_config("scenes", "delete_unshared_scenes")
         warn_days = Global.read_config('scenes', 'unshared_scene_warning_days')
-        delete_days = Global.read_config('scenes', 'unshared_scene_deletion_days')
         
         Scene.all.select { |s| s.completed && !s.shared }.each do |scene|
-          
-          elapsed_days = scene.days_since_last_activity
-          if (elapsed_days > delete_days  && scene.deletion_warned)
-            Global.logger.info "Deleting scene #{scene.id} - #{scene.title} completed #{scene.date_completed}"
-            scene.delete
-          elsif (elapsed_days > warn_days && !scene.deletion_warned)
-            message = t('scenes.scene_delete_warn', :id => scene.id)
-            scene.participant_names.each do |participant|
-              char = Character.named(participant)
-              next if !char
-              Login.notify(char, :scene_deletion, message, scene.id)
+          if (scene.in_trash)
+            if (Time.now > scene.trash_date)
+              Global.logger.info "Deleting scene #{scene.id}"
+              scene.delete
             end
-            scene.update(deletion_warned: true)
+          elsif delete_unshared
+            elapsed_days = scene.days_since_last_activity
+            if (elapsed_days > warn_days)
+              Scenes.move_to_trash(scene, Game.master.system_character)
+            end
           end
         end
       end

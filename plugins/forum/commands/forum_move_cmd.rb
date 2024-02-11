@@ -24,7 +24,7 @@ module AresMUSH
           end
           
           Forum.with_a_category(self.new_category_name, client, enactor) do |new_category|
-            post.update(bbs_board: new_category)
+            Forum.move_topic_to_category(enactor, post, new_category)
             client.emit_success t('forum.post_moved', :subject => post.subject, :category => new_category.name)
           end
         end

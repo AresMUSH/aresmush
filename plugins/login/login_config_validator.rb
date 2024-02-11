@@ -19,6 +19,7 @@ module AresMUSH
         @validator.check_cron('notice_cleanup_cron')
         @validator.require_int('notice_timeout_days', 1)
         @validator.require_boolean('portal_requires_registration')
+        @validator.require_boolean('disable_nonadmin_logins')
         
         begin
          
