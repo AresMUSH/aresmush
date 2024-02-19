@@ -76,7 +76,7 @@ en:
        area_title: "Area %{area}"
        area_locations_title: "Locations in %{area}"
        area_parent_set: "You set the parent for %{name} to %{parent}."
-       circular_area_parentage: "You can't parent an area to one of its descendants."
+       circular_area_parentage: "You can't parent an area to itself or one of its descendants."
        
        cant_delete_area: "You can't delete an area that is used by rooms or is the parent of another area."
        

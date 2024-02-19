@@ -75,6 +75,8 @@ module AresMUSH
     
     def self.has_parent_area(parent_to_check, area)
       return false if !parent_to_check
+      return true if parent_to_check == area
+
       return false if !parent_to_check.parent
       return true if parent_to_check.parent == area
       Rooms.has_parent_area(parent_to_check.parent, area)

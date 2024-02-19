@@ -89,7 +89,7 @@ module AresMUSH
       original_msg = "#{original_msg}".gsub(/%R/i, " ")
       original_msg = "#{original_msg}".gsub(/[\r\n]/i, " ")
 
-      title = "#{title}%xn"
+      title = title ? "#{title}%xn" : nil
       channel_message = channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
