@@ -100,7 +100,7 @@ module AresMUSH
       else
         description = location
       end
-      
+            
       scene.update(location: location)
 
       if (scene.temp_room && scene.room)
