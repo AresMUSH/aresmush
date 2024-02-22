@@ -49,6 +49,7 @@ en:
         background_review: "Checking that you have a background."
         no_permission_to_view_bg: "You don't have permission to view that background."
         accidental_view_bg: "Pretty sure you meant to use bg/set."
+        bg_too_long: "%xh%xr< Too Long! %{total}/%{max} >%xn"
         
         app_job_submitted: "App submitted.%RNotes: %{notes}"
         app_job_resubmitted: "App re-submitted.%RNotes: %{notes}"
