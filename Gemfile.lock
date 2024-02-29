@@ -73,7 +73,7 @@ GEM
       redic (~> 1.5.0)
       stal
     ox (2.14.11)
-    rack (2.2.8)
+    rack (2.2.8.1)
     rack-protection (2.2.4)
       rack
     rake (12.3.3)
