@@ -56,9 +56,7 @@ module AresMUSH
     def add_to_history(msg, author)
       return if !self.recall_enabled
       message = ChannelMessage.create(message: msg, character: author, channel: self )
-      if (self.channel_messages.count > Channels.recall_buffer_size)
-        self.sorted_channel_messages.first.delete
-      end
+      Channels.prune_channel_recall(self)
       return message
     end      
     

@@ -264,32 +264,32 @@ module AresMUSH
     end
     
     def self.join_channel(channel, char, chan_alias = nil)
-        if (Channels.is_on_channel?(char, channel))
-          return t('channels.already_on_channel')
-        end
+      if (Channels.is_on_channel?(char, channel))
+        return t('channels.already_on_channel')
+      end
         
-        if (!Channels.can_join_channel?(char, channel))
-          return t('channels.cant_use_channel')
-        end
+      if (!Channels.can_join_channel?(char, channel))
+        return t('channels.cant_use_channel')
+      end
         
-        if (!chan_alias)
-          chan_alias = channel.default_alias.join(",")
-        end
+      if (!chan_alias)
+        chan_alias = channel.default_alias.join(",")
+      end
         
-        options = Channels.get_channel_options(char, channel)
-        if (!options)
-          ChannelOptions.create(character: char, channel: channel)
-        end
+      options = Channels.get_channel_options(char, channel)
+      if (!options)
+        ChannelOptions.create(character: char, channel: channel)
+      end
             
-        error = Channels.set_channel_alias(nil, char, channel, chan_alias, false)
-        if (error)
-          return t('channels.unable_to_determine_auto_alias')
-        end
+      error = Channels.set_channel_alias(nil, char, channel, chan_alias, false)
+      if (error)
+        return t('channels.unable_to_determine_auto_alias')
+      end
 
-        channel.characters << char
-        Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
+      channel.characters << char
+      Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
         
-        return nil
+      return nil
     end
     
     def self.active_channels(char)
@@ -307,18 +307,29 @@ module AresMUSH
       Jobs.create_job(Jobs.trouble_category, t('channels.channel_reported_title'), body, Game.master.system_character)
     end
     
+    def self.prune_channel_recall(channel)
+      msgs = channel.sorted_channel_messages
+      limit = Channels.recall_buffer_size
+      
+      if (msgs.count > limit)
+        num_to_delete = msgs.count - limit
+        msgs_to_delete = msgs.slice(0, num_to_delete)
+        msgs_to_delete.each { |m| m.delete }
+      end
+    end
+            
     def self.notify_discord_webhook(channel, message, enactor)
       debug_enabled = Global.read_config('channels', 'discord_debug')
 
       name = enactor.ooc_name
       url = channel.discord_webhook
 
-       if (url.blank?)
-         if (debug_enabled)
-           Global.logger.debug "No discord hook found for #{channel.name}."
-         end
-         return
-       end
+      if (url.blank?)
+        if (debug_enabled)
+          Global.logger.debug "No discord hook found for #{channel.name}."
+        end
+        return
+      end
       
       Global.dispatcher.spawn("Sending discord webhook", nil) do
         
@@ -337,64 +348,64 @@ module AresMUSH
         gravatar_style = Global.read_config('channels', 'discord_gravatar_style') || 'robohash'
         icon = Website.icon_for_char(enactor) 
         icon_url = icon ? "#{Game.web_portal_url}/game/uploads/#{icon}" :
-             "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(enactor.name)}?d=#{gravatar_style}"
+        "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(enactor.name)}?d=#{gravatar_style}"
         connector = RestConnector.new(url)
         response = connector.post( "", { 
           content: formatted_msg, 
           username: name,
           avatar_url: icon_url } )
-        if (response && debug_enabled)
-          Global.logger.debug "Discord response: #{response}"
+          if (response && debug_enabled)
+            Global.logger.debug "Discord response: #{response}"
+          end
         end
       end
-    end
     
-    def self.build_channel_web_data(channel, enactor, lazy_load = false)
-      chars_on_channel = Channels.alts_on_channel(enactor, channel)
-      if (lazy_load || chars_on_channel.empty?)
-        messages = []
-      else
-        messages = channel.sorted_channel_messages.map { |m| {
-          message: Website.format_markdown_for_html(m.message),
-          id: m.id,
-          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
-          author: {
-            name: m.author_name,
-            icon: m.author ? Website.icon_for_char(m.author) : nil }
+      def self.build_channel_web_data(channel, enactor, lazy_load = false)
+        chars_on_channel = Channels.alts_on_channel(enactor, channel)
+        if (lazy_load || chars_on_channel.empty?)
+          messages = []
+        else
+          messages = channel.sorted_channel_messages.map { |m| {
+            message: Website.format_markdown_for_html(m.message),
+            id: m.id,
+            timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
+            author: {
+              name: m.author_name,
+              icon: m.author ? Website.icon_for_char(m.author) : nil }
             }
           }
+        end
+      
+        alts = AresCentral.play_screen_alts(enactor)
+      
+        {
+          key: channel.name.downcase,
+          title: channel.name,
+          desc: channel.description,
+          enabled: chars_on_channel.any?,
+          can_join: alts.map { |a| Channels.can_join_channel?(a, channel) }.any?,
+          can_talk: alts.map { |a| Channels.can_talk_on_channel?(a, channel) }.any?,
+          muted: Channels.is_muted?(enactor, channel),
+          last_activity: channel.last_activity,
+          is_recent: channel.last_activity ? (Time.now - channel.last_activity < (86400 * 2)) : false,
+          is_page: false,
+          who: Channels.channel_who(channel).map { |w| {
+            name: w.name,
+            ooc_name: w.ooc_name,
+            icon: Website.icon_for_char(w),
+            muted: Channels.is_muted?(w, channel),
+            status: Website.activity_status(w)
+            }},
+            poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }
+            .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
+            .map { |a| {
+              name: a.name,
+              icon: Website.icon_for_char(a),
+              id: a.id
+              }},
+              messages: messages,
+              lazy_loaded: lazy_load
+            }
+          end
+        end
       end
-      
-      alts = AresCentral.play_screen_alts(enactor)
-      
-      {
-        key: channel.name.downcase,
-        title: channel.name,
-        desc: channel.description,
-        enabled: chars_on_channel.any?,
-        can_join: alts.map { |a| Channels.can_join_channel?(a, channel) }.any?,
-        can_talk: alts.map { |a| Channels.can_talk_on_channel?(a, channel) }.any?,
-        muted: Channels.is_muted?(enactor, channel),
-        last_activity: channel.last_activity,
-        is_recent: channel.last_activity ? (Time.now - channel.last_activity < (86400 * 2)) : false,
-        is_page: false,
-        who: Channels.channel_who(channel).map { |w| {
-         name: w.name,
-         ooc_name: w.ooc_name,
-         icon: Website.icon_for_char(w),
-         muted: Channels.is_muted?(w, channel),
-         status: Website.activity_status(w)
-        }},
-        poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }
-        .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
-        .map { |a| {
-          name: a.name,
-          icon: Website.icon_for_char(a),
-          id: a.id
-        }},
-        messages: messages,
-        lazy_loaded: lazy_load
-      }
-    end
-  end
-end
