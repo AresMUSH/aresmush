@@ -23,6 +23,7 @@ en:
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
         scene_not_specified: "You must either be in a room with an active scene, or specify a scene number for this command."
         scene_not_found: "Scene not found."
+        scene_not_found_num: "Scene %{num} not found."
         pose_added: "Pose added to scene."
         invalid_privacy: "Invalid privacy setting.  Please use 'open' or 'private'."
         scene_is_private: "That scene is private.  You must get an invitation/meetme from one of the participants to join."
@@ -166,3 +167,10 @@ en:
         plot_created: "%{title} created."
         plot_updated: "%{title} updated."
         plot_deleted: "%{title} deleted."
+        
+        already_linked: "Those scenes are already linked."
+        not_linked: "Those scenes are not linked."
+        link_added: "Related scene link added."
+        link_removed: "Related scene link removed."
+        cant_link_unshared_scenes: "Both scenes must be shared before they can be linked."
+        no_recursive_link: "You can't link a scene to itself."

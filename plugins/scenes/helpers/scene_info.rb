@@ -140,7 +140,6 @@ module AresMUSH
       links2 = SceneLink.find(log2_id: scene.id)
       links1.to_a.concat(links2.to_a)
     end 
-    
 
     def self.recent_scenes
       (Game.master.recent_scenes || []).map { |id| Scene[id] }.select { |s| s }
