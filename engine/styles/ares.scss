@@ -2007,6 +2007,21 @@ OTHER
     padding:15px;
 }
 
+.who-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $border-color;
+  padding: 10px 0px 10px 0px;
+}
+
+.icon-legend-heading {
+  font-weight: bold;
+  font-size: 1.25em;
+  padding-top: 10px;
+}
+
 
 .xp-progress {
   max-width: 100%;
