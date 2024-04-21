@@ -136,7 +136,7 @@ DEPENDENCIES
   log4r (~> 1.1.10)
   ohm (~> 3.1.1)
   ox (>= 2.14.11)
-  rack (>= 2.2.6)
+  rack (>= 2.2.8)
   rake (~> 12.3)
   redcarpet (~> 3.5.1)
   rspec (~> 3.12)
