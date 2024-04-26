@@ -21,7 +21,7 @@ module AresMUSH
           @lines << current_line
           current_line = ""
         end
-        current_line << i.truncate(column_width - 1).ljust(column_width)
+        current_line << left(i.truncate(column_width - 1), column_width)
         count = count + 1
       end
       
