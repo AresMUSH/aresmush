@@ -36,6 +36,13 @@ module AresMUSH
         validator.require_boolean('public_game')
         validator.require_nonblank_text('status')
         validator.require_text('website')
+        
+        website = Global.read_config("game", "website")
+        if (!website.blank?)
+          if (!website.start_with?("http://") && !website.start_with?("https://"))
+            validator.add_error "game:website must start with https:// or http://"
+          end
+        end
         self.error_list.concat(validator.errors)
       end
       
@@ -70,6 +77,12 @@ module AresMUSH
         validator.require_text('private_key_file_path')
         validator.require_nonblank_text('hostname')
         validator.require_boolean('use_https')
+        
+        host = Global.read_config("server", "hostname")
+        if (host.start_with?("http://") || host.start_with?("https://"))
+          validator.add_error "server:hostname should not have http in it. Just use the raw hostname, e.g., yourgame.aresmush.com"
+        end
+        
         self.error_list.concat(validator.errors)
       end
       
