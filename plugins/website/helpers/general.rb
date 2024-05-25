@@ -136,13 +136,13 @@ module AresMUSH
     end
     
     def self.wiki_templates
-      templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
-        title: p.title.gsub("template:", ""),
-        name: p.name.gsub("template:", ""),
+      templates = WikiPage.all.select { |p| p.category == "template" }.sort_by { |p| p.name.downcase }.map { |p| {
+        title: p.title.gsub("template:", "").gsub("Template:", ""),
+        name: p.name.gsub("template:", "").gsub("Template:", ""),
         text: p.text
       }
       }
-      templates << { title: 'blank', name: 'blank', text: '' }
+      templates.unshift({ title: 'blank', name: 'blank', text: '' })
       templates
     end
     
