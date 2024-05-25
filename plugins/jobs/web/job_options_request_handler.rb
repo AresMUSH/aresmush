@@ -28,7 +28,7 @@ module AresMUSH
           custom_fields: custom_fields,
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           is_job_admin: is_job_admin,
-          reboot_required_notice: Jobs.reboot_required_notice
+          reboot_required_notice: Website.format_markdown_for_html(Jobs.reboot_required_notice)
         }
       end
     end
