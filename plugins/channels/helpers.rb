@@ -334,7 +334,7 @@ module AresMUSH
       Global.dispatcher.spawn("Sending discord webhook", nil) do
         
         if (debug_enabled)
-          Global.logger.debug "Sending discord webhook to #{url} for #{channel.name}."
+          Global.logger.debug "Sending discord webhook for #{channel.name} from #{enactor.name} to #{url} (KEEP THIS URL PRIVATE)."
         end
         
         formatted_msg = message
