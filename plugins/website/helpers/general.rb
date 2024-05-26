@@ -294,6 +294,16 @@ module AresMUSH
           }
         },
         
+        {
+          name: "Web Portal Sidebar",
+          help: "https://aresmush.com/tutorials/code/hooks/sidebar.html",
+          files: {
+            'sidebar-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'sidebar-custom.hbs'),  
+            'sidebar-custom.js' => File.join(web_code_path, 'components', 'sidebar-custom.js'),
+            'custom_web_data.rb' => File.join(plugin_code_path, 'website', 'custom_web_data.rb'),
+          }
+        },
+        
       ]
     end
     
