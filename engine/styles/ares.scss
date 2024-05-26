@@ -1136,8 +1136,10 @@ SCENES SCREEN
     z-index:98;
     position:relative;
     top: -19px;
-    -moz-border-radius: 25px 0px;
-    -webkit-border-radius: 25px 0px;
+    -moz-border-radius: 0px 25px 25px 0px;
+    -webkit-border-radius: 0px 25px 25px 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     border-bottom-left-radius: 25px;  
     border-bottom-right-radius: 25px;  
     opacity: 0.8;
