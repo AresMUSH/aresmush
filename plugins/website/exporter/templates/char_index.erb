@@ -1,0 +1,32 @@
+<h1>Characters</h1>
+<div class="icon-gallery">
+
+  <% chars.each do |c| %>
+
+
+    <div class="icon-gallery-item">
+      
+      <a href="<%= c.name %>.html">
+      <div class="char-icon-container">
+
+      <div class="log-icon-container">
+             <% if icon(c) %>
+              <img  class="log-icon" src="game/uploads/<%= icon(c) %>" >
+             <% else %>
+             <img class="log-icon" src="game/uploads/theme_images/noicon.png" >
+             <% end %>
+      </div>
+
+      <div class="log-icon-title-container">
+          <div class="log-icon-title">
+           <%= c.name %>
+          </div>
+      </div>
+
+      </div>
+      </a>
+    </div>
+    
+  <% end %>
+</div>
+
