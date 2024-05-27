@@ -157,7 +157,11 @@
     <% end %>
   
     <li class="nav-item"><a data-bs-toggle="tab" href="#systemdesc" class="nav-link">Description</a></li>
-  
+
+    <% if fs3_enabled %>
+      <li class="nav-item"><a data-bs-toggle="tab" href="#systemfs3" class="nav-link">Sheet</a></li>
+    <% end %>
+    
   </ul>
 
 
@@ -183,6 +187,48 @@
            <%= detail %>
          <% end %>
     </div>
+    
+    <% if fs3_enabled %>
+      <div id="systemfs3" class="tab-pane fade">
+        <h3>Attributes</h3>
+       
+        <ul>
+          <% fs3_data[:attributes].each do |attr| %>
+            <li><b><%= attr[:name] %></b> <%= attr[:rating_name] %> (<%= attr[:rating] %>)</li>
+          <% end %>
+        </ul>
+        
+        <h3>Action Skills</h3>
+       
+        <ul>
+          <% fs3_data[:action_skills].each do |skill| %>
+            <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)
+              <% if !skill[:specialties].blank? %>
+                <i>Specialties:</i> <%= skill[:specialties] %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        
+        <h3>Background Skills</h3>
+       
+        <ul>
+          <% fs3_data[:backgrounds].each do |skill| %>
+            <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)</li>
+          <% end %>
+        </ul>
+        
+        <h3>Languages</h3>
+       
+        <ul>
+          <% fs3_data[:languages].each do |skill| %>
+            <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)</li>
+          <% end %>
+        </ul>
+        
+      </div>
+    <% end %>
+    
   </div>
 
 </div>

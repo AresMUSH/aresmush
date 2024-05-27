@@ -2,11 +2,14 @@ module AresMUSH
   module Website
     class WikiExportCharTemplate < ErbTemplateRenderer
             
-      attr_accessor :char, :scene_block, :demographics_and_groups
+      attr_accessor :char, :scene_block, :demographics_and_groups, :fs3_data
       
       def initialize(char, scene_block)
         @char = char
         @scene_block = scene_block
+        if (self.fs3_enabled)
+          @fs3_data = FS3Skills.build_web_char_data(@char, @char)
+        end
         @demographics_and_groups = Demographics.build_web_profile_data(@char, @char)
         
         super File.dirname(__FILE__) + "/char.erb"
@@ -55,6 +58,10 @@ module AresMUSH
        def gallery
          Profile.character_gallery_files(@char).map { |g| g.start_with?("/") ? g.after('/') : g }
        end
+       
+       def fs3_enabled
+         FS3Skills.is_enabled?
+       end             
     end
   end
 end
