@@ -51,8 +51,8 @@
                 <a href="<%= participant.name %>.html">
     
                   <div class="log-icon-container">
-                         <% if participant.icon %>
-                          <img class="log-icon" src="game/uploads/<%= participant.profile_icon %>" >
+                         <% if icon(participant) %>
+                          <img class="log-icon" src="game/uploads/<%= icon(participant) %>" >
                          <% else %>
                          <img  class="log-icon" src="game/uploads/theme_images/noicon.png" >
                          <% end %>

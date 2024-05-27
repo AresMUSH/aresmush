@@ -92,11 +92,23 @@ module AresMUSH
             f.puts format_wiki_template(text, s.date_title)
           end
         end
+        
+        plots = Plot.all.to_a.sort_by { |p| p.start_date || p.created_at }
+        plots.each do |p|
+          renderer = WikiExportPlotTemplate.new(p)
+          text = renderer.render
+          File.open(File.join(export_path, "plot_#{p.id}"), 'w') do |f|
+            f.puts format_wiki_template(text, p.title)
+          end
+        end
+        
+        renderer = WikiExportSceneListTemplate.new(index)
+        scene_list = renderer.render
 
+        renderer = WikiExportSceneIndexTemplate.new(scene_list, plots)
+        text = renderer.render
         
         File.open(File.join(export_path, "scenes.html"), 'w') do |f|
-          renderer = WikiExportSceneIndexTemplate.new(index)
-          text = renderer.render
           f.puts format_wiki_template(text, "Scenes")
         end
         
@@ -188,7 +200,7 @@ module AresMUSH
               end
             end
             
-            renderer = WikiExportSceneIndexTemplate.new(index)
+            renderer = WikiExportSceneListTemplate.new(index)
             scene_text = renderer.render
             
             renderer = WikiExportCharTemplate.new(c, scene_text)

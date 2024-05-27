@@ -30,6 +30,10 @@ module AresMUSH
         clean_date = "#{related.icdate}".gsub("/", "-")
         "#{clean_date}-#{filename}.html"
       end
+      
+      def icon(char)
+        Website.icon_for_char(char)
+      end
     end
   end
 end

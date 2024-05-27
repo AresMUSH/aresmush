@@ -158,9 +158,15 @@
   
     <li class="nav-item"><a data-bs-toggle="tab" href="#systemdesc" class="nav-link">Description</a></li>
 
-    <% if fs3_enabled %>
+    <% if fs3skills_enabled %>
       <li class="nav-item"><a data-bs-toggle="tab" href="#systemfs3" class="nav-link">Sheet</a></li>
     <% end %>
+
+    <% if fs3combat_enabled %>
+      <li class="nav-item"><a data-bs-toggle="tab" href="#systemfs3combat" class="nav-link">Damage</a></li>
+    <% end %>
+    
+    <li class="nav-item"><a data-bs-toggle="tab" href="#systemachieve" class="nav-link">Achievements</a></li>
     
   </ul>
 
@@ -179,6 +185,17 @@
       <%= background %>
      </div>
     <% end %>
+    
+  
+    <div id="systemachieve" class="tab-pane fade">     
+         <% achievements.each do |achievement| %>         
+           <i class="fa fa-2x fa-fw achievement-icon <%= achievement[:type_icon] %>" aria-hidden="true"></i>
+
+           <span class="achievement-message">
+              <%= achievement[:message] %></p>
+            </span>
+         <% end %>
+    </div>
   
     <div id="systemdesc" class="tab-pane fade">
          <%= desc %>
@@ -188,7 +205,7 @@
          <% end %>
     </div>
     
-    <% if fs3_enabled %>
+    <% if fs3skills_enabled %>
       <div id="systemfs3" class="tab-pane fade">
         <h3>Attributes</h3>
        
@@ -228,7 +245,15 @@
         
       </div>
     <% end %>
-    
+
+    <% if fs3combat_enabled %>
+    <div id="systemfs3combat" class="tab-pane fade">
+      <% damage.each do |d| %>
+        <p><%= d %></p>
+      <% end %>
+    </div>
+    <% end %>
+      
   </div>
 
 </div>
