@@ -29,9 +29,9 @@ module AresMUSH
           end
           
           if (filter == 'Recent')
-            scenes = plot.sorted_scenes.reverse[0..20].select { |s| s.shared }
+            scenes = plot.sorted_scenes.reverse[0..20]
           else
-            scenes = plot.sorted_scenes.reverse.select { |s| s.shared }
+            scenes = plot.sorted_scenes.reverse
           end
           
         elsif (char_name_or_id)

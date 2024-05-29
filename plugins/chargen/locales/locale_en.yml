@@ -62,9 +62,11 @@ en:
         app_job_problem: "There was a problem submitting your job.  Please contact the game admin."
 
         approval_reminder:  "NOTE!!! App responses will come back in the request system, not mail.  You can check the status of your app using 'requests'."
+        approval_submitted_by_admin: "App submitted by %{name}."
+        already_approved: "%{name} is already approved."
                 
         you_have_not_submitted_app: "You have not submitted your character for approval."
-        no_app_submitted: "%{name} has not submitted their character for approval."
+        no_app_submitted: "%{name} has not submitted their character for approval. Use app/override to combine submit and approve."
         app_job_updated: "Application job #%{num} '%{title}' updated."
         
         cant_be_changed: "You can't use this command once you've been approved."

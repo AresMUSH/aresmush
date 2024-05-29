@@ -7,9 +7,12 @@ module AresMUSH
       scene.scene_poses.each { |p| p.delete }  
     end
     
-    def self.add_log_version(scene, log, enactor)
-      scene_log = SceneLog.create(scene: scene, log: log, character: enactor)
-      scene.update(scene_log: scene_log)
+    def self.add_log_version(scene, log_text, enactor)
+      old_log = scene.scene_log
+      if (!old_log || (old_log.log != log_text))
+        new_log = SceneLog.create(scene: scene, log: log_text, character: enactor)
+        scene.update(scene_log: new_log)
+      end
     end
     
     

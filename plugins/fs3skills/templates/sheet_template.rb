@@ -87,7 +87,7 @@ module AresMUSH
       def format_attr(a, i)
         linebreak = i % 2 == 1 ? "" : "%r"
         if (@client.screen_reader)
-          return "#{linebreak}#{a.name}: #{a.rating_name} :: "
+          return "#{linebreak}#{a.name}: #{a.rating} #{a.rating_name} :: "
         end
         name = "%xh#{a.name}:%xn"
         rating_text = "#{a.rating_name}"
@@ -100,7 +100,7 @@ module AresMUSH
         linebreak = i % 2 == 1 ? "" : "%r"
         
         if (@client.screen_reader)
-          return "#{linebreak}#{s.name}: #{s.rating_name} #{linked_attr} :: "
+          return "#{linebreak}#{s.name}: #{s.rating} #{s.rating_name} #{linked_attr} :: "
         end
                 
         name = "%xh#{s.name}:%xn"

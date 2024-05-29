@@ -340,6 +340,57 @@ module AresMUSH
         end
       end
       
+      describe :add_log_version do 
+        it "should add a log if there isn't one yet" do
+          scene = double("scene")
+          enactor = double("enactor")
+          log = double("log")
+          expect(scene).to receive(:scene_log) { nil }
+          expect(SceneLog).to receive(:create) do |params|
+            expect(params[:character]).to eq enactor
+            expect(params[:scene]).to eq scene
+            expect(params[:log]).to eq "LOG"
+            log
+          end
+          expect(scene).to receive(:update) do |params|
+            expect(params[:scene_log]).to eq log
+          end
+          Scenes.add_log_version(scene, "LOG", enactor)
+          
+        end
+        
+        it "should add a log if the text is different" do
+          scene = double("scene")
+          enactor = double("enactor")
+          old_log = double("old_log")
+          new_log = double("new_log")
+          expect(scene).to receive(:scene_log) { old_log }
+          allow(old_log).to receive(:log) { "OLD"}
+          expect(SceneLog).to receive(:create) do |params|
+            expect(params[:character]).to eq enactor
+            expect(params[:scene]).to eq scene
+            expect(params[:log]).to eq "NEW"
+            new_log
+          end
+          expect(scene).to receive(:update) do |params|
+            expect(params[:scene_log]).to eq new_log
+          end
+          Scenes.add_log_version(scene, "NEW", enactor)
+        end
+        
+        it "should NOT add a log if the text is the same" do
+          scene = double("scene")
+          enactor = double("enactor")
+          old_log = double("old_log")
+          expect(scene).to receive(:scene_log) { old_log }
+          allow(old_log).to receive(:log) { "SAME"}
+          expect(SceneLog).to_not receive(:create)
+          expect(scene).to_not receive(:update)
+          Scenes.add_log_version(scene, "SAME", enactor)
+          
+        end
+      end
+      
     end
   end
 end

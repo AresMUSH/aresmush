@@ -1,0 +1,11 @@
+<h1>Scenes</h1>
+
+<%= scene_block %>
+
+<h2>Plots</h2>
+
+<% plots.each do |plot| %>
+  <p><b><a href="plot_<%= plot.id %>"><%= plot.title %></a></b></p>
+  <%= plot_summary(plot) %>
+  <hr/>
+<% end %>

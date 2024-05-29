@@ -46,7 +46,8 @@ module AresMUSH
           who_count: Who.all_online.count,
           scene_count: active_scenes.count,
           roster_enabled: Idle.roster_enabled?,
-          gcse_search_id: search_id
+          gcse_search_id: search_id,
+          custom_sidebar: Website.custom_sidebar_data(enactor)
         } 
       end
     end

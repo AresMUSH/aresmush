@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item"><a data-bs-toggle="tab" href="#scenecontrol" class="nav-link active">+</a></li>
+<% groups.each do |name, scenes| %>
+  <li class="nav-item"><a data-bs-toggle="tab" href="#<%= name %>" class="nav-link"><%= name %></a></li>
+<% end %>
+</ul>
+
+<div class="tab-content">
+  <div id="scenecontrol" class="tab-pane fade show active">
+    <div class="tab-cover">Scenes</div>
+  </div>
+  
+<% groups.each do |name, scenes| %>
+  <div id="<%= name %>" class="tab-pane fade show">
+        <% scenes.each do |scene| %>
+        <p><b><a href="<%= scene_page_name(scene) %>"><%= scene.title %></a></b>
+          <br/><%= scene.summary %>
+          <br/><%= scene.participant_names.join(' ') %></p>
+          <hr/>
+        <% end %>
+  </div>
+<% end %>
+</div>

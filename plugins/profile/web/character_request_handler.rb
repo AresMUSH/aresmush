@@ -12,38 +12,11 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
         
-        profile = char.profile
-        .sort_by { |k, v| [ char.profile_order.index { |p| p.downcase == k.downcase } || 999, k ] }
-        .each_with_index
-        .map { |(section, data), index| 
-          {
-            name: section.titlecase,
-            key: section.parameterize(),
-            text: Website.format_markdown_for_html(data),
-            active_class: index == 0 ? 'active' : ''  # Stupid bootstrap hack
-          }
-        }
+        profile = Profile.build_profile_sections_web_data(char)
         
-        if (char.profile_gallery.empty?)
-          gallery_files = Profile.character_page_files(char) || []
-        else
-          gallery_files = char.profile_gallery.select { |g| g =~ /\w\.\w/ }
-        end
+        gallery_files = Profile.character_gallery_files(char)
         
-        relationships_by_category = Profile.relationships_by_category(char)
-        relationships = relationships_by_category.map { |category, relationships| {
-          name: category,
-          key: category.parameterize(),
-          relationships: relationships.sort_by { |name, data| [ data['order'] || 99, name ] }
-             .map { |name, data| {
-               name: name,
-               is_npc: data['is_npc'],
-               icon: data['is_npc'] ? data['npc_image'] : Website.icon_for_name(name),
-               name_and_nickname: Demographics.name_and_nickname(Character.named(name)),
-               text: Website.format_markdown_for_html(data['relationship'])
-             }
-           }
-        }}
+        relationships = Profile.build_profile_relationship_web_data(char)
         
         can_manage = enactor && Profile.can_manage_char_profile?(enactor, char)
         
