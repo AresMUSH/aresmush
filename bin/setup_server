@@ -104,7 +104,7 @@ usermod -a -G sudo,www,redis ${ARES_USERNAME}
 
 # Needed for Ubuntu 21+ to allow web access to game dir
 
-sudo chmod 755 /home/ares
+sudo chmod a+x /home/ares
 
 # #########################################################################################
 

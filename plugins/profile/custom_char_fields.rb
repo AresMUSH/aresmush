@@ -41,16 +41,7 @@ module AresMUSH
         Swrifts.get_abilities_for_chargen(char)
       end
       
-      # Saves fields from profile editing.
-      #
-      # @param [Character] char - The character being updated.
-      # @param [Hash] char_data - A hash of character fields and values. Your custom fields
-      #    will be in char_data[:custom]. Multi-line text strings should be formatted for MUSH.
-      #
-      # @return [Array] - A list of error messages. Return an empty array ([]) if there are no errors.
-      # @example
-      #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
-      #        return []
+      # Deprecated - use save_fields_from_profile_edit2 instead
       def self.save_fields_from_profile_edit(char, char_data)
         return []
       end
@@ -69,6 +60,28 @@ module AresMUSH
 		ss = Swrifts.save_abilities_for_chargen(char, chargen_data)
 	    return [ss] 
       end
+<<<<<<< HEAD
+=======
+      
+      # Saves fields from profile editing.
+      #
+      # @param [Character] char - The character being updated.
+      # @param [Character] enactor - The character triggering the update.
+      # @param [Hash] char_data - A hash of character fields and values. Your custom fields
+      #    will be in char_data[:custom]. Multi-line text strings should be formatted for MUSH.
+      #
+      # @return [Array] - A list of error messages. Return an empty array ([]) if there are no errors.
+      # @example
+      #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
+      #        return []
+      def self.save_fields_from_profile_edit2(char, enactor, char_data)
+        # By default, this calls the old method for backwards compatibility. The old one didn't
+        # use enactor. Replace this with your own code.
+        return CustomCharFields.save_fields_from_profile_edit(char, char_data)
+      end
+
+      
+>>>>>>> upstream/master
     end
   end
 end

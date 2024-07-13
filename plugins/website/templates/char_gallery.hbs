@@ -2,27 +2,27 @@
 
           <h3>{{title}}</h3>
           
-          <div class="profile-gallery">
+          <div class="icon-gallery">
          
           {{#each chars as |char|}}
     
-              <div class="char-icon-container">
+            <div class="icon-gallery-item">
     
-              <div class="log-icon-container">
-                  <a href="/char/{{char.name}}">
-                     {{#if char.icon}}
-                      <img class="log-icon" src="/game/uploads/{{char.icon}}" />
-                     {{else}}
-                     <img class="log-icon" src="/game/uploads/theme_images/noicon.png" />
-                     {{/if}}
-                  </a>
-              </div>
+                <div class="log-icon-container">
+                    <a href="/char/{{char.name}}">
+                       {{#if char.icon}}
+                        <img class="log-icon" src="/game/uploads/{{char.icon}}" />
+                       {{else}}
+                       <img class="log-icon" src="/game/uploads/theme_images/noicon.png" />
+                       {{/if}}
+                    </a>
+                </div>
 
-              <div class="log-icon-title-container">
-                  <div class="log-icon-title">
-                   {{char.name}}
-                  </div>
-              </div>
+                <div class="log-icon-title-container">
+                    <div class="log-icon-title">
+                     {{char.name}}
+                    </div>
+                </div>
 
               </div>
                         

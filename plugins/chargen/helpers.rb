@@ -5,8 +5,16 @@ module AresMUSH
     end
     
     def self.bg_app_review(char)
-      error = char.background.to_s.empty? ? t('chargen.not_set') : t('chargen.ok')
-      Chargen.format_review_status t('chargen.background_review'), error
+      message = t('chargen.ok')
+      max_length = Global.read_config('chargen', 'max_bg_length') || 0
+      
+      if (char.background.blank?)
+        message = t('chargen.not_set')
+      elsif (max_length > 0 && char.background.length > max_length)
+        message = t('chargen.bg_too_long', :total => char.background.length, :max => max_length)
+      end
+      
+      Chargen.format_review_status t('chargen.background_review'), message
     end
     
     def self.can_manage_bgs?(actor)

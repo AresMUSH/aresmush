@@ -1,0 +1,275 @@
+<h1><%= title %></h1>
+
+<div class="row">
+
+    <div class="col col-xs-12 col-md-4">
+    <% if char.profile_image %>
+        <img src="game/uploads/<%= char.profile_image %>" class="profile-image">
+    <% else %>
+        <img src="game/uploads/theme_images/noicon.png" class="profile-image" >
+    <% end %>
+    </div>
+
+    <div class="col col-xs-12 col-md-8">        
+
+      <div class="profile-box">
+        <div class="profile-title">
+            <%= char.name %>
+        </div>
+        
+        <% demographics.each do |data| %>
+        <div class="row">
+            <div class="col-sm-3">
+                    <b><%= data[:name] %></b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= data[:value] %>
+            </div>
+        </div>
+        <% end %>
+                                
+        
+        <div class="profile-divider">
+        </div>
+        
+        
+        <% groups.each do |data| %>
+        <div class="row">
+            <div class="col-sm-3">
+                    <b><%= data[:name] %></b> 
+            </div>
+            <div class="col-sm-9">
+                    <%= data[:value] %>
+            </div>
+        </div>
+        <% end %>
+
+
+        <% if char.handle %>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Player</b> 
+            </div>
+            <div class="col-sm-9">
+                    <a href="http://arescentral.aresmush.com/handle/<%= char.handle.name %>"><%= char.handle.name %></a>
+            </div>
+        </div>
+        
+        <% end %>
+        
+      </div>
+        
+    </div>
+</div>
+
+
+<% if char.profile.any? %>
+<div class="profile-tab">
+  <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item"><a data-bs-toggle="tab" href="#supplementalindex" class="nav-link active">+</a></li>
+      <% profile.each do |data| %>
+          <li class="nav-item"><a data-bs-toggle="tab" href="#<%= data[:key] %>" class="nav-link"><%= data[:name] %></a></li>
+      <% end %>
+  </ul>
+
+  <div class="tab-content">
+
+    <div id="supplementalindex" class="tab-pane fade show active">
+        <div class="tab-cover">Supplemental Information</div>
+    </div>
+  
+    <% profile.each do |data| %>
+  
+    <div id="<%= data[:key] %>" class="tab-pane fade ansi">
+  
+        <%= data[:text ] %>
+      
+    </div>
+  
+    <% end %>
+  
+ </div>
+</div>
+<% end %>
+  
+<div class="profile-tab">
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item"><a data-bs-toggle="tab" href="#relationshipindex" class="nav-link active">+</a></li>
+      <% relationships.each do |data| %>
+      <li class="nav-item"><a data-bs-toggle="tab" href="#<%= data[:key] %>" class="nav-link"><%= data[:name] %></a></li>
+      <% end %>
+  </ul>
+
+  <div class="tab-content">
+
+    <div id="relationshipindex" class="tab-pane fade show active">
+        <div class="tab-cover">Relationships</div>
+    </div>
+  
+    <% relationships.each do |data| %>
+
+    <div id="<%= data[:key] %>" class="tab-pane fade">
+    
+      <% data[:relationships].each do |ship| %>
+        
+          <div class="row relationship-row">
+              <div class="col col-xs-12 col-sm-3">
+                
+                  <div class="relationship-icon-container">
+
+                      <% if ship[:icon] %>
+                        <img class="relationship-icon" src="game/uploads/<%= ship[:icon] %>"  >
+                      <% else %>
+                        <img class="relationship-icon" src="game/uploads/theme_images/noicon.png"  >
+                      <% end %>
+                  </div>
+                
+              </div>
+            
+              <div class="col col-xs-12 col-sm-8 ansi">
+                  <b><%= ship[:name] %></b>
+                  
+                  <%= ship[:text] %>
+              </div>
+          </div>
+        
+       <% end %>
+             
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="profile-tab">
+  <%= scene_block %>
+</div>
+
+<div class="profile-tab">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item"><a data-bs-toggle="tab" href="#systeminfo" class="nav-link active">+</a></li>
+
+    <li><a data-bs-toggle="tab" href="#systemhooks" class="nav-link">RP Hooks</a></li>
+
+    <% if show_bg %>
+        <li class="nav-item"><a data-bs-toggle="tab" href="#systembg" class="nav-link">Background</a></li> 
+    <% end %>
+  
+    <li class="nav-item"><a data-bs-toggle="tab" href="#systemdesc" class="nav-link">Description</a></li>
+
+    <% if fs3skills_enabled %>
+      <li class="nav-item"><a data-bs-toggle="tab" href="#systemfs3" class="nav-link">Sheet</a></li>
+    <% end %>
+
+    <% if fs3combat_enabled %>
+      <li class="nav-item"><a data-bs-toggle="tab" href="#systemfs3combat" class="nav-link">Damage</a></li>
+    <% end %>
+    
+    <li class="nav-item"><a data-bs-toggle="tab" href="#systemachieve" class="nav-link">Achievements</a></li>
+    
+  </ul>
+
+
+  <div class="tab-content">
+    <div id="systeminfo" class="tab-pane fade show active">
+        <div class="tab-cover">System Information</div>
+    </div>
+  
+    <div id="systemhooks" class="tab-pane fade">
+        <%= rp_hooks %>
+    </div>
+  
+    <% if show_bg %>
+    <div id="systembg" class="tab-pane fade">
+      <%= background %>
+     </div>
+    <% end %>
+    
+  
+    <div id="systemachieve" class="tab-pane fade">     
+         <% achievements.each do |achievement| %>         
+           <i class="fa fa-2x fa-fw achievement-icon <%= achievement[:type_icon] %>" aria-hidden="true"></i>
+
+           <span class="achievement-message">
+              <%= achievement[:message] %></p>
+            </span>
+         <% end %>
+    </div>
+  
+    <div id="systemdesc" class="tab-pane fade">
+         <%= desc %>
+       
+         <% details.each do |detail| %>
+           <%= detail %>
+         <% end %>
+    </div>
+    
+    <% if fs3skills_enabled %>
+      <div id="systemfs3" class="tab-pane fade">
+        <h3>Attributes</h3>
+       
+        <ul>
+          <% fs3_data[:attributes].each do |attr| %>
+            <li><b><%= attr[:name] %></b> <%= attr[:rating_name] %> (<%= attr[:rating] %>)</li>
+          <% end %>
+        </ul>
+        
+        <h3>Action Skills</h3>
+       
+        <ul>
+          <% fs3_data[:action_skills].each do |skill| %>
+            <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)
+              <% if !skill[:specialties].blank? %>
+                <i>Specialties:</i> <%= skill[:specialties] %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        
+        <h3>Background Skills</h3>
+       
+        <ul>
+          <% fs3_data[:backgrounds].each do |skill| %>
+            <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)</li>
+          <% end %>
+        </ul>
+        
+        <h3>Languages</h3>
+       
+        <ul>
+          <% fs3_data[:languages].each do |skill| %>
+            <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)</li>
+          <% end %>
+        </ul>
+        
+      </div>
+    <% end %>
+
+    <% if fs3combat_enabled %>
+    <div id="systemfs3combat" class="tab-pane fade">
+      <% damage.each do |d| %>
+        <p><%= d %></p>
+      <% end %>
+    </div>
+    <% end %>
+      
+  </div>
+
+</div>
+
+
+<div class="profile-tab">
+
+  <div class="panel panel-default">
+
+    <% if gallery.any? %>
+      <div class="profile-gallery">
+        <% gallery.each do |file| %>
+            <a href="game/uploads/<%= file %>"><img src="game/uploads/<%= file %>" >
+            </a>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

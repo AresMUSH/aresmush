@@ -6,13 +6,14 @@ aliases:
 - icstart
 ---
 
-Scenes have to take place *somewhere*.   The Ares scene system lets you start scenes in temporary rooms, but the majority of MUSH players still prefer to have a **grid** - a tangible set of **rooms** linked by **exits** for them to explore and play in.  
+Scenes have to take place *somewhere*.   The Ares scene system lets you start scenes in temporary rooms, but the majority of MUSH players still prefer to have a **grid** - a tangible set of **rooms** linked by **exits** for them to explore and play in. Despite the name, a Room doesn't have to represent a single room in a building.  It's just a place where people gather for roleplay, whether that's a closet or a whole neighborhood.
 
-> **Tip:** Despite the name, a Room doesn't have to represent a single room.  It's more like a virtual 'chatroom' - a place where people gather for roleplay.
+> **Permission Required:** Building commands require the Admin role or the build permission.
 
 [[toc]]
 
 ## Building Basics
+
 
 Here are the basics of building the grid.  Building can only be done through the MU client at present, not the web portal:
 

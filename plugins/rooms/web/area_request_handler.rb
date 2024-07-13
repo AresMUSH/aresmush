@@ -19,7 +19,7 @@ module AresMUSH
         end
         
         {
-          area: Rooms.build_area_web_data(area, edit_mode),
+          area: Rooms.build_detailed_area_web_data(area, edit_mode),
           children: area.sorted_children.map { |a| { id: a.id, name: a.name } },
           can_manage: Rooms.can_build?(enactor),
           all_areas: Rooms.area_directory_web_data

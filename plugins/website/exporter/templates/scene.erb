@@ -1,0 +1,93 @@
+<h1><%= @scene.icdate %> - <%= @scene.title %></h1>
+        
+<div class="row log-wrap">
+       
+    <div class="col log-box">
+       
+        <p><%= summary %></p>
+
+        <% if !@scene.content_warning.blank? %>
+        <div class="alert alert-danger"><b>Content Warning:</b> <%= @scene.content_warning %></div>
+        <% end %>
+
+        <p><b>IC Date:</b> <%= @scene.icdate %></p>
+
+        <p><b>OOC Date:</b> <%= date_created %></p>
+
+        <p><b>Location:</b> <%= @scene.location %> </p>
+
+
+        <% if @scene.related_scenes %>
+        <p><b>Related Scenes:</b>
+           <ul>
+             <% @scene.related_scenes.each do |related | %>
+              <li><a href="<%= related_scene_filename(related) %>"><%= related.title %></a>
+            <% end %>
+          </ul>
+        </p>
+        <% end %>
+            
+        <% if @scene.plot %>            
+        <p>
+            <b>Plot: </b> <%= @scene.plot.title %>
+        </p>
+        <% end %>
+        
+        <div>
+          <span class="badge scene-<%= @scene.scene_type %>"><%= @scene.scene_type %></span>                 
+         </div>
+         
+    </div>
+    
+    <div class="log-participants-box">
+        
+      <div class="icon-gallery">    
+      <% @scene.participants.each do |participant| %>
+        
+            <div class="icon-gallery-item"> 
+              
+              <div class="char-icon-container">
+              
+                <a href="<%= participant.name %>.html">
+    
+                  <div class="log-icon-container">
+                         <% if icon(participant) %>
+                          <img class="log-icon" src="game/uploads/<%= icon(participant) %>" >
+                         <% else %>
+                         <img  class="log-icon" src="game/uploads/theme_images/noicon.png" >
+                         <% end %>
+                  </div>
+
+                  <div class="log-icon-title-container">
+                      <div class="log-icon-title">
+                       <%= participant.name %>
+                      </div>
+                  </div>
+
+                </a>
+              </div>
+              
+            </div>
+      <% end %>
+      </div>
+    
+    </div>
+    
+    <div class="clearfix"> </div>
+
+
+</div>
+
+<div class="scene-log">
+   <%= log %>
+</div>
+    
+
+<br>
+
+
+<p>
+    <b>Tags:</b> <%= tags %>
+</p>
+   
+<p><a href="scenes.html"><i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i> Back to Scenes</a></p>

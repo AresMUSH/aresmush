@@ -23,6 +23,7 @@ en:
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
         scene_not_specified: "You must either be in a room with an active scene, or specify a scene number for this command."
         scene_not_found: "Scene not found."
+        scene_not_found_num: "Scene %{num} not found."
         pose_added: "Pose added to scene."
         invalid_privacy: "Invalid privacy setting.  Please use 'open' or 'private'."
         scene_is_private: "That scene is private.  You must get an invitation/meetme from one of the participants to join."
@@ -50,7 +51,7 @@ en:
         invalid_icdate_format: "Please use the form yyyy-mm-dd."
         cant_share_until_completed: "You can't share a scene until it's stopped."
         cant_collapse_until_completed: "You can't do that until the scene is stopped."
-        grid_location_change_warning: "This is a grid room.  You can note a location change in the scene log, but new arrivals may think you're still in the original location.  It may be better to stop the scene and restart it in a temp room."
+        grid_location_change_warning: "This scene is tied to a grid room. If you want to change the location, stop the scene and restart it in a temp room."
         
         scene_trash_warn: "Scene %{id} was marked for deletion by %{name}. Download, share, or restart it before it's deleted on %{date}."
         scene_trashed: "Scene %{id} has been marked for deletion. The other players will have until %{date} to download, share, or restart it before it's deleted."
@@ -166,3 +167,10 @@ en:
         plot_created: "%{title} created."
         plot_updated: "%{title} updated."
         plot_deleted: "%{title} deleted."
+        
+        already_linked: "Those scenes are already linked."
+        not_linked: "Those scenes are not linked."
+        link_added: "Related scene link added."
+        link_removed: "Related scene link removed."
+        cant_link_unshared_scenes: "Both scenes must be shared before they can be linked."
+        no_recursive_link: "You can't link a scene to itself."

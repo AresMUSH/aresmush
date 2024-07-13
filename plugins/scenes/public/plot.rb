@@ -18,7 +18,7 @@ module AresMUSH
     before_delete :on_delete
     
     def sorted_scenes
-      self.plot_links.map { |p| p.scene }.sort_by { |s| s.icdate }
+      self.plot_links.map { |p| p.scene }.select { |s| s.shared }.sort_by { |s| s.icdate }
     end
     
     def start_date
