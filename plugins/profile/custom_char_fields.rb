@@ -60,8 +60,6 @@ module AresMUSH
 		ss = Swrifts.save_abilities_for_chargen(char, chargen_data)
 	    return [ss] 
       end
-<<<<<<< HEAD
-=======
       
       # Saves fields from profile editing.
       #
@@ -81,7 +79,6 @@ module AresMUSH
       end
 
       
->>>>>>> upstream/master
     end
   end
 end
