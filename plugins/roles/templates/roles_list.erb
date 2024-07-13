@@ -1,0 +1,8 @@
+<%= header %>
+%xh<%= t('roles.role_list_title') %>%xn
+<% roles.each do |r|%>
+<%= r.name %>
+<% end %>
+%l1
+<%= t('roles.role_list_footer') %>
+<%= footer %>

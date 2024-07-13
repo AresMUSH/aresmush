@@ -24,8 +24,10 @@ module AresMUSH
         "#{color}#{message}%xn"
       end
       
-      def unshared(scene)
-        scene.shared ? ' ' : '*'
+      def status(scene)
+        return '(X)' if scene.in_trash 
+        return ' u ' if !scene.shared
+        return '   '
       end
     end
   end

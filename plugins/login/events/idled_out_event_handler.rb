@@ -9,6 +9,7 @@ module AresMUSH
 
         char = Character[event.char_id]
         char.wipe_login_data
+        char.cleanup_login_notices
       end
     end
   end

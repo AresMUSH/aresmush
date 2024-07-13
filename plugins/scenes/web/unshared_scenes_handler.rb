@@ -34,13 +34,17 @@ module AresMUSH
              last_posed: s.last_posed ? s.last_posed.name : nil,
              can_edit: Scenes.can_edit_scene?(enactor, s),
              can_share: s.completed && !s.location.blank? && !s.summary.blank? && !s.title.blank?,
-             last_pose_time_str: s.last_pose_time_str(enactor)
+             last_pose_time_str: s.last_pose_time_str(enactor),
+             in_trash: s.in_trash,
+             trash_date: OOCTime.local_long_timestr(enactor, s.trash_date),
+             content_warning: s.content_warning
+             
 
             }}
 
         {
           unshared: unshared,
-          unshared_deletion_days: Global.read_config('scenes', 'unshared_scene_deletion_days'),
+          unshared_warning_days: Global.read_config('scenes', 'unshared_scene_warning_days'),
           delete_unshared: Global.read_config('scenes', 'delete_unshared_scenes')
         }
   

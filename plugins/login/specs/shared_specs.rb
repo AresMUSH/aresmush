@@ -430,6 +430,36 @@ module AresMUSH
         end
         
       end
+      
+      describe :can_login do
+        before do
+          @char = double
+          allow(@char).to receive(:is_admin?) { false  }
+          allow(Global).to receive(:read_config).with("login", "disable_nonadmin_logins") { false }
+          allow(@char).to receive(:has_permission?).with("login") { true }
+        end
+        
+        it "should always allow admins" do
+          expect(@char).to receive(:is_admin?) { true }
+          allow(Global).to receive(:read_config).with("login", "disable_nonadmin_logins") { true }
+          expect(Login.can_login?(@char)).to eq true
+        end
+        
+        it "should not allow nonadmins if disabled" do
+          allow(Global).to receive(:read_config).with("login", "disable_nonadmin_logins") { true }
+          expect(Login.can_login?(@char)).to eq false
+        end
+
+        it "should not allow nonadmins if permission missing" do
+          allow(@char).to receive(:has_permission?).with("login") { false }
+          expect(Login.can_login?(@char)).to eq false
+        end
+
+        it "should allow nonadmins if permission present" do
+          expect(Login.can_login?(@char)).to eq true
+        end
+      end
+      
     end
   end
 end

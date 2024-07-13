@@ -175,5 +175,11 @@ module AresMUSH
     def self.list_plugins_with_versions
       Global.plugin_manager.plugins.map { |p| "#{p.name.rest("AresMUSH::")} #{p.respond_to?(:version) ? p.version : ''}" }.sort
     end
+    
+    def self.unlist_migration(name)
+      migrations = Game.master.applied_migrations
+      migrations.delete(name)
+      Game.master.update(applied_migrations: migrations)
+    end
   end
 end

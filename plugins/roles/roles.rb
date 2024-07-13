@@ -33,7 +33,11 @@ module AresMUSH
         when "delete"
           return RoleDeleteCmd  
         when "addpermission", "removepermission"
-          return RoleUpdatePermissionCmd        
+          return RoleUpdatePermissionCmd   
+        when "all"
+          return RoleListCmd  
+        when "info"
+          return RoleInfoCmd   
         when nil
           return RolesCmd
         end

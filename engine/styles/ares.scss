@@ -4,14 +4,6 @@
 BASIC CONTAINERS
 ------------------------- */
 
-.container {
-    background-color: $gutter-color;
-    margin: 0;
-    width: 100%;
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
 ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
@@ -24,6 +16,10 @@ BASIC CONTAINERS
     padding: 0px;
 }
 
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
 .header-wrap
 {
     background-image: url('/game/uploads/theme_images/background.png');
@@ -48,12 +44,16 @@ body {
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.428571429;
+  background-color: $background-color;
+  color: $text-color;
 }
 
 .body-wrap
 {
     padding: 0px 20px 0px 20px;
     background-color: $background-color;
+    margin: auto;
+    max-width: 2500px;    
 }
 
 .body-container {
@@ -395,11 +395,6 @@ textarea {
 }
 
 
-body {
-    color: $text-color;
-    background-color: $gutter-color;
-}
-
 
 form {
     padding-bottom: 50px;
@@ -442,9 +437,17 @@ li hr {
   font-size: 1.5em;
   vertical-align: middle;
 }
+
 /* -------------------------
 BOOTSTRAP OVERRIDES
 ------------------------- */
+
+
+:root {
+  --bs-body-bg: #{$background-color};
+  --bs-body-color: #{$text-color};
+  --bs-border-color: #{$border-color};
+}
 
 .navbar {
     margin-bottom: 0px;
@@ -594,6 +597,8 @@ form.gsc-search-box {
 
 
 /* Fixes the search box icon */
+/* !important needed because of google search */
+
 .cse .gsc-search-button input.gsc-search-button-v2,
     input.gsc-search-button-v2 {
         height: 26px !important;
@@ -702,12 +707,11 @@ HEADER
 FOOTER
 ------------------------- */
 
-.footer {
+footer {
     font-size: 0.9em;
     color: $faded-text-color;    
-    border-top: 1px solid $faded-text-color;
-    margin-top: 40px;
-    padding-top: 10px;
+    margin-top: 10px;
+    padding: 20px;
 }
 
 
@@ -757,6 +761,21 @@ SIDEBAR
 .search-hint { 
     color: $faded-text-color;
     font-style: italic;
+}
+
+.search-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
+  align-items: center;
+  border-bottom: 1px solid $border-color;  
+}
+
+.search-row label {
+  font-weight: bold;
+  flex-basis: 200px;
 }
 
 /* -------------------------
@@ -1152,15 +1171,15 @@ SCENES SCREEN
 }
 
 .scene-social {
-    background-color: #5cb85c;
+    background-color: #408040;
 }
 
 .scene-vignette {
-    background-color: #f0ad4e;
+    background-color: #b7337a;
 }
 
 .scene-privacy-open {
-  background-color: #5cb85c;
+  background-color: #408040;
 }
 
 .scene-privacy-private {
@@ -1172,17 +1191,17 @@ SCENES SCREEN
 }
 
 .scene-pacing-traditional {
-  background-color: #5cb85c;
+  background-color: #408040;
   color: white;
 }
 
 .scene-pacing-asynchronous {
-  background-color: #5bc0de;
+  background-color: #337ab7;
   color: white;
 }
 
 .scene-pacing-distracted {
-  background-color: #f0ad4e;
+  background-color: #b7337a;
   color: white;
 }
 
@@ -1338,7 +1357,7 @@ SCENES SCREEN
 
 .content-warning-label {
   margin: 0px 5px;
-  background-color: #ffc107;
+  background-color: #e69138;
 }
 
 
@@ -1778,12 +1797,25 @@ JOBS SCREEN
 }
 
 .admin-only-reply-label {
-  background-color: #f0ad4e;
+  background-color: #977b62;
+  font-size: 1em;
 }
 
 .admin-only-reply, .admin-only-reply .markdown-editor {
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+  background-color: #f3e7dc;
+  border-color: #f3e7dc;
+  padding: 8px;
+}
+
+.player-reply-label {
+  background-color: #0F6466;
+  font-size: 1em;
+}
+
+.player-reply, .player-reply .markdown-editor {
+  background-color: #cfe0e0;
+  border-color: #cfe0e0;
+  padding: 8px;
 }
 
 .job-template-editor {
@@ -1799,7 +1831,9 @@ JOBS SCREEN
   flex-direction: row;
   gap: 10px;
   margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
   align-items: center;
+  border-bottom: 1px solid $border-color;
 }
 
 .create-job-row label {
@@ -1811,6 +1845,20 @@ JOBS SCREEN
   height: 1.5em;
 }
 
+.edit-job-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.edit-job-row label {
+  font-weight: bold;
+  flex-basis: 200px;
+}
 
 .display-job-row {
   display: flex;
@@ -2010,6 +2058,12 @@ OTHER
 
 .fs3-damage-title {
   font-weight: bold;
+}
+
+.wiki-page-nav {
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-between;
 }
 
 .wiki-breadcrumbs {

@@ -54,3 +54,5 @@ jobs:
   responses:
   - name: Received
     text: Your job has been received. We'll get to it soon.
+  scheduled_jobs: []
+  custom_fields: []

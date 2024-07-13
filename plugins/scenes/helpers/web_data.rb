@@ -88,7 +88,10 @@ module AresMUSH
         use_custom_char_cards: Scenes.use_custom_char_cards?,
         extras_installed: Global.read_config('plugins', 'extras') || [],
         limit: scene.limit,
-        lazy_loaded: lazy_load
+        lazy_loaded: lazy_load,
+        in_trash: scene.in_trash,
+        trash_date: OOCTime.local_long_timestr(viewer, scene.trash_date)
+        
       }
     end   
     

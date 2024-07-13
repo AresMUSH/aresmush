@@ -16,6 +16,8 @@ module AresMUSH
       scene.update(was_restarted: true)
       scene.update(last_activity: Time.now)
       scene.update(deletion_warned: false)
+      scene.update(in_trash: false)
+      scene.update(trash_date: nil)
       scene.watchers.replace scene.participants.to_a
       Scenes.new_scene_activity(scene, :status_changed, nil)
       
@@ -53,6 +55,9 @@ module AresMUSH
       
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
+      scene.update(in_trash: false)
+      scene.update(trash_date: nil)
+      
       Scenes.create_log(enactor, scene)
       Scenes.add_recent_scene(scene)
       
@@ -163,6 +168,35 @@ module AresMUSH
       parser = Scenes::BaseSceneCommands.new
       message = parser.handle(enactor, char, scene, command, args)
       return message
+    end
+    
+    
+    def self.move_to_trash(scene, enactor)
+      
+      real_poses = scene.scene_poses.select { |p| p.is_real_pose? }
+      if (real_poses.count == 0)
+        Global.logger.info "Scene #{scene.id} deleted by #{enactor.name}."
+        scene.delete
+        return
+      end
+      
+      trash_days = Global.read_config('scenes', 'scene_trash_timeout_days') || 14
+      if (trash_days < 14)
+        trash_days = 14
+      end
+      trash_date = Time.now + (trash_days * 86400)
+      scene.participants.each do |participant|
+        next if !participant
+        message = t('scenes.scene_trash_warn', :id => scene.id, :name => enactor.name, :date => OOCTime.local_short_timestr(participant, trash_date))
+        Login.emit_ooc_if_logged_in(participant, message)
+        Login.notify(participant, :scene, message, scene.id)
+      end
+            
+      scene.update(in_trash: true)
+      scene.update(trash_date: trash_date)
+      Global.logger.debug "Scene #{scene.id} marked for deletion by #{enactor.name}."
+      
+      trash_date
     end
     
   end

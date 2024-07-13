@@ -26,7 +26,7 @@ module AresMUSH
    end
         
     def delete_pages
-      self.page_threads.each { |p| p.delete }
+      self.page_threads.each { |p| Page.delete_page_thread(p, self) }
       Character.all.each do |c|
         Database.remove_from_set c.page_ignored, self
       end

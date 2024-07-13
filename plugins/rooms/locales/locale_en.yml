@@ -3,7 +3,7 @@ en:
        char_has_arrived: "%{name} has arrived."
        char_has_left: "%{name} has left."
        screen_reader_arrived: "You have arrived at %{room}."
-       char_has_left_through_exit: "%{name} leaves for %{room} <%{exit}>."
+       char_has_left_through_exit: "%{name} leaves for %{room} [%{exit}]."
        room_created: "You build a room named %{name}.  It is an %xhIC%xn room. %xh%xx(help roomtype)%xn"
        exit_created: "You open an exit from %{source_name} to %{dest_name}."
        exit_already_exists: "An exit with that name already exists."
