@@ -9,6 +9,7 @@ module AresMUSH
       end
       
       def plugin_name
+        # Same as the 'keyname' property in AresCentral
         @repo_name.after("-").before("-")
       end
       

@@ -54,7 +54,7 @@ rvm --default use ruby-3.1.2
 
 echo -e "${ARES_INSTALL_TEXT} Ensure proper Ruby version used at startup."
 
-echo "source /home/ares/.rvm/scripts/rvm" >> "${HOME_DIR}/.profile"
+echo "source ${HOME_DIR}/.rvm/scripts/rvm" >> "${HOME_DIR}/.profile"
 echo "rvm use 3.1.2" >> "${HOME_DIR}/.profile"
 
 # #########################################################################################
