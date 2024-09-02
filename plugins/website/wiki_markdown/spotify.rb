@@ -1,5 +1,16 @@
 module AresMUSH
   module Website
+    class SpotifyExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :code, :linktype
+                     
+      def initialize(code, linktype)
+        @code = code
+        @linktype = linktype
+        super File.dirname(__FILE__) + "/spotify.erb"        
+      end   
+    end
+    
     class SpotifyMarkdownExtension
       def self.regex
         /\[\[spotify ([^\]]*)\]\]/i
@@ -9,18 +20,14 @@ module AresMUSH
         input = matches[1]
         return "" if !input
 
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'spotify.hbs'))
         linktype = "playlist"
         if (input.after(' ').strip == "track")
           linktype = "track"
         end
-
-        data = {
-          "code" => input.before(' '),
-          "linktype" => linktype
-        }
         
-        template.render(data)
+        code = input.before(' ')
+        template = SpotifyExtensionTemplate.new(code, linktype)      
+        template.render
       end
     end
   end

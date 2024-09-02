@@ -1,0 +1,35 @@
+<table class="table table-striped">
+
+
+<thead>
+    <tr>
+        <th>Scene</th>
+        <th>Participants</th>
+    </tr>
+</thead>
+
+<tbody>
+
+<% scenes.each do |scene| %>
+       <tr>
+        <td>
+        <a href="/scene/<%= scene.id %>"><%= scene.title %></a>
+        
+      
+        
+        <%= summary(scene) %>
+        </td>
+        <td>
+            <% scene.participant_names.each do |participant| %>
+            
+            
+            <a href="/char/<%= participant %>"><%= participant %></a>
+            <% end %>
+            
+            
+        </td>
+    </tr>
+<% end %>
+
+</tbody>
+</table>
