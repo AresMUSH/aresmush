@@ -105,10 +105,7 @@ module AresMUSH
       else
         LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true, timestamp: Time.now)
       end
-      unread_count = Login.count_unread_notifs_for_all_alts(char)
-      Global.client_monitor.notify_web_clients(:notification_update, "#{unread_count}", true) do |c|
-        c && AresCentral.is_alt?(c, char)
-      end
+      Login.update_notification_count(char)
     end
     
     def self.mark_notices_read(char, type, reference_id = nil)
@@ -123,14 +120,26 @@ module AresMUSH
       notices.each do |n|
         n.update(is_unread: false)
       end
+      
+      Login.update_notification_count(char)
     end
     
     def self.count_unread_notifs_for_all_alts(char)
+      return if !char
       count = 0
       AresCentral.alts(char).each do |c|
         count += c.unread_notifications.count
       end
       count
+    end
+    
+    def self.update_notification_count(char)
+      return if !char
+
+      unread_count = Login.count_unread_notifs_for_all_alts(char)
+      Global.client_monitor.notify_web_clients(:notification_update, "#{unread_count}", true) do |c|
+        c && AresCentral.is_alt?(c, char)
+      end
     end
     
     def self.build_web_site_info(char, viewer)
