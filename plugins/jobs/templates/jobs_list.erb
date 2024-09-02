@@ -6,7 +6,7 @@
 <%= right( job.id.to_s, 4) -%>
  %xh<%= left( unread_status(job), 4 ) %><%= "%xn" -%>
 <%= category_color(job) %><%= left( job.job_category.name, 7) %><%= "%xn" -%>
-<%= status_color(job) %><%= left( job.status, 8) %><%= "%xn" -%>
+<%= status_color(job) %><%= left( job.status, 7) %> <%= "%xn" -%>
 <%= left( job.title, 19) -%>
 <%= left( submitter(job), 17) -%>
 <%= handler(job) %>
