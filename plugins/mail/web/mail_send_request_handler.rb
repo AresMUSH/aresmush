@@ -18,7 +18,7 @@ module AresMUSH
         Global.logger.info "#{sender.name} sending mail to #{to_list} (by #{enactor.name})."
         
         if (subject.blank? || message.blank? || to_list.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "subject, message, to list") }
         end
         
         message = Website.format_input_for_mush(message)

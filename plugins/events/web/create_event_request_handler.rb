@@ -22,7 +22,7 @@ module AresMUSH
         end
         
         if (title.blank? || desc.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "title, description") }
         end
       
         begin

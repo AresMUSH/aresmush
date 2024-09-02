@@ -11,7 +11,7 @@ module AresMUSH
         request.log_request
 
         if (!message)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "message") }
         end
         
         

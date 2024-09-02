@@ -11,7 +11,7 @@ module AresMUSH
         return error if error
       
         if (name.blank? || folder.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name, folder") }
         end
         
         path = File.join(folder, name)

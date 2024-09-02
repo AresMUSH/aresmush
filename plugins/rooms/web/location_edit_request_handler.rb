@@ -35,7 +35,7 @@ module AresMUSH
         end
         
         if (name.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name") }
         end
 
         owner_names = owner_names.map { |p| p.upcase }

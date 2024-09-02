@@ -14,7 +14,7 @@ module AresMUSH
         end
 
         if (site.blank? || reason.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "site, reason") }
         end
 
         error = Login.add_site_ban(enactor, site, reason)

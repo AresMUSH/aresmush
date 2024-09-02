@@ -24,7 +24,7 @@ module AresMUSH
         end
         
         if (name.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name") }
         end
         
         if (name =~ /:/ && name.after(":").blank?)

@@ -33,7 +33,7 @@ module AresMUSH
         end
         
         if (new_name.blank? || new_folder.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name, folder") }
         end
         
         if (File.exists?(new_path) && path != new_path)
