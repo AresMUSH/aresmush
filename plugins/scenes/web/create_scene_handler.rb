@@ -7,6 +7,8 @@ module AresMUSH
         completed = (request.args[:completed] || "").to_bool
         privacy = request.args[:privacy] || "Private"
         log = request.args[:log] || ""
+        pacing = request.args[:scene_pacing] || Scenes.scene_pacing.first
+        scene_type = request.args[:scene_type] || Scenes.scene_types.first
         
         error = Website.check_login(request)
         return error if error
@@ -28,8 +30,8 @@ module AresMUSH
         summary: Website.format_input_for_mush(request.args[:summary]),
         content_warning: request.args[:content_warning],
         last_activity: Time.now,
-        scene_type: request.args[:scene_type],
-        scene_pacing: request.args[:scene_pacing],
+        scene_type: scene_type,
+        scene_pacing: pacing,
         title: request.args[:title],
         icdate: request.args[:icdate],
         limit: request.args[:limit],
