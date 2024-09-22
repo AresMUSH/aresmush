@@ -15,7 +15,7 @@ fi
 
 # Set up redis PPA so we get a recent version
 
-add-apt-repository -y ppa:chris-lea/redis-server
+add-apt-repository -y ppa:redislabs/redis
 
 apt-get -y update
 apt-get -y install dialog apt-utils

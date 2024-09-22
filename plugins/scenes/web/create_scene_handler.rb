@@ -26,7 +26,7 @@ module AresMUSH
         end
         
         scene = Scene.create(
-        location: request.args[:location],
+        location: request.args[:location] || "Somewhere Out There",
         summary: Website.format_input_for_mush(request.args[:summary]),
         content_warning: request.args[:content_warning],
         last_activity: Time.now,
