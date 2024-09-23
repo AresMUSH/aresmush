@@ -15,7 +15,7 @@ module AresMUSH
         return error if error
         
         if (title.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "title") }
         end
         
         request.log_request

@@ -1,5 +1,15 @@
 module AresMUSH
   module Website
+    class PinterestExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :board_id
+                     
+      def initialize(board_id)
+       @board_id = board_id
+        super File.dirname(__FILE__) + "/pinterest.erb"        
+      end      
+    end
+    
     class PinterestMarkdownExtension
       def self.regex
         /\[\[pinterest ([^\]]*)\]\]/i
@@ -9,13 +19,8 @@ module AresMUSH
         input = matches[1]
         return "" if !input
 
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'pinterest.hbs'))
-
-        data = {
-          "board_id" => input
-        }
-        
-        template.render(data)
+        template = PinterestExtensionTemplate.new(input)
+        template.render
       end
     end
   end

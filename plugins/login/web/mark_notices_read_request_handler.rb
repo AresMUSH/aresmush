@@ -13,6 +13,8 @@ module AresMUSH
           alt.login_notices.find(is_unread: true).each { |n| n.update(is_unread: false)}
         end
         
+        Login.update_notification_count(enactor)
+        
         {}
       end
     end

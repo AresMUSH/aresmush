@@ -165,5 +165,21 @@ module AresMUSH
       return true if Events.can_manage_event?(enactor, event)
       AresCentral.is_alt?(enactor, char)
     end
+    
+    def self.create_event_scene(event, enactor)      
+      scene = Scenes.start_scene(enactor, "Event #{event.title}", false, Scenes.scene_types.first, true)
+      scene.update(title: event.title)
+      
+      Scenes.add_participant(scene, enactor, enactor)
+      event.signups.each do |signup|
+        invitee = signup.character
+        if (invitee)
+          Scenes.invite_to_scene(scene, invitee, enactor)
+        end
+      end
+      
+      scene
+    end
+    
   end
 end

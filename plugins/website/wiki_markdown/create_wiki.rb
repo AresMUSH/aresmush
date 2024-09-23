@@ -1,5 +1,19 @@
 module AresMUSH
   module Website
+    
+    class CreateWikiExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :button_text, :query_str, :css
+                     
+      def initialize(button_text, query_str, css)
+        @button_text = button_text
+        @query_str = query_str
+        @css = css
+        
+        super File.dirname(__FILE__) + "/create_wiki.erb"        
+      end      
+    end
+    
     class CreateWikiPageButton
       def self.regex
         /\[\[createwiki ([^\]]*)\]\]/i
@@ -39,15 +53,8 @@ module AresMUSH
           query_str = "?#{query.join('&')}"
         end
         
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'create_wiki.hbs'))
-
-        data = {
-          "button" => button,
-          "query_str" => query_str,
-          "css" => css
-        }
-        
-        template.render(data)      
+        template = CreateWikiExtensionTemplate.new(button, query_str, css)
+        template.render
         
       end
     end

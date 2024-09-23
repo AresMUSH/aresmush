@@ -65,7 +65,7 @@ module AresMUSH
     end
     
     def self.status_filters
-      base = [ "ACTIVE", "MINE", "UNREAD", "UNFINISHED", "UNASSIGNED", "ALL" ]
+      base = [ "ACTIVE", "MINE", "UNREAD", "UNFINISHED", "UNASSIGNED", "ARCHIVED", "ALL" ]
       status_filters = (Global.read_config("jobs", "status_filters") || {})
           .keys
           .map { |k| k.upcase }
@@ -88,8 +88,11 @@ module AresMUSH
         jobs = Jobs.accessible_jobs(char).select { |j| !j.assigned_to }
       when "UNREAD"
         jobs = char.unread_jobs
+      when "ARCHIVED"
+        status = Jobs.archived_status
+        jobs = Jobs.accessible_jobs(char, nil, true).select { |j| j.status == status }
       when "ALL"
-        jobs = Jobs.accessible_jobs(char)
+        jobs = Jobs.accessible_jobs(char).select { |j| }
       else 
         # Category or status filter
         if (Jobs.status_filters.include?(filter))

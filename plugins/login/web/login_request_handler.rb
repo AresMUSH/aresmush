@@ -47,15 +47,7 @@ module AresMUSH
           AresCentral.sync_handle(char)
         end
         
-        {
-          token: char.login_api_token,
-          name: char.name,
-          id: char.id,
-          is_approved: char.is_approved?,
-          is_admin: char.is_admin?,
-          is_coder: char.is_coder?,
-          is_theme_mgr: (!char.is_admin? && Website.can_manage_theme?(char))
-        }
+        Login.web_session_info(char)
       end
     end
   end

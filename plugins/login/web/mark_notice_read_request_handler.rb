@@ -17,6 +17,8 @@ module AresMUSH
         
         notice.update(is_unread: unread)
         
+        Login.update_notification_count(enactor)
+        
         {}
       end
     end

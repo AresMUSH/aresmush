@@ -156,7 +156,8 @@ module AresMUSH
             if (level.to_i < 0 || level.to_i > 7)
               @validator.add_error "fs3skills:xp_costs #{type} level #{level} is not a valid level."
             end
-            if (level.to_i == 0)
+            if (level.to_i == 0 && cost != 1)
+              next if type == "advantage" && !Global.read_config("fs3skills", "allow_advantages_xp")
               @validator.add_error "fs3skills:xp_costs #{type} level 0->1 always costs 1XP no matter what you put here."
             end
           end

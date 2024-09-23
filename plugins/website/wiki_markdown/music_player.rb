@@ -1,5 +1,19 @@
 module AresMUSH
   module Website
+    
+    class MusicPlayerExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :youtubecode, :description, :id
+                     
+      def initialize(youtubecode, description)
+       @youtubecode = youtubecode
+       @description = description
+       @id = SecureRandom.uuid.gsub('-','')
+        
+        super File.dirname(__FILE__) + "/music_player.erb"        
+      end      
+    end
+    
     class MusicPlayerMarkdownExtension
       def self.regex
         /\[\[musicplayer ([^\]]*)\]\]/i
@@ -9,15 +23,11 @@ module AresMUSH
         input = matches[1]
         return "" if !input
 
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'music_player.hbs'))
+        youtubecode = input.before(' ')
+        description = input.after(' ')
 
-        data = {
-          "youtubecode" => input.before(' '),
-          "description" => input.after(' '), 
-          "id" => SecureRandom.uuid.gsub('-','')
-        }
-        
-        template.render(data)
+        template = MusicPlayerExtensionTemplate.new(youtubecode, description)
+        template.render
       end
     end
   end

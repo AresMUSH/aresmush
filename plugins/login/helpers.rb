@@ -332,5 +332,18 @@ module AresMUSH
       
       return nil
     end
+    
+    def self.web_session_info(char)
+      {
+        token: char.login_api_token,
+        name: char.name,
+        id: char.id,
+        is_approved: char.is_approved?,
+        is_admin: char.is_admin?,
+        is_coder: char.is_coder?,
+        is_theme_mgr: (!char.is_admin? && Website.can_manage_theme?(char)),
+        screen_reader: char.screen_reader        
+      }
+    end
   end
 end

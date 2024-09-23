@@ -54,11 +54,7 @@ module AresMUSH
               
         Global.dispatcher.queue_event CharCreatedEvent.new(nil, char.id)
       
-        {
-          token: char.login_api_token,
-          name: char.name,
-          id: char.id
-        }
+        Login.web_session_info(char)
       end
     end
   end

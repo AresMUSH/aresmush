@@ -28,17 +28,8 @@ module AresMUSH
           Login.update_site_info(request.ip_addr, request.hostname, char)
         end
         
+        Login.web_session_info(char)
         
-        
-        {
-          token: char.login_api_token,
-          name: char.name,
-          id: char.id,
-          is_approved: char.is_approved?,
-          is_admin: char.is_admin?,
-          is_coder: char.is_coder?,
-          is_theme_mgr: (!char.is_admin? && Website.can_manage_theme?(char))
-        }
       end
     end
   end

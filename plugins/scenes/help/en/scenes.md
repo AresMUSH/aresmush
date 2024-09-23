@@ -46,7 +46,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 ## Editing Poses
 
 `scene/replace <text in the form of an emit>` - Replaces your last pose.
-`scene/typo <text in the form of an emit>` - Silent replace for small typos.
+`scene/typo <text in the form of an emit>` - Silent replace of your last pose for small typos.
 `scene/undo` - Removes your last pose.
 `scene/emit <scene num>=<emit>` - Add a pose to a scene that isn't in your room.
 

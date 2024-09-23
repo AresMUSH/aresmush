@@ -28,7 +28,7 @@ module AresMUSH
         end
         
         if (message.blank? || subject.blank?)
-          return { error: t('webportal.missing_required_fields' )}
+          return { error: t('webportal.missing_required_fields', :fields => "message, subject") }
         end
       
         formatted_message = Website.format_input_for_mush(message)
