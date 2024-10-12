@@ -5,8 +5,16 @@ module AresMUSH
     end
     
     def self.bg_app_review(char)
-      error = char.background.to_s.empty? ? t('chargen.not_set') : t('chargen.ok')
-      Chargen.format_review_status t('chargen.background_review'), error
+      message = t('chargen.ok')
+      max_length = Global.read_config('chargen', 'max_bg_length') || 0
+      
+      if (char.background.blank?)
+        message = t('chargen.not_set')
+      elsif (max_length > 0 && char.background.length > max_length)
+        message = t('chargen.bg_too_long', :total => char.background.length, :max => max_length)
+      end
+      
+      Chargen.format_review_status t('chargen.background_review'), message
     end
     
     def self.can_manage_bgs?(actor)
@@ -161,20 +169,26 @@ module AresMUSH
       unless (model.on_roster? || model.is_npc?)
         Achievements.award_achievement(model, "created_character")
 
-        welcome_message = Global.read_config("chargen", "welcome_message")
-        welcome_message_args = Chargen.welcome_message_args(model)
-        post_body = welcome_message % welcome_message_args
-      
-        Forum.system_post(
-          Global.read_config("chargen", "arrivals_category"),
-          t('chargen.approval_post_subject', :name => model.name), 
-          post_body)
+        arrivals_category = Global.read_config("chargen", "arrivals_category")
+        if (!arrivals_category.blank?)
+          welcome_message = Global.read_config("chargen", "welcome_message")
+          welcome_message_args = Chargen.welcome_message_args(model)
+          post_body = welcome_message % welcome_message_args
+
+          Forum.system_post(
+            arrivals_category,
+            t('chargen.approval_post_subject', :name => model.name), 
+            post_body)
+        end
       end
       
-      Jobs.create_job(Global.read_config("chargen", "app_category"), 
-         t('chargen.approval_post_subject', :name => model.name), 
-         Global.read_config("chargen", "post_approval_message"), 
-         Game.master.system_character)
+      post_approval_msg = Global.read_config("chargen", "post_approval_message")
+      if (!post_approval_msg.blank?)
+        Jobs.create_job(Global.read_config("chargen", "app_category"), 
+           t('chargen.approval_post_subject', :name => model.name), 
+           post_approval_msg, 
+           Game.master.system_character)
+       end
       
        Chargen.custom_approval(model)
        
@@ -226,7 +240,7 @@ module AresMUSH
          job: char.approval_job ? char.approval_job.id : nil,
          custom: custom_app,
          allow_web_submit: (char == enactor) && Global.read_config("chargen", "allow_web_submit"),
-         app_notes_prompt: Global.read_config("chargen", "app_notes_prompt"),
+         app_notes_prompt: Website.format_markdown_for_html(Global.read_config("chargen", "app_notes_prompt")),
          preset_responses: Jobs.preset_job_responses_for_web
        }
      end

@@ -7,6 +7,8 @@ module AresMUSH
         completed = (request.args[:completed] || "").to_bool
         privacy = request.args[:privacy] || "Private"
         log = request.args[:log] || ""
+        pacing = request.args[:scene_pacing] || Scenes.scene_pacing.first
+        scene_type = request.args[:scene_type] || Scenes.scene_types.first
         
         error = Website.check_login(request)
         return error if error
@@ -18,18 +20,18 @@ module AresMUSH
         if (completed)
           [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
             if (request.args[field].blank?)
-              return { error: t('webportal.missing_required_fields') }
+              return { error: t('webportal.missing_required_fields', :fields => "log, location, summary, type, title, date") }
             end
           end
         end
         
         scene = Scene.create(
-        location: request.args[:location],
+        location: request.args[:location] || "Somewhere Out There",
         summary: Website.format_input_for_mush(request.args[:summary]),
         content_warning: request.args[:content_warning],
         last_activity: Time.now,
-        scene_type: request.args[:scene_type],
-        scene_pacing: request.args[:scene_pacing],
+        scene_type: scene_type,
+        scene_pacing: pacing,
         title: request.args[:title],
         icdate: request.args[:icdate],
         limit: request.args[:limit],

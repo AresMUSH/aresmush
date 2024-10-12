@@ -90,6 +90,15 @@ module AresMUSH
         
         "#{weapon}#{notes}"
       end
+      
+      def team_name(team)
+        name = @combat.team_name(team)
+        if (name)
+          "#{team} (#{name})"
+        else
+          team
+        end
+      end
     end
   end
 end

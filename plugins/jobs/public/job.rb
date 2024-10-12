@@ -9,6 +9,7 @@ module AresMUSH
     attribute :category
     attribute :status
     attribute :date_closed, :type => DataType::Time
+    attribute :custom_fields, :type => DataType::Hash, :default => {}
     
     reference :author, "AresMUSH::Character"
     reference :assigned_to, "AresMUSH::Character"

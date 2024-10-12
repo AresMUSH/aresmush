@@ -13,7 +13,7 @@ module AresMUSH
         
         [ :title, :summary ].each do |field|
           if (request.args[field].blank?)
-            return { error: t('webportal.missing_required_fields') }
+            return { error: t('webportal.missing_required_fields', :fields => "title, summary") }
           end
         end
         

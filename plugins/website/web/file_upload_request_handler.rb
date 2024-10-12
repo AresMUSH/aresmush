@@ -17,7 +17,7 @@ module AresMUSH
         Global.logger.info "#{enactor.name} uploading file #{name}."
         
         if (name.blank? || folder.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name, folder") }
         end
         
         is_wiki_admin = Website.can_manage_wiki?(enactor)

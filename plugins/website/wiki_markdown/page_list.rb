@@ -1,5 +1,15 @@
 module AresMUSH
   module Website
+    class PageListExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :pages
+                     
+      def initialize(pages)
+        @pages = pages
+        super File.dirname(__FILE__) + "/page_list.erb"        
+      end      
+    end
+    
     class PageListMarkdownExtension
       def self.regex
         /\[\[pagelist ([^\]]*)\]\]/i
@@ -12,14 +22,11 @@ module AresMUSH
         helper = TagMatchHelper.new(input)
 
         matches = WikiPage.all.select { |p| match_tag(p, helper) }
-
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'page_list.hbs'))
-
-        data = {
-          "pages" => matches.sort_by { |m| m.title }.map { |m| {heading: m.heading, name: m.name} }
-        }
+        pages = matches.sort_by { |m| m.title }.map { |m| {heading: m.heading, name: m.name} }
         
-        template.render(data)
+        template = PageListExtensionTemplate.new(pages)
+        template.render
+
       end
       
       def self.match_tag(page, helper)

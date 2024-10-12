@@ -14,5 +14,10 @@ module AresMUSH
       return "".rjust(width) if !str
       SubstitutionFormatter.right(str, width, pad_char)
     end
+    
+    def truncate(str, width)
+      return "" if !str
+      SubstitutionFormatter.truncate(str, width)
+    end
   end
 end

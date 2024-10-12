@@ -12,7 +12,11 @@ module AresMUSH
     end
     
     def self.can_login?(actor)
-      actor && actor.has_permission?("login")
+      return false if !actor
+      return true if actor.is_admin?
+      return false if Global.read_config('login', 'disable_nonadmin_logins')
+      
+      actor.has_permission?("login")
     end
     
     def self.creation_allowed?
@@ -327,6 +331,19 @@ module AresMUSH
       Jobs.comment(job[:job], Game.master.system_character, host_and_ip, true)
       
       return nil
+    end
+    
+    def self.web_session_info(char)
+      {
+        token: char.login_api_token,
+        name: char.name,
+        id: char.id,
+        is_approved: char.is_approved?,
+        is_admin: char.is_admin?,
+        is_coder: char.is_coder?,
+        is_theme_mgr: (!char.is_admin? && Website.can_manage_theme?(char)),
+        screen_reader: char.screen_reader        
+      }
     end
   end
 end

@@ -1,5 +1,17 @@
 module AresMUSH
   module Website
+    
+    class CollapsibleExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :button_text, :id
+                     
+      def initialize(button_text)
+        @button_text = button_text
+        @id = "col#{SecureRandom.uuid.gsub('-','')}"
+        super File.dirname(__FILE__) + "/collapsible.erb"        
+      end      
+    end
+    
     class StartCollapsibleMarkdownExtension
       def self.regex
         /\[\[collapsible ([^\]]*)\]\]/i
@@ -10,14 +22,8 @@ module AresMUSH
         
         return "" if !button_text 
        
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'collapsible.hbs'))
-        
-        data = {
-          "button_text" => button_text,
-          "id" => "col#{SecureRandom.uuid.gsub('-','')}"
-        }
-        
-        template.render(data)        
+        template = CollapsibleExtensionTemplate.new(button_text)
+        template.render
       end
     end
 

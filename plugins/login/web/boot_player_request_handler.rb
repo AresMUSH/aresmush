@@ -14,7 +14,7 @@ module AresMUSH
         end
 
         if (reason.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "reason") }
         end
         
         char = Character.named(name)

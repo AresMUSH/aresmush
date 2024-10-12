@@ -6,7 +6,7 @@
 <%= divider %>
 <%= t('fs3combat.hud_subtitle') %>
 <% teams.each do |team, members| %>
-%xg<%= t('fs3combat.team_header', :team => team) %>%xn
+%xg<%= t('fs3combat.team_header', :team => team_name(team)) %>%xn
 <% members.each do |combatant| %>
 <%= left( combatant.name, 20 ) -%>
 <%= left( format_damage(combatant), 10 ) -%>

@@ -13,7 +13,11 @@ module AresMUSH
         if (!scene)
           return { error: t('webportal.not_found') }
         end
-        
+
+        if (!scene.shared)
+          return { error: t('scenes.scene_not_shared') }
+        end
+	
         version = SceneLog[version_id]
         if (!version)
           return { error: t('webportal.not_found') }

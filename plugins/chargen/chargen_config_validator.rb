@@ -22,12 +22,13 @@ module AresMUSH
         @validator.require_boolean("hooks_required")
         @validator.require_text("icon_blurb")
         @validator.require_text("lastwill_blurb")
-        @validator.require_text("post_approval_message")
         @validator.require_text("rank_blurb")
         @validator.require_text("rejection_message")
         @validator.require_text("welcome_message")
         @validator.require_hash("stages")
-        @validator.check_forum_exists("arrivals_category")
+        if (!@validator.config["arrivals_category"].blank?)
+          @validator.check_forum_exists("arrivals_category")
+        end
         
         begin
           check_stages

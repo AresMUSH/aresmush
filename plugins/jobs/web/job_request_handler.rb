@@ -69,7 +69,9 @@ module AresMUSH
             id: c.id, 
             name: c.name 
             }},
-          responses: Jobs.preset_job_responses_for_web
+          responses: Jobs.preset_job_responses_for_web,
+          custom_fields: Jobs.map_custom_fields(job),
+          custom: Jobs.custom_job_menu_fields(job, enactor)
         }
       end
     end

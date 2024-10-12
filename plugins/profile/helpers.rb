@@ -25,9 +25,20 @@ module AresMUSH
       Website::FilenameSanitizer.sanitize(char.name.downcase)
     end
     
+    # ALL files associated with a character
     def self.character_page_files(char)
       name = Profile.character_page_folder(char)
       Dir[File.join(AresMUSH.website_uploads_path, "#{name}/**")].sort
+    end
+    
+    # Allows player to customize which files are shown in their gallery or change the order.
+    def self.character_gallery_files(char)
+      if (char.profile_gallery.empty?)
+        gallery_files = (Profile.character_page_files(char) || []).map { |f| f.gsub(AresMUSH.website_uploads_path, '') }
+      else
+        gallery_files = char.profile_gallery.select { |g| g =~ /\w\.\w/ }
+      end
+      gallery_files
     end
     
     # Moves character files, but you still have to manually update any links to them.
@@ -58,6 +69,37 @@ module AresMUSH
           return nil
         end
       end
+    end
+    
+    def self.build_profile_sections_web_data(char)
+      char.profile
+        .sort_by { |k, v| [ char.profile_order.index { |p| p.downcase == k.downcase } || 999, k ] }
+        .each_with_index
+        .map { |(section, data), index| 
+          {
+            name: section.titlecase,
+            key: section.parameterize(),
+            text: Website.format_markdown_for_html(data),
+            active_class: index == 0 ? 'active' : ''  # Stupid bootstrap hack
+          }
+        }
+    end
+    
+    def self.build_profile_relationship_web_data(char)
+      relationships_by_category = Profile.relationships_by_category(char)
+      relationships = relationships_by_category.map { |category, relationships| {
+        name: category,
+        key: category.parameterize(),
+        relationships: relationships.sort_by { |name, data| [ data['order'] || 99, name ] }
+           .map { |name, data| {
+             name: name,
+             is_npc: data['is_npc'],
+             icon: data['is_npc'] ? data['npc_image'] : Website.icon_for_name(name),
+             name_and_nickname: Demographics.name_and_nickname(Character.named(name)),
+             text: Website.format_markdown_for_html(data['relationship'])
+           }
+         }
+      }}
     end
   end
 end

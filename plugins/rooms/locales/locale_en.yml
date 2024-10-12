@@ -3,7 +3,7 @@ en:
        char_has_arrived: "%{name} has arrived."
        char_has_left: "%{name} has left."
        screen_reader_arrived: "You have arrived at %{room}."
-       char_has_left_through_exit: "%{name} leaves for %{room} <%{exit}>."
+       char_has_left_through_exit: "%{name} leaves for %{room} [%{exit}]."
        room_created: "You build a room named %{name}.  It is an %xhIC%xn room. %xh%xx(help roomtype)%xn"
        exit_created: "You open an exit from %{source_name} to %{dest_name}."
        exit_already_exists: "An exit with that name already exists."
@@ -76,6 +76,9 @@ en:
        area_title: "Area %{area}"
        area_locations_title: "Locations in %{area}"
        area_parent_set: "You set the parent for %{name} to %{parent}."
-       circular_area_parentage: "You can't parent an area to one of its descendants."
+       circular_area_parentage: "You can't parent an area to itself or one of its descendants."
        
        cant_delete_area: "You can't delete an area that is used by rooms or is the parent of another area."
+       
+       icon_set: "Room icon set."
+       invalid_icon_type: "Invalid icon type. Try one of these: %{types}"

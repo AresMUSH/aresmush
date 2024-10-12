@@ -1,0 +1,24 @@
+<h1><%= @plot.title %></h1>
+        
+<p> <%= summary %> </p>
+
+<p>
+    <b>Tags:</b> <%= tags %>
+</p>
+
+<p>
+  <b>Storytellers:</b> <%= storytellers %>
+</p>
+
+<hr/>
+
+<%= details %>   
+
+<hr/>
+
+<h2>Scenes</h2>
+<ul>
+  <% plot.sorted_scenes.each do |scene| %>
+    <li><a href="<%= scene_page_name(scene) %>"><%= scene.title %></a></li>
+  <% end %>
+</ul>

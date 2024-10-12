@@ -75,6 +75,8 @@ module AresMUSH
     
     def self.has_parent_area(parent_to_check, area)
       return false if !parent_to_check
+      return true if parent_to_check == area
+
       return false if !parent_to_check.parent
       return true if parent_to_check.parent == area
       Rooms.has_parent_area(parent_to_check.parent, area)
@@ -86,11 +88,17 @@ module AresMUSH
       return true
     end
     
-    def self.area_directory_web_data
-      Area.all.to_a.sort_by { |a| a.full_name }.map{ |area| Rooms.area_web_data(area) }
-    end
-    
-    def self.area_web_data(area)
+    def self.area_name_for_directory(area) 
+      # display_sections puts each top-level area in its own section, so we don't
+      # need to show the full name for every level.
+      # for example - (A, B) -> (A1, A2) -> (A11) 
+      # With display_sections on, the display will be
+      #     Section Title A 
+      #     A      A1    A2    A1-A11
+      #     Section Title B
+      #     B
+      # Without, the display will be
+      #     A      A-A1  A-A2  A-A1-A11   B
       display_sections = Global.read_config("rooms", "area_display_sections")
       if (display_sections)
         # Top level - show just base name
@@ -104,18 +112,102 @@ module AresMUSH
       else
         display_name = area.full_name
       end
+      return display_name
+    end
+    
+    def self.area_summary_for_directory(area)
+      if (area.summary.blank?)
+        summary = Website.format_markdown_for_html(Rooms.trimmed_desc(area.description, 100))
+      else
+        summary = Website.format_markdown_for_html(area.summary)
+      end
+    end
+    
+    
+    def self.area_directory_web_data
+      area_order = Global.read_config("rooms", "area_directory_order") || []
+      areas = Area.all.to_a.sort_by { |a| [area_order.index(a.name) || 99, a.full_name] }
+      areas.map{ |area| Rooms.build_summary_area_web_data(area) }
+    end
+    
+    def self.build_summary_area_web_data(area) 
+      {
+        id: area.id,
+        name: area.name,
+        full_name: area.full_name,
+        display_name: Rooms.area_name_for_directory(area),
+        summary: Rooms.area_summary_for_directory(area),
+        descendants: area.sorted_descendants.map { |a| Rooms.build_summary_area_web_data(a) },
+        rooms: area.rooms.select { |r| !r.is_temp_room? }
+          .sort_by { |r| [r.room_icon || 'zzz', r.name] }
+          .map { |r| 
+            
+            { 
+              name: r.name, 
+              id: r.id, 
+              icon_type: r.room_icon,
+              icon_display: Rooms.icon_display(r.room_icon)
+            }      
+           },
+        is_top_level: !area.parent
+      }
+    end
+    
+    def self.build_detailed_area_web_data(area, edit_mode = false)
+      if (edit_mode) 
+         desc = Website.format_input_for_html(area.description)
+         summary = Website.format_input_for_html(area.summary)
+      else
+        desc = area.description ? Website.format_markdown_for_html(area.description) : ""
+        summary = Website.format_markdown_for_html(area.summary)
+      end
       
       {
         id: area.id,
         name: area.name,
         full_name: area.full_name,
-        display_name: display_name,
-        summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
-        children: area.sorted_children.map { |a| Rooms.area_web_data(a) },
-        descendants: area.sorted_descendants.map { |a| Rooms.area_web_data(a) },
-        rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| { name: r.name, id: r.id, summary: Website.format_markdown_for_html(r.shortdesc) } },
+        summary: summary,
+        description: desc,
+        children: area.sorted_children.map { |a| Rooms.build_detailed_area_web_data(a) },
+        parent: area.parent ? { name: area.parent.name, id: area.parent.id } : nil,                
+        rooms: area.rooms.select { |r| !r.is_temp_room? }
+          .sort_by { |r| [r.room_icon || 'zzz', r.name] }
+          .map { |r| Rooms.build_room_summary_web_data(r) },
         is_top_level: !area.parent
       }
+    end
+    
+    def self.build_room_summary_web_data(room)
+      if (room.shortdesc.blank?)
+        summary = Website.format_markdown_for_html(Rooms.trimmed_desc(room.description, 100))
+      else
+        summary =  Website.format_markdown_for_html(room.shortdesc)
+      end
+      
+      { 
+        name: room.name, 
+        name_and_area: room.name_and_area,
+        id: room.id, 
+        summary: summary, 
+        icon_type: room.room_icon,
+        icon_display: Rooms.icon_display(room.room_icon)
+      }           
+    end
+    
+    def self.trimmed_desc(desc, length)
+      desc = (desc || "")
+      shortdesc = desc[0, length]
+      if (desc.length > length)
+        return "#{shortdesc}..."
+      else 
+        return shortdesc
+      end
+    end
+    
+    def self.icon_display(icon_type)
+      return nil if !icon_type
+      types = Global.read_config('rooms', 'icon_types') || {}
+      types[icon_type] || "fas fa-star"
     end
     
   end

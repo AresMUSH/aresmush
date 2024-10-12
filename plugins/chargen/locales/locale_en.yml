@@ -49,6 +49,7 @@ en:
         background_review: "Checking that you have a background."
         no_permission_to_view_bg: "You don't have permission to view that background."
         accidental_view_bg: "Pretty sure you meant to use bg/set."
+        bg_too_long: "%xh%xr< Too Long! %{total}/%{max} >%xn"
         
         app_job_submitted: "App submitted.%RNotes: %{notes}"
         app_job_resubmitted: "App re-submitted.%RNotes: %{notes}"
@@ -61,9 +62,11 @@ en:
         app_job_problem: "There was a problem submitting your job.  Please contact the game admin."
 
         approval_reminder:  "NOTE!!! App responses will come back in the request system, not mail.  You can check the status of your app using 'requests'."
+        approval_submitted_by_admin: "App submitted by %{name}."
+        already_approved: "%{name} is already approved."
                 
         you_have_not_submitted_app: "You have not submitted your character for approval."
-        no_app_submitted: "%{name} has not submitted their character for approval."
+        no_app_submitted: "%{name} has not submitted their character for approval. Use app/override to combine submit and approve."
         app_job_updated: "Application job #%{num} '%{title}' updated."
         
         cant_be_changed: "You can't use this command once you've been approved."

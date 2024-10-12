@@ -29,11 +29,12 @@ echo "(setq make-backup-files nil)" > ~/.emacs
 
 echo -e "${ARES_INSTALL_TEXT} Install RVM."
 
+# RVM keyserver has been unreliable. Using alternate key import.
 # gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 
-\curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=read-fail
+\curl -sSL https://get.rvm.io | bash
 source "${HOME_DIR}/.rvm/scripts/rvm"
 
 # #########################################################################################
@@ -53,7 +54,7 @@ rvm --default use ruby-3.1.2
 
 echo -e "${ARES_INSTALL_TEXT} Ensure proper Ruby version used at startup."
 
-echo "source /home/ares/.rvm/scripts/rvm" >> "${HOME_DIR}/.profile"
+echo "source ${HOME_DIR}/.rvm/scripts/rvm" >> "${HOME_DIR}/.profile"
 echo "rvm use 3.1.2" >> "${HOME_DIR}/.profile"
 
 # #########################################################################################
@@ -135,11 +136,11 @@ chmod +x bin/*
 echo -e "${ARES_INSTALL_TEXT} Installing Node for Ember."
 
 sudo npm install -g npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-nvm install 12
-nvm use 12
+nvm install 18
+nvm use 18
 
 # #########################################################################################
 

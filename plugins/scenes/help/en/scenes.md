@@ -46,14 +46,14 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 ## Editing Poses
 
 `scene/replace <text in the form of an emit>` - Replaces your last pose.
-`scene/typo <text in the form of an emit>` - Silent replace for small typos.
+`scene/typo <text in the form of an emit>` - Silent replace of your last pose for small typos.
 `scene/undo` - Removes your last pose.
 `scene/emit <scene num>=<emit>` - Add a pose to a scene that isn't in your room.
 
 ## Stopping a Scene
 
 `scene/stop [<#>]` - Stops a scene and recycles the room (if it was a temporary one).
-`scene/delete <#>` - Deletes a scene.
+`scene/delete <#>` - Marks a scene for deletion. If there are poses, other players will have a chance to save or share it before it is actually deleted. Restarting or sharing a scene will cancel its pending deletion.
 `scene/restart <#>` - Restarts a scene.
 `scene/home <home, work, ooc>` - Sets your scene home preference.
 
@@ -80,11 +80,13 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
 `scene/addchar <#>=<names>` - Adds participants to the scene log. Normally used when someone poses from an alt but you want the other char added too.
 `scene/removechar <#>=<names>` - Removes participants from the scene log. Normally used when someone poses from the wrong char and you need to remove them.
+`scene/addrelated <#>=<#>` - Adds a related scene. Both scenes must be shared.
+`scene/removerelated <#>=<#>` - Removes a related scene.
 
 > **Tip:** Admins and characters with the `manage_scenes` permission can edit other people's scenes that have been shared.  However, they cannot read scenes unless they've been shared first.
 
 ## Reporting Abuse
 
-If someone is behaving badly in a scene, you can bring it to the game admin's attention - along with an automatic, verified log of the scene (including OOC chat and any previously-edited or deleted poses).  
+If someone is behaving badly in a scene, you can bring it to the game admin's attention - along with an automatic, verified log of the scene. For unshared scenes, this also includes OOC chat and any previously-edited or deleted poses.
 
 `scene/report <scene#>=<explanation>`

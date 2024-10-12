@@ -29,7 +29,7 @@ module AresMUSH
         end
         
         if (new_folder.blank? || files.empty?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "folder, file") }
         end
         
         if (folder == "theme_images" && !enactor.is_admin?)

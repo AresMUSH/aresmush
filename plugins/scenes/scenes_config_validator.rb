@@ -17,15 +17,12 @@ module AresMUSH
         @validator.require_list('scene_types')
         @validator.check_cron('trending_scenes_cron')
         @validator.check_cron('unshared_scene_cleanup_cron')
-        @validator.require_int('unshared_scene_deletion_days', 1)
         @validator.require_int('unshared_scene_warning_days', 1)
         @validator.require_boolean('use_custom_char_cards')
+        @validator.require_int('scene_trash_timeout_days', 14)
+        @validator.require_boolean('delete_scenes_on_idle_out')
         
         begin
-          if (Global.read_config('scenes', 'unshared_scene_warning_days') >=
-              Global.read_config('scenes', 'unshared_scene_deletion_days'))
-            @validator.add_error "Unshared scene warning needs to be before the delete timeout."
-          end
           @validator.check_forum_exists('trending_scenes_category')
         rescue Exception => ex
           @validator.add_error "Unknown scenes config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0, 3]}"

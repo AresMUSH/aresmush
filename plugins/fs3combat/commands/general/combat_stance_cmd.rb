@@ -4,15 +4,15 @@ module AresMUSH
       include CommandHandler
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :name, :stance
+      attr_accessor :names, :stance
       
       def parse_args
         if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-          self.name = titlecase_arg(args.arg1)
+          self.names = list_arg(args.arg1)
           self.stance = titlecase_arg(args.arg2)
         else
-          self.name = enactor.name
+          self.names = [enactor.name]
           self.stance = titlecase_arg(cmd.args)
         end
         
@@ -22,7 +22,7 @@ module AresMUSH
       end
 
       def required_args
-        [ self.name ]
+        [ self.names ]
       end
       
       def check_stance        
@@ -31,13 +31,15 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
-          combatant.update(stance: stance)
-          message = t('fs3combat.stance_changed', :stance => self.stance, :name => self.name, :poss => combatant.poss_pronoun)
-          FS3Combat.emit_to_combat combat, message, FS3Combat.npcmaster_text(name, enactor)
+        self.names.each do |name|
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
+            combatant.update(stance: stance)
+            message = t('fs3combat.stance_changed', :stance => self.stance, :name => name, :poss => combatant.poss_pronoun)
+            FS3Combat.emit_to_combat combat, message, FS3Combat.npcmaster_text(name, enactor)
           
-          if (combatant.riding_in)
-            client.emit_ooc t('fs3combat.passenger_stance_warning')
+            if (combatant.riding_in)
+              client.emit_ooc t('fs3combat.passenger_stance_warning')
+            end
           end
         end
       end

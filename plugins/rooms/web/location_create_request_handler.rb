@@ -7,6 +7,7 @@ module AresMUSH
         descs = request.args[:descs]
         summary = request.args[:summary]
         area_id = request.args[:area_id]
+        icon_type = request.args[:icon_type]
         owner_names = request.args[:owners] || []
         enactor = request.enactor
                 
@@ -29,12 +30,13 @@ module AresMUSH
         end
         
         if (name.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name") }
         end
         
         room = Room.create(name: name, 
            area: area, 
-           shortdesc: Website.format_input_for_mush(summary))
+           shortdesc: Website.format_input_for_mush(summary),
+           room_icon: icon_type.blank? ? nil : icon_type)
            
          Describe.save_web_descs(room, descs)
          

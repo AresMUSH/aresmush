@@ -27,9 +27,11 @@ module AresMUSH
           raise "Unrecognized date time separator.  Check your 'short' date format in datetime.yml."
         end
 
-        
-        
         date_time = OOCTime.parse_datetime(date.strip.downcase)
+        if (!date_time)
+          raise "Invalid date format."
+        end
+        
         if (date_time < DateTime.now)
           return nil, nil, t('events.no_past_events')
         end
@@ -64,12 +66,6 @@ module AresMUSH
         signup.update(comment: comment)
       else
         EventSignup.create(event: event, character: char, comment: comment)
-        organizer = event.character
-        if (organizer)
-          message = t('events.signup_added', :title => event.title, :name => char.name)
-          Login.notify(organizer, :event, message, event.id)
-          Login.emit_ooc_if_logged_in organizer, message
-        end
       end
     end
     
@@ -149,14 +145,6 @@ module AresMUSH
       if (!signup)
         return t('events.not_signed_up', :name => char.name)
       end
-      
-      organizer = event.character
-      if (organizer)
-        message = t('events.signup_removed', :title => event.title, :name => signup.character.name)
-        Login.notify(organizer, :event, message, event.id)
-        Login.emit_ooc_if_logged_in organizer, message
-      end
-      
       signup.delete
       
       return nil
@@ -179,5 +167,21 @@ module AresMUSH
       return true if Events.can_manage_event?(enactor, event)
       AresCentral.is_alt?(enactor, char)
     end
+    
+    def self.create_event_scene(event, enactor)      
+      scene = Scenes.start_scene(enactor, "Event #{event.title}", false, Scenes.scene_types.first, true)
+      scene.update(title: event.title)
+      
+      Scenes.add_participant(scene, enactor, enactor)
+      event.signups.each do |signup|
+        invitee = signup.character
+        if (invitee)
+          Scenes.invite_to_scene(scene, invitee, enactor)
+        end
+      end
+      
+      scene
+    end
+    
   end
 end

@@ -11,12 +11,13 @@ module AresMUSH
         submitter_name = request.args[:submitter]
         assignee_name = request.args[:assigned_to]
         tags = request.args[:tags]
+        custom_fields = request.args[:custom_fields] || {}
 
         error = Website.check_login(request)
         return error if error
         
         if (title.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "title") }
         end
         
         request.log_request
@@ -68,13 +69,23 @@ module AresMUSH
           end
         end
         
+        custom_field_data = {}
+        custom_fields.each do |k, v|
+          if (v['field_type'] == 'date')
+            custom_field_data[k] = OOCTime.parse_date(v['date_input'])
+          else
+            custom_field_data[k] = v['value']
+          end
+        end
+        
         job.update(
           title: title,
           author: submitter,
           assigned_to: assignee,
           status: status,
           job_category: category,
-          description: Website.format_input_for_mush(description)
+          description: Website.format_input_for_mush(description),
+          custom_fields: custom_field_data
         )
         job.participants.replace participants
         Website.update_tags(job, tags)

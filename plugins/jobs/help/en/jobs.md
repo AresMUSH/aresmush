@@ -15,7 +15,7 @@ The Jobs system is used by the game administrators to track work requests and to
 `jobs` - Lists jobs
 `job <#>` - Views a job.
 
-`jobs/filter <flter>` - Filters the jobs list. Valid filters are: active, mine, unfinished, unassigned, unread, all, or a specific category name.
+`jobs/filter <flter>` - Filters the jobs list. Valid filters are: active, mine, unfinished, unassigned, unread, archived, all, or a specific category name.
 `jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
 `jobs/subscribe` and `jobs/unsubscribe` - Subscribes to new job notices, so you'll get a personal notification for any new job.
 
@@ -39,6 +39,7 @@ The Jobs system is used by the game administrators to track work requests and to
 `job/status <#>=<status>` - Change job status.
 `job/cat <#>=<category>` - Change job category.
 `job/title <#>=<title>` - Change job title.
+`job/setcustom <#>=<field name>/<value>` - Sets a custom job field.
 
 `jobs/catchup` - Marks all jobs as read.
 `jobs/catchup <number>` - Mark a specific job as read.

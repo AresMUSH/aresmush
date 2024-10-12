@@ -74,6 +74,8 @@ module AresMUSH
           end
         when "addchar", "removechar"
           return SceneCharCmd
+        when "addrelated", "removerelated"
+          return RelatedSceneCmd
         when "emit"
           return SceneEmitCmd
         when "home"
@@ -137,6 +139,8 @@ module AresMUSH
         return PoseEventHandler
       when "CharConnectedEvent"
         return CharConnectedEventHandler
+      when "CharIdledOutEvent"
+        return CharIdledOutEventHandler
       end
       nil
     end
@@ -155,6 +159,8 @@ module AresMUSH
         return CreatePlotRequestHandler
       when "createScene"
         return CreateSceneRequestHandler
+      when "customSceneData"
+        return CustomSceneDataHandler
       when "editScenePose"
         return EditScenePoseRequestHandler
       when "deleteScenePose"

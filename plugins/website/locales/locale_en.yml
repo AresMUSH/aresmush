@@ -2,7 +2,7 @@ en:
     webportal: 
         login_required: "You must log in first."
         unexpected_error: "Ooops! Something went wrong.  Please try again."
-        missing_required_fields: "Missing required fields."
+        missing_required_fields: "The following fields are required: %{fields}"
         missing_required_field: "Missing required field: %{name}"
         not_found: "The requested item was not found."
         session_expired: "Your session has expired.  Please log out and log in again."

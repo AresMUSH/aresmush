@@ -136,13 +136,13 @@ module AresMUSH
     end
     
     def self.wiki_templates
-      templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
-        title: p.title.gsub("template:", ""),
-        name: p.name.gsub("template:", ""),
+      templates = WikiPage.all.select { |p| p.category == "template" }.sort_by { |p| p.name.downcase }.map { |p| {
+        title: p.title.gsub("template:", "").gsub("Template:", ""),
+        name: p.name.gsub("template:", "").gsub("Template:", ""),
         text: p.text
       }
       }
-      templates << { title: 'blank', name: 'blank', text: '' }
+      templates.unshift({ title: 'blank', name: 'blank', text: '' })
       templates
     end
     
@@ -180,7 +180,7 @@ module AresMUSH
         end
       end
       raise "File #{search_name} not found in editable file list."
-    end
+    end    
     
     def self.editable_code_files
       web_code_path = File.join(AresMUSH.website_code_path, 'app')
@@ -245,6 +245,8 @@ module AresMUSH
             'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
             'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
             'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+            'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
+            
           }
         },
         
@@ -274,7 +276,41 @@ module AresMUSH
           }
         },
         
+        {
+          name: "Job Actions",
+          help: "https://aresmush.com/tutorials/code/hooks/job-menu.html",
+          files: {
+            'job-menu-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'job-menu-custom.hbs'),  
+            'job-menu-custom.js' => File.join(web_code_path, 'components', 'job-menu-custom.js'),
+            'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),            
+          },
+        },
+          
+        {
+          name: "Custom Routes",
+          help: "https://aresmush.com/tutorials/code/hooks/custom-routes.html",
+          files: {
+            'custom-routes.js' => File.join(web_code_path, 'custom-routes.js')
+          }
+        },
+        
+        {
+          name: "Web Portal Sidebar",
+          help: "https://aresmush.com/tutorials/code/hooks/sidebar.html",
+          files: {
+            'sidebar-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'sidebar-custom.hbs'),  
+            'sidebar-custom.js' => File.join(web_code_path, 'components', 'sidebar-custom.js'),
+            'custom_web_data.rb' => File.join(plugin_code_path, 'website', 'custom_web_data.rb'),
+          }
+        },
+        
       ]
     end
+    
+    def self.build_top_navbar(viewer)
+      navbar = Global.read_config('website', 'top_navbar')
+      navbar.select { |n| !n['roles'] || (viewer && viewer.has_any_role?(n['roles'])) }
+    end
+      
   end
 end

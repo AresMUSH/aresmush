@@ -15,6 +15,12 @@ en:
         admin_position_set: "Admin position set."
         role_created: "Role %{name} created."
         role_deleted: "Role %{name} deleted.  Make sure if you have any plugins configured to use that role that you remove it from them."
+        permissions_title: "Permissions"
+        players_title: "Players"
+        role_list_title: "All Roles"
+        role_list_footer: "Use %xcrole/info <name>%xn for details about a role."
+        permissions_list_title: "Permission           Plugin       Description"
+        
         role_already_exists: "Role %{name} already exists."
         role_permissions_updated: "Role permissions updated."
         permissions_no_spaces: "Permission names may not contain commas or spaces."

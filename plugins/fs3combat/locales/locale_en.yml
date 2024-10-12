@@ -124,6 +124,7 @@ en:
         everyone_posed: "Everyone has posed!"
         team_target_set: "Team %{team} will now pick targets from teams %{targets}."
         team_targets: "Team     Targeted Team(s)"
+        team_name_set: "%{enactor} has set team %{team}'s name to %{name}."
         
         random_targets: "Suggested Targets: %{targets}"
         no_targets_specified: "No targets specified."

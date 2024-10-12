@@ -37,7 +37,8 @@ When a character is approved, they will get a message (that you configure) telli
 `app/review <name>` - Quick command to review app, background, profile and sheet all at once.
 `app/approve <name>` - Approves a character.
 `app/reject <name>=<message>` - Rejects a character and unlocks them so they can make changes.
-
+`app/override <name>[=<notes>]` - Approves a character who hasn't submitted. (Useful for rosters.) Will create and then close the approval job.
+  
 Application managers can view and edit other character backgrounds, in case you need to make simple tweaks during the approval process.
 
 `bg/set <name>=<background>` - Sets a background.

@@ -21,6 +21,8 @@ website:
     minute:
     - 17
   top_navbar:
+  - title: "<i class='fas fa-home' />"
+    route: home
   - title: Play
     menu:
     - title: Create a Character
@@ -32,6 +34,8 @@ website:
       route: play
     - title: Active Scenes
       route: scenes-live
+    - title: Unshared Scenes
+      route: scenes-unshared
     - title: Start New Scene
       route: scene-create
     - divider: true
@@ -144,12 +148,74 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
+  - title: Admin
+    roles:
+    - admin
+    - coder
+    menu:
+    - title: Jobs
+      route: jobs
+    - title: Setup
+      route: setup
+    - title: Manage
+      route: manage
+    - title: Logs
+      route: logs
+    - title: Files
+      route: files
+    - title: Roles
+      route: roles
+    - title: Server
+      route: server-info
+  - title: Code
+    roles:
+    - coder
+    menu:
+    - title: Tinker
+      route: tinker
+    - title: Custom Code
+      route: custom-code
+  - title: Theme
+    roles:
+    - admin
+    menu:
+    - title: Theme Colors
+      route: setup-colors
+    - title: Custom Styles
+      route: textfile
+      ids:
+      - style
+      - custom_style.scss
+    - title: Files
+      route: files
+    - title: Home Page Text
+      route: textfile
+      ids:
+      - text
+      - website.txt
+  - title: "<i class='fas fa-magnifying-glass'/>"
+    menu:
+    - title: Search Characters
+      route: search-chars
+    - title: Search Scenes
+      route: search-scenes
+    - title: Search Locations
+      route: search-locations
+    - title: Search Wiki
+      route: search-wiki
+    - title: Search Help
+      route: search-help
+    - title: Search Forum
+      route: search-forum
+    - title: Search Jobs/Requests
+      route: search-jobs
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
   permissions:
     manage_theme: Edit web portal CSS, colors, and theme images.
-    manage_wiki: Create and delete restricted wiki pages and override folder and file upload limits.
+    manage_wiki: Create and delete restricted wiki pages and override folder and file
+      upload limits.
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -166,3 +232,4 @@ website:
   shortcuts:
     wiki: website
     website/archive: website/export
+  hide_searchbox: true

@@ -13,7 +13,7 @@ channels:
   - Chat
   discord_gravatar_style: retro
   discord_prefix: "[D]"
-  debug_discord: false
+  discord_debug: false
   end_marker: ">"
   ooc_lounge_channel: ''
   permissions:

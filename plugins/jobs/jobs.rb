@@ -57,6 +57,8 @@ module AresMUSH
           return JobsFilterCmd
         when "mail"
           return JobMailCmd
+        when "merge"
+          return JobMergeCmd
         when "new"
           return JobsNewCmd
         when "purge"
@@ -69,6 +71,8 @@ module AresMUSH
           return JobScanCmd
         when "search"
           return JobSearchCmd
+        when "setcustom"
+          return ChangeCustomJobCmd
         when "status"
           return JobStatusCmd
         when "subscribe", "unsubscribe"
@@ -118,7 +122,7 @@ module AresMUSH
     def self.get_event_handler(event_name) 
       case event_name
       when "CronEvent"
-        return JobArchiveCronHandler
+        return JobCronEventHandler
       when "RoleDeletedEvent"
         return RoleDeletedEventHandler
       else

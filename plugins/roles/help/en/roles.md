@@ -25,6 +25,11 @@ You can create and delete roles.
 `role/create <name>`
 `role/delete <name>`
 
+## Viewing Roles
+
+`role/all` - Lists all roles.
+`role/info <name>` - View info about a specific role, including permissions and who has that role.
+
 ## Assigning Roles to Characters
 
 You can assign roles to people.

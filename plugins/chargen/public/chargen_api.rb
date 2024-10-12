@@ -94,6 +94,7 @@ module AresMUSH
     def self.welcome_message_args(model)
       args = { 
         name: model.name, 
+        nick: model.nick,
         rp_hooks: model.rp_hooks || t('global.none'),
         profile_link: "#{Game.web_portal_url}/char/#{model.name}",
         position: '',
