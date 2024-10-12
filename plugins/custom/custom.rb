@@ -15,7 +15,12 @@ module AresMUSH
       when "plotcheck"
         return PlotcheckCmd
       when "wordcount"
-        return WordCountCmd
+          case cmd.switch
+          when "alts"
+            return WordCountAltsCmd
+          when nil
+            return WordCountCmd
+          end
       end   
       return nil
     end
