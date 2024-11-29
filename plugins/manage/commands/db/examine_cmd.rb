@@ -38,7 +38,7 @@ module AresMUSH
         if (self.attr_name)
           attrs = model.attributes.keys
              .select { |k| k.to_s.include?(self.attr_name) }
-             .map { |k| "#{k}: #{model.attributes[k]}" }
+             .map { |k| "%R#{k}: #{model.attributes[k]}" }
           template = BorderedListTemplate.new attrs, self.attr_name
           client.emit template.render
         else

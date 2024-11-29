@@ -114,7 +114,7 @@ module AresMUSH
       char.update(idle_lastwill: Website.format_input_for_mush(chargen_data[:lastwill]))
       
       char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
-      char.update(description: Website.format_input_for_mush(chargen_data[:desc]))
+      char.update_desc(Website.format_input_for_mush(chargen_data[:desc]))
       char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
       char.update(profile_image: chargen_data[:profile_image].blank? ? nil : chargen_data[:profile_image])
       
