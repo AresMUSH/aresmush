@@ -34,12 +34,7 @@ module AresMUSH
       end
       
       def handle
-        recipients = []
-        
-        if self.names.count == 1 && self.names[0].upcase == enactor.name_upcase
-          client.emit_failure t('page.cant_page_just_yourself')
-          return
-        end
+        recipients = []        
         
         self.names.each do |name|
           char = Character.find_one_by_name(name)
@@ -56,6 +51,11 @@ module AresMUSH
           if (char != enactor)
             recipients << char
           end
+        end
+        
+        if recipients.count == 0
+          client.emit_failure t('page.cant_page_just_yourself')
+          return
         end
       
         Page.send_page(enactor, recipients, self.message, client)
