@@ -55,7 +55,7 @@ module AresMUSH
     end
     
     def self.save_web_descs(model, data)
-      model.update(description: Website.format_input_for_mush(data['current']))
+      model.update_desc(Website.format_input_for_mush(data['current']))
       if (model.kind_of?(Character))
         outfits = {}
         (data['outfits'] || []).each do |name, desc|

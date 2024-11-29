@@ -26,7 +26,7 @@ module AresMUSH
           text << " "
         end
         
-        enactor.update(description: text)
+        enactor.update_desc(text)
         client.emit_success t('describe.outfits_worn')
       end
     end

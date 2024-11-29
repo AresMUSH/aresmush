@@ -27,7 +27,6 @@ require 'redcarpet'
 
 require 'sinatra/base'
 require 'sinatra/cross_origin'
-require 'thin'
 require 'rubygems'
 require 'zip'
 require 'sassc'
