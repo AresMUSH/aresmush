@@ -255,10 +255,16 @@ module AresMUSH
           help: "https://aresmush.com/tutorials/code/hooks/char-cards.html",
           files: {
             'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),  
+            'char-card-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom-tabs.hbs'),  
+            'char-card-custom-tabs-content.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom-tabs-content.hbs'),  
             'char-card-custom.js' => File.join(web_code_path, 'components', 'char-card-custom.js'),
+            'char-card-custom-tabs.js' => File.join(web_code_path, 'components', 'char-card-custom-tabs.js'),
+            'char-card-custom-tabs-content.js' => File.join(web_code_path, 'components', 'char-card-custom-tabs-content.js'),
             'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),
           }
         },
+        
+        
         
         {
           name: "Combat Actions",
