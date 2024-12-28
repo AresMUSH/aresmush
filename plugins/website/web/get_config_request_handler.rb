@@ -13,7 +13,7 @@ module AresMUSH
         end
       
         path = File.join(AresMUSH.game_path, 'config', file)
-        if (!File.exists?(path))
+        if (!File.exist?(path))
           return { error: t('webportal.not_found') }
         end
         

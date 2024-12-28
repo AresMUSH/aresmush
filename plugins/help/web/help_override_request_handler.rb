@@ -17,7 +17,7 @@ module AresMUSH
         end
       
         help_dir = File.join(AresMUSH.game_path, "help", "en")
-        FileUtils.mkpath(help_dir) unless File.exists?(help_dir)
+        FileUtils.mkpath(help_dir) unless File.exist?(help_dir)
         path =  File.join(help_dir, "#{topic_id}.md")
         
         

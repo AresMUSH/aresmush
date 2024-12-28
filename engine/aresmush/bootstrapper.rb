@@ -6,8 +6,10 @@ module AresMUSH
     
     def initialize(boot_options = nil)
 
-      @config_reader = ConfigReader.new
       @ares_logger = AresLogger.new
+      Global.ares_logger = @ares_logger
+
+      @config_reader = ConfigReader.new
       @locale = Locale.new
       @plugin_manager = PluginManager.new
       @help_reader = HelpReader.new
@@ -41,8 +43,6 @@ module AresMUSH
       
       # Order here is important!
       @config_reader.load_game_config      
-      @ares_logger.start
-      Global.ares_logger = @ares_logger
 
       Global.use_api_proxy = true
       @boot_options.each do |opt|

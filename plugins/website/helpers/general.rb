@@ -191,8 +191,8 @@ module AresMUSH
           name: "Profile Display",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'profile-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom-tabs.hbs'),  
-            'profile-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom.hbs'),  
+            'profile-custom-tabs.hbs' => File.join(web_code_path, 'components', 'profile-custom-tabs.hbs'),  
+            'profile-custom.hbs' => File.join(web_code_path, 'components', 'profile-custom.hbs'),  
             'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -202,8 +202,8 @@ module AresMUSH
           name: "Profile Editing",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom-tabs.hbs'),
-            'char-edit-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom.hbs'),
+            'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'components', 'char-edit-custom-tabs.hbs'),
+            'char-edit-custom.hbs' => File.join(web_code_path, 'components', 'char-edit-custom.hbs'),
             'char-edit-custom.js' => File.join(web_code_path, 'components', 'char-edit-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -214,8 +214,8 @@ module AresMUSH
           name: "Chargen",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'chargen-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom.hbs'),  
-            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom-tabs.hbs'),  
+            'chargen-custom.hbs' => File.join(web_code_path, 'components', 'chargen-custom.hbs'),  
+            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'components', 'chargen-custom-tabs.hbs'),  
             'chargen-custom.js' => File.join(web_code_path, 'components', 'chargen-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -241,9 +241,9 @@ module AresMUSH
           name: "Scene Actions",
           help: "https://aresmush.com/tutorials/code/hooks/scene-buttons.html",
           files: {
-            'live-scene-custom-play.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-play.hbs'),  
+            'live-scene-custom-play.hbs' => File.join(web_code_path, 'components', 'live-scene-custom-play.hbs'),  
             'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
-            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
+            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.hbs'),  
             'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
             'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
             
@@ -254,9 +254,9 @@ module AresMUSH
           name: "Scene Character Cards",
           help: "https://aresmush.com/tutorials/code/hooks/char-cards.html",
           files: {
-            'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),  
-            'char-card-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom-tabs.hbs'),  
-            'char-card-custom-tabs-content.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom-tabs-content.hbs'),  
+            'char-card-custom.hbs' => File.join(web_code_path, 'components', 'char-card-custom.hbs'),  
+            'char-card-custom-tabs.hbs' => File.join(web_code_path, 'components', 'char-card-custom-tabs.hbs'),  
+            'char-card-custom-tabs-content.hbs' => File.join(web_code_path, 'components', 'char-card-custom-tabs-content.hbs'),  
             'char-card-custom.js' => File.join(web_code_path, 'components', 'char-card-custom.js'),
             'char-card-custom-tabs.js' => File.join(web_code_path, 'components', 'char-card-custom-tabs.js'),
             'char-card-custom-tabs-content.js' => File.join(web_code_path, 'components', 'char-card-custom-tabs-content.js'),
@@ -286,7 +286,7 @@ module AresMUSH
           name: "Job Actions",
           help: "https://aresmush.com/tutorials/code/hooks/job-menu.html",
           files: {
-            'job-menu-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'job-menu-custom.hbs'),  
+            'job-menu-custom.hbs' => File.join(web_code_path, 'components', 'job-menu-custom.hbs'),  
             'job-menu-custom.js' => File.join(web_code_path, 'components', 'job-menu-custom.js'),
             'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),            
           },
@@ -304,7 +304,7 @@ module AresMUSH
           name: "Web Portal Sidebar",
           help: "https://aresmush.com/tutorials/code/hooks/sidebar.html",
           files: {
-            'sidebar-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'sidebar-custom.hbs'),  
+            'sidebar-custom.hbs' => File.join(web_code_path, 'components', 'sidebar-custom.hbs'),  
             'sidebar-custom.js' => File.join(web_code_path, 'components', 'sidebar-custom.js'),
             'custom_web_data.rb' => File.join(plugin_code_path, 'website', 'custom_web_data.rb'),
           }

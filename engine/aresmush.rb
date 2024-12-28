@@ -9,9 +9,6 @@ require 'ohm'
 require "ohm/json"
 require 'i18n'
 require "i18n/backend/fallbacks" 
-require 'log4r'
-require 'log4r/yamlconfigurator'
-include Log4r
 require 'date'
 require 'bcrypt'
 require 'rake'

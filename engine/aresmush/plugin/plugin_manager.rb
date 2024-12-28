@@ -33,14 +33,14 @@ module AresMUSH
 
       plugin_path = File.join(AresMUSH.plugin_path, name)
       plugin_file = File.join(plugin_path, "#{name}.rb")
-      if (File.exists?(plugin_file))
+      if (File.exist?(plugin_file))
         load plugin_file
       else
         Global.logger.debug "Plugin loader file #{name} does not exist."
       end
       
       load_file = File.join(plugin_path, "_load.rb")
-      if (File.exists?(load_file))
+      if (File.exist?(load_file))
         load load_file
       else
         code_files(plugin_path).each do |f|
@@ -69,7 +69,7 @@ module AresMUSH
     def load_plugin_locale(plugin_module)
       Global.locale.locale_order.each do |locale|
         file = File.join(plugin_module.plugin_dir, "locales", "locale_#{locale}.yml")
-        if File.exists?(file)
+        if File.exist?(file)
           Global.locale.add_locale_file file
         end
       end

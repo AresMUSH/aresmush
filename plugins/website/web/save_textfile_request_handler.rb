@@ -27,7 +27,7 @@ module AresMUSH
           path = Website.find_code_file_path(file)
         end
                 
-        if (!File.exists?(path))
+        if (!File.exist?(path))
           return { error: t('webportal.not_found') }
         end
         

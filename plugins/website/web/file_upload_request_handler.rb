@@ -64,7 +64,7 @@ module AresMUSH
         
         path = File.join(folder_path, name)
         
-        if (File.exists?(path) && !allow_overwrite)
+        if (File.exist?(path) && !allow_overwrite)
           return { error: t('webportal.file_already_exists')  }
         end
         
