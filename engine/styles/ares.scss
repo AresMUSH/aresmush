@@ -2189,6 +2189,10 @@ ul.reference-help-list > li:not(:last-child)::after {
   flex-basis: 30%;
 }
 
+.teststyle {
+  color: green;
+}
+
 @media (max-width:992px)  { 
 
   .site-title {

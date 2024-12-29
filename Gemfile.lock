@@ -51,10 +51,6 @@ GEM
     ffi (1.17.0)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-darwin)
-    handlebars-engine (0.3.3)
-      handlebars-source
-      mini_racer
-    handlebars-source (4.7.8)
     hiredis (0.6.3)
     htmlentities (4.3.4)
     http_parser.rb (0.8.0)
@@ -62,12 +58,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jmespath (1.6.2)
     json (2.3.1)
-    libv8-node (18.19.0.0)
-    libv8-node (18.19.0.0-arm64-darwin)
-    libv8-node (18.19.0.0-x86_64-darwin)
     logger (1.6.3)
-    mini_racer (0.16.0)
-      libv8-node (~> 18.19.0.0)
     minitest (5.25.4)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
@@ -123,6 +114,7 @@ GEM
 
 PLATFORMS
   arm64-darwin
+  linux
   ruby
   x86_64-darwin
 
@@ -137,7 +129,6 @@ DEPENDENCIES
   em-websocket (~> 0.5)
   erubis (~> 2.7.0)
   eventmachine (~> 1.2.7)
-  handlebars-engine (~> 0.3)
   htmlentities (~> 4.3.4)
   i18n (~> 1.14)
   json (~> 2.3.1)
