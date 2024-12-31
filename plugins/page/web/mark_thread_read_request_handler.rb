@@ -20,10 +20,9 @@ module AresMUSH
         
         Page.mark_thread_read(thread, enactor)
         if (enactor.unified_play_screen)
-          thread.characters.each do |p|
-            if (AresCentral.is_alt?(p, enactor))
-              Page.mark_thread_read(thread, p)
-            end
+          AresCentral.play_screen_alts(enactor).each do |alt|
+            next if alt == enactor
+            Page.mark_thread_read(thread, alt)
           end
         end
          
