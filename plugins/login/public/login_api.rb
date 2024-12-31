@@ -81,6 +81,7 @@ module AresMUSH
       char.change_password(password)
       char.update(login_api_token: '')
       char.update(login_api_token_expiry: Time.now - 86400*5)
+      char.update(login_failures: 0)      
       password
     end
     
