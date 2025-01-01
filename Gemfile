@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rake', '~> 12.3'
 gem 'rspec', '~> 3.12'
 gem 'json', '~> 2.3.1'
+gem 'logger', "~>1.6.4"
 
 # Misc formatting utils, mattr_accessor, date utils, etc.
 gem "activesupport", ">= 6.1.7"

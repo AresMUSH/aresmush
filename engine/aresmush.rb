@@ -16,6 +16,7 @@ require 'rspec/core/rake_task'
 require 'pp'
 require 'net/http'
 require 'htmlentities'
+require 'logger'
 
 require 'erubis'
 require 'json'
