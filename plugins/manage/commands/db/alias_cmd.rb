@@ -43,7 +43,7 @@ module AresMUSH
         if (target.class == Character)
           taken_error = Login.name_taken?(self.alias, target)
           if (taken_error)
-            client.emit_failure taken_message
+            client.emit_failure taken_error
             return
           end
           
