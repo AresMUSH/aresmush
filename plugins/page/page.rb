@@ -24,6 +24,8 @@ module AresMUSH
           return PageIgnoreCmd
         when "new" 
           return PageNewCmd
+        when "reply"
+          return PageReplyCmd
         when "review"
           if (cmd.args)
             return PageReviewCmd

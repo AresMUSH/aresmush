@@ -34,31 +34,13 @@ module AresMUSH
       end
       
       def handle
-        recipients = []        
-        
-        self.names.each do |name|
-          char = Character.find_one_by_name(name)
-          if (!char)
-            client.emit_failure t('page.invalid_recipient', :name => name)
-            return
-          end
-          
-          if (char.page_ignored.include?(enactor))
-            client.emit_failure t('page.cant_page_ignored', :name => name)
-            return
-          end
-          
-          if (char != enactor)
-            recipients << char
-          end
-        end
-        
-        if recipients.count == 0
-          client.emit_failure t('page.cant_page_just_yourself')
+        result = Page.get_receipients(self.names, enactor)
+        if (result[:error])
+          client.emit_failure result[:error]
           return
         end
-      
-        Page.send_page(enactor, recipients, self.message, client)
+        
+        Page.send_page(enactor, result[:recipients], self.message, client)
         
         enactor.update(last_paged: self.names)
       end

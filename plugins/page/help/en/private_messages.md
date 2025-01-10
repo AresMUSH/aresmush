@@ -16,6 +16,7 @@ Pages are private messages sent between players. The `pm` command is aliased to 
 ## Sending and Receiving Pages
 
 `pm <list of names>=<message>` - Send a pm to a list of players.
+`pm/reply [<thread #>]=<message>` - Replies to a pm thread. Defaults to your most recent thread, or you can use a thread number from `pm/review`. Note that if another message comes in while you're typing, you'll respond to that one instead!
 `pm/review` - Shows available conversations.
 `pm/review <names or #>[=<messages to show>]` - Reviews a conversation.
 `pm/scan` - Shows if you have unread PMs. You can add this to your [onconnect](/help/onconnect).

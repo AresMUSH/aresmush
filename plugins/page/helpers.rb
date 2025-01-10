@@ -137,6 +137,31 @@ module AresMUSH
       PageThread.all.select { |t| (t.characters.map { |c| c.id }.sort == chars.map { |c| c.id }.sort) }.first
     end
     
+    def self.get_receipients(names, enactor)
+      recipients = []        
+      
+      names.each do |name|
+        char = Character.find_one_by_name(name)
+        if (!char)
+          return { error:  t('page.invalid_recipient', :name => name) }
+        end
+        
+        if (char.page_ignored.include?(enactor))
+          return { error: t('page.cant_page_ignored', :name => name) }
+        end
+        
+        if (char != enactor)
+          recipients << char
+        end
+      end
+      
+      if recipients.count == 0
+        return { error: t('page.cant_page_just_yourself') }
+      end
+      
+      return { error: nil, recipients: recipients }
+    end
+    
     def self.thread_for_names(names, enactor)
       thread = enactor.page_threads.select { |t| t.title_customized(enactor).upcase == names.join(" ").upcase}.first
       return thread if thread
