@@ -11,19 +11,17 @@ module AresMUSH
     def post_init
       begin
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
-        @window_width = 78
-        @window_height = 24
-        @input_buf = ""
-        @negotiator = TelnetNegotiation.new(self)
-
-        @negotiator.send_naws_request
-        @negotiator.send_charset_request
-                
-          
       rescue Exception => e
-        Global.logger.warn "Could not decode IP address.  error=#{e} backtrace=#{e.backtrace[0,10]}"
+        Global.logger.warn "Could not decode IP address."
         @ip_addr = "0.0.0.0"
       end
+      @window_width = 78
+      @window_height = 24
+      @input_buf = ""
+      @negotiator = TelnetNegotiation.new(self)
+
+      @negotiator.send_naws_request
+      @negotiator.send_charset_request
     end
 
     def ping

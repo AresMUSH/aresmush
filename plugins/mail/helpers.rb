@@ -108,25 +108,44 @@ module AresMUSH
       char.mail_composition.delete
     end
     
-    def self.empty_trash(char)
-      Global.logger.debug "Emptying trash for #{char.name}."
+    def self.empty_all_trash(char)
+      Global.logger.debug "Emptying mail for #{char.name}"
       char.mail.each do |m|
-        if (m.tags.include?(Mail.trashed_tag))          
-          m.delete
+        if (m.in_trash?)
+            m.delete
         end
       end
+      char.update(mail_trash_last_emptied: Time.now)      
+    end
+    
+    def self.empty_old_trash(char)
+      default_time = Time.new(1999)
+      
+      # Only need to empty trash once a week
+      return if (Time.now - (char.mail_trash_last_emptied || default_time) < 7*86400)
+        
+      Global.logger.debug "Emptying mail for #{char.name}"
+                  
+      keep_message_time = 30*86400
+      char.mail.each do |m|
+        if (m.in_trash? && (Time.now - (m.trashed_time || default_time) > keep_message_time))
+            m.delete
+        end
+      end
+      
+      char.update(mail_trash_last_emptied: Time.now)      
     end
     
     def self.remove_from_trash(message)
       tags = message.tags
       tags.delete Mail.trashed_tag
-      message.update(tags: tags)
+      message.update(tags: tags, trashed_time: nil)
     end
     
     def self.move_to_trash(message)
       tags = message.tags
       tags << Mail.trashed_tag
-      message.update(tags: tags)
+      message.update(tags: tags, trashed_time: Time.now)
     end
     
     def self.reply_list(msg, enactor, reply_all = false)

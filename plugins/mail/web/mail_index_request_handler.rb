@@ -11,6 +11,8 @@ module AresMUSH
         
         AresCentral.alts(enactor).each do |char|
         
+          Mail.empty_old_trash(char)
+        
           tags = Mail.all_tags(char)
           mail = char.mail.to_a.sort_by { |m| m.created_at }
              .reverse
