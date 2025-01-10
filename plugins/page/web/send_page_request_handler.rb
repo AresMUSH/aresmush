@@ -45,6 +45,11 @@ module AresMUSH
             if (!char)
               return { error: t('page.invalid_recipient', :name => name) }
             end
+
+            if (char.page_ignored.include?(enactor))
+              return { error: t('page.cant_page_ignored', :name => name) }
+            end
+            
             recipients << char
           end
         end
