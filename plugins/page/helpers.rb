@@ -150,6 +150,10 @@ module AresMUSH
           return { error: t('page.cant_page_ignored', :name => name) }
         end
         
+        if (enactor.page_ignored.include?(char))
+          return { error: t('page.cant_page_someone_you_ignored', :name => name) }
+        end
+        
         if (char != enactor)
           recipients << char
         end
