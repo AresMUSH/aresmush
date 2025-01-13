@@ -5,12 +5,15 @@ module AresMUSH
     attribute :page_autospace, :default => "%r"
     attribute :page_color
     attribute :page_monitor, :type => DataType::Hash, :default => {}
-    set :page_ignored, "AresMUSH::Character"
 
     attribute :hidden_page_threads, :type => DataType::Array, :default => []
         
     # OBSOLETE - use read_tracker instead
     attribute :read_page_threads, :type => DataType::Array, :default => []
+
+    # OBSOLETE - use page_blocks instead
+    set :page_ignored, "AresMUSH::Character"
+
 
     before_delete :delete_pages
 
@@ -25,11 +28,16 @@ module AresMUSH
          .reverse
    end
         
+   def page_blocks
+     self.blocks.select { |b| b.block_type == "pm" }
+   end
+   
+   def has_page_blocked?(char)
+     self.page_blocks.any? { |b| b.blocked == char }
+   end
+   
     def delete_pages
       self.page_threads.each { |p| Page.delete_page_thread(p, self) }
-      Character.all.each do |c|
-        Database.remove_from_set c.page_ignored, self
-      end
     end
     
     def is_monitoring?(char)

@@ -26,6 +26,8 @@ module AresMUSH
     reference :handle, "AresMUSH::Handle"
     reference :read_tracker, "AresMUSH::ReadTracker"
     
+    collection :blocks, "AresMUSH::BlockRecord", :owner
+    
     set :roles, "AresMUSH::Role"
     
     before_save :save_upcase

@@ -2016,6 +2016,31 @@ LOCATIONS SCREEN
   margin-bottom: 10px;
 }
 
+  
+/* -------------------------
+ACCOUNT SCREEN
+------------------------- */
+
+.block-list-item:nth-child(even) {
+  background-color: $border-color;
+}
+
+.block-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+}
+
+.block-list-name {
+  flex-basis: 60%;
+}
+
+.block-list-type {
+  flex-basis: 20%;
+}
+  
 /* -------------------------
 OTHER
 ------------------------- */

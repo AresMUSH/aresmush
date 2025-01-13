@@ -108,3 +108,11 @@ en:
         
         mismatched_versions: "Your game and webportal versions are mismatched.  Try reloading the page or clearing your browser cache. If the problem persists, there may be an upgrade issue."
         db_save_triggered: "Database save initiated."
+        
+        already_blocked: "Already blocked."
+        not_blocked: "Already unblocked."
+        block_added: "Block added."
+        block_removed: "Block removed."
+        blocks_list_header: "Blocked Character                                            Block Type"
+        invalid_block_type: "Invalid block type. Try one of these: %{types}."
+        block_types: "Available Block Types:"

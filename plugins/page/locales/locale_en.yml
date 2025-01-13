@@ -12,7 +12,7 @@ en:
         dnd_status: "DND"
         recipient_is_idle: "%{name} is %{time} idle and may be AFK."
         do_not_disturb_set: "You turn your 'do not disturb' status %{status}."
-        recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your PM again later."
+        recipient_do_not_disturb: "%{name} is not receiving PMs right now."
         missed_page_subject: "Missed PM From %{name}"
         missed_page_body: "While you were set 'do not disturb' you received this message from %{name}:%r%{message}"
 
@@ -22,8 +22,7 @@ en:
         
         ignore_added: "%{name} has been added to your PM ignore list."
         ignore_removed: "%{name} has been removed from your PM ignore list."
-        cant_page_ignored: "You can't PM %{name}."
-        cant_page_someone_you_ignored: "You can't PM %{name} because you ignored them."
+        cant_page_someone_you_blocked: "You can't PM %{name} because you blocked them."
 
         page_review_title: "PMs with %{title}"
         page_review_index_title: "PM Conversations"

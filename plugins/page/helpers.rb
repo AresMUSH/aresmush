@@ -146,12 +146,12 @@ module AresMUSH
           return { error:  t('page.invalid_recipient', :name => name) }
         end
         
-        if (char.page_ignored.include?(enactor))
-          return { error: t('page.cant_page_ignored', :name => name) }
+        if (char.has_page_blocked?(enactor))
+          return { error: t('page.recipient_do_not_disturb', :name => name) }
         end
         
-        if (enactor.page_ignored.include?(char))
-          return { error: t('page.cant_page_someone_you_ignored', :name => name) }
+        if (enactor.has_page_blocked?(char))
+          return { error: t('page.cant_page_someone_you_blocked', :name => name) }
         end
         
         if (char != enactor)
