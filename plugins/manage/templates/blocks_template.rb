@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def block_types
-        Global.read_config("manage", "block_types").join(" ")
+        Manage.block_types
       end
     end
   end

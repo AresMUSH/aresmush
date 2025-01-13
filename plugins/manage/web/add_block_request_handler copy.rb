@@ -14,18 +14,16 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        block = enactor.blocks.select { |b| b.block_type == block_type && b.blocked == target }.first
-        if (block)
-          return { error: t('manage.already_blocked') }
+        if (block_type != "all" && !Manage.block_types.include?(block_type)) 
+          return { error: t('manage.invalid_block_type', :types => Manage.block_types.join(' ')) }
         end
+
+        types = block_type == "all" ? Manage.block_types : [ block_type ]
         
-        types = Global.read_config('manage', 'block_types')
-        if (!types.include?(block_type)) 
-          return { error: t('manage.invalid_block_type', :types => types.join(' ')) }
-        end
-        
-        Global.logger.debug "Adding block for #{target.name} from #{enactor.name}."
-        BlockRecord.create(owner: enactor, blocked: target, block_type: block_type)
+        types.each do |t|
+          Manage.add_block(enactor, target, t)          
+        end        
+                
         {}
       end
     end

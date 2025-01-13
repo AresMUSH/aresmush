@@ -181,5 +181,33 @@ module AresMUSH
       migrations.delete(name)
       Game.master.update(applied_migrations: migrations)
     end
+    
+    def self.block_types
+      Global.read_config("manage", "block_types") || [ "pm", "channel" ]
+    end
+    
+    def self.find_block(enactor, target, block_type)
+      enactor.blocks.select { |b| b.block_type == block_type && b.blocked == target }.first
+    end
+      
+    def self.add_block(enactor, target, block_type)
+      existing = Manage.find_block(enactor, target, block_type)
+      if (existing)
+        return t('manage.already_blocked', :name => target.name, :type => block_type)
+      end
+      Global.logger.debug "Adding block for #{target.name} from #{enactor.name}."
+      BlockRecord.create(owner: enactor, blocked: target, block_type: block_type)
+      return nil
+    end
+    
+    def self.remove_block(enactor, target, block_type)
+      existing = Manage.find_block(enactor, target, block_type)
+      if (!existing)
+        return t('manage.not_blocked', :name => target.name, :type => block_type)
+      end
+      Global.logger.debug "Removing block for #{target.name} from #{enactor.name}."
+      existing.destroy
+      return nil
+    end
   end
 end

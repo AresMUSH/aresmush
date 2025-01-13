@@ -21,7 +21,7 @@ module AresMUSH
         
         {
           blocks: blocks,
-          block_types: Global.read_config("manage", "block_types")
+          block_types: [ "all" ].concat(Manage.block_types)
         }
       end
     end
