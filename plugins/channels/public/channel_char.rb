@@ -12,5 +12,14 @@ module AresMUSH
     def channels
       Channel.all.select { |c| c.characters.include?(self)}
     end
+    
+    def channel_blocks
+      self.blocks.select { |b| b.block_type == "channel" }
+    end
+    
+    def has_channel_blocked?(char)
+      return false if !char
+      self.channel_blocks.any? { |b| b.blocked == char }
+    end
   end
 end

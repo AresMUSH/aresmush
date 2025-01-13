@@ -33,6 +33,7 @@ module AresMUSH
    end
    
    def has_page_blocked?(char)
+      return false if !char
      self.page_blocks.any? { |b| b.blocked == char }
    end
    

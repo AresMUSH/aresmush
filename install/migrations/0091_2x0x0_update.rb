@@ -20,7 +20,7 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("manage.yml")
         config["manage"]["shortcuts"] = config["manage"]["shortcuts"] || {}
         config["manage"]["shortcuts"]["blocks"] = "block"
-        config["manage"]["block_types"] = [ "pm" ]
+        config["manage"]["block_types"] = [ "pm", "channel" ]
         DatabaseMigrator.write_config_file("manage.yml", config)    
         
         Character.all.each do |c|
