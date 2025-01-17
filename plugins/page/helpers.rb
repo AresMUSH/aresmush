@@ -17,9 +17,7 @@ module AresMUSH
             names << "#{r.name}#{Website.web_char_marker}"
           else
             names << "#{r.name}<#{t('global.offline_status')}>"
-          end
-        elsif (r.page_do_not_disturb)
-          names << "#{r.name}<#{t('page.dnd_status')}>"
+          end        
         elsif (r.is_afk?)
           names << "#{r.name}<#{t('global.afk_status')}>"
         elsif Status.is_idle?(client)
@@ -89,7 +87,7 @@ module AresMUSH
       # Send to the recipients.
       recipients.each do |recipient|
         recipient_client = Login.find_client(recipient)
-        if (recipient_client && !recipient.page_do_not_disturb)
+        if (recipient_client)
           recipient_client.emit t('page.to_recipient', 
             :pm => Page.format_page_indicator(recipient),
             :autospace => Scenes.format_autospace(enactor, recipient.page_autospace), 
@@ -145,8 +143,8 @@ module AresMUSH
         if (!char)
           return { error:  t('page.invalid_recipient', :name => name) }
         end
-        
-        if (char.has_page_blocked?(enactor))
+                
+        if (char.has_page_blocked?(enactor) || char.page_do_not_disturb)
           return { error: t('page.recipient_do_not_disturb', :name => name) }
         end
         

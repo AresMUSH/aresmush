@@ -9,8 +9,9 @@ module AresMUSH
         @enactor = double
         @target = double
         allow(@target).to receive(:has_page_blocked?) { false }
+        allow(@target).to receive(:page_do_not_disturb) { false }
         allow(@enactor).to receive(:has_page_blocked?) { false }
-        allow(@enactor).to receive(:page_blocks) { [] }
+        allow(@enactor).to receive(:page_do_not_disturb) { false }
         stub_translate_for_testing
       end
             
@@ -27,6 +28,13 @@ module AresMUSH
         expect(result[:error]).to eq 'page.recipient_do_not_disturb'
       end
       
+      it "should fail if they are DND" do
+        expect(@target).to receive(:page_do_not_disturb) { true }
+        expect(Character).to receive(:find_one_by_name).with("dummy") { @target }
+        result = Page.get_receipients(["dummy"], @enactor)
+        expect(result[:error]).to eq 'page.recipient_do_not_disturb'
+      end
+      
       it "should fail if you blocked them" do
         expect(@enactor).to receive(:has_page_blocked?).with(@target) { true }
         expect(Character).to receive(:find_one_by_name).with("dummy") { @target }
@@ -36,7 +44,7 @@ module AresMUSH
         
       it "should fail if nobody but yourself listed" do
         expect(Character).to receive(:find_one_by_name).with("dummy") { @enactor }
-        
+
         result = Page.get_receipients(["dummy"], @enactor)
         expect(result[:error]).to eq 'page.cant_page_just_yourself'
       end

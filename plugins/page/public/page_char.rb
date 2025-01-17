@@ -27,14 +27,9 @@ module AresMUSH
          .sort_by { |t| [ Page.is_thread_unread?(t, self) ? 1 : 0, t.last_activity ] }
          .reverse
    end
-        
-   def page_blocks
-     self.blocks.select { |b| b.block_type == "pm" }
-   end
-   
+           
    def has_page_blocked?(char)
-      return false if !char
-     self.page_blocks.any? { |b| b.blocked == char }
+     self.is_blocked?(char, "pm")
    end
    
     def delete_pages

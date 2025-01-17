@@ -111,8 +111,8 @@ en:
         
         already_blocked: "%{type} block already exists for %{name}."
         not_blocked: "No %{type} block found for %{name}."
-        block_added: "%{type} block added for %{name}."
-        block_removed: "%{type} block removed for %{name}."
+        block_added: "Added %{type} block for %{name}."
+        block_removed: "Removed %{type} block for %{name}."
         blocks_list_header: "Blocked Character                                            Block Type"
         invalid_block_type: "Invalid block type. Try one of these: %{types}."
         block_types: "Available Block Types:"

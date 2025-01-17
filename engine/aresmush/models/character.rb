@@ -149,6 +149,13 @@ module AresMUSH
       return display_name
     end  
     
+    def is_blocked?(target, block_type)
+      return false if !target
+      
+      self.blocks.select { |b| b.block_type == block_type }
+         .any? { |b| b.blocked == target }
+    end
+    
     def self.random_link_code
       (0...8).map { (33 + rand(94)).chr }.join
     end 
