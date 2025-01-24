@@ -137,5 +137,30 @@ module AresMUSH
       end
     end
     
+    describe :to_bool do
+      it "should return false for falsey things" do
+        expect("".to_bool).to eq false
+        expect("f".to_bool).to eq false
+        expect("false".to_bool).to eq false
+        expect("0".to_bool).to eq false
+        expect("n".to_bool).to eq false
+        expect("no".to_bool).to eq false
+        expect("null".to_bool).to eq false        
+      end
+      
+      it "should return true for truthy things" do
+        expect("true".to_bool).to eq true
+        expect("t".to_bool).to eq true
+        expect("yes".to_bool).to eq true
+        expect("y".to_bool).to eq true
+        expect("1".to_bool).to eq true
+      end
+      
+      it "should be case-insensitive" do
+        expect("TRUE".to_bool).to eq true
+        expect("FALSE".to_bool).to eq false
+      end
+    end
+    
   end
 end

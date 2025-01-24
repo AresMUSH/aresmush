@@ -63,8 +63,9 @@ class String
   end
 
   def to_bool
+    return false if self.blank?
     return true if self == true || self =~ (/^(true|t|yes|y|1)$/i)
-    return false if self == false || self.blank? || self =~ (/^(false|f|no|n|0)$/i)
+    return false if self == false || self.blank? || self =~ (/^(false|f|no|n|0|null)$/i)
     raise ArgumentError.new("invalid value for Boolean: \"#{self}\"")
   end
   

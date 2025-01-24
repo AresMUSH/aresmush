@@ -126,6 +126,16 @@ body {
   border-bottom: 0px;
 }
 
+.toastui-editor-tabs {
+  display: none;
+}
+
+button.image.toastui-editor-toolbar-icons,
+button.indent.toastui-editor-toolbar-icons,
+button.outdent.toastui-editor-toolbar-icons {
+  display: none;
+}
+
 .idle-status, .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
     white-space: pre-wrap;
     background-color: black;
