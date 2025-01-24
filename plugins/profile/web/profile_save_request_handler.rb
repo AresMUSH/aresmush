@@ -5,6 +5,7 @@ module AresMUSH
         
         enactor = request.enactor
         char = Character[request.args[:id]]
+        tags = (request.args[:tags] || "").split(" ")
 
         error = Website.check_login(request)
         return error if error
@@ -33,7 +34,7 @@ module AresMUSH
         char.update(profile_gallery: gallery)
         char.update(profile_order: (request.args[:profile_order] || "").split(',').map { |o| o.strip })
         
-        Website.update_tags(char, request.args[:tags])
+        Website.update_tags(char, tags)
         
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|

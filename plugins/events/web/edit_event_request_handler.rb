@@ -8,7 +8,7 @@ module AresMUSH
         title = request.args[:title]
         desc = request.args[:description]
         warning = request.args[:content_warning]
-        tags = (request.args[:tags] || [])
+        tags = (request.args[:tags] || "").split(" ")
         enactor = request.enactor
         organizer = Character.named(request.args[:organizer])
         

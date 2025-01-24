@@ -38,7 +38,7 @@ module AresMUSH
           start_date: plot.start_date,
           end_date: plot.end_date,
           completed: plot.completed,
-          tags: plot.content_tags,
+          tags: edit_mode ? plot.content_tags.join(" ") : plot.content_tags,
           content_warning: plot.content_warning,
           scenes: {
             scenes: scenes,

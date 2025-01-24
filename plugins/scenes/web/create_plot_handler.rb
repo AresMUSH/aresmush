@@ -3,6 +3,7 @@ module AresMUSH
     class CreatePlotRequestHandler
       def handle(request)
         enactor = request.enactor
+        tags = (request.args[:tags] || "").split(" ")
         
         error = Website.check_login(request)
         return error if error
@@ -35,7 +36,7 @@ module AresMUSH
           end
         end
               
-        Website.update_tags(plot, request.args[:tags])
+        Website.update_tags(plot, tags)
     
         Website.add_to_recent_changes('plot', t('scenes.plot_created', :title => plot.title), { id: plot.id }, enactor.name)
     

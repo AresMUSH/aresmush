@@ -8,7 +8,7 @@ module AresMUSH
         title = request.args[:title]
         description = request.args[:description]
         submitter_name = request.args[:submitter]
-        tags = request.args[:tags]
+        tags = (request.args[:tags] || "").split(" ")
         custom_fields = request.args[:custom_fields] || {}
         
         error = Website.check_login(request)

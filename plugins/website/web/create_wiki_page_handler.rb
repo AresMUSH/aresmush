@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         text = request.args[:text]
-        tags = (request.args[:tags] || [])
+        tags = (request.args[:tags] || "").split(" ")
         title = request.args[:title]
         name = request.args[:name]
     

@@ -5,11 +5,11 @@ module AresMUSH
         name_or_id = request.args[:id]
         enactor = request.enactor
         text = request.args[:text]
-        tags = (request.args[:tags] || [])
+        tags = (request.args[:tags] || "").split(" ")
         title = request.args[:title]
         name = request.args[:name]
         minor_edit = (request.args[:minor_edit] || "").to_bool
-      
+              
         error = Website.check_login(request)
         return error if error
         
@@ -47,6 +47,7 @@ module AresMUSH
         if (!minor_edit)
           Website.add_to_recent_changes('wiki', t('webportal.wiki_updated', :name => page.title), { version_id: version.id, page_name: page.name }, enactor.name)
         end
+        
         Website.update_tags(page, tags)
         
         

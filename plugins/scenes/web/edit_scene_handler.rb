@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         scene = Scene[request.args[:id]]
         enactor = request.enactor
+        tags = (request.args[:tags] || "").split(" ")
         
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -103,7 +104,7 @@ module AresMUSH
           end
         end
       
-        Website.update_tags(scene, request.args[:tags])
+        Website.update_tags(scene, tags)
       
         {}
       end

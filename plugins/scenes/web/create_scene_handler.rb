@@ -9,6 +9,7 @@ module AresMUSH
         log = request.args[:log] || ""
         pacing = request.args[:scene_pacing] || Scenes.scene_pacing.first
         scene_type = request.args[:scene_type] || Scenes.scene_types.first
+        tags = (request.args[:tags] || "").split(" ")
         
         error = Website.check_login(request)
         return error if error
@@ -76,7 +77,7 @@ module AresMUSH
           end
         end      
       
-        Website.update_tags(scene, request.args[:tags])
+        Website.update_tags(scene, tags)
       
         if (!log.blank?)
           Scenes.add_to_scene(scene, log, enactor)

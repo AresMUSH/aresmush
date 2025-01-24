@@ -10,7 +10,7 @@ module AresMUSH
         description = request.args[:description]
         submitter_name = request.args[:submitter]
         assignee_name = request.args[:assigned_to]
-        tags = request.args[:tags]
+        tags = (request.args[:tags] || "").split(" ")
         custom_fields = request.args[:custom_fields] || {}
 
         error = Website.check_login(request)

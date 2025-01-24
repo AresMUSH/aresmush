@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         plot = Plot[request.args[:id]]
         enactor = request.enactor
+        tags = (request.args[:tags] || "").split(" ")
         
         if (!plot)
           return { error: t('webportal.not_found') }
@@ -42,7 +43,7 @@ module AresMUSH
         plot.update(description: request.args[:description])
         plot.update(completed: (request.args[:completed] || "").to_bool)
         
-        Website.update_tags(plot, request.args[:tags])
+        Website.update_tags(plot, tags)
         
         Website.add_to_recent_changes('plot', t('scenes.plot_updated', :title => plot.title), { id: plot.id }, enactor.name)
         
