@@ -331,8 +331,13 @@ module AresMUSH
             
     def self.notify_discord_webhook(channel, message, enactor)
       debug_enabled = Global.read_config('channels', 'discord_debug')
-
+      name_subs = Global.read_config('channels', 'discord_name_subs') || {}
+      
       name = enactor.ooc_name
+      name_subs.each do |k, v|
+        name = name.gsub(k, v)
+      end
+      
       url = channel.discord_webhook
 
       if (url.blank?)
