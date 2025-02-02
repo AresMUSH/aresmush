@@ -130,6 +130,10 @@ body {
   display: none;
 }
 
+.toastui-editor-main.toastui-editor-md-mode {
+  background-color: $background-color;
+}
+
 button.image.toastui-editor-toolbar-icons,
 button.indent.toastui-editor-toolbar-icons,
 button.outdent.toastui-editor-toolbar-icons {
