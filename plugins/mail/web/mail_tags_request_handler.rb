@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         message = MailMessage[request.args['id']]
-        tags = (request.args['tags'] || "").split(" ")
+        tags = request.args['tags'] || []
         
         error = Website.check_login(request)
         return error if error
