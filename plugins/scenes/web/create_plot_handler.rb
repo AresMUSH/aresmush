@@ -12,7 +12,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
-        [ :title, :summary ].each do |field|
+        [ 'title', 'summary' ].each do |field|
           if (request.args[field].blank?)
             return { error: t('webportal.missing_required_fields', :fields => "title, summary") }
           end

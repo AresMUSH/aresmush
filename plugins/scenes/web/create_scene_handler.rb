@@ -19,7 +19,7 @@ module AresMUSH
         end
         
         if (completed)
-          [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
+          [ 'log', 'location', 'summary', 'scene_type', 'title', 'icdate' ].each do |field|
             if (request.args[field].blank?)
               return { error: t('webportal.missing_required_fields', :fields => "log, location, summary, type, title, date") }
             end
