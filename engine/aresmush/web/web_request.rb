@@ -8,15 +8,6 @@ module AresMUSH
       @args = (json["args"] || {})
       @api_key = json["api_key"]
       @auth = (json["auth"] || {}) #.transform_keys(&:to_sym)
-      
-      #
-      #
-      # TODO !!!
-      #
-      #
-      #
-      puts @args
-      puts @auth
     end
     
     def check_api_key
