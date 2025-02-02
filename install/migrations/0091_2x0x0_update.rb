@@ -32,11 +32,12 @@ module AresMUSH
         
         Global.logger.debug "Adding discord name overrides"
         config = DatabaseMigrator.read_config_file("channels.yml")
-        if (!config["discord_name_overries"])
-          config["discord_name_subs"] = {
+        if (!config["channels"]["discord_name_overries"])
+          config["channels"]["discord_name_subs"] = {
             "wumpus" => "wumpu5",
             "nelly" => "nell4"
-        }
+          }
+        end
         DatabaseMigrator.write_config_file("channels.yml", config)    
         
       end
