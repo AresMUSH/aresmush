@@ -85,60 +85,6 @@ body {
     
 }
 
-.markdown-editor {
-    padding: 0px;
-    margin-bottom: 5px;
-    border: 0px;
-}
-
-.markdown-preview {
-  width: 98%;
-  padding: 5px;
-  margin: 0px 10px 10px 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background-color: $background-color;
-  color: $text-color;
-  border: 1px solid $border-color;
-}
-
-.markdown-editor textarea {
-  margin-top: 0px;
-}
-
-.markdown-controls {
-    margin-top: 3px;
-    padding: 5px;
-}
-
-.markdown-control-toggle {
-  margin-left: 10px;
-  margin-right: 5px;
-  padding: 5px 10px 10px 10px;
-  border-left: 1px solid $border-color;
-  border-right: 1px solid $border-color;
-}
-
-.markdown-control-toggle.active {
-  background-color: $primary-color;
-  color: $primary-words-color;
-  border-bottom: 0px;
-}
-
-.toastui-editor-tabs {
-  display: none;
-}
-
-.toastui-editor-main.toastui-editor-md-mode {
-  background-color: $background-color;
-}
-
-button.image.toastui-editor-toolbar-icons,
-button.indent.toastui-editor-toolbar-icons,
-button.outdent.toastui-editor-toolbar-icons {
-  display: none;
-}
 
 .idle-status, .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
     white-space: pre-wrap;
@@ -151,7 +97,8 @@ button.outdent.toastui-editor-toolbar-icons {
 
 code {
   white-space: pre-wrap;
-  color: $primary-color;
+  color: $box-words-color;
+  background-color: $box-background-color;
   font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
   font-size: 14px; 
 }
@@ -209,6 +156,152 @@ label {
   font-weight: bold;
 }
 
+.form-control:disabled, .form-control[readonly] {
+  background-color: $background-color;
+}
+
+button {
+  border: 1px solid $border-color;
+}
+
+
+/* -------------------------
+BOOTSTRAP OVERRIDES
+------------------------- */
+
+
+.alert-info, .btn-info {
+  background-color: #032830;
+  border-color: #087990;
+  color: #6edff6;
+}
+
+.alert-success, .btn-success {
+  background-color: #051b11;
+  border-color: #0f5132;
+  color: #75b798;
+}
+
+.alert-warning, .btn-warning {
+  background-color: #332701;
+  border-color: #997404;
+  color: #ffda6a;
+}
+
+.alert-danger, .btn-danger {
+  background-color: #2c0b0e;
+  border-color: #842029;
+  color: #ea868f;
+}
+
+/* -------------------------
+EMBER POWER SELECT (Dropdowns)
+------------------------- */
+
+.ember-power-select-search {
+ background-color: $background-color;
+}
+
+.ember-basic-dropdown-trigger,
+.ember-power-select-option,
+.ember-power-select-dropdown.ember-basic-dropdown-content {
+  background-color: $background-color;
+  color: $text-color;
+  border-color: $border-color;
+}
+
+.ember-power-select-option[aria-current="true"],
+.ember-power-select-option[aria-selected="true"] {
+  color: $secondary-words-color;
+  background-color: $secondary-color;
+}
+
+/* -------------------------
+MARKDOWN EDITOR (Toast UI)
+------------------------- */
+
+.markdown-editor {
+    padding: 0px;
+    margin-bottom: 5px;
+    border: 0px;
+}
+
+.markdown-preview {
+  width: 98%;
+  min-height: 300px;
+  padding: 5px;
+  margin: 0px 10px 10px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: $background-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+}
+
+.markdown-editor textarea {
+  margin-top: 0px;
+}
+
+.markdown-controls {
+    margin-top: 3px;
+    padding: 5px;
+}
+
+.markdown-control-toggle {
+  margin-left: 10px;
+  margin-right: 5px;
+  padding: 5px 10px 10px 10px;
+  border: 1px solid $border-color;
+}
+
+.markdown-control-toggle.active {
+  background-color: $primary-color;
+  color: $primary-words-color;
+  border-bottom: 0px;
+}
+
+.toastui-editor-tabs {
+  display: none;
+}
+
+.toastui-editor-md-mode .toastui-editor-md-container, 
+.toastui-editor-ww-mode .toastui-editor-ww-container,
+.ProseMirror,
+.toastui-editor-contents p {
+  color: $text-color;
+  background-color: $background-color;  
+}
+
+button.image.toastui-editor-toolbar-icons,
+button.indent.toastui-editor-toolbar-icons,
+button.outdent.toastui-editor-toolbar-icons {
+  display: none;
+}
+
+.toastui-editor-defaultUI {
+  border-color: $primary-outline-color;  
+}
+
+.toastui-editor-defaultUI-toolbar,
+.toastui-editor-mode-switch {
+  background-color: $primary-color;
+  border-color: $primary-outline-color;
+}
+
+.toastui-editor-mode-switch .tab-item {
+  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
+}
+
+.toastui-editor-mode-switch .tab-item.active {
+  text-color: $primary-color;
+  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
+  
+}
+
+.toastui-editor-toolbar-icons {
+  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
+}
 
 /* -------------------------
 NAVIGATION
@@ -221,7 +314,8 @@ a, .nav-link {
 
 a:hover,
 a:focus{
-    color: $primary-color;
+    color: $secondary-words-color;
+    background-color: $secondary-color;
     text-decoration: none;
 }
 
@@ -249,6 +343,7 @@ a:focus{
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus {
   color: $secondary-color;
+  background-color: $background-color;
 }
 
 .navbar {
@@ -259,13 +354,22 @@ a:focus{
   padding-right: 15px;
 }
 
+.navbar-nav > li > a:hover, 
+.navbar-nav > li > a:focus,
+.navbar-nav .open > a, 
+.navbar-nav .open > a:hover, 
+.navbar-nav .open > a:focus 
+.navbar-nav .open > a {
+ background-color: $background-color;
+}
 
 .toc {
   padding: 10px;
-  background-color: $border-color;
+  background-color: $box-background-color;
+  color: $box-words-color;
   width: 300px;
   max-width: 100%;
-  border: 1px solid white;
+  border: 1px solid $border-color;
   box-shadow: 5px 5px 5px $secondary-color;
   padding: 15px;
   margin: 15px 15px 15px 0px;
@@ -299,8 +403,6 @@ h1
     letter-spacing: 0.1em;
     -moz-border-radius: 0px 25px;
     -webkit-border-radius: 0px 25px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
 }
 
 h2
@@ -324,6 +426,11 @@ td, .table td {
 
 textarea.pre {
     font-family:Consolas,Monaco,Lucida Console,monospace;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) > * {
+  background-color: $box-background-color;
+  color: $box-words-color;
 }
 
 pre {
@@ -357,7 +464,8 @@ blockquote{
   width: 80%;
   padding: 10px;	
   font-size: 1em;
-  background-color: $border-color;
+  background-color: $box-background-color;
+  color: $box-words-color;
   border: 0px;
   border-left: 1px solid $secondary-color;
   -webkit-margin-before: 1em;
@@ -501,12 +609,12 @@ BOOTSTRAP OVERRIDES
 .nav-tabs .nav-link.active>a:hover, 
 .nav-tabs .nav-link.active>a:focus {
     background-color: $primary-color;
-    color: white;
+    color: $primary-words-color;
 }
 
 .tab-content {
     border: 1px solid $border-color;
-    border-top: 2px solid $primary-color;
+    border-top: 2px solid $primary-outline-color;
     padding: 10px;
     min-height: 50px;
 }
@@ -546,7 +654,7 @@ BOOTSTRAP OVERRIDES
 
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: $primary-color;
-    border-color: $primary-color;
+    border-color: $primary-outline-color;
 }
 
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
@@ -558,12 +666,6 @@ BOOTSTRAP OVERRIDES
 .btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active { 
     background-color: $secondary-color;
     border-color: $secondary-color;
-}
-
-mark {
-  padding: 0;
-  background-color: orange;
-  color: white;
 }
 
 .float-right {
@@ -591,54 +693,17 @@ mark {
   color: $primary-words-color;
 }
 
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: $secondary-color;
+  color: $secondary-words-color;  
+}
+
 .form-group {
     margin-bottom: 1rem;
 }
 
 .modal-dialog {
   max-width: 650px;
-}
-
-/* -------------------------
-GOOGLE SEARCH OVERRIDES
-------------------------- */
-
-form.gsc-search-box {
-    padding: 0px;
-}
-
-
-/* Fixes the search box icon */
-/* !important needed because of google search */
-
-.cse .gsc-search-button input.gsc-search-button-v2,
-    input.gsc-search-button-v2 {
-        height: 26px !important;
-        margin-top: 0 !important;
-        min-width: 13px !important;
-        padding: 5px 26px !important;
-        width: 68px !important;
-    }
-
-/* Placeholder text keeps getting chopped off, so just hide it.*/
-input.gsc-input::placeholder {
-    color: white;
-}
-
-table.gsc-search-box td {
-    vertical-align: top !important;
-    border: none;
-    padding: 3px;
-}
-
-.gsst_b {
-  padding: 0px;
-}
-
-.gsc-search-box-tools .gsc-search-box .gsc-input, .gscb_a {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.25em;
 }
 
 /* --------------------------
@@ -1221,7 +1286,8 @@ SCENES SCREEN
 
 .log-box { 
 
-    background-color: white;
+    background-color: $box-background-color;
+    color: $box-words-color;
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -1437,7 +1503,8 @@ CHARACTERS SCREEN
 
 .profile-box { 
 
-    background-color: white;
+    background-color: $box-background-color;
+    color: $box-words-color;
     margin-left: 30px;
     margin-right: 30px;
     padding: 20px;    
@@ -1468,8 +1535,8 @@ CHARACTERS SCREEN
     border-radius: 8px;
     border: 1px solid $primary-outline-color; 
     background-color: $background-color;
-    margin-top:5px;
     padding:15px; 
+    margin-top: -10px;
     background-position:left top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1550,7 +1617,7 @@ table.char-ability-list {
 }
 
 .status-message {
-    color: white;
+    color: $secondary-words-color;
     background-color: $secondary-color;
     text-align: center;
     font-size: 1.25em;
@@ -1829,24 +1896,26 @@ JOBS SCREEN
 }
 
 .admin-only-reply-label {
-  background-color: #977b62;
+  background-color: #171817;
+  border-color: #46200d;
+  color: #d1b3a3;
   font-size: 1em;
 }
 
 .admin-only-reply, .admin-only-reply .markdown-editor {
-  background-color: #f3e7dc;
-  border-color: #f3e7dc;
+  background-color: #46200d;
+  border-color: #46200d;
+  color: white;
   padding: 8px;
 }
 
 .player-reply-label {
-  background-color: #0F6466;
+  background-color: #8c411a;
+  color: white;
   font-size: 1em;
 }
 
 .player-reply, .player-reply .markdown-editor {
-  background-color: #cfe0e0;
-  border-color: #cfe0e0;
   padding: 8px;
 }
 
