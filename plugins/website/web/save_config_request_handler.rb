@@ -2,8 +2,8 @@ module AresMUSH
   module Website
     class SaveConfigRequestHandler
       def handle(request)
-        file = request.args[:file]
-        config = request.args[:config]
+        file = request.args['file']
+        config = request.args['config']
         enactor = request.enactor
         
         error = Website.check_login(request)

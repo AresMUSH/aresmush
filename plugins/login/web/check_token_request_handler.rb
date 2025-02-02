@@ -3,8 +3,8 @@ module AresMUSH
     class CheckTokenRequestHandler
       def handle(request)
                 
-        id = request.args[:id]
-        token = request.args[:token]
+        id = request.args['id']
+        token = request.args['token']
         
         char = Character.find_one_by_name(id)
         if (!char)

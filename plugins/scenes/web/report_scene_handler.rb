@@ -2,8 +2,8 @@ module AresMUSH
   module Scenes
     class ReportSceneRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
-        reason = request.args[:reason]
+        scene = Scene[request.args['id']]
+        reason = request.args['reason']
         enactor = request.enactor
         
         if (!scene)

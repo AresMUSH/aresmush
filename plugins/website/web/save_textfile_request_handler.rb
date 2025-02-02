@@ -2,9 +2,9 @@ module AresMUSH
   module Website
     class SaveTextFileRequestHandler
       def handle(request)
-        file = request.args[:file]
-        text = request.args[:text]
-        file_type = request.args[:file_type]
+        file = request.args['file']
+        text = request.args['text']
+        file_type = request.args['file_type']
         enactor = request.enactor
         
         error = Website.check_login(request)

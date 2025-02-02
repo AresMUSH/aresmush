@@ -3,7 +3,7 @@ module AresMUSH
     class MarkThreadReadRequestHandler
       def handle(request)
         enactor = request.enactor
-        thread_id = request.args[:thread_id]
+        thread_id = request.args['thread_id']
         
         error = Website.check_login(request)
         return error if error

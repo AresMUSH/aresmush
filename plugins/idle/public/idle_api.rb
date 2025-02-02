@@ -42,10 +42,10 @@ module AresMUSH
     end
     
     def self.save_web_profile_data(char, enactor, args)
-      char.update(idle_lastwill: Website.format_input_for_mush(args[:lastwill]))
+      char.update(idle_lastwill: Website.format_input_for_mush(args['lastwill']))
       
       if (Idle.can_idle_sweep?(enactor))
-        char.update(idle_notes: Website.format_input_for_mush(args[:idle_notes]))
+        char.update(idle_notes: Website.format_input_for_mush(args['idle_notes']))
       end
       
       if (Idle.can_manage_roster?(enactor))

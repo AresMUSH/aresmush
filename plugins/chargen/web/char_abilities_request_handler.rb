@@ -2,7 +2,7 @@ module AresMUSH
   module Chargen
     class CharAbilitiesRequestHandler
       def handle(request)
-        char = Character.find_one_by_name request.args[:id]
+        char = Character.find_one_by_name request.args['id']
         
         if (!char)
           return []

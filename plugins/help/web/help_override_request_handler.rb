@@ -2,8 +2,8 @@ module AresMUSH
   module Help
     class HelpOverrideRequestHandler
       def handle(request)
-        topic_id = request.args[:topic]
-        contents = request.args[:contents]
+        topic_id = request.args['topic']
+        contents = request.args['contents']
         
         enactor = request.enactor
         

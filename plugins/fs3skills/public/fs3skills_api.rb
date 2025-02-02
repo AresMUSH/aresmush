@@ -75,14 +75,14 @@ module AresMUSH
     
     def self.save_char(char, chargen_data)
       alerts = []
-      (chargen_data[:fs3][:fs3_attributes] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_attributes'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
       end
 
-      (chargen_data[:fs3][:fs3_action_skills] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_action_skills'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
@@ -90,13 +90,13 @@ module AresMUSH
         
         ability = FS3Skills.find_ability(char, k)
         if (ability)
-          specs = (chargen_data[:fs3][:fs3_specialties] || {})[k] || []
+          specs = (chargen_data['fs3']['fs3_specialties'] || {})[k] || []
           ability.update(specialties: specs)
         end
       end
     
       new_bg_skills = []
-      (chargen_data[:fs3][:fs3_backgrounds] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_backgrounds'] || {}).each do |k, v|
         skill_name = k.titleize
         error = FS3Skills.set_ability(char, skill_name, v.to_i)
         if (error)
@@ -112,14 +112,14 @@ module AresMUSH
         end
       end
     
-      (chargen_data[:fs3][:fs3_languages] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_languages'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
       end
     
-      (chargen_data[:fs3][:fs3_advantages] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_advantages'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)

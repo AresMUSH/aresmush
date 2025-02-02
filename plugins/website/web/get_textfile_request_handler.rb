@@ -2,8 +2,8 @@ module AresMUSH
   module Website
     class GetTextFileRequestHandler
       def handle(request)
-        file = request.args[:file]
-        file_type = request.args[:file_type]
+        file = request.args['file']
+        file_type = request.args['file_type']
         enactor = request.enactor
         
         error = Website.check_login(request)

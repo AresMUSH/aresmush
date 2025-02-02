@@ -3,8 +3,8 @@ module AresMUSH
     class MailTagsRequestHandler
       def handle(request)
         enactor = request.enactor
-        message = MailMessage[request.args[:id]]
-        tags = (request.args[:tags] || "").split(" ")
+        message = MailMessage[request.args['id']]
+        tags = (request.args['tags'] || "").split(" ")
         
         error = Website.check_login(request)
         return error if error

@@ -3,7 +3,7 @@ module AresMUSH
     class DeleteChannelRequestHandler
       def handle(request)
         enactor = request.enactor
-        id = request.args[:id]
+        id = request.args['id']
         
         error = Website.check_login(request)
         return error if error

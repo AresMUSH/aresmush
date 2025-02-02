@@ -3,16 +3,16 @@ module AresMUSH
     class SearchScenesRequestHandler
       def handle(request)
 
-        search_log = (request.args[:searchLog] || "").strip
-        search_participant = (request.args[:searchParticipant] || "").strip
-        search_title = (request.args[:searchTitle] || "").strip
-        search_tag = (request.args[:searchTag] || "").strip
-        search_type = (request.args[:searchType] || "All").strip
-        search_date = (request.args[:searchDate] || "").strip
-        search_location = (request.args[:searchLocation] || "").strip
-        search_token = request.args[:searchToken] || ""
+        search_log = (request.args['searchLog'] || "").strip
+        search_participant = (request.args['searchParticipant'] || "").strip
+        search_title = (request.args['searchTitle'] || "").strip
+        search_tag = (request.args['searchTag'] || "").strip
+        search_type = (request.args['searchType'] || "All").strip
+        search_date = (request.args['searchDate'] || "").strip
+        search_location = (request.args['searchLocation'] || "").strip
+        search_token = request.args['searchToken'] || ""
         
-        page = (request.args[:page] || "1").to_i
+        page = (request.args['page'] || "1").to_i
         
         enactor = request.enactor
         

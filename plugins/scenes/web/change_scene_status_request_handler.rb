@@ -2,8 +2,8 @@ module AresMUSH
   module Scenes
     class ChangeSceneStatusRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
-        status = request.args[:status]
+        scene = Scene[request.args['id']]
+        status = request.args['status']
         enactor = request.enactor
         
         if (!scene)

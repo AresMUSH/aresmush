@@ -3,7 +3,7 @@ module AresMUSH
     class ForumCatchupRequestHandler
       def handle(request)
                 
-        category_id = request.args[:category_id] 
+        category_id = request.args['category_id'] 
         enactor = request.enactor
         
         error = Website.check_login(request)

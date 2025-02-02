@@ -2,7 +2,7 @@ module AresMUSH
   module Help
     class HelpRestoreRequestHandler
       def handle(request)
-        topic_id = request.args[:topic]
+        topic_id = request.args['topic']
         enactor = request.enactor
         
         error = Website.check_login(request)

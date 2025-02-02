@@ -3,10 +3,10 @@ module AresMUSH
     class AddPostRequestHandler
       def handle(request)
                 
-        category_id = request.args[:category_id]
-        message = request.args[:message]
-        subject = request.args[:subject]
-        author = Character.find_one_by_name(request.args[:author_id]) || enactor
+        category_id = request.args['category_id']
+        message = request.args['message']
+        subject = request.args['subject']
+        author = Character.find_one_by_name(request.args['author_id']) || enactor
         enactor = request.enactor
 
         error = Website.check_login(request)

@@ -15,10 +15,10 @@ module AresMUSH
           return { error: Login.site_blocked_message }
         end
                       
-        name = request.args[:name]
-        pw = request.args[:password]
-        confirm_pw = request.args[:confirm_password]
-        recaptcha_response = request.args[:recaptcha]
+        name = request.args['name']
+        pw = request.args['password']
+        confirm_pw = request.args['confirm_password']
+        recaptcha_response = request.args['recaptcha']
         
         Global.logger.info "#{name} registered from web from #{request.ip_addr}."
       

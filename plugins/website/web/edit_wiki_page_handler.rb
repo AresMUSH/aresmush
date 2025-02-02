@@ -2,13 +2,13 @@ module AresMUSH
   module Website
     class EditWikiPageRequestHandler
       def handle(request)
-        name_or_id = request.args[:id]
+        name_or_id = request.args['id']
         enactor = request.enactor
-        text = request.args[:text]
-        tags = (request.args[:tags] || "").split(" ")
-        title = request.args[:title]
-        name = request.args[:name]
-        minor_edit = (request.args[:minor_edit] || "").to_bool
+        text = request.args['text']
+        tags = (request.args['tags'] || "").split(" ")
+        title = request.args['title']
+        name = request.args['name']
+        minor_edit = (request.args['minor_edit'] || "").to_bool
               
         error = Website.check_login(request)
         return error if error

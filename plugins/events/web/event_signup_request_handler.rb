@@ -2,10 +2,10 @@ module AresMUSH
   module Events
     class EventSignupRequestHandler
       def handle(request)
-        event_id = request.args[:event_id]
-        comment = request.args[:comment]
+        event_id = request.args['event_id']
+        comment = request.args['comment']
         enactor = request.enactor
-        signup_as = Character.named(request.args[:signup_as]) || enactor
+        signup_as = Character.named(request.args['signup_as']) || enactor
         
         request.log_request
         

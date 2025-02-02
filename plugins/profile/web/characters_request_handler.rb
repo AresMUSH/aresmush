@@ -2,7 +2,7 @@ module AresMUSH
   module Profile
     class CharactersRequestHandler
       def handle(request)
-        select = request.args[:select] || "approved"
+        select = request.args['select'] || "approved"
         
         if (select == "all")
           chars = Character.all.to_a

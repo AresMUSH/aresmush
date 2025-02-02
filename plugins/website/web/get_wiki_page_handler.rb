@@ -2,8 +2,8 @@ module AresMUSH
   module Website
     class GetWikiPageRequestHandler
       def handle(request)
-        name_or_id = request.args[:id]
-        edit_mode = (request.args[:edit_mode] || "").to_bool
+        name_or_id = request.args['id']
+        edit_mode = (request.args['edit_mode'] || "").to_bool
         
         enactor = request.enactor
         

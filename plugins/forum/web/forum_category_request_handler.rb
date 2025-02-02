@@ -3,7 +3,7 @@ module AresMUSH
     class ForumCategoryRequestHandler
       def handle(request)
                 
-        category_id = request.args[:category_id] 
+        category_id = request.args['category_id'] 
         enactor = request.enactor
         
         category = BbsBoard[category_id.to_i]

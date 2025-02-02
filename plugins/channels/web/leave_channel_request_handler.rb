@@ -3,9 +3,9 @@ module AresMUSH
     class LeaveChannelRequestHandler
       def handle(request)
         enactor = request.enactor
-        channel_name = request.args[:channel]
+        channel_name = request.args['channel']
         channel = Channel.find_one_by_name(channel_name)
-        char = Character.named(request.args[:char])
+        char = Character.named(request.args['char'])
         
         error = Website.check_login(request)
         return error if error

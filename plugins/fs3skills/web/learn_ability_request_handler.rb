@@ -2,9 +2,9 @@ module AresMUSH
   module FS3Skills
     class LearnAbilityRequestHandler
       def handle(request)
-        ability = request.args[:ability]
+        ability = request.args['ability']
         enactor = request.enactor
-        char = Character.named(request.args[:char]) || enactor
+        char = Character.named(request.args['char']) || enactor
         
         error = Website.check_login(request)
         return error if error

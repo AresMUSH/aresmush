@@ -38,7 +38,7 @@ module AresMUSH
     def self.check_login(request, allow_anonymous = false)
       return nil if allow_anonymous
       return { error: "You need to log in first." } if !request.enactor
-      token = request.auth[:token]
+      token = request.token
       if !request.enactor.is_valid_api_token?(token)
         return { error: t('webportal.session_expired') } 
       end

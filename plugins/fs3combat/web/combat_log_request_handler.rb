@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class CombatLogRequestHandler
       def handle(request)
-        id = request.args[:id]
+        id = request.args['id']
         enactor = request.enactor
         
         error = Website.check_login(request, true)

@@ -3,8 +3,8 @@ module AresMUSH
     class BanPlayerRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        reason = request.args[:reason]
+        name = request.args['name']
+        reason = request.args['reason']
         
         error = Website.check_login(request)
         return error if error

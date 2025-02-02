@@ -3,9 +3,9 @@ module AresMUSH
     class ChatTalkRequestHandler
       def handle(request)
         enactor = request.enactor
-        channel = Channel.find_one_by_name(request.args[:channel])
-        message = request.args[:message]
-        sender = Character.named(request.args[:sender])
+        channel = Channel.find_one_by_name(request.args['channel'])
+        message = request.args['message']
+        sender = Character.named(request.args['sender'])
         
         error = Website.check_login(request)
         return error if error

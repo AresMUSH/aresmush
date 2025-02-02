@@ -3,13 +3,13 @@ module AresMUSH
     class CreateSceneRequestHandler
       def handle(request)
         enactor = request.enactor
-        plot = request.args[:plot_id]
-        completed = (request.args[:completed] || "").to_bool
-        privacy = request.args[:privacy] || "Private"
-        log = request.args[:log] || ""
-        pacing = request.args[:scene_pacing] || Scenes.scene_pacing.first
-        scene_type = request.args[:scene_type] || Scenes.scene_types.first
-        tags = (request.args[:tags] || "").split(" ")
+        plot = request.args['plot_id']
+        completed = (request.args['completed'] || "").to_bool
+        privacy = request.args['privacy'] || "Private"
+        log = request.args['log'] || ""
+        pacing = request.args['scene_pacing'] || Scenes.scene_pacing.first
+        scene_type = request.args['scene_type'] || Scenes.scene_types.first
+        tags = (request.args['tags'] || "").split(" ")
         
         error = Website.check_login(request)
         return error if error
@@ -27,15 +27,15 @@ module AresMUSH
         end
         
         scene = Scene.create(
-        location: request.args[:location] || "Somewhere Out There",
-        summary: Website.format_input_for_mush(request.args[:summary]),
-        content_warning: request.args[:content_warning],
+        location: request.args['location'] || "Somewhere Out There",
+        summary: Website.format_input_for_mush(request.args['summary']),
+        content_warning: request.args['content_warning'],
         last_activity: Time.now,
         scene_type: scene_type,
         scene_pacing: pacing,
-        title: request.args[:title],
-        icdate: request.args[:icdate],
-        limit: request.args[:limit],
+        title: request.args['title'],
+        icdate: request.args['icdate'],
+        limit: request.args['limit'],
         completed: completed,
         date_completed: completed ? Time.now : nil,
         private_scene: completed ? false : (privacy == "Private"),
@@ -44,7 +44,7 @@ module AresMUSH
           
         Global.logger.info "Web scene #{scene.id} created by #{enactor.name}."
 
-        plot_ids = request.args[:plots] || []
+        plot_ids = request.args['plots'] || []
         plots = []
         plot_ids.each do |id|
           plot = Plot[id]
@@ -57,7 +57,7 @@ module AresMUSH
           PlotLink.create(plot: p, scene: scene)
         end
                     
-        participant_names = request.args[:participants] || []
+        participant_names = request.args['participants'] || []
         participants = []
         participant_names.each do |p|
           participant = Character.find_one_by_name(p.strip)
@@ -67,7 +67,7 @@ module AresMUSH
           end
         end
       
-        related_scene_ids = request.args[:related_scenes] || []
+        related_scene_ids = request.args['related_scenes'] || []
       
         # New additions
         related_scene_ids.each do |s|

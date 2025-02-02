@@ -3,9 +3,9 @@ module AresMUSH
     class JobReplyRequestHandler
       def handle(request)
         enactor = request.enactor
-        job = Job[request.args[:id]]
-        reply = request.args[:reply]
-        admin_only = request.args[:admin_only].to_bool
+        job = Job[request.args['id']]
+        reply = request.args['reply']
+        admin_only = request.args['admin_only'].to_bool
         
         error = Website.check_login(request)
         return error if error

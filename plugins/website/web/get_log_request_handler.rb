@@ -3,7 +3,7 @@ module AresMUSH
     class GetLogRequestHandler
       def handle(request)
         enactor = request.enactor
-        filename = request.args[:file]
+        filename = request.args['file']
         
         error = Website.check_login(request)
         return error if error

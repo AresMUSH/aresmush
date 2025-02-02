@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class SaveColorsRequestHandler
       def handle(request)
-        colors = request.args[:colors]
+        colors = request.args['colors']
         enactor = request.enactor
         
         error = Website.check_login(request)

@@ -3,7 +3,7 @@ module AresMUSH
     class SearchHelpRequestHandler
       def handle(request)
 
-        searchText = (request.args[:searchText] || "").strip
+        searchText = (request.args['searchText'] || "").strip
 
         if (searchText.blank?)
           topics_by_name = {}

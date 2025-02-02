@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class DropPoseOrderRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
-        name = request.args[:name]
+        name = request.args['name']
         
         if (!scene)
           return { error: t('webportal.not_found') }

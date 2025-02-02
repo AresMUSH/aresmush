@@ -2,11 +2,11 @@ module AresMUSH
   module Rooms
     class AreaEditRequestHandler
       def handle(request)
-        id = request.args[:id]
-        name = request.args[:name]
-        desc = request.args[:description]
-        summary = request.args[:summary]
-        parent_id = request.args[:parent_id]
+        id = request.args['id']
+        name = request.args['name']
+        desc = request.args['description']
+        summary = request.args['summary']
+        parent_id = request.args['parent_id']
         enactor = request.enactor
         
         error = Website.check_login(request)

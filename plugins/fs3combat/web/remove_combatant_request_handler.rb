@@ -2,8 +2,8 @@ module AresMUSH
   module FS3Combat
     class RemoveCombatantRequestHandler
       def handle(request)
-        id = request.args[:id]
-        name = request.args[:name]
+        id = request.args['id']
+        name = request.args['name']
         enactor = request.enactor
 
         error = Website.check_login(request)

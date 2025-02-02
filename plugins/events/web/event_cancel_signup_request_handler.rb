@@ -2,10 +2,10 @@ module AresMUSH
   module Events
     class EventCancelSignupRequestHandler
       def handle(request)
-        event_id = request.args[:event_id]
-        comment = request.args[:comment]
+        event_id = request.args['event_id']
+        comment = request.args['comment']
         enactor = request.enactor
-        signup_char = Character.named(request.args[:name]) || enactor
+        signup_char = Character.named(request.args['name']) || enactor
         
         error = Website.check_login(request)
         return error if error

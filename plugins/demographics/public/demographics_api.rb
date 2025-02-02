@@ -185,7 +185,7 @@ module AresMUSH
     end
     
     def self.save_web_profile_data(char, enactor, args)            
-      args[:demographics].each do |name, value|
+      args['demographics'].each do |name, value|
         if (value.blank? && Demographics.required_demographics.include?(name))
           return t('webportal.missing_required_field', :name => name) 
         end

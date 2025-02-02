@@ -3,8 +3,8 @@ module AresMUSH
     class AreaRequestHandler
       def handle(request)
         enactor = request.enactor
-        id = request.args[:id]
-        edit_mode = (request.args[:edit_mode] || "").to_bool
+        id = request.args['id']
+        edit_mode = (request.args['edit_mode'] || "").to_bool
         
         error = Website.check_login(request, true)
         return error if error

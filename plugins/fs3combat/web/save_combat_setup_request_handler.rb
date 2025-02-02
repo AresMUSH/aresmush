@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class SaveCombatSetupRequestHandler
       def handle(request)
-        id = request.args[:id]
+        id = request.args['id']
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -17,7 +17,7 @@ module AresMUSH
           return { error: t('fs3combat.turn_in_progress') }
         end
 
-        combatants = request.args[:combatants]
+        combatants = request.args['combatants']
         combatants.each do |key, combatant_data|
           
           combatant = Combatant[combatant_data[:id]]

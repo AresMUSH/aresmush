@@ -2,8 +2,8 @@ module AresMUSH
   module Utils
     class SaveNotesRequestHandler
       def handle(request)
-        char = Character[request.args[:id]]
-        notes = request.args[:notes]
+        char = Character[request.args['id']]
+        notes = request.args['notes']
         enactor = request.enactor
         
         error = Website.check_login(request)

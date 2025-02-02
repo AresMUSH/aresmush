@@ -3,7 +3,7 @@ module AresMUSH
     class JobsFilterRequestHandler
       def handle(request)
         enactor = request.enactor
-        filter = (request.args[:filter] || "").upcase
+        filter = (request.args['filter'] || "").upcase
         
         error = Website.check_login(request)
         return error if error

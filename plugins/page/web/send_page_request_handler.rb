@@ -3,10 +3,10 @@ module AresMUSH
     class SendPageRequestHandler
       def handle(request)
         enactor = request.enactor
-        message = request.args[:message]
-        thread_id = request.args[:thread_id]
-        names = request.args[:names]
-        sender_name = request.args[:sender]
+        message = request.args['message']
+        thread_id = request.args['thread_id']
+        names = request.args['names']
+        sender_name = request.args['sender']
         
         error = Website.check_login(request)
         return error if error

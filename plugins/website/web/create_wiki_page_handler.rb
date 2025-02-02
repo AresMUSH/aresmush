@@ -3,10 +3,10 @@ module AresMUSH
     class CreateWikiPageRequestHandler
       def handle(request)
         enactor = request.enactor
-        text = request.args[:text]
-        tags = (request.args[:tags] || "").split(" ")
-        title = request.args[:title]
-        name = request.args[:name]
+        text = request.args['text']
+        tags = (request.args['tags'] || "").split(" ")
+        title = request.args['title']
+        name = request.args['name']
     
         error = Website.check_login(request)
         return error if error

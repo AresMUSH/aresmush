@@ -3,7 +3,7 @@ module AresMUSH
     class BanRemoveRequestHandler
       def handle(request)
         enactor = request.enactor
-        site = request.args[:site]
+        site = request.args['site']
         
         error = Website.check_login(request)
         return error if error

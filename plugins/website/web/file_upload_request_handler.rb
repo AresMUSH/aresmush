@@ -4,12 +4,12 @@ module AresMUSH
     class FileUploadRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = (request.args[:name] || "").downcase
-        description = request.args[:description]
-        allow_overwrite = request.args[:allow_overwrite] ? request.args[:allow_overwrite] : false
-        folder = (request.args[:folder] || "").downcase
-        size_kb = (request.args[:size_kb] || "").to_i
-        data = request.args[:data]
+        name = (request.args['name'] || "").downcase
+        description = request.args['description']
+        allow_overwrite = (request.args['allow_overwrite'] || "").to_bool
+        folder = (request.args['folder'] || "").downcase
+        size_kb = (request.args['size_kb'] || "").to_i
+        data = request.args['data']
         
         error = Website.check_login(request)
         return error if error

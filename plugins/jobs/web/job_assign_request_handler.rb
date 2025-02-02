@@ -3,8 +3,8 @@ module AresMUSH
     class JobAssignRequestHandler
       def handle(request)
         enactor = request.enactor
-        job = Job[request.args[:id]]
-        assignee = Character[request.args[:assignee_id]]
+        job = Job[request.args['id']]
+        assignee = Character[request.args['assignee_id']]
 
         error = Website.check_login(request)
         return error if error

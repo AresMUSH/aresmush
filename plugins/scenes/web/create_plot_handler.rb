@@ -3,7 +3,7 @@ module AresMUSH
     class CreatePlotRequestHandler
       def handle(request)
         enactor = request.enactor
-        tags = (request.args[:tags] || "").split(" ")
+        tags = (request.args['tags'] || "").split(" ")
         
         error = Website.check_login(request)
         return error if error
@@ -18,13 +18,13 @@ module AresMUSH
           end
         end
         
-        storyteller_names = request.args[:storytellers] || []
+        storyteller_names = request.args['storytellers'] || []
         
         plot = Plot.create(
-          title: request.args[:title],
-          description: request.args[:description],
-          summary: request.args[:summary],
-          content_warning: request.args[:content_warning]
+          title: request.args['title'],
+          description: request.args['description'],
+          summary: request.args['summary'],
+          content_warning: request.args['content_warning']
         )
 
         storyteller_names.each do |storyteller|

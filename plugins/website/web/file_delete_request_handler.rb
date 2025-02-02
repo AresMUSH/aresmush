@@ -6,8 +6,8 @@ module AresMUSH
     class FileDeleteRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        folder = request.args[:folder]
+        name = request.args['name']
+        folder = request.args['folder']
         
         error = Website.check_login(request)
         return error if error

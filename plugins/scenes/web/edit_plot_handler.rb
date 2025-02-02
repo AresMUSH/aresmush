@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class EditPlotRequestHandler
       def handle(request)
-        plot = Plot[request.args[:id]]
+        plot = Plot[request.args['id']]
         enactor = request.enactor
-        tags = (request.args[:tags] || "").split(" ")
+        tags = (request.args['tags'] || "").split(" ")
         
         if (!plot)
           return { error: t('webportal.not_found') }
@@ -25,7 +25,7 @@ module AresMUSH
           end
         end
         
-        storyteller_names = request.args[:storytellers] || []
+        storyteller_names = request.args['storytellers'] || []
         plot.storytellers.replace []
         
         storyteller_names.each do |storyteller|
@@ -37,11 +37,11 @@ module AresMUSH
           end
         end
         
-        plot.update(summary: request.args[:summary])
-        plot.update(content_warning: request.args[:content_warning])
-        plot.update(title: request.args[:title])
-        plot.update(description: request.args[:description])
-        plot.update(completed: (request.args[:completed] || "").to_bool)
+        plot.update(summary: request.args['summary'])
+        plot.update(content_warning: request.args['content_warning'])
+        plot.update(title: request.args['title'])
+        plot.update(description: request.args['description'])
+        plot.update(completed: (request.args['completed'] || "").to_bool)
         
         Website.update_tags(plot, tags)
         

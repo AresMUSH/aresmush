@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Skills
     class AddJobRollRequestHandler
       def handle(request)
-        job = Job[request.args[:id]]
+        job = Job[request.args['id']]
         enactor = request.enactor
         
         error = Website.check_login(request)

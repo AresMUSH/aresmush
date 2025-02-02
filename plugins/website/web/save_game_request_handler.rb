@@ -3,7 +3,7 @@ module AresMUSH
     class SaveGameRequestHandler
       def handle(request)
         enactor = request.enactor
-        config = request.args[:config]
+        config = request.args['config']
                 
         error = Website.check_login(request)
         return error if error

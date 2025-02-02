@@ -2,7 +2,7 @@ module AresMUSH
   module Profile
     class CharacterRequestHandler
       def handle(request)
-        char = Character.find_one_by_name request.args[:id]
+        char = Character.find_one_by_name request.args['id']
         enactor = request.enactor
         
         if (!char)

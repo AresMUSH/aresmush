@@ -2,11 +2,11 @@ module AresMUSH
   module Scenes
     class AddScenePoseRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
-        pose = (request.args[:pose] || "").chomp
-        pose_char = request.args[:pose_char]
-        pose_type = request.args[:pose_type]
+        pose = (request.args['pose'] || "").chomp
+        pose_char = request.args['pose_char']
+        pose_type = request.args['pose_type']
         
         if (!scene)
           return { error: t('webportal.not_found') }

@@ -3,9 +3,9 @@ module AresMUSH
     class GetFileRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        folder = request.args[:folder]
-        edit_mode = (request.args[:edit_mode] || "").to_bool
+        name = request.args['name']
+        folder = request.args['folder']
+        edit_mode = (request.args['edit_mode'] || "").to_bool
         
         error = Website.check_login(request, true)
         return error if error

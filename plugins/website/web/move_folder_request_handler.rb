@@ -6,9 +6,9 @@ module AresMUSH
     class MoveFolderRequestHandler
       def handle(request)
         enactor = request.enactor
-        folder = request.args[:folder]
-        new_folder = (request.args[:new_folder] || "").downcase
-        files = request.args[:files] || []
+        folder = request.args['folder']
+        new_folder = (request.args['new_folder'] || "").downcase
+        files = request.args['files'] || []
 
         error = Website.check_login(request)
         return error if error
