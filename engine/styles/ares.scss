@@ -169,7 +169,7 @@ button {
 BOOTSTRAP OVERRIDES
 ------------------------- */
 
-
+/* These colors come from bootstrap's dark mode */
 .alert-info, .btn-info {
   background-color: #032830;
   border-color: #087990;
@@ -400,9 +400,7 @@ h1
     color: $primary-words-color;
     font-weight: normal;
     border: 3px solid $primary-outline-color;
-    letter-spacing: 0.1em;
-    -moz-border-radius: 0px 25px;
-    -webkit-border-radius: 0px 25px;
+    letter-spacing: 0.1em;    
 }
 
 h2
@@ -1353,8 +1351,8 @@ SCENES SCREEN
 }
  
 .scene-controls-box {
-  border: 1px solid #ccc;
-  background: #F5F5F5;
+  border: 1px solid $border-color;
+  background: $box-background-color;
   padding: 5px;
 }
 
@@ -1507,7 +1505,11 @@ CHARACTERS SCREEN
     color: $box-words-color;
     margin-left: 30px;
     margin-right: 30px;
-    padding: 20px;    
+    flex-basis: 60%;
+}
+
+.profile-image-wrap {
+  flex-basis: 40%;
 }
 
 .profile-box .row {
@@ -1527,8 +1529,9 @@ CHARACTERS SCREEN
 .profile-divider {
     background-color: $primary-color;
     color: $primary-words-color;
-    padding: 5px;
-    margin: 0;
+    padding: 10px;
+    margin-top: -21px;
+    margin-bottom: -10px;
 }
 
 .profile-wrap {
@@ -1541,6 +1544,29 @@ CHARACTERS SCREEN
     background-size: cover;
     background-repeat: no-repeat;
     background-image:url('/game/uploads/theme_images/box-bg.png');
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-item-list {
+  padding: 10px;
+}
+
+.profile-item {
+  margin: 10px 0px 10px 0px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid $border-color;
+}
+
+.profile-item-name {
+  flex-basis: 40%;
+  font-weight: bold;
+}
+
+.profile-item-value {
+  flex-basis: 60%;
 }
 
 .achievement-levels {
@@ -1822,8 +1848,13 @@ CHAT SCREEN
   padding: 5px;
 }
 
+.play-selector:hover {
+  background-color: $secondary-color;
+  color: $secondary-words-color;
+}
 .play-selector-active {
-  background-color: #eee;
+  background-color: $secondary-color;
+  color: $secondary-words-color;
 }
 
 .navbar-nav > li > a.dropdown-toggle.chat-menu {
@@ -2323,6 +2354,7 @@ ul.reference-help-list > li:not(:last-child)::after {
 
   .profile-wrap { 
       padding: 5px; 
+      flex-direction: column;
   }
 
   .profile-box { 
