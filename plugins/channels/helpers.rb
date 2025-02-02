@@ -335,7 +335,7 @@ module AresMUSH
       
       name = enactor.ooc_name
       name_subs.each do |k, v|
-        name = name.gsub(k, v)
+        name = name.gsub(/#{k}/i, v)
       end
       
       url = channel.discord_webhook
