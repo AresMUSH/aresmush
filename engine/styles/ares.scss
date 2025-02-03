@@ -50,18 +50,25 @@ body {
 
 .body-wrap
 {
-    padding: 0px 20px 0px 20px;
     background-color: $background-color;
     margin: auto;
-    max-width: 2500px;    
+    max-width: 2500px;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .body-container {
-    padding: 10px;        
+    padding: 0px 15px 0px 10px;
+    flex-grow: 3;
+}
+
+.sidebar {
+  width: 350px;
 }
 
 .centered {
-    text-align: center;
+  text-align: center;
 }
 
 .thumbnail {
@@ -401,6 +408,7 @@ h1
     font-weight: normal;
     border: 3px solid $primary-outline-color;
     letter-spacing: 0.1em;    
+    margin: 0px 0px 10px 0px;
 }
 
 h2
@@ -520,6 +528,19 @@ form {
     color: $text-color;
 }
 
+.form-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.form-item-label {
+  font-weight: bold;
+  min-width: 300px;
+}
+
 input,
 textarea,
 .ember-power-select-trigger,
@@ -618,7 +639,7 @@ BOOTSTRAP OVERRIDES
 }
 
 .card {
-    background-color: $background-color;
+    background-color: $box-background-color;
     border-color: $border-color;
     margin-bottom: 20px;
     border-radius: 4px;
@@ -748,6 +769,12 @@ YOUTUBE MUSIC PLAYER
 HEADER
 ------------------------- */
 
+.site-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .site-title {
     margin: 0px;
     font-size: 3em;
@@ -761,6 +788,7 @@ HEADER
 {
     color: $primary-words-color;
     text-decoration: none;
+    background-color: transparent;
 }
 
 
@@ -841,6 +869,7 @@ SIDEBAR
 .search-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0px 10px 0px;
   padding: 5px 0px 10px 0px;
@@ -909,7 +938,7 @@ GENERAL UTILITIES
     color: $faded-text-color;
     font-style: italic;
     font-weight: bold;
-    padding-left: 10px;
+    padding-top: 5px;
 }
 
 .tinyhint { 
@@ -1091,13 +1120,26 @@ CHARGEN SCREEN
   padding: 10px 0 10px 0;
 }
 
-.fs3-rating-control {
-  display: flex;
-  justify-content: space-around;
-}
 .fs3-rating-display {
   text-align: center;
 }
+
+.fs3-ability-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fs3-ability-name {
+  flex-basis: 60%;
+}
+
+.fs3-rating-control {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 40%;
+}
+
 
 .fs3-skillscan-rating {
   width: 100px;
@@ -1112,6 +1154,7 @@ CHARGEN SCREEN
 .card-ability {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -1419,6 +1462,9 @@ SCENES SCREEN
   text-align: right;
 }
 
+.content-tags-selector {
+  margin-bottom: 5px;
+}
 
 .scene-title {
   font-weight: bold;
@@ -1443,6 +1489,20 @@ SCENES SCREEN
   font-weight: bold;
   border-bottom: 1px solid $border-color;
   margin-bottom: 5px;
+}
+
+.scene-card-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.scene-card-profile {
+  flex-basis: 40%;
+}
+
+.scene-card-demographics {
+  flex-basis: 60%;
 }
 
 @media (max-width: 767px) {
@@ -1509,7 +1569,7 @@ CHARACTERS SCREEN
 }
 
 .profile-image-wrap {
-  flex-basis: 40%;
+  flex-basis: 30%;
 }
 
 .profile-box .row {
@@ -1546,6 +1606,8 @@ CHARACTERS SCREEN
     background-image:url('/game/uploads/theme_images/box-bg.png');
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .profile-item-list {
@@ -1557,6 +1619,7 @@ CHARACTERS SCREEN
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   border-bottom: 1px solid $border-color;
 }
 
@@ -1630,6 +1693,7 @@ table.char-ability-list {
     border-radius: 25px;    
     overflow: hidden;
     background: $log-icon-color;
+    margin-right: 15px;
 }
 
 .relationship-title-container {
@@ -1640,6 +1704,9 @@ table.char-ability-list {
     margin: 10px;
     padding: 5px;
     border: 1px solid $border-color;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .status-message {
@@ -1695,6 +1762,33 @@ input[type='file'] {
   color: red;
 }
 
+.fs3-sheet {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: space-around;
+}
+
+.fs3-ability-table {
+  min-width: 400px;
+}
+
+.fs3-luck {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.fs3-damage-desc {
+  flex-basis: 30%;
+}
+
+.fs3-damage-date {
+  flex-basis: 30%;
+}
+.fs3-damage-sev {
+  flex-basis: 40%;  
+}
 .fs3-combat-hud h3 {
   font-size: 1.2em;
 }
@@ -1743,6 +1837,7 @@ input[type='file'] {
 .file-uploader-item {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   border-bottom: 1px solid $border-color;
   padding-top: 15px;
 }
@@ -1961,6 +2056,7 @@ JOBS SCREEN
 .create-job-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0px 10px 0px;
   padding: 5px 0px 10px 0px;
@@ -1980,6 +2076,7 @@ JOBS SCREEN
 .edit-job-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0px 10px 0px;
   padding: 5px 0px 10px 0px;
@@ -1995,6 +2092,7 @@ JOBS SCREEN
 .display-job-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0px 10px 0px;
   padding: 5px 0px 10px 0px;
@@ -2049,6 +2147,7 @@ LOCATIONS SCREEN
   min-height: 300px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-self: stretch;
   
@@ -2100,6 +2199,7 @@ LOCATIONS SCREEN
   min-height: 200px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -2142,6 +2242,7 @@ ACCOUNT SCREEN
 .block-list-item {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 5px;
   align-items: center;
@@ -2167,6 +2268,7 @@ OTHER
 .who-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid $border-color;
@@ -2199,15 +2301,23 @@ OTHER
   padding: 5px;
   margin: 5px 0px;
   min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.xp-ability .col {
-  padding-right: 5px;
-  padding-left: 5px;
+.xp-progress {
+  flex-basis: 40%;
 }
 
 .xp-ability-name {
   font-weight: bold;
+  flex-basis: 20%;
+}
+
+.xp-learning {
+  flex-basis: 10%;
 }
 
 .xp-list {
@@ -2226,6 +2336,9 @@ OTHER
   border-bottom: 1px solid $border-color;
   padding: 5px;
   margin: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .fs3-damage-title {
@@ -2235,6 +2348,7 @@ OTHER
 .wiki-page-nav {
   display: flex;
   flex-direction: row;  
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -2306,6 +2420,7 @@ ul.reference-help-list > li:not(:last-child)::after {
 .prefs-list-item {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   border-bottom: 1px solid $border-color;
   padding: 10px;
 }
@@ -2332,7 +2447,7 @@ ul.reference-help-list > li:not(:last-child)::after {
   color: green;
 }
 
-@media (max-width:992px)  { 
+@media (max-width:1400px)  { 
 
   .site-title {
       font-size: 2em;
@@ -2351,7 +2466,10 @@ ul.reference-help-list > li:not(:last-child)::after {
     font-size: 1.25em;
   }
 
-
+  .body-wrap {
+    flex-direction: column;
+  }
+  
   .profile-wrap { 
       padding: 5px; 
       flex-direction: column;
@@ -2412,18 +2530,24 @@ ul.reference-help-list > li:not(:last-child)::after {
   .navbar-dark .navbar-nav .nav-link.active {
     color: $secondary-color;
   }
+  
+  .scene-card-top {
+    flex-direction: column;
+  }
+  
+  .form-item {
+    flex-direction: column;
+    
+  }
+  
+  .fs3-damage-block {
+    flex-direction: column;
+  }
 
 }
 
 
 @media (max-width:768px)  { 
-
-  .body-row 
-  {
-    display: flex;
-    flex-direction: column;
-  
-  }
 
   .left-sidebar {
     order: 2;
