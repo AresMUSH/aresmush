@@ -65,6 +65,7 @@ body {
 
 .sidebar {
   width: 350px;
+  min-width: 350px;
 }
 
 .centered {
@@ -575,6 +576,25 @@ li hr {
 .emoji {
   font-size: 1.5em;
   vertical-align: middle;
+}
+.emoji-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.emoji-example {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.emoji-name {
+  font-size: .7em;
+}
+
+.emoji-symbol {
+  font-size: 1.25em;
 }
 
 /* -------------------------
@@ -1428,14 +1448,35 @@ SCENES SCREEN
     margin: 0 2px 3px 0;
 }
  
-.live-scene-controls a, .chat-controls a,  .unshared-scenes-controls a  {
+.live-scenes-entry {
+  margin-bottom: 20px;
+  background-color: $box-background-color;
+  border: 1px solid $border-color;
+}
+
+.live-scene-controls a, .chat-controls a,  .unshared-scene-controls a  {
   padding-right: 15px;
   padding-bottom: 5px;
   display: inline-block;
 }
 
+.live-scenes-controls {
+  padding: 5px 0px 5px 10px;
+}
+
 .live-scenes-controls a {
   padding-right: 10px;
+}
+
+.unshared-scene-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.unshared-scene-participants {
+  flex-basis: 40%;
 }
 
 .unshared-scene-warnings {
@@ -1447,19 +1488,29 @@ SCENES SCREEN
   margin-bottom: 10px;
 }
 
-.live-scenes-heading, .unshared-scenes-heading {
+.live-scenes-heading, .unshared-scene-heading {
   background-color: $border-color;
-  padding: 5px 0px 5px 0px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5px;
 }
 
-.unshared-scenes-controls {
+.unshared-scene-controls {
   padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-.live-scenes-controls {
-  padding: 0px;
-  text-align: right;
+
+.live-scenes-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 .content-tags-selector {
@@ -1468,10 +1519,6 @@ SCENES SCREEN
 
 .scene-title {
   font-weight: bold;
-}
-
-.scene-info-label {
-  font-weight: bold;  
 }
 
 .live-scenes-block .scene-title-block {
@@ -1809,6 +1856,17 @@ input[type='file'] {
 .fs3-gear-row {
   border-bottom: 1px solid $border-color;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fs3-gear-title {
+  flex-basis: 30%;
+}
+
+.fs3-gear-detail {
+  flex-basis: 70%;
 }
 
 .fs3-combat-command {
@@ -1817,6 +1875,10 @@ input[type='file'] {
 
 .roster-table {
   width: 100%;
+}
+
+.roster-info {
+  padding: 10px;
 }
 
 .roster-char-title {
@@ -1838,6 +1900,7 @@ input[type='file'] {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
   border-bottom: 1px solid $border-color;
   padding-top: 15px;
 }
