@@ -40,6 +40,18 @@ module AresMUSH
         end
         DatabaseMigrator.write_config_file("channels.yml", config)    
         
+        Global.logger.debug "Adding new theme colorss"        
+        src = File.join(AresMUSH.game_path, "styles", "colors.scss")
+        config = File.readlines(src)
+        if (!config.any? { |c| c =~ /box-words/ })
+          config << "$box-background-color: $background-color;"
+          config << "$box-words-color: $text-color;"
+          config << "$secondary-words-color: $text-color;"         
+        end
+        File.open(src, 'w') do |file|
+          file.puts config
+        end
+        
       end
     end
   end    

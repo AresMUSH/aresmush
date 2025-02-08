@@ -26,6 +26,7 @@ BASIC CONTAINERS
     background-size: cover;
     height: 200px;   
     background-position: center; 
+    margin-bottom: 10px;
 }
 
 .title-wrap
@@ -267,6 +268,10 @@ MARKDOWN EDITOR (Toast UI)
   background-color: $primary-color;
   color: $primary-words-color;
   border-bottom: 0px;
+}
+
+.toastui-editor-mode-switch .tab-item {
+  margin-left: 10px;
 }
 
 .toastui-editor-tabs {
@@ -1111,6 +1116,24 @@ PLAY SCREEN
     border: 0px;
 }
      
+.play-screen {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}     
+
+.play-sidebar {
+  flex-basis: 20%;
+}
+
+.play-main {
+  flex-basis: 80%;
+}
+
+#sceneMenuCollapseButton {
+  display: none;
+}
+
 /* -------------------------
 CHARGEN SCREEN
 ------------------------- */
@@ -1435,6 +1458,7 @@ SCENES SCREEN
 
 .scene-controls-left {
   padding: 5px;
+  flex-basis: 50%;
 }
 
 .scene-controls-right {
@@ -1442,6 +1466,7 @@ SCENES SCREEN
     flex-flow: column;
     align-items: flex-end;
     padding: 5px;
+    flex-basis: 50%;
 }
 
 .scene-char-select .tiny-profile-icon {
@@ -1642,7 +1667,6 @@ CHARACTERS SCREEN
 }
 
 .profile-wrap {
-    border-radius: 8px;
     border: 1px solid $primary-outline-color; 
     background-color: $background-color;
     padding:15px; 
@@ -2607,6 +2631,13 @@ ul.reference-help-list > li:not(:last-child)::after {
     flex-direction: column;
   }
 
+  #sceneMenuCollapseButton {
+    display: block;
+  }
+  
+  .play-screen { 
+    flex-direction: column;
+  }
 }
 
 
