@@ -77,6 +77,13 @@ module AresMUSH
           end
         end
         
+        if FS3Skills.is_enabled?
+          error = FS3Skills.save_web_profile_data(char, enactor, request.args)
+          if (error)
+            return { error: error }
+          end
+        end
+        
         error = Roles.save_web_profile_data(char, enactor, request.args)
         if (error)
           return { error: error }

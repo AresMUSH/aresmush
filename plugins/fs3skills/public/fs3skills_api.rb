@@ -171,5 +171,29 @@ module AresMUSH
       builder = WebCharDataBuilder.new
       builder.build(char, viewer)
     end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      {
+        fs3: {
+          can_manage_xp: FS3Skills.can_manage_xp?(viewer),
+          can_manage_luck: FS3Skills.can_manage_luck?(viewer),
+          show_fs3_tab: FS3Skills.can_manage_xp?(viewer) || FS3Skills.can_manage_luck?(viewer),
+          luck: char.fs3_luck,
+          xp: char.fs3_xp
+        }
+      }
+    end
+    
+    def self.save_web_profile_data(char, enactor, args)
+      if FS3Skills.can_manage_xp?(enactor)
+        char.update(fs3_xp: (args['fs3']['xp'] || "").to_i)
+      end
+
+      if FS3Skills.can_manage_luck?(enactor)
+        char.update(fs3_luck: (args['fs3']['luck']).to_i)
+      end
+      
+      nil
+    end
   end
 end

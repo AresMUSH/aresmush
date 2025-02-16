@@ -76,6 +76,10 @@ module AresMUSH
           add_to_profile profile_data, Prefs.build_web_profile_edit_data(char, enactor, profile_manager)
         end
         
+        if FS3Skills.is_enabled?
+          add_to_profile profile_data, FS3Skills.build_web_profile_edit_data(char, enactor, profile_manager)
+        end
+        
         profile_data
       end
       
