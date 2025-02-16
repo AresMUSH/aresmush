@@ -163,5 +163,11 @@ module AresMUSH
       not_new = actor.has_permission?("manage_login") || actor.is_approved?
       actor.has_permission?("boot") && not_new
     end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      {
+        show_pw_tab: Login.can_manage_login?(viewer)
+      }
+    end
   end
 end

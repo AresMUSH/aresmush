@@ -159,6 +159,8 @@ module AresMUSH
         return UpdateAccountInfoRequestHandler
       when "changePassword"
         return ChangePasswordRequestHandler
+      when "resetPassword"
+        return ResetPasswordRequestHandler
       when "accountInfo"
         return AccountInfoRequestHandler
       when "loginNotices"
