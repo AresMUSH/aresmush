@@ -3,6 +3,7 @@ module AresMUSH
     class RegisterRequestHandler
       def handle(request)
         recaptcha = AresMUSH::Website::RecaptchaHelper.new
+        turnstile = AresMUSH::Website::TurnstileHelper.new
         enable_registration = Global.read_config("login", "allow_web_registration")
         
         if (request.enactor)
@@ -19,11 +20,18 @@ module AresMUSH
         pw = request.args['password']
         confirm_pw = request.args['confirm_password']
         recaptcha_response = request.args['recaptcha']
+        turnstile_response = request.args['turnstile']
         
         Global.logger.info "#{name} registered from web from #{request.ip_addr}."
       
-        if (recaptcha.is_enabled? && !recaptcha.verify(recaptcha_response))
-          return { error: t('login.recaptcha_failed') }
+        if (turnstile.is_enabled?)
+          if (!turnstile.verify(turnstile_response))
+            return { error: t('login.captcha_failed') }
+          end
+        elsif (recaptcha.is_enabled?)
+          if (!recaptcha.verify(recaptcha_response))
+            return { error: t('login.captcha_failed') }
+          end
         end
       
         name_error = Character.check_name(name)

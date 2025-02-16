@@ -21,6 +21,12 @@ module AresMUSH
         @validator.require_hash('wiki_aliases')
         @validator.require_boolean('hide_searchbox')
         
+        recaptcha = AresMUSH::Website::RecaptchaHelper.new
+        turnstile = AresMUSH::Website::TurnstileHelper.new
+        if (recaptcha.is_enabled? && turnstile.is_enabled?)
+          @validator.add_error "website: Both recaptcha and turnstile are enabled. Please pick one."
+        end
+        
         begin
           gallery_group = Global.read_config('website', 'character_gallery_group')
           group = Demographics.get_group(gallery_group)

@@ -40,6 +40,17 @@ module AresMUSH
         end
         DatabaseMigrator.write_config_file("channels.yml", config)    
         
+        Global.logger.debug "Adding turnstile"
+        config = DatabaseMigrator.read_config_file("secrets.yml")
+        if (!config["secrets"]["turnstile"])
+          config["secrets"]["turnstile"] = {
+            "site_key" => "",
+            "secret" => ""
+          }
+        end
+        DatabaseMigrator.write_config_file("secrets.yml", config)    
+        
+        
         Global.logger.debug "Adding new theme colorss"        
         src = File.join(AresMUSH.game_path, "styles", "colors.scss")
         config = File.readlines(src)
