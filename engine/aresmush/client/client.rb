@@ -137,12 +137,7 @@ module AresMUSH
     def char
       find_char
     end
-    
-    # @engineinternal true
-    def web_char_id
-      @connection.web_char_id
-    end
-    
+        
     def self.lookup_hostname(ip)
       begin
         Resolv::DNS.open do |dns|

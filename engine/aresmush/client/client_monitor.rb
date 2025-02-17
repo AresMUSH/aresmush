@@ -2,10 +2,11 @@ module AresMUSH
   class ClientMonitor
     def initialize(client_factory)
       @clients = []
-      @client_factory = client_factory
+      @web_event_clients = []
+      @client_factory = client_factory      
     end
 
-    attr_reader :clients, :client_id
+    attr_reader :clients, :client_id, :web_event_clients
 
     def emit_all(msg)
       @clients.each do |c|
@@ -35,18 +36,38 @@ module AresMUSH
       end
     end
     
+    def add_web_event_client(char_id, stream) 
+      client = WebEventClient.new(char_id, stream)
+      @web_event_clients << client
+      
+      stream.callback {
+        @web_event_clients.delete_if { |client| client.stream == stream }
+      }
+    end
+    
+    def remove_web_event_client(char)
+      @web_event_clients.delete_if { |client| client.char_id == char.id }
+    end
+    
     def notify_web_clients(type, msg, is_data, &trigger_block)
       Global.dispatcher.spawn("Notifying web clients", nil) do
-        @clients.each do |c|    
-          if ( yield Character[c.web_char_id] )
-            c.web_notify type, msg, is_data
+        @web_event_clients.each do |client|          
+          char = client.character
+          if ( yield char )
+            client.web_notify type, msg, is_data
           end
         end
       end
     end
     
+    def ping_web_clients
+      @web_event_clients.each do |client|
+        client.ping
+      end
+    end
+    
     def web_clients
-      @clients.select { |c| c.web_char_id }
+      @web_event_clients
     end
 
     def logged_in_clients
@@ -68,7 +89,7 @@ module AresMUSH
     end
     
     def find_web_client(char)
-      @clients.select { |c| c.web_char_id == char.id }.sort_by { |c| c.idle_secs }.first
+      @web_event_clients.select { |c| c.char_id == char.id }.first
     end
     
     # @engineinternal true

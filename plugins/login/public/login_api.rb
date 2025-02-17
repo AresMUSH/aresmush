@@ -36,6 +36,7 @@ module AresMUSH
       !Login.find_client(char) && Login.find_web_client(char)
     end
     
+    # Finds game-only client
     def self.find_client(char)
       return nil if !char
       Global.client_monitor.find_client(char)

@@ -46,9 +46,9 @@ module AresMUSH
               
       # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Scene notification", nil) do
-        clients = Global.client_monitor.clients
+        clients = Global.client_monitor.web_event_clients
         clients.each do |client|
-          char_id = client.web_char_id
+          char_id = client.character.id
           if (char_id && notifications.has_key?(char_id))
             web_msg = "#{scene.id}|#{character.name}|#{:new_pose}|#{notifications[char_id].to_json}"
             client.web_notify :new_scene_activity, web_msg, true

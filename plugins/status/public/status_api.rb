@@ -31,7 +31,9 @@ module AresMUSH
           return 'offline'
         end
       
-        return Status.is_idle?(client) ? 'web-inactive' : 'web-active'
+        
+        #return Status.is_idle?(client) ? 'web-inactive' : 'web-active'
+        return 'web-active'
       end
       
       def self.is_active?(char)

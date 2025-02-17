@@ -1,5 +1,4 @@
 require 'eventmachine'
-require 'em-websocket'
 
 module AresMUSH
   # @engineinternal true
@@ -26,6 +25,12 @@ module AresMUSH
             Cron.raise_event
           end
         end
+        
+        EventMachine::add_periodic_timer(20) do
+          AresMUSH.with_error_handling(nil, "Web Client Ping") do
+            Global.client_monitor.ping_web_clients
+          end
+        end
            
         begin     
           EventMachine::start_server(host, port, Connection) do |connection|
@@ -42,35 +47,7 @@ module AresMUSH
         engine_api_port = Global.read_config("server", "engine_api_port")
         web = EngineApiLoader.new
         web.run(port: engine_api_port)
-        
-        websocket_port = Global.read_config("server", "websocket_port")
-        use_https = Global.read_config("server", "use_https")
-        
-        websocket_options = {
-          :host => host,
-          :port => websocket_port,
-          :secure => use_https,
-          :tls_options => use_https ? {
-                :private_key_file => Global.read_config("server", "private_key_file_path"),
-      	        :cert_chain_file => Global.read_config("server", "certificate_file_path")
-                } : nil
-            }
-          
-        begin     
-          EventMachine::WebSocket.start(websocket_options) do |websocket|
-            AresMUSH.with_error_handling(nil, "Web connection established") do
-              WebConnection.new(websocket) do |connection|
-                Global.client_monitor.connection_established(connection)
-              end
-            end
-          end
-        rescue Exception => ex
-          Global.logger.fatal "Couldn't start the websocket server: error=#{ex} backtrace=#{ex.backtrace[0,10]}"
-          EventMachine.stop_event_loop
-          exit 1
-        end
-           
-        Global.logger.info "Websocket started with options #{websocket_options}."
+                
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end

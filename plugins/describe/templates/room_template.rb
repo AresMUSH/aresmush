@@ -122,7 +122,7 @@ module AresMUSH
       def char_afk(char)
         client = Login.find_client(char)
         return nil if !client
-        idle_secs = Login.find_client(char).idle_secs
+        idle_secs = client.idle_secs
         idle_str = TimeFormatter.format(idle_secs)
         if (char.is_afk?)
           afk_message = char.afk_display

@@ -28,7 +28,6 @@ gem 'bcrypt', '~> 3.1.11'
 
 # Server engine
 gem 'eventmachine', '~> 1.2.7'
-gem 'em-websocket', '~> 0.5'
 
 # Locale utils
 gem 'i18n', '~>  1.14'

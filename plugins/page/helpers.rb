@@ -29,27 +29,6 @@ module AresMUSH
       end
       return t('page.recipient_indicator', :recipients => names.join(", "))
     end
-    
-    # NO LONGER USED.  Keeping for reference.
-    def self.send_afk_message(client, other_client, other_char)
-      if (!other_client)
-        #client.emit_ooc t('page.recipient_is_offline', :name => other_char.name)
-        return
-      elsif (other_char.is_afk)
-        afk_message = ""
-        if (other_char.afk_display)
-          afk_message = "(#{other_char.afk_display})"
-        end
-        afk_message = t('page.recipient_is_afk', :name => other_char.name, :message => afk_message)
-        client.emit_ooc afk_message
-        other_client.emit_ooc afk_message
-      elsif (Status.is_idle?(other_client))
-        time = TimeFormatter.format(other_client.idle_secs)
-        afk_message = t('page.recipient_is_idle', :name => other_char.name, :time => time)
-        client.emit_ooc afk_message
-        other_client.emit_ooc afk_message
-      end
-    end
   
     def self.page_color(char)
       char.page_color || Global.read_config("page", "page_color")
@@ -84,7 +63,7 @@ module AresMUSH
       end
       Page.mark_thread_read(thread, enactor)
       
-      # Send to the recipients.
+      # Send to the recipients currently in game.
       recipients.each do |recipient|
         recipient_client = Login.find_client(recipient)
         if (recipient_client)
@@ -95,9 +74,6 @@ module AresMUSH
             :message => message)
           Page.mark_thread_read(thread, recipient)
         end
-        #if (client)
-        #  Page.send_afk_message(client, recipient_client, recipient)
-        #end
       end
 
       everyone.each do |char| 
@@ -121,7 +97,7 @@ module AresMUSH
             message_id: page_message.id,
             is_page: true
           }
-          clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
+          clients = Global.client_monitor.web_event_clients.select { |client| client.char_id == char.id }
           clients.each do |client|
             client.web_notify :new_page, "#{data.to_json}", true
           end
