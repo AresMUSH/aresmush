@@ -32,8 +32,6 @@ module AresMUSH
     end
     
     def send_data(data)
-      Global.logger.debug "Sending data #{data}"
-      
       @stream << "data: #{data.to_json}\n\n"
     end
   end

@@ -9,9 +9,7 @@ module AresMUSH
       end
     
       def self.is_idle?(client)
-        minutes_before_idle = "#{Global.read_config("status", "minutes_before_idle")}".to_i
-        return false if !minutes_before_idle
-        return client.idle_secs > minutes_before_idle * 60
+        Status.calculate_is_idle(client.idle_secs)
       end
       
       def self.update_last_ic_location(char)
@@ -31,9 +29,10 @@ module AresMUSH
           return 'offline'
         end
       
+        idle_secs = Time.now - char.last_on
+        is_idle = Status.calculate_is_idle(idle_secs)
         
-        #return Status.is_idle?(client) ? 'web-inactive' : 'web-active'
-        return 'web-active'
+        return is_idle ? 'web-inactive' : 'web-active'
       end
       
       def self.is_active?(char)

@@ -170,5 +170,12 @@ module AresMUSH
         show_pw_tab: Login.can_manage_login?(viewer)
       }
     end
+    
+    def self.web_last_online_update(char, request)
+      # 30 minutes keeps idle times minimal without updating a zillion times for each web request
+      if (Time.now - char.last_on > 60 * 30)
+        Login.update_site_info(request.ip_addr, request.hostname, char)
+      end
+    end
   end
 end
