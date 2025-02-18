@@ -38,6 +38,9 @@ module AresMUSH
     
     before do
        response.headers['Access-Control-Allow-Origin'] = '*'
+       response.headers["Access-Control-Allow-Headers"] = "*"
+       response.headers["Access-Control-Allow-Methods"] = "*"
+       response.headers["Allow"] = "*"
      end
   
      # routes...
@@ -60,6 +63,10 @@ module AresMUSH
        stream :keep_open do |stream|
          Global.client_monitor.add_web_event_client(params["char_id"], stream)          
        end
+     end
+     
+     get '/api/test' do
+       { "test": "test" }.to_json
      end
            
      post '/request/?' do
