@@ -63,11 +63,13 @@ module AresMUSH
        stream :keep_open do |stream|
          Global.client_monitor.add_web_event_client(params["char_id"], stream)          
        end
-     end
+     end   
      
-     get '/api/test' do
-       { "test": "test" }.to_json
-     end
+     get '/events/:char_id', provides: 'text/event-stream' do
+       stream :keep_open do |stream|
+         Global.client_monitor.add_web_event_client(params["char_id"], stream)          
+       end
+     end     
            
      post '/request/?' do
        content_type :json
