@@ -11,7 +11,7 @@ module AresMUSH
     def self.format_recipient_indicator(recipients)
       names = []
       recipients.sort_by { |r| r.name }.each do |r|
-        client = Login.find_client(r)
+        client = Login.find_game_client(r)
         if (!client)
           if (Login.find_web_client(r))
             names << "#{r.name}#{Website.web_char_marker}"
@@ -65,7 +65,7 @@ module AresMUSH
       
       # Send to the recipients currently in game.
       recipients.each do |recipient|
-        recipient_client = Login.find_client(recipient)
+        recipient_client = Login.find_game_client(recipient)
         if (recipient_client)
           recipient_client.emit t('page.to_recipient', 
             :pm => Page.format_page_indicator(recipient),
@@ -97,9 +97,9 @@ module AresMUSH
             message_id: page_message.id,
             is_page: true
           }
-          clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
+          clients = Global.client_monitor.web_clients.select { |client| client.char_id == char.id }
           clients.each do |client|
-            client.web_notify :new_page, "#{data.to_json}", true
+            client.send_web_notification :new_page, "#{data.to_json}", true
           end
         end
       end

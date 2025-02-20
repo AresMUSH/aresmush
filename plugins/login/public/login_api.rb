@@ -25,21 +25,20 @@ module AresMUSH
     end
     
     def self.is_online?(char)
-      !!Login.find_client(char)
+      !!Login.find_game_client(char)
     end
     
     def self.is_online_or_on_web?(char)
-      Login.find_client(char) || Login.find_web_client(char)
+      Login.find_game_client(char) || Login.find_web_client(char)
     end
     
     def self.is_portal_only?(char)
-      !Login.find_client(char) && Login.find_web_client(char)
+      !Login.find_game_client(char) && Login.find_web_client(char)
     end
     
-    # Finds game-only client
-    def self.find_client(char)
+    def self.find_game_client(char)
       return nil if !char
-      Global.client_monitor.find_client(char)
+      Global.client_monitor.find_game_client(char)
     end
     
     def self.find_web_client(char)
@@ -48,14 +47,14 @@ module AresMUSH
     end
         
     def self.emit_if_logged_in(char, message)
-      client = find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client.emit message
       end
     end
     
     def self.emit_ooc_if_logged_in(char, message)
-      client = find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client.emit_ooc message
       end
@@ -63,13 +62,14 @@ module AresMUSH
       
     def self.connect_client_after_login(char, client)
       # Handle reconnect
-      existing_client = Login.find_client(char)
+      existing_client = Login.find_game_client(char)
       client.char_id = char.id
       
       if (existing_client)
         existing_client.emit_ooc t('login.disconnected_by_reconnect')
         existing_client.disconnect
 
+        # Give the disconnect a second to clear first.
         Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
       else
         announce_connection(client, char)

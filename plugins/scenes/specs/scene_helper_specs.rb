@@ -24,8 +24,8 @@ module AresMUSH
           allow(@enactor_room).to receive(:characters) { [] }
           allow(dispatcher).to receive(:queue_event)
           allow(Scenes).to receive(:custom_format) { "Formatted pose" }
-          allow(Login).to receive(:find_client).with(@char1) { @client1 }
-          allow(Login).to receive(:find_client).with(@char2) { @client2 }
+          allow(Login).to receive(:find_game_client).with(@char1) { @client1 }
+          allow(Login).to receive(:find_game_client).with(@char2) { @client2 }
           allow(Scenes).to receive(:update_pose_order)
           allow(@enactor_room).to receive(:id) { 12 }
           allow(@enactor).to receive(:id) { 34 }

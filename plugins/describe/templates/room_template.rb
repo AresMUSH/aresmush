@@ -90,7 +90,7 @@ module AresMUSH
           status = t('describe.foyer_room_locked')
         elsif (chars.count == 0)
           status = t('describe.foyer_room_free')
-        elsif (chars.select { |c| Login.find_client(c) }.count > 0 )
+        elsif (chars.select { |c| Login.find_game_client(c) }.count > 0 )
           status = t('describe.foyer_room_in_use')
         else
           status = t('describe.foyer_room_occupied')
@@ -120,7 +120,7 @@ module AresMUSH
       # Shows the AFK message, if the player has set one, or the automatic AFK warning,
       # if the character has been idle for a really long time.
       def char_afk(char)
-        client = Login.find_client(char)
+        client = Login.find_game_client(char)
         return nil if !client
         idle_secs = client.idle_secs
         idle_str = TimeFormatter.format(idle_secs)

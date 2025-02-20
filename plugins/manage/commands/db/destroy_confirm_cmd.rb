@@ -34,7 +34,7 @@ module AresMUSH
         
         if (target.class == Room)
           target.characters.each do |c|
-            connected_client = Login.find_client(c)
+            connected_client = Login.find_game_client(c)
             if (connected_client)
               connected_client.emit_ooc t('manage.room_being_destroyed')
             end

@@ -92,7 +92,7 @@ module AresMUSH
      
         context "success" do
           before do
-            allow(Login).to receive(:find_client).with(@found_char) { nil }
+            allow(Login).to receive(:find_game_client).with(@found_char) { nil }
             allow(@found_char).to receive(:id) { 3 }
             expect(Character).to receive(:find_any_by_name) { [ @found_char ] }
             allow(dispatcher).to receive(:queue_event)  
@@ -104,7 +104,7 @@ module AresMUSH
           
           it "should disconnect an existing client" do
             other_client = double
-            allow(Login).to receive(:find_client).with(@found_char) { other_client }
+            allow(Login).to receive(:find_game_client).with(@found_char) { other_client }
             expect(other_client).to receive(:emit_ooc).with('login.disconnected_by_reconnect')
             expect(other_client).to receive(:disconnect)
             allow(dispatcher).to receive(:queue_timer)

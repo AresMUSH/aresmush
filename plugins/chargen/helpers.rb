@@ -192,7 +192,7 @@ module AresMUSH
       
        Chargen.custom_approval(model)
        
-       Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
+       Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_game_client(model), model.id)
          
        return nil
      end

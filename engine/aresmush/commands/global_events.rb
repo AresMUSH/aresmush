@@ -56,15 +56,4 @@ module AresMUSH
   
   class ConfigUpdatedEvent
   end
-  
-  class WebCmdEvent
-    
-    attr_accessor :client, :cmd_name, :data
-    
-    def initialize(client, cmd_name, data)
-      self.client = client
-      self.cmd_name = cmd_name
-      self.data = data
-    end
-  end
 end

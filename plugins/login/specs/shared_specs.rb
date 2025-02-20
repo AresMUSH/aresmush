@@ -361,11 +361,11 @@ module AresMUSH
             @system_char = double
             master_game = double
 
-            allow(client_monitor).to receive(:clients) { [] }
+            allow(client_monitor).to receive(:web_clients) { [] }
             allow(Game).to receive(:master) { master_game }
             allow(master_game).to receive(:system_character) { @system_char }
             allow(Login).to receive(:notify)
-            allow(Login).to receive(:find_client) { nil }
+            allow(Login).to receive(:find_game_client) { nil }
             allow(@bootee).to receive(:update)
             allow(@bootee).to receive(:last_ip) { "ip" }
             allow(@bootee).to receive(:last_hostname) { "host" }
@@ -403,15 +403,15 @@ module AresMUSH
           end
           
           it "should boot them from the game" do
-            expect(Login).to receive(:find_client).with(@bootee) { @client }
+            expect(Login).to receive(:find_game_client).with(@bootee) { @client }
             expect(@client).to receive(:emit_failure).with("login.you_have_been_booted")
             expect(@client).to receive(:disconnect)
             expect(Login.boot_char(@enactor, @bootee, "Reasons")).to eq nil
           end
           
           it "should boot them from the portal" do
-            expect(client_monitor).to receive(:clients) { [ @client ]}
-            expect(@client).to receive(:web_char_id) { "22" }
+            expect(client_monitor).to receive(:web_clients) { [ @client ]}
+            expect(@client).to receive(:char_id) { "22" }
             expect(@bootee).to receive(:id) { "22" }
             expect(@bootee).to receive(:update).with({ login_api_token: nil })
             expect(@client).to receive(:disconnect)
@@ -419,8 +419,8 @@ module AresMUSH
           end
           
           it "should not boot someone else from the portal" do
-            expect(client_monitor).to receive(:clients) { [ @client ]}
-            expect(@client).to receive(:web_char_id) { "4" }
+            expect(client_monitor).to receive(:web_clients) { [ @client ]}
+            expect(@client).to receive(:char_id) { "4" }
             expect(@bootee).to receive(:id) { "22" }
             expect(@bootee).to receive(:update).with({ login_api_token: nil })
             expect(@client).to_not receive(:disconnect)

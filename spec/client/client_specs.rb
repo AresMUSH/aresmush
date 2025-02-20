@@ -8,6 +8,7 @@ module AresMUSH
     include GlobalTestHelper
 
     before do
+      @char = double
       @connection = double
       allow(@connection).to receive(:ip_addr) { "1.2.3.4" }
       allow(Resolv::DNS).to receive(:open) { "fake host" }
@@ -25,7 +26,6 @@ module AresMUSH
 
     describe :emit do
       before do
-        @char = double
         @client.char_id = 5
         allow(@client).to receive(:char) { @char }
       end
@@ -145,12 +145,24 @@ module AresMUSH
     end 
     
     describe :idle_secs do
-      it "should track the time since last activity" do
+      it "should track the time since last activity for a game client" do
+        allow(@client).to receive(:is_web_client?) { false }
         @client.last_activity = Time.parse("2011-1-2 10:59:01")
         fake_now = Time.parse("2011-1-2 11:00:00")
         allow(Time).to receive(:now) { fake_now }
         expect(@client.idle_secs).to eq 59
       end
+      
+      it "should track last online time for a web client" do
+        
+        allow(@client).to receive(:is_web_client?) { true }
+        allow(@client).to receive(:character) { @char }
+        fake_now = Time.parse("2011-1-2 11:00:00")
+        allow(Time).to receive(:now) { fake_now }
+        allow(@char).to receive(:last_on) { Time.parse("2011-1-2 10:59:01") }
+        expect(@client.idle_secs).to eq 59
+      end
+      
     end
     
     describe :connected_secs do

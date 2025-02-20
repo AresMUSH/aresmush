@@ -29,8 +29,8 @@ module AresMUSH
           
           allow(Login).to receive(:is_online?).with(other_char1) { true }
           allow(Login).to receive(:is_online?).with(other_char2) { false }
-          allow(Login).to receive(:find_client).with(other_char1) { other_client1 }
-          allow(Login).to receive(:find_client).with(other_char2) { nil }
+          allow(Login).to receive(:find_game_client).with(other_char1) { other_client1 }
+          allow(Login).to receive(:find_game_client).with(other_char2) { nil }
           allow(other_char1).to receive(:client) { other_client1 }
           allow(other_char2).to receive(:client) { nil }
           result =  

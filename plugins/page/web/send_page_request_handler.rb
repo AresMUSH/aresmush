@@ -57,7 +57,7 @@ module AresMUSH
         # Update last online time for alts who maybe didn't log in directly
         Login.web_last_online_update(sender, request)
         
-        thread = Page.send_page(sender, recipients, message, Login.find_client(sender))
+        thread = Page.send_page(sender, recipients, message, Login.find_game_client(sender))
         # Respond to existing thread - no return
         if (thread_id)
           return {}

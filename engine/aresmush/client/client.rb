@@ -75,11 +75,18 @@ module AresMUSH
       @connection.send_raw "#{msg}\r\n"
     end
     
-    def web_notify(type, message, is_data)
-      @connection.web_notify type, message, is_data
+    def send_web_notification(type, message, is_data)
+      @connection.send_web_notification type, message, is_data
     end
     
     def idle_secs
+      # Web connections don't receive traffic unless they're using the web client,
+      # so the last activity isn't useful.
+      if (self.is_web_client?)
+        c = self.character
+        return c ? (Time.now - c.last_on) : 0
+      end
+      
       (Time.now - self.last_activity).to_i
     end
     
@@ -93,18 +100,14 @@ module AresMUSH
       end
     end
     
-    def find_char
-      @char_id ? Character[@char_id] : nil
-    end
-    
+    # Specifically means logged in via game client
     def logged_in?
-      @char_id
+      @char_id && !self.is_web_client?
     end
     
     def reset_program
       @program = {}
     end
-    
     
     # @engineinternal true
     def handle_input(input)
@@ -135,16 +138,16 @@ module AresMUSH
     # Do not cache the character object!  It will get stale and out of date.
     # @engineinternal true
     def char
-      find_char
-    end
-    # @engineinternal true
-    def web_char_id
-      @connection.web_char_id
-    end
+      @char_id ? Character[@char_id] : nil
+    end 
+    
+    def character
+      self.char
+    end   
+    
     def is_web_client?
       @connection.is_web_connection?
     end
-    
     
     def self.lookup_hostname(ip)
       begin

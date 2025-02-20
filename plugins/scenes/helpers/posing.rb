@@ -42,7 +42,7 @@ module AresMUSH
       end
       
       room.characters.each do |char|
-        client = Login.find_client(char)
+        client = Login.find_game_client(char)
         next if !client
         client.emit Scenes.custom_format(formatted_pose, room, char, enactor, is_emit, is_ooc, place_name)
       end
@@ -90,7 +90,7 @@ module AresMUSH
           if (!char)
             room.remove_from_pose_order(name)
           end
-          client = Login.find_client(char)
+          client = Login.find_game_client(char)
           if (client && char.pose_nudge && !char.pose_nudge_muted)
             if (char.room == room)
               client.emit_ooc t('scenes.pose_your_turn')
@@ -105,7 +105,7 @@ module AresMUSH
         if (!char)
           room.remove_from_pose_order(next_up_name)
         end
-        client = Login.find_client(char)
+        client = Login.find_game_client(char)
         if (client && char.pose_nudge && !char.pose_nudge_muted)
           if (char.room == room)
             client.emit_ooc t('scenes.pose_your_turn')

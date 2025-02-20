@@ -36,8 +36,7 @@ module AresMUSH
       Global.logger.info("Client connected from #{@ip_addr}. ID=#{client.id}.")
       @client = client
     end
-    
-    
+        
     def send_data(msg)
       begin
         #telnet_debug(msg, "SEND")
@@ -53,6 +52,10 @@ module AresMUSH
     
     def send_raw(msg)
       send_data msg
+    end
+    
+    def send_web_notification(type, message, is_data)
+      raise "Tried to send web notification to game client."
     end
     
     def close_connection(after_writing = false)
@@ -127,15 +130,6 @@ module AresMUSH
         Global.logger.warn "Error closing connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end  
-    
-    def web_notify(type, message, is_data)
-      # Nothing - not a web connection
-    end
-    
-    def web_char_id
-      # Not a web connection
-      nil
-    end
     
     def is_web_connection?
       false

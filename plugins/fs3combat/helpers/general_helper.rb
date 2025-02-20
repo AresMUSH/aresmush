@@ -88,7 +88,7 @@ module AresMUSH
     def self.emit_to_organizer(combat, message, npcmaster = nil)
       message = message + " (#{npcmaster})" if npcmaster
         
-      client = Login.find_client(combat.organizer)
+      client = Login.find_game_client(combat.organizer)
       if (client)
         client.emit t('fs3combat.organizer_emit', :message => message)
       end
@@ -98,7 +98,7 @@ module AresMUSH
       char = combatant.character
       return if !char
       
-      client = Login.find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client_message = message.gsub(/#{combatant.name}/, "%xh%xc#{combatant.name}%xn")  
         client_message.split("\n").each do |part|

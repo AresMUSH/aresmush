@@ -21,7 +21,7 @@ module AresMUSH
           Rooms.move_to(client, enactor, inviter.room)
         else
           Global.logger.debug "#{enactor_name} bringing #{inviter.name} to #{enactor_room.name}."
-          Rooms.move_to(Login.find_client(inviter), inviter, enactor_room)
+          Rooms.move_to(Login.find_game_client(inviter), inviter, enactor_room)
         end
       end
     end
