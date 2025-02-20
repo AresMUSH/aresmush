@@ -97,7 +97,7 @@ module AresMUSH
             message_id: page_message.id,
             is_page: true
           }
-          clients = Global.client_monitor.web_event_clients.select { |client| client.char_id == char.id }
+          clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
           clients.each do |client|
             client.web_notify :new_page, "#{data.to_json}", true
           end

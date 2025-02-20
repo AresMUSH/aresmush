@@ -128,6 +128,19 @@ module AresMUSH
       end
     end  
     
+    def web_notify(type, message, is_data)
+      # Nothing - not a web connection
+    end
+    
+    def web_char_id
+      # Not a web connection
+      nil
+    end
+    
+    def is_web_connection?
+      false
+    end
+    
     private 
     
     def strip_control_chars(data)

@@ -319,7 +319,7 @@ module AresMUSH
       
       # Boot from portal
       bootee.update(login_api_token: nil)
-      Global.client_monitor.remove_web_event_client(bootee)
+      Global.client_monitor.clients.select { |c| c.web_char_id == bootee.id.to_s }.each { |c| c.disconnect }
       
       host_and_ip = "IP: #{bootee.last_ip}  Host: #{bootee.last_hostname}"
       Global.logger.warn "#{bootee.name} booted by #{enactor.name}.  #{host_and_ip}"

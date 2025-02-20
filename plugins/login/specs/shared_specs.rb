@@ -410,13 +410,20 @@ module AresMUSH
           end
           
           it "should boot them from the portal" do
-            expect(client_monitor).to receive(:remove_web_event_client).with(@bootee)
+            expect(client_monitor).to receive(:clients) { [ @client ]}
+            expect(@client).to receive(:web_char_id) { "22" }
+            expect(@bootee).to receive(:id) { "22" }
+            expect(@bootee).to receive(:update).with({ login_api_token: nil })
+            expect(@client).to receive(:disconnect)
             expect(Login.boot_char(@enactor, @bootee, "Reasons")).to eq nil
           end
           
           it "should not boot someone else from the portal" do
             expect(client_monitor).to receive(:clients) { [ @client ]}
-            expect(client_monitor).to_not receive(:remove_web_event_client).with(@bootee)
+            expect(@client).to receive(:web_char_id) { "4" }
+            expect(@bootee).to receive(:id) { "22" }
+            expect(@bootee).to receive(:update).with({ login_api_token: nil })
+            expect(@client).to_not receive(:disconnect)
             expect(Login.boot_char(@enactor, @bootee, "Reasons")).to eq nil
           end
           

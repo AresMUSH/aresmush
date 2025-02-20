@@ -6,7 +6,7 @@ module AresMUSH
         who << char
       end
       Global.client_monitor.web_clients.each do |client|
-        char = client.character
+        char = Character[client.web_char_id]
         next if !char
         who << char
       end
