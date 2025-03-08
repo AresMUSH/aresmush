@@ -13,7 +13,7 @@
 <% groups.each do |name, scenes| %>
   <div id="<%= name %>" class="tab-pane fade show">
         <% scenes.each do |scene| %>
-        <p><b><a href="<%= scene_page_name(scene) %>"><%= scene.title %></a></b>
+        <p><b><a href="<%= scene_page_name(scene) %>"><%= scene.icdate %> - <%= scene.title %></a></b>
           <br/><%= scene.summary %>
           <br/><%= scene.participant_names.join(' ') %></p>
           <hr/>
