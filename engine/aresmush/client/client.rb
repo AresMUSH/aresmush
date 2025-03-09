@@ -80,14 +80,10 @@ module AresMUSH
     end
     
     def idle_secs
-      # Web connections don't receive traffic unless they're using the web client,
-      # so the last activity isn't useful.
-      if (self.is_web_client?)
-        c = self.character
-        return c ? (Time.now - c.last_on) : 0
-      end
+      # Web connections don't receive traffic, so last_activity isn't very useful.
+      last_time = self.is_web_client? ? @connection.connected_at : self.last_activity
       
-      (Time.now - self.last_activity).to_i
+      (Time.now - last_time).to_i
     end
     
     def connected_secs

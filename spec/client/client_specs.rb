@@ -153,13 +153,12 @@ module AresMUSH
         expect(@client.idle_secs).to eq 59
       end
       
-      it "should track last online time for a web client" do
+      it "should track last online time for a web client xxx" do
         
         allow(@client).to receive(:is_web_client?) { true }
-        allow(@client).to receive(:character) { @char }
+        allow(@connection).to receive(:connected_at) { Time.parse("2011-1-2 10:59:01") }
         fake_now = Time.parse("2011-1-2 11:00:00")
         allow(Time).to receive(:now) { fake_now }
-        allow(@char).to receive(:last_on) { Time.parse("2011-1-2 10:59:01") }
         expect(@client.idle_secs).to eq 59
       end
       

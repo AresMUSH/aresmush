@@ -2,12 +2,13 @@ module AresMUSH
 
   # @engineinternal true
   class WebConnection
-    attr_accessor :websocket, :ip_addr, :ready_callback
+    attr_accessor :websocket, :ip_addr, :ready_callback, :connected_at
     attr_reader :client, :char_id
     
     def initialize(websocket, &ready_callback)
       self.websocket = websocket
       self.ready_callback = ready_callback
+      self.connected_at = Time.now
       websocket.onopen { |handshake| connection_opened(handshake) }
       websocket.onclose { connection_closed }
       websocket.onmessage { |msg| receive_data(msg) }
