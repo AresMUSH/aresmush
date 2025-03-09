@@ -6,7 +6,7 @@ summary: Skills and Combat System
 ---
 # FS3
 
-This game uses the FS3 system, Third Edition.  The complete guide can be found online: [FS3 Player's Guide](http://www.aresmush.com/fs3/fs3-3).
+This game uses the FS3 system, Third Edition.  The complete guide can be found online: [FS3 Player's Guide](https://aresmush.com/fs3/fs3-3).
 
 ![Sheet Page Screenshot](https://aresmush.com/images/help-images/sheet.png)
 

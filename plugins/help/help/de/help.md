@@ -5,7 +5,7 @@ order: 1
 ---
 # Hilfesystem
 
-Wenn Sie neu für MUSHes sind, sollen sie die [MUSH 101 Tutorial](http://www.aresmush.com/mush-101) lesen.
+Wenn Sie neu für MUSHes sind, sollen sie die [MUSH 101 Tutorial](https://aresmush.com/mush-101) lesen.
 
 Um Hilfe im Spiel zu bekommen, typpen Sie `help`.
 

@@ -68,7 +68,7 @@ en:
         
         announce: "%xh%xg%%%% Game Announcement:%xn %{message}"
         
-        version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttp://www.aresmush.com"
+        version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttps://aresmush.com"
         migrations: "Applied Migrations:"
         server_info: "Server Information"
         version_title: "Version:"

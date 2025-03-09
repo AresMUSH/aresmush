@@ -68,7 +68,7 @@ en:
         other: "%{count} characters connected." 
         
     client:   
-        welcome: Welcome to AresMUSH version %{version}! http://www.aresmush.com%R%%% Type 'help' to learn how to play.  Type 'tour' to connect to a guest character to explore. 
+        welcome: Welcome to AresMUSH version %{version}! https://aresmush.com%R%%% Type 'help' to learn how to play.  Type 'tour' to connect to a guest character to explore. 
         anonymous: Anonymous
 
     number:
