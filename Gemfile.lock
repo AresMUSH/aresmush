@@ -73,7 +73,7 @@ GEM
       redic (~> 1.5.0)
       stal
     ox (2.14.11)
-    rack (2.2.10)
+    rack (2.2.13)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -137,7 +137,7 @@ DEPENDENCIES
   log4r (~> 1.1.10)
   ohm (~> 3.1.1)
   ox (>= 2.14.11)
-  rack (~> 2.2.4)
+  rack (~> 2.2.13)
   rake (~> 12.3)
   redcarpet (~> 3.5.1)
   rspec (~> 3.12)

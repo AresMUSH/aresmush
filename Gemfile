@@ -5,7 +5,7 @@ gem 'ansi', '~> 1.5'
 gem "activesupport", ">= 6.1.7"
 gem 'ohm', '~> 3.1.1'
 
-gem 'rack', '~> 2.2.4'
+gem 'rack', '~> 2.2.13'
 gem 'sinatra', '>= 3.0.2'
 gem 'sinatra-cross_origin', '~>0.4.0'
 gem 'thin', "~> 1.8.1"
