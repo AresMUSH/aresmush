@@ -115,7 +115,7 @@ GEM
     timezone (1.2.12)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (1.0.2)
+    uri (1.0.3)
 
 PLATFORMS
   arm64-darwin
