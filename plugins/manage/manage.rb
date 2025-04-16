@@ -107,8 +107,6 @@ module AresMUSH
         return StatueCmd
       when "theme"
         return ThemeInstallCmd
-      when "unload"
-        return UnloadPluginCmd
       when "upgrade"
         case cmd.switch
         when "finish"
