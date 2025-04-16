@@ -3,8 +3,8 @@ module AresMUSH
     class ForumMoveTopicRequestHandler
       def handle(request)
                 
-        topic_id = request.args[:topic_id]
-        category_id = request.args[:category_id]
+        topic_id = request.args['topic_id']
+        category_id = request.args['category_id']
         enactor = request.enactor
         
         error = Website.check_login(request, true)

@@ -2,7 +2,7 @@ module AresMUSH
   module Events
     class CreateEventSceneRequestHandler
       def handle(request)
-        event_id = request.args[:event_id]
+        event_id = request.args['event_id']
         enactor = request.enactor
         
         error = Website.check_login(request)

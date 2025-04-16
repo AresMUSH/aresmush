@@ -3,10 +3,10 @@ module AresMUSH
     class MailSendRequestHandler
       def handle(request)
         enactor = request.enactor
-        message = request.args[:message]
-        subject = request.args[:subject]
-        to_list = request.args[:to_list]
-        sender = Character.named(request.args[:sender]) || enactor
+        message = request.args['message']
+        subject = request.args['subject']
+        to_list = request.args['to_list']
+        sender = Character.named(request.args['sender']) || enactor
        
         error = Website.check_login(request)
         return error if error

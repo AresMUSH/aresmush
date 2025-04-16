@@ -3,7 +3,7 @@ module AresMUSH
     class ProfileEditRequestHandler
       def handle(request)
         enactor = request.enactor
-        char = Character.find_one_by_name(request.args[:id])
+        char = Character.find_one_by_name(request.args['id'])
         
         error = Website.check_login(request)
         return error if error
@@ -57,7 +57,7 @@ module AresMUSH
           relationships_category_order: char.relationships_category_order.join(","),
           profile: profile,
           profile_gallery: (char.profile_gallery || []).join(' '),
-          tags: char.content_tags,
+          tags: char.content_tags.join(" "),
           files: files, 
           profile_image: char.profile_image ? Website.get_file_info(char.profile_image) : nil,
           profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,
@@ -70,9 +70,14 @@ module AresMUSH
         add_to_profile profile_data, Idle.build_web_profile_edit_data(char, enactor, profile_manager)
         add_to_profile profile_data, Describe.build_web_profile_edit_data(char, enactor, profile_manager)
         add_to_profile profile_data, Roles.build_web_profile_edit_data(char, enactor, profile_manager)
+        add_to_profile profile_data, Login.build_web_profile_edit_data(char, enactor, profile_manager)
 
         if Manage.is_extra_installed?("prefs")
           add_to_profile profile_data, Prefs.build_web_profile_edit_data(char, enactor, profile_manager)
+        end
+        
+        if FS3Skills.is_enabled?
+          add_to_profile profile_data, FS3Skills.build_web_profile_edit_data(char, enactor, profile_manager)
         end
         
         profile_data

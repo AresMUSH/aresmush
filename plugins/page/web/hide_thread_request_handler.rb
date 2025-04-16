@@ -3,8 +3,8 @@ module AresMUSH
     class HidePageThreadRequestHandler
       def handle(request)
         enactor = request.enactor
-        thread_id = request.args[:thread_id]
-        is_hidden = "#{request.args[:hidden]}".to_bool
+        thread_id = request.args['thread_id']
+        is_hidden = "#{request.args['hidden']}".to_bool
         
         error = Website.check_login(request)
         return error if error

@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class UpdateCombatantRequestHandler
       def handle(request)
-        id = request.args[:id]
+        id = request.args['id']
         enactor = request.enactor
 
         error = Website.check_login(request)
@@ -26,24 +26,24 @@ module AresMUSH
         end
         
         
-        team = request.args[:team].to_i
-        stance = request.args[:stance]
-        weapon = request.args[:weapon]
-        action = request.args[:action] || "pass"
+        team = request.args['team'].to_i
+        stance = request.args['stance']
+        weapon = request.args['weapon']
+        action = request.args['action'] || "pass"
         if (action.blank? || (acting_for_self && combatant.is_ko))
           action = "pass"
         end
-        action_args = (request.args[:action_args] || "").strip
-        selected_weapon_specials = (request.args[:weapon_specials] || [])
+        action_args = (request.args['action_args'] || "").strip
+        selected_weapon_specials = (request.args['weapon_specials'] || [])
            .select { |k, w| (w[:selected] || "").to_bool }
             .map { |k, w| w[:name] }
-        armor = request.args[:armor]
-        selected_armor_specials = (request.args[:armor_specials] || [])
+        armor = request.args['armor']
+        selected_armor_specials = (request.args['armor_specials'] || [])
           .select { |k, a| (a[:selected] || "").to_bool }
           .map { |k, a| a[:name] }
-        npc_level = request.args[:npc_skill]
-        vehicle = request.args[:vehicle] || ''
-        passenger_type = request.args[:passenger_type] || 'none'
+        npc_level = request.args['npc_skill']
+        vehicle = request.args['vehicle'] || ''
+        passenger_type = request.args['passenger_type'] || 'none'
         
         error = FS3Combat.update_combatant(combat, combatant, enactor, team, stance, weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args, vehicle, passenger_type)
         

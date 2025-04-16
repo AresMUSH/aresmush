@@ -2,8 +2,8 @@ module AresMUSH
   module FS3Combat
     class JoinCombatRequestHandler
       def handle(request)
-        combat_id = request.args[:combat_id]
-        sender_name = request.args[:sender]
+        combat_id = request.args['combat_id']
+        sender_name = request.args['sender']
         enactor = request.enactor
         
         error = Website.check_login(request)

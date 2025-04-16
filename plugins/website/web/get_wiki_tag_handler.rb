@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class GetWikiTagRequestHandler
       def handle(request)
-        tag = request.args[:id] || ''
+        tag = request.args['id'] || ''
         tag = tag.downcase
         
         enactor = request.enactor

@@ -3,8 +3,8 @@ module AresMUSH
     class ForumPinRequestHandler
       def handle(request)
                 
-        topic_id = request.args[:topic_id]
-        pinned = (request.args[:pinned] || "").to_bool
+        topic_id = request.args['topic_id']
+        pinned = (request.args['pinned'] || "").to_bool
         enactor = request.enactor
         
         error = Website.check_login(request, true)

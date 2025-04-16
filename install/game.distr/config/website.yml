@@ -47,9 +47,6 @@ website:
       route: mail
     - title: Events
       route: events
-    - divider: true
-    - title: Web Client
-      route: client
   - title: Directory
     menu:
     - title: Characters

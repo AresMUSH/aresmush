@@ -32,7 +32,6 @@ module AresMUSH
         }
           
         scenes = matches.sort_by { |m| m.icdate || m.created_at }
-        puts scenes.count
         template = SceneListtExtensionTemplate.new(scenes)
         template.render
       end

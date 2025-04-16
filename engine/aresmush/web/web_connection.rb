@@ -2,19 +2,28 @@ module AresMUSH
 
   # @engineinternal true
   class WebConnection
-    attr_accessor :websocket, :ip_addr, :ready_callback
-    attr_reader :client, :web_char_id, :webclient
+    attr_accessor :websocket, :ip_addr, :ready_callback, :connected_at
+    attr_reader :client, :char_id
     
     def initialize(websocket, &ready_callback)
       self.websocket = websocket
       self.ready_callback = ready_callback
+      self.connected_at = Time.now
       websocket.onopen { |handshake| connection_opened(handshake) }
       websocket.onclose { connection_closed }
       websocket.onmessage { |msg| receive_data(msg) }
     end
 
     def ping
-      # No-Op for web clients.
+      data = {
+        type: "notification",
+        args: {
+          notification_type: "ping",
+          message: Time.now.rfc2822,
+          character: @char_id
+        }
+      }
+      send_data data.to_json.to_s
     end
         
     def connection_opened(handshake)
@@ -24,6 +33,10 @@ module AresMUSH
       rescue Exception => e
         Global.logger.warn "Error opening connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
+    end
+    
+    def is_web_connection?
+      true
     end
     
     def connect_client(client)
@@ -38,14 +51,14 @@ module AresMUSH
       end
     end
     
-    def web_notify(type, message, is_data)
-      char = @web_char_id ? Character[@web_char_id] : nil
+    def send_web_notification(type, message, is_data)
+      char = @char_id ? Character[@char_id] : nil
       data = {
         type: "notification",
         args: {
           notification_type: type,
           message: message,
-          character: @web_char_id,
+          character: @char_id,
           timestamp: Time.now.rfc2822,
           is_data: is_data
         }
@@ -54,23 +67,11 @@ module AresMUSH
     end
     
     def send_formatted(msg, color_mode = "FANSI", ascii_mode = false, screen_reader = false)
-       # Strip out < and > - may need to strip other things in the future
-      formatted = MushFormatter.format(msg, color_mode)
-      self.send_raw(formatted)
+       raise "Tried to send formatted text to web client."
     end
     
-    def send_raw(msg)
-      # Strip out < and > - may need to strip other things in the future
-     formatted = msg.gsub(/</, '&lt;').gsub(/>/, '&gt;')
-     data = {
-       type: "notification",
-       args: {
-         notification_type: "webclient_output",
-         message: formatted,
-         character: @web_char_id
-       }
-     }
-     send_data data.to_json.to_s
+    def send_raw(msg)      
+      raise "Tried to send raw text to web client."     
     end
     
     # Just announces that the websocket was closed.
@@ -98,10 +99,10 @@ module AresMUSH
           @client.handle_input(json_input["message"] + "\r\n")        
         elsif (json_input["type"] == "identify")
           data = json_input["data"]
-          @web_char_id = data ? data["id"] : nil
-          @webclient = data["webclient"]
-        elsif (json_input["type"] == "cmd")
-          Global.dispatcher.queue_event WebCmdEvent.new(client, json_input["cmd_name"], json_input["data"])
+          @char_id = data ? data["id"] : nil
+          if (@client)
+            @client.char_id = @char_id
+          end
         else
           Global.logger.warn "Unexpected input from web client: #{data}"
         end

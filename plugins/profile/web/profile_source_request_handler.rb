@@ -2,8 +2,8 @@ module AresMUSH
   module Profile
     class ProfileSourceRequestHandler
       def handle(request)
-        char = Character.find_one_by_name request.args[:char_id]
-        version = ProfileVersion[request.args[:version_id]]
+        char = Character.find_one_by_name request.args['char_id']
+        version = ProfileVersion[request.args['version_id']]
         
         if (!char)
           return { error: t('webportal.not_found') }

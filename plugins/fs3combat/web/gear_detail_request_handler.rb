@@ -2,8 +2,8 @@ module AresMUSH
   module FS3Combat
     class GearDetailRequestHandler
       def handle(request)
-        type = request.args[:type]
-        name = request.args[:name]
+        type = request.args['type']
+        name = request.args['name']
 
         if (name.blank?)
           return { error: t('fs3combat.invalid_gear_type') }

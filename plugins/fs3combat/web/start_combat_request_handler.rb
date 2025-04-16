@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Combat
     class StartCombatRequestHandler
       def handle(request)
-        scene_id = request.args[:scene_id]
+        scene_id = request.args['scene_id']
         enactor = request.enactor
         
         error = Website.check_login(request)

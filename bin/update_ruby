@@ -2,9 +2,9 @@
 
 sudo ln -s /bin/mkdir /usr/bin/mkdir
 
-rvm install 3.1.2
-rvm use 3.1.2
-rvm --default use 3.1.2
+rvm install 3.3.6
+rvm use 3.3.6
+rvm --default use 3.3.6
 gem update bundler
 bundle install
-echo "rvm use 3.1.2" >> "$HOME/.profile"
+echo "rvm use 3.3.6" >> "$HOME/.profile"

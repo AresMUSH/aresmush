@@ -32,9 +32,9 @@ Normally this would be done by game admin, but the default Ares configuration al
 
 You can report abusive channel conversations using the `channel/report` command or the "Report Abuse" menu option in the web portal chat screen.  This will create an admin job with the channel recall buffer automatically included.
 
-### Monitoring and Reporting Harassing Pages
+### Monitoring and Reporting Harassing PMs
 
-You can report abusive PM/page conversations using the `page/report` command or the "Report Abuse" menu option in the web portal chat screen.  This will create an admin job with the conversation automatically included.
+You can report abusive PM/page conversations using the `pm/report` command or the "Report Abuse" menu option in the web portal chat screen.  This will create an admin job with the conversation automatically included.
 
 ### Reporting Offensive Mails
 

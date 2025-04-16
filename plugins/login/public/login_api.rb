@@ -25,20 +25,20 @@ module AresMUSH
     end
     
     def self.is_online?(char)
-      !!Login.find_client(char)
+      !!Login.find_game_client(char)
     end
     
     def self.is_online_or_on_web?(char)
-      Login.find_client(char) || Login.find_web_client(char)
+      Login.find_game_client(char) || Login.find_web_client(char)
     end
     
     def self.is_portal_only?(char)
-      !Login.find_client(char) && Login.find_web_client(char)
+      !Login.find_game_client(char) && Login.find_web_client(char)
     end
     
-    def self.find_client(char)
+    def self.find_game_client(char)
       return nil if !char
-      Global.client_monitor.find_client(char)
+      Global.client_monitor.find_game_client(char)
     end
     
     def self.find_web_client(char)
@@ -47,14 +47,14 @@ module AresMUSH
     end
         
     def self.emit_if_logged_in(char, message)
-      client = find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client.emit message
       end
     end
     
     def self.emit_ooc_if_logged_in(char, message)
-      client = find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client.emit_ooc message
       end
@@ -62,13 +62,14 @@ module AresMUSH
       
     def self.connect_client_after_login(char, client)
       # Handle reconnect
-      existing_client = Login.find_client(char)
+      existing_client = Login.find_game_client(char)
       client.char_id = char.id
       
       if (existing_client)
         existing_client.emit_ooc t('login.disconnected_by_reconnect')
         existing_client.disconnect
 
+        # Give the disconnect a second to clear first.
         Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
       else
         announce_connection(client, char)
@@ -81,6 +82,7 @@ module AresMUSH
       char.change_password(password)
       char.update(login_api_token: '')
       char.update(login_api_token_expiry: Time.now - 86400*5)
+      char.update(login_failures: 0)      
       password
     end
     
@@ -161,6 +163,19 @@ module AresMUSH
       return false if !actor
       not_new = actor.has_permission?("manage_login") || actor.is_approved?
       actor.has_permission?("boot") && not_new
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      {
+        show_pw_tab: Login.can_manage_login?(viewer)
+      }
+    end
+    
+    def self.web_last_online_update(char, request)
+      # 30 minutes keeps idle times minimal without updating a zillion times for each web request
+      if (Time.now - char.last_on > 60 * 30)
+        Login.update_site_info(request.ip_addr, request.hostname, char)
+      end
     end
   end
 end

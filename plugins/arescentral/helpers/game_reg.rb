@@ -59,7 +59,8 @@ module AresMUSH
         website: website,
         public_game: AresCentral.is_public_game?,
         status: game_config["status"],
-        activity: Game.master.login_activity
+        activity: Game.master.login_activity,
+        extras: (Global.read_config("plugins", "extras") || []).join(" ")
       }
             
       params

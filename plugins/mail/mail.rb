@@ -88,8 +88,6 @@ module AresMUSH
 
     def self.get_event_handler(event_name) 
       case event_name
-      when "CharDisconnectedEvent"
-        return CharDisconnectedEventHandler
       when "CharIdledOutEvent"
         return CharIdledOutEventHandler
       end

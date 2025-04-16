@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class GetConfigRequestHandler
       def handle(request)
-        file = request.args[:file]
+        file = request.args['file']
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -13,7 +13,7 @@ module AresMUSH
         end
       
         path = File.join(AresMUSH.game_path, 'config', file)
-        if (!File.exists?(path))
+        if (!File.exist?(path))
           return { error: t('webportal.not_found') }
         end
         

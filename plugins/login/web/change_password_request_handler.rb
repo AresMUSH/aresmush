@@ -3,9 +3,9 @@ module AresMUSH
     class ChangePasswordRequestHandler
       def handle(request)
         enactor = request.enactor
-        pw = request.args[:current_password]
-        new_pw = request.args[:new_password]
-        confirm_pw = request.args[:confirm_password]
+        pw = request.args['current_password']
+        new_pw = request.args['new_password']
+        confirm_pw = request.args['confirm_password']
 
         error = Website.check_login(request)
         return error if error

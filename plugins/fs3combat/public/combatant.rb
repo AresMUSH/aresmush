@@ -126,7 +126,7 @@ module AresMUSH
     end
     
     def client
-      self.character ? Login.find_client(self.character) : nil
+      self.character ? Login.find_game_client(self.character) : nil
     end
     
     # NOTE!  This is reported as a negative number.

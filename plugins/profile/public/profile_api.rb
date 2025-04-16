@@ -1,7 +1,7 @@
 module AresMUSH
   module Profile
     def self.general_field(char, field_type, value)
-      client = Login.find_client(char)
+      client = Login.find_game_client(char)
       case field_type
       when 'demographic'
         char.demographic(value)

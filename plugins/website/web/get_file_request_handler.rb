@@ -3,9 +3,9 @@ module AresMUSH
     class GetFileRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        folder = request.args[:folder]
-        edit_mode = (request.args[:edit_mode] || "").to_bool
+        name = request.args['name']
+        folder = request.args['folder']
+        edit_mode = (request.args['edit_mode'] || "").to_bool
         
         error = Website.check_login(request, true)
         return error if error
@@ -16,7 +16,7 @@ module AresMUSH
         
         path = File.join(folder, name)
         
-        if (!File.exists?( File.join(AresMUSH.website_uploads_path, path)))
+        if (!File.exist?( File.join(AresMUSH.website_uploads_path, path)))
           return { error: t('webportal.not_found') }
         end
         

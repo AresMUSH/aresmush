@@ -2,7 +2,7 @@ module AresMUSH
   module Scenes
     class DeletePlotRequestHandler
       def handle(request)
-        plot = Plot[request.args[:id]]
+        plot = Plot[request.args['id']]
         enactor = request.enactor
         
         if (!plot)

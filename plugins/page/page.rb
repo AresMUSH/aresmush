@@ -20,10 +20,10 @@ module AresMUSH
           return PageColorCmd
         when "dnd"
           return PageDoNotDisturbCmd
-        when "ignore"
-          return PageIgnoreCmd
         when "new" 
           return PageNewCmd
+        when "reply"
+          return PageReplyCmd
         when "review"
           if (cmd.args)
             return PageReviewCmd

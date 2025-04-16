@@ -2,7 +2,7 @@ module AresMUSH
   module Jobs
     class JobsRequestHandler
       def handle(request)
-        page = (request.args[:page] || "1").to_i
+        page = (request.args['page'] || "1").to_i
         enactor = request.enactor
         
         error = Website.check_login(request)

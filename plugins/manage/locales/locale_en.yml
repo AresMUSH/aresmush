@@ -68,7 +68,7 @@ en:
         
         announce: "%xh%xg%%%% Game Announcement:%xn %{message}"
         
-        version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttp://www.aresmush.com"
+        version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttps://aresmush.com"
         migrations: "Applied Migrations:"
         server_info: "Server Information"
         version_title: "Version:"
@@ -108,3 +108,11 @@ en:
         
         mismatched_versions: "Your game and webportal versions are mismatched.  Try reloading the page or clearing your browser cache. If the problem persists, there may be an upgrade issue."
         db_save_triggered: "Database save initiated."
+        
+        already_blocked: "%{type} block already exists for %{name}."
+        not_blocked: "No %{type} block found for %{name}."
+        block_added: "Added %{type} block for %{name}."
+        block_removed: "Removed %{type} block for %{name}."
+        blocks_list_header: "Blocked Character                                            Block Type"
+        invalid_block_type: "Invalid block type. Try one of these: %{types}."
+        block_types: "Available Block Types:"

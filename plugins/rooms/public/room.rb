@@ -73,7 +73,7 @@ module AresMUSH
     
     def clients
       list = []
-      Global.client_monitor.clients.each do |c|
+      Global.client_monitor.game_clients.each do |c|
         char = c.char
         if (char && char.room == self)
           list << c

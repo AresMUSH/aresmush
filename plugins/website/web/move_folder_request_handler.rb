@@ -6,9 +6,9 @@ module AresMUSH
     class MoveFolderRequestHandler
       def handle(request)
         enactor = request.enactor
-        folder = request.args[:folder]
-        new_folder = (request.args[:new_folder] || "").downcase
-        files = request.args[:files] || []
+        folder = request.args['folder']
+        new_folder = (request.args['new_folder'] || "").downcase
+        files = request.args['files'] || []
 
         error = Website.check_login(request)
         return error if error
@@ -24,7 +24,7 @@ module AresMUSH
         folder_path = File.join(AresMUSH.website_uploads_path, folder)
         new_folder_path = File.join(AresMUSH.website_uploads_path, new_folder)
         
-        if (!File.exists?(folder_path))
+        if (!File.exist?(folder_path))
           return { error: t('webportal.not_found') }
         end
         

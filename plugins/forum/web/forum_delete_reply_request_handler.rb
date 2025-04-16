@@ -3,7 +3,7 @@ module AresMUSH
     class ForumDeleteReplyRequestHandler
       def handle(request)
                 
-        reply_id = request.args[:reply_id]
+        reply_id = request.args['reply_id']
         enactor = request.enactor
         
         error = Website.check_login(request)

@@ -13,7 +13,7 @@ module AresMUSH
         DatabaseMigrator.write_config_file("scenes.yml", config)
 
         Global.logger.debug "Adding traits chargen blurb."
-        if (File.exists?(File.join(AresMUSH.game_path, "config", "traits.yml")))
+        if (File.exist?(File.join(AresMUSH.game_path, "config", "traits.yml")))
           config = DatabaseMigrator.read_config_file("traits.yml")
           config["traits"]["traits_blurb"] = "Enter your character's traits."
           DatabaseMigrator.write_config_file("traits.yml", config)

@@ -2,8 +2,8 @@ module AresMUSH
   module Rooms
     class LocationRequestHandler
       def handle(request)
-        id = request.args[:id]
-        edit_mode = (request.args[:edit_mode] || "").to_bool
+        id = request.args['id']
+        edit_mode = (request.args['edit_mode'] || "").to_bool
         enactor = request.enactor
         
         error = Website.check_login(request, true)

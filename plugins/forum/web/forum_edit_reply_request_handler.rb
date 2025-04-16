@@ -3,8 +3,8 @@ module AresMUSH
     class ForumEditReplyRequestHandler
       def handle(request)
                 
-        reply_id = request.args[:reply_id]
-        message = Website.format_input_for_mush(request.args[:message] || "")
+        reply_id = request.args['reply_id']
+        message = Website.format_input_for_mush(request.args['message'] || "")
         enactor = request.enactor
         
         error = Website.check_login(request)

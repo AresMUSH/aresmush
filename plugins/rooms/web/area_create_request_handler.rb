@@ -2,10 +2,10 @@ module AresMUSH
   module Rooms
     class AreaCreateRequestHandler
       def handle(request)
-        name = request.args[:name]
-        desc = request.args[:description]
-        summary = request.args[:summary]
-        parent_id = request.args[:parent_id]
+        name = request.args['name']
+        desc = request.args['description']
+        summary = request.args['summary']
+        parent_id = request.args['parent_id']
         enactor = request.enactor
         
         error = Website.check_login(request)

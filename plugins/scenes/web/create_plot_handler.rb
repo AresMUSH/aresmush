@@ -3,6 +3,7 @@ module AresMUSH
     class CreatePlotRequestHandler
       def handle(request)
         enactor = request.enactor
+        tags = (request.args['tags'] || "").split(" ")
         
         error = Website.check_login(request)
         return error if error
@@ -11,19 +12,19 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
-        [ :title, :summary ].each do |field|
+        [ 'title', 'summary' ].each do |field|
           if (request.args[field].blank?)
             return { error: t('webportal.missing_required_fields', :fields => "title, summary") }
           end
         end
         
-        storyteller_names = request.args[:storytellers] || []
+        storyteller_names = request.args['storytellers'] || []
         
         plot = Plot.create(
-          title: request.args[:title],
-          description: request.args[:description],
-          summary: request.args[:summary],
-          content_warning: request.args[:content_warning]
+          title: request.args['title'],
+          description: request.args['description'],
+          summary: request.args['summary'],
+          content_warning: request.args['content_warning']
         )
 
         storyteller_names.each do |storyteller|
@@ -35,7 +36,7 @@ module AresMUSH
           end
         end
               
-        Website.update_tags(plot, request.args[:tags])
+        Website.update_tags(plot, tags)
     
         Website.add_to_recent_changes('plot', t('scenes.plot_created', :title => plot.title), { id: plot.id }, enactor.name)
     

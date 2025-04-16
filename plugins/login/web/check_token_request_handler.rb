@@ -3,8 +3,8 @@ module AresMUSH
     class CheckTokenRequestHandler
       def handle(request)
                 
-        id = request.args[:id]
-        token = request.args[:token]
+        id = request.args['id']
+        token = request.args['token']
         
         char = Character.find_one_by_name(id)
         if (!char)
@@ -24,9 +24,8 @@ module AresMUSH
           return { error: t('webportal.session_expired') }    
         end
         
-        if (Time.now - char.last_on > 86400)
-          Login.update_site_info(request.ip_addr, request.hostname, char)
-        end
+        # Update last online time for alts who maybe didn't log in directly
+        Login.web_last_online_update(char, request)
         
         Login.web_session_info(char)
         

@@ -23,7 +23,11 @@ module AresMUSH
       
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
-          messages = channel.sorted_channel_messages.last(self.num_messages)
+          
+          messages = channel.sorted_channel_messages
+          .select { |m| !enactor.has_channel_blocked?(m.author) }
+          .last(self.num_messages)
+          
           list = messages.map { |m| " [#{OOCTime.local_long_timestr(enactor, m.created_at)}] #{Channels.display_name(enactor, channel)}  #{m.message}"}
           template = BorderedListTemplate.new list, 
               t('channels.recall_history', :name => Channels.display_name(enactor, channel, false)), 

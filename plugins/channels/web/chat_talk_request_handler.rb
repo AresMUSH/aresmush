@@ -3,9 +3,9 @@ module AresMUSH
     class ChatTalkRequestHandler
       def handle(request)
         enactor = request.enactor
-        channel = Channel.find_one_by_name(request.args[:channel])
-        message = request.args[:message]
-        sender = Character.named(request.args[:sender])
+        channel = Channel.find_one_by_name(request.args['channel'])
+        message = request.args['message']
+        sender = Character.named(request.args['sender'])
         
         error = Website.check_login(request)
         return error if error
@@ -26,9 +26,7 @@ module AresMUSH
         message = Channels.pose_to_channel channel, sender, message, options.title   
         
         # Update last online time for alts who maybe didn't log in directly
-        if (Time.now - sender.last_on > 86400)
-          Login.update_site_info(request.ip_addr, request.hostname, sender)
-        end
+        Login.web_last_online_update(sender, request)
         
         {
           message: Website.format_markdown_for_html(message)

@@ -75,14 +75,14 @@ module AresMUSH
     
     def self.save_char(char, chargen_data)
       alerts = []
-      (chargen_data[:fs3][:fs3_attributes] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_attributes'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
       end
 
-      (chargen_data[:fs3][:fs3_action_skills] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_action_skills'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
@@ -90,13 +90,13 @@ module AresMUSH
         
         ability = FS3Skills.find_ability(char, k)
         if (ability)
-          specs = (chargen_data[:fs3][:fs3_specialties] || {})[k] || []
+          specs = (chargen_data['fs3']['fs3_specialties'] || {})[k] || []
           ability.update(specialties: specs)
         end
       end
     
       new_bg_skills = []
-      (chargen_data[:fs3][:fs3_backgrounds] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_backgrounds'] || {}).each do |k, v|
         skill_name = k.titleize
         error = FS3Skills.set_ability(char, skill_name, v.to_i)
         if (error)
@@ -112,14 +112,14 @@ module AresMUSH
         end
       end
     
-      (chargen_data[:fs3][:fs3_languages] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_languages'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
       end
     
-      (chargen_data[:fs3][:fs3_advantages] || {}).each do |k, v|
+      (chargen_data['fs3']['fs3_advantages'] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
@@ -170,6 +170,30 @@ module AresMUSH
     def self.build_web_char_data(char, viewer)
       builder = WebCharDataBuilder.new
       builder.build(char, viewer)
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      {
+        fs3: {
+          can_manage_xp: FS3Skills.can_manage_xp?(viewer),
+          can_manage_luck: FS3Skills.can_manage_luck?(viewer),
+          show_fs3_tab: FS3Skills.can_manage_xp?(viewer) || FS3Skills.can_manage_luck?(viewer),
+          luck: char.fs3_luck,
+          xp: char.fs3_xp
+        }
+      }
+    end
+    
+    def self.save_web_profile_data(char, enactor, args)
+      if FS3Skills.can_manage_xp?(enactor)
+        char.update(fs3_xp: (args['fs3']['xp'] || "").to_i)
+      end
+
+      if FS3Skills.can_manage_luck?(enactor)
+        char.update(fs3_luck: (args['fs3']['luck']).to_i)
+      end
+      
+      nil
     end
   end
 end

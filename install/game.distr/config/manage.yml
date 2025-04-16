@@ -9,7 +9,11 @@ manage:
     about: version
     update: upgrade
     dbbackup: db/backup
+    blocks: block
   permissions:
     announce: Use the announce command.
     boot: Use the boot command.
     manage_game: Code and database-related tasks, including restarts and loads.
+  block_types:
+  - pm
+  - channel

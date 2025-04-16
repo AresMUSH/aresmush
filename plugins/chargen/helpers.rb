@@ -72,12 +72,12 @@ module AresMUSH
     def self.save_char(char, chargen_data)
       alerts = []
             
-      chargen_data[:demographics].each do |k, v|
-        char.update_demographic(k, v[:value])
+      chargen_data['demographics'].each do |k, v|
+        char.update_demographic(k, v['value'])
       end
       
-      if (chargen_data[:demographics][:age])
-        age_or_bday = chargen_data[:demographics][:age][:value]
+      if (chargen_data['demographics']['age'])
+        age_or_bday = chargen_data['demographics']['age']['value']
 
         # See if it's just an age.
         if (age_or_bday.is_integer?)
@@ -99,24 +99,24 @@ module AresMUSH
         end
       end
       
-      chargen_data[:groups].each do |k, v|
-        Demographics.set_group(char, v[:name], v[:value])
+      chargen_data['groups'].each do |k, v|
+        Demographics.set_group(char, v['name'], v['value'])
       end
       
       if (Ranks.is_enabled?)
-        rank_error = Ranks.set_rank(char, chargen_data[:groups][:rank][:value])
+        rank_error = Ranks.set_rank(char, chargen_data['groups']['rank']['value'])
         if (rank_error)
           alerts << rank_error
         end
       end
       
-      char.update(cg_background: Website.format_input_for_mush(chargen_data[:background]))
-      char.update(idle_lastwill: Website.format_input_for_mush(chargen_data[:lastwill]))
+      char.update(cg_background: Website.format_input_for_mush(chargen_data['background']))
+      char.update(idle_lastwill: Website.format_input_for_mush(chargen_data['lastwill']))
       
-      char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
-      char.update_desc(Website.format_input_for_mush(chargen_data[:desc]))
-      char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
-      char.update(profile_image: chargen_data[:profile_image].blank? ? nil : chargen_data[:profile_image])
+      char.update(rp_hooks: Website.format_input_for_mush(chargen_data['rp_hooks']))
+      char.update_desc(Website.format_input_for_mush(chargen_data['desc']))
+      char.update(shortdesc: Website.format_input_for_mush(chargen_data['shortdesc']))
+      char.update(profile_image: chargen_data['profile_image'].blank? ? nil : chargen_data['profile_image'])
       
       if FS3Skills.is_enabled?
         errors = FS3Skills.save_char(char, chargen_data)
@@ -192,7 +192,7 @@ module AresMUSH
       
        Chargen.custom_approval(model)
        
-       Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
+       Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_game_client(model), model.id)
          
        return nil
      end

@@ -3,7 +3,7 @@ module AresMUSH
     class ChargenSubmitRequestHandler
       def handle(request)
         char = request.enactor
-        app_notes = request.args[:app_notes]
+        app_notes = request.args['app_notes']
                 
         if (!char)
           return { error: t('webportal.login_required') }

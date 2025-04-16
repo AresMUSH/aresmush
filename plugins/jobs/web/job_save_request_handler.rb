@@ -3,15 +3,15 @@ module AresMUSH
     class JobSaveRequestHandler
       def handle(request)
         enactor = request.enactor
-        category_name = (request.args[:category] || "").upcase
-        status = (request.args[:status] || "").upcase
-        participant_ids = request.args[:participants]
-        title = request.args[:title]
-        description = request.args[:description]
-        submitter_name = request.args[:submitter]
-        assignee_name = request.args[:assigned_to]
-        tags = request.args[:tags]
-        custom_fields = request.args[:custom_fields] || {}
+        category_name = (request.args['category'] || "").upcase
+        status = (request.args['status'] || "").upcase
+        participant_ids = request.args['participants']
+        title = request.args['title']
+        description = request.args['description']
+        submitter_name = request.args['submitter']
+        assignee_name = request.args['assigned_to']
+        tags = (request.args['tags'] || "").split(" ")
+        custom_fields = request.args['custom_fields'] || {}
 
         error = Website.check_login(request)
         return error if error
@@ -22,7 +22,7 @@ module AresMUSH
         
         request.log_request
         
-        job = Job[request.args[:id]]
+        job = Job[request.args['id']]
         if (!job)
           return { error: t('webportal.not_found') }
         end

@@ -2,15 +2,15 @@ module AresMUSH
   module Events
     class EditEventRequestHandler
       def handle(request)
-        event_id = request.args[:event_id]
-        date = request.args[:date]
-        time = request.args[:time]
-        title = request.args[:title]
-        desc = request.args[:description]
-        warning = request.args[:content_warning]
-        tags = (request.args[:tags] || [])
+        event_id = request.args['event_id']
+        date = request.args['date']
+        time = request.args['time']
+        title = request.args['title']
+        desc = request.args['description']
+        warning = request.args['content_warning']
+        tags = (request.args['tags'] || "").split(" ")
         enactor = request.enactor
-        organizer = Character.named(request.args[:organizer])
+        organizer = Character.named(request.args['organizer'])
         
         request.log_request
         

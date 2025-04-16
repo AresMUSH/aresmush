@@ -3,9 +3,9 @@ module AresMUSH
     class SearchForumRequestHandler
       def handle(request)
 
-        search_title = (request.args[:searchTitle] || "").strip
-        search_text = (request.args[:searchText] || "").strip
-        search_author = (request.args[:searchAuthor] || "").strip
+        search_title = (request.args['searchTitle'] || "").strip
+        search_text = (request.args['searchText'] || "").strip
+        search_author = (request.args['searchAuthor'] || "").strip
         
         enactor = request.enactor
         

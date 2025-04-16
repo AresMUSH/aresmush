@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class ChangeSceneLocationHandler
       def handle(request)
-        scene = Scene[request.args[:scene_id]]
+        scene = Scene[request.args['scene_id']]
         enactor = request.enactor
-        location = request.args[:location]
+        location = request.args['location']
         
         if (!scene)
           return { error: t('webportal.not_found') }

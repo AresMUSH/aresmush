@@ -44,7 +44,7 @@ module AresMUSH
       end
       
       engine_api_key = SecureRandom.uuid
-      if (File.exists?(File.join(AresMUSH.game_path, "config", "secrets.yml")))
+      if (File.exist?(File.join(AresMUSH.game_path, "config", "secrets.yml")))
         db_password = nil
       else
         db_password = ('a'..'z').to_a.shuffle[0,30].join

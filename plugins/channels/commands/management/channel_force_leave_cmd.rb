@@ -23,7 +23,7 @@ module AresMUSH
       def handle
         ClassTargetFinder.with_a_character(self.char_name, client, enactor) do |model|
           Channels.with_an_enabled_channel(self.channel_name, client, model) do |channel|
-            other_client = Login.find_client(model)
+            other_client = Login.find_game_client(model)
             if (other_client)
               other_client.emit_ooc t('channels.force_removed', :char => enactor_name, :channel => channel.name)
             end

@@ -3,10 +3,10 @@ module AresMUSH
     class SendPageRequestHandler
       def handle(request)
         enactor = request.enactor
-        message = request.args[:message]
-        thread_id = request.args[:thread_id]
-        names = request.args[:names]
-        sender_name = request.args[:sender]
+        message = request.args['message']
+        thread_id = request.args['thread_id']
+        names = request.args['names']
+        sender_name = request.args['sender']
         
         error = Website.check_login(request)
         return error if error
@@ -45,16 +45,19 @@ module AresMUSH
             if (!char)
               return { error: t('page.invalid_recipient', :name => name) }
             end
+
+            if (char.page_ignored.include?(enactor))
+              return { error: t('page.cant_page_ignored', :name => name) }
+            end
+            
             recipients << char
           end
         end
         
         # Update last online time for alts who maybe didn't log in directly
-        if (Time.now - sender.last_on > 86400)
-          Login.update_site_info(request.ip_addr, request.hostname, sender)
-        end
+        Login.web_last_online_update(sender, request)
         
-        thread = Page.send_page(sender, recipients, message, Login.find_client(sender))
+        thread = Page.send_page(sender, recipients, message, Login.find_game_client(sender))
         # Respond to existing thread - no return
         if (thread_id)
           return {}

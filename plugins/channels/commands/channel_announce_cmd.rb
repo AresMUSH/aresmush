@@ -20,17 +20,22 @@ module AresMUSH
       end
   
       def handle
-        Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
-          options = Channels.get_channel_options(enactor, channel)
-          
-          announce_on = self.option.is_on?
-          
-          # Mute logic works backwards!
-          if (cmd.switch_is?("mute"))
-            announce_on = !announce_on
+        if (self.name.downcase == "all")
+          enactor.channels.each do |c|
+            set_channel_announce(c.name)
           end
+        else
+          set_channel_announce(self.name)
+        end
+      end
+      
+      def set_channel_announce(channel_name)
+        Channels.with_an_enabled_channel(channel_name, client, enactor) do |channel|
+          options = Channels.get_channel_options(enactor, channel)
+        
+          announce_on = self.option.is_on?        
           options.update(announce: announce_on)
-          
+        
           if (announce_on)
             client.emit_success "%xn#{t('channels.announce_enabled', :name => Channels.display_name(enactor, channel))}"
           else
@@ -39,6 +44,5 @@ module AresMUSH
         end
       end
     end
-
   end
 end

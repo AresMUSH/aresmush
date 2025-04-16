@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class InviteToSceneRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
-        invitee = Character.named(request.args[:invitee])
+        invitee = Character.named(request.args['invitee'])
         
         if (!scene || !invitee)
           return { error: t('webportal.not_found') }

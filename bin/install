@@ -41,21 +41,21 @@ source "${HOME_DIR}/.rvm/scripts/rvm"
 
 echo -e "${ARES_INSTALL_TEXT} Install Ruby version."
 
-rvm install ruby-3.1.2
+rvm install ruby-3.3.6
 
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Use Ruby version."
 
-rvm use ruby-3.1.2
-rvm --default use ruby-3.1.2
+rvm use ruby-3.3.6
+rvm --default use ruby-3.3.6
 
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Ensure proper Ruby version used at startup."
 
 echo "source ${HOME_DIR}/.rvm/scripts/rvm" >> "${HOME_DIR}/.profile"
-echo "rvm use 3.1.2" >> "${HOME_DIR}/.profile"
+echo "rvm use 3.3.6" >> "${HOME_DIR}/.profile"
 
 # #########################################################################################
 

@@ -2,7 +2,7 @@ module AresMUSH
   
   module Global
     def self.logger
-      ares_logger ? ares_logger.logger : Log4r::Logger.root
+      ares_logger || Logger.new($stdout)
     end
     
     def self.read_config(section, key = nil, subkey = nil)

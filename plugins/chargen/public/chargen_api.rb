@@ -134,10 +134,10 @@ module AresMUSH
     end
     
     def self.save_web_profile_data(char, enactor, args)
-      char.update(rp_hooks: Website.format_input_for_mush(args[:rp_hooks]))
-      char.update(bg_shared: args[:bg_shared].to_bool)
+      char.update(rp_hooks: Website.format_input_for_mush(args['rp_hooks']))
+      char.update(bg_shared: args['bg_shared'].to_bool)
       if (Chargen.can_manage_bgs?(enactor))
-        char.update(cg_background: Website.format_input_for_mush(args[:background]))
+        char.update(cg_background: Website.format_input_for_mush(args['background']))
       end
       return nil
     end

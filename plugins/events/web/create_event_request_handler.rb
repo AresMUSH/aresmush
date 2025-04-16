@@ -2,14 +2,14 @@ module AresMUSH
   module Events
     class CreateEventRequestHandler
       def handle(request)
-        date = request.args[:date]
-        time = request.args[:time]
-        title = request.args[:title]
-        desc = request.args[:description]
-        tags = (request.args[:tags] || [])
-        warning = request.args[:content_warning]
+        date = request.args['date']
+        time = request.args['time']
+        title = request.args['title']
+        desc = request.args['description']
+        tags = (request.args['tags'] || "").split(" ")
+        warning = request.args['content_warning']
         enactor = request.enactor
-        organizer = Character.named(request.args[:organizer]) || enactor
+        organizer = Character.named(request.args['organizer']) || enactor
         
         error = Website.check_login(request)
         return error if error

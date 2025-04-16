@@ -3,8 +3,8 @@ module AresMUSH
     class JobChangeParticipantsRequestHandler
       def handle(request)
         enactor = request.enactor
-        job = Job[request.args[:id]]
-        participant_ids = (request.args[:participants] || [])
+        job = Job[request.args['id']]
+        participant_ids = (request.args['participants'] || [])
         
         error = Website.check_login(request)
         return error if error

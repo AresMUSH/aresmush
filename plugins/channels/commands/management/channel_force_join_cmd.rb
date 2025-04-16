@@ -27,7 +27,7 @@ module AresMUSH
             if (error)
               client.emit_failure error
             else
-              other_client = Login.find_client(model)
+              other_client = Login.find_game_client(model)
               if (other_client)
                 options = Channels.get_channel_options(model, channel)
                 other_client.emit_ooc t('channels.force_added', :char => enactor_name, :channel => channel.name )

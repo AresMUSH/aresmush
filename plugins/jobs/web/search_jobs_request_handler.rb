@@ -2,14 +2,14 @@ module AresMUSH
   module Jobs
     class SearchJobsRequestHandler
       def handle(request)
-        search_text = (request.args[:searchText] || "").strip
-        search_submitter = (request.args[:searchSubmitter] || "").strip
-        search_title = (request.args[:searchTitle] || "").strip
-        search_category = (request.args[:searchCategory] || "").strip
-        search_status = (request.args[:searchStatus] || "").strip
-        search_token = request.args[:searchToken] || ""
-        search_tag = request.args[:searchTag] || ""
-        search_custom = request.args[:searchCustom] || {}
+        search_text = (request.args['searchText'] || "").strip
+        search_submitter = (request.args['searchSubmitter'] || "").strip
+        search_title = (request.args['searchTitle'] || "").strip
+        search_category = (request.args['searchCategory'] || "").strip
+        search_status = (request.args['searchStatus'] || "").strip
+        search_token = request.args['searchToken'] || ""
+        search_tag = request.args['searchTag'] || ""
+        search_custom = request.args['searchCustom'] || {}
         enactor = request.enactor
         
         error = Website.check_login(request)

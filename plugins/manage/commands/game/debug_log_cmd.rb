@@ -9,8 +9,7 @@ module AresMUSH
       end
       
       def handle
-        logs_path = File.join(AresMUSH.game_path, "logs")
-        file = Dir[File.join(logs_path, '**')].sort.reverse.first
+        file = Global.logger.latest_log_file
         contents = File.readlines(file)
         display = contents.last(25).join("\n")
         

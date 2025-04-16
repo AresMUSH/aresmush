@@ -2,8 +2,9 @@ module AresMUSH
   module Scenes
     class EditSceneRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
+        tags = (request.args['tags'] || "").split(" ")
         
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -19,27 +20,27 @@ module AresMUSH
         Global.logger.info "Scene #{scene.id} edited by #{enactor.name}."
         
         if (scene.shared)
-          [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|
+          [ 'log', 'location', 'summary', 'scene_type', 'title', 'icdate' ].each do |field|
             if (request.args[field].blank?)
               return { error: t('webportal.missing_required_fields', :fields => "log, location, summary, type, title, date") }
             end
           end
           
-          Scenes.add_log_version(scene, request.args[:log], enactor)          
+          Scenes.add_log_version(scene, request.args['log'], enactor)          
           Website.add_to_recent_changes('scene', t('scenes.scene_updated', :title => scene.title), { id: scene.id }, enactor.name)
           
         end
         
-        scene.update(location: request.args[:location])
-        scene.update(summary: Website.format_input_for_mush(request.args[:summary]))
-        scene.update(content_warning: request.args[:content_warning])
-        scene.update(scene_type: request.args[:scene_type])
-        scene.update(scene_pacing: request.args[:scene_pacing])
-        scene.update(title: request.args[:title])
-        scene.update(icdate: request.args[:icdate])
-        scene.update(limit: request.args[:limit])
+        scene.update(location: request.args['location'])
+        scene.update(summary: Website.format_input_for_mush(request.args['summary']))
+        scene.update(content_warning: request.args['content_warning'])
+        scene.update(scene_type: request.args['scene_type'])
+        scene.update(scene_pacing: request.args['scene_pacing'])
+        scene.update(title: request.args['title'])
+        scene.update(icdate: request.args['icdate'])
+        scene.update(limit: request.args['limit'])
         
-        plot_ids = request.args[:plots] || []
+        plot_ids = request.args['plots'] || []
         plots = []
         plot_ids.each do |id|
           plot = Plot[id]
@@ -63,13 +64,13 @@ module AresMUSH
           end
         end
           
-        is_private = request.args[:privacy] == "Private"
+        is_private = request.args['privacy'] == "Private"
         scene.update(private_scene: is_private)
         if (is_private)
           scene.watchers.replace []
         end
         
-        participant_names = request.args[:participants] || []
+        participant_names = request.args['participants'] || []
         participant_names_upcase = participant_names.map { |p| p.upcase }
         scene.participants.each do |p|
           if (!participant_names_upcase.include?(p.name_upcase))
@@ -84,7 +85,7 @@ module AresMUSH
           end
         end
       
-        related_scene_ids = request.args[:related_scenes] || []
+        related_scene_ids = request.args['related_scenes'] || []
         already_related = scene.related_scenes.map { |s| s.id }
       
         # New additions
@@ -103,7 +104,7 @@ module AresMUSH
           end
         end
       
-        Website.update_tags(scene, request.args[:tags])
+        Website.update_tags(scene, tags)
       
         {}
       end

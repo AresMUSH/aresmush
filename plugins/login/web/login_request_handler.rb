@@ -3,8 +3,8 @@ module AresMUSH
     class LoginRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        pw = request.args[:password]
+        name = request.args['name']
+        pw = request.args['password']
         char = Character.find_one_by_name(name)
 
         error = Website.check_login(request, true)

@@ -3,6 +3,10 @@ module AresMUSH
     def self.active_chars
       Character.all.select { |c| c.is_active? }
     end
+    
+    def self.active_chars_and_npcs
+      Character.all.select { |c| c.is_active_or_npc? }
+    end
   
     def self.build_web_profile_data(char, viewer)
       if (char.on_roster?)
@@ -42,10 +46,10 @@ module AresMUSH
     end
     
     def self.save_web_profile_data(char, enactor, args)
-      char.update(idle_lastwill: Website.format_input_for_mush(args[:lastwill]))
+      char.update(idle_lastwill: Website.format_input_for_mush(args['lastwill']))
       
       if (Idle.can_idle_sweep?(enactor))
-        char.update(idle_notes: Website.format_input_for_mush(args[:idle_notes]))
+        char.update(idle_notes: Website.format_input_for_mush(args['idle_notes']))
       end
       
       if (Idle.can_manage_roster?(enactor))

@@ -2,7 +2,7 @@ module AresMUSH
 
   # @engineinternal true
   class Connection < EventMachine::Connection
-    attr_accessor :window_width, :window_height
+    attr_accessor :window_width, :window_height, :connected_at
     attr_reader :ip_addr, :client
     
     # For unit testing only
@@ -11,19 +11,18 @@ module AresMUSH
     def post_init
       begin
         port, @ip_addr = Socket.unpack_sockaddr_in(get_peername)
-        @window_width = 78
-        @window_height = 24
-        @input_buf = ""
-        @negotiator = TelnetNegotiation.new(self)
-
-        @negotiator.send_naws_request
-        @negotiator.send_charset_request
-                
-          
       rescue Exception => e
-        Global.logger.warn "Could not decode IP address.  error=#{e} backtrace=#{e.backtrace[0,10]}"
+        Global.logger.warn "Could not decode IP address."
         @ip_addr = "0.0.0.0"
       end
+      @connected_at = Time.now
+      @window_width = 78
+      @window_height = 24
+      @input_buf = ""
+      @negotiator = TelnetNegotiation.new(self)
+
+      @negotiator.send_naws_request
+      @negotiator.send_charset_request
     end
 
     def ping
@@ -38,8 +37,7 @@ module AresMUSH
       Global.logger.info("Client connected from #{@ip_addr}. ID=#{client.id}.")
       @client = client
     end
-    
-    
+        
     def send_data(msg)
       begin
         #telnet_debug(msg, "SEND")
@@ -55,6 +53,10 @@ module AresMUSH
     
     def send_raw(msg)
       send_data msg
+    end
+    
+    def send_web_notification(type, message, is_data)
+      raise "Tried to send web notification to game client."
     end
     
     def close_connection(after_writing = false)
@@ -130,12 +132,8 @@ module AresMUSH
       end
     end  
     
-    def web_notify(type, message, is_data)
-      # Nothing - not a web connection
-    end
-    
-    def web_char_id
-      # Nothing - not a web connection
+    def is_web_connection?
+      false
     end
     
     private 

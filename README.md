@@ -7,7 +7,7 @@ Virtual reality and 3D games may be the next big thing, but for almost thirty ye
 
 AresMUSH is a next-gen server platform that brings modern features to MUSH games: a fully-featured web portal and wiki, automated scene logging, web-based character creation, and more. With AresMUSH, you can launch your own MUSH game with no coding experience.
 
-For more information see:  [http://www.aresmush.com](http://www.aresmush.com)
+For more information see:  [https://aresmush.com](https://aresmush.com)
 
 License
 =======

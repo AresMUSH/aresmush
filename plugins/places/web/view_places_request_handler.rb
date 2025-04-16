@@ -2,7 +2,7 @@ module AresMUSH
   module Places
     class ViewPlacesRequestHandler
       def handle(request)
-        scene = Scene[request.args[:scene_id]]
+        scene = Scene[request.args['scene_id']]
         
         if (!scene)
           return { error: t('webportal.not_found') }

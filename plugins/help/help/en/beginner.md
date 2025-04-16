@@ -17,7 +17,7 @@ If you're reading this, you must be connected to the game - either through a web
 
 The web portal works like any other web application. Most games will have a [Register](/register) link at the top where you can register a new character. Otherwise, you'll need to create your character using the client (described below).
 
-To connect with a MU Client, first download one of the many [MU client apps](http://www.aresmush.com/clients.html) and connect using the hostname and port number located on the home page (for example: somegame.com port 4201). From the login screen, you would type `create <name> <password>` to register a character and `connect <name> <password>` to log in.
+To connect with a MU Client, first download one of the many [MU client apps](https://aresmush.com/clients.html) and connect using the hostname and port number located on the home page (for example: somegame.com port 4201). From the login screen, you would type `create <name> <password>` to register a character and `connect <name> <password>` to log in.
 
 ## How to Play
 

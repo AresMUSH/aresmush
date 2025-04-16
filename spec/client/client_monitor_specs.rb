@@ -18,6 +18,8 @@ module AresMUSH
       @client2 = double(Client).as_null_object
       @client_monitor.clients << @client1
       @client_monitor.clients << @client2
+      allow(@client1).to receive(:is_web_client?) { false }
+      allow(@client2).to receive(:is_web_client?) { false }
     end
     
     describe :emit_all do
@@ -109,13 +111,21 @@ module AresMUSH
         @client_monitor.connection_established(@connection)
       end
       
-      it "should notify the dispatcher" do
+      it "should notify the dispatcher for a game client" do
         allow(@factory).to receive(:create_client) { @client3 }
+        allow(@client3).to receive(:is_web_client?) { false }
         expect(dispatcher).to receive(:queue_event) do |event|
           expect(event.class).to eq ConnectionEstablishedEvent
           expect(event.client).to eq @client3
         end
         expect(Global.logger).to_not receive(:debug)
+        @client_monitor.connection_established(@connection)
+      end
+      
+      it "should NOT notify the dispatcher for a web client" do
+        allow(@factory).to receive(:create_client) { @client3 }
+        allow(@client3).to receive(:is_web_client?) { true }
+        expect(dispatcher).to_not receive(:queue_event)
         @client_monitor.connection_established(@connection)
       end
     end
@@ -131,19 +141,53 @@ module AresMUSH
       end
     end
     
-    describe :find_client do
+    describe :find_game_client do
       it "should find a client with a matching character" do
         char = double
         allow(char).to receive(:id) { 123 }
         allow(@client1).to receive(:char_id) { 123 }
-        expect(@client_monitor.find_client(char)).to eq @client1
+        expect(@client_monitor.find_game_client(char)).to eq @client1
       end
       
       it "should return nil if no client found" do
         char = double
         allow(char).to receive(:id) { 123 }
         allow(@client1).to receive(:char_id) { 456 }
-        expect(@client_monitor.find_client(char)).to eq nil
+        expect(@client_monitor.find_game_client(char)).to eq nil
+      end
+      
+      it "should not find a web client" do
+        char = double
+        allow(char).to receive(:id) { 123 }
+        allow(@client1).to receive(:char_id) { 123 }
+        allow(@client1).to receive(:is_web_client?) { true }
+        expect(@client_monitor.find_game_client(char)).to eq nil
+      end
+      
+    end
+    
+    describe :find_web_client do
+      it "should find a client with a matching character" do
+        char = double
+        allow(char).to receive(:id) { 123 }
+        allow(@client1).to receive(:char_id) { 123 }
+        allow(@client1).to receive(:is_web_client?) { true }
+        expect(@client_monitor.find_web_client(char)).to eq @client1
+      end
+      
+      it "should return nil if no client found" do
+        char = double
+        allow(char).to receive(:id) { 123 }
+        allow(@client1).to receive(:char_id) { 456 }
+        expect(@client_monitor.find_web_client(char)).to eq nil
+      end
+      
+      it "should not find a game client" do
+        char = double
+        allow(char).to receive(:id) { 123 }
+        allow(@client1).to receive(:char_id) { 123 }
+        allow(@client1).to receive(:is_web_client?) { false }
+        expect(@client_monitor.find_web_client(char)).to eq nil
       end
     end
   end

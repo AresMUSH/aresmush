@@ -16,6 +16,15 @@ module AresMUSH
         return AliasCmd
       when "announce"
         return AnnounceCmd
+      when "block"
+        case cmd.switch
+        when "add"
+          return BlockCmd
+        when "remove"
+          return BlockCmd
+        else
+          return BlocksListCmd
+        end
       when "db"
         case cmd.switch
         when "backup"
@@ -98,8 +107,6 @@ module AresMUSH
         return StatueCmd
       when "theme"
         return ThemeInstallCmd
-      when "unload"
-        return UnloadPluginCmd
       when "upgrade"
         case cmd.switch
         when "finish"
@@ -130,6 +137,12 @@ module AresMUSH
         return UpgradeRequestHandler
       when "serverStats"
         return ServerStatsRequestHandler
+      when "blockList"
+        return BlockListRequestHandler
+      when "addBlock"
+        return AddBlockRequestHandler
+      when "removeBlock"
+        return RemoveBlockRequestHandler
       end
     end
   end

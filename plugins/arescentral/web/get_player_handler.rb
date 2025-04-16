@@ -2,7 +2,7 @@ module AresMUSH
   module AresCentral
     class GetPlayerRequestHandler
       def handle(request)
-        id = request.args[:id] || ''
+        id = request.args['id'] || ''
         player = Character.find_one_by_name(id)
         enactor = request.enactor
               

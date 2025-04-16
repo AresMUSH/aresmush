@@ -2,10 +2,10 @@ module AresMUSH
   module Website
     class GetBlankWikiPageRequestHandler
       def handle(request)
-        title = request.args[:title] || ""
-        tags = (request.args[:tags] || "").strip
-        category = (request.args[:category] || "").strip
-        template_name = (request.args[:template] || "").strip.downcase
+        title = request.args['title'] || ""
+        tags = (request.args['tags'] || "").strip
+        category = (request.args['category'] || "").strip
+        template_name = (request.args['template'] || "").strip.downcase
         enactor = request.enactor
         
         error = Website.check_login(request)

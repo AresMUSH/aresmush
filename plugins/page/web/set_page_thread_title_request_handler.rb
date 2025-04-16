@@ -3,8 +3,8 @@ module AresMUSH
     class SetPageThreadTitleRequestHandler
       def handle(request)
         enactor = request.enactor
-        thread_id = request.args[:thread_id]
-        title = request.args[:title]
+        thread_id = request.args['thread_id']
+        title = request.args['title']
         
         error = Website.check_login(request)
         return error if error

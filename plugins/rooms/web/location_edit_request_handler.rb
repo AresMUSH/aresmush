@@ -2,13 +2,13 @@ module AresMUSH
   module Rooms
     class LocationEditRequestHandler
       def handle(request)
-        id = request.args[:id]
-        name = request.args[:name]
-        descs = request.args[:descs]
-        summary = request.args[:summary]
-        area_id = request.args[:area_id]
-        icon_type = request.args[:icon_type]
-        owner_names = request.args[:owners] || []
+        id = request.args['id']
+        name = request.args['name']
+        descs = request.args['descs']
+        summary = request.args['summary']
+        area_id = request.args['area_id']
+        icon_type = request.args['icon_type']
+        owner_names = request.args['owners'] || []
         enactor = request.enactor
                 
         error = Website.check_login(request)

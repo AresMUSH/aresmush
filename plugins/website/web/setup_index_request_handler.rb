@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class SetupIndexRequestHandler
       def handle(request)
-        file = request.args[:file]
+        file = request.args['file']
         enactor = request.enactor
         
         error = Website.check_login(request)

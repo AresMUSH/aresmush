@@ -3,14 +3,14 @@ module AresMUSH
     class SaveChannelRequestHandler
       def handle(request)
         enactor = request.enactor
-        id = request.args[:id]
-        name = request.args[:name]
-        color = request.args[:color]
-        desc = request.args[:desc]
-        can_join = request.args[:can_join] || []
-        can_talk = request.args[:can_talk] || []
-        discord_webhook = request.args[:discord_webhook]
-        discord_channel = request.args[:discord_channel]
+        id = request.args['id']
+        name = request.args['name']
+        color = request.args['color']
+        desc = request.args['desc']
+        can_join = request.args['can_join'] || []
+        can_talk = request.args['can_talk'] || []
+        discord_webhook = request.args['discord_webhook']
+        discord_channel = request.args['discord_channel']
         
         error = Website.check_login(request)
         return error if error
