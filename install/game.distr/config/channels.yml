@@ -37,3 +37,6 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "<"
+  discord_name_subs:
+    wumpus: wumpu5
+    nelly: nell4
