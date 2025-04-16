@@ -160,7 +160,6 @@ module AresMUSH
     end
     
     def self.uninstall_plugin(name)
-      Global.plugin_manager.unload_plugin(name)
       Manage.remove_extra_plugin_from_config(name)
     end
 

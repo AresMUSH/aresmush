@@ -105,5 +105,5 @@ en:
         api_error: "Error communicating with AresCentral. Please contact the admin if the problem persists."
         response_error: "Error from remote server: %{error}."
         sending_to_remote: "Sending message to AresCentral.  This may take a moment."
-        api_cipher_error: "Error communicating with AresCentralr.  Please contact the admin if the problem persists."
+        api_cipher_error: "Error communicating with AresCentral.  Please contact the admin if the problem persists."
         game_not_found: "Game not found."  

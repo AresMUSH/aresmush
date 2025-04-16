@@ -21,8 +21,6 @@ module AresMUSH
           return ChannelAliasCmd 
         when "announce"
           return ChannelAnnounceCmd
-        when "clear"
-          return ChannelClearCmd
         when "color"
           return ChannelColorCmd
         when "create"

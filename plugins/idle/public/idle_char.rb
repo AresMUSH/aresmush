@@ -32,5 +32,9 @@ module AresMUSH
       return false if self.on_roster?
       return true
     end
+    
+    def is_active_or_npc?
+      self.is_active? || (self.is_npc? && !self.idled_out?)
+    end
   end
 end
