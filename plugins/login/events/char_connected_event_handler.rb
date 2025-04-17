@@ -14,7 +14,7 @@ module AresMUSH
         end
         
         char.room.emit_success t('login.announce_char_connected_here', :name => char.name)
-        Global.client_monitor.logged_in.each do |other_client, other_char|
+        Global.client_monitor.client_to_char_map.each do |other_client, other_char|
           if (Login.wants_announce(other_char, char) && char.room != other_char.room)
             other_client.emit_ooc t('login.announce_char_connected', :name => char.name)
           end

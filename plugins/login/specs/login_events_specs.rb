@@ -20,7 +20,7 @@ module AresMUSH
         allow(@room_client).to receive(:room) { @room }
         allow(@room_char).to receive(:room) { @room }
         allow(@room_char).to receive(:name) { "Bob" }
-        allow(client_monitor).to receive(:logged_in) { { @room_client => @room_char } }
+        allow(client_monitor).to receive(:client_to_char_map) { { @room_client => @room_char } }
         allow(notifier).to receive(:notify_ooc)
         allow(Login).to receive(:wants_announce) { false }
         allow(Login).to receive(:is_online?) { true }

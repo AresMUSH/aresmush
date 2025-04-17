@@ -3,7 +3,7 @@ module AresMUSH
     class CronEventHandler
       def on_event(event)
         # Ping on every cron event
-        Global.client_monitor.logged_in.each do |client, char| 
+        Global.client_monitor.logged_in_chars.each do |client, char| 
           if (char.login_keepalive)
             client.ping
           end
