@@ -8,32 +8,19 @@ module AresMUSH
     attr_reader :clients, :client_id
 
     def emit_all(msg)
-      @clients.each do |c|
+      self.game_clients.each do |c|
         c.emit msg
       end
     end
-    
-    def emit_all_ooc(msg)
-      @clients.each do |c|
-        c.emit_ooc msg
-      end
-    end
-    
-    def emit(msg, &trigger_block)
-      @clients.each do |c|
-        if ( yield c.char )
-          c.emit msg
-        end
-      end
-    end
-    
-    def emit_ooc(msg)
-      @clients.each do |c|
+
+    def emit_all_ooc(msg, &trigger_block)
+      self.game_clients.each do |c|
         if ( yield c.char )
           c.emit_ooc msg
         end
       end
     end
+ 
     
     def notify_web_clients(type, msg, is_data, &trigger_block)
       Global.dispatcher.spawn("Notifying web clients", nil) do
@@ -58,15 +45,15 @@ module AresMUSH
     end
 
     def logged_in_clients
-      @clients.select { |c| c.logged_in? }
+      self.game_clients.select { |c| c.logged_in? }
     end
     
-    def logged_in
+    # Hash mapping client to char - only for logged in game clients.
+    def client_to_char_map
       players = {}
-      @clients.each do |c|
-        char = c.char
-        next if !char
-        players[c] = char
+      
+      self.logged_in_clients.each do |client|
+        players[client] = client.char
       end
       players
     end

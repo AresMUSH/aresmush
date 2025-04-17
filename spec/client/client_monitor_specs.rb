@@ -29,31 +29,23 @@ module AresMUSH
         @client_monitor.emit_all "Hi"
       end
     end
+
     
     describe :emit_all_ooc do
-      it "should emit ooc to all the clients" do
-        expect(@client1).to receive(:emit_ooc).with("Hi")
-        expect(@client2).to receive(:emit_ooc).with("Hi")
-        @client_monitor.emit_all_ooc "Hi" 
-      end
-    end
-    
-    describe :emit do
-      it "should notify all the clients matching the specified trigger block" do
-        expect(@client1).to_not receive(:emit)
-        expect(@client2).to receive(:emit).with("Hi")
-        @client_monitor.emit "Hi" do |c|
-          c == @client2
-        end
-      end
-    end
-    
-    describe :emit_ooc do
       it "should emit ooc to all the clients matching the specified trigger block" do
         expect(@client1).to receive(:emit_ooc).with("Hi")
         expect(@client2).to_not receive(:emit_ooc)
-        @client_monitor.emit_ooc "Hi" do |c|
+        @client_monitor.emit_all_ooc "Hi" do |c|
           c == @client1
+        end
+      end
+      
+      it "should not emit to a web client" do
+        allow(@client2).to receive(:is_web_client?) { true }
+        expect(@client1).to receive(:emit_ooc).with("Hi")
+        expect(@client2).to_not receive(:emit_ooc)
+        @client_monitor.emit_all_ooc "Hi" do |c|
+          true
         end
       end
     end    
@@ -133,11 +125,22 @@ module AresMUSH
     describe :logged_in_clients do
       it "should count logged in people" do
         client3 = double
+        allow(client3).to receive(:is_web_client?) { false }
         allow(@client1).to receive(:logged_in?) { false }
         allow(@client2).to receive(:logged_in?) { true }
         allow(client3).to receive(:logged_in?) { true }
         @client_monitor.clients << client3
         expect(@client_monitor.logged_in_clients).to eq [@client2, client3]
+      end
+      
+      it "should not count web clients" do
+        client3 = double
+        allow(client3).to receive(:is_web_client?) { false }
+        allow(@client1).to receive(:logged_in?) { false }
+        allow(@client2).to receive(:logged_in?) { true }
+        allow(client3).to receive(:logged_in?) { false }
+        @client_monitor.clients << client3
+        expect(@client_monitor.logged_in_clients).to eq [@client2]
       end
     end
     
