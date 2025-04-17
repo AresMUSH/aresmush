@@ -11,7 +11,7 @@ module AresMUSH
             name: type,
             desc: data['desc'],
             wiki: data['wiki'].blank? ? nil : data['wiki'],
-            values: (data['values'] || {}).sort_by { |name, desc| name }.map { |name, desc| { name: type.titleize, value: name, desc: desc } },
+            values: (data['values'] || {}).map { |name, desc| { name: type.titleize, value: name, desc: desc } },
             freeform: !data['values']
           }
         end
