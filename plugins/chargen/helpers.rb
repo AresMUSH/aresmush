@@ -77,7 +77,7 @@ module AresMUSH
       end
       
       if (chargen_data['demographics']['age'])
-        age_or_bday = chargen_data['demographics']['age']['value']
+        age_or_bday = (chargen_data['demographics']['age']['value'] || "").to_s
 
         # See if it's just an age.
         if (age_or_bday.is_integer?)
