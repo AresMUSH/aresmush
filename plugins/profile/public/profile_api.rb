@@ -87,5 +87,25 @@ module AresMUSH
       end
     end
     
+    def self.render_profile(char)
+      template = ProfileTemplate.new(nil, char)
+      output = template.render
+      
+      template = RelationshipsTemplate.new(char)
+      output << "%R%R"
+      output << template.render
+      
+      template = BorderedDisplayTemplate.new char.rp_hooks, t('chargen.hooks_title', :name => char.name)
+      output << "%R%R"
+      output << template.render
+      
+      custom_profile = char.profile.map { |section, value| "%R#{section}%R----%R#{value}" }.join("%R%R")
+      template = BorderedDisplayTemplate.new custom_profile, t('profile.profile_title')
+      output << "%R%R"
+      output << template.render
+      
+      output
+    end
+    
   end
 end
