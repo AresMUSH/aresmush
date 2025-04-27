@@ -8,6 +8,10 @@ gem 'logger', "~>1.6.4"
 # Misc formatting utils, mattr_accessor, date utils, etc.
 gem "activesupport", ">= 6.1.7"
 
+# S3 Backup
+gem "nokogiri",">= 1.18"
+
+
 # Ansi codes
 gem 'ansi', '~> 1.5'
 
