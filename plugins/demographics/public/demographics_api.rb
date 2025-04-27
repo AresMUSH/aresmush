@@ -227,7 +227,7 @@ module AresMUSH
     end
     
     def self.build_web_groups_data(char)
-      groups = Demographics.all_groups.keys.sort.map { |g| 
+      groups = Demographics.all_groups.keys.map { |g| 
         {
           name: g.titleize,
           value: char.group(g)

@@ -195,5 +195,10 @@ module AresMUSH
       
       nil
     end
+    
+    def self.render_sheet(char)
+       template = FS3Skills::SheetTemplate.new(char, false)
+       template.render
+    end
   end
 end
