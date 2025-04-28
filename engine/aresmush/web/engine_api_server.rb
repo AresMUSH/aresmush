@@ -95,8 +95,8 @@ module AresMUSH
      def handle_webhook
        AresMUSH.with_error_handling(nil, "Web Request") do
          request_params = {
-           cmd: 'webhook',
-           args: JSON.parse(request.body.read)
+           "cmd" => 'webhook',
+           "args" => JSON.parse(request.body.read)
          }
          web_request = WebRequest.new(request_params)
          web_request.ip_addr = request.ip
