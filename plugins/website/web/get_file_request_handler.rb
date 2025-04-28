@@ -35,13 +35,14 @@ module AresMUSH
         else
           description = file_meta ? Website.format_markdown_for_html(file_meta.description) : ''
         end
-                 
+        
         {
           name: name,
           folder: folder,
           description: description,
           uploaded_by: uploaded_by,
           path: path,
+          portal_url: Game.web_portal_url,
           can_edit: Website.can_edit_wiki_file?(enactor, folder)
         }
       end

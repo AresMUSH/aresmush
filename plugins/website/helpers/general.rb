@@ -317,6 +317,19 @@ module AresMUSH
       navbar = Global.read_config('website', 'top_navbar')
       navbar.select { |n| !n['roles'] || (viewer && viewer.has_any_role?(n['roles'])) }
     end
+    
+    def self.export_char(char)
+      exporter = WikiCharExporter.new(char)
+      result = exporter.export
+      error = result[:error]
+      if (error)
+        return error
+      end
+      
+      WikiCharBackup.create(char: char, path: result[:path], created_at: Time.now)
+      nil
+    end
+      
       
   end
 end

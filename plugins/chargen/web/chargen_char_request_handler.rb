@@ -46,7 +46,7 @@ module AresMUSH
         
         groups = {}
         
-        Demographics.all_groups.sort.each do |k, v| 
+        Demographics.all_groups.each do |k, v| 
           group_val = char.group(k)
           groups[k.downcase] = {
             name: k.titleize,

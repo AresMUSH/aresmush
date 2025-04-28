@@ -1431,6 +1431,10 @@ SCENES SCREEN
   padding-top: 10px;
 }
 
+.scene-pose-select .ember-basic-dropdown-trigger {
+  min-width: 175px;
+}
+
 .scene-pose-box { 
     margin: 10px 0px;
     width: 100%;
