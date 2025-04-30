@@ -1,0 +1,4 @@
+---
+logger:
+  max_size_bytes: 125000
+  max_files: 10

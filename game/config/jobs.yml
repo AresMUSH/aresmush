@@ -1,0 +1,58 @@
+---
+jobs:
+  active_statuses:
+  - NEW
+  - OPEN
+  archive_cron:
+    hour:
+    - 4
+    minute:
+    - 18
+    day_of_week:
+    - Sun
+  archive_job_days: 10
+  archived_status: ARCHIVED
+  closed_statuses:
+  - DONE
+  - ARCHIVED
+  default_status: NEW
+  open_status: OPEN
+  request_category: REQ
+  status_filters: {}
+  shortcuts:
+    jobs: job
+    requests: request
+    request/comment: request/respond
+    job/comment: job/discuss
+    job/submit: job/create
+    job/reply: job/respond
+    job/open: job/handle
+    job/mine: job/filter mine
+    job/active: job/filter active
+    job/all: job/filter all
+    job/unread: job/filter unread
+    job/deletecomment: job/deletereply
+    job/category: job/cat
+    request/all: request/filter all
+    request/active: request/filter active
+  status:
+    NEW:
+      color: "%xg"
+    OPEN:
+      color: "%xb"
+    HOLD:
+      color: "%xx%xh"
+    DONE:
+      color: "%xy"
+    ARCHIVED:
+      color: "%xx%xh"
+  system_category: SYS
+  trouble_category: ALERT
+  permissions:
+    access_jobs: Allows non-admins to access jobs in categories allowed for their
+      roles.
+  responses:
+  - name: Received
+    text: Your job has been received. We'll get to it soon.
+  scheduled_jobs: []
+  custom_fields: []

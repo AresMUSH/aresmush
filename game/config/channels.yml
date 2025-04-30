@@ -1,0 +1,42 @@
+---
+channels:
+  announce_channel: Game
+  approved_channels:
+  - RP Requests
+  clear_history_cron:
+    hour:
+    - 4
+    minute:
+    - 47
+  default_channels:
+  - Questions
+  - Chat
+  discord_debug: false
+  discord_gravatar_style: retro
+  discord_name_subs:
+    wumpus: wumpu5
+    nelly: nell4
+  discord_prefix: "[D]"
+  end_marker: ">"
+  ooc_lounge_channel: ''
+  permissions:
+    manage_channels: Create and modify channels.
+    set_comtitle: Can use the com title command.
+  recall_buffer_size: 500
+  recall_timeout_days: 3
+  shortcuts:
+    chan: channel
+    channels: channel
+    comlist: channel
+    clist: channel
+    channel/describe: channel/desc
+    channel/gag: channel/mute
+    channel/ungag: channel/unmute
+    channel/add: channel/create
+    channel/on: channel/join
+    channel/off: channel/leave
+    addcom: channel/join
+    delcom: channel/leave
+    comtitle: channel/title
+    channel/name: channel/rename
+  start_marker: "<"

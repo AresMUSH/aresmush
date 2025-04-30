@@ -1,0 +1,3 @@
+<div class="jumbotron-tagline">Welcome to the Town of Berem</div>
+
+Berem is a town founded by retired adventurers. It is nestled someplace in the world of Mystara. It is a fantasy world full of adventure, treasure, and intrigue.

@@ -1,0 +1,11 @@
+---
+server:
+  hostname: game.beremtown.com
+  port: 4201
+  websocket_port: 4202
+  web_portal_port: 80
+  engine_api_port: 4203
+  use_https: true
+  certificate_file_path: "/home/ares/certs/fullchain.pem"
+  private_key_file_path: "/home/ares/certs/privkey.pem"
+  bind_address: ''

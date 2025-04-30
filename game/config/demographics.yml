@@ -1,0 +1,111 @@
+---
+demographics:
+  census_fields:
+  - field: name
+    width: 28
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: demographic
+    width: 10
+    title: Species
+    value: species
+  - field: group
+    width: 20
+    title: Guild
+    value: Guild
+  - field: group
+    width: 20
+    title: Reputation
+    value: Reputation
+  demographics:
+  - full name
+  - nickname
+  - gender
+  - species
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - played by
+  - birthdate
+  disable_auto_shortcuts: false
+  editable_properties:
+  - full name
+  - nickname
+  - gender
+  - hair
+  - physique
+  genders:
+    Male:
+      possessive_pronoun: his
+      subjective_pronoun: he
+      objective_pronoun: him
+      noun: man
+    Female:
+      possessive_pronoun: her
+      subjective_pronoun: she
+      objective_pronoun: her
+      noun: woman
+    Other:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: person
+  groups:
+    Guild:
+      desc: Character's guild association.
+      wiki: ''
+      values:
+        Adventurer: Adventure and excitement
+        Criminal: A criminal guild association.
+        Merchant: Shopkeeper or Merchant.
+        Townie: Native or transplant to Berem.
+        None: No guild association, Catch all.
+    Reputation:
+      wiki: ''
+      desc: A Character's Reputation
+      values:
+        Negative: Negative reputation. Not hostile, but watched.
+        Neutral: Neither negative or positive. You are unknown agent.
+        Positive: Positive reputation and town acceptance.
+        Wanted: There's a bounty on your head. Hostile.
+  help_text:
+    played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    nickname: "%xcnickname <name>%xn - Entter a nickname."
+    full name: "%xcfullname <name>%xn - Your character's full name."
+  max_age: 100000
+  min_age: 18
+  nickname_field: nickname
+  nickname_format: "%{name} (%{nickname})"
+  permissions:
+    manage_demographics: Edit demographics on other players.
+  private_properties: []
+  required_properties:
+  - played by
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - full name
+  - gender
+  - birthdate
+  shortcuts:
+    guild: group guild
+    reputation: group reputation
+    demographics: demographic
+    birthday: birthdate
+    actors: census played by
+    actor: demographic/set played by=
+    fullname: demographic/set full name=
+    playedby: demographic/set played by=

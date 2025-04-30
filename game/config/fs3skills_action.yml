@@ -1,0 +1,49 @@
+---
+fs3skills:
+  action_skills:
+  - name: Alertness
+    desc: Noticing things and being aware of your surroundings.
+    linked_attr: Perception
+  - name: Athletics
+    linked_attr: Brawn
+    desc: General running, jumping, climbing, etc.
+  - name: Composure
+    desc: Coolness under pressure.
+    linked_attr: Grit
+  - name: Magic
+    desc: Magical aptitude.
+    linked_attr: Wits
+  - name: Ranged
+    desc: Ranged or thrown weapons.
+    linked_attr: Reflexes
+  - name: Survival
+    desc: Tracking, Outdoormanship.
+    linked_attr: Grit
+  - name: Medicine
+    desc: Tending to the ill and injured.
+    linked_attr: Wits
+    specialties:
+    - Doctor
+    - First Aid
+    - Animals
+  - name: Melee
+    desc: Fighting with fists, knives, and hand-to-hand weapons.
+    linked_attr: Brawn
+  - name: Riding
+    desc: Animal riding and horsemanship.
+    linked_attr: Reflexes
+    specialties:
+    - Land
+    - Sea
+    - Air
+    - Other
+  - name: Stealth
+    desc: Being sneaky, slight of hand, thievery skills.
+    linked_attr: Reflexes
+  - name: Tinker
+    desc: General mechanics/tinkering and fixing things.
+    linked_attr: Wits
+  action_skills_blurb: 'Action Skills represent your ability in areas deemed important
+    for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
+    and lowest ratings. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#action-skills"
+    target="_blank">FS3: Action Skills</a> for details.'

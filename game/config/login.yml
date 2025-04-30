@@ -1,0 +1,43 @@
+---
+login:
+  activity_cron:
+    minute:
+    - 0
+  allow_creation: false
+  allow_web_registration: false
+  blacklist_cron:
+    day:
+    - 1
+    - 15
+    hour:
+    - 3
+    minute:
+    - 0
+  boot_timeout_seconds: 300
+  creation_not_allowed_message: Still under development. Join our discord
+  disable_nonadmin_logins: false
+  guest_disabled_message: ''
+  guest_role: guest
+  login_not_allowed_message: ''
+  notice_cleanup_cron:
+    day:
+    - 18
+    hour:
+    - 2
+    minute:
+    - 19
+  notice_timeout_days: 60
+  permissions:
+    login: Able to log in.
+    manage_login: Can access login-related admin tools like resetting someone's password.
+  portal_requires_registration: false
+  random_guest_selection: false
+  shortcuts:
+    logout: quit
+    con: connect
+    newpassword: password/reset
+    conn: connect
+    kick: boot
+    password/change: password/set
+    ban/delete: ban/remove
+    notice: notices

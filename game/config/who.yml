@@ -1,0 +1,24 @@
+---
+who:
+  where_style: scene
+  who_fields:
+  - field: status
+    width: 7
+    title: Status
+  - field: name
+    width: 20
+    title: Name
+  - field: demographic
+    width: 16
+    title: Species
+    value: species
+  - field: group
+    value: Guild
+    width: 18
+    title: Guild
+  - field: connected
+    width: 7
+    title: Conn
+  - field: idle
+    width: 4
+    title: Idle

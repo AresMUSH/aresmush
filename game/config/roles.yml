@@ -1,0 +1,13 @@
+---
+roles:
+  default_roles:
+  - everyone
+  restricted_roles:
+  - admin
+  - coder
+  admin_list_roles:
+  - admin
+  shortcuts:
+    roles: role
+    staff: admin
+    role/add: role/assign

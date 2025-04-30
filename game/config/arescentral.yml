@@ -1,0 +1,12 @@
+---
+arescentral:
+  arescentral_url: https://arescentral.aresmush.com
+  directory_update_cron:
+    hour:
+    - 4
+    minute:
+    - 0
+  achievements:
+    handle_linked:
+      type: community
+      message: Linked a character to a player handle.

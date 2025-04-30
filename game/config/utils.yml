@@ -1,0 +1,18 @@
+---
+utils:
+  shortcuts:
+    colors: color
+    ansi: color
+    think: echo
+    "@@": keepalive
+    "@": keepalive
+    shortcut/remove: shortcut/delete
+    note/remove: note/delete
+    note/update: note/add
+    die: dice
+    notes: note
+    i: echo %% There's no inventory system here.
+    in: echo %% There's no inventory system here.
+    inv: echo %% There's no inventory system here.
+  permissions:
+    manage_notes: Can access admin-only notes.

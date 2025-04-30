@@ -1,0 +1,34 @@
+---
+fs3skills:
+  max_luck: 3
+  luck_for_scene:
+    0: 0.1
+    10: 0.075
+    25: 0.05
+    50: 0.025
+  public_sheets: true
+  roll_channel: FS3 Rolls
+  shortcuts:
+    spec: specialty
+    sheet2: profile
+    skills: abilities
+    attributes: abilities
+    languages: abilities
+    advantages: abilities
+    practice: learn
+    train: learn
+    xp/raise: learn
+    roll/secret: roll/private
+    xp/subtract: xp/remove
+    xp/add: xp/award
+  achievements:
+    fs3_luck_spent:
+      type: fs3
+      message: Spent a luck point.
+    fs3_roll:
+      type: fs3
+      message: Rolled a skill.
+  job_on_luck_spend: true
+  permissions:
+    manage_abilities: Edit ability ratings on other chars.
+    view_sheets: Can view other characters' sheets.

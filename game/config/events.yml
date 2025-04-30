@@ -1,0 +1,18 @@
+---
+events:
+  achievements:
+    event_created:
+      type: community
+      message: Scheduled an event.
+  event_alert_cron:
+    minute:
+    - 0
+    - 15
+    - 30
+    - 45
+  shortcuts:
+    events: event
+    event/add: event/create
+    event/remove: event/delete
+  permissions:
+    manage_events: Edit/delete events you didn't create.

@@ -1,0 +1,66 @@
+---
+idle:
+  arrivals_category: New Arrivals
+  days_before_idle: 30
+  default_contact: Admin
+  idle_category: Announcements
+  idle_exempt_roles:
+  - admin
+  - builder
+  - coder
+  - guest
+  idle_warn_msg: You haven't played in awhile and your character is in danger of idling
+    out.
+  monthly_reminder: It's time to run the idle sweep!
+  monthly_reminder_cron:
+    hour:
+    - 15
+    minute:
+    - 0
+    day:
+    - 1
+  monthly_reminder_title: Monthly Chores
+  permissions:
+    manage_idle: Access idle purge commands.
+    manage_roster: Access roster commands.
+  reminder_category: MISC
+  restrict_roster: false
+  roster_app_category: APP
+  roster_app_template: |-
+    Tell us why you want to play this character:
+
+
+    If you're submitting this from an existing character, check your messages to follow up. Otherwise, provide an email where we can get back to you:
+  roster_arrival_msg: |-
+    %{name} has been claimed off the roster.
+
+    Position: %{position}
+
+    RP Hooks:
+    %{rp_hooks}
+  roster_fields:
+  - field: name
+    width: 20
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 17
+    title: Guild
+    value: Guild
+  - field: group
+    width: 17
+    title: Reputation
+    value: reputation
+  roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
+    profile page for any notes left by the prior player.  Type %xhonstage%xn to go
+    forth and RP.
+  shortcuts:
+    idle/add: idle/action
+    roster/update: roster/add
+    roster/contact: roster/add
+    roster/notes: roster/note
+    idle/notes: idle/note
+  use_roster: true

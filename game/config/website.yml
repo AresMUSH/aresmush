@@ -1,0 +1,244 @@
+---
+website:
+  achievements:
+    wiki_create:
+      type: portal
+      message: Created a wiki page.
+    wiki_edit:
+      type: portal
+      message: Edited a wiki page.
+  allow_html_in_markdown: true
+  auto_wiki_export: true
+  character_gallery_group: Guild
+  character_gallery_subgroup: Reputation
+  hide_searchbox: true
+  left_sidebar: false
+  max_folder_size_kb: 2000
+  max_upload_size_kb: 300
+  permissions:
+    manage_theme: Edit web portal CSS, colors, and theme images.
+    manage_wiki: Create and delete restricted wiki pages and override folder and file
+      upload limits.
+  restricted_pages:
+  - home
+  shortcuts:
+    wiki: website
+    website/archive: website/export
+  sitemap_update_cron:
+    hour:
+    - 2
+    minute:
+    - 17
+  top_navbar:
+  - title: "<i class='fas fa-home' />"
+    route: home
+  - title: Play
+    menu:
+    - title: Create a Character
+      route: chargen
+    - title: Pre-Made Characters
+      route: roster
+    - divider: true
+    - title: Play
+      route: play
+    - title: Active Scenes
+      route: scenes-live
+    - title: Unshared Scenes
+      route: scenes-unshared
+    - title: Start New Scene
+      route: scene-create
+    - divider: true
+    - title: Who's Online
+      route: who
+    - title: Forum
+      route: forum
+    - title: Mail
+      route: mail
+    - title: Events
+      route: events
+  - title: Directory
+    menu:
+    - title: Characters
+      route: characters
+    - title: Scenes
+      route: scenes
+    - title: Plots
+      route: plots
+    - divider: true
+    - title: Players
+      route: players
+    - title: Game Admin
+      route: admins
+    - title: Census
+      route: census
+    - title: Roster
+      route: roster
+    - title: Locations
+      route: locations
+    - title: Combats
+      route: combats
+    - divider: true
+    - title: Files
+      route: files
+  - title: System
+    menu:
+    - title: Abilities List
+      route: fs3skills-abilities
+    - title: Gear List
+      route: fs3combat-gear
+    - title: Groups List
+      route: groups
+    - title: Achievements
+      route: achievements
+    - title: Skill Limits
+      route: fs3-limits
+    - title: XP Costs
+      route: fs3-xp-costs
+    - title: Skill Scan
+      route: fs3skills-scan
+    - title: Roles
+      route: roles
+    - divider: true
+    - target: blank
+      title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: https://aresmush.com/fs3/fs3-3
+    - target: blank
+      title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: https://aresmush.com/fs3/fs3-3/combat-quickref.html
+    - target: blank
+      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
+        aria-hidden="true">
+      url: https://aresmush.com/fs3/fs3-3/combat-walkthrough.html
+  - title: Wiki/Theme
+    menu:
+    - title: Home
+      route: wiki
+    - title: New Players
+      route: wiki-page
+      id: new-players
+    - title: Policies
+      route: wiki-page
+      id: policies
+    - title: Berem
+      route: wiki-page
+      id: berem
+    - title: Known World
+      route: wiki-page
+      id: known-world
+    - divider: true
+    - title: Create New Page
+      route: wiki-create
+    - title: All Pages
+      route: wiki-all
+    - title: Search Wiki
+      route: search-wiki
+    - title: Tags
+      route: wiki-tags
+    - title: Recent Changes
+      route: recent-changes
+    - divider: true
+    - title: Files
+      route: files
+    - id: markdown
+      title: Editing Help
+      route: help-topic
+    - title: Wiki Archive
+      route: wiki-archive
+  - title: Help
+    menu:
+    - title: Requests
+      route: jobs
+    - title: Account
+      route: account
+    - divider: true
+    - title: Game Help
+      route: help
+    - title: Search
+      route: search-wiki
+    - id: markdown
+      title: Markdown Reference
+      route: help-topic
+    - title: Emoji Reference
+      route: emoji
+    - title: Terms of Service
+      route: tos
+    - divider: true
+    - target: blank
+      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: https://aresmush.com/mush-101/
+  - title: Admin
+    roles:
+    - admin
+    - coder
+    menu:
+    - title: Jobs
+      route: jobs
+    - title: Setup
+      route: setup
+    - title: Manage
+      route: manage
+    - title: Logs
+      route: logs
+    - title: Files
+      route: files
+    - title: Roles
+      route: roles
+    - title: Server
+      route: server-info
+  - title: Code
+    roles:
+    - coder
+    menu:
+    - title: Tinker
+      route: tinker
+    - title: Custom Code
+      route: custom-code
+  - title: Theme
+    roles:
+    - admin
+    menu:
+    - title: Theme Colors
+      route: setup-colors
+    - title: Custom Styles
+      route: textfile
+      ids:
+      - style
+      - custom_style.scss
+    - title: Files
+      route: files
+    - title: Home Page Text
+      route: textfile
+      ids:
+      - text
+      - website.txt
+  - title: "<i class='fas fa-magnifying-glass'/>"
+    menu:
+    - title: Search Characters
+      route: search-chars
+    - title: Search Scenes
+      route: search-scenes
+    - title: Search Locations
+      route: search-locations
+    - title: Search Wiki
+      route: search-wiki
+    - title: Search Help
+      route: search-help
+    - title: Search Forum
+      route: search-forum
+    - title: Search Jobs/Requests
+      route: search-jobs
+  uploadable_extensions:
+  - ".jpg"
+  - ".png"
+  - ".gif"
+  - ".jpeg"
+  website_code_path: "/home/ares/ares-webportal"
+  wiki_aliases:
+    main: home
+  wiki_export_cron:
+    day_of_week:
+    - Tue
+    hour:
+    - 4
+    minute:
+    - 37
