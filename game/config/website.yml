@@ -109,9 +109,9 @@ website:
       title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
         aria-hidden="true">
       url: https://aresmush.com/fs3/fs3-3/combat-walkthrough.html
-  - title: Wiki/Theme
+  - title: Game Info
     menu:
-    - title: Home
+    - title: Forward
       route: wiki
     - title: New Players
       route: wiki-page
@@ -119,6 +119,7 @@ website:
     - title: Policies
       route: wiki-page
       id: policies
+    - divider: true
     - title: Berem
       route: wiki-page
       id: berem
