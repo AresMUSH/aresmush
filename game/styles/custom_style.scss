@@ -7,6 +7,7 @@ $primary-font: "Bebas Neue", Impact, serif;
 $secondary-font: "Lexend", serif;
 
 
+
 // COLOR VARIATIONS
 
 /* Muted Rainbow */
@@ -1144,4 +1145,9 @@ table.char-ability-list {
 	background-color: $secondary-color;
 	border-color: $secondary-color;
 	box-shadow: none;
+}
+
+// ToastUI annoying fix
+.toastui-editor-md-code-block-line-background {
+  background-color: $box-background-color; /* Replace #new-color with your desired color */
 }
