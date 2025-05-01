@@ -126,6 +126,12 @@ website:
     - title: Known World
       route: wiki-page
       id: known-world
+    - title: Professions
+      route: wiki-page
+      id: professions
+    - title: Species
+      route: wiki-page
+      id: known_species
     - divider: true
     - title: Create New Page
       route: wiki-create
