@@ -1147,7 +1147,10 @@ table.char-ability-list {
 	box-shadow: none;
 }
 
-// ToastUI annoying fix
 .toastui-editor-md-code-block-line-background {
   background-color: $box-background-color; /* Replace #new-color with your desired color */
+}
+
+span.toastui-editor-md-table-cell {
+  color: $primary-words-color !important;
 }
