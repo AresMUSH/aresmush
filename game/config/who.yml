@@ -8,14 +8,10 @@ who:
   - field: name
     width: 20
     title: Name
-  - field: demographic
+  - field: group
     width: 16
     title: Species
-    value: species
-  - field: group
-    value: Guild
-    width: 18
-    title: Guild
+    value: Species
   - field: connected
     width: 7
     title: Conn

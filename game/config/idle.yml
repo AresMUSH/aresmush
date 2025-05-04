@@ -47,13 +47,9 @@ idle:
     title: Gender
     value: gender
   - field: group
-    width: 17
-    title: Guild
-    value: Guild
-  - field: group
-    width: 17
-    title: Reputation
-    value: reputation
+    width: 10
+    title: Species
+    value: Species
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.

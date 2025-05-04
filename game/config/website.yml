@@ -9,8 +9,8 @@ website:
       message: Edited a wiki page.
   allow_html_in_markdown: true
   auto_wiki_export: true
-  character_gallery_group: Guild
-  character_gallery_subgroup: Reputation
+  character_gallery_group: Species
+  character_gallery_subgroup: Species
   hide_searchbox: true
   left_sidebar: false
   max_folder_size_kb: 2000

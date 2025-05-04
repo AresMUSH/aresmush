@@ -8,23 +8,14 @@ demographics:
     width: 10
     title: Gender
     value: gender
-  - field: demographic
+  - field: group
     width: 10
     title: Species
-    value: species
-  - field: group
-    width: 20
-    title: Guild
-    value: Guild
-  - field: group
-    width: 20
-    title: Reputation
-    value: Reputation
+    value: Species
   demographics:
   - full name
   - nickname
   - gender
-  - species
   - hair
   - eyes
   - skin
@@ -56,23 +47,24 @@ demographics:
       objective_pronoun: them
       noun: person
   groups:
-    Guild:
-      desc: Character's guild association.
-      wiki: ''
+    Concept:
+      desc: Your character's concept.
+      wiki: Professions
+    Species:
+      desc: Character's species.
+      wiki: 'species'
       values:
-        Adventurer: Adventure and excitement
-        Criminal: A criminal guild association.
-        Merchant: Shopkeeper or Merchant.
-        Townie: Native or transplant to Berem.
-        None: No guild association, Catch all.
-    Reputation:
-      wiki: ''
-      desc: A Character's Reputation
-      values:
-        Negative: Negative reputation. Not hostile, but watched.
-        Neutral: Neither negative or positive. You are unknown agent.
-        Positive: Positive reputation and town acceptance.
-        Wanted: There's a bounty on your head. Hostile.
+        Dwarf: Rockhome Dwarves.
+        Elf: Elves and any sub species.
+        Gnome: Sky Gnomes or Forest.
+        Hin: Halflings from the Five Shires.
+        Human: Humans and any sub cultures.
+        Lupin: Lupins Bull, Hound, or Hunter.
+        Phanaton: Phanatons.
+        Rakasta: Rakastas Greater, Domestic, or Wild.
+        Sidhe: Sidhes from the Fey Realms.
+        Tortle: Tortles.
+  
   help_text:
     played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
@@ -84,7 +76,7 @@ demographics:
     nickname: "%xcnickname <name>%xn - Entter a nickname."
     full name: "%xcfullname <name>%xn - Your character's full name."
   max_age: 100000
-  min_age: 18
+  min_age: 5
   nickname_field: nickname
   nickname_format: "%{name} (%{nickname})"
   permissions:

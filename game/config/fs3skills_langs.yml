@@ -1,12 +1,12 @@
 ---
 fs3skills:
   language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
-    have a descriptive rating.   See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#languages"
+    have a descriptive rating. Alphatian and Thyatian ar considered "Common" languages.  See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#languages"
     target="_blank">FS3: Languages</a> for details.'
   languages:
 
   - name: Alphatian
-    desc: Spoken in the Alphatian Empire, Minaean Coast, Glantri (Flaemish), Helskir, and Ochalea.
+    desc: Spoken in the Alphatian Empire, Minaean Coast, Glantri (Flaemish), Helskir, and Ochalea. Considered a "Common" language.
   - name: Atruaghin
     desc: Used by Atruaghin clans with variations between clans. The Horse Clan uses hand signals instead of speech.
   - name: Averoignian
@@ -56,7 +56,7 @@ fs3skills:
   - name: Denagoth
     desc: Native language of Denagoth.
   - name: Thyatian
-    desc: Widespread throughout the Thyatian Empire and used for trade in many regions.
+    desc: Widespread throughout the Thyatian Empire and used for trade in many regions. Considered a "Common" language.
   - name: Traldaran
     desc: Spoken in Karameikos and Glantri.
   - name: Urduk
