@@ -3,7 +3,7 @@ fs3skills:
   advantages_cost: 2
   allow_incapable_action_skills: false
   free_backgrounds: 6
-  free_languages: 3
+  free_languages: 5
   max_ap: 40
   max_attr_rating: 4
   max_attrs_at_or_above:
@@ -21,16 +21,39 @@ fs3skills:
   starting_skills:
     Everyone:
       skills:
-        Alertness: 2
-        Athletics: 2
-        Composure: 2
-        Firearms: 2
-        Medicine: 2
-        Melee: 2
-        Standard: 3
+        Alphatian: 1
+        Thyatian: 1
+    Species:
+       Dwarf:
+          skills: 
+              Dwarfish : 3
+       Elf: 
+          skills: 
+             Elven : 3
+       Gnome:
+          skills: 
+             Gnomish: 3
+       Hin: 
+          skills: 
+             Hin : 3
+       Human:  
+          skills: 
+             Alphatian : 2
+             Thyatian : 3
+       Lupin:
+           skills: 
+               Lupin : 3
+       Phanaton:
+           skills: 
+              Phanaton : 3
+       Rakasta:
+           skills: 
+              Rakasta : 3
+       Sidhe:
+          skills: 
+             Fey : 3
+       Tortle:
+           skills: 
+               Tortle : 3
   unusual_skills:
-  - Celtan
-  - Scorpian
-  - Sagittaran
-  - Gemenese
-  - Demolitions
+    - Magic
