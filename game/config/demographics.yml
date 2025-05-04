@@ -56,16 +56,15 @@ demographics:
       values:
         Dwarf: Rockhome Dwarves.
         Elf: Elves and any sub species.
-        Gnome: Sky Gnomes or Forest.
+        Gnome: Sky gnomes or Forest gnomes.
         Hin: Halflings from the Five Shires.
         Human: Humans and any sub cultures.
-        Lupin: Lupins Bull, Hound, or Hunter.
+        Lupin: Lupins Bull, Hound, or Hunter types.
         Monster: A creature or monster.
-        Phanaton: Phanatons.
-        Rakasta: Rakastas Greater, Domestic, or Wild.
-        Sidhe: Sidhes from the Fey Realms.
-        Tortle: Tortles.
-  
+        Phanaton: Phanatons are small, furry humanoids that can glide.
+        Rakasta: Rakastas Greater, Domestic, or Wild types.
+        Sidhe: Sidhe from the Fey Realms.
+        Tortle: Tortles are a stoic calm species of humanoid turtles.
   help_text:
     played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
