@@ -6,9 +6,15 @@ fs3combat:
       defense: 0
       protection:
         Nowhere: 0
+    Robes:
+     description: Robes for mages
+     defense: 20
+     protection:
+       Nowhere: 0
+
     Full Leather:
       description: Full leather armor set
-      defense: 0
+      defense: 15
       protection:
         Head: 2
         Neck: 2
@@ -24,7 +30,7 @@ fs3combat:
         Right Foot: 2      
     Full Plate:
       description: Full plate armor set
-      defense: 0
+      defense: -15
       protection:
         Head: 9
         Neck: 9
@@ -56,7 +62,7 @@ fs3combat:
         Right Foot: 4
     Plate Chestpiece:
       description: Heavy plate chest armor
-      defense: 0
+      defense: -5
       protection:
         Chest: 10
         Abdomen: 10
@@ -80,7 +86,7 @@ fs3combat:
         - Chainmail Boots
     Leather Chestpiece:
       description: Reinforced leather chest protection
-      defense: 0
+      defense: 5
       protection:
         Chest: 4
         Abdomen: 3
@@ -94,26 +100,31 @@ fs3combat:
   armor specials:
     Plate Helm:
       description: A helmet
+      defense: -2
       protection:
         Head: 9
         Neck: 9
     Plate Arms:
       description: Heavy plate arm protection
+      defense: -2
       protection:
         Left Arm: 8
         Right Arm: 8
     Plate Gloves:
       description: Heavy plate hand protection
+      defense: -1
       protection:
         Left Hand: 7
         Right Hand: 7
     Plate Leggings:
       description: Heavy plate leg protection
+      defense: -3
       protection:
         Left Leg: 9
         Right Leg: 9
     Plate Boots:
       description: Heavy plate foot protection
+      defense: -2
       protection:
         Left Foot: 7
         Right Foot: 7
@@ -144,26 +155,43 @@ fs3combat:
         Right Foot: 4
     Leather Cap:
       description: Leather head and neck protection
+      defense: 2
       protection:
         Head: 2
         Neck: 2
     Leather Sleeves:
       description: Leather arm protection
+      defense: 2
       protection:
         Left Arm: 2
         Right Arm: 2
     Leather Gloves:
       description: Leather hand protection
+      defense: 1
       protection:
         Left Hand: 2
         Right Hand: 2
     Leather Leggings:
       description: Leather leg protection
+      defense: 3
       protection:
         Left Leg: 3
         Right Leg: 3
     Leather Boots:
       description: Leather foot protection
+      defense: 2
       protection:
         Left Foot: 2
         Right Foot: 2
+    Bucker:
+      description: A small shield
+      defense: 2
+      protection:
+        Left Arm: 2     
+    Kite Shield:
+      description: A kite medium shield
+      defense: 4
+      protection:
+        Left Arm: 3 
+        Left Hand: 3       
+      
