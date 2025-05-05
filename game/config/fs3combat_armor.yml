@@ -60,7 +60,7 @@ fs3combat:
         Right Leg: 5
         Left Foot: 4
         Right Foot: 4
-    Plate Chestpiece:
+    Plate Breastplate:
       description: Heavy plate chest armor
       defense: -5
       protection:
@@ -72,6 +72,19 @@ fs3combat:
         - Plate Gloves
         - Plate Leggings
         - Plate Boots
+        - Leather Cap
+        - Leather Sleeves
+        - Leather Gloves
+        - Leather Leggings
+        - Leather Boots
+        - Chainmail Coif
+        - Chainmail Sleeves
+        - Chainmail Gloves
+        - Chainmail Leggings
+        - Chainmail Boots
+        - Large Shield
+        - Medium Shield
+        - Bucker
     Chainmail Tunic:
       description: Chainmail chest protection
       defense: 0
@@ -79,24 +92,49 @@ fs3combat:
         Chest: 6
         Abdomen: 6
       allowed_specials:
+        - Plate Helm
+        - Plate Arms
+        - Plate Gloves
+        - Plate Leggings
+        - Plate Boots
+        - Leather Cap
+        - Leather Sleeves
+        - Leather Gloves
+        - Leather Leggings
+        - Leather Boots
         - Chainmail Coif
         - Chainmail Sleeves
         - Chainmail Gloves
         - Chainmail Leggings
         - Chainmail Boots
-    Leather Chestpiece:
+        - Large Shield
+        - Medium Shield
+        - Bucker
+    Leather Jerkin:
       description: Reinforced leather chest protection
       defense: 5
       protection:
         Chest: 4
         Abdomen: 3
       allowed_specials:
+        - Plate Helm
+        - Plate Arms
+        - Plate Gloves
+        - Plate Leggings
+        - Plate Boots
         - Leather Cap
         - Leather Sleeves
         - Leather Gloves
         - Leather Leggings
         - Leather Boots
-   
+        - Chainmail Coif
+        - Chainmail Sleeves
+        - Chainmail Gloves
+        - Chainmail Leggings
+        - Chainmail Boots
+        - Large Shield
+        - Medium Shield
+        - Bucker
   armor specials:
     Plate Helm:
       description: A helmet
@@ -188,10 +226,15 @@ fs3combat:
       defense: 2
       protection:
         Left Arm: 2     
-    Kite Shield:
+    Medium Shield:
       description: A kite medium or Round shield
       defense: 4
       protection:
         Left Arm: 3 
-        Left Hand: 3       
-      
+        Left Hand: 3           
+    Large Shield:
+      description: A kite medium or Round shield
+      defense: 0
+      protection:
+        Left Arm: 10
+        Left Hand: 10  
