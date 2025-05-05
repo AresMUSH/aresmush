@@ -30,7 +30,7 @@ fs3combat:
       skill: 3
       lethality: 0
       penetration: 5
-      weapon_type: Physical
+      weapon_type: Ranged
       is_automatic: false
       recoil: 0
       damage_type: Physical
