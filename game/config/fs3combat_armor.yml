@@ -10,19 +10,18 @@ fs3combat:
       description: Full leather armor set
       defense: 0
       protection:
-        Head: 4
-        Neck: 4
-        Chest: 5
-        Abdomen: 5
-        Left Arm: 3
-        Right Arm: 3
-        Left Hand: 3
-        Right Hand: 3
-        Left Leg: 4
-        Right Leg: 4
-        Left Foot: 3
-        Right Foot: 3
-        
+        Head: 2
+        Neck: 2
+        Chest: 4
+        Abdomen: 3
+        Left Arm: 2
+        Right Arm: 2
+        Left Hand: 2
+        Right Hand: 2
+        Left Leg: 3
+        Right Leg: 3
+        Left Foot: 2
+        Right Foot: 2      
     Full Plate:
       description: Full plate armor set
       defense: 0
@@ -43,21 +42,128 @@ fs3combat:
       description: Full chainmail armor set
       defense: 0
       protection:
-        Head: 6
-        Neck: 7
-        Chest: 7
-        Abdomen: 7
-        Left Arm: 5
-        Right Arm: 5
-        Left Hand: 6
-        Right Hand: 5
-        Left Leg: 6
-        Right Leg: 6
-        Left Foot: 5
-        Right Foot: 5
+        Head: 3
+        Neck: 4
+        Chest: 6
+        Abdomen: 6
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Leg: 5
+        Right Leg: 5
+        Left Foot: 4
+        Right Foot: 4
+    Plate Chestpiece:
+      description: Heavy plate chest armor
+      defense: 0
+      protection:
+        Chest: 10
+        Abdomen: 10
+      allowed_specials:
+        - Plate Helm
+        - Plate Arms
+        - Plate Gloves
+        - Plate Leggings
+        - Plate Boots
+    Chainmail Tunic:
+      description: Chainmail chest protection
+      defense: 0
+      protection:
+        Chest: 6
+        Abdomen: 6
+      allowed_specials:
+        - Chainmail Coif
+        - Chainmail Sleeves
+        - Chainmail Gloves
+        - Chainmail Leggings
+        - Chainmail Boots
+    Leather Chestpiece:
+      description: Reinforced leather chest protection
+      defense: 0
+      protection:
+        Chest: 4
+        Abdomen: 3
+      allowed_specials:
+        - Leather Cap
+        - Leather Sleeves
+        - Leather Gloves
+        - Leather Leggings
+        - Leather Boots
    
   armor specials:
-    Helm:
+    Plate Helm:
       description: A helmet
       protection:
-        Head: 4
+        Head: 9
+        Neck: 9
+    Plate Arms:
+      description: Heavy plate arm protection
+      protection:
+        Left Arm: 8
+        Right Arm: 8
+    Plate Gloves:
+      description: Heavy plate hand protection
+      protection:
+        Left Hand: 7
+        Right Hand: 7
+    Plate Leggings:
+      description: Heavy plate leg protection
+      protection:
+        Left Leg: 9
+        Right Leg: 9
+    Plate Boots:
+      description: Heavy plate foot protection
+      protection:
+        Left Foot: 7
+        Right Foot: 7
+    Chainmail Coif:
+      description: Chainmail head and neck protection
+      protection:
+        Head: 3
+        Neck: 4
+    Chainmail Sleeves:
+      description: Chainmail arm protection
+      protection:
+        Left Arm: 4
+        Right Arm: 4
+    Chainmail Gloves:
+      description: Chainmail hand protection
+      protection:
+        Left Hand: 4
+        Right Hand: 4
+    Chainmail Leggings:
+      description: Chainmail leg protection
+      protection:
+        Left Leg: 5
+        Right Leg: 5
+    Chainmail Boots:
+      description: Chainmail foot protection
+      protection:
+        Left Foot: 4
+        Right Foot: 4
+    Leather Cap:
+      description: Leather head and neck protection
+      protection:
+        Head: 2
+        Neck: 2
+    Leather Sleeves:
+      description: Leather arm protection
+      protection:
+        Left Arm: 2
+        Right Arm: 2
+    Leather Gloves:
+      description: Leather hand protection
+      protection:
+        Left Hand: 2
+        Right Hand: 2
+    Leather Leggings:
+      description: Leather leg protection
+      protection:
+        Left Leg: 3
+        Right Leg: 3
+    Leather Boots:
+      description: Leather foot protection
+      protection:
+        Left Foot: 2
+        Right Foot: 2
