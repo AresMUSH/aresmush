@@ -1,10 +1,9 @@
 ---
 fs3combat:
   weapons:
-    Flash Grenade:
-      description: Flashbang Hand Grenade which blinds/deafens human targets for 5
-        secs.  No effect on Centurions.
-      skill: Athletics
+    AOE Stun:
+      description: An AOE stun that affects multiple targets.
+      skill: Magic
       lethality: 0
       penetration: 8
       weapon_type: Suppressive
@@ -14,9 +13,9 @@ fs3combat:
       accuracy: 5
       has_shrapnel: false
       init_mod: 0
-    Frag Grenade:
-      description: Fragmentation Hand Grenade
-      skill: Athletics
+    AOE Damage:
+      description: Magic that does AOE damage with shrapnel.
+      skill: Magic
       lethality: 0
       penetration: 8
       weapon_type: Explosive
@@ -31,7 +30,7 @@ fs3combat:
       skill: 3
       lethality: 0
       penetration: 5
-      weapon_type: Ranged
+      weapon_type: Physical
       is_automatic: false
       recoil: 0
       damage_type: Physical
@@ -39,26 +38,38 @@ fs3combat:
       has_shrapnel: false
       init_mod: 0
     Bow:
-      description: Assault Rifle
+      description: Short Bow, Long Bow, type weapons.
       skill: Ranged
       lethality: 0
       penetration: 6
       weapon_type: Ranged
       is_automatic: true
       ammo: 20
-      recoil: 3
+      recoil: 0
       damage_type: Physical
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-    Tazer:
-      description: Stun gun
+    Single Damage:
+      description: Single target magic attack.
+      skill: Magic
+      lethality: 0
+      penetration: 6
+      weapon_type: Ranged
+      is_automatic: true
+      ammo: 20
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: false
+      init_mod: 0
+    Single Stun:
+      description: Single Target Stun
       skill: Magic
       lethality: 70
       penetration: 10
       weapon_type: Ranged
       is_automatic: false
-      ammo: 5
       recoil: 0
       damage_type: Stun
       accuracy: 0
