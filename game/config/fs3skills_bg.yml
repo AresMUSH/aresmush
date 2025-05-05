@@ -1,19 +1,16 @@
 ---
 fs3skills:
   background_skills:
-    Sciences: astronomy, biology, chemistry, geology, mathematics, physics, etc.
-    Humanities: history, literature, psychology, philosophy, poetry, etc.
-    Professions: cook, waitress, bartender, accountant, programmer, carpenter, brewer,
-      blacksmith, etc.
-    Games: chess, roleplaying, poker, etc.
-    Arts: sculpting, painting, sketching, photography, etc.
-    Expression: acting, singing, dancing, playing an instrument, writing, etc.
-    Sports: baseball, football, gymnastics, etc.
-    Hobbies: gardening, weaving, knitting, etc.
-    Trivia: detective novels, game show hosts, etc.
-  bg_skills_blurb: 'Background Skills represent arts, sports, hobbies, professions
-    and any other skills not covered by Action Skills.  Background Skills have a descriptive
-    rating.   See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#background-skills"
-    target="_blank">FS3: Background Skills</a> for details.  Background Skills are
-    free-form, so there is no specific list. You can pick anything from Singing to
-    Literature.'
+    Sciences: astronomy, alchemy, herbology, geology, mathematics, natural philosophy
+    Humanities: Thyatian history, Traladaran folklore, Alphatian philosophy, Ethengari oral traditions, theology, ancient scripts
+    Professions: apothecary, scribe, shipwright, blacksmith, tailor, trapper, merchant, architect, baker, healer, mapmaker, vintner, spy
+    Games: chess, dragon dice, senet of Nithia, tavern games, board strategy
+    Arts: fresco painting, rune carving, tapestry weaving, mosaic design, heraldic illustration
+    Expression: bardic storytelling, skaldic poetry, courtly dance, lute playing, dramatic recitation, mystic chanting
+    Sports: gladiatorial fighting, horse archery, falconry, wrestling, jousting, caber tossing
+    Hobbies: fishing, foraging, mushroom hunting, bonsai tending (Hin tradition), miniature sculpting, pipe-smoking (Dwarven)
+    Trivia: Immortal cults, dungeon legends, royal scandals, monster lore, treasure maps
+    Crafts: leatherworking, gem cutting, potion brewing, wand crafting, glassblowing, candle-making
+    Lore: draconic runes, cursed artifacts, Immortal doctrines, fey courts, lost empires (e.g., Blackmoor, Nithia), magical anomalies
+    Animal Handling: animal training, falconry, beast husbandry
+  bg_skills_blurb: 'Background Skills represent arts, trades, lore, and cultural knowledge that flesh out your character in the world of Mystara. These skills are free-form and narrative in nature, enhancing roleplay rather than combat. For more details, visit <a href="https://aresmush.com/fs3/fs3-3/chargen.html#background-skills" target="_blank">FS3: Background Skills</a>.'

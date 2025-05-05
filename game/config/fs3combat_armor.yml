@@ -6,24 +6,25 @@ fs3combat:
       defense: 0
       protection:
         Nowhere: 0
-    Tactical:
-      description: Military-Grade Kevlar Vest and Helmet
+    Full Leather:
+      description: Full leather armor set
       defense: 0
       protection:
-        Head: 7
-        Neck: 5
-        Chest: 8
-        Abdomen: 7
-    Police:
-      description: Police-Grade Kevlar Vest
-      defense: 0
-      protection:
-        Chest: 7
-        Abdomen: 6
-      allowed_specials:
-      - Helmet
-    Centurion:
-      description: Cylon Centurion Armor
+        Head: 4
+        Neck: 4
+        Chest: 5
+        Abdomen: 5
+        Left Arm: 3
+        Right Arm: 3
+        Left Hand: 3
+        Right Hand: 3
+        Left Leg: 4
+        Right Leg: 4
+        Left Foot: 3
+        Right Foot: 3
+        
+    Full Plate:
+      description: Full plate armor set
       defense: 0
       protection:
         Head: 9
@@ -38,8 +39,8 @@ fs3combat:
         Right Leg: 9
         Left Foot: 7
         Right Foot: 7
-    Cylon:
-      description: Cylon (Non-Centurion) Skeleton
+    Full Chainmail:
+      description: Full chainmail armor set
       defense: 0
       protection:
         Head: 6
@@ -56,7 +57,7 @@ fs3combat:
         Right Foot: 5
    
   armor specials:
-    Helmet:
+    Helm:
       description: A helmet
       protection:
         Head: 4
