@@ -189,7 +189,7 @@ fs3combat:
       protection:
         Left Arm: 2     
     Kite Shield:
-      description: A kite medium shield
+      description: A kite medium or Round shield
       defense: 4
       protection:
         Left Arm: 3 
