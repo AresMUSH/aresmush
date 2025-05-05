@@ -6,18 +6,18 @@ fs3skills:
     linked_attr: Perception
   - name: Athletics
     linked_attr: Brawn
-    desc: General running, jumping, climbing, etc.
+    desc: General running, jumping, climbing, throwing etc.
   - name: Composure
     desc: Coolness under pressure.
     linked_attr: Grit
   - name: Magic
-    desc: Magical aptitude.
+    desc: Magical aptitude and ability to use magic. Divine or arcane. 
     linked_attr: Wits
   - name: Ranged
-    desc: Ranged or thrown weapons.
+    desc: Ranged weapons such as bows and crossbows.
     linked_attr: Reflexes
   - name: Survival
-    desc: Tracking, Outdoormanship.
+    desc: Tracking, hunting, animal handling, and wilderness survival.
     linked_attr: Grit
   - name: Medicine
     desc: Tending to the ill and injured.

@@ -1,6 +1,6 @@
 ---
 fs3combat:
-  default_type: Soldier
+  default_type: Unarmed
   allow_vehicles: true
   allow_mounts: true
   stances:
@@ -28,51 +28,10 @@ fs3combat:
   combatant_types:
     Observer:
       hitloc: Humanoid
-    Soldier:
-      weapon: Rifle
-      weapon_specials:
-      - Ap
-      armor: Tactical
-      hitloc: Humanoid
-      defense_skill: Reflexes
     Unarmed:
       weapon: Unarmed
       hitloc: Humanoid
       defense_skill: Reflexes
-    Centurion:
-      weapon: LMG
-      weapon_specials:
-      - Bipod
-      armor: Centurion
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Aa:
-      weapon: Missile
-      armor: Centurion
-      vehicle: Aa Battery
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Cylon:
-      weapon: Pistol
-      armor: Cylon
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Viper:
-      vehicle: Viper
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Raptor:
-      vehicle: Raptor
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Raider:
-      vehicle: Raider
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Heavy:
-      vehicle: Heavy Raider
-      hitloc: Humanoid
-      defense_skill: Piloting
     Target:
       hitloc: Target
       weapon: Unarmed

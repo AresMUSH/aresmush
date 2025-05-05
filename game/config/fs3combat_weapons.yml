@@ -26,82 +26,6 @@ fs3combat:
       accuracy: 0
       has_shrapnel: true
       init_mod: 0
-    Grenade Launcher:
-      description: Grenade Launcher
-      skill: Gunnery
-      lethality: 0
-      penetration: 8
-      weapon_type: Explosive
-      is_automatic: false
-      ammo: 4
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
-    Mine:
-      description: Mine or other anti-personnel explosive
-      skill: Demolitions
-      lethality: 20
-      penetration: 8
-      weapon_type: Explosive
-      is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
-    Missile:
-      description: Guided Anti-Vehicle Missile
-      skill: Gunnery
-      lethality: 80
-      penetration: 17
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 2
-      recoil: 0
-      damage_type: Physical
-      accuracy: 3
-      has_shrapnel: false
-      init_mod: 0
-    Talons:
-      description: Unguided Anti-Vehicle Rockets
-      skill: Gunnery
-      lethality: 0
-      penetration: 9
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 20
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-    Rocket:
-      description: Unguided Anti-Personnel Rocket
-      skill: Gunnery
-      lethality: 40
-      penetration: 8
-      weapon_type: Explosive
-      is_automatic: false
-      Ammo: 4
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
-    Shaped Charge:
-      description: Anti-Vehicle explosive
-      skill: Demolitions
-      lethality: 15
-      penetration: 25
-      weapon_type: Explosive
-      is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
     Shrapnel:
       description: Random Shrapnel
       skill: 3
@@ -114,40 +38,9 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-    Lmg:
-      description: Light machinegun/SAW
-      skill: Firearms
-      lethality: 0
-      penetration: 6
-      weapon_type: Ranged
-      is_automatic: true
-      ammo: 100
-      recoil: 4
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-      allowed_specials:
-      - Ap
-      - Bipod
-    Pistol:
-      description: Pistol
-      skill: Firearms
-      lethality: 0
-      penetration: 5
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 10
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-      allowed_specials:
-      - Ap
-    Rifle:
+    Bow:
       description: Assault Rifle
-      skill: Firearms
+      skill: Ranged
       lethality: 0
       penetration: 6
       weapon_type: Ranged
@@ -158,58 +51,9 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials:
-      - Ap
-      - Scope
-    Sniper Rifle:
-      description: Sniper Rifle
-      skill: Firearms
-      lethality: 0
-      penetration: 8
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 10
-      recoil: 0
-      damage_type: Physical
-      accuracy: 2
-      has_shrapnel: false
-      init_mod: 0
-      allowed_specials:
-      - Ap
-      - Scope
-    Shotgun:
-      description: Shotgun using solid shot
-      skill: Firearms
-      lethality: 10
-      penetration: 3
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 8
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-      allowed_specials:
-      - Buckshot
-    Smg:
-      description: Sub-machinegun
-      skill: Firearms
-      lethality: 0
-      penetration: 6
-      weapon_type: Ranged
-      is_automatic: true
-      ammo: 30
-      recoil: 4
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-      allowed_specials:
-      - Ap
     Tazer:
       description: Stun gun
-      skill: Firearms
+      skill: Magic
       lethality: 70
       penetration: 10
       weapon_type: Ranged
@@ -258,73 +102,7 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       - Sparring
-    Ecm:
-      description: ECM Package
-      skill: Gunnery
-      lethality: 0
-      penetration: 0
-      weapon_type: Suppressive
-      is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-    Hmg:
-      description: Heavy machinegun.
-      skill: Firearms
-      lethality: 20
-      penetration: 8
-      weapon_type: Ranged
-      is_automatic: true
-      ammo: 100
-      recoil: 6
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-      allowed_specials:
-      - Ap
-      - Bipod
-    Kew:
-      description: KEW Assault Cannon.  This is a chain gun and always burst fires,
-        so that's factored into the damage.
-      skill: Gunnery
-      lethality: 0
-      penetration: 9
-      weapon_type: Ranged
-      is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-    Cannon:
-      description: Tank cannon.
-      skill: Gunnery
-      lethality: 0
-      penetration: 23
-      weapon_type: Ranged
-      is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
   weapon specials:
-    Ap:
-      description: Armor Piercing Rounds
-      penetration: 2
-    Bipod:
-      description: Bipod Brace
-      recoil: -3
-    Scope:
-      description: Sniper scope
-      accuracy: 2
-    Buckshot:
-      description: Shotgun pellets
-      accuracy: 3
-      penetration: -2
     Sparring:
       description: Padded sparring equipment
       lethality: -50
