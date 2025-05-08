@@ -73,7 +73,7 @@ GEM
       nest (~> 3)
       redic (~> 1.5.0)
       stal
-    rack (2.2.10)
+    rack (2.2.14)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -138,7 +138,7 @@ DEPENDENCIES
   json (~> 2.3.1)
   logger (~> 1.6.4)
   ohm (~> 3.1.1)
-  rack (~> 2.2.4)
+  rack (~> 2.2.14)
   rake (~> 12.3)
   redcarpet (~> 3.5.1)
   rspec (~> 3.12)
