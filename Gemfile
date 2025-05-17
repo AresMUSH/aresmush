@@ -6,7 +6,7 @@ gem 'json', '~> 2.3.1'
 gem 'logger', "~>1.6.4"
 
 # Misc formatting utils, mattr_accessor, date utils, etc.
-gem "activesupport", ">= 6.1.7"
+gem "activesupport", ">= 8.0.2"
 
 # Ansi codes
 gem 'ansi', '~> 1.5'
@@ -15,7 +15,7 @@ gem 'ansi', '~> 1.5'
 gem 'ohm', '~> 3.1.1'
 
 # engine webserver
-gem 'rack', '~> 2.2.4'
+gem 'rack', '~> 2.2.14'
 gem 'sinatra', '>= 3.0.2'
 gem 'sinatra-cross_origin', '~>0.4.0'
 gem 'thin', "~> 1.8.1"
@@ -44,8 +44,9 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'htmlentities', '~>4.3.4'
 
 # Backups
-gem 'aws-sdk-s3', '~> 1.114'
+gem 'aws-sdk-s3', '~> 1.184'
 gem 'rubyzip',  '~> 1.3.0'
+gem 'rexml', '~> 3.4.1'
 
 # Web diff parser
 gem 'diffy', '~> 3.4.1'

@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (8.0.1)
+    activesupport (8.0.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -17,16 +17,18 @@ GEM
     ansi (1.5.0)
     aws-eventstream (1.3.0)
     aws-partitions (1.1024.0)
-    aws-sdk-core (3.214.0)
+    aws-sdk-core (3.222.3)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
+      base64
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-kms (1.96.0)
       aws-sdk-core (~> 3, >= 3.210.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.176.1)
-      aws-sdk-core (~> 3, >= 3.210.0)
+    aws-sdk-s3 (1.184.0)
+      aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.10.1)
@@ -73,7 +75,7 @@ GEM
       nest (~> 3)
       redic (~> 1.5.0)
       stal
-    rack (2.2.10)
+    rack (2.2.14)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -81,6 +83,7 @@ GEM
     redcarpet (3.5.1)
     redic (1.5.3)
       hiredis
+    rexml (3.4.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -115,7 +118,7 @@ GEM
     timezone (1.2.12)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (1.0.2)
+    uri (1.0.3)
 
 PLATFORMS
   arm64-darwin
@@ -124,9 +127,9 @@ PLATFORMS
   x86_64-darwin
 
 DEPENDENCIES
-  activesupport (>= 6.1.7)
+  activesupport (>= 8.0.2)
   ansi (~> 1.5)
-  aws-sdk-s3 (~> 1.114)
+  aws-sdk-s3 (~> 1.184)
   bcrypt (~> 3.1.11)
   dentaku (~> 3.1)
   diffy (~> 3.4.1)
@@ -138,9 +141,10 @@ DEPENDENCIES
   json (~> 2.3.1)
   logger (~> 1.6.4)
   ohm (~> 3.1.1)
-  rack (~> 2.2.4)
+  rack (~> 2.2.14)
   rake (~> 12.3)
   redcarpet (~> 3.5.1)
+  rexml (~> 3.4.1)
   rspec (~> 3.12)
   rubyzip (~> 1.3.0)
   sassc (~> 2.4.0)

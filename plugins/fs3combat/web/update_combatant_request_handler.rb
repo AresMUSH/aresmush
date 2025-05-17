@@ -35,12 +35,12 @@ module AresMUSH
         end
         action_args = (request.args['action_args'] || "").strip
         selected_weapon_specials = (request.args['weapon_specials'] || [])
-           .select { |k, w| (w[:selected] || "").to_bool }
-            .map { |k, w| w[:name] }
+           .select { |k, w| (w['selected'] || "").to_bool }
+            .map { |k, w| w['name'] }
         armor = request.args['armor']
         selected_armor_specials = (request.args['armor_specials'] || [])
-          .select { |k, a| (a[:selected] || "").to_bool }
-          .map { |k, a| a[:name] }
+          .select { |k, a| (a['selected'] || "").to_bool }
+          .map { |k, a| a['name'] }
         npc_level = request.args['npc_skill']
         vehicle = request.args['vehicle'] || ''
         passenger_type = request.args['passenger_type'] || 'none'
