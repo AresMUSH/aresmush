@@ -6,7 +6,7 @@ gem 'json', '~> 2.3.1'
 gem 'logger', "~>1.6.4"
 
 # Misc formatting utils, mattr_accessor, date utils, etc.
-gem "activesupport", ">= 8.0.2"
+gem "activesupport", "8.0.1"
 
 # Ansi codes
 gem 'ansi', '~> 1.5'
