@@ -13,9 +13,19 @@ if test -f "$NEEDRESTART_CONF_PATH"; then
   sed -i 's/#$nrconf{restart} = '"'"'i'"'"';/$nrconf{restart} = '"'"'a'"'"';/g' "$NEEDRESTART_CONF_PATH"
 fi
 
-# Set up redis PPA so we get a recent version
+# Turn off auto prompts (or at least try)
+export NEEDRESTART_MODE=l
+export DEBIAN_FRONTEND=noninteractive
+export NEEDRESTART_SUSPEND=y
 
-add-apt-repository -y ppa:redislabs/redis
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Redis prereqs"
+sudo apt-get install -y lsb-release curl gpg
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
 
 apt-get -y update
 apt-get -y install dialog apt-utils
@@ -57,7 +67,8 @@ apt-get install -y python
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Redis database"
-apt-get install -y redis-server
+sudo apt-get install -y redis
+
 
 # #########################################################################################
 
