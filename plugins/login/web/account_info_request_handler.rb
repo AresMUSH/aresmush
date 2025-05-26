@@ -12,6 +12,7 @@ module AresMUSH
         {
           handle: enactor.handle ? enactor.handle.name : nil,
           email: enactor.login_email,
+          alias: enactor.alias,
           name: enactor.name,
           timezone: enactor.ooctime_timezone,
           timezones: timezones,
