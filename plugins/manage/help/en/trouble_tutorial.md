@@ -56,7 +56,7 @@ The `statue` command, similar to Rhost's FUBAR flag or MUX's @toad, can deter tr
 
 ### Unapproving Trolls
 
-Most game-altering commands (building, posting to forums, starting scenes) are locked to approved characters by default.  This inherently protects you against malicious guests and characters fresh off the login screen.  If an already-approved character causes mischief, you can unapprove them using `app/unapprove` to deny them access to these commands.  
+Most game-altering commands (building, posting to forums, starting scenes) are locked to approved characters by default.  This inherently protects you against malicious characters fresh off the login screen.  If an already-approved character causes mischief, you can unapprove them using `app/unapprove` to deny them access to these commands.  
 
 ### Banning Trolls
 

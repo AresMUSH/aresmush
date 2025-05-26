@@ -29,7 +29,6 @@ module AresMUSH
         @event_client = double
         allow(@event_char).to receive(:name) { "Bob" }
         allow(@event_char).to receive(:room) { nil }    
-        allow(@event_char).to receive(:is_guest?) { false }
         allow(@event_client).to receive(:ip_addr) { "IP" }
         allow(@event_client).to receive(:hostname) { "HOST" }
         @event_char_id = 111
@@ -82,13 +81,6 @@ module AresMUSH
           expect(Login).to_not receive(:check_for_suspect).with(@event_char) {}
           @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
         end
-        
-        it "should not show events for a guest" do
-          expect(@event_char).to receive(:is_guest?) { true }
-          expect(dispatcher).to_not receive(:queue_timer)
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
-        end
-        
       end
       
       describe :on_char_created_event do

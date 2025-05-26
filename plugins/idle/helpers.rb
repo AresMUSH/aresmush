@@ -84,7 +84,7 @@ module AresMUSH
            category = Global.read_config('idle', 'roster_app_category') || "APP"
            title = t('idle.roster_app_title', :name => model.name)
            body = t('idle.roster_app_body', :target => model.name, :name => enactor_name, :app => app_text )
-           if (!enactor || enactor.is_guest?)
+           if (!enactor)
              submitter = Game.master.system_character
            else
              submitter = enactor

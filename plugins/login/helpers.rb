@@ -18,14 +18,27 @@ module AresMUSH
       
       actor.has_permission?("login")
     end
-    
-    def self.creation_allowed?
-      Global.read_config('login', 'allow_creation')
-    end
-    
+        
     def self.restricted_login_message
       Global.read_config('login', 'login_not_allowed_message') || ''
     end
+    
+    def self.allow_web_tour?
+      Login.allow_web_registration? && Global.read_config("login", "allow_web_tour")
+    end
+    
+    def self.allow_web_registration?
+      Global.read_config("login", "allow_web_registration")
+    end
+    
+    def self.allow_game_registration?
+      Global.read_config("login", "allow_game_registration")
+    end
+    
+    def self.allow_game_tour?
+      Login.allow_game_registration? && Global.read_config("login", "allow_game_tour")
+    end
+    
     
     def self.wants_announce(listener, connector)
       return false if !listener
@@ -96,17 +109,7 @@ module AresMUSH
     def self.in_boot_timeout?(char)
       return false if !char || !char.boot_timeout
       return Time.now < char.boot_timeout
-    end
-    
-    def self.guest_role
-      Global.read_config("login", "guest_role").to_s
-    end
-        
-    def self.guests
-      role = Role.find_one_by_name(Login.guest_role)
-      return [] if !role
-      Character.all.select { |c| c.roles.include?(role) }
-    end
+    end        
     
     def self.announce_connection(client, char)
       Global.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
@@ -345,5 +348,69 @@ module AresMUSH
         screen_reader: char.screen_reader        
       }
     end
+      
+    def self.generate_random_password
+      charset = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+      password = (0...15).map{ charset.to_a[rand(charset.size)] }.join
+      password
+    end
+    
+    def self.random_color_names
+      [ "Aqua", "Violet", "Ruby", "Ivory", "Teal", "Gold", "Copper", "Silver", "Mint", "Forest" ]
+    end
+    
+    def self.random_temp_names
+      [ "Guest", "Visitor", "Wanderer", "Wayfarer", "Traveler" ]
+    end
+    
+    def self.create_temp_char_name(recurse_count = 0)
+      list1 = (Global.read_config("login", "temp_name_prefixes") || Login.random_color_names).shuffle
+      list2 = (Global.read_config("login", "temp_name_suffixes") || Login.random_temp_names).shuffle
+      
+      retries = 0
+      while (retries < 5)
+        if (list1.any?)
+          name1 = list1.shift
+        end
+        
+        if (list2.any?)
+          name2 = list2.shift
+        end
+        
+        name = "#{name1}#{name2}"
+        
+        if (!Character.check_name(name) && !Login.name_taken?(name))
+          return name
+        end
+        
+        retries = retries + 1
+      end
+      
+      raise "Could not find a valid temp name."
+    end
+    
+    def self.create_char(name, password, tos_acked, client = nil)
+      char = Character.new
+      char.name = name
+      char.change_password(password)
+      char.room = Game.master.welcome_room
+
+      if (tos_acked)
+        char.terms_of_service_acknowledged = Time.now
+      end
+      
+      char.save
+      
+      Global.logger.info "#{name} created."
+      
+      if (client)
+        client.char_id = char.id
+        Global.dispatcher.queue_event CharCreatedEvent.new(client, char.id)
+        Global.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
+      end
+      
+      char
+    end
+    
   end
 end

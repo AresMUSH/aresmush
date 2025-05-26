@@ -460,6 +460,68 @@ module AresMUSH
         end
       end
       
+      describe :create_temp_char_name do
+        before do
+          allow(Global).to receive(:read_config).with("login", "temp_name_prefixes") { ["Happy"] }
+          allow(Global).to receive(:read_config).with("login", "temp_name_suffixes") { ["Wanderer"] }
+        end
+          
+        
+        it "should work if name not taken" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+          
+          expect(Login.create_temp_char_name).to eq "HappyWanderer"
+        end
+        
+        it "should work if other name choice works" do
+          allow(Global).to receive(:read_config).with("login", "temp_name_prefixes") { ["Happy", "Sad"] }
+          allow(Global).to receive(:read_config).with("login", "temp_name_suffixes") { ["Wanderer", "Panda"] }
+
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+
+          allow(Login).to receive(:name_taken?).with("SadPanda") { nil }
+          allow(Character).to receive(:check_name).with("SadPanda") { "bad" }
+
+          allow(Login).to receive(:name_taken?).with("HappyPanda") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyPanda") { "bad" }
+          
+          allow(Login).to receive(:name_taken?).with("SadWanderer") { nil }
+          allow(Character).to receive(:check_name).with("SadWanderer") { nil }
+          
+          expect(Login.create_temp_char_name).to eq "SadWanderer"
+        end
+        
+        it "should fail if name is taken" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+          
+          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)
+        end
+        
+        it "should fail if name is invalid" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { "bad name" }
+          
+          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)
+        end
+        
+        it "should fail if second name choice also doesn't work" do
+          allow(Global).to receive(:read_config).with("login", "temp_name_prefixes") { ["Happy"] }
+          allow(Global).to receive(:read_config).with("login", "temp_name_suffixes") { ["Wanderer", "Panda"] }
+
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+
+          allow(Login).to receive(:name_taken?).with("HappyPanda") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyPanda") { "bad" }
+          
+          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)          
+        end
+        
+      end
+      
     end
   end
 end

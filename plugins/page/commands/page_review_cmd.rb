@@ -15,11 +15,6 @@ module AresMUSH
         [ self.names ]
       end
       
-      def check_guest
-        return t('dispatcher.not_allowed') if enactor.has_any_role?("guest")
-        return nil
-      end
-      
       def handle
         
         if (client.screen_reader)

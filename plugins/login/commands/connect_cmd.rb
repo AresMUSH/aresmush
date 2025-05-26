@@ -14,7 +14,7 @@ module AresMUSH
         true
       end
       
-      def check_for_guest_or_password
+      def check_for_tour_or_password
         return t('dispatcher.invalid_syntax', :cmd => 'connect') if !self.password || !self.charname
         return nil
       end
@@ -25,7 +25,10 @@ module AresMUSH
       end
 
       def handle
-        return if self.charname.downcase == "guest"
+        # Should not get here based on prior checks
+        if self.charname.downcase == "guest"
+          raise "Ended up in connect handlef as guest"
+        end
 
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
   

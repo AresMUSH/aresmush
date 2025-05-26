@@ -4,11 +4,6 @@ module AresMUSH
       include CommandHandler      
       include TemplateFormatters
       
-      def check_can_block
-        return t('dispatcher.not_allowed') if (enactor.is_npc? || enactor.is_guest?)
-        return nil
-      end
-      
       def check_syntax
         return t('dispatcher.invalid_syntax', :cmd => cmd.root_plus_switch) if cmd.args        
       end

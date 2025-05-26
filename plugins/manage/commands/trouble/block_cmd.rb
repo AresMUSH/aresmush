@@ -23,11 +23,6 @@ module AresMUSH
         return nil
       end
       
-      def check_can_block
-        return t('dispatcher.not_allowed') if (enactor.is_npc? || enactor.is_guest?)
-        return nil
-      end
-
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |target|
           types = self.block_type == "all" ? Manage.block_types : [ self.block_type ]

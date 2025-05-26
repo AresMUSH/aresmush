@@ -15,13 +15,7 @@ There are two ways to play the game--you can play through the [Web Portal](/help
 
 ## Taking a Tour
 
-You can look around the web portal without being logged in, you just won't have access to join in scenes or edit anything.
-
-To look around using a MU client, you'll need to log in with a character.  If you haven't yet created one, which we'll discuss in a moment, you can borrow a designated "guest" character.  Just log in with the `tour` command and you'll be assigned to a temporary character.
-
-When you connect, the game will tell you your character name:
-
-> %% Your temporary guest character name is Guest-1.
+To talk to other players or do much of anything, you'll need to log in with a character. If you're just checking out the game and aren't sure if you want to stay long-term, you can create a temporary character with the [tour](/help/tour) command/button. This will automatically create a character with a temporary name and password.
 
 ## Creating a Character
 

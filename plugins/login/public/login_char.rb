@@ -31,10 +31,6 @@ module AresMUSH
       self.login_notices.each { |n| n.delete }
     end
     
-    def is_guest?
-      self.has_any_role?(Login.guest_role)
-    end
-    
     def is_coder?
       self.has_role?("coder")
     end

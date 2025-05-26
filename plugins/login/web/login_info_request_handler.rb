@@ -11,7 +11,8 @@ module AresMUSH
           recaptcha: recaptcha.is_enabled? ? recaptcha.site_key : nil,
           turnstile: turnstile.is_enabled? ? turnstile.site_key : nil,
           terms_of_service: tos_md,
-          enable_registration: Global.read_config("login", "allow_web_registration")
+          allow_registration: Login.allow_web_registration?,
+          allow_tour: Login.allow_web_tour?
         }
       end
     end
