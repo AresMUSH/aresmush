@@ -60,3 +60,7 @@ en:
         extra_profile_info: "Also see %xchooks <name>%xn, %xcsheet <name>%xn and %xcrelationships <name>%xn."
         
         profile_updated: "%{name} updated."
+        
+        wiki_backup_avail: "A recent wiki backup already exists. Download it from %{path}"
+        wiki_backup_failed: "Wiki backup failed. Error: %{error}"
+        wiki_backup_created: "Wiki backup created. Download it from %{path}"

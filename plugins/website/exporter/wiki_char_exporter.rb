@@ -9,18 +9,27 @@ module AresMUSH
         @export_path = File.join(AresMUSH.root_path, "wiki_export", @char.id)
       end
       
+      def path_for_folder(folder)
+        File.join(@export_path, folder)
+      end
+      
       def export
         begin
           unless File.directory?(@export_path)
             FileUtils.mkdir_p(@export_path)
-          end
 
+            FileUtils.mkdir(self.path_for_folder("uploads"))
+            FileUtils.mkdir(self.path_for_folder("profile"))
+            FileUtils.mkdir(self.path_for_folder("scenes"))
+          end
+          
           export_uploads
           export_profile
           export_scenes
          
                   
-          backup_path = File.join(AresMUSH.game_path, "export_#{@char.id}.zip")
+          backup_filename = "export_#{@char.id}.zip"
+          backup_path = File.join(AresMUSH.game_path, backup_filename)
           FileUtils.rm backup_path, :force=>true
           Zip::File.open(backup_path, 'w') do |zipfile|
             Dir["#{@export_path}/**/**"].each do |file|
@@ -30,7 +39,7 @@ module AresMUSH
           
           FileUtils.rm_r @export_path, :force=>true
           
-          return { path: backup_path, error: nil }
+          return { file: backup_filename, error: nil }
         rescue Exception => ex
           error = "#{ex} #{ex.backtrace[0,10]}"
           Global.logger.debug "Error doing web export: #{error}"
@@ -41,7 +50,11 @@ module AresMUSH
       def export_uploads
         Global.logger.debug "Exporting uploads for #{@char.name}."
 
-        FileUtils.cp_r File.join(AresMUSH.game_path, 'uploads', @char.name), File.join(@export_path, "uploads")
+        upload_path = File.join(AresMUSH.game_path, 'uploads', @char.name)
+        
+        if (File.exist?(upload_path))
+          FileUtils.cp_r upload_path, self.path_for_folder("uploads")
+        end
       end
       
       def scene_filename(scene)
@@ -54,7 +67,7 @@ module AresMUSH
         Global.logger.debug "Exporting scenes for #{@char.name}."
         @char.scenes_starring.each do |s|
           filename = self.scene_filename(s)
-          File.open(File.join(@export_path, filename), "w") do |file|
+          File.open(File.join(self.path_for_folder("scenes"), filename), "w") do |file|
             file.puts s.title
             file.puts s.summary
             file.puts "Date: #{s.icdate}"
@@ -67,7 +80,7 @@ module AresMUSH
         
         @char.unshared_scenes.each do |s|
           filename = self.scene_filename(s)
-          File.open(File.join(@export_path, filename), "w") do |file|
+          File.open(File.join(self.path_for_folder("scenes"), filename), "w") do |file|
             file.puts s.title
             file.puts s.summary
             file.puts "Date: #{s.icdate}"
@@ -81,13 +94,13 @@ module AresMUSH
       
       def export_profile
         Global.logger.debug "Exporting profile for #{@char.name}."
-        File.open(File.join(@export_path, "profile.txt"), "w") do |file|
+        File.open(File.join(self.path_for_folder("profile"), "profile.txt"), "w") do |file|
           profile = Profile.render_profile(@char)
           file.write AnsiFormatter.strip_ansi(MushFormatter.format(profile))
         end
         
         if FS3Skills.is_enabled?
-          File.open(File.join(@export_path, "sheet.txt"), "w") do |file|
+          File.open(File.join(self.path_for_folder("profile"), "sheet.txt"), "w") do |file|
             sheet = FS3Skills.render_sheet(@char)
             file.write AnsiFormatter.strip_ansi(MushFormatter.format(sheet))
           end

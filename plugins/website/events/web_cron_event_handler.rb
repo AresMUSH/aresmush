@@ -6,6 +6,11 @@ module AresMUSH
         if Cron.is_cron_match?(config, event.time)
           export_wiki
         end
+        
+        config = Global.read_config("website", "char_backup_cleanup_cron")
+        if Cron.is_cron_match?(config, event.time)
+          cleanup_char_backups
+        end
       end
       
       def export_wiki
@@ -14,6 +19,16 @@ module AresMUSH
           Website.export_wiki
         end
       end
+      
+      def cleanup_char_backups
+        WikiCharBackup.all.each do |backup|
+          if (backup.hours_old > 48)
+            Global.logger.debug "Deleting old backup #{backup.file}"
+            backup.delete
+          end
+        end
+      end
+      
     end
   end
 end
