@@ -19,7 +19,8 @@ module AresMUSH
         name = Login.create_temp_char_name
         password = Login.generate_random_password
               
-        char = Login.create_char(name, password, Login.terms_of_service)
+        char = Login.register_and_login_char(name, password, Login.terms_of_service)
+        Login.send_tour_welcome(char, password)
         
         Login.update_site_info(request.ip_addr, request.hostname, char)
         Global.dispatcher.queue_event CharCreatedEvent.new(nil, char.id)

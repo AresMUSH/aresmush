@@ -24,6 +24,7 @@ en:
        tos_agreement_not_pending: "You aren't looking at the terms of service."
        tos_agree: "Type %xctos/agree%xn to agree to these terms of service."
        temp_name: "Your character name has been assigned a temporary name of %{name} and password %{password}. You can change these should you choose to stay. See `help tour` for details."
+       tour_welcome_subject: "Welcome!"
        invalid_watch_option: "Valid watch options are: all, none, friends"
        watch_all: "You will now see connect/disconnect messages for all characters."
        watch_none: "You will not see any connect/disconnect messages."

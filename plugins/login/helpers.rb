@@ -355,41 +355,30 @@ module AresMUSH
       password
     end
     
-    def self.random_color_names
-      [ "Aqua", "Violet", "Ruby", "Ivory", "Teal", "Gold", "Copper", "Silver", "Mint", "Forest" ]
-    end
     
-    def self.random_temp_names
-      [ "Guest", "Visitor", "Wanderer", "Wayfarer", "Traveler" ]
-    end
-    
-    def self.create_temp_char_name(recurse_count = 0)
-      list1 = (Global.read_config("login", "temp_name_prefixes") || Login.random_color_names).shuffle
-      list2 = (Global.read_config("login", "temp_name_suffixes") || Login.random_temp_names).shuffle
-      
-      retries = 0
-      while (retries < 5)
-        if (list1.any?)
-          name1 = list1.shift
-        end
-        
-        if (list2.any?)
-          name2 = list2.shift
-        end
-        
-        name = "#{name1}#{name2}"
+    def self.create_temp_char_name
+      names = (Global.read_config("names", "guest") || []).shuffle
+      while (!names.empty?)
+        name = names.shift
         
         if (!Character.check_name(name) && !Login.name_taken?(name))
           return name
         end
-        
-        retries = retries + 1
+      end
+      
+      counter = Game.master.login_guest_counter + 1
+      name = "Guest-#{counter}"
+      Game.master.update(login_guest_counter: counter)
+      
+      if (!Login.name_taken?(name))
+        return name
       end
       
       raise "Could not find a valid temp name."
+      
     end
     
-    def self.create_char(name, password, tos_acked, client = nil)
+    def self.register_and_login_char(name, password, tos_acked, client = nil)
       char = Character.new
       char.name = name
       char.change_password(password)
@@ -411,6 +400,12 @@ module AresMUSH
       
       char
     end
+    
+    def self.send_tour_welcome(char, password)
+      welcome_message = (Global.read_config("login", "tour_welcome_message") || "") % { name: char.name, password: password }
+      Mail.send_mail([char.name], t('login.tour_welcome_subject'), welcome_message, nil)
+    end
+      
     
   end
 end

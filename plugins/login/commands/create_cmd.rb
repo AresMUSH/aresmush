@@ -57,7 +57,7 @@ module AresMUSH
         
         client.program.delete(:login_cmd)
         
-        Login.create_char(self.charname, self.password, terms_of_service, client)
+        Login.register_and_login_char(self.charname, self.password, terms_of_service, client)
         
         client.emit_success(t('login.created_and_logged_in', :name => charname))
         

@@ -28,7 +28,9 @@ module AresMUSH
         name = Login.create_temp_char_name
         password = Login.generate_random_password
               
-        Login.create_char(name, password, terms_of_service, client)
+        char = Login.register_and_login_char(name, password, terms_of_service, client)
+        Login.send_tour_welcome(char, password)
+        
         client.emit_success t('login.temp_name', :name => name, :password => password)
       end
     end

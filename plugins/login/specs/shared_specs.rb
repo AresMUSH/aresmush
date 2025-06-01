@@ -462,8 +462,12 @@ module AresMUSH
       
       describe :create_temp_char_name do
         before do
-          allow(Global).to receive(:read_config).with("login", "temp_name_prefixes") { ["Happy"] }
-          allow(Global).to receive(:read_config).with("login", "temp_name_suffixes") { ["Wanderer"] }
+          allow(Global).to receive(:read_config).with("names", "guest") { ["HappyWanderer"] }
+          @game = double
+          allow(Game).to receive(:master) { @game }
+          allow(@game).to receive(:login_guest_counter) { 0 }
+          allow(@game).to receive(:update)
+          allow(Login).to receive(:name_taken?).with("Guest-1") { nil }
         end
           
         
@@ -475,8 +479,7 @@ module AresMUSH
         end
         
         it "should work if other name choice works" do
-          allow(Global).to receive(:read_config).with("login", "temp_name_prefixes") { ["Happy", "Sad"] }
-          allow(Global).to receive(:read_config).with("login", "temp_name_suffixes") { ["Wanderer", "Panda"] }
+          allow(Global).to receive(:read_config).with("names", "guest") { ["HappyWanderer", "SadPanda", "SadWanderer"] }
 
           allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
           allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
@@ -493,23 +496,22 @@ module AresMUSH
           expect(Login.create_temp_char_name).to eq "SadWanderer"
         end
         
-        it "should fail if name is taken" do
+        it "should fallback if name is taken" do
           allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
           allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
           
-          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)
+          expect(Login.create_temp_char_name).to eq "Guest-1"
         end
         
-        it "should fail if name is invalid" do
+        it "should fallback if name is invalid" do
           allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
           allow(Character).to receive(:check_name).with("HappyWanderer") { "bad name" }
           
-          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)
+          expect(Login.create_temp_char_name).to eq "Guest-1"
         end
         
-        it "should fail if second name choice also doesn't work" do
-          allow(Global).to receive(:read_config).with("login", "temp_name_prefixes") { ["Happy"] }
-          allow(Global).to receive(:read_config).with("login", "temp_name_suffixes") { ["Wanderer", "Panda"] }
+        it "should fallback if second name choice also doesn't work" do
+          allow(Global).to receive(:read_config).with("names", "guest") { ["HappyWanderer", "HappyPanda"] }
 
           allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
           allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
@@ -517,7 +519,16 @@ module AresMUSH
           allow(Login).to receive(:name_taken?).with("HappyPanda") { "taken" }
           allow(Character).to receive(:check_name).with("HappyPanda") { "bad" }
           
-          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)          
+          expect(Login.create_temp_char_name).to eq "Guest-1"
+        end
+        
+        it "should fail if fallback isn't available" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { "bad name" }
+          allow(Login).to receive(:name_taken?).with("Guest-1") { "taken" }
+          
+          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)
+
         end
         
       end
