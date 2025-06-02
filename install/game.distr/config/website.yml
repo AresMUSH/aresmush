@@ -227,8 +227,6 @@ website:
     minute:
     - 37
   char_backup_cleanup_cron:
-    day_of_week:
-    - Wed
     hour:
     - 3
     minute:
