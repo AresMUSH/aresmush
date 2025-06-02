@@ -3,11 +3,6 @@ module AresMUSH
     class PageNewCmd
       include CommandHandler
 
-      def check_guest
-        return t('dispatcher.not_allowed') if enactor.has_any_role?("guest")
-        return nil
-      end
-      
       def handle
         thread = enactor.page_threads.select { |p| Page.is_thread_unread?(p, enactor) }.first
         if (thread)

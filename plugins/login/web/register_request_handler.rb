@@ -4,13 +4,12 @@ module AresMUSH
       def handle(request)
         recaptcha = AresMUSH::Website::RecaptchaHelper.new
         turnstile = AresMUSH::Website::TurnstileHelper.new
-        enable_registration = Global.read_config("login", "allow_web_registration")
         
         if (request.enactor)
           return { message: 'login.already_logged_in' }
         end
         
-        if (!enable_registration)
+        if (!Login.allow_web_registration?)
           return { message: t('login.web_registration_disabled') }
         elsif (Login.is_banned?(nil, request.ip_addr, request.hostname))
           return { error: Login.site_blocked_message }

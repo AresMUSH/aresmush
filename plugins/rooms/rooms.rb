@@ -115,8 +115,6 @@ module AresMUSH
       case event_name
       when "CharConnectedEvent"
         return CharConnectedEventHandler
-      when "CharDisconnectedEvent"
-        return CharDisconnectedEventHandler
       when "CronEvent"
         return CronEventHandler
       end

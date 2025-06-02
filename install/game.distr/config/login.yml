@@ -3,7 +3,6 @@ login:
   activity_cron:
     minute:
     - 0
-  allow_creation: true
   allow_web_registration: true
   blacklist_cron:
     day:
@@ -13,9 +12,6 @@ login:
     - 3
     minute:
     - 0
-  creation_not_allowed_message: ''
-  guest_disabled_message: ''
-  guest_role: guest
   login_not_allowed_message: ''
   notice_cleanup_cron:
     day:
@@ -38,6 +34,11 @@ login:
   permissions:
     login: Able to log in.
     manage_login: Can access login-related admin tools like resetting someone's password.
-  random_guest_selection: false
   boot_timeout_seconds: 300
   disable_nonadmin_logins: false
+  allow_web_tour: true
+  allow_game_tour: true
+  tour_not_allowed_message: ''
+  allow_game_registration: true
+  registration_not_allowed_message: ''
+  tour_welcome_message: "Welcome to our game. We hope you enjoy your stay!\n\nYour temporary name is %{name} and password is %{password}\n\nIf you wish to keep this character, you can rename them and change their password. See `help tour` for details. Otherwise, just log out and the character will be recycled."

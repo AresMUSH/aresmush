@@ -7,7 +7,7 @@ module AresMUSH
     
     def self.award_achievement(char, name, count = 0)
       return nil if !Achievements.is_enabled?
-      return nil if char.is_admin? || char.is_npc? || char.is_guest?
+      return nil if char.is_admin? || char.is_npc?
       
       achievement_details = Achievements.achievement_data(name)          
       if (!achievement_details)

@@ -31,11 +31,9 @@ module AresMUSH
           notice_delay = 2
         end
         
-        if (!char.is_guest?)
-          Global.dispatcher.queue_timer(notice_delay, "Login notices", client) do 
-            template = NoticesSummaryTemplate.new(char)
-            client.emit template.render
-          end
+        Global.dispatcher.queue_timer(notice_delay, "Login notices", client) do 
+          template = NoticesSummaryTemplate.new(char)
+          client.emit template.render
         end
       end
     end

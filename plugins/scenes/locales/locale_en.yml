@@ -110,6 +110,7 @@ en:
         pose_threeper_notice: "3-per pose order is in effect."
         pose_threeper_nudge: "You can pose again. 3-per pose order is in effect."
         pose_threeper_nudge_other_scene: "You can pose again in scene %{scene}. 3-per pose order is in effect."
+        pose_threeper_your_turn: "You can pose again."
         pose_your_turn: "It's your turn to pose."
         pose_your_turn_other_scene: "It's your turn to pose in scene %{scene}."
         next_pose_offline: "It's %{name}'s turn to pose but they're not here.  Unless they're playing from the web, you probably want to drop them from pose order using pose/drop <name>."
@@ -151,6 +152,7 @@ en:
         web_scene_started: "You start a new scene (%{num}).  You can join the scene using `scene/join %{num}` or find it on the web portal's active scenes page."
         
         new_scene_activity: "New activity in scene %{id}."
+        new_scene_activity_your_turn: "New activity in scene %{id}. It's your turn to pose."
         scene_updated: "%{title} updated."
         scene_reported: "Thank you.  A report has been created using the scene log as evidence."
         

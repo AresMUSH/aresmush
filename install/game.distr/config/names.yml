@@ -3,3 +3,54 @@ names:
   restricted:
   - me
   - here
+  guest:
+  - AquaGuest
+  - AquaTraveler
+  - AquaVisitor
+  - AquaWanderer
+  - AquaWayfarer
+  - CopperGuest
+  - CopperTraveler
+  - CopperVisitor
+  - CopperWanderer
+  - CopperWayfarer
+  - ForestGuest
+  - ForestTraveler
+  - ForestVisitor
+  - ForestWanderer
+  - ForestWayfarer
+  - GoldGuest
+  - GoldTraveler
+  - GoldVisitor
+  - GoldWanderer
+  - GoldWayfarer
+  - IvoryGuest
+  - IvoryTraveler
+  - IvoryVisitor
+  - IvoryWanderer
+  - IvoryWayfarer
+  - MintGuest
+  - MintTraveler
+  - MintVisitor
+  - MintWanderer
+  - MintWayfarer
+  - RubyGuest
+  - RubyTraveler
+  - RubyVisitor
+  - RubyWanderer
+  - RubyWayfarer
+  - SilverGuest
+  - SilverTraveler
+  - SilverVisitor
+  - SilverWanderer
+  - SilverWayfarer
+  - TealGuest
+  - TealTraveler
+  - TealVisitor
+  - TealWanderer
+  - TealWayfarer
+  - VioletGuest
+  - VioletTraveler
+  - VioletVisitor
+  - VioletWanderer
+  - VioletWayfarer

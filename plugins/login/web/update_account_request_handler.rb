@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         name = request.args['name']
+        char_alias = request.args['alias'] || ""
         email = request.args['email']
         timezone = request.args['timezone']
         pw = request.args['confirm_password']
@@ -43,6 +44,16 @@ module AresMUSH
             return { error: timezone_error }
           end
         end
+        
+        taken_error = Login.name_taken?(char_alias, enactor)
+        if (taken_error) 
+          return { error: taken_error }
+        end
+        name_validation_msg = Character.check_name(char_alias)
+        if (taken_error) 
+          return { error: name_validation_msg }
+        end
+        enactor.update(alias: char_alias)
         
         AresCentral.alts(enactor).each do |alt|
           alt.update(unified_play_screen: unified_play_screen)

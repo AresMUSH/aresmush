@@ -326,7 +326,8 @@ module AresMUSH
         return error
       end
       
-      WikiCharBackup.create(char: char, path: result[:path], created_at: Time.now)
+      backup = WikiCharBackup.create(char: char, file: result[:file])
+      char.update(wiki_char_backup: backup)
       nil
     end
       

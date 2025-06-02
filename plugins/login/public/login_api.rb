@@ -75,10 +75,9 @@ module AresMUSH
         announce_connection(client, char)
       end
     end
-      
+    
     def self.set_random_password(char)
-      charset = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
-      password = (0...15).map{ charset.to_a[rand(charset.size)] }.join
+      password = Login.generate_random_password
       char.change_password(password)
       char.update(login_api_token: '')
       char.update(login_api_token_expiry: Time.now - 86400*5)

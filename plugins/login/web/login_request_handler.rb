@@ -11,13 +11,7 @@ module AresMUSH
         return error if error
         
         if (!char)
-          if (name && name.downcase.start_with?("guest"))
-            return { error: t('login.no_guest_webportal') }
-          else
-           return { error: t('login.invalid_name_or_password') }
-          end
-        elsif (char.is_guest?)
-          return { error: t('login.no_guest_webportal') }
+          return { error: t('login.invalid_name_or_password') }
         end
 
         if (pw == "ALT")

@@ -155,6 +155,8 @@ module AresMUSH
         return LoginInfoRequestHandler
       when "register"
         return RegisterRequestHandler
+      when "tour"
+        return TourRequestHandler        
       when "updateAccountInfo"
         return UpdateAccountInfoRequestHandler
       when "changePassword"

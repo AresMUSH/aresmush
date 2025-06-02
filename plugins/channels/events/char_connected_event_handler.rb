@@ -14,12 +14,6 @@ module AresMUSH
            other_client.emit "#{common_channels} #{t('channels.has_connected', :name => char.ooc_name)}"
           end
         end
-
-        if (char.is_guest?)
-          channels = Global.read_config("channels", "default_channels")          
-          Channels.add_to_channels(client, char, channels)
-          client.emit_success t('channels.channel_command_hint')
-        end
       end
     end
   end

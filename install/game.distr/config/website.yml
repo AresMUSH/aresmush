@@ -226,6 +226,13 @@ website:
     - 4
     minute:
     - 37
+  char_backup_cleanup_cron:
+    day_of_week:
+    - Wed
+    hour:
+    - 3
+    minute:
+    - 14
   shortcuts:
     wiki: website
     website/archive: website/export

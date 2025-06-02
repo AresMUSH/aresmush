@@ -4,7 +4,6 @@ idle:
   - admin
   - builder
   - coder
-  - guest
   monthly_reminder_cron:
     hour:
     - 15

@@ -316,6 +316,106 @@ button.outdent.toastui-editor-toolbar-icons {
   background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
 }
 
+.toastui-editor-defaultUI-toolbar {
+	border-bottom: 0;
+	border-radius: 0;
+}
+
+.toastui-editor-defaultUI-toolbar button {
+	background-color: $border-color;
+	border-color: $border-color;
+}
+
+.toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
+	background-color: $background-color;
+	border-color: $border-color;
+}
+
+.toastui-editor-toolbar-icons.heading,
+.toastui-editor-toolbar-icons.bold,
+.toastui-editor-toolbar-icons.italic,
+.toastui-editor-toolbar-icons.strike,
+.toastui-editor-toolbar-icons.hrline,
+.toastui-editor-toolbar-icons.quote,
+.toastui-editor-toolbar-icons.bullet-list,
+.toastui-editor-toolbar-icons.ordered-list,
+.toastui-editor-toolbar-icons.indent,
+.toastui-editor-toolbar-icons.task-list,
+.toastui-editor-toolbar-icons.outdent,
+.toastui-editor-toolbar-icons.table,
+.toastui-editor-toolbar-icons.image,
+.toastui-editor-toolbar-icons.link,
+.toastui-editor-toolbar-icons.code,
+.toastui-editor-toolbar-icons.codeblock {
+	background-position-y: -49px;
+}
+
+.toastui-editor-defaultUI {
+	border-color: transparent;
+}
+
+.toastui-editor-mode-switch {
+	background-color: $background-color;
+	border-color: transparent;
+}
+
+.toastui-editor-popup-body,
+.toastui-editor-popup-add-table .toastui-editor-table-cell,
+.toastui-editor-popup-add-table .toastui-editor-table-cell.header,
+.toastui-editor-popup-add-table .toastui-editor-table-description,
+.toastui-editor-popup {
+	background-color: $border-color;
+	color: $text-color;
+	border-color: $border-color;
+}
+
+.toastui-editor-mode-switch .tab-item,
+.toastui-editor-mode-switch .tab-item.active {
+	background-color: $primary-color;
+	border-color: $primary-color;
+}
+
+.toastui-editor-mode-switch .tab-item {
+	color: #aaaaaa;
+}
+
+.toastui-editor-mode-switch .tab-item.active {
+	color: $text-color;
+}
+
+
+.toastui-editor-md-code,
+.toastui-editor-contents code { 
+ background-color: $box-background-color;
+ color: $box-words-color;
+}
+
+.toastui-editor-md-table .toastui-editor-md-table-cell,
+.toastui-editor-md-link.toastui-editor-md-link-desc.toastui-editor-md-marked-text,
+.toastui-editor-md-code.toastui-editor-md-marked-text {
+  color: $primary-words-color;
+}
+
+.toastui-editor-md-block-quote .toastui-editor-md-marked-text {
+ background-color: $box-background-color;
+ color: $box-words-color;
+}
+
+.toastui-editor-popup-body,
+.toastui-editor-popup-add-table .toastui-editor-table-cell,
+.toastui-editor-popup-add-table .toastui-editor-table-cell.header,
+.toastui-editor-popup-add-table .toastui-editor-table-description,
+.toastui-editor-popup {
+    background-color: $box-background-color;
+    color: $text-color;
+    border-color: $border-color;
+}
+
+.toastui-editor-popup-body > label {
+  color: $box-words-color;
+}
+
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
