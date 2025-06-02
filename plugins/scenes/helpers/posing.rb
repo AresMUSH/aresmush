@@ -16,9 +16,14 @@ module AresMUSH
     end
     
     def self.create_new_pose_notification(scene, last_posed)
-      message = t('scenes.new_scene_activity', :id => scene.id)
+      next_turn_chars = scene.room ? Scenes.next_pose_chars(scene.room) : []
+      
       watching_participants = scene.watchers.to_a & scene.participants.to_a
       watching_participants.each do |w|
+        message = next_turn_chars.include?(w) ? 
+            t('scenes.new_scene_activity_your_turn', :id => scene.id) :
+            t('scenes.new_scene_activity', :id => scene.id)
+        
         if (!AresCentral.is_alt?(w, last_posed))
           is_in_room = scene.room && scene.room == w.room
           Login.notify(w, :scene, message, scene.id, "", !is_in_room)
@@ -78,40 +83,70 @@ module AresMUSH
       end
     end
       
-    def self.notify_next_person(room)
-        
+    # Array - needs to contain multiple chars for 3-per scenes.
+    def self.next_pose_chars(room)
+      chars = []
+      
+      # sorts so oldest pose time (next person to go) is first
       poses = room.sorted_pose_order
-      return if poses.count < 2
- 
+      return chars if poses.count < 2
+            
       if (room.pose_order_type == '3-per')
+        
+        # Reverses the order so oldest pose time is last
+        # ------------------------------------------------
+        # (doesn't notify until there are at least 4 people in the list)
+        # Alex   
+        # Bob Alex
+        # Cate Bob Alex
+        # David Cate Bob Alex <<---- Notifies Alex
+        # Evan David Cate Bob Alex <<---- Notifies Bob, Alex
+        # Faith Evan David Cate Bob Alex <<---- Notifies Cate, Bob, Alex
+        # Cate Faith Evan David Bob Alex <<---- Notifies David, Bob, Alex
+
         poses.reverse.each_with_index do |(name, time), i|
           next if i < 3
+          
           char = Character.find_one_by_name(name)
           if (!char)
             room.remove_from_pose_order(name)
           end
-          client = Login.find_game_client(char)
-          if (client && char.pose_nudge && !char.pose_nudge_muted)
-            if (char.room == room)
-              client.emit_ooc t('scenes.pose_your_turn')
-            elsif (room.scene)
-              client.emit_ooc t('scenes.pose_threeper_nudge_other_scene', :scene => room.scene.id)
-            end
-          end
+          chars << char
         end
       else
+        
+        # next person to go is always first
         next_up_name = poses.first[0]
         char = Character.find_one_by_name(next_up_name)
         if (!char)
           room.remove_from_pose_order(next_up_name)
         end
+        chars << char
+      end
+      
+      return chars      
+    end
+    
+    def self.notify_next_person(room)
+      notify_chars = self.next_pose_chars(room)
+ 
+      notify_chars.each do |char|
         client = Login.find_game_client(char)
         if (client && char.pose_nudge && !char.pose_nudge_muted)
           if (char.room == room)
-            client.emit_ooc t('scenes.pose_your_turn')
+            if (room.pose_order_type == '3-per')
+              message = t('scenes.pose_threeper_your_turn')
+            else 
+              message = t('scenes.pose_your_turn')
+            end
           elsif (room.scene)
-            client.emit_ooc t('scenes.pose_your_turn_other_scene', :scene => room.scene.id)
+            if (room.pose_order_type == '3-per')
+              message = t('scenes.pose_threeper_nudge_other_scene', :scene => room.scene.id)
+            else 
+              message = t('scenes.pose_your_turn_other_scene', :scene => room.scene.id)
+            end
           end
+          client.emit_ooc message
         end
       end
     end

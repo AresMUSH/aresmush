@@ -20,6 +20,7 @@ module AresMUSH
       update(pose_order: order)
     end
     
+    # sorts so oldest pose time (next person to go is first)
     def sorted_pose_order
       pose_order.sort_by { |name, time| Time.parse(time) }
     end

@@ -56,7 +56,7 @@ module AresMUSH
           updated: can_read?(enactor, s) ? OOCTime.local_long_timestr(enactor, s.last_activity) : nil,
           watching: Scenes.is_watching?(s, enactor),
           participating: Scenes.is_participant?(s, enactor),
-          last_posed: can_read?(enactor, s) && s.last_posed ? s.last_posed.name : nil,
+          last_posed: Scenes.is_participant?(s, enactor) && s.last_posed ? s.last_posed.name : nil,
           last_pose_time_str: s.last_pose_time_str(enactor)
         }
       end
