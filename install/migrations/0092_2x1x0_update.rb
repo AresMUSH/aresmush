@@ -52,6 +52,12 @@ module AresMUSH
           DatabaseMigrator.write_config_file("idle.yml", config)    
         end
 
+
+        Global.logger.debug "Add backup cleanup cron."
+        config = DatabaseMigrator.read_config_file("website.yml")
+        config['website']['char_backup_cleanup_cron'] = { 'hour' => [3], 'minute' => [14] }
+        DatabaseMigrator.write_config_file("website.yml", config)          
+
       end
     end
   end    
