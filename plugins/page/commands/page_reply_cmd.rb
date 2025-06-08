@@ -40,6 +40,10 @@ module AresMUSH
         
         enactor.update(last_paged: names)
       end
+      
+      def log_command
+        # Don't log pages
+      end
     end
   end
 end
