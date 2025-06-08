@@ -19,7 +19,7 @@ module AresMUSH
         end
         
         if (!search_tag.blank?)
-          pages = pages.select { |p| p.tags.include?(search_tag.downcase) }
+          pages = pages.select { |p| p.content_tags.include?(search_tag.downcase) }
         end
         
         if (!search_text.blank?)
