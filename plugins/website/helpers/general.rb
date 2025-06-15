@@ -307,6 +307,14 @@ module AresMUSH
             'sidebar-custom.hbs' => File.join(web_code_path, 'components', 'sidebar-custom.hbs'),  
             'sidebar-custom.js' => File.join(web_code_path, 'components', 'sidebar-custom.js'),
             'custom_web_data.rb' => File.join(plugin_code_path, 'website', 'custom_web_data.rb'),
+          },
+        },
+          
+        {
+          name: "Wiki Character Export",
+          help: "https://aresmush.com/tutorials/code/hooks/wiki-export.html",
+          files: {
+            'custom_wiki_char_export.rb' => File.join(plugin_code_path, 'website', 'custom_wiki_char_export.rb'),
           }
         },
         

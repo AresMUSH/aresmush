@@ -123,6 +123,13 @@ module AresMUSH
           end
         end
         
+        custom = Website.custom_wiki_char_export(@char)
+        if (!custom.blank?)
+          File.open(File.join(self.path_for_folder("profile"), "other.txt"), "w") do |file|
+            file.write AnsiFormatter.strip_ansi(MushFormatter.format(custom))
+          end
+        end
+        
       end   
     end
   end
