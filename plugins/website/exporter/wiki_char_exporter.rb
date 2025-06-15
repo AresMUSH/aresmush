@@ -95,13 +95,30 @@ module AresMUSH
       def export_profile
         Global.logger.debug "Exporting profile for #{@char.name}."
         File.open(File.join(self.path_for_folder("profile"), "profile.txt"), "w") do |file|
-          profile = Profile.render_profile(@char)
+          profile = Profile.export_profile(@char)
           file.write AnsiFormatter.strip_ansi(MushFormatter.format(profile))
+        end
+        
+        File.open(File.join(self.path_for_folder("profile"), "descs.txt"), "w") do |file|
+          descs = Describe.export_descs(@char)
+          file.write AnsiFormatter.strip_ansi(MushFormatter.format(descs))
+        end
+        
+        File.open(File.join(self.path_for_folder("profile"), "bg.txt"), "w") do |file|
+          descs = Chargen.export_bg(@char)
+          file.write AnsiFormatter.strip_ansi(MushFormatter.format(descs))
         end
         
         if FS3Skills.is_enabled?
           File.open(File.join(self.path_for_folder("profile"), "sheet.txt"), "w") do |file|
-            sheet = FS3Skills.render_sheet(@char)
+            sheet = FS3Skills.export_sheet(@char)
+            file.write AnsiFormatter.strip_ansi(MushFormatter.format(sheet))
+          end
+        end
+        
+        if FS3Combat.is_enabled?
+          File.open(File.join(self.path_for_folder("profile"), "damage.txt"), "w") do |file|
+            sheet = FS3Combat.export_damage(@char)
             file.write AnsiFormatter.strip_ansi(MushFormatter.format(sheet))
           end
         end
