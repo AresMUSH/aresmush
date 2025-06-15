@@ -172,7 +172,7 @@ module AresMUSH
     end
     
     def self.list_plugins_with_versions
-      Global.plugin_manager.plugins.map { |p| "#{p.name.rest("AresMUSH::")} #{p.respond_to?(:version) ? p.version : ''}" }.sort
+      Global.plugin_manager.plugins.map { |p| "#{p.name.rest("AresMUSH::")} #{p.respond_to?(:plugin_version) ? p.plugin_version : ''}" }.sort
     end
     
     def self.unlist_migration(name)
