@@ -262,6 +262,8 @@ MARKDOWN EDITOR (Toast UI)
   margin-right: 5px;
   padding: 5px 10px 10px 10px;
   border: 1px solid $border-color;
+  background-color: $background-color;
+  color: $secondary-color;    
 }
 
 .markdown-control-toggle.active {
