@@ -32,6 +32,11 @@ module AresMUSH
           profile << handle_profile_data
         end
         
+        roles = Roles.build_web_profile_data(player, enactor)
+        if (roles)
+          roles = roles[:roles]
+        end
+        
         prefs = Manage.is_extra_installed?("prefs") ? Website.format_markdown_for_html(player.rp_prefs) : nil
         
          {
@@ -44,7 +49,9 @@ module AresMUSH
            achievements: Achievements.is_enabled? ? Achievements.build_achievements(player) : nil,
            admin_role_title: player.role_admin_note,
            profile: profile,
-           rp_prefs: prefs
+           rp_prefs: prefs,
+           roles: roles,
+           siteinfo: (enactor && enactor.is_admin?) ? Login.build_web_site_info(player, enactor) : nil
          }
        end
      end

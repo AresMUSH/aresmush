@@ -144,6 +144,9 @@ module AresMUSH
     end
     
     def self.build_web_site_info(char, viewer)
+      # Limit to admins
+      return {} if !viewer.is_admin?
+      
       matches = Character.all.select { |c| Login.is_site_match?(c.last_ip, 
         c.last_hostname, 
         char.last_ip, 
@@ -153,7 +156,8 @@ module AresMUSH
         last_online: OOCTime.local_long_timestr(viewer, char.last_on),
         last_ip: char.last_ip,
         last_hostname: char.last_hostname,
-        findsite: findsite
+        findsite: findsite,
+        email: char.login_email
       }
     end
     
