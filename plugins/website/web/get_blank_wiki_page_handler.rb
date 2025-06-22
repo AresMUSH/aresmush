@@ -11,6 +11,10 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        if (!enactor.is_approved?)
+          return { error: t('dispatcher.not_allowed') }
+        end
+        
         if (template_name.blank?)
           template_name = "blank"
         end
