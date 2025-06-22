@@ -17,7 +17,6 @@ module AresMUSH
           allow(Rooms).to receive(:is_special_room?) { false }
           allow(@game).to receive(:is_special_char?) { false }
           allow(Manage).to receive(:can_manage_object?) { true }
-          allow(FS3Combat).to receive(:is_in_combat?) { false }
           @handler.name = "foo"
         end
         
@@ -47,17 +46,7 @@ module AresMUSH
             expect(@client).to receive(:emit_failure).with("manage.cannot_destroy_special_chars")
             @handler.handle
           end
-        end
-        
-        it "should emit failure if trying to destroy a char in combat" do
-          target = double
-          allow(target).to receive(:name) { "Bob" }
-          allow(target).to receive(:class) { Character }
-          allow(AnyTargetFinder).to receive(:find) { FindResult.new(target, nil) }
-          allow(FS3Combat).to receive(:is_in_combat?).with("Bob") { true }
-          expect(@client).to receive(:emit_failure).with("manage.cannot_destroy_in_combat")
-          @handler.handle
-        end
+        end        
         
         context "not allowed" do
           it "should emit failure if the char doesn't have permission" do

@@ -11,14 +11,23 @@ module AresMUSH
     set :room_owners, "AresMUSH::Character"
     reference :area, "AresMUSH::Area"
     
-    before_delete :clear_exits
+    before_delete :on_delete
 
     # DEPRECATED - use 'area' instead.
     attribute :room_area
     
-    def clear_exits
+    def on_delete
+      # Remove exits leading in and out
       self.exits.each { |e| e.delete }
       self.exits_in.each { |e| e.delete }
+
+      # Boot out anyone in the room
+      Rooms.clear_chars_from_room(self)
+      
+      # Stop any associated scene
+      if (room.scene)
+        Scenes.stop_scene(room.scene, Game.master.system_character)
+      end
     end
     
     def grid_x

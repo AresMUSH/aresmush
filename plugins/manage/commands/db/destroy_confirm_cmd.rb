@@ -30,17 +30,13 @@ module AresMUSH
             client.emit_failure t('manage.cannot_destroy_online')
             return
           end
-        end
-        
-        if (target.class == Room)
-          target.characters.each do |c|
-            connected_client = Login.find_game_client(c)
-            if (connected_client)
-              connected_client.emit_ooc t('manage.room_being_destroyed')
-            end
-            Rooms.send_to_welcome_room(connected_client, c)
+          
+          if (FS3Combat.is_in_combat?(target.name))
+            client.emit_failure t('manage.cannot_destroy_in_combat')
+            return
           end
         end
+        
         target.delete
         client.emit_success t('manage.object_destroyed', :name => target.name)
         client.program.delete(:destroy_target)
