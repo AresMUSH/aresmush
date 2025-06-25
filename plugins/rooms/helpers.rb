@@ -37,6 +37,16 @@ module AresMUSH
       room.characters.select { |c| Login.is_online?(c) }
     end
     
+    def self.clear_chars_from_room(room)
+      room.characters.each do |c|
+        connected_client = Login.find_game_client(c)
+        if (connected_client)
+          connected_client.emit_ooc t('manage.room_being_cleared')
+        end
+        Rooms.send_to_welcome_room(connected_client, c)
+      end
+    end
+    
     def self.find_destination(destination, enactor, allow_char_names = false)
       if (allow_char_names)
         find_result = ClassTargetFinder.find(destination, Character, enactor)

@@ -141,5 +141,17 @@ module AresMUSH
       end
       return nil
     end
+    
+    def self.export_bg(char)
+      template = BorderedDisplayTemplate.new char.rp_hooks, t('chargen.hooks_title', :name => char.name)
+      output = template.render
+      
+      template = BorderedDisplayTemplate.new char.background, t('chargen.background_title', :name => char.name)
+      output << "%R%R"
+      output << template.render
+    
+      output
+    end
+    
   end
 end

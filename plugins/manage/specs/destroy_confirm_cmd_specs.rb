@@ -22,6 +22,8 @@ module AresMUSH
                :destroy_class => @target.class,
                :something_else => "x" } }
           allow(Manage).to receive(:can_manage_object?) { true }
+          allow(FS3Combat).to receive(:is_in_combat?) { false }
+          
           @handler.parse_args
         end
         
@@ -35,6 +37,15 @@ module AresMUSH
           it "should emit failure if trying to destroy a char who's online" do
             allow(Login).to receive(:is_online?).with(@target) { true }
             expect(@client).to receive(:emit_failure).with("manage.cannot_destroy_online")
+            @handler.handle
+          end
+          
+        
+          it "should emit failure if trying to destroy a char in combat" do
+            allow(@target).to receive(:name) { "Bob" }
+            allow(@target).to receive(:class) { Character }
+            allow(FS3Combat).to receive(:is_in_combat?).with("Bob") { true }
+            expect(@client).to receive(:emit_failure).with("manage.cannot_destroy_in_combat")
             @handler.handle
           end
           
@@ -67,37 +78,6 @@ module AresMUSH
             expect(@client.program[:something_else]).to eq "x"
             expect(@client.program[:delete_cmd]).to be_nil
           end 
-        
-          context "destroying a room" do
-            before do
-
-              # Stub out welcome room
-              @welcome_room = double
-              allow(@game).to receive(:welcome_room) { @welcome_room }
-
-              # Pretend the target is a room
-              allow(@target).to receive(:class) { Room }
-              allow(ClassTargetFinder).to receive(:find).with("X", @target.class, @enactor) { FindResult.new(@target, nil) }
-
-              @char_in_room = double
-              allow(@target).to receive(:characters) { [@char_in_room] }
-            end
-          
-            it "should tell an online char they're being moved and move them" do
-              # Match up a client to the character
-              client_in_room = double
-              allow(Login).to receive(:find_game_client).with(@char_in_room) { client_in_room }
-              expect(client_in_room).to receive(:emit_ooc).with("manage.room_being_destroyed")
-              expect(Rooms).to receive(:send_to_welcome_room).with(client_in_room, @char_in_room)
-              @handler.handle
-            end
-          
-            it "should move them to the welcome room" do
-              allow(Login).to receive(:find_game_client).with(@char_in_room) { nil }
-              expect(Rooms).to receive(:send_to_welcome_room).with(nil, @char_in_room)
-              @handler.handle
-            end
-          end
         end
       end
     end

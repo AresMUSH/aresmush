@@ -181,6 +181,10 @@ module AresMUSH
         return BanPlayerRequestHandler
       when "bootPlayer"
         return BootPlayerRequestHandler
+      when "saveMotd"
+        return SaveMotdRequestHandler
+      when "editMotd"
+        return EditMotdRequestHandler
       end
       nil
     end

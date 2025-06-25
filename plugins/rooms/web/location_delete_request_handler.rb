@@ -19,6 +19,14 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        if (Rooms.is_special_room?(room))
+          return { error: t('manage.cannot_destroy_special_rooms') }
+        end
+        
+        if (room.scene)
+          return { error: t('manage.cannot_destroy_room_with_scene') }
+        end
+        
         Global.logger.info "#{enactor.name} deleted #{room.name}."
         
         room.delete

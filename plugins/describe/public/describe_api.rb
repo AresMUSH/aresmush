@@ -89,5 +89,17 @@ module AresMUSH
         descs: Describe.get_web_descs_for_edit(char)
       }
     end
+    
+    def self.export_descs(char)
+      template = BorderedDisplayTemplate.new char.description
+      output = template.render
+      
+      outfits = char.outfits.map { |k, v| "#{k}: #{v}"}.join("%R%R")
+      template = BorderedDisplayTemplate.new outfits, t('describe.your_outfits')
+      output << "%R%R"
+      output << template.render
+      
+      output
+    end
   end
 end

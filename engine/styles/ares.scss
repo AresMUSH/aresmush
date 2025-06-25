@@ -262,6 +262,8 @@ MARKDOWN EDITOR (Toast UI)
   margin-right: 5px;
   padding: 5px 10px 10px 10px;
   border: 1px solid $border-color;
+  background-color: $background-color;
+  color: $secondary-color;    
 }
 
 .markdown-control-toggle.active {
@@ -297,7 +299,8 @@ button.outdent.toastui-editor-toolbar-icons {
 }
 
 .toastui-editor-defaultUI-toolbar,
-.toastui-editor-mode-switch {
+.toastui-editor-main .toastui-editor-md-tab-style
+ {
   background-color: $primary-color;
   border-color: $primary-outline-color;
 }
@@ -432,6 +435,10 @@ button.outdent.toastui-editor-toolbar-icons {
     color: $text-color;
     background-color: $primary-color;
     border-color: $primary-color;
+}
+
+.toastui-editor-md-mode {
+  height: 100%;
 }
 
 
@@ -1600,7 +1607,7 @@ SCENES SCREEN
 .scene-char-select .tiny-profile-icon {
     margin: 0 2px 3px 0;
 }
- 
+
 .live-scenes-entry {
   margin-bottom: 20px;
   background-color: $box-background-color;
@@ -1614,6 +1621,10 @@ SCENES SCREEN
 }
 
 .live-scenes-controls {
+  padding: 5px 0px 5px 10px;
+}
+
+.live-scenes-notes {
   padding: 5px 0px 5px 10px;
 }
 
