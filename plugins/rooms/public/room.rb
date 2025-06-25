@@ -23,11 +23,6 @@ module AresMUSH
 
       # Boot out anyone in the room
       Rooms.clear_chars_from_room(self)
-      
-      # Stop any associated scene
-      if (room.scene)
-        Scenes.stop_scene(room.scene, Game.master.system_character)
-      end
     end
     
     def grid_x
