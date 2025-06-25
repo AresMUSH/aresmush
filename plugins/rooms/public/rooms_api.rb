@@ -35,7 +35,7 @@ module AresMUSH
     end
       
     def self.send_to_welcome_room(client, char)
-      Rooms.move_to(client, char, dest)
+      Rooms.move_to(client, char, Game.master.welcome_room)
     end
 
     def self.send_to_ooc_room(char)

@@ -25,6 +25,13 @@ module AresMUSH
           return
         end
         
+        if (target.class == Room)          
+          if (target.scene)
+            client.emit_failure t('manage.cannot_destroy_room_with_scene')
+            return
+          end          
+        end
+        
         if (target.class == Character)
           if (Login.is_online?(target))
             client.emit_failure t('manage.cannot_destroy_online')

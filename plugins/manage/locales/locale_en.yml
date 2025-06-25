@@ -53,6 +53,7 @@ en:
         cannot_destroy_online: You can't destroy someone when they're online.
         room_being_cleared: "This room is being cleared.  Moving you to a safer spot."
         cannot_destroy_special_rooms: "You can't destroy that room.  It's special."
+        cannot_destroy_room_with_scene: "You can't destroy a room with an active scene. Stop the scene first."
         cannot_destroy_special_chars: "You can't destroy that character.  They're special."
         no_destroy_in_progress: "You weren't trying to destroy anything."
         cannot_destroy_in_combat: "You can't destroy a character who is in combat.  Make them leave combat first."
