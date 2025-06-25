@@ -17,7 +17,7 @@ module AresMUSH
         if (stage == "start")
           message = Manage.start_upgrade
         elsif (stage == "finish")
-          message = self.finish
+          message = self.finish(enactor)
         else
           message = Manage.start_upgrade
           Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message), true) do |c|
@@ -31,7 +31,7 @@ module AresMUSH
         }
       end      
       
-      def finish
+      def finish(enactor)
         migrator = DatabaseMigrator.new
         if (migrator.restart_required?)
           return t('manage.restart_required')
