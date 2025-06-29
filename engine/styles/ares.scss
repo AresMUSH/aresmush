@@ -449,7 +449,7 @@ button.outdent.toastui-editor-toolbar-icons {
   margin-left: 10px;
 	background-color: $primary-color;
 	border-color: $primary-color;
-  text-color: $primary-color;
+  text-color: $primary-words-color;
 }
 
 .toastui-editor-tabs { // ORIG
@@ -911,9 +911,12 @@ BOOTSTRAP OVERRIDES
   border: none;
   color: $secondary-color;
   text-decoration: none;
+  padding: 0px;
 }
 
-.btn-link:hover, .btn-link:focus, .btn-link:active {
+.btn-link:hover, 
+.btn-link:focus, 
+.btn-link:active {
   background-color: $secondary-color;
   color: $background-color;
 }
@@ -2328,22 +2331,23 @@ JOBS SCREEN
 }
 
 .admin-only-reply-label {
-  background-color: #171817;
-  border-color: #46200d;
-  color: #d1b3a3;
+  background-color: #172234;
+  border: 1px solid white;
+  color: white;
   font-size: 1em;
 }
 
 .admin-only-reply, .admin-only-reply .markdown-editor {
-  background-color: #46200d;
-  border-color: #46200d;
+  background-color: #172234;
+  border-color: white;
   color: white;
   padding: 8px;
 }
 
 .player-reply-label {
-  background-color: #8c411a;
-  color: white;
+  background-color: white;
+  color: #172234;
+  border: 1px solid #172234;
   font-size: 1em;
 }
 
@@ -2427,7 +2431,8 @@ MAIL
 
 .mail-selected-tag {
   font-weight: bold;
-  color: $primary-color;
+  background-color: $primary-color;
+  color: $primary-words-color;
 }
 
 .mail-message-inbox {
