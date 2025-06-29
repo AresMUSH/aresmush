@@ -52,7 +52,7 @@ en:
         roster_claim: "Use %xcroster/claim %{name}%xn to claim this character."
         roster_app: "Use %xcroster/claim %{name}=<app>%xn to apply for this character."
         roster_claimed: "You have claimed %{name}.  Their new password is: %{password}"
-        roster_post_subject: "Roster Character Claimed"
+        roster_post_subject: "Roster Character Claimed: %{name}"
         roster_post_body: "%{name} has been claimed off the roster."
         roster_welcome_msg_subject: "Welcome!"
         roster_url_hint: "The roster can be viewed more easily on the web portal: %{url}."
