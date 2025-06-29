@@ -161,6 +161,18 @@ p {
   align-items: center;
 }
 
+.tooltip-button {
+  background-color: $background-color;
+  color: $secondary-color;
+  border: none;
+  padding: 1px 3px 1px 3px;
+}
+
+.tooltip-button:hover {
+  background-color: $secondary-color;
+  color: $background-color;
+}
+
 label {
   font-weight: bold;
 }
@@ -233,6 +245,15 @@ MARKDOWN EDITOR (Toast UI)
     padding: 0px;
     margin-bottom: 5px;
     border: 0px;
+    background-color: transparent;
+}
+
+.markdown-editor > textarea {
+    margin: 0;
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $primary-color;
 }
 
 .markdown-preview {
@@ -253,8 +274,12 @@ MARKDOWN EDITOR (Toast UI)
 }
 
 .markdown-controls {
-    margin-top: 3px;
-    padding: 5px;
+    padding: 0;
+    margin: 0;
+}
+
+.markdown-controls + div {
+/*    height: auto !important; */
 }
 
 .markdown-control-toggle {
@@ -272,30 +297,103 @@ MARKDOWN EDITOR (Toast UI)
   border-bottom: 0px;
 }
 
-.toastui-editor-mode-switch .tab-item {
-  margin-left: 10px;
+
+
+
+.toastui-editor-toolbar {
+    height: 33px;
 }
 
-.toastui-editor-tabs {
-  display: none;
+.toastui-editor-defaultUI .toastui-editor-md-tab-container,
+.toastui-editor-defaultUI-toolbar {
+    height: 32px;
+}
+
+.toastui-editor-defaultUI-toolbar button {
+  	background-color: $border-color;
+	  border-color: $border-color;
+    margin: 0px 0px;
+}
+
+.toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
+    background-color: $background-color;
+    border-color: $border-color;
+}
+
+.toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
+	background-color: $background-color;
+	border-color: $border-color;
+}
+
+button.toastui-editor-toolbar-icons {
+    background-position-y: -49px;
+    transform: scale(.75);
+}
+
+.toastui-editor-toolbar-divider {
+    margin: 7px 12px;
+}
+
+.toastui-editor-md-code-block-line-background {
+    background-color: transparent;
+}
+
+.toastui-editor-popup-body input[type='text'] {
+    color: $primary-words-color;
+}
+
+.toastui-editor-popup-body,  // ORIG
+.toastui-editor-popup-add-table .toastui-editor-table-cell,
+.toastui-editor-popup-add-table .toastui-editor-table-cell.header,
+.toastui-editor-popup-add-table .toastui-editor-table-description,
+.toastui-editor-popup {
+	background-color: $border-color;
+	color: $text-color;
+	border-color: $border-color;
+}
+
+
+.toastui-editor-defaultUI .toastui-editor-close-button,
+.toastui-editor-defaultUI .toastui-editor-ok-button {
+    font-size: 1.25em;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    color: $secondary-words-color;
+}
+
+.toastui-editor-defaultUI .toastui-editor-close-button:hover,
+.toastui-editor-defaultUI .toastui-editor-ok-button:hover {
+    color: $text-color;
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.ProseMirror {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14.5px;
+    height: 100%;
+}
+
+.toastui-editor-main-container .md-mode, 
+.toastui-editor-main-container .md-mode > div,
+.toastui-editor-main-container .ww-mode, 
+.toastui-editor-main-container .ww-mode > div {
+    background-color: #22232b;
+}
+
+.toastui-editor-main-container {
+    border-bottom: 1px solid $primary-color;
 }
 
 .toastui-editor-md-mode .toastui-editor-md-container, 
-.toastui-editor-ww-mode .toastui-editor-ww-container,
-.ProseMirror,
-.toastui-editor-contents p {
-  color: $text-color;
-  background-color: $background-color;  
-}
+.toastui-editor-ww-mode .toastui-editor-ww-container, 
+.ProseMirror, 
+.toastui-editor-contents p,
+.toastui-editor-mode-switch  {
+    background-color: transparent;
 
-button.image.toastui-editor-toolbar-icons,
-button.indent.toastui-editor-toolbar-icons,
-button.outdent.toastui-editor-toolbar-icons {
-  display: none;
-}
-
-.toastui-editor-defaultUI {
-  border-color: $primary-outline-color;  
+    border-color: transparent; // ORIG    
+    color: $text-color; // ORIG
 }
 
 .toastui-editor-defaultUI-toolbar,
@@ -305,36 +403,65 @@ button.outdent.toastui-editor-toolbar-icons {
   border-color: $primary-outline-color;
 }
 
-.toastui-editor-mode-switch .tab-item {
-  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
+
+button.image.toastui-editor-toolbar-icons,
+button.indent.toastui-editor-toolbar-icons,
+button.outdent.toastui-editor-toolbar-icons {
+  display: none;
 }
 
-.toastui-editor-mode-switch .tab-item.active {
-  text-color: $primary-color;
-  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
-  
+.toastui-editor-defaultUI {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 33px auto 24px;
+  	border-color: transparent; // ORIG
 }
 
-.toastui-editor-toolbar-icons {
-  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
+.toastui-editor-defaultUI > .toastui-editor-main {
+    display: grid;
+    grid-template-rows: 100%;
+    overflow: auto;
+    resize: vertical;
+    min-height: 120px;
 }
 
-.toastui-editor-defaultUI-toolbar {
+.play-screen .toastui-editor-defaultUI > .toastui-editor-main {
+    height: 120px;
+}
+
+:not(.auto-height) > .toastui-editor-defaultUI, 
+:not(.auto-height) > .toastui-editor-defaultUI > .toastui-editor-main {
+    display: grid;
+}
+
+.toastui-editor {
+    min-height: unset !important;
+}
+
+
+.toastui-editor-defaultUI-toolbar { // ORIG
 	border-bottom: 0;
 	border-radius: 0;
 }
 
-.toastui-editor-defaultUI-toolbar button {
-	background-color: $border-color;
-	border-color: $border-color;
+.toastui-editor-mode-switch .tab-item,
+.toastui-editor-mode-switch .tab-item.active {  // ORIG
+  margin-left: 10px;
+	background-color: $primary-color;
+	border-color: $primary-color;
+  text-color: $primary-words-color;
 }
 
-.toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
-	background-color: $background-color;
-	border-color: $border-color;
+.toastui-editor-tabs { // ORIG
+  display: none;
 }
 
-.toastui-editor-toolbar-icons.heading,
+.toastui-editor-toolbar-icons { // ORIG
+  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
+}
+
+
+.toastui-editor-toolbar-icons.heading, // ORIG
 .toastui-editor-toolbar-icons.bold,
 .toastui-editor-toolbar-icons.italic,
 .toastui-editor-toolbar-icons.strike,
@@ -353,93 +480,33 @@ button.outdent.toastui-editor-toolbar-icons {
 	background-position-y: -49px;
 }
 
-.toastui-editor-defaultUI {
-	border-color: transparent;
-}
 
-.toastui-editor-mode-switch {
-	background-color: $background-color;
-	border-color: transparent;
-}
-
-.toastui-editor-popup-body,
-.toastui-editor-popup-add-table .toastui-editor-table-cell,
-.toastui-editor-popup-add-table .toastui-editor-table-cell.header,
-.toastui-editor-popup-add-table .toastui-editor-table-description,
-.toastui-editor-popup {
-	background-color: $border-color;
-	color: $text-color;
-	border-color: $border-color;
-}
-
-.toastui-editor-mode-switch .tab-item,
-.toastui-editor-mode-switch .tab-item.active {
-	background-color: $primary-color;
-	border-color: $primary-color;
-}
-
-.toastui-editor-mode-switch .tab-item {
-	color: #aaaaaa;
-}
-
-.toastui-editor-mode-switch .tab-item.active {
-	color: $text-color;
-}
-
-
-.toastui-editor-md-code,
+.toastui-editor-md-code, // ORIG
 .toastui-editor-contents code { 
  background-color: $box-background-color;
  color: $box-words-color;
 }
 
-.toastui-editor-md-table .toastui-editor-md-table-cell,
+
+.toastui-editor-md-table .toastui-editor-md-table-cell, // ORIG
 .toastui-editor-md-link.toastui-editor-md-link-desc.toastui-editor-md-marked-text,
 .toastui-editor-md-code.toastui-editor-md-marked-text {
   color: $primary-words-color;
 }
 
-.toastui-editor-md-block-quote .toastui-editor-md-marked-text {
+
+.toastui-editor-md-block-quote .toastui-editor-md-marked-text { // ORIG
  background-color: $box-background-color;
  color: $box-words-color;
 }
 
-.toastui-editor-popup-body,
-.toastui-editor-popup-add-table .toastui-editor-table-cell,
-.toastui-editor-popup-add-table .toastui-editor-table-cell.header,
-.toastui-editor-popup-add-table .toastui-editor-table-description,
-.toastui-editor-popup {
-    background-color: $box-background-color;
-    color: $text-color;
-    border-color: $border-color;
-}
 
-.toastui-editor-popup-body > label {
+.toastui-editor-popup-body > label { // ORIG
   color: $box-words-color;
 }
 
-.toastui-editor-popup-body input[type='text'] {
-    color: $primary-words-color;
-}
 
-.toastui-editor-defaultUI .toastui-editor-close-button,
-.toastui-editor-defaultUI .toastui-editor-ok-button {
-    font-size: 1.25em;
-    background-color: $secondary-color;
-    border-color: $secondary-color;
-    color: $secondary-words-color;
-}
 
-.toastui-editor-defaultUI .toastui-editor-close-button:hover,
-.toastui-editor-defaultUI .toastui-editor-ok-button:hover {
-    color: $text-color;
-    background-color: $primary-color;
-    border-color: $primary-color;
-}
-
-.toastui-editor-md-mode {
-  height: 100%;
-}
 
 
 /* -------------------------
@@ -836,6 +903,22 @@ BOOTSTRAP OVERRIDES
 .btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active { 
     background-color: $secondary-color;
     border-color: $secondary-color;
+}
+
+.btn-link {
+  text-align: left;
+  background-color: $background-color;
+  border: none;
+  color: $secondary-color;
+  text-decoration: none;
+  padding: 0px;
+}
+
+.btn-link:hover, 
+.btn-link:focus, 
+.btn-link:active {
+  background-color: $secondary-color;
+  color: $background-color;
 }
 
 .float-right {
@@ -1614,7 +1697,7 @@ SCENES SCREEN
   border: 1px solid $border-color;
 }
 
-.live-scene-controls a, .chat-controls a,  .unshared-scene-controls a  {
+.live-scene-controls button, .chat-controls button,  .unshared-scene-controls button  {
   padding-right: 15px;
   padding-bottom: 5px;
   display: inline-block;
@@ -2248,22 +2331,23 @@ JOBS SCREEN
 }
 
 .admin-only-reply-label {
-  background-color: #171817;
-  border-color: #46200d;
-  color: #d1b3a3;
+  background-color: #172234;
+  border: 1px solid white;
+  color: white;
   font-size: 1em;
 }
 
 .admin-only-reply, .admin-only-reply .markdown-editor {
-  background-color: #46200d;
-  border-color: #46200d;
+  background-color: #172234;
+  border-color: white;
   color: white;
   padding: 8px;
 }
 
 .player-reply-label {
-  background-color: #8c411a;
-  color: white;
+  background-color: white;
+  color: #172234;
+  border: 1px solid #172234;
   font-size: 1em;
 }
 
@@ -2347,7 +2431,8 @@ MAIL
 
 .mail-selected-tag {
   font-weight: bold;
-  color: $primary-color;
+  background-color: $primary-color;
+  color: $primary-words-color;
 }
 
 .mail-message-inbox {
