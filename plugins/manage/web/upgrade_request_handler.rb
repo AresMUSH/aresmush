@@ -23,7 +23,7 @@ module AresMUSH
           Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message), true) do |c|
             c == enactor
           end
-          message = self.finish
+          message = self.finish(enactor)
         end
         
         {
