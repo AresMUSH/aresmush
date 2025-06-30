@@ -278,9 +278,6 @@ MARKDOWN EDITOR (Toast UI)
     margin: 0;
 }
 
-.markdown-controls + div {
-/*    height: auto !important; */
-}
 
 .markdown-control-toggle {
   margin-left: 10px;
@@ -298,17 +295,6 @@ MARKDOWN EDITOR (Toast UI)
 }
 
 
-
-
-.toastui-editor-toolbar {
-    height: 33px;
-}
-
-.toastui-editor-defaultUI .toastui-editor-md-tab-container,
-.toastui-editor-defaultUI-toolbar {
-    height: 32px;
-}
-
 .toastui-editor-defaultUI-toolbar button {
   	background-color: $border-color;
 	  border-color: $border-color;
@@ -325,10 +311,6 @@ MARKDOWN EDITOR (Toast UI)
 	border-color: $border-color;
 }
 
-button.toastui-editor-toolbar-icons {
-    background-position-y: -49px;
-    transform: scale(.75);
-}
 
 .toastui-editor-toolbar-divider {
     margin: 7px 12px;
@@ -342,7 +324,7 @@ button.toastui-editor-toolbar-icons {
     color: $primary-words-color;
 }
 
-.toastui-editor-popup-body,  // ORIG
+.toastui-editor-popup-body,  
 .toastui-editor-popup-add-table .toastui-editor-table-cell,
 .toastui-editor-popup-add-table .toastui-editor-table-cell.header,
 .toastui-editor-popup-add-table .toastui-editor-table-description,
@@ -375,10 +357,8 @@ button.toastui-editor-toolbar-icons {
 }
 
 .toastui-editor-main-container .md-mode, 
-.toastui-editor-main-container .md-mode > div,
-.toastui-editor-main-container .ww-mode, 
-.toastui-editor-main-container .ww-mode > div {
-    background-color: #22232b;
+.toastui-editor-main-container .ww-mode {
+    background-color: $background-color;
 }
 
 .toastui-editor-main-container {
@@ -392,8 +372,8 @@ button.toastui-editor-toolbar-icons {
 .toastui-editor-mode-switch  {
     background-color: transparent;
 
-    border-color: transparent; // ORIG    
-    color: $text-color; // ORIG
+    border-color: transparent;     
+    color: $text-color; 
 }
 
 .toastui-editor-defaultUI-toolbar,
@@ -410,58 +390,39 @@ button.outdent.toastui-editor-toolbar-icons {
   display: none;
 }
 
-.toastui-editor-defaultUI {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 33px auto 24px;
-  	border-color: transparent; // ORIG
-}
-
 .toastui-editor-defaultUI > .toastui-editor-main {
-    display: grid;
-    grid-template-rows: 100%;
-    overflow: auto;
-    resize: vertical;
-    min-height: 120px;
+  resize: vertical;
 }
 
-.play-screen .toastui-editor-defaultUI > .toastui-editor-main {
-    height: 120px;
+.toastui-editor-defaultUI {
+  border: 1px solid $border-color;
 }
 
-:not(.auto-height) > .toastui-editor-defaultUI, 
-:not(.auto-height) > .toastui-editor-defaultUI > .toastui-editor-main {
-    display: grid;
-}
-
-.toastui-editor {
-    min-height: unset !important;
-}
-
-
-.toastui-editor-defaultUI-toolbar { // ORIG
+.toastui-editor-defaultUI-toolbar { 
 	border-bottom: 0;
 	border-radius: 0;
 }
 
-.toastui-editor-mode-switch .tab-item,
-.toastui-editor-mode-switch .tab-item.active {  // ORIG
+.toastui-editor-mode-switch .tab-item {  
   margin-left: 10px;
-	background-color: $primary-color;
-	border-color: $primary-color;
-  text-color: $primary-words-color;
+  background-color: $background-color;
+  border-color: $primary-color;
+  color: $text-color;
 }
 
-.toastui-editor-tabs { // ORIG
+.toastui-editor-mode-switch .tab-item.active {
+  margin-left: 10px;
+  color: $primary-words-color;
+  border-color: $primary-color;
+  background-color: $primary-color;
+  font-weight: bold;  
+}
+
+.toastui-editor-tabs { 
   display: none;
 }
 
-.toastui-editor-toolbar-icons { // ORIG
-  background-color: #f7f9fc; /* The icons are a fixed color, so edit this with caution */
-}
-
-
-.toastui-editor-toolbar-icons.heading, // ORIG
+.toastui-editor-toolbar-icons.heading, 
 .toastui-editor-toolbar-icons.bold,
 .toastui-editor-toolbar-icons.italic,
 .toastui-editor-toolbar-icons.strike,
@@ -481,33 +442,40 @@ button.outdent.toastui-editor-toolbar-icons {
 }
 
 
-.toastui-editor-md-code, // ORIG
+.toastui-editor-md-code, 
 .toastui-editor-contents code { 
  background-color: $box-background-color;
  color: $box-words-color;
 }
 
 
-.toastui-editor-md-table .toastui-editor-md-table-cell, // ORIG
+.toastui-editor-md-table .toastui-editor-md-table-cell, 
 .toastui-editor-md-link.toastui-editor-md-link-desc.toastui-editor-md-marked-text,
 .toastui-editor-md-code.toastui-editor-md-marked-text {
   color: $primary-words-color;
 }
 
 
-.toastui-editor-md-block-quote .toastui-editor-md-marked-text { // ORIG
+.toastui-editor-md-block-quote .toastui-editor-md-marked-text { 
  background-color: $box-background-color;
  color: $box-words-color;
 }
 
 
-.toastui-editor-popup-body > label { // ORIG
+.toastui-editor-popup-body > label { 
   color: $box-words-color;
 }
 
+.toastui-editor-defaultUI-toolbar {
+  padding: 5px 10px 5px 10px;  
+}
+.toastui-editor-toolbar-group {
+  column-gap: 6px;
+}
 
-
-
+.toastui-editor-toolbar {
+  height: 42px;
+}
 
 /* -------------------------
 NAVIGATION
