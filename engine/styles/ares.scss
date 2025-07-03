@@ -1,4 +1,6 @@
 @import 'colors';
+@import 'rainbow';
+@import 'fonts';
 
 /* -------------------------
 BASIC CONTAINERS
@@ -43,7 +45,7 @@ BASIC CONTAINERS
 
 body {
   font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $body-font;
   line-height: 1.428571429;
   background-color: $background-color;
   color: $text-color;
@@ -168,9 +170,10 @@ p {
   padding: 1px 3px 1px 3px;
 }
 
-.tooltip-button:hover {
-  background-color: $secondary-color;
-  color: $background-color;
+.tooltip-button:hover,
+.tooltip-button > a:hover {
+  color: $primary-color;
+  background-color: $background-color;
 }
 
 label {
@@ -274,24 +277,38 @@ MARKDOWN EDITOR (Toast UI)
 }
 
 .markdown-controls {
-    padding: 0;
-    margin: 0;
+  padding: 0px 1px;
+	margin-bottom: -1px;
 }
 
+.markdown-controls a:hover,
+{
+  color: $primary-color;
+  background-color: $background-color;
+}
 
 .markdown-control-toggle {
-  margin-left: 10px;
-  margin-right: 5px;
-  padding: 5px 10px 10px 10px;
-  border: 1px solid $border-color;
-  background-color: $background-color;
-  color: $secondary-color;    
+  border: 0;
+	background-color: $dark-grey;
+	color: #aaa;
+	padding: 0;
+	border-radius: 4px 4px 0px 0px;
+	width: 96px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	margin: -1px -1px 0px 10px;
+	font-weight: 500;
+	font-size: 0.9em; 
+  
 }
 
 .markdown-control-toggle.active {
   background-color: $primary-color;
   color: $primary-words-color;
   border-bottom: 0px;
+  border-radius: 4px 4px 0px 0px;
+	font-weight: 700;
 }
 
 
@@ -368,14 +385,18 @@ MARKDOWN EDITOR (Toast UI)
 .toastui-editor-md-mode .toastui-editor-md-container, 
 .toastui-editor-ww-mode .toastui-editor-ww-container, 
 .ProseMirror, 
-.toastui-editor-contents p,
-.toastui-editor-mode-switch  {
+.toastui-editor-contents p  {
     background-color: transparent;
-
     border-color: transparent;     
     color: $text-color; 
 }
 
+.toastui-editor-mode-switch  {
+    background-color: transparent;
+    border-top: 4px solid $primary-color;
+    color: $text-color; 
+}
+  
 .toastui-editor-defaultUI-toolbar,
 .toastui-editor-main .toastui-editor-md-tab-style
  {
@@ -395,7 +416,7 @@ button.outdent.toastui-editor-toolbar-icons {
 }
 
 .toastui-editor-defaultUI {
-  border: 1px solid $border-color;
+  border-color: transparent;
 }
 
 .toastui-editor-defaultUI-toolbar { 
@@ -405,16 +426,18 @@ button.outdent.toastui-editor-toolbar-icons {
 
 .toastui-editor-mode-switch .tab-item {  
   margin-left: 10px;
-  background-color: $background-color;
-  border-color: $primary-color;
-  color: $text-color;
+  background-color: $dark-grey;
+	border-color: $dark-grey;
+	border-top: 1px solid $primary-color;
+	color: #aaaaaa;
+	font-size: 1em;    
 }
 
 .toastui-editor-mode-switch .tab-item.active {
   margin-left: 10px;
-  color: $primary-words-color;
-  border-color: $primary-color;
   background-color: $primary-color;
+	border-color: $primary-color;
+	color: $primary-words-color;
   font-weight: bold;  
 }
 
@@ -488,8 +511,8 @@ a, .nav-link {
 
 a:hover,
 a:focus{
-    color: $secondary-words-color;
-    background-color: $secondary-color;
+    font-weight: bold;
+    color: $secondary-color;    
     text-decoration: none;
 }
 
@@ -576,12 +599,14 @@ h1
     border: 3px solid $primary-outline-color;
     letter-spacing: 0.1em;    
     margin: 0px 0px 10px 0px;
+    font-family: $primary-font;
 }
 
 h2
 {
     padding-top: 20px;
     padding-bottom: 10px;
+    font-family: $primary-font;    
 }
 
 .table th {
@@ -851,6 +876,7 @@ BOOTSTRAP OVERRIDES
 
 .btn {
   font-size: 1em;
+  margin-top: 2px;
 }
 
 .btn-primary a {
@@ -885,8 +911,9 @@ BOOTSTRAP OVERRIDES
 .btn-link:hover, 
 .btn-link:focus, 
 .btn-link:active {
-  background-color: $secondary-color;
-  color: $background-color;
+  color: $secondary-color;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .float-right {
@@ -980,6 +1007,8 @@ HEADER
 .site-title {
     margin: 0px;
     font-size: 3em;
+    font-family: $primary-font;
+    text-transform: uppercase;    
 }
 
 .site-subtitle {
@@ -2027,12 +2056,47 @@ input[type='file'] {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 25px;
   justify-content: space-around;
 }
 
 .fs3-ability-table {
-  min-width: 400px;
+  flex-basis: 48%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0, 
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-background > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0,
+.fs3-dots-language > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0,
+.fs3-dots-advantage > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0 {
+color: $muted-red;
+}
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-3,
+.fs3-dots-background > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-language > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-advantage > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1 {
+color: $muted-yellow;
+}
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-4,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-5,
+.fs3-dots-background > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-language > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-advantage > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1 {
+color: $muted-green;
+}
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-3,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-6,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-7 {
+color: $muted-blue;
 }
 
 .fs3-luck {
