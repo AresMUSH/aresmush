@@ -33,7 +33,7 @@ BASIC CONTAINERS
 
 .title-wrap
 {    
-    height: 149px;   
+    height: 148px;   
     color: $primary-words-color;
     padding: 10px;
     padding-left: 20px;    
@@ -218,6 +218,11 @@ BOOTSTRAP OVERRIDES
   color: #ea868f;
 }
 
+.dropdown-menu {
+  border-top: 4px solid $primary-color;  
+}
+
+
 /* -------------------------
 EMBER POWER SELECT (Dropdowns)
 ------------------------- */
@@ -226,11 +231,10 @@ EMBER POWER SELECT (Dropdowns)
  background-color: $background-color;
 }
 
-.ember-basic-dropdown-trigger,
-.ember-power-select-option,
-.ember-power-select-dropdown.ember-basic-dropdown-content {
-  background-color: $background-color;
-  color: $text-color;
+.ember-power-select-dropdown.ember-basic-dropdown-content,
+.ember-power-select-option {
+  background-color: $dark-grey;
+  color: $text-on-grey;
   border-color: $border-color;
 }
 
@@ -242,7 +246,8 @@ EMBER POWER SELECT (Dropdowns)
 
 .ember-power-select-trigger,
 .ember-basic-dropdown-trigger,
-.ember-power-select-search-input {
+.ember-power-select-search-input,
+select {
   background-color: $dark-grey;
 	color: $text-on-grey;
   border: 1px solid $border-color;
@@ -251,6 +256,8 @@ EMBER POWER SELECT (Dropdowns)
   padding-top: 4px; 
   padding-bottom: 4px; 
   max-width: 100%;
+	min-height: 39px;
+  
 }
 
 /* -------------------------
@@ -268,15 +275,13 @@ MARKDOWN EDITOR (Toast UI)
     margin: 0;
     width: 100%;
     padding: 1rem;
-    border-top: 1px solid $border-color;
-    border-bottom: 1px solid $primary-color;
 }
 
 .markdown-preview {
-  width: 98%;
+  width: 100%;
   min-height: 300px;
   padding: 5px;
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 10px 0px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -349,12 +354,12 @@ MARKDOWN EDITOR (Toast UI)
 
 .toastui-editor-popup-body input[type='text'] {
 	color: $text-color;
-	border-color: $almost-black;
+	border-color: $border-color;
 }
 
 .toastui-editor-popup-body input[type='text']:focus {
 	color: $text-color;
-	border-color: $almost-black;
+	border-color: $border-color;
 }
 
 .toastui-editor-popup-body label {
@@ -363,7 +368,7 @@ MARKDOWN EDITOR (Toast UI)
 
 .toastui-editor-dropdown-toolbar {
 	background-color: $primary-color;
-	border-color: $almost-black;
+	border-color: $border-color;
 }
 
 .toastui-editor-popup-body,  
@@ -387,7 +392,7 @@ MARKDOWN EDITOR (Toast UI)
 
 .toastui-editor-defaultUI .toastui-editor-close-button:hover,
 .toastui-editor-defaultUI .toastui-editor-ok-button:hover {
-    color: $text-color;
+    color: $primary-words-color;
     background-color: $primary-color;
     border-color: $primary-color;
 }
@@ -533,6 +538,82 @@ button.outdent.toastui-editor-toolbar-icons {
 }
 
 /* -------------------------
+CALENDAR (Flatpickr)
+------------------------- */
+
+
+.flatpickr-calendar {
+	background: $dark-grey;
+	box-shadow: none;
+	border: 1px solid $border-color;
+	color: $text-on-grey;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month,
+.flatpickr-current-month,
+span.flatpickr-weekday,
+.flatpickr-day {
+	color: $text-on-grey;
+	fill: $text-on-grey;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay,
+.flatpickr-day.notAllowed,
+.flatpickr-day.notAllowed.prevMonthDay,
+.flatpickr-day.notAllowed.nextMonthDay {
+	color: $light-grey;
+}
+
+
+.flatpickr-day.inRange,
+.flatpickr-day.prevMonthDay.inRange,
+.flatpickr-day.nextMonthDay.inRange,
+.flatpickr-day.today.inRange,
+.flatpickr-day.prevMonthDay.today.inRange,
+.flatpickr-day.nextMonthDay.today.inRange,
+.flatpickr-day:hover,
+.flatpickr-day.prevMonthDay:hover,
+.flatpickr-day.nextMonthDay:hover,
+.flatpickr-day:focus,
+.flatpickr-day.prevMonthDay:focus,
+.flatpickr-day.nextMonthDay:focus {
+	background: $secondary-color;
+	border-color: $secondary-color;
+	color: $secondary-words-color;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+	background: $primary-color;
+	border: $primary-color;
+  color: $primary-words-color;
+}
+
+.flatpickr-monthDropdown-month {
+	background-color: $background-color  !important;
+}
+
+/* -------------------------
 NAVIGATION
 ------------------------- */
 
@@ -575,7 +656,6 @@ a:focus{
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus {
   color: $secondary-color;
-  background-color: $background-color;
 }
 
 .navbar {
@@ -759,20 +839,24 @@ form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px 0 10px 0;
-  border-bottom: 1px solid $border-color;
+  padding: 10px 0 10px 0px;
+  border-bottom: 1px dotted $border-color;
 }
 
 .form-item-label {
   font-weight: bold;
-  min-width: 300px;
+	flex-basis: 17%;
+}
+
+.form-item-entry {
+  flex-basis: 83%;
 }
 
 
 input {
 	color: $light-grey;
 	outline: 0;
-	border: 2px solid $almost-black;
+	border: 2px solid $border-color;
 	border-radius: 0
 }
 
@@ -790,6 +874,15 @@ input,
 	min-height: 32px
 }
 
+input[type="text"],
+.ember-text-field {
+	background: $dark-grey;
+	border: 1px solid $border-color;
+	padding: 5px;
+	outline: 0;
+	height: 39px;
+	width: 100%;
+}
 
 input.color-select {
   height: 40px;
@@ -918,6 +1011,7 @@ BOOTSTRAP OVERRIDES
 .btn {
   font-size: 1em;
   margin-top: 2px;
+  padding-bottom: 4px;
 }
 
 .btn-primary a {
@@ -927,6 +1021,7 @@ BOOTSTRAP OVERRIDES
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: $primary-color;
     border-color: $primary-outline-color;
+    color: $primary-words-color;
 }
 
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
@@ -942,7 +1037,7 @@ BOOTSTRAP OVERRIDES
 
 .btn-link {
   text-align: left;
-  background-color: $background-color;
+  background-color: transparent;
   border: none;
   color: $secondary-color;
   text-decoration: none;
@@ -1123,11 +1218,11 @@ SIDEBAR
 .sidebar-heading h2 {
     text-align: center;
     font-size: 1.5em;
-    color: $faded-text-color;
-    font-variant: small-caps;
+    color: $text-color;
     padding: 0px;
     margin-top: 20px;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .search-bar {
@@ -1534,7 +1629,6 @@ SCENES SCREEN
 }
 
 .scene-log {
-    border: 1px solid $border-color;
     margin: 2px;
     padding: 10px;
 }
@@ -2995,12 +3089,21 @@ ul.reference-help-list > li:not(:last-child)::after {
   
   .play-screen { 
     flex-direction: column;
+    flex-wrap: no-wrap;
   }
 }
 
 
 @media (max-width:768px)  { 
 
+  .site-title {
+      font-size: 1.5em;
+  }
+  
+  .site-banner {
+    flex-direction: column;
+  }
+  
   .left-sidebar {
     order: 2;
   }
@@ -3017,6 +3120,39 @@ ul.reference-help-list > li:not(:last-child)::after {
     order: 1;
   }
   
+  .play-scene-title,
+  .play-scene-context-prompt {
+    font-size: 1.2em;
+    padding-left: 5px;
+  }
+  
+  .live-scene-controls {
+    padding-left: 5px;
+  }
+
+	.play-main {
+		padding-left: 0px;
+	}
+  
+  .scene-log {
+    padding: 0px;
+  }
+  
+
+	.scene-controls-right {
+		flex-flow: column;
+		flex-basis: 100%;
+	}
+
+	.scene-controls-left {
+		flex-flow: column;
+		flex-basis: 100%;
+	}
+
+	.scene-char-select,
+	.scene-pose-select {
+		width: 100%;
+	}
   
 }
 
