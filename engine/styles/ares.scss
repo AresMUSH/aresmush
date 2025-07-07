@@ -240,6 +240,19 @@ EMBER POWER SELECT (Dropdowns)
   background-color: $secondary-color;
 }
 
+.ember-power-select-trigger,
+.ember-basic-dropdown-trigger,
+.ember-power-select-search-input {
+  background-color: $dark-grey;
+	color: $text-on-grey;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  transition: border 0.3s linear;
+  padding-top: 4px; 
+  padding-bottom: 4px; 
+  max-width: 100%;
+}
+
 /* -------------------------
 MARKDOWN EDITOR (Toast UI)
 ------------------------- */
@@ -290,7 +303,7 @@ MARKDOWN EDITOR (Toast UI)
 .markdown-control-toggle {
   border: 0;
 	background-color: $dark-grey;
-	color: #aaa;
+  color: $text-on-grey;
 	padding: 0;
 	border-radius: 4px 4px 0px 0px;
 	width: 96px;
@@ -313,24 +326,21 @@ MARKDOWN EDITOR (Toast UI)
 
 
 .toastui-editor-defaultUI-toolbar button {
-  	background-color: $border-color;
-	  border-color: $border-color;
-    margin: 0px 0px;
+  background-color: $darker-grey;
+	border-color: $darkest-grey;
+  color: $text-on-grey;
+  margin: 0px 0px;
 }
 
 .toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
-    background-color: $background-color;
-    border-color: $border-color;
+  background-color: $darker-grey;
+	border-color: $darkest-grey;
+  color: $text-on-grey;
 }
-
-.toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
-	background-color: $background-color;
-	border-color: $border-color;
-}
-
 
 .toastui-editor-toolbar-divider {
     margin: 7px 12px;
+    background-color: $secondary-color;
 }
 
 .toastui-editor-md-code-block-line-background {
@@ -338,7 +348,22 @@ MARKDOWN EDITOR (Toast UI)
 }
 
 .toastui-editor-popup-body input[type='text'] {
-    color: $primary-words-color;
+	color: $text-color;
+	border-color: $almost-black;
+}
+
+.toastui-editor-popup-body input[type='text']:focus {
+	color: $text-color;
+	border-color: $almost-black;
+}
+
+.toastui-editor-popup-body label {
+	color: $text-color;
+}
+
+.toastui-editor-dropdown-toolbar {
+	background-color: $primary-color;
+	border-color: $almost-black;
 }
 
 .toastui-editor-popup-body,  
@@ -346,9 +371,9 @@ MARKDOWN EDITOR (Toast UI)
 .toastui-editor-popup-add-table .toastui-editor-table-cell.header,
 .toastui-editor-popup-add-table .toastui-editor-table-description,
 .toastui-editor-popup {
-	background-color: $border-color;
+  background-color: $darker-grey;
 	color: $text-color;
-	border-color: $border-color;
+	border-color: $dark-grey;
 }
 
 
@@ -429,7 +454,7 @@ button.outdent.toastui-editor-toolbar-icons {
   background-color: $dark-grey;
 	border-color: $dark-grey;
 	border-top: 1px solid $primary-color;
-	color: #aaaaaa;
+	color: $text-on-grey;
 	font-size: 1em;    
 }
 
@@ -478,6 +503,13 @@ button.outdent.toastui-editor-toolbar-icons {
   color: $primary-words-color;
 }
 
+.toastui-editor-md-delimiter,
+.toastui-editor-md-thematic-break,
+.toastui-editor-md-link,
+.toastui-editor-md-table,
+.toastui-editor-md-block-quote {
+	color: $text-color
+}
 
 .toastui-editor-md-block-quote .toastui-editor-md-marked-text { 
  background-color: $box-background-color;
@@ -517,13 +549,16 @@ a:focus{
 }
 
 .user-bar { 
-    padding-right: 10px;
+  	text-align: right;    
 }
 
 .user-bar a {
     color: $primary-words-color;
 }
 
+.user-bar p {
+	line-height: .75em;
+}
 
 .header-wrap nav
 {
@@ -733,20 +768,26 @@ form {
   min-width: 300px;
 }
 
-input,
+
+input {
+	color: $light-grey;
+	outline: 0;
+	border: 2px solid $almost-black;
+	border-radius: 0
+}
+
 textarea,
-.ember-power-select-trigger,
-.ember-basic-dropdown-trigger,
-.ember-power-select-search-input,
+input,
+.markdown-preview,
+.toastui-editor-defaultUI .ProseMirror,
+.toastui-editor-main-container .md-mode > div,
 .ember-text-field {
-  background-color: $background-color;
-  color: $text-color;
-  border: 1px solid $border-color;
-  border-radius: 3px;
-  transition: border 0.3s linear;
-  padding-top: 4px; 
-  padding-bottom: 4px; 
+	background-color: $dark-grey;
+	color: $text-on-grey;
+  padding: 4px; 
   max-width: 100%;
+	outline: 0;
+	min-height: 32px
 }
 
 
@@ -1342,6 +1383,8 @@ PLAY SCREEN
 
 .play-sidebar {
   flex-basis: 20%;
+	background-color: $box-background-color;
+	height: fit-content;
 }
 
 .play-main {
@@ -1568,15 +1611,15 @@ SCENES SCREEN
 }
 
 .scene-event {
-    background-color: #337ab7;
+	background-color: $muted-blue;
 }
 
 .scene-social {
-    background-color: #408040;
+	background-color: $muted-green;
 }
 
 .scene-vignette {
-    background-color: #b7337a;
+	background-color: $muted-purple;
 }
 
 .scene-privacy-open {
@@ -1587,7 +1630,8 @@ SCENES SCREEN
 	background-color: $muted-blue;
 }
 
-.scene-privacy-limited {
+.scene-privacy-limited,
+.scene-privacy-openstar {
   background-color: $muted-magenta;
 }
 
@@ -1637,7 +1681,8 @@ SCENES SCREEN
 }
 
 .badge-likes {
-    background-color: red;
+	background-color: $muted-red;
+	box-shadow: none;  
 }
 
 .pose-divider {
@@ -1715,7 +1760,8 @@ SCENES SCREEN
     margin: 0 2px 3px 0;
 }
 
-.live-scenes-entry {
+.live-scenes-entry,
+.unshared-scene-block {
   margin-bottom: 20px;
   background-color: $box-background-color;
   border: 1px solid $border-color;
@@ -1744,6 +1790,7 @@ SCENES SCREEN
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 5px;
 }
 
 .unshared-scene-participants {
@@ -1760,7 +1807,8 @@ SCENES SCREEN
 }
 
 .live-scenes-heading, .unshared-scene-heading {
-  background-color: $border-color;
+  background-color: $primary-color;
+  color: $primary-words-color;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1799,7 +1847,7 @@ SCENES SCREEN
 
 .content-warning-label {
   margin: 0px 5px;
-  background-color: #e69138;
+	background-color: $muted-yellow;
 }
 
 .card-ability-title {
@@ -2300,15 +2348,22 @@ CHAT SCREEN
 }
 
 .play-section-title {
-  color: $faded-text-color;
   font-variant: small-caps;
-  font-weight: bold;
   margin: 10px 5px 5px 5px;
+	font-weight: 400;
+	font-family: $primary-font;
+	text-transform: uppercase;
+	font-size: 1.5em;
+}
+
+.play-section-title i {
+	font-size: 0.75em;
 }
 
 .play-selector {
   width: 100%;
   padding: 5px;
+  background-color: transparent;
 }
 
 .play-selector:hover {
