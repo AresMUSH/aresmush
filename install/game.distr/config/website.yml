@@ -183,6 +183,11 @@ website:
       ids:
       - style
       - custom_style.scss
+    - title: Custom Fonts
+      route: textfile
+      ids:
+      - style
+      - fonts.scss
     - title: Files
       route: files
     - title: Home Page Text
@@ -190,6 +195,11 @@ website:
       ids:
       - text
       - website.txt
+    - title: Rainbow Colors
+      route: textfile
+      ids:
+      - style
+      - rainbow.scss
   - title: "<i class='fas fa-magnifying-glass'/>"
     menu:
     - title: Search Characters
