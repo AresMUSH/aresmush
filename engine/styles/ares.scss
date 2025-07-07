@@ -1177,6 +1177,13 @@ GENERAL UTILITIES
     padding-top: 5px;
 }
 
+.hint.float-right,
+.hint.float-end {
+	padding-top: 5px;
+	padding-right: 5px;
+	text-align: right;
+}
+
 .tinyhint { 
     color: $faded-text-color;
     font-style: italic;
@@ -1431,36 +1438,51 @@ SCENES SCREEN
 
 .scene-pose {
     padding: 10px;
-    margin: 15px;
+    margin: 0px 0px 10px 10px;
 }
 
 .scene-pose-header {
     font-size: .8em;
-    border-top: 1px dashed $border-color;
+    border-top: 1px dotted $border-color;
     padding-top: 10px;
     color: $faded-text-color;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .scene-system-pose {
-    margin-left: 25px;
+  margin: 0px 0px 10px 10px;
     color: $faded-text-color;
     font-style: italic;
 }
 
 .scene-set-pose {
-    margin-left: 25px;
-    border-left: 1px solid $secondary-color;
-    font-style: italic;
-    padding: 0px 10px 10px 10px;
+  margin: 0px 0px 10px 10px;
+  border-left: 1px solid $secondary-color;
+  font-style: italic;
+  padding: 0px 10px 10px 10px;
 }
 
 .scene-ooc-pose {
-    margin-left: 25px;
-    background-color: $log-icon-color;
-    color: $log-icon-text-color;
-    padding: 0px 10px 10px 10px;
+	background-color: $box-background-color;
+	color: $text-color;
+	padding: 5px;
+  margin: 0px 0px 10px 10px;
+	display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
+
+.scene-ooc-pose p {
+	margin: 5px;
+}
+
+.scene-ooc-pose .badge {
+	float: left;
+	margin: 0.4em 0.5em 0em 0em;
+}
+
+
 
 .scene-command {
   margin-left: 25px;
@@ -1540,6 +1562,11 @@ SCENES SCREEN
   background-color: $secondary-color !important;
 }
 
+.bg-ooc {
+	background-color: $primary-color;
+	border: 1px solid $border-color;
+}
+
 .scene-event {
     background-color: #337ab7;
 }
@@ -1553,29 +1580,29 @@ SCENES SCREEN
 }
 
 .scene-privacy-open {
-  background-color: #408040;
+	background-color: $muted-green;
 }
 
 .scene-privacy-private {
-  background-color: #337ab7;
+	background-color: $muted-blue;
 }
 
-.scene-privacy-openstar {
-  background-color: #5bc0de;
+.scene-privacy-limited {
+  background-color: $muted-magenta;
 }
 
 .scene-pacing-traditional {
-  background-color: #408040;
+	background-color: $muted-green;
   color: white;
 }
 
 .scene-pacing-asynchronous {
-  background-color: #337ab7;
+	background-color: $muted-blue;
   color: white;
 }
 
 .scene-pacing-distracted {
-  background-color: #b7337a;
+	background-color: $muted-magenta;
   color: white;
 }
 
@@ -1615,9 +1642,9 @@ SCENES SCREEN
 
 .pose-divider {
     margin: 20px 25px 20px 25px;
-    border: 1px solid #eee;
     align: center; 
     height: 1px;
+  	border: 1px dotted $box-background-color;
 }
 
 .scene-pose-order {
@@ -1647,7 +1674,7 @@ SCENES SCREEN
 }
 
 .scene-pose-box { 
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     width: 100%;
 }
  
@@ -2214,8 +2241,8 @@ CHAT SCREEN
 }
 
 .play-scene-title {
-  font-size: 2em;
-  color: $faded-text-color;
+  font-size: 1.5em;
+	color: $text-color;
 }
 
 .play-scene-context-prompt {
@@ -2225,12 +2252,12 @@ CHAT SCREEN
 }
 
 .play-scene-context-wrap {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .play-hint {
-  color: $faded-text-color;
-  margin-left: 5px;
+  color: $text-color;
+  margin: 0px 0px 5px 10px;
   font-size: .8em;
 }
 
@@ -2333,28 +2360,48 @@ JOBS SCREEN
   background-color: gray;
 }
 
-.job-category-general {
-  background-color: white;
-  border: 1px solid gray;
-}
-.job-category-ALERT, .job-category-BUG {
-  background-color: red;
-  color: white;
-}
-
-.job-category-BUILD, .job-category-CODE {
-  background-color: orange;
-  color: black;
-}
-
 .job-category-APP {
-  background-color: purple;
-  color: white;
+	background-color: $muted-red;
 }
 
-.job-category-APP, .job-category-REQ {
-  background-color: purple;
-  color: white;
+.job-category-BUILD {
+	background-color: $muted-orange;
+}
+
+.job-category-BUG {
+	background-color: $muted-yellow;
+}
+
+.job-category-CODE {
+	background-color: $muted-green;
+}
+
+.job-category-ALERT {
+	background-color: $muted-teal;
+}
+
+.job-category-MISC {
+	background-color: $muted-blue;
+}
+
+.job-category-PLOT {
+	background-color: $muted-slate;
+}
+
+.job-category-REQ {
+	background-color: $muted-purple;
+}
+
+.job-category-RP {
+	background-color: $muted-magenta;
+}
+
+.job-category-SYS {
+	background-color: $muted-pink;
+}
+
+.job-category-general {
+	background-color: $dark-grey;
 }
 
 .job-reply {
@@ -2437,7 +2484,7 @@ JOBS SCREEN
   flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0px 10px 0px;
-  padding: 5px 0px 10px 0px;
+  padding: 5px 0px 10px 20px;
   align-items: center;
   border-bottom: 1px solid $border-color;
 }
