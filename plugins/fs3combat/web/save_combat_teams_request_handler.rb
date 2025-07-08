@@ -20,13 +20,13 @@ module AresMUSH
         combatants = request.args['combatants']
         combatants.each do |key, combatant_data|
           
-          combatant = Combatant[combatant_data[:id]]
+          combatant = Combatant[combatant_data['id']]
           
           if (!combatant)
             return { error: t('fs3combat.not_in_combat', :name => combatant_data[:name])}
           end
           
-          team = combatant_data[:team].to_i
+          team = combatant_data['team'].to_i
           
           if (team != combatant.team)
             FS3Combat.change_team(combat, combatant, enactor, team)
