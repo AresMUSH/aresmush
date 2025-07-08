@@ -164,7 +164,7 @@ p {
 }
 
 .tooltip-button {
-  background-color: $background-color;
+  background-color: transparent;
   color: $secondary-color;
   border: none;
   padding: 1px 3px 1px 3px;
@@ -222,6 +222,10 @@ BOOTSTRAP OVERRIDES
   border-top: 4px solid $primary-color;  
 }
 
+.dropdown-divider {
+  background-color: $secondary-color;
+}
+
 
 /* -------------------------
 EMBER POWER SELECT (Dropdowns)
@@ -256,8 +260,7 @@ select {
   padding-top: 4px; 
   padding-bottom: 4px; 
   max-width: 100%;
-	min-height: 39px;
-  
+	min-height: 39px;  
 }
 
 /* -------------------------
@@ -611,6 +614,10 @@ span.flatpickr-weekday,
 
 .flatpickr-monthDropdown-month {
 	background-color: $background-color  !important;
+}
+
+.flatpickr-months .flatpickr-month {
+    height: 50px;
 }
 
 /* -------------------------
