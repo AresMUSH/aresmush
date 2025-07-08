@@ -74,12 +74,14 @@ module AresMUSH
     
     
     def self.rebuild_css
-      engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
-      scss_path = File.join(engine_styles_path, 'ares.scss')
-      css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
-      load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
-      css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
-      File.open(css_path, "wb") {|f| f.write(css) }
+      AresMUSH.with_error_handling(nil, "Building CSS") do
+        engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
+        scss_path = File.join(engine_styles_path, 'ares.scss')
+        css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
+        load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
+        css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
+        File.open(css_path, "wb") {|f| f.write(css) }
+      end
     end
     
     def self.deploy_portal(client = nil)

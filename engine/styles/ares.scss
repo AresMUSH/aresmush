@@ -867,6 +867,10 @@ input {
 	border-radius: 0
 }
 
+input[type="checkbox"] {
+  vertical-align: middle;
+}
+
 textarea,
 input,
 .markdown-preview,
