@@ -115,7 +115,8 @@ module AresMUSH
     
     def self.npc_type(name)
       types = Global.read_config("fs3combat", "npc_types")
-      types.select { |k, v| k.upcase == name.upcase}.values.first || {}
+      name_upcase = name ? name.upcase : nil      
+      types.select { |k, v| k.upcase == name_upcase}.values.first
     end
     
     def self.npc_type_names
