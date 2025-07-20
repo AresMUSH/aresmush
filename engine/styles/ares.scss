@@ -1878,6 +1878,11 @@ SCENES SCREEN
   display: inline-block;
 }
 
+.live-scene-controls button, .chat-controls button {
+  font-size: 1.1em;  
+}
+
+}
 .live-scenes-controls {
   padding: 5px 0px 5px 10px;
 }
@@ -1963,17 +1968,16 @@ SCENES SCREEN
 }
 
 .scene-card-top {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 180px auto;
+}
+
+.scene-card .log-icon-container {
+    margin: auto;
 }
 
 .scene-card-profile {
-  flex-basis: 40%;
-}
-
-.scene-card-demographics {
-  flex-basis: 60%;
+    text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -1995,6 +1999,11 @@ SCENES SCREEN
      }
 }
 
+@media (max-width: 560px) {
+    .scene-card-top {
+    grid-template-columns: 100%;
+    }
+}
 
 /* -------------------------
 CHARACTERS SCREEN
@@ -3090,11 +3099,7 @@ ul.reference-help-list > li:not(:last-child)::after {
   .navbar-dark .navbar-nav .nav-link.active {
     color: $secondary-color;
   }
-  
-  .scene-card-top {
-    flex-direction: column;
-  }
-  
+    
   .form-item {
     flex-direction: column;
     
