@@ -41,4 +41,9 @@ login:
   tour_not_allowed_message: ''
   allow_game_registration: true
   registration_not_allowed_message: ''
-  tour_welcome_message: "Welcome to our game. We hope you enjoy your stay!\n\nYour temporary name is %{name} and password is %{password}\n\nIf you wish to keep this character, you can rename them and change their password. See `help tour` for details. Otherwise, just log out and the character will be recycled."
+  tour_welcome_message: |-
+    Welcome to our game. We hope you enjoy your stay!
+
+    Your temporary name is %{name} and password is %{password}
+
+    If you wish to keep this character, you can rename them and change their password. See `help tour` for details. Otherwise, just log out and the character will be recycled.
