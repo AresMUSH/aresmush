@@ -2408,6 +2408,16 @@ CHAT SCREEN
   margin-top: 5px;
 }
 
+.play-scene-controls-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
 .play-hint {
   color: $text-color;
   margin: 0px 0px 5px 10px;
