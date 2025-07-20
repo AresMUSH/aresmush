@@ -4,6 +4,10 @@ module AresMUSH
       Chargen.can_manage_apps?(actor)
     end
     
+    def self.can_submit_app?(actor)
+      actor && actor.has_permission?("submit_app")
+    end
+    
     def self.bg_app_review(char)
       message = t('chargen.ok')
       max_length = Global.read_config('chargen', 'max_bg_length') || 0

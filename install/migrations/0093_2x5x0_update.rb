@@ -16,6 +16,14 @@ module AresMUSH
         src = File.join(AresMUSH.root_path, 'install', 'game.distr', 'styles', 'fonts.scss')
         dest = File.join(AresMUSH.game_path, 'styles', 'fonts.scss')
         FileUtils.cp src, dest
+        
+        Global.logger.debug "Adding submit_app permission"
+        config = DatabaseMigrator.read_config_file("chargen.yml")
+        config["chargen"]["permissions"]["submit_app"] = "Can submit chargen application."
+        DatabaseMigrator.write_config_file("chargen.yml", config)
+
+        everyone_role = Role.find_one_by_name("everyone")
+        everyone_role.add_permission "submit_app"        
       end
     end
   end    
