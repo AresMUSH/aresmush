@@ -2187,6 +2187,10 @@ table.char-ability-list {
     flex-wrap: wrap;
 }
 
+.relationship-name {
+  font-weight: bold;
+}
+
 .status-message {
     color: $secondary-words-color;
     background-color: $secondary-color;
