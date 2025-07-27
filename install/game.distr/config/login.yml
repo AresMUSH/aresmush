@@ -3,7 +3,10 @@ login:
   activity_cron:
     minute:
     - 0
+  allow_game_registration: true
+  allow_game_tour: true
   allow_web_registration: true
+  allow_web_tour: true
   blacklist_cron:
     day:
     - 1
@@ -12,6 +15,8 @@ login:
     - 3
     minute:
     - 0
+  boot_timeout_seconds: 300
+  disable_nonadmin_logins: false
   login_not_allowed_message: ''
   notice_cleanup_cron:
     day:
@@ -21,7 +26,11 @@ login:
     minute:
     - 19
   notice_timeout_days: 60
+  permissions:
+    login: Able to log in.
+    manage_login: Can access login-related admin tools like resetting someone's password.
   portal_requires_registration: false
+  registration_not_allowed_message: ''
   shortcuts:
     logout: quit
     con: connect
@@ -31,16 +40,7 @@ login:
     password/change: password/set
     ban/delete: ban/remove
     notice: notices
-  permissions:
-    login: Able to log in.
-    manage_login: Can access login-related admin tools like resetting someone's password.
-  boot_timeout_seconds: 300
-  disable_nonadmin_logins: false
-  allow_web_tour: true
-  allow_game_tour: true
   tour_not_allowed_message: ''
-  allow_game_registration: true
-  registration_not_allowed_message: ''
   tour_welcome_message: |-
     Welcome to our game. We hope you enjoy your stay!
 
