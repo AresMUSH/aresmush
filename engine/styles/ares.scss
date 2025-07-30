@@ -1,4 +1,6 @@
 @import 'colors';
+@import 'rainbow';
+@import 'fonts';
 
 /* -------------------------
 BASIC CONTAINERS
@@ -31,7 +33,7 @@ BASIC CONTAINERS
 
 .title-wrap
 {    
-    height: 149px;   
+    height: 148px;   
     color: $primary-words-color;
     padding: 10px;
     padding-left: 20px;    
@@ -43,7 +45,7 @@ BASIC CONTAINERS
 
 body {
   font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $body-font;
   line-height: 1.428571429;
   background-color: $background-color;
   color: $text-color;
@@ -162,15 +164,16 @@ p {
 }
 
 .tooltip-button {
-  background-color: $background-color;
+  background-color: transparent;
   color: $secondary-color;
   border: none;
   padding: 1px 3px 1px 3px;
 }
 
-.tooltip-button:hover {
-  background-color: $secondary-color;
-  color: $background-color;
+.tooltip-button:hover,
+.tooltip-button > a:hover {
+  color: $primary-color;
+  background-color: $background-color;
 }
 
 label {
@@ -215,6 +218,15 @@ BOOTSTRAP OVERRIDES
   color: #ea868f;
 }
 
+.dropdown-menu {
+  border-top: 4px solid $primary-color;  
+}
+
+.dropdown-divider {
+  background-color: $secondary-color;
+}
+
+
 /* -------------------------
 EMBER POWER SELECT (Dropdowns)
 ------------------------- */
@@ -223,11 +235,10 @@ EMBER POWER SELECT (Dropdowns)
  background-color: $background-color;
 }
 
-.ember-basic-dropdown-trigger,
-.ember-power-select-option,
-.ember-power-select-dropdown.ember-basic-dropdown-content {
-  background-color: $background-color;
-  color: $text-color;
+.ember-power-select-dropdown.ember-basic-dropdown-content,
+.ember-power-select-option {
+  background-color: $dark-grey;
+  color: $text-on-grey;
   border-color: $border-color;
 }
 
@@ -235,6 +246,21 @@ EMBER POWER SELECT (Dropdowns)
 .ember-power-select-option[aria-selected="true"] {
   color: $secondary-words-color;
   background-color: $secondary-color;
+}
+
+.ember-power-select-trigger,
+.ember-basic-dropdown-trigger,
+.ember-power-select-search-input,
+select {
+  background-color: $dark-grey;
+	color: $text-on-grey;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  transition: border 0.3s linear;
+  padding-top: 4px; 
+  padding-bottom: 4px; 
+  max-width: 100%;
+	min-height: 39px;  
 }
 
 /* -------------------------
@@ -252,15 +278,13 @@ MARKDOWN EDITOR (Toast UI)
     margin: 0;
     width: 100%;
     padding: 1rem;
-    border-top: 1px solid $border-color;
-    border-bottom: 1px solid $primary-color;
 }
 
 .markdown-preview {
-  width: 98%;
+  width: 100%;
   min-height: 300px;
   padding: 5px;
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 10px 0px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -274,46 +298,57 @@ MARKDOWN EDITOR (Toast UI)
 }
 
 .markdown-controls {
-    padding: 0;
-    margin: 0;
+  padding: 0px 1px;
+	margin-bottom: -1px;
 }
 
+.markdown-controls a:hover,
+{
+  color: $primary-color;
+  background-color: $background-color;
+}
 
 .markdown-control-toggle {
-  margin-left: 10px;
-  margin-right: 5px;
-  padding: 5px 10px 10px 10px;
-  border: 1px solid $border-color;
-  background-color: $background-color;
-  color: $secondary-color;    
+  border: 0;
+	background-color: $dark-grey;
+  color: $text-on-grey;
+	padding: 0;
+	border-radius: 4px 4px 0px 0px;
+	width: 96px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	margin: -1px -1px 0px 10px;
+	font-weight: 500;
+	font-size: 0.9em; 
+  
 }
 
 .markdown-control-toggle.active {
   background-color: $primary-color;
   color: $primary-words-color;
   border-bottom: 0px;
+  border-radius: 4px 4px 0px 0px;
+	font-weight: 700;
 }
 
 
 .toastui-editor-defaultUI-toolbar button {
-  	background-color: $border-color;
-	  border-color: $border-color;
-    margin: 0px 0px;
+  background-color: $darker-grey;
+	border-color: $darkest-grey;
+  color: $text-on-grey;
+  margin: 0px 0px;
 }
 
 .toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
-    background-color: $background-color;
-    border-color: $border-color;
+  background-color: $darker-grey;
+	border-color: $darkest-grey;
+  color: $text-on-grey;
 }
-
-.toastui-editor-defaultUI-toolbar button:not(:disabled):hover {
-	background-color: $background-color;
-	border-color: $border-color;
-}
-
 
 .toastui-editor-toolbar-divider {
     margin: 7px 12px;
+    background-color: $secondary-color;
 }
 
 .toastui-editor-md-code-block-line-background {
@@ -321,7 +356,22 @@ MARKDOWN EDITOR (Toast UI)
 }
 
 .toastui-editor-popup-body input[type='text'] {
-    color: $primary-words-color;
+	color: $text-color;
+	border-color: $border-color;
+}
+
+.toastui-editor-popup-body input[type='text']:focus {
+	color: $text-color;
+	border-color: $border-color;
+}
+
+.toastui-editor-popup-body label {
+	color: $text-color;
+}
+
+.toastui-editor-dropdown-toolbar {
+	background-color: $primary-color;
+	border-color: $border-color;
 }
 
 .toastui-editor-popup-body,  
@@ -329,9 +379,9 @@ MARKDOWN EDITOR (Toast UI)
 .toastui-editor-popup-add-table .toastui-editor-table-cell.header,
 .toastui-editor-popup-add-table .toastui-editor-table-description,
 .toastui-editor-popup {
-	background-color: $border-color;
+  background-color: $darker-grey;
 	color: $text-color;
-	border-color: $border-color;
+	border-color: $dark-grey;
 }
 
 
@@ -345,7 +395,7 @@ MARKDOWN EDITOR (Toast UI)
 
 .toastui-editor-defaultUI .toastui-editor-close-button:hover,
 .toastui-editor-defaultUI .toastui-editor-ok-button:hover {
-    color: $text-color;
+    color: $primary-words-color;
     background-color: $primary-color;
     border-color: $primary-color;
 }
@@ -368,14 +418,18 @@ MARKDOWN EDITOR (Toast UI)
 .toastui-editor-md-mode .toastui-editor-md-container, 
 .toastui-editor-ww-mode .toastui-editor-ww-container, 
 .ProseMirror, 
-.toastui-editor-contents p,
-.toastui-editor-mode-switch  {
+.toastui-editor-contents p  {
     background-color: transparent;
-
     border-color: transparent;     
     color: $text-color; 
 }
 
+.toastui-editor-mode-switch  {
+    background-color: transparent;
+    border-top: 4px solid $primary-color;
+    color: $text-color; 
+}
+  
 .toastui-editor-defaultUI-toolbar,
 .toastui-editor-main .toastui-editor-md-tab-style
  {
@@ -395,7 +449,7 @@ button.outdent.toastui-editor-toolbar-icons {
 }
 
 .toastui-editor-defaultUI {
-  border: 1px solid $border-color;
+  border-color: transparent;
 }
 
 .toastui-editor-defaultUI-toolbar { 
@@ -405,16 +459,18 @@ button.outdent.toastui-editor-toolbar-icons {
 
 .toastui-editor-mode-switch .tab-item {  
   margin-left: 10px;
-  background-color: $background-color;
-  border-color: $primary-color;
-  color: $text-color;
+  background-color: $dark-grey;
+	border-color: $dark-grey;
+	border-top: 1px solid $primary-color;
+	color: $text-on-grey;
+	font-size: 1em;    
 }
 
 .toastui-editor-mode-switch .tab-item.active {
   margin-left: 10px;
-  color: $primary-words-color;
-  border-color: $primary-color;
   background-color: $primary-color;
+	border-color: $primary-color;
+	color: $primary-words-color;
   font-weight: bold;  
 }
 
@@ -455,6 +511,13 @@ button.outdent.toastui-editor-toolbar-icons {
   color: $primary-words-color;
 }
 
+.toastui-editor-md-delimiter,
+.toastui-editor-md-thematic-break,
+.toastui-editor-md-link,
+.toastui-editor-md-table,
+.toastui-editor-md-block-quote {
+	color: $text-color
+}
 
 .toastui-editor-md-block-quote .toastui-editor-md-marked-text { 
  background-color: $box-background-color;
@@ -478,6 +541,86 @@ button.outdent.toastui-editor-toolbar-icons {
 }
 
 /* -------------------------
+CALENDAR (Flatpickr)
+------------------------- */
+
+
+.flatpickr-calendar {
+	background: $dark-grey;
+	box-shadow: none;
+	border: 1px solid $border-color;
+	color: $text-on-grey;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month,
+.flatpickr-current-month,
+span.flatpickr-weekday,
+.flatpickr-day {
+	color: $text-on-grey;
+	fill: $text-on-grey;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay,
+.flatpickr-day.notAllowed,
+.flatpickr-day.notAllowed.prevMonthDay,
+.flatpickr-day.notAllowed.nextMonthDay {
+	color: $light-grey;
+}
+
+
+.flatpickr-day.inRange,
+.flatpickr-day.prevMonthDay.inRange,
+.flatpickr-day.nextMonthDay.inRange,
+.flatpickr-day.today.inRange,
+.flatpickr-day.prevMonthDay.today.inRange,
+.flatpickr-day.nextMonthDay.today.inRange,
+.flatpickr-day:hover,
+.flatpickr-day.prevMonthDay:hover,
+.flatpickr-day.nextMonthDay:hover,
+.flatpickr-day:focus,
+.flatpickr-day.prevMonthDay:focus,
+.flatpickr-day.nextMonthDay:focus {
+	background: $secondary-color;
+	border-color: $secondary-color;
+	color: $secondary-words-color;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+	background: $primary-color;
+	border: $primary-color;
+  color: $primary-words-color;
+}
+
+.flatpickr-monthDropdown-month {
+	background-color: $background-color  !important;
+}
+
+.flatpickr-months .flatpickr-month {
+    height: 50px;
+}
+
+/* -------------------------
 NAVIGATION
 ------------------------- */
 
@@ -488,19 +631,22 @@ a, .nav-link {
 
 a:hover,
 a:focus{
-    color: $secondary-words-color;
-    background-color: $secondary-color;
+    font-weight: bold;
+    color: $secondary-color;    
     text-decoration: none;
 }
 
 .user-bar { 
-    padding-right: 10px;
+  	text-align: right;    
 }
 
 .user-bar a {
     color: $primary-words-color;
 }
 
+.user-bar p {
+	line-height: .75em;
+}
 
 .header-wrap nav
 {
@@ -517,7 +663,6 @@ a:focus{
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link:focus {
   color: $secondary-color;
-  background-color: $background-color;
 }
 
 .navbar {
@@ -576,12 +721,14 @@ h1
     border: 3px solid $primary-outline-color;
     letter-spacing: 0.1em;    
     margin: 0px 0px 10px 0px;
+    font-family: $primary-font;
 }
 
 h2
 {
     padding-top: 20px;
     padding-bottom: 10px;
+    font-family: $primary-font;    
 }
 
 .table th {
@@ -699,31 +846,54 @@ form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px 0 10px 0;
-  border-bottom: 1px solid $border-color;
+  padding: 10px 0 10px 0px;
+  border-bottom: 1px dotted $border-color;
 }
 
 .form-item-label {
   font-weight: bold;
-  min-width: 300px;
+	flex-basis: 17%;
 }
 
-input,
+.form-item-entry {
+  flex-basis: 83%;
+}
+
+
+input {
+	color: $light-grey;
+	outline: 0;
+	border: 2px solid $border-color;
+	border-radius: 0
+}
+
+input[type="checkbox"] {
+  vertical-align: middle;
+}
+
 textarea,
-.ember-power-select-trigger,
-.ember-basic-dropdown-trigger,
-.ember-power-select-search-input,
+input,
+.markdown-preview,
+.toastui-editor-defaultUI .ProseMirror,
+.toastui-editor-main-container .md-mode > div,
 .ember-text-field {
-  background-color: $background-color;
-  color: $text-color;
-  border: 1px solid $border-color;
-  border-radius: 3px;
-  transition: border 0.3s linear;
-  padding-top: 4px; 
-  padding-bottom: 4px; 
+	background-color: $dark-grey;
+	color: $text-on-grey;
+  padding: 4px; 
   max-width: 100%;
+	outline: 0;
+	min-height: 32px
 }
 
+input[type="text"],
+.ember-text-field {
+	background: $dark-grey;
+	border: 1px solid $border-color;
+	padding: 5px;
+	outline: 0;
+	height: 39px;
+	width: 100%;
+}
 
 input.color-select {
   height: 40px;
@@ -851,6 +1021,8 @@ BOOTSTRAP OVERRIDES
 
 .btn {
   font-size: 1em;
+  margin-top: 2px;
+  padding-bottom: 4px;
 }
 
 .btn-primary a {
@@ -860,6 +1032,7 @@ BOOTSTRAP OVERRIDES
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: $primary-color;
     border-color: $primary-outline-color;
+    color: $primary-words-color;
 }
 
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
@@ -875,7 +1048,7 @@ BOOTSTRAP OVERRIDES
 
 .btn-link {
   text-align: left;
-  background-color: $background-color;
+  background-color: transparent;
   border: none;
   color: $secondary-color;
   text-decoration: none;
@@ -885,8 +1058,9 @@ BOOTSTRAP OVERRIDES
 .btn-link:hover, 
 .btn-link:focus, 
 .btn-link:active {
-  background-color: $secondary-color;
-  color: $background-color;
+  color: $secondary-color;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .float-right {
@@ -980,6 +1154,8 @@ HEADER
 .site-title {
     margin: 0px;
     font-size: 3em;
+    font-family: $primary-font;
+    text-transform: uppercase;    
 }
 
 .site-subtitle {
@@ -1053,11 +1229,11 @@ SIDEBAR
 .sidebar-heading h2 {
     text-align: center;
     font-size: 1.5em;
-    color: $faded-text-color;
-    font-variant: small-caps;
+    color: $text-color;
     padding: 0px;
     margin-top: 20px;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .search-bar {
@@ -1146,6 +1322,13 @@ GENERAL UTILITIES
     font-style: italic;
     font-weight: bold;
     padding-top: 5px;
+}
+
+.hint.float-right,
+.hint.float-end {
+	padding-top: 5px;
+	padding-right: 5px;
+	text-align: right;
 }
 
 .tinyhint { 
@@ -1306,6 +1489,8 @@ PLAY SCREEN
 
 .play-sidebar {
   flex-basis: 20%;
+	background-color: $box-background-color;
+	height: fit-content;
 }
 
 .play-main {
@@ -1402,36 +1587,51 @@ SCENES SCREEN
 
 .scene-pose {
     padding: 10px;
-    margin: 15px;
+    margin: 0px 0px 10px 10px;
 }
 
 .scene-pose-header {
     font-size: .8em;
-    border-top: 1px dashed $border-color;
+    border-top: 1px dotted $border-color;
     padding-top: 10px;
     color: $faded-text-color;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .scene-system-pose {
-    margin-left: 25px;
+  margin: 0px 0px 10px 10px;
     color: $faded-text-color;
     font-style: italic;
 }
 
 .scene-set-pose {
-    margin-left: 25px;
-    border-left: 1px solid $secondary-color;
-    font-style: italic;
-    padding: 0px 10px 10px 10px;
+  margin: 0px 0px 10px 10px;
+  border-left: 1px solid $secondary-color;
+  font-style: italic;
+  padding: 0px 10px 10px 10px;
 }
 
 .scene-ooc-pose {
-    margin-left: 25px;
-    background-color: $log-icon-color;
-    color: $log-icon-text-color;
-    padding: 0px 10px 10px 10px;
+	background-color: $box-background-color;
+	color: $text-color;
+	padding: 5px;
+  margin: 0px 0px 10px 10px;
+	display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
+
+.scene-ooc-pose p {
+	margin: 5px;
+}
+
+.scene-ooc-pose .badge {
+	float: left;
+	margin: 0.4em 0.5em 0em 0em;
+}
+
+
 
 .scene-command {
   margin-left: 25px;
@@ -1440,7 +1640,6 @@ SCENES SCREEN
 }
 
 .scene-log {
-    border: 1px solid $border-color;
     margin: 2px;
     padding: 10px;
 }
@@ -1511,42 +1710,48 @@ SCENES SCREEN
   background-color: $secondary-color !important;
 }
 
+.bg-ooc {
+	background-color: $primary-color;
+	border: 1px solid $border-color;
+}
+
 .scene-event {
-    background-color: #337ab7;
+	background-color: $muted-blue;
 }
 
 .scene-social {
-    background-color: #408040;
+	background-color: $muted-green;
 }
 
 .scene-vignette {
-    background-color: #b7337a;
+	background-color: $muted-purple;
 }
 
 .scene-privacy-open {
-  background-color: #408040;
+	background-color: $muted-green;
 }
 
 .scene-privacy-private {
-  background-color: #337ab7;
+	background-color: $muted-blue;
 }
 
+.scene-privacy-limited,
 .scene-privacy-openstar {
-  background-color: #5bc0de;
+  background-color: $muted-magenta;
 }
 
 .scene-pacing-traditional {
-  background-color: #408040;
+	background-color: $muted-green;
   color: white;
 }
 
 .scene-pacing-asynchronous {
-  background-color: #337ab7;
+	background-color: $muted-blue;
   color: white;
 }
 
 .scene-pacing-distracted {
-  background-color: #b7337a;
+	background-color: $muted-magenta;
   color: white;
 }
 
@@ -1581,14 +1786,15 @@ SCENES SCREEN
 }
 
 .badge-likes {
-    background-color: red;
+	background-color: $muted-red;
+	box-shadow: none;  
 }
 
 .pose-divider {
     margin: 20px 25px 20px 25px;
-    border: 1px solid #eee;
     align: center; 
     height: 1px;
+  	border: 1px dotted $box-background-color;
 }
 
 .scene-pose-order {
@@ -1618,7 +1824,7 @@ SCENES SCREEN
 }
 
 .scene-pose-box { 
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     width: 100%;
 }
  
@@ -1659,7 +1865,8 @@ SCENES SCREEN
     margin: 0 2px 3px 0;
 }
 
-.live-scenes-entry {
+.live-scenes-entry,
+.unshared-scene-block {
   margin-bottom: 20px;
   background-color: $box-background-color;
   border: 1px solid $border-color;
@@ -1669,6 +1876,10 @@ SCENES SCREEN
   padding-right: 15px;
   padding-bottom: 5px;
   display: inline-block;
+}
+
+.live-scene-controls button, .chat-controls button {
+  font-size: 1.1em;  
 }
 
 .live-scenes-controls {
@@ -1688,6 +1899,7 @@ SCENES SCREEN
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 5px;
 }
 
 .unshared-scene-participants {
@@ -1704,7 +1916,8 @@ SCENES SCREEN
 }
 
 .live-scenes-heading, .unshared-scene-heading {
-  background-color: $border-color;
+  background-color: $primary-color;
+  color: $primary-words-color;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1743,7 +1956,7 @@ SCENES SCREEN
 
 .content-warning-label {
   margin: 0px 5px;
-  background-color: #e69138;
+	background-color: $muted-yellow;
 }
 
 .card-ability-title {
@@ -1754,17 +1967,16 @@ SCENES SCREEN
 }
 
 .scene-card-top {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 180px auto;
+}
+
+.scene-card .log-icon-container {
+    margin: auto;
 }
 
 .scene-card-profile {
-  flex-basis: 40%;
-}
-
-.scene-card-demographics {
-  flex-basis: 60%;
+    text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -1786,6 +1998,11 @@ SCENES SCREEN
      }
 }
 
+@media (max-width: 560px) {
+    .scene-card-top {
+    grid-template-columns: 100%;
+    }
+}
 
 /* -------------------------
 CHARACTERS SCREEN
@@ -1970,6 +2187,10 @@ table.char-ability-list {
     flex-wrap: wrap;
 }
 
+.relationship-name {
+  font-weight: bold;
+}
+
 .status-message {
     color: $secondary-words-color;
     background-color: $secondary-color;
@@ -2027,12 +2248,47 @@ input[type='file'] {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 25px;
   justify-content: space-around;
 }
 
 .fs3-ability-table {
-  min-width: 400px;
+  flex-basis: 48%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0, 
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-background > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0,
+.fs3-dots-language > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0,
+.fs3-dots-advantage > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-0 {
+color: $muted-red;
+}
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-3,
+.fs3-dots-background > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-language > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1,
+.fs3-dots-advantage > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1 {
+color: $muted-yellow;
+}
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-4,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-5,
+.fs3-dots-background > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-language > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-2,
+.fs3-dots-advantage > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-1 {
+color: $muted-green;
+}
+
+.fs3-dots-attribute > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-3,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-6,
+.fs3-dots-action > .fas.fa-circle.fa-sm.char-dot-fill.fs3-dot-7 {
+color: $muted-blue;
 }
 
 .fs3-luck {
@@ -2150,8 +2406,8 @@ CHAT SCREEN
 }
 
 .play-scene-title {
-  font-size: 2em;
-  color: $faded-text-color;
+  font-size: 1.5em;
+	color: $text-color;
 }
 
 .play-scene-context-prompt {
@@ -2161,12 +2417,22 @@ CHAT SCREEN
 }
 
 .play-scene-context-wrap {
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.play-scene-controls-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .play-hint {
-  color: $faded-text-color;
-  margin-left: 5px;
+  color: $text-color;
+  margin: 0px 0px 5px 10px;
   font-size: .8em;
 }
 
@@ -2209,15 +2475,22 @@ CHAT SCREEN
 }
 
 .play-section-title {
-  color: $faded-text-color;
   font-variant: small-caps;
-  font-weight: bold;
   margin: 10px 5px 5px 5px;
+	font-weight: 400;
+	font-family: $primary-font;
+	text-transform: uppercase;
+	font-size: 1.5em;
+}
+
+.play-section-title i {
+	font-size: 0.75em;
 }
 
 .play-selector {
   width: 100%;
   padding: 5px;
+  background-color: transparent;
 }
 
 .play-selector:hover {
@@ -2269,28 +2542,48 @@ JOBS SCREEN
   background-color: gray;
 }
 
-.job-category-general {
-  background-color: white;
-  border: 1px solid gray;
-}
-.job-category-ALERT, .job-category-BUG {
-  background-color: red;
-  color: white;
-}
-
-.job-category-BUILD, .job-category-CODE {
-  background-color: orange;
-  color: black;
-}
-
 .job-category-APP {
-  background-color: purple;
-  color: white;
+	background-color: $muted-red;
 }
 
-.job-category-APP, .job-category-REQ {
-  background-color: purple;
-  color: white;
+.job-category-BUILD {
+	background-color: $muted-orange;
+}
+
+.job-category-BUG {
+	background-color: $muted-yellow;
+}
+
+.job-category-CODE {
+	background-color: $muted-green;
+}
+
+.job-category-ALERT {
+	background-color: $muted-teal;
+}
+
+.job-category-MISC {
+	background-color: $muted-blue;
+}
+
+.job-category-PLOT {
+	background-color: $muted-slate;
+}
+
+.job-category-REQ {
+	background-color: $muted-purple;
+}
+
+.job-category-RP {
+	background-color: $muted-magenta;
+}
+
+.job-category-SYS {
+	background-color: $muted-pink;
+}
+
+.job-category-general {
+	background-color: $dark-grey;
 }
 
 .job-reply {
@@ -2373,7 +2666,7 @@ JOBS SCREEN
   flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0px 10px 0px;
-  padding: 5px 0px 10px 0px;
+  padding: 5px 0px 10px 20px;
   align-items: center;
   border-bottom: 1px solid $border-color;
 }
@@ -2809,11 +3102,7 @@ ul.reference-help-list > li:not(:last-child)::after {
   .navbar-dark .navbar-nav .nav-link.active {
     color: $secondary-color;
   }
-  
-  .scene-card-top {
-    flex-direction: column;
-  }
-  
+    
   .form-item {
     flex-direction: column;
     
@@ -2829,12 +3118,21 @@ ul.reference-help-list > li:not(:last-child)::after {
   
   .play-screen { 
     flex-direction: column;
+    flex-wrap: no-wrap;
   }
 }
 
 
 @media (max-width:768px)  { 
 
+  .site-title {
+      font-size: 1.5em;
+  }
+  
+  .site-banner {
+    flex-direction: column;
+  }
+  
   .left-sidebar {
     order: 2;
   }
@@ -2851,6 +3149,39 @@ ul.reference-help-list > li:not(:last-child)::after {
     order: 1;
   }
   
+  .play-scene-title,
+  .play-scene-context-prompt {
+    font-size: 1.2em;
+    padding-left: 5px;
+  }
+  
+  .live-scene-controls {
+    padding-left: 5px;
+  }
+
+	.play-main {
+		padding-left: 0px;
+	}
+  
+  .scene-log {
+    padding: 0px;
+  }
+  
+
+	.scene-controls-right {
+		flex-flow: column;
+		flex-basis: 100%;
+	}
+
+	.scene-controls-left {
+		flex-flow: column;
+		flex-basis: 100%;
+	}
+
+	.scene-char-select,
+	.scene-pose-select {
+		width: 100%;
+	}
   
 }
 

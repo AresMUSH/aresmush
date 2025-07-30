@@ -17,7 +17,7 @@ module AresMUSH
           return { error: t('db.object_not_found') }
         end
         
-        if (message.character != enactor)
+        if (!AresCentral.is_alt?(message.character, enactor))
           return { error: t('dispatcher.not_allowed') }
         end
         

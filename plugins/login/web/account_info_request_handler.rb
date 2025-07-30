@@ -16,7 +16,9 @@ module AresMUSH
           name: enactor.name,
           timezone: enactor.ooctime_timezone,
           timezones: timezones,
-          unified_play_screen: enactor.unified_play_screen
+          unified_play_screen: enactor.unified_play_screen,
+          editor: enactor.website_editor || "WYSIWYG",
+          editors: [ "Classic", "WYSIWYG" ]
         }
       end
     end

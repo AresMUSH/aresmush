@@ -7,6 +7,7 @@ en:
         app_approved: "You approve %{name}."
         app_rejected: "You reject %{name}."
         app_title: "App Review for %{name}"
+        app_not_allowed: "You cannot submit your application at this time. Contact staff."
         
         not_set: "%xh%xr< Not set! >%xn"
         not_enough: "%xh%xr< Not Enough! >%xn"

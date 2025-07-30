@@ -102,6 +102,11 @@ module AresMUSH
         return t('manage.game_config_invalid', :error => ex)
       end
       
+      error = Website.rebuild_css
+      if (error)
+        return error
+      end
+
       Global.plugin_manager.all_plugin_folders.each do |load_target|
         begin
           Global.plugin_manager.unload_plugin(load_target)
@@ -123,7 +128,6 @@ module AresMUSH
       end
       Help.reload_help
       Global.locale.reload
-      Website.rebuild_css
       Global.dispatcher.queue_event ConfigUpdatedEvent.new
       return nil
     end

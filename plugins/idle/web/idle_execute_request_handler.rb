@@ -12,9 +12,9 @@ module AresMUSH
 
         if (!Idle.can_idle_sweep?(enactor))
           return { error: t('dispatcher.not_allowed') }
-        end
+        end        
         
-        char_data = request.args['chars'].values
+        char_data = request.args['chars'] || []
         
         queue = {}
         char_data.each do |data|

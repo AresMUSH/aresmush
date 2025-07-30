@@ -8,3 +8,5 @@ rvm --default use 3.3.6
 gem update bundler
 bundle install
 echo "rvm use 3.3.6" >> "$HOME/.profile"
+
+echo "Ruby is updated. Please reboot your server and your game should automatically restart."

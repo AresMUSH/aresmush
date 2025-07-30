@@ -1,6 +1,7 @@
 module AresMUSH
   class Character
     reference :wiki_char_backup, "AresMUSH::WikiCharBackup"
+    attribute :website_editor, :default => "WYSIWYG"
     
     before_delete :delete_backup
     

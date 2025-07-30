@@ -9,6 +9,7 @@ module AresMUSH
         timezone = request.args['timezone']
         pw = request.args['confirm_password']
         unified_play_screen = (request.args['unified_play_screen'] || "").to_bool
+        editor = request.args['editor'] || "WYSIWYG"
 
         error = Website.check_login(request)
         return error if error
@@ -54,9 +55,11 @@ module AresMUSH
           return { error: name_validation_msg }
         end
         enactor.update(alias: char_alias)
+        enactor.update(website_editor: editor)
         
         AresCentral.alts(enactor).each do |alt|
           alt.update(unified_play_screen: unified_play_screen)
+          alt.update(website_editor: editor)
         end
         
         {

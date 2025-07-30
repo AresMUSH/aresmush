@@ -46,7 +46,10 @@ module AresMUSH
         
         begin
           if (file_type == "style")
-            Website.rebuild_css
+            error = Website.rebuild_css
+            if (error)
+              return { :warnings => error }
+            end
           else
             error = Manage.reload_config     
             if (error)

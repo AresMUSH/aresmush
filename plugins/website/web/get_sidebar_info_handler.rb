@@ -60,7 +60,9 @@ module AresMUSH
           notification_count: notifications == 0 ? nil : notifications,
           allow_web_tour: Login.allow_web_tour?,
           allow_web_registration: Login.allow_web_registration?,
-          alts: alt_data
+          alts: alt_data,
+          editor: (enactor ? enactor.website_editor : nil) || "WYSIWYG",
+          
         }
       end
     end

@@ -13,9 +13,8 @@ module AresMUSH
         if (!message)
           return { error: t('webportal.missing_required_fields', :fields => "message") }
         end
-        
-        
-        if (message.character != enactor)
+                
+        if (!AresCentral.is_alt?(message.character, enactor))
           return { error: t('dispatcher.not_allowed') }
         end
         

@@ -15,6 +15,8 @@ module AresMUSH
         textfiles = textfiles.select { |f| File.basename(f) != "blacklist.txt" }.sort.map { |f| { name: File.basename(f), file_type: 'text' }}
         textfiles << { name: 'colors.scss', file_type: 'style' }
         textfiles << { name: 'custom_style.scss', file_type: 'style' }
+        textfiles << { name: 'rainbow.scss', file_type: 'style' }
+        textfiles << { name: 'fonts.scss', file_type: 'style' }
                 
         codefiles = []
         Website.editable_code_files.each do |section|

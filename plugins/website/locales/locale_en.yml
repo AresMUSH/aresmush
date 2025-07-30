@@ -31,3 +31,4 @@ en:
         wiki_export_success: "Wiki export complete."
         no_tag_content_visible: "You don't have access to any content in that tag."
         game_directory_not_updated: "%{error}\n\n%xhNOTE:%xn Your AresCentral registration will not be updated until you fix these problems."
+        error_compiling_styles: "There was a problem compiling your game's CSS styles. Check the error log for details."

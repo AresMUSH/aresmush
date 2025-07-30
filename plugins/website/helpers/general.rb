@@ -74,12 +74,18 @@ module AresMUSH
     
     
     def self.rebuild_css
-      engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
-      scss_path = File.join(engine_styles_path, 'ares.scss')
-      css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
-      load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
-      css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
-      File.open(css_path, "wb") {|f| f.write(css) }
+      begin
+        engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
+        scss_path = File.join(engine_styles_path, 'ares.scss')
+        css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
+        load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
+        css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
+        File.open(css_path, "wb") {|f| f.write(css) }
+	return nil
+      rescue Exception => e
+        Global.logger.error "Error loading CSS: error=#{e} backtrace=#{e.backtrace[0,10]}."
+        return t('webportal.error_compiling_styles')
+      end
     end
     
     def self.deploy_portal(client = nil)
@@ -88,12 +94,13 @@ module AresMUSH
     
     def self.redeploy_portal(enactor, from_web)
       Global.dispatcher.spawn("Deploying website", nil) do
-        Website.rebuild_css
+        style_error = Website.rebuild_css
+       
         install_path = Global.read_config('website', 'website_code_path')
         Dir.chdir(install_path) do
 
           output = `bin/deploy 2>&1`
-          Global.logger.info "Deployed web portal: #{output}"
+          Global.logger.info "Deployed web portal: #{output} #{style_error}"
           message = t('webportal.portal_deployed', :output => output)
           if (from_web)
             Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message), false) do |c|

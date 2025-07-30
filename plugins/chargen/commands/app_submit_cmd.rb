@@ -11,8 +11,10 @@ module AresMUSH
       
       def check_approval
         return t('chargen.you_are_already_approved') if enactor.is_approved?
+        return t('chargen.app_not_allowed') if !Chargen.can_submit_app?(enactor)
         return nil
       end
+      
       
       def handle
         if (cmd.switch_is?("confirm"))

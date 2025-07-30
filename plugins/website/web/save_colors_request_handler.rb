@@ -19,7 +19,10 @@ module AresMUSH
           colors.each { |name, value| file.puts "$#{name}:#{value};"}
         end
         
-        Website.rebuild_css
+        error = Website.rebuild_css
+        if (error)
+          return { error: error }
+        end
         
         {}
       end
