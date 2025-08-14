@@ -252,7 +252,7 @@ module AresMUSH
             allow(@char).to receive(:login_failures) { 1 }
             expect(@char).to receive(:update).with(login_failures: 2)
             expect(Global).to_not receive(:queue_event)
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the passwords don't match and too many login failures" do
@@ -260,28 +260,28 @@ module AresMUSH
             expect(@char).to receive(:compare_password).with("password") { false }
             allow(@char).to receive(:login_failures) { 6 }
             expect(Global).to_not receive(:queue_event)
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if char is a statue" do
             expected_status = { status: 'error', error: "dispatcher.you_are_statue" }
             expect(@char).to receive(:is_statue?) { true }
             expect(Global).to_not receive(:queue_event)
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the char isn't allowed to log in due to restricted logins" do
             expected_status = { status: 'error', error: "login.login_restricted" }
             expect(Login).to receive(:can_login?) { false }
             expect(Login).to receive(:restricted_login_message) { "" }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the char isn't allowed to log in due to site matching" do
             allow(Login).to receive(:site_blocked_message) { "site blocked" }
             expected_status = { status: 'error', error: "site blocked" }
             expect(Login).to receive(:is_banned?).with(@char, "ip", "host") { true }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the char is in boot timeout" do
@@ -289,7 +289,7 @@ module AresMUSH
             expect(Login).to receive(:can_login?) { true }
             allow(@char).to receive(:boot_timeout) { Time.now + 100 }
             allow(OOCTime).to receive(:local_long_timestr) { "date" }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
         end
@@ -299,7 +299,7 @@ module AresMUSH
           it "should allow login if passwords match" do
             expected_status = { status: 'ok' }
             expect(@char).to receive(:compare_password).with("password") { true }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           
@@ -307,7 +307,7 @@ module AresMUSH
             expected_status = { status: 'ok' }
             expect(@char).to receive(:compare_password).with("password") { true }
             allow(@char).to receive(:boot_timeout) { Time.now - 1 }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should allow them in if their password doesn't match but AresC authorizes" do
@@ -318,7 +318,7 @@ module AresMUSH
             expect(@char).to receive(:change_password).with("password")
             expect(@char).to receive(:update).with({ login_failures: 0})
             
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           

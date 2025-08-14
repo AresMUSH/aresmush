@@ -14,6 +14,8 @@ module AresMUSH
         reason = Global.read_config('login', 'tour_not_allowed_message')
         if (!Login.allow_web_tour?)
           return { error: t('login.tour_restricted', :reason => reason)  }
+        elsif (Login.is_banned?(nil, request.ip_addr, request.hostname))
+          return { error: Login.site_blocked_message }
         end
         
         name = Login.create_temp_char_name

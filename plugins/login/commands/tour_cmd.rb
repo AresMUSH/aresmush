@@ -18,6 +18,11 @@ module AresMUSH
         return nil
       end
       
+      def check_banned
+        return Login.site_blocked_message if Login.is_banned?(nil, client.ip_addr, client.hostname)
+        return nil
+      end
+      
       def handle
         terms_of_service = Login.terms_of_service
         if (terms_of_service)

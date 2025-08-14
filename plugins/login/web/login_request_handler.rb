@@ -19,7 +19,7 @@ module AresMUSH
             return { error: t('webportal.only_switch_arescentral_alts') }
           end
         else
-          result = Login.check_login(char, pw, request.ip_addr, request.hostname)
+          result = Login.check_login_allowed_status(char, pw, request.ip_addr, request.hostname)
         
           if result[:status] == 'error'
             return { error: result[:error] }
