@@ -16,12 +16,12 @@ module AresMUSH
         end
         
         filter = enactor.jobs_filter || "ACTIVE"
+	
+	# Add their personal requests.
         case filter
           
-        when "MINE", "UNFINISHED", "UNASSIGNED"
+        when "MINE", "UNFINISHED", "UNASSIGNED", "ACTIVE"
           jobs.concat Jobs.open_requests(enactor)
-        when "ACTIVE"
-          jobs.concat Jobs.open_requests(enactor).select { |j| j.is_active? }
         when "UNREAD"
           jobs.concat enactor.unread_requests
         when "ALL"
