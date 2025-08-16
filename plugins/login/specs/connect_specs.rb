@@ -82,7 +82,7 @@ module AresMUSH
           it "should fail if check login fails" do
             expect(Character).to receive(:find_any_by_name).with("Bob") { [ @found_char ] }
             fail_status = { status: 'error', error: 'error' }
-            expect(Login).to receive(:check_login).with(@found_char, "password", "ip", "host") { fail_status }
+            expect(Login).to receive(:check_login_allowed_status).with(@found_char, "password", "ip", "host") { fail_status }
             expect(Global).to_not receive(:queue_event)
             expect(@client).to receive(:emit_failure).with("error")
             @handler.handle
@@ -99,7 +99,7 @@ module AresMUSH
             allow(@client).to receive(:char_id=)    
             allow(@found_char).to receive(:update)
             ok_status = { status: 'ok' }  
-            allow(Login).to receive(:check_login) { ok_status }
+            allow(Login).to receive(:check_login_allowed_status) { ok_status }
           end
           
           it "should disconnect an existing client" do
@@ -113,7 +113,7 @@ module AresMUSH
           
           it "should check login details" do
             ok_status = { status: 'ok' }  
-            expect(Login).to receive(:check_login).with(@found_char, "password", "ip", "host") { ok_status }
+            expect(Login).to receive(:check_login_allowed_status).with(@found_char, "password", "ip", "host") { ok_status }
             @handler.handle
           end        
        
