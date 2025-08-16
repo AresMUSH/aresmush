@@ -69,7 +69,7 @@ module AresMUSH
   
       admin_role = Role.create(name: "admin", is_restricted: true)
       everyone_role = Role.create(name: "everyone")
-      everyone_role.update(permissions: ["login"])
+      everyone_role.update(permissions: ["login", "submit_app"])
       builder_role = Role.create(name: "builder")
       builder_role.update(permissions: ["build", "teleport", "desc_places", "access_jobs" ] )
       approved_role = Role.create(name: "approved")
