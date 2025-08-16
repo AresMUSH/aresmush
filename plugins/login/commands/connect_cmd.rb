@@ -32,7 +32,7 @@ module AresMUSH
 
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
   
-          result = Login.check_login(char, self.password, client.ip_addr, client.hostname)
+          result = Login.check_login_allowed_status(char, self.password, client.ip_addr, client.hostname)
           
           if result[:status] == 'unlocked'
             client.emit_ooc t('login.temp_password_set', :password => self.password)

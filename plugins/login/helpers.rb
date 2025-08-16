@@ -141,7 +141,7 @@ module AresMUSH
       Login.blacklist = nil
     end
     
-    def self.check_login(char, password, ip_addr, hostname)
+    def self.check_login_allowed_status(char, password, ip_addr, hostname)
       if (!Login.can_login?(char))
         return { status: 'error', error: t('login.login_restricted', :reason => Login.restricted_login_message) }
       end
