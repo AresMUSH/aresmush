@@ -25,6 +25,7 @@ module AresMUSH
   end
 
   class CharConnectedEvent
+    # Note! client may be nil for web-only connection
     attr_accessor :client, :char_id
     
     def initialize(client, char_id)

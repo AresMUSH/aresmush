@@ -55,21 +55,6 @@ module AresMUSH
       char.update(last_on: Time.now)
     end
     
-    def self.check_for_suspect(char)
-      suspects = Global.read_config("sites", "suspect")
-      return false if !suspects
-      
-      suspects.each do |s|
-        if (char.is_site_match?(s, s))
-          Global.logger.warn "SUSPECT LOGIN! #{char.name} from #{char.last_ip} #{char.last_hostname} matches #{s}"
-          Jobs.create_job(Jobs.trouble_category, 
-            t('login.suspect_login_title'), 
-            t('login.suspect_login', :name => char.name, :ip => char.last_ip, :host => char.last_hostname, :match => s), 
-            Game.master.system_character)
-        end
-      end
-    end
-    
     # Char may be nil
     def self.is_banned?(char, ip_addr, hostname)
       hostname = hostname ? hostname.downcase : "" 

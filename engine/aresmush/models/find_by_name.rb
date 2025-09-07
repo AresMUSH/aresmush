@@ -37,7 +37,7 @@ module AresMUSH
       end
       
       def find_any_by_name(name_or_id)
-        return [] if !name_or_id
+        return [] if name_or_id.blank?
         
         if (name_or_id.start_with?("#"))
           return find_any_by_id(name_or_id.upcase)

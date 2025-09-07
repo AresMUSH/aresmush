@@ -4,7 +4,12 @@ module AresMUSH
       def on_event(event)
         count = Global.client_monitor.logged_in_clients.count
         game = Game.master
+        
+        client = event.client
         char = Character[event.char_id]
+        
+        # Only game clients count towards the who record.
+        return if !client
         
         if (count > game.online_record)
           game.update(online_record: count)

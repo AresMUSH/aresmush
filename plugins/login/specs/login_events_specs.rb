@@ -70,23 +70,11 @@ module AresMUSH
           expect(@room).to receive(:emit_success).with("announce_char_connected_here")
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char_id)
         end
-        
-        it "should check for suspect site on the first login" do
-          allow(@event_char).to receive(:last_ip) { nil }
-          expect(Login).to receive(:check_for_suspect).with(@event_char) {}
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
-        end
-
-        it "should not check for suspect site on subsequent login" do
-          expect(Login).to_not receive(:check_for_suspect).with(@event_char) {}
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
-        end
       end
       
       describe :on_char_created_event do
         before do
           allow(Login).to receive(:update_site_info) {}
-          allow(Login).to receive(:check_for_suspect) {}
           @login_events = CharCreatedEventHandler.new
         end
         

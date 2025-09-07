@@ -33,8 +33,6 @@ en:
        disconnected_by_reconnect: "You are being disconnected because you connected from another location."
        site_blocked: "Your site has been blocked from this game."
        site_blocked_proxies: "Your site has been blocked.  If you're using a VPN/proxy to connect, note that only approved characters may connect from certain proxy sites."
-       suspect_login_title: "Suspicious Login"
-       suspect_login: "%{name} was just created and their site appeared to match something on your suspects list.%R%RIP: %{ip}%RHostname: %{host}%RMatched suspect entry %{match}."
        currently_online: "%{name} is currently online."
        last_online: "%{name} was last online at %{time}."
        keepalive_set: "You turn your keepalive ping %{option}."
