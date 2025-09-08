@@ -5,13 +5,12 @@ module AresMUSH
         client = event.client
         char = Character[event.char_id]
         
-        first_login = !char.last_ip
+        # Don't do any of this for web connections. Site info is updated by the web request handler directly.
+        return if !client
+        
         Login.update_site_info(client.ip_addr, client.hostname, char)
 
         Global.logger.info("Character Connected: #{char.name} #{char.last_ip} #{char.last_hostname}")
-        if (first_login)
-          Login.check_for_suspect(char)
-        end
         
         char.room.emit_success t('login.announce_char_connected_here', :name => char.name)
         Global.client_monitor.client_to_char_map.each do |other_client, other_char|

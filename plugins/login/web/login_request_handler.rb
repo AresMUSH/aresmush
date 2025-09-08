@@ -37,9 +37,7 @@ module AresMUSH
         char.update(login_failures: 0)
         char.update(boot_timeout: nil)
         
-        if (char.handle)
-          AresCentral.sync_handle(char)
-        end
+        Login.announce_connection(nil, char)
         
         Login.web_session_info(char)
       end

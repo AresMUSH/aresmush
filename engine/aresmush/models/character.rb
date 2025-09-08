@@ -41,7 +41,7 @@ module AresMUSH
     # -----------------------------------
     
     def self.find_any_by_name(name_or_id)
-      return [] if !name_or_id
+      return [] if name_or_id.blank?
             
       if (name_or_id.start_with?("#"))
         return find_any_by_id(name_or_id.upcase)
@@ -58,7 +58,9 @@ module AresMUSH
       end
     end
 
-    def self.find_one_by_name(name_or_id)      
+    def self.find_one_by_name(name_or_id)
+      return nil if name_or_id.blank?
+         
       char = Character[name_or_id]
       return char if char
       

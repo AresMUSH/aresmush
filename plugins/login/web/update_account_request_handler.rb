@@ -46,15 +46,18 @@ module AresMUSH
           end
         end
         
-        taken_error = Login.name_taken?(char_alias, enactor)
-        if (taken_error) 
-          return { error: taken_error }
+        if (!char_alias.blank?)
+          taken_error = Login.name_taken?(char_alias, enactor)
+          if (taken_error) 
+            return { error: taken_error }
+          end
+          name_validation_msg = Character.check_name(char_alias)
+          if (name_validation_msg) 
+            return { error: name_validation_msg }
+          end
         end
-        name_validation_msg = Character.check_name(char_alias)
-        if (taken_error) 
-          return { error: name_validation_msg }
-        end
-        enactor.update(alias: char_alias)
+        
+        enactor.update(alias: char_alias.blank? ? nil : char_alias)
         enactor.update(website_editor: editor)
         
         AresCentral.alts(enactor).each do |alt|
