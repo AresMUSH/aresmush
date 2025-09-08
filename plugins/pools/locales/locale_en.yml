@@ -1,0 +1,17 @@
+en:
+    pools:
+        pool_spent: "%{name} spends %{pool} %{pool_name} bringing their total to %{total} of %{pool_max}. Reason: %{reason}"
+        pool_added: "%{name} adds %{pool} %{pool_name} bringing their total to %{total} of %{pool_max}. Reason: %{reason}"
+        pool_set: "%{name} sets their %{pool_name} to %{pool} for the following reason: %{reason}"
+        pool_empty: "Your %{pool_name_plural} are empty."
+        pool_full: "Your %{pool_name_plural} are full."
+        pool_current: "%{name} has %{pool} %{pool_name}."
+        pool_max: "Your max %{pool_name} is %{pool_max}."
+        show_pool: "%{enactor} shows that %{name} has a %{pool_name} of %{pool} out of %{pool_max} currently."
+        show_pool_self: "You have a %{pool_name} of %{pool} out of %{pool_max} currently."
+        no_permission_to_view_pools: "You don't have permission to view or show other people's pools."
+        invalid_pool: "You must set your %{pool_name} to an integer."
+        pool_no_zero: "You must spend or add more than 0 Pool points. Please use pool/set if you want to set it to 0."
+        pool_reset: "%{name} resets their %{pool_name} to %{pool}."
+        pool_title: "Reserves:"
+        pool_desperate: "%{name} takes desperate action, spending %{amount} %{pool_name} and dropping their %{pool_name_plural} to %{pool} of %{pool_max}"

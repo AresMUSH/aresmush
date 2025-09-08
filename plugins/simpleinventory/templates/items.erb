@@ -1,0 +1,12 @@
+%lh
+<%= t('simple_inventory.items_title', :name => char.name.upcase) -%>
+<%= right( "Equipped: ", 55 - length ) -%>
+<%= equipped_item %>
+<% items.each do |item| -%>
+<%= "%xh" %><%= item %><%= "%xn" %>
+<% end %>
+
+
+
+
+%lf

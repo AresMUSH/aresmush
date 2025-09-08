@@ -1,0 +1,12 @@
+---
+en:
+  dotcount:
+      poor_note_client: "%R%RAn Attribute at Poor lowers the Attribute cap by 1."
+      poor_note_web: "<br/>An Attribute at Poor lowers the Attribute cap by 1."
+      result_client: "Total dots on %{name}'s sheet:%R%TAttributes...........%{spent_attrs} / %{max_attrs}%R%TAction Skills........%{spent_action} / %{max_action}%R%TCurrent XP...........%{pad_xp}%{current_xp} / %{max_xp}%{note}"
+      web_max_both: "Your Attributes and Action Skills are both at max!"
+      web_max_attrs: "Your Attributes are at max, and you have %{remaining_action} more dot%{plural} to place in Action Skills."
+      web_max_actions: "are at max in Action Skills."
+      web_more_attrs: "You have %{remaining_attrs} more dot%{plural} to place in Attributes and "
+      web_more_actions: "%{remaining_action} for Action Skills."
+      no_sheet: "%{name} doesn't have a sheet."
