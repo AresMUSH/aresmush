@@ -1,0 +1,35 @@
+---
+en:
+  txt:
+      #Text Message Formatting
+      txt_no_scene_id: "%{txt} %xh%xw%{sender}:%xn %{message}%xn"
+      txt_no_scene_id_nick: "%{txt} %xh%w%{sender}:%xn %{message} %xx%xh(%{sender_char})%xn"
+      txt_with_scene_id: "%{txt} %xh%xw%{sender}:%xn %{message} %xx%xh(Scene %{scene_id})%xn"
+
+
+      txt_target_missing: "To whom shall I send this message? See `help txt`."
+      cant_txt_ignored: "You can't txt %{names} because you're on their ignore list."
+      recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your text again later."
+      target_offline_no_scene: "%{name} is not connected and you did not specify a scene. To send texts to someone who is offline, start a new scene (txt/newscene name=msg)."
+
+      recipient_added_to_scene: "That text has added %{name} to the scene participants list."
+      no_such_character: "No character found by that name."
+
+      no_one_to_reply_to: "Looks like no one's txted you recently. Sorry."
+      reply_scene: "Last txt came from: %{names}; Scene: %{scene}"
+      reply: "Last txt came from: %{names}"
+
+      recipient_indicator: "%{recipients}"
+
+      txt_indicator: "%{color}%{start_marker}%{preface} to %{recipients}%{end_marker}%xn"
+
+      color_set: "Txts will now appear with this marker: %{option}%%%xn"
+
+      scene_not_running: "That scene isn't running.  You'll need to restart it if you want to txt into it."
+      scene_no_access: "You do not have access to txt into that scene. Ask the participants to add you. (Try: scene/addchar #=character )"
+      scene_not_found: "No scene found by that number."
+
+      incorrect_format: "That's not the correct format. Please use `name(s)=message`"
+
+      txt_new_scene_target_missing: "Please specify a target and message. Ex: txt/newscene Name=Message"
+      dont_txt_self: "You can't text yourself!"
