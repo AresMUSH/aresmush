@@ -46,7 +46,7 @@ gem 'htmlentities', '~>4.3.4'
 # Backups
 gem 'aws-sdk-s3', '~> 1.184'
 gem 'rubyzip',  '~> 1.3.0'
-gem 'rexml', '~> 3.4.1'
+gem 'rexml', '~> 3.4.2'
 
 # Web diff parser
 gem 'diffy', '~> 3.4.1'
