@@ -15,7 +15,7 @@ gem 'ansi', '~> 1.5'
 gem 'ohm', '~> 3.1.1'
 
 # engine webserver
-gem 'rack', '~> 2.2.18'
+gem 'rack', '~> 2.2.19'
 gem 'sinatra', '>= 3.0.2'
 gem 'sinatra-cross_origin', '~>0.4.0'
 gem 'thin', "~> 1.8.1"
