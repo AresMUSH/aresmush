@@ -44,7 +44,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'htmlentities', '~>4.3.4'
 
 # Backups
-gem 'aws-sdk-s3', '~> 1.184'
+gem 'aws-sdk-s3', '~> 1.208'
 gem 'rubyzip',  '~> 1.3.0'
 gem 'rexml', '~> 3.4.2'
 
