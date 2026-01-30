@@ -83,7 +83,7 @@ en:
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."
         no_scene_room: "That scene doesn't have a room to join.  That can happen if it's created from the web portal."
-        log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
+        log_list_short_footer: "Only the last few poses are shown.  Use `scene/repose <#>` to see more, or `scene/log` for the full cleaned log."
         scene_active_footer: "Scene views: scenes/open, scenes/all, scenes/unshared."
 
         log_shared: "The log has been shared, and will now appear on the web portal."
