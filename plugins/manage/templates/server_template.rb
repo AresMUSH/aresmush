@@ -9,8 +9,12 @@ module AresMUSH
         super File.dirname(__FILE__) + '/server.erb'
       end
       
-      def version
+      def server_version
         AresMUSH.version
+      end
+      
+      def webportal_version
+        Website.webportal_version
       end
       
       def migrations
