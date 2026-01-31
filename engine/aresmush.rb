@@ -22,6 +22,8 @@ require 'erubis'
 require 'json'
 require 'redcarpet'
 
+require 'rackup'
+require 'thin' 
 require 'sinatra/base'
 require 'sinatra/cross_origin'
 require 'rubygems'

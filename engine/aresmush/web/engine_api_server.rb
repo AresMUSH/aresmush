@@ -17,7 +17,7 @@ module AresMUSH
         end
       end
 
-      Rack::Server.start({
+      Rackup::Server.start({
         app:    dispatch,
         server: server,
         Host:   host,
