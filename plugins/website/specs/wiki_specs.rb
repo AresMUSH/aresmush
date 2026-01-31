@@ -3,17 +3,23 @@ require "plugin_test_loader"
 module AresMUSH
   module Website
     describe Website do
+      include GlobalTestHelper
+      
       describe :can_edit_wiki_file? do 
         before do
+          stub_global_objects      
           @enactor = double
           allow(@enactor).to receive(:name) { "Bob" }
           allow(Website).to receive(:can_manage_wiki?).with(@enactor) { false }
           allow(Website).to receive(:can_manage_theme?).with(@enactor) { false }
+          allow(AresCentral).to receive(:alts).with(@enactor) { [ @enactor ] }
+          allow(Global).to receive(:read_config).with("website", "public_wiki_folders") { [ "misc" ] }
         end
         
         it "should allow a wiki manager to manage anything" do
           allow(Website).to receive(:can_manage_wiki?).with(@enactor) { true }
           expect(Website.can_edit_wiki_file?(@enactor, "anyfolder")).to be true
+          expect(Website.can_edit_wiki_file?(@enactor, "theme_images")).to be true
         end
 
         it "should allow a theme manager to manage a theme file" do
@@ -36,7 +42,21 @@ module AresMUSH
         
         it "should allow a random person to manage their own files" do
           expect(Website.can_edit_wiki_file?(@enactor, "bob")).to be true
-        end        
+          expect(Website.can_edit_wiki_file?(@enactor, "BOB")).to be true
+        end
+        
+        it "should allow a random person to manage their alt's files" do
+          alt = double
+          allow(alt).to receive(:name) { "susan" }
+          allow(AresCentral).to receive(:alts).with(@enactor) { [ @enactor, alt ] }
+          expect(Website.can_edit_wiki_file?(@enactor, "susan")).to be true
+        end
+        
+        it "should allow a random person to manage a public folder" do
+          expect(Website.can_edit_wiki_file?(@enactor, "misc")).to be true
+          expect(Website.can_edit_wiki_file?(@enactor, "MISC")).to be true
+        end
+        
       end
       
       describe :is_restricted_wiki_page? do

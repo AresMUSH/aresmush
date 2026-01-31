@@ -23,9 +23,12 @@ module AresMUSH
         if (folder.include?("/"))
           return { error: t('webportal.subfolders_not_allowed') }
         end
+
+        if (!Website.can_edit_wiki_file?(enactor, folder))
+          return { error: t('webportal.no_folder_permissions') }
+        end
         
         is_wiki_admin = Website.can_manage_wiki?(enactor)
-        is_theme_admin = Website.can_manage_theme?(enactor)
         extension = File.extname(name) || ""
 
         allowed_extensions = (Global.read_config("website", "uploadable_extensions") || []).map { |e| e.downcase }
@@ -40,10 +43,6 @@ module AresMUSH
           name = "profile#{extension}"
           folder = "#{enactor.name.downcase}"
           allow_overwrite = true
-        end
-        
-        if (folder && folder.downcase == "theme_images" && !is_theme_admin)
-          return { error: t('webportal.theme_locked_to_admin') }
         end
         
         max_upload_kb = Global.read_config("website", "max_upload_size_kb")

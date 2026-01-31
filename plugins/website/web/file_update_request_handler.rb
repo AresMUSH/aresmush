@@ -18,7 +18,11 @@ module AresMUSH
         request.log_request
         
         if (!Website.can_edit_wiki_file?(enactor, folder))
-          return { error: t('dispatcher.not_allowed') }
+          return { error: t('webportal.no_folder_permissions') }
+        end
+        
+        if (!Website.can_edit_wiki_file?(enactor, new_folder))
+          return { error: t('webportal.no_folder_permissions') }
         end
                 
         if (new_folder.include?("/"))
@@ -43,10 +47,6 @@ module AresMUSH
         
         if (File.exist?(new_path) && path != new_path)
           return { error: t('webportal.file_already_exists')  }
-        end
-        
-        if (folder == "theme_images" && !enactor.is_admin?)
-          return { error: t('webportal.theme_locked_to_admin') }
         end
         
         if (!Dir.exist?(new_folder_path))
