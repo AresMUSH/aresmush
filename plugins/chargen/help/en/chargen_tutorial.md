@@ -13,7 +13,7 @@ Character creation, or chargen, is where you set up your character's basic infor
 
 ## Web and Game Chargen
 
-On some games, you can complete chargen entirely on the web portal (typically under Play -> Create a Character).
+On some games, you can complete chargen entirely on the web portal (typically under Play -> Character Creation).
 
 ![Chargen Page Screenshot](https://aresmush.com/images/help-images/chargen.png)
 

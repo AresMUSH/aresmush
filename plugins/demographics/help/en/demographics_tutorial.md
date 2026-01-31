@@ -4,7 +4,7 @@ summary: Setting basic character demographics.
 ---
 # Demographics and Groups
 
-**Demographics** represent your basic character info, like their hair and eye color.  The specific list will vary from game to game.  You can view the available demographics using the `demographics` command or the web portal (typically under Play -> Create a Character -> Demographics).
+**Demographics** represent your basic character info, like their hair and eye color.  The specific list will vary from game to game.  You can view the available demographics using the `demographics` command or the web portal (typically under Play -> Character Creation -> Demographics).
 
 You can also assign your character to various **Groups**, like Department or Faction.  These also vary from game to game.  You can view the available groups using the `groups` command or the web portal (typically under System -> Groups List).
 

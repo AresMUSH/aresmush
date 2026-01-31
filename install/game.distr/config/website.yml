@@ -25,7 +25,7 @@ website:
     route: home
   - title: Play
     menu:
-    - title: Create a Character
+    - title: Character Creation
       route: chargen
     - title: Pre-Made Characters
       route: roster
