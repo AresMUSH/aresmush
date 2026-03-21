@@ -245,3 +245,6 @@ website:
     wiki: website
     website/archive: website/export
   hide_searchbox: true
+  public_wiki_folders:
+  - misc
+  default_public_folder: misc
