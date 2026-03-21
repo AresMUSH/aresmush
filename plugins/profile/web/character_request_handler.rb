@@ -49,6 +49,7 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),
+          timezone: char.timezone,
           profile_gallery: gallery_files.map { |g| Website.get_file_info(g) },
           playerbit: char.is_playerbit?,
           files: files,
