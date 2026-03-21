@@ -110,6 +110,8 @@ module AresMUSH
           return SceneReportCmd
         when "share"
           return SceneShareCmd
+        when "stats"
+          return SceneStatsCmd
         when "unshare"
           return SceneUnshareCmd
         when "webstart"
