@@ -17,7 +17,7 @@ gem 'ohm', '~> 3.1.1'
 # engine webserver
 gem 'rack', '~> 3.2.3'
 gem 'rackup', '~> 2.3.1'
-gem 'sinatra', '>= 3.2.0'
+gem 'sinatra', '>= 4.2.1'
 gem 'sinatra-cross_origin', '~>0.4.0'
 gem 'thin', "~> 2.0.1"
 
