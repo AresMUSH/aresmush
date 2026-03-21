@@ -11,6 +11,7 @@ module AresMUSH
         can_talk = request.args['can_talk'] || []
         discord_webhook = request.args['discord_webhook']
         discord_channel = request.args['discord_channel']
+        default_alias = Channels.parse_default_alias_input(request.args['default_alias'] || "")
         
         error = Website.check_login(request)
         return error if error
@@ -24,6 +25,10 @@ module AresMUSH
         
         if (name.blank?)
           return { error: t('channels.name_required')}      
+        end
+        
+        if (default_alias.count == 0)
+          return { error: t('channels.must_have_default_alias') }
         end
         
         other_channel = Channel.named(name)
@@ -42,7 +47,8 @@ module AresMUSH
            color: color, 
              description: desc ? Website.format_input_for_mush(desc) : "",
              discord_webhook: discord_webhook,
-             discord_channel: discord_channel)
+             discord_channel: discord_channel,
+             default_alias: default_alias)
 
         channel.characters.each do |c|
           if (!Channels.can_join_channel?(c, channel))
