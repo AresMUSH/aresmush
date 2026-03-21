@@ -24,11 +24,11 @@ module AresMUSH
         return "" if !input
 
         helper = TagMatchHelper.new(input)
-          
+
         matches = Scene.shared_scenes.select { |p| 
           ((p.content_tags & helper.or_tags).any? && 
           (p.content_tags & helper.exclude_tags).empty?) &&
-          (helper.required_tags & p.tags == helper.required_tags)
+          (helper.required_tags & p.content_tags == helper.required_tags)
         }
           
         scenes = matches.sort_by { |m| m.icdate || m.created_at }
