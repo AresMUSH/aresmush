@@ -39,8 +39,8 @@ module AresMUSH
         allow(I18n).to receive(:default_locale=)
       end
 
-      it "should trigger a load" do
-        expect(I18n).to receive(:reload!)
+      it "should NOT trigger a load because the plugin strings aren't ready yet" do
+        expect(I18n).to_not receive(:reload!)
         @locale.setup
       end
       

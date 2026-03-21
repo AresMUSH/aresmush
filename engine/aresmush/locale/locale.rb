@@ -34,10 +34,10 @@ module AresMUSH
       locales
     end
     
+    # Remember to call reload once all the translation files are loaded
     def setup
       reset_load_path
       set_locale
-      reload
     end
     
     def self.translate(str, **args)  

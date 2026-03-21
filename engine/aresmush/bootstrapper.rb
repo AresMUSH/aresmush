@@ -59,7 +59,10 @@ module AresMUSH
       @db.load_config
       @locale.setup
       @plugin_manager.load_all
-
+      
+      # Don't load the locale until after all the plugins have added their strings to the load path
+      @locale.reload
+      
       @help_reader.load_game_help
                 
       begin

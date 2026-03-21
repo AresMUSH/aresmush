@@ -75,6 +75,7 @@ module AresMUSH
     
     def self.rebuild_css
       begin
+        Global.logger.debug "Rebuilding CSS."
         engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
         scss_path = File.join(engine_styles_path, 'ares.scss')
         css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
