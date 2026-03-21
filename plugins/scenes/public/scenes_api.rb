@@ -155,5 +155,16 @@ module AresMUSH
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
+    def self.scene_stats()
+      data = {
+        total_scenes: Scene.all.count,
+        scenes_by_pacing: {}
+      }
+      Scene.all.map { |s| s.scene_pacing }.group_by { |s| s }.each do |k, v|
+        data[:scenes_by_pacing][k] = v.count
+      end
+      
+      data
+    end
   end
 end
