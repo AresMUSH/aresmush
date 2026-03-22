@@ -75,6 +75,7 @@ module AresMUSH
     
     def self.rebuild_css
       begin
+        Global.logger.debug "Rebuilding CSS."
         engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
         scss_path = File.join(engine_styles_path, 'ares.scss')
         css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
@@ -123,10 +124,12 @@ module AresMUSH
     end
     
     def self.can_edit_wiki_file?(actor, folder)
+      folder = (folder || "").downcase
       return false if !actor
       return true if Website.can_manage_wiki?(actor)
-      return true if folder.downcase == FilenameSanitizer.sanitize(actor.name)
-      return true if ((folder.downcase == "theme_images") && Website.can_manage_theme?(actor))
+      return true if AresCentral.alts(actor).map { |a| FilenameSanitizer.sanitize(a.name) }.include?(folder)
+      return true if ((folder == "theme_images") && Website.can_manage_theme?(actor))
+      return true if (Global.read_config("website", "public_wiki_folders") || [ "misc" ]).map { |f| f.downcase }.include?(folder)
       return false
     end
     

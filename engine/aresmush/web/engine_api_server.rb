@@ -17,7 +17,7 @@ module AresMUSH
         end
       end
 
-      Rack::Server.start({
+      Rackup::Server.start({
         app:    dispatch,
         server: server,
         Host:   host,
@@ -32,8 +32,9 @@ module AresMUSH
     # threaded - False: Will take requests on the reactor thread
     #            True:  Will queue request for background thread
     configure do
-      set :threaded, false #false
+      set :threaded, false
       enable :cross_origin
+      set :host_authorization, { message: "Unrecognized server host." }
     end    
     
     before do

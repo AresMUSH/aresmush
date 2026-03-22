@@ -30,6 +30,7 @@ nginx.default
 sitemap.xml
 redis/
 .bundle
+tmp_export
 
 # Process ID scripts
 # -----------------------------

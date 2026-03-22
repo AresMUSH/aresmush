@@ -26,9 +26,14 @@ module AresMUSH
         end
 
         alerts = Chargen.save_char(char, chargen_data)
-        
+
+        if (Demographics.age_enabled?)
+          age = char.age
+        end
+                
         {    
-          alerts: alerts
+          alerts: alerts,
+          age: age
         }
       end
     end

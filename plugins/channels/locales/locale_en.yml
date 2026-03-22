@@ -15,6 +15,7 @@ en:
         channel_renamed: "Channel %{old_name} is now named %{new_name}."
         roles_set: "Channel roles updated."
         default_alias_set: "Channel alias set to %{alias}."
+        must_have_default_alias: "You must specify a default channel alias."
         invalid_channel_role: "%{name} is not a valid channel role."
         title_set: "Channel title set."
         roles_changed_by: "%{name} has changed the permissions on this channel."

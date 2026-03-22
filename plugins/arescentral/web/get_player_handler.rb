@@ -62,7 +62,8 @@ module AresMUSH
            profile: profile,
            rp_prefs: prefs,
            roles: roles,
-           siteinfo: (enactor && enactor.is_admin?) ? Login.build_web_site_info(player, enactor) : nil
+           siteinfo: (enactor && enactor.is_admin?) ? Login.build_web_site_info(player, enactor) : nil,
+           timezone: player.timezone
          }
        end
      end

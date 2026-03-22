@@ -72,7 +72,9 @@ en:
         version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttps://aresmush.com"
         migrations: "Applied Migrations:"
         server_info: "Server Information"
-        version_title: "Version:"
+        server_version_title: "Server Version:"
+        webportal_version_title: "Web Portal Version:"
+        
         characters_title: "Characters:"
         rooms_title: "Rooms:"
         exits_title: "Exits:"

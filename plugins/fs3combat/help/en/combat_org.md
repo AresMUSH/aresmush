@@ -35,7 +35,7 @@ This is a quick reference for combat organizer commands.
 `combat/newturn` - Starts the first turn.
 
 `combat/join <list of names>=<combat #>[/<type>]` - Adds people to combats.
-  Use `combat/types` to see available types and their associated gear.
+`combat/types` - Shows available types and their associated gear.
 
 ## Taking Actions
 

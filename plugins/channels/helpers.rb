@@ -335,6 +335,10 @@ module AresMUSH
       return true
     end
     
+    def self.parse_default_alias_input(text)
+      text.squish.split(/[, ]/).map { |c| c.strip }.select { |c| !c.blank? }
+    end
+    
     def self.notify_discord_webhook(channel, message, enactor)
       debug_enabled = Global.read_config('channels', 'discord_debug')
       name_subs = Global.read_config('channels', 'discord_name_subs') || {}

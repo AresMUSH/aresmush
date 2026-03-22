@@ -15,7 +15,7 @@ module AresMUSH
         request.log_request
         
         if (!Website.can_edit_wiki_file?(enactor, folder))
-          return { error: t('dispatcher.not_allowed') }
+          return { error: t('webportal.no_folder_permissions') }
         end
         
         path = File.join(AresMUSH.website_uploads_path, folder, name)

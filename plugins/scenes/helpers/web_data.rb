@@ -109,7 +109,8 @@ module AresMUSH
           { name: p.name, nick: p.nick, id: p.id, icon: Website.icon_for_char(p) }},
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
         scene_pacing: scene.scene_pacing,
-        limit: scene.limit
+        limit: scene.limit,
+        tags: scene.content_tags
         }
       end
     

@@ -124,9 +124,14 @@ module AresMUSH
         
         if FS3Combat.is_enabled?
           File.open(File.join(self.path_for_folder("profile"), "damage.txt"), "w") do |file|
-            sheet = FS3Combat.export_damage(@char)
-            file.write AnsiFormatter.strip_ansi(MushFormatter.format(sheet))
+            damage = FS3Combat.export_damage(@char)
+            file.write AnsiFormatter.strip_ansi(MushFormatter.format(damage))
           end
+        end
+                
+        File.open(File.join(self.path_for_folder("profile"), "notes.txt"), "w") do |file|
+          notes = Utils.export_notes(@char)
+          file.write AnsiFormatter.strip_ansi(MushFormatter.format(notes))
         end
         
         custom = Website.custom_wiki_char_export(@char)

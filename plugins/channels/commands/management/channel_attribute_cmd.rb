@@ -100,10 +100,18 @@ module AresMUSH
     
     class ChannelDefaultAlias
       include ChannelAttributeCmd
-    
+      
       def handle
+        
         Channels.with_a_channel(name, client) do |channel|
-          channel.update(default_alias: self.attribute.split(/[, ]/))
+          default_alias = Channels.parse_default_alias_input(self.attribute)
+          
+          if (default_alias.count == 0)
+            client.emit_failure t('channels.must_have_default_alias')
+            return
+          end
+          
+          channel.update(default_alias: default_alias)
           client.emit_success t('channels.default_alias_set', :alias => channel.default_alias.join(", "))
         end
       end

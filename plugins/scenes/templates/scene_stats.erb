@@ -1,0 +1,8 @@
+<%= header %>
+%xh<%= t('scenes.total_scenes_title') %>%xn <%= stats[:total_scenes] %>
+
+%xh<%= t('scenes.scene_stats_pacing_title') %>%xn
+<% pacing_breakdown.each do |pacing| %>
+<%= pacing %>
+<% end %>
+<%= footer %>

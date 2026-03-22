@@ -25,7 +25,7 @@ website:
     route: home
   - title: Play
     menu:
-    - title: Create a Character
+    - title: Character Creation
       route: chargen
     - title: Pre-Made Characters
       route: roster
@@ -245,3 +245,6 @@ website:
     wiki: website
     website/archive: website/export
   hide_searchbox: true
+  public_wiki_folders:
+  - misc
+  default_public_folder: misc

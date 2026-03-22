@@ -15,6 +15,11 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 
 > Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
 
+`combat/join <#>[/<type>]` - Joins combat.
+`combat/all` - Lists all combats so you can find the # to join.
+`combat/leave` - Leaves combat.
+`combat` - Views the combat HUD to see status.
+
 ## Actions
 
 > **Tip:** You can always specify a NPC or player name in front of any action command to make them do something.  For example, combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, combat/pass Bob=

@@ -179,3 +179,6 @@ en:
         link_removed: "Related scene link removed."
         cant_link_unshared_scenes: "Both scenes must be shared before they can be linked."
         no_recursive_link: "You can't link a scene to itself."
+        
+        total_scenes_title: "Total Scenes:"
+        scene_stats_pacing_title: "Scene Pacing"
