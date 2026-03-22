@@ -78,7 +78,7 @@ GEM
       redic (~> 1.5.0)
       stal
     prism (1.9.0)
-    rack (3.2.4)
+    rack (3.2.5)
     rack-protection (4.2.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
@@ -153,7 +153,7 @@ DEPENDENCIES
   json (~> 2.3.1)
   logger (~> 1.6.4)
   ohm (~> 3.1.1)
-  rack (~> 3.2.3)
+  rack (~> 3.2.5)
   rackup (~> 2.3.1)
   rake (~> 12.3)
   redcarpet (~> 3.5.1)
