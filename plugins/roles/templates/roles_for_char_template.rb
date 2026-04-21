@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def has_role(role)
-        @char.has_role?(r) ? '(+)' : '(-)'        
+        @char.has_role?(role) ? '(%xh%xg+%xn)' : '( )'        
       end
       
       def permissions(role)

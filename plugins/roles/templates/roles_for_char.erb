@@ -1,5 +1,6 @@
 <%= header %>
 %xh<%= center(t('roles.assigned_roles', :name => @char.name),78) %>%xn
+
 <% AresMUSH::Role.all.each do |role| %>
 <%= has_role(role) %> <%= left(role.name, 15) %> <%= permissions(role) %>
 <% end %>
