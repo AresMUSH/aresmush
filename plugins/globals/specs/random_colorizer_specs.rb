@@ -25,6 +25,13 @@ module AresMUSH
       it "should pick the last color for the fourth bracket of time" do
         allow(Time).to receive(:now) { Time.new(2007,11,1,15,25,55) }
         expect(RandomColorizer.random_color).to eq "%xr"
+      end    
+      
+      it "should not return nil if rounding causes a gap at the end of the time brackets" do
+        # Requires number of colors to not evenly divide into 60 seconds, leaving a gap at the end.
+        allow(Time).to receive(:now) { Time.new(2007,11,1,15,25,59) }
+        allow(Global).to receive(:read_config).with("skin", "random_colors") { [ "1", "2", "3", "4", "5", "6", "7"]}
+        expect(RandomColorizer.random_color).to eq "1"
       end      
     end
   end

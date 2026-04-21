@@ -6,7 +6,7 @@ module AresMUSH
       colors = Global.read_config("skin", "random_colors") || [ '%xc', '%xb', '%xg', '%xr' ]
       bracket_width = 60 / colors.count
       index = Time.now.sec / bracket_width
-      colors[index]
+      colors[index] || colors[0]
     end
     
   end
