@@ -15,8 +15,8 @@ module AresMUSH
       
       def permissions(role)
         list = (role.permissions || []).join(', ')
-        admin_note = role.name == "admin" ? "%xh%xr**%xn" : ""
-        "#{list} #{admin_note}"
+        admin_note = role.name == "admin" ? "%xh%xr**%xn " : ""
+        "#{admin_note}#{list}"
       end
     end
   end
