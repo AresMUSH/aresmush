@@ -1,0 +1,8 @@
+<%= header %>
+%xh<%= center(t('roles.assigned_roles', :name => @char.name),78) %>%xn
+<% Role.all.each do |role| %>
+<%= has_role(role) %> <%= left(role.name, 15) %> <%= permissions(role) %>
+<% end %>
+<%= divider %>
+%xh%xr(*)%xn <%= t('roles.admin_roles_note')%>
+<%= footer %>

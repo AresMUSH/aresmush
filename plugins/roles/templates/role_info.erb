@@ -3,12 +3,12 @@
 
 %xh<%= t('roles.permissions_title') %>%xn 
 
-<% if role.name == "admin" %>
-* ALL
-<% else %>
 <% role.permissions.sort.each do |permission| %>
 * <%= permission %> - <%= permission_desc(permission) %>
 <% end %>
+
+<% if role.name == "admin" %>
+%xh%xr(*)%xn <%= t('roles.admin_roles_note')%>
 <% end %>
 
 %xh<%= t('roles.players_title') %>%xn
