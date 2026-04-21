@@ -17,14 +17,18 @@ module AresMUSH
             return
           end
           list = Role.all.map { |r| print_role(char, r) }
-          template = BorderedListTemplate.new list, t('roles.assigned_roles', :name => char.name)
+          template = BorderedListTemplate.new list, 
+              t('roles.assigned_roles', :name => char.name),
+              t('roles.assigned_roles_footer')
           client.emit template.render
         end
       end
       
       def print_role(char, r)
         has_role = char.has_role?(r) ? '(+)' : '(-)'
-        "#{has_role} #{r.name} - #{r.permissions.join(', ') }"
+        admin_note = r.name == "admin" ? "%xh%xr**%xn" : ""
+        permissions = (r.permissions || []).join(', ')
+        "#{has_role} #{r.name} - #{permissions} #{admin_note}"
       end
     end
   end
