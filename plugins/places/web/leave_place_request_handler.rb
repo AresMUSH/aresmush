@@ -2,9 +2,9 @@ module AresMUSH
   module Places
     class LeavePlaceRequestHandler
       def handle(request)
-        scene = Scene[request.args[:scene_id]]
+        scene = Scene[request.args['scene_id']]
         enactor = request.enactor        
-        sender_name = request.args[:sender]
+        sender_name = request.args['sender']
 
         error = Website.check_login(request)
         return error if error

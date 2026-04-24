@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       def handle
-        Mail.empty_trash(enactor)
+        Mail.empty_all_trash(enactor)
         client.emit_ooc t('mail.trash_emptied')
       end
     end

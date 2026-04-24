@@ -3,9 +3,9 @@ module AresMUSH
     class AddReplyRequestHandler
       def handle(request)
                 
-        topic_id = request.args[:topic_id]
-        message = request.args[:reply]
-        author = Character.find_one_by_name(request.args[:author_id]) || enactor
+        topic_id = request.args['topic_id']
+        message = request.args['reply']
+        author = Character.find_one_by_name(request.args['author_id']) || enactor
         enactor = request.enactor
         
         request.log_request
@@ -28,7 +28,7 @@ module AresMUSH
         end
         
         if (message.blank?)
-          return { error: t('webportal.missing_required_fields' )}
+          return { error: t('webportal.missing_required_fields', :fields => "message") }
         end
       
         formatted_message = Website.format_input_for_mush(message)

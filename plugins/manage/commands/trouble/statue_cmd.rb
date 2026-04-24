@@ -33,7 +33,7 @@ module AresMUSH
           host_and_ip = "IP: #{statue.last_ip}  Host: #{statue.last_hostname}"
 
           if (self.option)
-            statue_client = Login.find_client(statue)
+            statue_client = Login.find_game_client(statue)
             if (statue_client)           
               statue_client.emit_failure t('dispatcher.you_are_statue')
             end
@@ -41,7 +41,7 @@ module AresMUSH
             Global.logger.warn "#{statue.name} turned to statue by #{enactor_name}.  #{host_and_ip}"
             message = t('manage.statue_message', :actor => enactor.name, :statue => statue.name, :reason => self.reason, :host => host_and_ip)
           else
-            statue_client = Login.find_client(statue)
+            statue_client = Login.find_game_client(statue)
             if (statue_client)           
               boot_client.emit_failure t('manage.no_longer_statue')
             end
@@ -56,7 +56,7 @@ module AresMUSH
             Game.master.system_character)
             
           statue.update(is_statue: self.option)
-          statue.update(login_api_token: nil)
+          Login.expire_web_login(statue)
         end
       end
     end

@@ -2,7 +2,7 @@ module AresMUSH
   module Chargen
     class ChargenCharRequestHandler
       def handle(request)
-        id = request.args[:id]
+        id = request.args['id']
         enactor = request.enactor
         char = Character.find_one_by_name id
         if (!char)
@@ -41,12 +41,13 @@ module AresMUSH
         end
         
         if (Demographics.age_enabled?)
-          demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }
+          age = char.age
+          demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }          
         end
         
         groups = {}
         
-        Demographics.all_groups.sort.each do |k, v| 
+        Demographics.all_groups.each do |k, v| 
           group_val = char.group(k)
           groups[k.downcase] = {
             name: k.titleize,
@@ -85,6 +86,7 @@ module AresMUSH
           can_approve: can_approve,
           name: char.name,
           demographics: demographics,
+          age: age,
           groups: groups,
           background: Website.format_input_for_html(char.background),
           rp_hooks: hooks,

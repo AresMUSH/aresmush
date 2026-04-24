@@ -28,7 +28,13 @@ module AresMUSH
           end
           importer = AresMUSH::Manage::ThemeImporter.new(self.url)
           importer.import
-          Website.rebuild_css
+
+          error = Website.rebuild_css
+          if (error)
+            client.emit_failure error
+            return
+          end
+
           client.emit_success t('manage.theme_installed', :url => readme)
         rescue Exception => e
           Global.logger.debug "Error instaling theme: #{e}  backtrace=#{e.backtrace[0,10]}"

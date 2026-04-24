@@ -2,9 +2,9 @@ module AresMUSH
   module Utils
     class RollDiceRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
-        dice_str = request.args[:dice_string]
+        dice_str = request.args['dice_string']
         
         if (!scene)
           return { error: t('webportal.not_found') }

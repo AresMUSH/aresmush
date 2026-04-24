@@ -3,11 +3,11 @@ module AresMUSH
     class SaveJobCategoryRequestHandler
       def handle(request)
         enactor = request.enactor
-        id = request.args[:id]
-        name = (request.args[:name] || "").upcase
-        color = request.args[:color]
-        roles = request.args[:roles] || []
-        template = request.args[:template] || ""
+        id = request.args['id']
+        name = (request.args['name'] || "").upcase
+        color = request.args['color']
+        roles = request.args['roles'] || []
+        template = request.args['template'] || ""
         
         error = Website.check_login(request)
         return error if error

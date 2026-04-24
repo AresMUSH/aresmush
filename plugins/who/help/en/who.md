@@ -11,7 +11,7 @@ aliases:
 The `who` command shows you which other players are connected to the game and information about them.
 
 `who` - Shows the who list.
-`who <search>` or `where <search>` - Search the who list.
+`who <search>` or `where <search>` - Search the who list. Use @ in front of the name to search by player handle (e.g., `who @Faraday`).
 
 ## Where
 

@@ -3,8 +3,8 @@ module AresMUSH
     class LoadChatMessagesRequestHandler
       def handle(request)
         enactor = request.enactor
-        key = request.args[:key]
-        is_page = (request.args[:is_page] || "").to_s.to_bool
+        key = request.args['key']
+        is_page = (request.args['is_page'] || "").to_s.to_bool
         
         error = Website.check_login(request)
         return error if error

@@ -46,12 +46,12 @@ module AresMUSH
               
       # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Scene notification", nil) do
-        clients = Global.client_monitor.clients
+        clients = Global.client_monitor.web_clients
         clients.each do |client|
-          char_id = client.web_char_id
+          char_id = client.char_id
           if (char_id && notifications.has_key?(char_id))
             web_msg = "#{scene.id}|#{character.name}|#{:new_pose}|#{notifications[char_id].to_json}"
-            client.web_notify :new_scene_activity, web_msg, true
+            client.send_web_notification :new_scene_activity, web_msg, true
           end
         end
       end
@@ -155,5 +155,16 @@ module AresMUSH
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
+    def self.scene_stats()
+      data = {
+        total_scenes: Scene.all.count,
+        scenes_by_pacing: {}
+      }
+      Scene.all.map { |s| s.scene_pacing }.group_by { |s| s }.each do |k, v|
+        data[:scenes_by_pacing][k] = v.count
+      end
+      
+      data
+    end
   end
 end

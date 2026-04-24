@@ -2,7 +2,7 @@ module AresMUSH
   module Scenes
     class WatchSceneRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
         
         if (!scene)

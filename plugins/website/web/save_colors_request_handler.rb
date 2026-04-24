@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class SaveColorsRequestHandler
       def handle(request)
-        colors = request.args[:colors]
+        colors = request.args['colors']
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -19,7 +19,10 @@ module AresMUSH
           colors.each { |name, value| file.puts "$#{name}:#{value};"}
         end
         
-        Website.rebuild_css
+        error = Website.rebuild_css
+        if (error)
+          return { error: error }
+        end
         
         {}
       end

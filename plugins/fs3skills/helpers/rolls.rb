@@ -63,13 +63,13 @@ module AresMUSH
     # Returns either { message: roll_result_message }  or  { error: error_message }
     def self.determine_web_roll_result(request, enactor)
       
-      roll_str = request.args[:roll_string]
-      vs_roll1 = request.args[:vs_roll1] || ""
-      vs_roll2 = request.args[:vs_roll2] || ""
-      vs_name1 = (request.args[:vs_name1] || "").titlecase
-      vs_name2 = (request.args[:vs_name2] || "").titlecase
-      pc_name = request.args[:pc_name] || ""
-      pc_skill = request.args[:pc_skill] || ""
+      roll_str = request.args['roll_string']
+      vs_roll1 = request.args['vs_roll1'] || ""
+      vs_roll2 = request.args['vs_roll2'] || ""
+      vs_name1 = (request.args['vs_name1'] || "").titlecase
+      vs_name2 = (request.args['vs_name2'] || "").titlecase
+      pc_name = request.args['pc_name'] || ""
+      pc_skill = request.args['pc_skill'] || ""
       
       # ------------------
       # VS ROLL

@@ -12,11 +12,11 @@ module AresMUSH
   class OnlineCharFinder
     # @return [FindResult] Where FindResult's 'target' is an OnlineCharResult
     def self.find(name)
-      online = Global.client_monitor.logged_in
+      online = Global.client_monitor.client_to_char_map
           .select { |other_client, other_char| exact_match?(other_char, name)}
           .map { |other_client, other_char| OnlineCharResult.new(other_client, other_char )}
       if (online.count == 0)
-        online = Global.client_monitor.logged_in
+        online = Global.client_monitor.client_to_char_map
         .select { |other_client, other_char| partial_match?(other_char, name)}
         .map { |other_client, other_char| OnlineCharResult.new(other_client, other_char )}
       end

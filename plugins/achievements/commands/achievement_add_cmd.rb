@@ -21,12 +21,7 @@ module AresMUSH
       
       def handle
         self.names.each do |name|
-          ClassTargetFinder.with_a_character(name, client, enactor) do |model|
-            if (Achievements.has_achievement?(model, self.achievement_name))
-              client.emit_failure t('achievements.already_has_achievement', :name => name)
-              return
-            end
-          
+          ClassTargetFinder.with_a_character(name, client, enactor) do |model|            
             error = Achievements.award_achievement(model, self.achievement_name)
             if (error)
               client.emit_failure error

@@ -1,5 +1,21 @@
 module AresMUSH
   module Website
+    
+    class ImageExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :source, :style, :align, :url, :title
+                     
+      def initialize(source, style, align, url, title)
+        @source = source
+        @style = style
+        @align = align
+        @url = url
+        @title = title
+        
+        super File.dirname(__FILE__) + "/image.erb"        
+      end      
+    end
+    
     class ImageMarkdownExtension
       def self.regex
         /\[\[image ([^\]]*)\]\]/i
@@ -49,17 +65,8 @@ module AresMUSH
           url = "/file/#{folder}/#{name}"
         end
         
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image.hbs'))
-        
-        data = {
-          "source" => source,
-          "style" => style, 
-          "align" => align,
-          "url" => url,
-          "title" => title
-        }
-        
-        template.render(data)        
+        template = ImageExtensionTemplate.new(source, style, align, url, title)
+        template.render
       end
     end
   end

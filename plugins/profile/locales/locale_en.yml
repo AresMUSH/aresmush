@@ -16,7 +16,7 @@ en:
         profile_set: "You set your profile."
         handle: "Handle:"
         handle_profile: "Profile:"
-        not_yet_approved: "You have to be approved before you can edit your profile. Go to 'Play->Create a Character' to complete chargen first."
+        not_yet_approved: "You have to be approved before you can edit your profile. Go to 'Play->Character Creation' to complete chargen first."
         hooks_title: "Roleplay Hooks"
         
         custom_profile_set: "Custom profile field %{field} set."
@@ -60,3 +60,9 @@ en:
         extra_profile_info: "Also see %xchooks <name>%xn, %xcsheet <name>%xn and %xcrelationships <name>%xn."
         
         profile_updated: "%{name} updated."
+        
+        wiki_backup_avail: "A recent wiki backup already exists. Download it from %{path}"
+        wiki_backup_failed: "Wiki backup failed. Error: %{error}"
+        wiki_backup_created: "Wiki backup created. Download it from %{path} within %{hours} hours."
+        wiki_backup_too_soon: "It's too soon to create another wiki backup. Try again tomorrow."
+        wiki_backup_in_progress: "Wiki backup in progress. You will be notified when it is complete."

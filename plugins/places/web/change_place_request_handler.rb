@@ -2,10 +2,10 @@ module AresMUSH
   module Places
     class ChangePlaceRequestHandler
       def handle(request)
-        scene = Scene[request.args[:scene_id]]
+        scene = Scene[request.args['scene_id']]
         enactor = request.enactor
-        place_name = (request.args[:place_name] || "").titlecase
-        sender_name = request.args[:sender]
+        place_name = (request.args['place_name'] || "").titlecase
+        sender_name = request.args['sender']
                
         error = Website.check_login(request)
         return error if error

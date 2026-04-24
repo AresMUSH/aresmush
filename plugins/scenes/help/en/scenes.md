@@ -26,6 +26,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scenes/open` - Shows only open scenes and ones you've been invited to.
 `scenes/unshared` - Lists all scenes you have access to that haven't been shared yet.
 `scenes/all` - Lists all scenes you have access to.
+`scenes/profile` - Lists all shared scenes that you participated in (same as what shows on your web portal profile).
 
 ## Starting  a Scene
 
@@ -46,7 +47,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 ## Editing Poses
 
 `scene/replace <text in the form of an emit>` - Replaces your last pose.
-`scene/typo <text in the form of an emit>` - Silent replace for small typos.
+`scene/typo <text in the form of an emit>` - Silent replace of your last pose for small typos.
 `scene/undo` - Removes your last pose.
 `scene/emit <scene num>=<emit>` - Add a pose to a scene that isn't in your room.
 

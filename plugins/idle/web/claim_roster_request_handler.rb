@@ -15,8 +15,8 @@ module AresMUSH
           return { status: 'error',  error: Login.site_blocked_message }
         end
             
-        char = Character[request.args[:id]]
-        app = Website.format_input_for_mush((request.args[:app] || ""))
+        char = Character[request.args['id']]
+        app = Website.format_input_for_mush((request.args['app'] || ""))
         
         if (!char)
           return { error: t('webportal.not_found') }

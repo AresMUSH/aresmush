@@ -28,4 +28,4 @@ When someone tries to claim a restricted character, the system will generate a j
 
 Approving a character will reset their password and add it as a comment to the job. Rejecting a roster app will free up the roster char so others can claim them (or the original player can re-apply). You can also do roster approval/rejections on the web portal through the job screen.
 
-> Note: If the player submits the roster app from another character on the game (an alt or [player bit](/help/playerbit)), they will see the response and password in their request. If they submit from a guest, they should have included an email and you can send the password there.
+> Note: If the player submits the roster app from another character on the game (an alt or [player bit](/help/playerbit)), they will see the response and password in their request. If they weren't logged in, they should have included an email and you can send the password there.

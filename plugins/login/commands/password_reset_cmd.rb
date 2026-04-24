@@ -27,7 +27,6 @@ module AresMUSH
           end
           
           new_password = Login.set_random_password(char)
-          char.update(login_failures: 0)
           client.emit_success t('login.password_reset', :name => char.name, :password => new_password)
         end
       end

@@ -39,13 +39,4 @@ When changing multiple things at once, you can reload all the plugins, the confi
 
 ## Unloading Plugin Code
 
-You can unload an entire plugin, but this must be done with caution. 
-
-> Note: Unloading a plugin is not normally necessary, and if done inappropriately can cause errors in your game. 
-
-Only unload a plugin if 
-a) You added it yourself, like custom code or an ares extra you installed or 
-b) You have done the necessary code surgery to ensure it can be excised safely. See the [coding tutorials](https://aresmush.com/tutorials/code/plugins.html) for more information.
-
-`unload <plugin name>` - Unloads a plugin. See notes for important cautions.
-
+The only way to "unload" plugin code is to uninstall the plugin completely. You cannot uninstall core plugins without additional code surgery (since they depend on each other) but you can uninstall a community-contributed plugin, or one you designed yourself. See [Uninstalling Plugins](https://www.aresmush.com/tutorials/code/contribs.html#uninstalling-plugins).

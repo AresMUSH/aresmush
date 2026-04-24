@@ -3,9 +3,9 @@ module AresMUSH
     class HandleLinkRequestHandler
       def handle(request)
         enactor = request.enactor
-        handle_name = (request.args[:handle_name] || "").titlecase
-        link_code = request.args[:link_code]
-        pw = request.args[:confirm_password]
+        handle_name = (request.args['handle_name'] || "").titlecase
+        link_code = request.args['link_code']
+        pw = request.args['confirm_password']
 
         error = Website.check_login(request)
         return error if error

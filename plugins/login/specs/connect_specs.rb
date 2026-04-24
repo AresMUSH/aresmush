@@ -82,7 +82,7 @@ module AresMUSH
           it "should fail if check login fails" do
             expect(Character).to receive(:find_any_by_name).with("Bob") { [ @found_char ] }
             fail_status = { status: 'error', error: 'error' }
-            expect(Login).to receive(:check_login).with(@found_char, "password", "ip", "host") { fail_status }
+            expect(Login).to receive(:check_login_allowed_status).with(@found_char, "password", "ip", "host") { fail_status }
             expect(Global).to_not receive(:queue_event)
             expect(@client).to receive(:emit_failure).with("error")
             @handler.handle
@@ -92,19 +92,19 @@ module AresMUSH
      
         context "success" do
           before do
-            allow(Login).to receive(:find_client).with(@found_char) { nil }
+            allow(Login).to receive(:find_game_client).with(@found_char) { nil }
             allow(@found_char).to receive(:id) { 3 }
             expect(Character).to receive(:find_any_by_name) { [ @found_char ] }
             allow(dispatcher).to receive(:queue_event)  
             allow(@client).to receive(:char_id=)    
             allow(@found_char).to receive(:update)
             ok_status = { status: 'ok' }  
-            allow(Login).to receive(:check_login) { ok_status }
+            allow(Login).to receive(:check_login_allowed_status) { ok_status }
           end
           
           it "should disconnect an existing client" do
             other_client = double
-            allow(Login).to receive(:find_client).with(@found_char) { other_client }
+            allow(Login).to receive(:find_game_client).with(@found_char) { other_client }
             expect(other_client).to receive(:emit_ooc).with('login.disconnected_by_reconnect')
             expect(other_client).to receive(:disconnect)
             allow(dispatcher).to receive(:queue_timer)
@@ -113,7 +113,7 @@ module AresMUSH
           
           it "should check login details" do
             ok_status = { status: 'ok' }  
-            expect(Login).to receive(:check_login).with(@found_char, "password", "ip", "host") { ok_status }
+            expect(Login).to receive(:check_login_allowed_status).with(@found_char, "password", "ip", "host") { ok_status }
             @handler.handle
           end        
        

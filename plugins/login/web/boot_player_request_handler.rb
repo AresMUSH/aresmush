@@ -3,8 +3,8 @@ module AresMUSH
     class BootPlayerRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        reason = request.args[:reason]
+        name = request.args['name']
+        reason = request.args['reason']
         
         error = Website.check_login(request)
         return error if error
@@ -14,7 +14,7 @@ module AresMUSH
         end
 
         if (reason.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "reason") }
         end
         
         char = Character.named(name)

@@ -3,19 +3,19 @@ module AresMUSH
     class JobCreateRequestHandler
       def handle(request)
         enactor = request.enactor
-        category = (request.args[:category] || "").upcase
-        participant_ids = request.args[:participants]
-        title = request.args[:title]
-        description = request.args[:description]
-        submitter_name = request.args[:submitter]
-        tags = request.args[:tags]
-        custom_fields = request.args[:custom_fields] || {}
+        category = (request.args['category'] || "").upcase
+        participant_ids = request.args['participants'] || []
+        title = request.args['title']
+        description = request.args['description']
+        submitter_name = request.args['submitter']
+        tags = (request.args['tags'] || "").split(" ")
+        custom_fields = request.args['custom_fields'] || {}
         
         error = Website.check_login(request)
         return error if error
         
         if (title.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "title") }
         end
         
         request.log_request
@@ -55,7 +55,7 @@ module AresMUSH
         end
         job.update(custom_fields: custom_field_data)
         
-        if (participant_ids)
+        if (participant_ids.any?)
           participant_ids.each do |p|
             participant = Character[p]
             if (!participant)

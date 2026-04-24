@@ -2,7 +2,7 @@ module AresMUSH
   module Scenes
     class GetSceneCardRequestHandler
       def handle(request)
-        char = Character.find_one_by_name request.args[:char]
+        char = Character.find_one_by_name request.args['char']
         enactor = request.enactor
         
         error = Website.check_login(request, true)

@@ -3,11 +3,6 @@ module AresMUSH
     class PageScanCmd
       include CommandHandler
 
-      def check_guest
-        return t('dispatcher.not_allowed') if enactor.has_any_role?("guest")
-        return nil
-      end
-      
       def handle
         unread = enactor.page_threads.select { |p| Page.is_thread_unread?(p, enactor) }
         if (unread.count > 0)

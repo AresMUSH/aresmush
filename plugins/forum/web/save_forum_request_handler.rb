@@ -3,12 +3,12 @@ module AresMUSH
     class SaveForumRequestHandler
       def handle(request)
         enactor = request.enactor
-        id = request.args[:id]
-        name = request.args[:name]
-        desc = request.args[:desc]
-        order = request.args[:order] || ""
-        can_read = request.args[:can_read] || []
-        can_write = request.args[:can_write] || []
+        id = request.args['id']
+        name = request.args['name']
+        desc = request.args['desc']
+        order = request.args['order'] || ""
+        can_read = request.args['can_read'] || []
+        can_write = request.args['can_write'] || []
         
         error = Website.check_login(request)
         return error if error

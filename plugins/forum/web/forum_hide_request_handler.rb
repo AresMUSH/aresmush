@@ -3,8 +3,8 @@ module AresMUSH
     class ForumHideRequestHandler
       def handle(request)
                 
-        category_id = request.args[:category_id] 
-        hide = (request.args[:hide] || "").to_bool
+        category_id = request.args['category_id'] 
+        hide = (request.args['hide'] || "").to_bool
         enactor = request.enactor
         
         error = Website.check_login(request)

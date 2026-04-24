@@ -49,11 +49,10 @@ module AresMUSH
     end
     
     def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
-      role_manager = Roles.can_assign_role?(viewer)
       {
         roles: char.roles.map { |r| r.name },
         all_roles: Role.all.to_a.sort_by { |r| r.name }.map { |r| r.name },
-        show_roles_tab: role_manager,
+        show_roles_tab: Roles.can_assign_role?(viewer),        
       }
     end
     

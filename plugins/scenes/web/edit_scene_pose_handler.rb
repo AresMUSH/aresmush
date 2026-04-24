@@ -2,10 +2,10 @@ module AresMUSH
   module Scenes
     class EditScenePoseRequestHandler
       def handle(request)
-        scene = Scene[request.args[:scene_id]]
-        scene_pose = ScenePose[request.args[:pose_id]]
-        pose_text = request.args[:pose]
-        notify = (request.args[:notify] || "").to_bool
+        scene = Scene[request.args['scene_id']]
+        scene_pose = ScenePose[request.args['pose_id']]
+        pose_text = request.args['pose']
+        notify = (request.args['notify'] || "").to_bool
         enactor = request.enactor
         
         if (!scene || !scene_pose)

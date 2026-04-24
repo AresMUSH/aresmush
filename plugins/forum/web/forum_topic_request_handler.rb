@@ -3,7 +3,7 @@ module AresMUSH
     class ForumTopicRequestHandler
       def handle(request)
                 
-        topic_id = request.args[:topic_id]
+        topic_id = request.args['topic_id']
         enactor = request.enactor
         
         error = Website.check_login(request, true)

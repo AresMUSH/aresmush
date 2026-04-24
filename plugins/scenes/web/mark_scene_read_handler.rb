@@ -2,7 +2,7 @@ module AresMUSH
   module Scenes
     class MarkSceneReadRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
         
         if (!scene)
@@ -16,11 +16,11 @@ module AresMUSH
           return { error: t('scenes.scene_is_private') }
         end
        
+        scene.mark_read(enactor)
         if (enactor.unified_play_screen)
-          scene.participants.each do |p|
-            if (AresCentral.is_alt?(p, enactor))
-              scene.mark_read(p)
-            end
+          AresCentral.play_screen_alts(enactor).each do |alt|
+            next if alt == enactor
+            scene.mark_read(alt)
           end
         end
        

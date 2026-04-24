@@ -21,7 +21,7 @@ module AresMUSH
         allow(@char1).to receive(:alias_upcase) { nil }
         allow(@char2).to receive(:name_upcase) { "BOB" }
         allow(@char2).to receive(:alias_upcase) { nil }
-        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1, @client2 => @char2 }}
+        allow(@client_monitor).to receive(:client_to_char_map) { {@client1 => @char1, @client2 => @char2 }}
         result = OnlineCharFinder.find("bo")
         expect(result.target.client).to eq @client2
         expect(result.target.char).to eq @char2
@@ -31,7 +31,7 @@ module AresMUSH
       it "should return a matching online char by alias" do
         allow(@char1).to receive(:name_upcase) { "HARVEY" }
         allow(@char1).to receive(:alias_upcase) { "HVY" }
-        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1 }}
+        allow(@client_monitor).to receive(:client_to_char_map) { {@client1 => @char1 }}
         result = OnlineCharFinder.find("hvy")
         expect(result.target.client).to eq @client1
         expect(result.target.char).to eq @char1
@@ -44,7 +44,7 @@ module AresMUSH
         allow(@char2).to receive(:name_upcase) { "ANNA" }
         allow(@char1).to receive(:alias_upcase) { nil }
         allow(@char2).to receive(:alias_upcase) { nil }
-        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1, @client2 => @char2 }}
+        allow(@client_monitor).to receive(:client_to_char_map) { {@client1 => @char1, @client2 => @char2 }}
         result = OnlineCharFinder.find("Ann")
         expect(result.target).to be_nil
         expect(result.error).to eq "db.ambiguous_char_online"
@@ -55,7 +55,7 @@ module AresMUSH
         allow(@char2).to receive(:name_upcase) { "ANNA" }
         allow(@char1).to receive(:alias_upcase) { nil }
         allow(@char2).to receive(:alias_upcase) { nil }
-        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1, @client2 => @char2 }}
+        allow(@client_monitor).to receive(:client_to_char_map) { {@client1 => @char1, @client2 => @char2 }}
         result = OnlineCharFinder.find("Ann")
         expect(result.target.client).to eq @client1
         expect(result.target.char).to eq @char1
@@ -67,7 +67,7 @@ module AresMUSH
         allow(@char1).to receive(:alias_upcase) { nil }
         allow(@char2).to receive(:name_upcase) { "ANNA" }
         allow(Character).to receive(:all) { [ @char1, @char2 ] }
-        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1 }}
+        allow(@client_monitor).to receive(:client_to_char_map) { {@client1 => @char1 }}
         result = OnlineCharFinder.find("Ann")
         expect(result.target).to be_nil
         expect(result.error).to eq "db.no_char_online_found"
@@ -77,7 +77,7 @@ module AresMUSH
         allow(@char1).to receive(:name_upcase) { "BOB" }
         allow(@char1).to receive(:alias_upcase) { nil }
         allow(Character).to receive(:all) { [ ] }
-        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1 }}
+        allow(@client_monitor).to receive(:client_to_char_map) { {@client1 => @char1 }}
         result = OnlineCharFinder.find("X")
         expect(result.target).to be_nil
         expect(result.error).to eq "db.object_not_found"

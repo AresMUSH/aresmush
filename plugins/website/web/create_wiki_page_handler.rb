@@ -3,10 +3,10 @@ module AresMUSH
     class CreateWikiPageRequestHandler
       def handle(request)
         enactor = request.enactor
-        text = request.args[:text]
-        tags = (request.args[:tags] || [])
-        title = request.args[:title]
-        name = request.args[:name]
+        text = request.args['text']
+        tags = (request.args['tags'] || "").split(" ")
+        title = request.args['title']
+        name = request.args['name']
     
         error = Website.check_login(request)
         return error if error
@@ -24,7 +24,7 @@ module AresMUSH
         end
         
         if (name.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name") }
         end
         
         if (name =~ /:/ && name.after(":").blank?)

@@ -81,17 +81,19 @@ module AresMUSH
           @char = double
           @game = double
           allow(Game).to receive(:master) { @game }
-          allow(@game).to receive(:banned_sites) { { "123.45.678" => "Reason" }}
+          allow(@game).to receive(:is_banned_site?) {  false }
           allow(config_reader).to receive(:get_text).with("blacklist.txt") { "234.56.789\n345.67.890" }
         end
         
         it "should never ban an admin" do
           allow(@char).to receive(:is_admin?) { true }
+          allow(@game).to receive(:is_banned_site?).with("123.45.678", "somehost") {  true }          
           expect(Login.is_banned?(@char, "123.45.678", "somehost")).to eq false
         end
         
         it "should block someone on the ban list" do
           allow(@char).to receive(:is_admin?) { false }
+          expect(@game).to receive(:is_banned_site?).with("123.45.678", "somehost") {  true }          
           expect(Login.is_banned?(@char, "123.45.678", "somehost")).to eq true
         end
         
@@ -122,33 +124,6 @@ module AresMUSH
             expect(Login.is_banned?(@char, "345.67.890", "somehost")).to eq true            
           end
         end
-      end
-      
-      describe :is_site_match? do
-        it "should match an IP" do
-          expect(Login.is_site_match?("123.45.67.89", "", "123.45.67.89", "somesite.com")).to eq true
-        end
-
-        it "should match a host" do
-          expect(Login.is_site_match?("", "somesite.com", "111", "somesite.com")).to eq true
-        end
-
-        it "should match a partial IP" do
-          expect(Login.is_site_match?("123.45.67.89.111", "", "123.45", "somesite.com")).to eq true
-        end
-
-        it "should match a partial host" do
-          expect(Login.is_site_match?("", "pa.142.xyz.abc.somesite.com", "123.45", "somesite.com")).to eq true
-        end
-        
-        it "should not match a different IP" do
-          expect(Login.is_site_match?("234.56.78.90", "", "123.45.67.89", "somesite.com")).to eq false
-        end
-
-        it "should not match a different host" do
-          expect(Login.is_site_match?("othersite.com", "", "123.45.67.89", "somesite.com")).to eq false
-        end
-        
       end
       
       describe :name_taken? do
@@ -252,7 +227,7 @@ module AresMUSH
             allow(@char).to receive(:login_failures) { 1 }
             expect(@char).to receive(:update).with(login_failures: 2)
             expect(Global).to_not receive(:queue_event)
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the passwords don't match and too many login failures" do
@@ -260,28 +235,28 @@ module AresMUSH
             expect(@char).to receive(:compare_password).with("password") { false }
             allow(@char).to receive(:login_failures) { 6 }
             expect(Global).to_not receive(:queue_event)
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if char is a statue" do
             expected_status = { status: 'error', error: "dispatcher.you_are_statue" }
             expect(@char).to receive(:is_statue?) { true }
             expect(Global).to_not receive(:queue_event)
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the char isn't allowed to log in due to restricted logins" do
             expected_status = { status: 'error', error: "login.login_restricted" }
             expect(Login).to receive(:can_login?) { false }
             expect(Login).to receive(:restricted_login_message) { "" }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the char isn't allowed to log in due to site matching" do
             allow(Login).to receive(:site_blocked_message) { "site blocked" }
             expected_status = { status: 'error', error: "site blocked" }
             expect(Login).to receive(:is_banned?).with(@char, "ip", "host") { true }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should fail if the char is in boot timeout" do
@@ -289,7 +264,7 @@ module AresMUSH
             expect(Login).to receive(:can_login?) { true }
             allow(@char).to receive(:boot_timeout) { Time.now + 100 }
             allow(OOCTime).to receive(:local_long_timestr) { "date" }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
         end
@@ -299,7 +274,7 @@ module AresMUSH
           it "should allow login if passwords match" do
             expected_status = { status: 'ok' }
             expect(@char).to receive(:compare_password).with("password") { true }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           
@@ -307,7 +282,7 @@ module AresMUSH
             expected_status = { status: 'ok' }
             expect(@char).to receive(:compare_password).with("password") { true }
             allow(@char).to receive(:boot_timeout) { Time.now - 1 }
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           it "should allow them in if their password doesn't match but AresC authorizes" do
@@ -318,7 +293,7 @@ module AresMUSH
             expect(@char).to receive(:change_password).with("password")
             expect(@char).to receive(:update).with({ login_failures: 0})
             
-            expect(Login.check_login(@char, "password", "ip", "host")).to eq expected_status
+            expect(Login.check_login_allowed_status(@char, "password", "ip", "host")).to eq expected_status
           end
           
           
@@ -361,11 +336,11 @@ module AresMUSH
             @system_char = double
             master_game = double
 
-            allow(client_monitor).to receive(:clients) { [] }
+            allow(client_monitor).to receive(:web_clients) { [] }
             allow(Game).to receive(:master) { master_game }
             allow(master_game).to receive(:system_character) { @system_char }
             allow(Login).to receive(:notify)
-            allow(Login).to receive(:find_client) { nil }
+            allow(Login).to receive(:find_game_client) { nil }
             allow(@bootee).to receive(:update)
             allow(@bootee).to receive(:last_ip) { "ip" }
             allow(@bootee).to receive(:last_hostname) { "host" }
@@ -403,15 +378,15 @@ module AresMUSH
           end
           
           it "should boot them from the game" do
-            expect(Login).to receive(:find_client).with(@bootee) { @client }
+            expect(Login).to receive(:find_game_client).with(@bootee) { @client }
             expect(@client).to receive(:emit_failure).with("login.you_have_been_booted")
             expect(@client).to receive(:disconnect)
             expect(Login.boot_char(@enactor, @bootee, "Reasons")).to eq nil
           end
           
           it "should boot them from the portal" do
-            expect(client_monitor).to receive(:clients) { [ @client ]}
-            expect(@client).to receive(:web_char_id) { "22" }
+            expect(client_monitor).to receive(:web_clients) { [ @client ]}
+            expect(@client).to receive(:char_id) { "22" }
             expect(@bootee).to receive(:id) { "22" }
             expect(@bootee).to receive(:update).with({ login_api_token: nil })
             expect(@client).to receive(:disconnect)
@@ -419,8 +394,8 @@ module AresMUSH
           end
           
           it "should not boot someone else from the portal" do
-            expect(client_monitor).to receive(:clients) { [ @client ]}
-            expect(@client).to receive(:web_char_id) { "4" }
+            expect(client_monitor).to receive(:web_clients) { [ @client ]}
+            expect(@client).to receive(:char_id) { "4" }
             expect(@bootee).to receive(:id) { "22" }
             expect(@bootee).to receive(:update).with({ login_api_token: nil })
             expect(@client).to_not receive(:disconnect)
@@ -458,6 +433,79 @@ module AresMUSH
         it "should allow nonadmins if permission present" do
           expect(Login.can_login?(@char)).to eq true
         end
+      end
+      
+      describe :create_temp_char_name do
+        before do
+          allow(Global).to receive(:read_config).with("names", "guest") { ["HappyWanderer"] }
+          @game = double
+          allow(Game).to receive(:master) { @game }
+          allow(@game).to receive(:login_guest_counter) { 0 }
+          allow(@game).to receive(:update)
+          allow(Login).to receive(:name_taken?).with("Guest-1") { nil }
+        end
+          
+        
+        it "should work if name not taken" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+          
+          expect(Login.create_temp_char_name).to eq "HappyWanderer"
+        end
+        
+        it "should work if other name choice works" do
+          allow(Global).to receive(:read_config).with("names", "guest") { ["HappyWanderer", "SadPanda", "SadWanderer"] }
+
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+
+          allow(Login).to receive(:name_taken?).with("SadPanda") { nil }
+          allow(Character).to receive(:check_name).with("SadPanda") { "bad" }
+
+          allow(Login).to receive(:name_taken?).with("HappyPanda") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyPanda") { "bad" }
+          
+          allow(Login).to receive(:name_taken?).with("SadWanderer") { nil }
+          allow(Character).to receive(:check_name).with("SadWanderer") { nil }
+          
+          expect(Login.create_temp_char_name).to eq "SadWanderer"
+        end
+        
+        it "should fallback if name is taken" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+          
+          expect(Login.create_temp_char_name).to eq "Guest-1"
+        end
+        
+        it "should fallback if name is invalid" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { "bad name" }
+          
+          expect(Login.create_temp_char_name).to eq "Guest-1"
+        end
+        
+        it "should fallback if second name choice also doesn't work" do
+          allow(Global).to receive(:read_config).with("names", "guest") { ["HappyWanderer", "HappyPanda"] }
+
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { nil }
+
+          allow(Login).to receive(:name_taken?).with("HappyPanda") { "taken" }
+          allow(Character).to receive(:check_name).with("HappyPanda") { "bad" }
+          
+          expect(Login.create_temp_char_name).to eq "Guest-1"
+        end
+        
+        it "should fail if fallback isn't available" do
+          allow(Login).to receive(:name_taken?).with("HappyWanderer") { nil }
+          allow(Character).to receive(:check_name).with("HappyWanderer") { "bad name" }
+          allow(Login).to receive(:name_taken?).with("Guest-1") { "taken" }
+          
+          expect {Login.create_temp_char_name}.to raise_error(RuntimeError)
+
+        end
+        
       end
       
     end

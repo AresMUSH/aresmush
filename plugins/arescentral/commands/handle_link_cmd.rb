@@ -14,12 +14,7 @@ module AresMUSH
 
       def required_args
         [ self.handle_name, self.link_code ]
-      end
-      
-      def check_guest
-        return t('dispatcher.not_allowed') if (enactor.is_guest?)
-        return nil
-      end
+      end      
       
       def check_handle_name
         return t('arescentral.character_already_linked') if enactor.handle

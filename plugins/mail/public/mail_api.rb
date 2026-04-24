@@ -5,13 +5,6 @@ module AresMUSH
       author = author || Game.master.system_character
       recipients = []
       
-      if author.has_any_role?("guest")
-        if (client)
-          client.emit_failure t('dispatcher.not_allowed') 
-        end
-        return false
-      end
-      
       names.each do |name|
         recipient = Character.find_one_by_name(name)
         if (!recipient)

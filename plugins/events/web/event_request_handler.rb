@@ -2,8 +2,8 @@ module AresMUSH
   module Events
     class EventRequestHandler
       def handle(request)
-        event_id = request.args[:event_id]
-        edit_mode = (request.args[:edit_mode] || "").to_bool
+        event_id = request.args['event_id']
+        edit_mode = (request.args['edit_mode'] || "").to_bool
         enactor = request.enactor
         
         event = Event[event_id.to_i]
@@ -53,7 +53,7 @@ module AresMUSH
           description: description,
           date: datetime.before(' '),
           time: datetime.after( ' '),
-          tags: event.content_tags,
+          tags: edit_mode ? event.content_tags.join(" ") : event.content_tags,
           signups: signups,
           can_manage: enactor && Events.can_manage_event?(enactor, event),
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,

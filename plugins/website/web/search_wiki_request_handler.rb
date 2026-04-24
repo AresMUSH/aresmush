@@ -3,10 +3,10 @@ module AresMUSH
     class SearchWikiRequestHandler
       def handle(request)
 
-        search_text = (request.args[:searchText] || "").strip
-        search_title = (request.args[:searchTitle] || "").strip
-        search_tag = (request.args[:searchTag] || "").strip
-        search_category = (request.args[:searchCategory] || "").strip
+        search_text = (request.args['searchText'] || "").strip
+        search_title = (request.args['searchTitle'] || "").strip
+        search_tag = (request.args['searchTag'] || "").strip
+        search_category = (request.args['searchCategory'] || "").strip
         
         pages = WikiPage.all.to_a
 
@@ -19,7 +19,7 @@ module AresMUSH
         end
         
         if (!search_tag.blank?)
-          pages = pages.select { |p| p.tags.include?(search_tag.downcase) }
+          pages = pages.select { |p| p.content_tags.include?(search_tag.downcase) }
         end
         
         if (!search_text.blank?)

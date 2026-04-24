@@ -153,3 +153,4 @@ en:
         skill_census_title: "Skill Scan - %{type} Abilities"
         skill_scan_title: "Skill Scan"
         skill_scan_subtitle: "Characters with ability %{skill} (%{type}) at higher levels:"
+        skill_scan_footer: "%ld%R(*) = In your room"

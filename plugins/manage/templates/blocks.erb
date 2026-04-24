@@ -1,0 +1,10 @@
+%lh
+%xh<%= t('manage.blocks_list_header') %>%xn
+
+<% blocks.each do |b| %>
+<%= left( b.blocked.name, 60, '.' ) %> <%= b.block_type %>
+<% end %>
+
+%ld
+%xh<%= t('manage.block_types' )%>%xn <%= block_types %>
+%lf

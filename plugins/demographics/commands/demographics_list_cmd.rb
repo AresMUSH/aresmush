@@ -15,15 +15,14 @@ module AresMUSH
           if (enabled_after_cg.include?(d))
             editable = "(*) "
           end
-          name = "%xh#{d.titleize}#{editable}%xn"
-          
           if (!help)
-            help = "%xc#{d} <value>%xn"
+            shortname = d.gsub(/\s+/, '')
+            help = "%xc#{shortname} <value>%xn"
           end
           list << "#{editable}#{help}"
         end
         
-        footer = "%ld%R* - #{t('demographics.demographics_ediable')}"
+        footer = "%ld%R* - #{t('demographics.demographics_editable')}"
         template = BorderedListTemplate.new(list, t('demographics.demographics_list_header'), footer) 
         client.emit template.render
       end

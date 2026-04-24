@@ -84,7 +84,7 @@ module AresMUSH
            category = Global.read_config('idle', 'roster_app_category') || "APP"
            title = t('idle.roster_app_title', :name => model.name)
            body = t('idle.roster_app_body', :target => model.name, :name => enactor_name, :app => app_text )
-           if (!enactor || enactor.is_guest?)
+           if (!enactor)
              submitter = Game.master.system_character
            else
              submitter = enactor
@@ -113,14 +113,13 @@ module AresMUSH
        
        forum_category = Global.read_config("idle", "arrivals_category")
        if (!forum_category.blank?)
-         arrival_message = Global.read_config("idle", "roster_arrival_msg")
          arrival_message_args = Chargen.welcome_message_args(model)
-         post_body = arrival_message % arrival_message_args
-      
+         post_body = Global.read_config("idle", "roster_arrival_msg") % arrival_message_args
+         post_subject = t('idle.roster_post_subject') % arrival_message_args
          Forum.post(forum_category, 
-         t('idle.roster_post_subject'), 
-         post_body, 
-         Game.master.system_character)
+           post_subject, 
+           post_body, 
+           Game.master.system_character)
        end
          
        return { password: password }

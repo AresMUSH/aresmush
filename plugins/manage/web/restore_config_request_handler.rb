@@ -3,7 +3,7 @@ module AresMUSH
     class RestoreConfigRequestHandler
       def handle(request)
         enactor = request.enactor
-        file = request.args[:file]
+        file = request.args['file']
         
         error = Website.check_login(request)
         return error if error

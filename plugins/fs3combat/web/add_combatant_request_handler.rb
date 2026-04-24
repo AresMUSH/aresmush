@@ -2,10 +2,10 @@ module AresMUSH
   module FS3Combat
     class AddCombatantRequestHandler
       def handle(request)
-        id = request.args[:id]
+        id = request.args['id']
         enactor = request.enactor
-        combatant_type = request.args[:combatant_type] || FS3Combat.default_combatant_type
-        names = (request.args[:name] || "").split(/[ ,]/)
+        combatant_type = request.args['combatant_type'] || FS3Combat.default_combatant_type
+        names = (request.args['name'] || "").split(/[ ,']/)
         
         if (names.empty?)
           return { error: t('fs3combat.invalid_combatant_name')}

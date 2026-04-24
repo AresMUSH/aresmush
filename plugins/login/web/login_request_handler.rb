@@ -3,21 +3,15 @@ module AresMUSH
     class LoginRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        pw = request.args[:password]
+        name = request.args['name']
+        pw = request.args['password']
         char = Character.find_one_by_name(name)
 
         error = Website.check_login(request, true)
         return error if error
         
         if (!char)
-          if (name && name.downcase.start_with?("guest"))
-            return { error: t('login.no_guest_webportal') }
-          else
-           return { error: t('login.invalid_name_or_password') }
-          end
-        elsif (char.is_guest?)
-          return { error: t('login.no_guest_webportal') }
+          return { error: t('login.invalid_name_or_password') }
         end
 
         if (pw == "ALT")
@@ -25,7 +19,7 @@ module AresMUSH
             return { error: t('webportal.only_switch_arescentral_alts') }
           end
         else
-          result = Login.check_login(char, pw, request.ip_addr, request.hostname)
+          result = Login.check_login_allowed_status(char, pw, request.ip_addr, request.hostname)
         
           if result[:status] == 'error'
             return { error: result[:error] }
@@ -43,19 +37,9 @@ module AresMUSH
         char.update(login_failures: 0)
         char.update(boot_timeout: nil)
         
-        if (char.handle)
-          AresCentral.sync_handle(char)
-        end
+        Login.announce_connection(nil, char)
         
-        {
-          token: char.login_api_token,
-          name: char.name,
-          id: char.id,
-          is_approved: char.is_approved?,
-          is_admin: char.is_admin?,
-          is_coder: char.is_coder?,
-          is_theme_mgr: (!char.is_admin? && Website.can_manage_theme?(char))
-        }
+        Login.web_session_info(char)
       end
     end
   end

@@ -3,8 +3,8 @@ module AresMUSH
     class AppRejectRequestHandler
       def handle(request)
         enactor = request.enactor
-        char = Character.find_one_by_name request.args[:id]
-        notes = request.args[:notes]
+        char = Character.find_one_by_name request.args['id']
+        notes = request.args['notes']
         
         error = Website.check_login(request)
         return error if error

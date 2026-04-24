@@ -3,10 +3,10 @@ module AresMUSH
     class ForumEditTopicRequestHandler
       def handle(request)
                 
-        topic_id = request.args[:topic_id]
+        topic_id = request.args['topic_id']
         enactor = request.enactor
-        message = Website.format_input_for_mush(request.args[:message] || "")
-        subject = request.args[:subject]
+        message = Website.format_input_for_mush(request.args['message'] || "")
+        subject = request.args['subject']
         
         error = Website.check_login(request)
         return error if error

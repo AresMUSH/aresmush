@@ -25,7 +25,7 @@ website:
     route: home
   - title: Play
     menu:
-    - title: Create a Character
+    - title: Character Creation
       route: chargen
     - title: Pre-Made Characters
       route: roster
@@ -47,9 +47,6 @@ website:
       route: mail
     - title: Events
       route: events
-    - divider: true
-    - title: Web Client
-      route: client
   - title: Directory
     menu:
     - title: Characters
@@ -186,6 +183,11 @@ website:
       ids:
       - style
       - custom_style.scss
+    - title: Custom Fonts
+      route: textfile
+      ids:
+      - style
+      - fonts.scss
     - title: Files
       route: files
     - title: Home Page Text
@@ -193,6 +195,11 @@ website:
       ids:
       - text
       - website.txt
+    - title: Rainbow Colors
+      route: textfile
+      ids:
+      - style
+      - rainbow.scss
   - title: "<i class='fas fa-magnifying-glass'/>"
     menu:
     - title: Search Characters
@@ -229,7 +236,15 @@ website:
     - 4
     minute:
     - 37
+  char_backup_cleanup_cron:
+    hour:
+    - 3
+    minute:
+    - 14
   shortcuts:
     wiki: website
     website/archive: website/export
   hide_searchbox: true
+  public_wiki_folders:
+  - misc
+  default_public_folder: misc

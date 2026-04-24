@@ -3,9 +3,9 @@ module AresMUSH
     class ReportChatRequestHandler
       def handle(request)
         enactor = request.enactor
-        key = request.args[:key]
-        start_message = request.args[:start_message]
-        reason = request.args[:reason]
+        key = request.args['key']
+        start_message = request.args['start_message']
+        reason = request.args['reason']
         
         error = Website.check_login(request)
         return error if error

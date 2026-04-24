@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class LikeSceneRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
-        liked = request.args[:like].to_bool
+        liked = request.args['like'].to_bool
         
         if (!scene)
           return { error: t('webportal.not_found') }

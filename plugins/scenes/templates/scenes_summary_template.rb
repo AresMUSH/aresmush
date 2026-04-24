@@ -2,10 +2,12 @@ module AresMUSH
   module Scenes
     class SceneSummaryTemplate < ErbTemplateRenderer
              
-      attr_accessor :paginator
+      # Mode is :all, :profile, :unshared
+      attr_accessor :paginator, :mode
                      
-      def initialize(paginator)
+      def initialize(paginator, mode)
         @paginator = paginator
+        @mode = mode
         super File.dirname(__FILE__) + "/scenes_summary.erb"        
       end
       
@@ -28,6 +30,14 @@ module AresMUSH
         return '(X)' if scene.in_trash 
         return ' u ' if !scene.shared
         return '   '
+      end
+      
+      def show_legend
+        self.mode != :profile
+      end
+      
+      def title
+        "scenes.scenes_title_#{self.mode}"
       end
     end
   end

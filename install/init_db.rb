@@ -69,10 +69,9 @@ module AresMUSH
   
       admin_role = Role.create(name: "admin", is_restricted: true)
       everyone_role = Role.create(name: "everyone")
-      everyone_role.update(permissions: ["login"])
+      everyone_role.update(permissions: ["login", "submit_app"])
       builder_role = Role.create(name: "builder")
       builder_role.update(permissions: ["build", "teleport", "desc_places", "access_jobs" ] )
-      guest_role = Role.create(name: "guest")
       approved_role = Role.create(name: "approved")
       approved_role.update(permissions: ["go_home", "boot", "announce"] )
       coder_role = Role.create(name: "coder", is_restricted: true)
@@ -102,34 +101,26 @@ module AresMUSH
       systemchar.room = welcome_room
       systemchar.save
 
-      4.times do |n|
-        guest = Character.create(name: "Guest-#{n+1}")
-        guest.roles.add guest_role
-        guest.roles.add everyone_role
-        guest.room = welcome_room
-        guest.save
-      end
-
       game.master_admin = headwiz
       game.system_character = systemchar
       game.save
         
       puts "Creating channels and BBS."
   
-      board = BbsBoard.create(name: "Announcements", order: 1)
+      board = BbsBoard.create(name: "Announcements", order: 1, description: "Important game notices.")
       board.write_roles.add admin_role
       board.save
       
-      board = BbsBoard.create(name: "Admin", order: 2)
+      board = BbsBoard.create(name: "Admin", order: 2, description: "Admin-only discussions.")
       board.read_roles.add admin_role
       board.write_roles.add admin_role
       board.save
       
-      board = BbsBoard.create(name: "New Arrivals", order: 3)
+      board = BbsBoard.create(name: "New Arrivals", order: 3, description: "New characters.")
       board.write_roles.add approved_role
       board.save
       
-      board = BbsBoard.create(name: "Trending Scenes", order: 4)
+      board = BbsBoard.create(name: "System Notices", order: 4, description: "System messages.")
       board.write_roles.add admin_role
       board.save
   

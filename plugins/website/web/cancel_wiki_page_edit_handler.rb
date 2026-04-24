@@ -2,7 +2,7 @@ module AresMUSH
   module Website
     class CancelEditWikiPageRequestHandler
       def handle(request)
-        name_or_id = request.args[:id]
+        name_or_id = request.args['id']
         enactor = request.enactor
 
         error = Website.check_login(request)

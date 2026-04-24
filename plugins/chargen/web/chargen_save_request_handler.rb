@@ -2,8 +2,8 @@ module AresMUSH
   module Chargen
     class ChargenSaveRequestHandler
       def handle(request)
-        chargen_data = request.args[:char]
-        id = request.args[:id]
+        chargen_data = request.args['char']
+        id = request.args['id']
         enactor = request.enactor
 
         error = Website.check_login(request)
@@ -26,9 +26,14 @@ module AresMUSH
         end
 
         alerts = Chargen.save_char(char, chargen_data)
-        
+
+        if (Demographics.age_enabled?)
+          age = char.age
+        end
+                
         {    
-          alerts: alerts
+          alerts: alerts,
+          age: age
         }
       end
     end

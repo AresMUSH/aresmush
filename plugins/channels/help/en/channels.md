@@ -29,7 +29,7 @@ You can talk on a channel using the full channel name followed by the message.  
 `<channel name or alias> <message>` - Talks on a channel.
 `channels` - Views your current channel aliases.
 `channel/alias <channel>=<alias>` - Changes the alias.  You can use multiple aliases, separated by spaces.
-`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
+`channel/review <channel>[=<num messages>]` - Shows the last few messages on a channel.
 
 > **Tip:** Take care to avoid channel aliases that overlap with other commands, like 'n' for north or 'p' for page.  Remember that AresMUSH ignores prefixes like '+' on commands.
 
@@ -37,7 +37,7 @@ You can talk on a channel using the full channel name followed by the message.  
 
 `channel/mute <channel>` - Silences a channel until your next login.  Use 'all' to mute all channels at once.
 `channel/unmute <channel>` - Un-silences a channel. Use 'all' to unmute all channels at once.
-`channel/announce <channel>=<on/off>` - Turns connection messages on or off.
+`channel/announce <channel>=<on/off>` - Turns connection messages on or off. Use 'all' to set this for all channels at once.
 `channel/title <channel>=<title>` - Sets a channel-specific title to show up in front of your name.
 `channel/showtitles <channel>=<on or off>` - Enables or disables other peoples' channel titles. (Only works when on a MU Client; web portal channels always show titles.)
 `channel/color <channel>=<ansi prefix>` - Sets a channel's display color. Use full ansi code(s) not just the color name.  For example: \%xc  You can use multiple codes.  For example:  \%xh\%xr

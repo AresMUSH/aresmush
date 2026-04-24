@@ -2,8 +2,8 @@ module AresMUSH
   module Scenes
     class GetSceneSourceRequestHandler
       def handle(request)
-        scene_id = request.args[:scene_id]
-        version_id = request.args[:version_id]
+        scene_id = request.args['scene_id']
+        version_id = request.args['version_id']
         enactor = request.enactor
         
         error = Website.check_login(request, true)

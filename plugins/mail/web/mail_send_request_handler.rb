@@ -3,10 +3,10 @@ module AresMUSH
     class MailSendRequestHandler
       def handle(request)
         enactor = request.enactor
-        message = request.args[:message]
-        subject = request.args[:subject]
-        to_list = request.args[:to_list]
-        sender = Character.named(request.args[:sender]) || enactor
+        message = request.args['message']
+        subject = request.args['subject']
+        to_list = request.args['to_list']
+        sender = Character.named(request.args['sender']) || enactor
        
         error = Website.check_login(request)
         return error if error
@@ -18,7 +18,7 @@ module AresMUSH
         Global.logger.info "#{sender.name} sending mail to #{to_list} (by #{enactor.name})."
         
         if (subject.blank? || message.blank? || to_list.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "subject, message, to list") }
         end
         
         message = Website.format_input_for_mush(message)

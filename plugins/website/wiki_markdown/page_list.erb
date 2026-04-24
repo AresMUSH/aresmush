@@ -1,0 +1,5 @@
+<ul>
+<% pages.each do |pg| %>
+<li><a href="/wiki/<%= pg[:name] %>"><%= pg[:heading] %></a></li>
+<% end %>
+</ul>

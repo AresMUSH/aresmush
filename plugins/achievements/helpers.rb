@@ -30,5 +30,16 @@ module AresMUSH
       data = self.achievement_data(achievement) || {}
       data["levels"] || defaults
     end
+    
+    # Formats the message, accounting for count, based on input from the values in Achievements.achievements_list(char)
+    def self.achievement_message(data)
+      message = data[:message]
+      count = data[:count]
+      if (count > 1)
+        return "#{message} (#{count})"
+      else
+        return message
+      end
+    end
   end  
 end

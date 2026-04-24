@@ -8,6 +8,10 @@ module AresMUSH
         Places.clear_place(char, current_room)
       end
       
+      if (!room)
+        raise "Tried to move character to non-existent destination: #{char.name}"
+      end
+      
       if (exit_name)
         current_room.emit_ooc t('rooms.char_has_left_through_exit', :name => char.name, :room => room.name, :exit => exit_name)
       else
@@ -35,17 +39,17 @@ module AresMUSH
     end
 
     def self.send_to_ooc_room(char)
-      client = Login.find_client(char)
+      client = Login.find_game_client(char)
       Rooms.move_to(client, char, Game.master.ooc_room)
     end
     
     def self.send_to_home(char)
-      client = Login.find_client(char)
+      client = Login.find_game_client(char)
       Rooms.move_to(client, char, char.room_home || Game.master.ooc_room)
     end
     
     def self.send_to_work(char)
-      client = Login.find_client(char)
+      client = Login.find_game_client(char)
       Rooms.move_to(client, char, char.room_work || Game.master.ooc_room)
     end
       

@@ -72,7 +72,6 @@ module AresMUSH
     def self.unlink_handle(char)
       return if !AresCentral.is_registered?
       return if !char.handle
-      char.handle.delete
       
       AresMUSH.with_error_handling(nil, "Unlinking handle with AresCentral.") do
         connector = AresCentral::AresConnector.new
@@ -82,8 +81,9 @@ module AresMUSH
         response = connector.unlink_handle(char.handle.handle_id, char.name, char.id)
           
         if (!response.is_success?)
-          Global.logger.error "Handle unlink failed: #{response.error_str}"
+          Global.logger.warn "Handle unlink failed: #{response.error_str}"
         end
+        char.handle.delete
       end
     end  
     

@@ -6,7 +6,7 @@ aliases:
 ---
 # Changing Your Password
 
-You can change your password at any time.
+You can change your password at any time through the web portal [Account](/account) page or the password command.
 
 `password <oldpassword>=<newpassword>` - Changes your password.
   
@@ -15,4 +15,4 @@ You can change your password at any time.
 If you forget your password:
 
 - If you have a player handle (see [Handles](/help/handles)), you can create a temporary password at AresCentral.  
-- If you don't have a player handle, you'll have to log in with a guest character using the `tour` command and contact an admin for help.
+- If you don't have a player handle, you'll have to log in with a temporary character using the `tour` command and contact an admin for help.

@@ -27,10 +27,17 @@ module AresMUSH
       return false if self.idled_out?
       return false if self.is_admin?
       return false if self.is_playerbit?
-      return false if self.is_guest?
       return false if self.is_npc?
       return false if self.on_roster?
       return true
+    end
+    
+    def is_active_or_npc?
+      self.is_active? || (self.is_npc? && !self.idled_out?)
+    end
+    
+    def is_active_or_roster?
+      self.is_active? || self.on_roster?
     end
   end
 end

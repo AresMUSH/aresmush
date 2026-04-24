@@ -26,6 +26,8 @@ module AresMUSH
     reference :handle, "AresMUSH::Handle"
     reference :read_tracker, "AresMUSH::ReadTracker"
     
+    collection :blocks, "AresMUSH::BlockRecord", :owner
+    
     set :roles, "AresMUSH::Role"
     
     before_save :save_upcase
@@ -39,7 +41,7 @@ module AresMUSH
     # -----------------------------------
     
     def self.find_any_by_name(name_or_id)
-      return [] if !name_or_id
+      return [] if name_or_id.blank?
             
       if (name_or_id.start_with?("#"))
         return find_any_by_id(name_or_id.upcase)
@@ -56,7 +58,9 @@ module AresMUSH
       end
     end
 
-    def self.find_one_by_name(name_or_id)      
+    def self.find_one_by_name(name_or_id)
+      return nil if name_or_id.blank?
+         
       char = Character[name_or_id]
       return char if char
       
@@ -146,6 +150,13 @@ module AresMUSH
       
       return display_name
     end  
+    
+    def is_blocked?(target, block_type)
+      return false if !target
+      
+      self.blocks.select { |b| b.block_type == block_type }
+         .any? { |b| b.blocked == target }
+    end
     
     def self.random_link_code
       (0...8).map { (33 + rand(94)).chr }.join

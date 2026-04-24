@@ -29,7 +29,7 @@ You can display image files in a gallery on the bottom of your web profile page.
 1. Click the "Files" button at the bottom of the profile page and then click "Choose Files".  
 2. Choose the files to upload and select the "Upload" button for each.
 
-> **Tip:** Please be considerate and don't upload giant hi-res images - 1200x600px is the max you should need.  You can resize your images using free online tools like [BeFunky](https://www.befunky.com/create/).  Games may set limits on the size of individual image files, and the total size of all files on your page. 
+> **Tip:** Please be considerate and don't upload giant hi-res images - 1000px on any dimension is the max you should need.  Games may set limits on the size of individual image files, and the total size of all files on your page. 
 
 By default, your gallery will show all images you upload, in alphabetical order.  If you want to customize this:
 
@@ -48,7 +48,9 @@ Your profile also tracks IC relationships your character has.  (For OOC friends,
 
 > **Note:**  All relationships are public and can be seen by anyone.  Please don't get bent out of shape if someone has an unflattering or inaccurate opinion of your character.  It's just IC.
 
-Relationships can be organized into categories, like "Acquaintances", "Friends", etc.  You can set the order that the categories are displayed.  On the web portal, you can also edit the order of individual relationships within a category.
+Relationships can be organized into categories, like "Acquaintances", "Friends", etc.  You can separate category names with a comma to have someone show up in multiple categories (e.g., "Besties,Coworkers").
+
+You can set the order that the relationship categories are displayed using either the `relationships/order` command or the web portal.  On the web portal, you can also edit the order of individual relationships within a category.
 
 ## Command Reference
 

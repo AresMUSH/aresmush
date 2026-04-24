@@ -15,6 +15,7 @@ en:
         channel_renamed: "Channel %{old_name} is now named %{new_name}."
         roles_set: "Channel roles updated."
         default_alias_set: "Channel alias set to %{alias}."
+        must_have_default_alias: "You must specify a default channel alias."
         invalid_channel_role: "%{name} is not a valid channel role."
         title_set: "Channel title set."
         roles_changed_by: "%{name} has changed the permissions on this channel."
@@ -59,6 +60,9 @@ en:
         channel_reported_body: "%{reporter} has reported the following conversation on the %{name} channel.%R%RReason:%R"
         channel_reported_title: "Channel Reported"
         channel_reported: "Thank you.  A report has been created using the channel log as evidence."
+        
+        channel_flagged_body: "%{reporter} has flagged the following message on the %{name} channel. It is hidden from non-admins on the channel."
+        channel_flagged_title: "Chat Message Flagged"
         
         char_added_to_channel: "You add %{char} to channel %{channel}."
         char_removed_from_channel: "You remove %{char} from channel %{channel}."

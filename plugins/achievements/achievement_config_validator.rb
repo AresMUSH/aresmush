@@ -15,6 +15,14 @@ module AresMUSH
             @validator.add_error "Invalid achievement key: #{a} - lowercase letters, numbers, _ and - only."
           end
         end
+        
+        if (!@validator.config["notification_category"].blank?)
+          @validator.check_forum_exists("notification_category")
+        end
+        
+        @validator.check_cron("notification_cron")
+        @validator.require_int("notification_days", 0, 60)
+        
         @validator.errors
       end
     end

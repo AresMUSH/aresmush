@@ -9,36 +9,26 @@ module AresMUSH
       return tos_text.blank? ? nil : tos_text
     end
     
-    # Checks to see if either the IP or hostname is a match with the specified string.
-    # For IP we check the first few numbers because they're most meaningful.  
-    # For the hostname, it's reversed.
+    # Moved to engine - method stays for backwards compatibility
     def self.is_site_match?(char_ip, char_host, ip, hostname)
-      host_search = "#{hostname}".chars.last(20).join.to_s.downcase
-      ip_search = "#{ip}".chars.first(10).join.to_s
-
-      ip = char_ip || ""
-      host = char_host || ""
-      
-      return true if !ip_search.blank? && ip.include?(ip_search)
-      return true if !host_search.blank? && host.include?(host_search)
-      return false
+      Client.is_site_match?(char_ip, char_host, ip, hostname)
     end
     
     def self.is_online?(char)
-      !!Login.find_client(char)
+      !!Login.find_game_client(char)
     end
     
     def self.is_online_or_on_web?(char)
-      Login.find_client(char) || Login.find_web_client(char)
+      Login.find_game_client(char) || Login.find_web_client(char)
     end
     
     def self.is_portal_only?(char)
-      !Login.find_client(char) && Login.find_web_client(char)
+      !Login.find_game_client(char) && Login.find_web_client(char)
     end
     
-    def self.find_client(char)
+    def self.find_game_client(char)
       return nil if !char
-      Global.client_monitor.find_client(char)
+      Global.client_monitor.find_game_client(char)
     end
     
     def self.find_web_client(char)
@@ -47,14 +37,14 @@ module AresMUSH
     end
         
     def self.emit_if_logged_in(char, message)
-      client = find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client.emit message
       end
     end
     
     def self.emit_ooc_if_logged_in(char, message)
-      client = find_client(char)
+      client = Login.find_game_client(char)
       if (client)
         client.emit_ooc message
       end
@@ -62,28 +52,29 @@ module AresMUSH
       
     def self.connect_client_after_login(char, client)
       # Handle reconnect
-      existing_client = Login.find_client(char)
+      existing_client = Login.find_game_client(char)
       client.char_id = char.id
       
       if (existing_client)
         existing_client.emit_ooc t('login.disconnected_by_reconnect')
         existing_client.disconnect
 
+        # Give the disconnect a second to clear first.
         Global.dispatcher.queue_timer(1, "Announce Connection", client) { announce_connection(client, char) }
       else
         announce_connection(client, char)
       end
     end
-      
+    
     def self.set_random_password(char)
-      charset = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
-      password = (0...15).map{ charset.to_a[rand(charset.size)] }.join
+      password = Login.generate_random_password
       char.change_password(password)
-      char.update(login_api_token: '')
-      char.update(login_api_token_expiry: Time.now - 86400*5)
+      char.update(login_failures: 0)
+      Login.expire_web_login(char)
       password
     end
     
+    # Creates a bell notification - does NOT emit any messages to online chars
     def self.notify(char, type, message, reference_id, data = "", notify_if_online = true)
       unless notify_if_online
         status = Website.activity_status(char)
@@ -105,10 +96,7 @@ module AresMUSH
       else
         LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true, timestamp: Time.now)
       end
-      unread_count = Login.count_unread_notifs_for_all_alts(char)
-      Global.client_monitor.notify_web_clients(:notification_update, "#{unread_count}", true) do |c|
-        c && AresCentral.is_alt?(c, char)
-      end
+      Login.update_notification_count(char)
     end
     
     def self.mark_notices_read(char, type, reference_id = nil)
@@ -123,9 +111,12 @@ module AresMUSH
       notices.each do |n|
         n.update(is_unread: false)
       end
+      
+      Login.update_notification_count(char)
     end
     
     def self.count_unread_notifs_for_all_alts(char)
+      return if !char
       count = 0
       AresCentral.alts(char).each do |c|
         count += c.unread_notifications.count
@@ -133,7 +124,19 @@ module AresMUSH
       count
     end
     
+    def self.update_notification_count(char)
+      return if !char
+
+      unread_count = Login.count_unread_notifs_for_all_alts(char)
+      Global.client_monitor.notify_web_clients(:notification_update, "#{unread_count}", true) do |c|
+        c && AresCentral.is_alt?(c, char)
+      end
+    end
+    
     def self.build_web_site_info(char, viewer)
+      # Limit to admins
+      return {} if !viewer.is_admin?
+      
       matches = Character.all.select { |c| Login.is_site_match?(c.last_ip, 
         c.last_hostname, 
         char.last_ip, 
@@ -143,7 +146,8 @@ module AresMUSH
         last_online: OOCTime.local_long_timestr(viewer, char.last_on),
         last_ip: char.last_ip,
         last_hostname: char.last_hostname,
-        findsite: findsite
+        findsite: findsite,
+        email: char.login_email
       }
     end
     
@@ -152,6 +156,19 @@ module AresMUSH
       return false if !actor
       not_new = actor.has_permission?("manage_login") || actor.is_approved?
       actor.has_permission?("boot") && not_new
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      {
+        show_pw_tab: Login.can_manage_login?(viewer)
+      }
+    end
+    
+    def self.web_last_online_update(char, request)
+      # 30 minutes keeps idle times minimal without updating a zillion times for each web request
+      if (Time.now - char.last_on > 60 * 30)
+        Login.update_site_info(request.ip_addr, request.hostname, char)
+      end
     end
   end
 end

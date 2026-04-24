@@ -2,8 +2,8 @@ module AresMUSH
   module Chargen
     class ChargenResetRequestHandler
       def handle(request)
-        chargen_data = request.args[:char]
-        id = request.args[:id]
+        chargen_data = request.args['char']
+        id = request.args['id']
         enactor = request.enactor
 
         error = Website.check_login(request)

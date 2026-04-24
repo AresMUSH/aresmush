@@ -2,8 +2,8 @@ module AresMUSH
   module Website
     class GetWikiPageSourceRequestHandler
       def handle(request)
-        page_id = request.args[:page_id]
-        version_id = request.args[:version_id]
+        page_id = request.args['page_id']
+        version_id = request.args['version_id']
         enactor = request.enactor
         
         error = Website.check_login(request, true)

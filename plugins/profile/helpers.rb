@@ -1,8 +1,21 @@
 module AresMUSH
   module Profile
     def self.relationships_by_category(char)
-      relations = char.relationships.group_by { |name, data| data['category'] }
-      relations.sort_by { |category, relations| Profile.category_order(char, category) }
+      groups = {}
+      char.relationships.each do |name, rel|
+        categories = (rel['category'] || "None").split(",")
+        categories.each do |cat|
+          if (!groups.has_key?(cat))
+            groups[cat] = {}
+          end
+          groups[cat][name] = rel
+        end
+      end
+      groups.sort_by { |category, relations| Profile.category_order(char, category) }
+
+      
+      #relations = char.relationships.group_by { |name, data| data['category'] }
+      #relations.sort_by { |category, relations| Profile.category_order(char, category) }
     end
     
     def self.category_order(char, category)
@@ -46,6 +59,39 @@ module AresMUSH
       old_folder = File.join(AresMUSH.website_uploads_path, Profile.character_page_folder(model))
       new_folder = File.join(AresMUSH.website_uploads_path, Website::FilenameSanitizer.sanitize(new_name.downcase))
       FileUtils.mv(old_folder, new_folder)
+    end
+    
+    def self.export_wiki_char(model)
+      if (model.wiki_char_backup)
+        return t('profile.wiki_backup_avail', :path => model.wiki_char_backup.download_path)
+      end
+      
+      if (Time.now - (model.profile_last_backup || 0) < 86400)
+        return t('profile.wiki_backup_too_soon')
+      end
+          
+      model.update(profile_last_backup: Time.now)
+      
+      Global.dispatcher.queue_timer(1, "Wiki backup #{model.name}", nil) do
+        error = Website.export_char(model)
+        if (error)
+          model.update(profile_last_backup: nil)
+          Login.notify model, :backup, t('profile.wiki_backup_failed', :error => error), ''
+        else
+          message = t('profile.wiki_backup_created', :path => model.wiki_char_backup.download_path, :hours => WikiCharBackup.retention_hours)
+          Login.notify model, :backup, message, ''
+          Login.emit_if_logged_in(model, message)
+        end
+      end
+      
+      return nil
+    end
+    
+    def self.reset_wiki_backup(char)
+      if (char.wiki_char_backup)
+        char.wiki_char_backup.delete
+      end
+      char.update(profile_last_backup: nil)
     end
     
     def self.get_profile_status_message(char)

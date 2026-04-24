@@ -7,8 +7,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        id = request.args[:id]
-        unread = (request.args[:unread] || "").to_bool
+        id = request.args['id']
+        unread = (request.args['unread'] || "").to_bool
         
         notice = LoginNotice[id]
         if (!notice.can_view?(enactor))
@@ -16,6 +16,8 @@ module AresMUSH
         end
         
         notice.update(is_unread: unread)
+        
+        Login.update_notification_count(enactor)
         
         {}
       end

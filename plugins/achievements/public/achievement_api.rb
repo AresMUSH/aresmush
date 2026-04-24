@@ -7,7 +7,7 @@ module AresMUSH
     
     def self.award_achievement(char, name, count = 0)
       return nil if !Achievements.is_enabled?
-      return nil if char.is_admin? || char.is_npc? || char.is_guest?
+      return nil if char.is_admin? || char.is_npc?
       
       achievement_details = Achievements.achievement_data(name)          
       if (!achievement_details)
@@ -35,35 +35,17 @@ module AresMUSH
         end
 
         Login.notify(char, :achievement, t('achievements.achievement_noification_message', :message => message), achievement.id)
-        
-        notification = t('achievements.achievement_earned', :name => char.name, :message => message)
-        Channels.announce_notification(notification)
       end
       return nil
     end
     
     def self.achievements_list(char)
-      data = {}
+      data = {}      
 
       char.achievements.each do |a|
         data[a.name] = { count: 1, type: a.type, message: a.message }
       end
 
-      if (char.is_playerbit?)
-        alts = AresCentral.alts(char)
-        alts = alts.concat Character.all.select { |c| c.content_tags.include?("player:#{char.name}".downcase)}
-        
-        alts.each do |c|
-          c.achievements.each do |a|
-            if (data[a.name])
-              count = data[a.name][:count]
-              data[a.name] = { count: count + 1, type: a.type, message: a.message }
-            else
-              data[a.name] = { count: 1, type: a.type, message: a.message }
-            end
-          end
-        end
-      end
       data.sort_by { |name, data| [ data[:type], data[:message] ] }
     end
    
@@ -85,6 +67,13 @@ module AresMUSH
       {
         achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil
       }
+    end
+    
+    def self.export_achievements(char)
+      achievements = Achievements.achievements_list(char)
+      outfits = achievements.map { |name, data| "#{name}: #{Achievements.achievement_message(data)}"}.join("%R")
+      template = BorderedDisplayTemplate.new outfits, t('achievements.achievements_title', :name => char.name)
+      template.render
     end
   end
 end

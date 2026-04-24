@@ -6,8 +6,8 @@ module AresMUSH
     attribute :folder
     attribute :description
     
-    index :name
     index :folder
+    index :name
     
     reference :uploaded_by, "AresMUSH::Character"
     

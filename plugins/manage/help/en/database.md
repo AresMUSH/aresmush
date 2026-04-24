@@ -3,8 +3,6 @@ toc: ~admin~ Managing the Game
 summary: Examining and manipulating the database.
 aliases:
 - examine
-- rename
-- name
 - destroy
 - find
 - search

@@ -20,7 +20,7 @@ module AresMUSH
         allow(@room_client).to receive(:room) { @room }
         allow(@room_char).to receive(:room) { @room }
         allow(@room_char).to receive(:name) { "Bob" }
-        allow(client_monitor).to receive(:logged_in) { { @room_client => @room_char } }
+        allow(client_monitor).to receive(:client_to_char_map) { { @room_client => @room_char } }
         allow(notifier).to receive(:notify_ooc)
         allow(Login).to receive(:wants_announce) { false }
         allow(Login).to receive(:is_online?) { true }
@@ -29,7 +29,6 @@ module AresMUSH
         @event_client = double
         allow(@event_char).to receive(:name) { "Bob" }
         allow(@event_char).to receive(:room) { nil }    
-        allow(@event_char).to receive(:is_guest?) { false }
         allow(@event_client).to receive(:ip_addr) { "IP" }
         allow(@event_client).to receive(:hostname) { "HOST" }
         @event_char_id = 111
@@ -71,30 +70,11 @@ module AresMUSH
           expect(@room).to receive(:emit_success).with("announce_char_connected_here")
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char_id)
         end
-        
-        it "should check for suspect site on the first login" do
-          allow(@event_char).to receive(:last_ip) { nil }
-          expect(Login).to receive(:check_for_suspect).with(@event_char) {}
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
-        end
-
-        it "should not check for suspect site on subsequent login" do
-          expect(Login).to_not receive(:check_for_suspect).with(@event_char) {}
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
-        end
-        
-        it "should not show events for a guest" do
-          expect(@event_char).to receive(:is_guest?) { true }
-          expect(dispatcher).to_not receive(:queue_timer)
-          @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
-        end
-        
       end
       
       describe :on_char_created_event do
         before do
           allow(Login).to receive(:update_site_info) {}
-          allow(Login).to receive(:check_for_suspect) {}
           @login_events = CharCreatedEventHandler.new
         end
         

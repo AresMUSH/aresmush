@@ -20,6 +20,14 @@ module AresMUSH
         @validator.require_nonblank_text('website_code_path')
         @validator.require_hash('wiki_aliases')
         @validator.require_boolean('hide_searchbox')
+        @validator.require_list("public_wiki_folders")
+        @validator.require_text('default_public_folder')
+        
+        recaptcha = AresMUSH::Website::RecaptchaHelper.new
+        turnstile = AresMUSH::Website::TurnstileHelper.new
+        if (recaptcha.is_enabled? && turnstile.is_enabled?)
+          @validator.add_error "website: Both recaptcha and turnstile are enabled. Please pick one."
+        end
         
         begin
           gallery_group = Global.read_config('website', 'character_gallery_group')
@@ -32,6 +40,12 @@ module AresMUSH
           group = Demographics.get_group(gallery_subgroup)
           if (!gallery_subgroup.blank? && !group)
             @validator.add_error "website:character_gallery_subgroup #{gallery_subgroup} is not a valid group."
+          end
+          
+          public_folders = Global.read_config("website", "public_wiki_folders") || []
+          default_public_folder = Global.read_config("website", "default_public_folder")
+          if (!public_folders.include?(default_public_folder))
+            @validator.add_error "website:default_public_folder is not one of the public_wiki_folders"
           end
           
         rescue Exception => ex

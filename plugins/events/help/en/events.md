@@ -21,6 +21,7 @@ The events system is an in-game calendar that lets you schedule events.
 `event/edit <#>` - Grabs the current event into your edit buffer (see help edit)
 `event/update <#>=<title>/<date and time>/<description>`
 `event/delete <#>`
+`event/scene <#>` - Creates a scene for the event and invites everyone who signed up to join it. Note: The scene will be PUBLIC, in a temp room, and the event participants will still get the choice whether to join or decline the invitation."
 
 ## Signing Up For Events
 

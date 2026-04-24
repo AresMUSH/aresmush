@@ -4,7 +4,8 @@ module AresMUSH
       def handle(request)
         
         enactor = request.enactor
-        char = Character[request.args[:id]]
+        char = Character[request.args['id']]
+        tags = (request.args['tags'] || "").split(" ")
 
         error = Website.check_login(request)
         return error if error
@@ -25,18 +26,18 @@ module AresMUSH
           return { error: t('profile.not_yet_approved') }
         end
         
-        gallery = (request.args[:profile_gallery] || '').split.map { |g| g.downcase }
-        profile_image = build_image_path(char, request.args[:profile_image])
-        profile_icon = build_image_path(char, request.args[:profile_icon])
+        gallery = (request.args['profile_gallery'] || '').split.map { |g| g.downcase }
+        profile_image = build_image_path(char, request.args['profile_image'])
+        profile_icon = build_image_path(char, request.args['profile_icon'])
         char.update(profile_image: profile_image)
         char.update(profile_icon: profile_icon)
         char.update(profile_gallery: gallery)
-        char.update(profile_order: (request.args[:profile_order] || "").split(',').map { |o| o.strip })
+        char.update(profile_order: (request.args['profile_order'] || "").split(',').map { |o| o.strip })
         
-        Website.update_tags(char, request.args[:tags])
+        Website.update_tags(char, tags)
         
         relationships = {}
-        (request.args[:relationships] || {}).each do |name, data|
+        (request.args['relationships'] || {}).each do |name, data|
           relationships[name] = {
             'relationship' => Website.format_input_for_mush(data['text']),
             'order' => data['order'].blank? ? nil : data['order'].to_i,
@@ -48,7 +49,7 @@ module AresMUSH
         
         char.update(relationships: relationships)
         
-        relation_category_order = (request.args[:relationships_category_order] || "").split(',').map { |o| o.strip }
+        relation_category_order = (request.args['relationships_category_order'] || "").split(',').map { |o| o.strip }
         char.update(relationships_category_order: relation_category_order)
         
               
@@ -76,6 +77,13 @@ module AresMUSH
           end
         end
         
+        if FS3Skills.is_enabled?
+          error = FS3Skills.save_web_profile_data(char, enactor, request.args)
+          if (error)
+            return { error: error }
+          end
+        end
+        
         error = Roles.save_web_profile_data(char, enactor, request.args)
         if (error)
           return { error: error }
@@ -88,7 +96,7 @@ module AresMUSH
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}
-        (request.args[:profile] || {}).each do |name, text|
+        (request.args['profile'] || {}).each do |name, text|
           profile[name.titleize] = Website.format_input_for_mush(text)
         end
         char.set_profile(profile, enactor)

@@ -9,7 +9,11 @@ module AresMUSH
       end
 
       def handle
-        Website.rebuild_css
+        error = Website.rebuild_css
+        if (error)
+          client.emit_failure error
+          return
+        end
         client.emit_success t('manage.styles_loaded')
       end
       

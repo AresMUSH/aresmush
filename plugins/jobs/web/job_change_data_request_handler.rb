@@ -3,9 +3,9 @@ module AresMUSH
     class JobChangeDataRequestHandler
       def handle(request)
         enactor = request.enactor
-        job = Job[request.args[:id]]
-      	type = (request.args[:type] || "").downcase
-        data = (request.args[:data] || "").upcase
+        job = Job[request.args['id']]
+      	type = (request.args['type'] || "").downcase
+        data = (request.args['data'] || "").upcase
         
         error = Website.check_login(request)
         return error if error

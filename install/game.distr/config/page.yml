@@ -3,8 +3,6 @@ page:
   page_color: "%xg"
   shortcuts:
     p: page
-    page/lock: page/ignore
-    pagelock: page/ignore
     page/log: page/review
     tell: page
     pm: page

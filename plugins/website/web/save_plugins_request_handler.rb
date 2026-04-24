@@ -3,7 +3,7 @@ module AresMUSH
     class SavePluginsRequestHandler
       def handle(request)
         enactor = request.enactor
-        disabled_plugins = request.args[:disabled_plugins] || []
+        disabled_plugins = request.args['disabled_plugins'] || []
         
         error = Website.check_login(request)
         return error if error

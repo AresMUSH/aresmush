@@ -75,12 +75,15 @@ module AresMUSH
       @connection.send_raw "#{msg}\r\n"
     end
     
-    def web_notify(type, message, is_data)
-      @connection.web_notify type, message, is_data
+    def send_web_notification(type, message, is_data)
+      @connection.send_web_notification type, message, is_data
     end
     
     def idle_secs
-      (Time.now - self.last_activity).to_i
+      # Web connections don't receive traffic, so last_activity isn't very useful.
+      last_time = self.is_web_client? ? @connection.connected_at : self.last_activity
+      
+      (Time.now - last_time).to_i
     end
     
     def connected_secs
@@ -93,18 +96,14 @@ module AresMUSH
       end
     end
     
-    def find_char
-      @char_id ? Character[@char_id] : nil
-    end
-    
+    # Specifically means logged in via game client
     def logged_in?
-      @char_id
+      @char_id && !self.is_web_client?
     end
     
     def reset_program
       @program = {}
     end
-    
     
     # @engineinternal true
     def handle_input(input)
@@ -135,12 +134,15 @@ module AresMUSH
     # Do not cache the character object!  It will get stale and out of date.
     # @engineinternal true
     def char
-      find_char
-    end
+      @char_id ? Character[@char_id] : nil
+    end 
     
-    # @engineinternal true
-    def web_char_id
-      @connection.web_char_id
+    def character
+      self.char
+    end   
+    
+    def is_web_client?
+      @connection.is_web_connection?
     end
     
     def self.lookup_hostname(ip)
@@ -153,6 +155,21 @@ module AresMUSH
       rescue
         return ""
       end
+    end
+    
+    # Checks to see if either the IP or hostname is a match with the specified string.
+    # For IP we check the first few numbers because they're most meaningful.  
+    # For the hostname, it's reversed.
+    def self.is_site_match?(char_ip, char_host, ip_to_match, hostname_to_match)
+      host_search = "#{hostname_to_match}".chars.last(20).join.to_s.downcase
+      ip_search = "#{ip_to_match}".chars.first(10).join.to_s
+
+      ip = char_ip || ""
+      host = char_host || ""
+      
+      return true if !ip_search.blank? && ip.include?(ip_search)
+      return true if !host_search.blank? && host.include?(host_search)
+      return false
     end
     
   end

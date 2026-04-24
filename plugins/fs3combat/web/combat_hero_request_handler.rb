@@ -2,9 +2,9 @@ module AresMUSH
   module FS3Combat
     class CombatHeroRequestHandler
       def handle(request)
-        combat_id = request.args[:combat_id]
-        sender_name = request.args[:sender]
-        command_text = request.args[:command]
+        combat_id = request.args['combat_id']
+        sender_name = request.args['sender']
+        command_text = request.args['command']
         enactor = request.enactor
                 
         error = Website.check_login(request)

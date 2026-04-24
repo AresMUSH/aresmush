@@ -2,13 +2,15 @@
 <% if paginator.out_of_bounds? %>
 <%= paginator.out_of_bounds_msg %>
 <% else %>
-%xh<%= t('scenes.scenes_title')%>%xn 
+%xh<%= t(title) %>%xn 
 
 <% paginator.page_items.each do |scene| %>
 <%= status(scene) %> <%= scene.id %> - <<%= privacy(scene) %>> <%= scene.title %> (<%= organizer(scene) %> / <%= characters(scene) %>)
 <% end %>
 
+<% if show_legend %>
 (X) = <%= t('scenes.in_trash') %>  u = <%= t('scenes.unshared') %>
+<% end %>
 <%= paginator.page_footer %>
 <% end %>
 <%= footer %>

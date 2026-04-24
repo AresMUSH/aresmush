@@ -3,7 +3,7 @@ module AresMUSH
     class GetSceneLocationsHandler
       def handle(request)
 
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
       
         error = Website.check_login(request, true)

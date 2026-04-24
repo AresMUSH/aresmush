@@ -3,8 +3,10 @@ login:
   activity_cron:
     minute:
     - 0
-  allow_creation: true
+  allow_game_registration: true
+  allow_game_tour: true
   allow_web_registration: true
+  allow_web_tour: true
   blacklist_cron:
     day:
     - 1
@@ -13,9 +15,8 @@ login:
     - 3
     minute:
     - 0
-  creation_not_allowed_message: ''
-  guest_disabled_message: ''
-  guest_role: guest
+  boot_timeout_seconds: 300
+  disable_nonadmin_logins: false
   login_not_allowed_message: ''
   notice_cleanup_cron:
     day:
@@ -25,7 +26,11 @@ login:
     minute:
     - 19
   notice_timeout_days: 60
+  permissions:
+    login: Able to log in.
+    manage_login: Can access login-related admin tools like resetting someone's password.
   portal_requires_registration: false
+  registration_not_allowed_message: ''
   shortcuts:
     logout: quit
     con: connect
@@ -35,9 +40,10 @@ login:
     password/change: password/set
     ban/delete: ban/remove
     notice: notices
-  permissions:
-    login: Able to log in.
-    manage_login: Can access login-related admin tools like resetting someone's password.
-  random_guest_selection: false
-  boot_timeout_seconds: 300
-  disable_nonadmin_logins: false
+  tour_not_allowed_message: ''
+  tour_welcome_message: |-
+    Welcome to our game. We hope you enjoy your stay!
+
+    Your temporary name is %{name} and password is %{password}
+
+    If you wish to keep this character, you can rename them and change their password. See `help tour` for details. Otherwise, just log out and the character will be recycled.

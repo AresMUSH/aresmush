@@ -42,6 +42,10 @@ module AresMUSH
       Global.read_config("fs3skills", "background_skills")
     end
     
+    def self.action_specialties(skill)
+      FS3Skills.get_ability_specialties(FS3Skills.action_skills, skill)
+    end
+    
     def self.get_ability_desc(metadata_list, name)
       entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['desc'] : nil

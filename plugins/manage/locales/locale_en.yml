@@ -51,8 +51,9 @@ en:
         object_destroyed: "%{name} destroyed."
         confirm_object_destroy: "You want to delete %{type} %xg%{name} (%{dbref}).%xn%R%R%{examine}%R%R%xrTHIS CANNOT BE UNDONE!%xn%RAre you sure?  If so, type: %xhdestroy/confirm%xn"
         cannot_destroy_online: You can't destroy someone when they're online.
-        room_being_destroyed: "This room is being destroyed.  Moving you to a safer spot."
+        room_being_cleared: "This room is being cleared.  Moving you to a safer spot."
         cannot_destroy_special_rooms: "You can't destroy that room.  It's special."
+        cannot_destroy_room_with_scene: "You can't destroy a room with an active scene. Stop the scene first."
         cannot_destroy_special_chars: "You can't destroy that character.  They're special."
         no_destroy_in_progress: "You weren't trying to destroy anything."
         cannot_destroy_in_combat: "You can't destroy a character who is in combat.  Make them leave combat first."
@@ -68,10 +69,12 @@ en:
         
         announce: "%xh%xg%%%% Game Announcement:%xn %{message}"
         
-        version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttp://www.aresmush.com"
+        version: "AresMUSH version %{version}%rCopyright 2013 by Faraday%Rhttps://aresmush.com"
         migrations: "Applied Migrations:"
         server_info: "Server Information"
-        version_title: "Version:"
+        server_version_title: "Server Version:"
+        webportal_version_title: "Web Portal Version:"
+        
         characters_title: "Characters:"
         rooms_title: "Rooms:"
         exits_title: "Exits:"
@@ -108,3 +111,11 @@ en:
         
         mismatched_versions: "Your game and webportal versions are mismatched.  Try reloading the page or clearing your browser cache. If the problem persists, there may be an upgrade issue."
         db_save_triggered: "Database save initiated."
+        
+        already_blocked: "%{type} block already exists for %{name}."
+        not_blocked: "No %{type} block found for %{name}."
+        block_added: "Added %{type} block for %{name}."
+        block_removed: "Removed %{type} block for %{name}."
+        blocks_list_header: "Blocked Character                                            Block Type"
+        invalid_block_type: "Invalid block type. Try one of these: %{types}."
+        block_types: "Available Block Types:"

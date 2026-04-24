@@ -104,6 +104,43 @@ module AresMUSH
 
 
       end 
+      
+      describe :clear_chars_from_room do
+        before do
+          @target = double
+          
+          # Stub out welcome room
+          @welcome_room = double
+          allow(@game).to receive(:welcome_room) { @welcome_room }
+
+          @char_in_room = double
+          allow(@target).to receive(:characters) { [@char_in_room] }
+          
+          stub_translate_for_testing          
+        end
+    
+        it "should tell an online char they're being moved and move them" do
+          # Match up a client to the character
+          client_in_room = double
+          allow(Login).to receive(:find_game_client).with(@char_in_room) { client_in_room }
+          expect(client_in_room).to receive(:emit_ooc).with("manage.room_being_cleared")
+          expect(Rooms).to receive(:send_to_welcome_room).with(client_in_room, @char_in_room)
+          Rooms.clear_chars_from_room(@target)
+        end
+      
+        it "should move disconnected char silently" do
+          # Match up a client to the character
+          allow(Login).to receive(:find_game_client).with(@char_in_room) { nil }
+          expect(Rooms).to receive(:send_to_welcome_room).with(nil, @char_in_room)
+          Rooms.clear_chars_from_room(@target)
+        end
+    
+        it "should move them to the welcome room" do
+          allow(Login).to receive(:find_game_client).with(@char_in_room) { nil }
+          expect(Rooms).to receive(:send_to_welcome_room).with(nil, @char_in_room)
+          Rooms.clear_chars_from_room(@target)
+        end
+      end
     end   
   end
 end

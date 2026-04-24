@@ -31,7 +31,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name)
-      nil
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
     end
 
     def self.get_web_request_handler(request)

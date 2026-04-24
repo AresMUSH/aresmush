@@ -2,10 +2,10 @@ module AresMUSH
   module Rooms
     class AreaCreateRequestHandler
       def handle(request)
-        name = request.args[:name]
-        desc = request.args[:description]
-        summary = request.args[:summary]
-        parent_id = request.args[:parent_id]
+        name = request.args['name']
+        desc = request.args['description']
+        summary = request.args['summary']
+        parent_id = request.args['parent_id']
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -32,7 +32,7 @@ module AresMUSH
         end
         
         if (name.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name") }
         end
 
         area = Area.create(name: name, 

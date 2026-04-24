@@ -3,6 +3,9 @@ en:
         scene_set: "You create a scene set in this room.  Please remember to clear it when the scene is over."
         scene_set_cleared: "You clear the scene set in this room."
         scenes_title: "Scenes"
+        scenes_title_unshared: "Unshared Scenes"
+        scenes_title_profile: "Profile Scenes"
+        scenes_title_all: "All Scenes"
         date_title: "IC Date:"
         scene_title: "Title: " 
         scene_summary: "Summary: "
@@ -80,7 +83,7 @@ en:
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."
         no_scene_room: "That scene doesn't have a room to join.  That can happen if it's created from the web portal."
-        log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
+        log_list_short_footer: "Only the last few poses are shown.  Use `scene/repose <#>` to see more, or `scene/log` for the full cleaned log."
         scene_active_footer: "Scene views: scenes/open, scenes/all, scenes/unshared."
 
         log_shared: "The log has been shared, and will now appear on the web portal."
@@ -110,6 +113,7 @@ en:
         pose_threeper_notice: "3-per pose order is in effect."
         pose_threeper_nudge: "You can pose again. 3-per pose order is in effect."
         pose_threeper_nudge_other_scene: "You can pose again in scene %{scene}. 3-per pose order is in effect."
+        pose_threeper_your_turn: "You can pose again."
         pose_your_turn: "It's your turn to pose."
         pose_your_turn_other_scene: "It's your turn to pose in scene %{scene}."
         next_pose_offline: "It's %{name}'s turn to pose but they're not here.  Unless they're playing from the web, you probably want to drop them from pose order using pose/drop <name>."
@@ -151,6 +155,7 @@ en:
         web_scene_started: "You start a new scene (%{num}).  You can join the scene using `scene/join %{num}` or find it on the web portal's active scenes page."
         
         new_scene_activity: "New activity in scene %{id}."
+        new_scene_activity_your_turn: "New activity in scene %{id}. It's your turn to pose."
         scene_updated: "%{title} updated."
         scene_reported: "Thank you.  A report has been created using the scene log as evidence."
         
@@ -174,3 +179,6 @@ en:
         link_removed: "Related scene link removed."
         cant_link_unshared_scenes: "Both scenes must be shared before they can be linked."
         no_recursive_link: "You can't link a scene to itself."
+        
+        total_scenes_title: "Total Scenes:"
+        scene_stats_pacing_title: "Scene Pacing"

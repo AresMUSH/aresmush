@@ -133,7 +133,7 @@ module AresMUSH
     end
     
     def participant_names
-      self.participants.sort { |p| p.name }.map { |p| p.name }
+      self.participants.map { |p| p.name }.sort
     end
     
     def find_link(other_scene)

@@ -2,11 +2,11 @@ module AresMUSH
   module Who
     def self.all_online
       who = []
-      Global.client_monitor.logged_in.each do |client, char|
+      Global.client_monitor.client_to_char_map.each do |client, char|
         who << char
       end
       Global.client_monitor.web_clients.each do |client|
-        char = Character[client.web_char_id]
+        char = client.character
         next if !char
         who << char
       end

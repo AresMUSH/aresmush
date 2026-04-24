@@ -3,7 +3,7 @@ module AresMUSH
     class RoleChangedEventHandler
       def on_event(event)
         char = Character[event.char_id]
-        char.update(login_api_token: nil)
+        Login.expire_web_login(char)
       end
     end
   end

@@ -32,8 +32,12 @@ channels:
     channel/add: channel/create
     channel/on: channel/join
     channel/off: channel/leave
+    channel/recall: channel/review
     addcom: channel/join
     delcom: channel/leave
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "<"
+  discord_name_subs:
+    wumpus: wumpu5
+    nelly: nell4

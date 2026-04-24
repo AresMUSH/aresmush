@@ -3,11 +3,6 @@ module AresMUSH
     class PageReviewIndexCmd
       include CommandHandler
 
-      def check_guest
-        return t('dispatcher.not_allowed') if enactor.has_any_role?("guest")
-        return nil
-      end
-
       def handle
          list = enactor.sorted_page_threads
 

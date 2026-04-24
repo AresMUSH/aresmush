@@ -1,7 +1,7 @@
 module AresMUSH
   module Profile
     def self.general_field(char, field_type, value)
-      client = Login.find_client(char)
+      client = Login.find_game_client(char)
       case field_type
       when 'demographic'
         char.demographic(value)
@@ -85,6 +85,22 @@ module AresMUSH
       else
         char.name
       end
+    end
+    
+    def self.export_profile(char)
+      template = ProfileTemplate.new(nil, char)
+      output = template.render
+      
+      template = RelationshipsTemplate.new(char)
+      output << "%R%R"
+      output << template.render      
+      
+      custom_profile = char.profile.map { |section, value| "%R#{section}%R----%R#{value}" }.join("%R%R")
+      template = BorderedDisplayTemplate.new custom_profile, t('profile.profile_title')
+      output << "%R%R"
+      output << template.render
+      
+      output
     end
     
   end

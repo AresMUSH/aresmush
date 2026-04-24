@@ -15,7 +15,7 @@ module AresMUSH
         begin
       
           File.open(path, 'w') do |f|
-            f.write request.args[:text]
+            f.write request.args['text']
           end
           begin
             Global.plugin_manager.unload_plugin("tinker")

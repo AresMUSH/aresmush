@@ -185,7 +185,7 @@ module AresMUSH
     end
     
     def self.save_web_profile_data(char, enactor, args)            
-      args[:demographics].each do |name, value|
+      args['demographics'].each do |name, value|
         if (value.blank? && Demographics.required_demographics.include?(name))
           return t('webportal.missing_required_field', :name => name) 
         end
@@ -227,7 +227,7 @@ module AresMUSH
     end
     
     def self.build_web_groups_data(char)
-      groups = Demographics.all_groups.keys.sort.map { |g| 
+      groups = Demographics.all_groups.keys.map { |g| 
         {
           name: g.titleize,
           value: char.group(g)

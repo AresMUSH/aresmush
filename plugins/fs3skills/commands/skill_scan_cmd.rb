@@ -40,12 +40,12 @@ module AresMUSH
           else
             min_rating = 1
           end
-          chars = Chargen.approved_chars
+          chars = Idle.active_chars_and_rosters
           .select { |c| FS3Skills.ability_rating(c, self.name) >= min_rating }
           .sort_by { |c| c.name }
           .map { |c| "%xn#{color(c)}#{c.name}#{room_marker(c)}%xn" }
           
-          template = BorderedListTemplate.new(chars, t('fs3skills.skill_scan_title'), nil, t('fs3skills.skill_scan_subtitle', :skill => self.name, :type => skill_type))
+          template = BorderedListTemplate.new(chars, t('fs3skills.skill_scan_title'), t('fs3skills.skill_scan_footer'), t('fs3skills.skill_scan_subtitle', :skill => self.name, :type => skill_type))
           client.emit template.render
         end
       end

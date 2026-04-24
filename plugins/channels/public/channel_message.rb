@@ -6,6 +6,7 @@ module AresMUSH
     reference :channel, "AresMUSH::Channel"
     
     attribute :message
+    attribute :flagged, :type => DataType::Boolean, :default => false
     
     def author_name
       self.character ? self.character.name : t('global.deleted_character')

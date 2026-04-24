@@ -31,6 +31,7 @@ Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firs
 
 ## Reading Posts
 
+`forum/scan` - Scans for unread messages
 `forum/new` - Reads the first unread message on any category.
 `forum/catchup <category>` - Marks all unread messages in that category as read.
 `forum/mute` - Mutes all forum notifications until your next login.

@@ -1,5 +1,18 @@
 module AresMUSH
   module Website
+    
+    class CharGalleryExtensionTemplate < ErbTemplateRenderer
+             
+      attr_accessor :chars
+                     
+      def initialize(chars)
+        @chars = chars
+        super File.dirname(__FILE__) + "/char_gallery.erb"        
+      end      
+    end
+    
+    
+    
     class CharacterGalleryMarkdownExtension
       def self.regex
         /\[\[chargallery ([^\]]*)\]\]/i
@@ -14,15 +27,11 @@ module AresMUSH
         include_all = helper.or_tags.include?('all') || helper.required_tags.include?('all')
         
         matches = Character.all.select { |c| self.match_tags(c, helper, include_all) }
+        chars = matches.sort_by { |c| c.name }.map { |c| { name: c.name, icon: Website.icon_for_char(c) }}
         
-        template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'char_gallery.hbs'))
+        template = CharGalleryExtensionTemplate.new(chars)
+        template.render
 
-        data = {
-          "chars" => matches.sort_by { |c| c.name }.map { |c| { name: c.name, icon: Website.icon_for_char(c) }},
-          "title" => ""
-        }
-        
-        template.render(data)        
       end
       
       def self.match_tags(c, helper, include_all)

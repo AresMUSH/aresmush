@@ -10,7 +10,7 @@ module AresMUSH
         types.each do |name, values|
           text << "\n%xh#{name}%xn\n"
           values.each do |skill, rating|
-            text << "     #{skill}: #{rating}"
+            text << "     #{skill}: #{rating.to_s.ljust(3)}"
           end
         end
         

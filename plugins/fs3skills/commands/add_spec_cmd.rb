@@ -45,32 +45,12 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|        
-          ability = FS3Skills.find_ability(model, self.name)
-          if (!ability)
-            client.emit_failure t('fs3skills.ability_not_found')
-            return
+          error = FS3Skills.add_specialty(model, self.name, self.specialty)
+          if (error)
+            client.emit_failure error
+          else
+            client.emit_success t('fs3skills.specialty_added', :name => self.specialty)
           end
-        
-          config = FS3Skills.action_skill_config(name)
-          if (!config || !config['specialties'])
-            client.emit_failure t('fs3skills.invalid_specialty_skill')
-            return
-          end
-        
-          if (!config['specialties'].include?(self.specialty))     
-            client.emit_failure t('fs3skills.invalid_specialty', :names => config['specialties'].join(", "))
-            return
-          end
-        
-          if (ability.specialties.include?(self.specialty))
-            client.emit_failure t('fs3skills.specialty_already_exists', :name => model.name)
-            return
-          end
-        
-          specs = ability.specialties
-          specs << self.specialty
-          ability.update(specialties: specs)
-          client.emit_success t('fs3skills.specialty_added', :name => self.specialty)
         end
       end
     end

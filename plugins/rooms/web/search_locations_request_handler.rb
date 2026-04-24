@@ -3,9 +3,9 @@ module AresMUSH
     class SearchLocationsRequestHandler
       def handle(request)
 
-        search_name = request.args[:searchName] || ""
-        search_area = request.args[:searchArea] || ""
-        search_owner = request.args[:searchOwner] || ""
+        search_name = request.args['searchName'] || ""
+        search_area = request.args['searchArea'] || ""
+        search_owner = request.args['searchOwner'] || ""
         rooms = Room.all.to_a
         
         if (!search_name.blank?)

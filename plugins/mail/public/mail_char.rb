@@ -7,6 +7,8 @@ module AresMUSH
     
     # Deprecated.  Sent mail is always on now.
     attribute :copy_sent_mail, :type => DataType::Boolean
+    
+    attribute :mail_trash_last_emptied, :type => DataType::Time
 
     before_delete :delete_mail
     

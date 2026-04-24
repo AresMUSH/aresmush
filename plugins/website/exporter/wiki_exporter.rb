@@ -174,7 +174,7 @@ module AresMUSH
       def self.export_chars
         Global.logger.debug "Exporting characters."
         
-        approved_chars = Chargen.approved_chars.select { |c| !c.is_admin? && c.is_approved? }
+        approved_chars = Character.all.select { |c| c.is_approved? && !c.is_admin? }
         gone_chars = Character.all.select { |c| c.idle_state == 'Gone' }
         dead_chars = Character.all.select { |c| c.idle_state == 'Dead' }
 

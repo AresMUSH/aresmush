@@ -3,8 +3,8 @@ module AresMUSH
     class BanAddRequestHandler
       def handle(request)
         enactor = request.enactor
-        site = request.args[:site]
-        reason = request.args[:reason]
+        site = request.args['site']
+        reason = request.args['reason']
         
         error = Website.check_login(request)
         return error if error
@@ -14,7 +14,7 @@ module AresMUSH
         end
 
         if (site.blank? || reason.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "site, reason") }
         end
 
         error = Login.add_site_ban(enactor, site, reason)

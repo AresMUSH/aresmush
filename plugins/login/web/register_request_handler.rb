@@ -3,27 +3,34 @@ module AresMUSH
     class RegisterRequestHandler
       def handle(request)
         recaptcha = AresMUSH::Website::RecaptchaHelper.new
-        enable_registration = Global.read_config("login", "allow_web_registration")
+        turnstile = AresMUSH::Website::TurnstileHelper.new
         
         if (request.enactor)
           return { message: 'login.already_logged_in' }
         end
         
-        if (!enable_registration)
+        if (!Login.allow_web_registration?)
           return { message: t('login.web_registration_disabled') }
         elsif (Login.is_banned?(nil, request.ip_addr, request.hostname))
           return { error: Login.site_blocked_message }
         end
                       
-        name = request.args[:name]
-        pw = request.args[:password]
-        confirm_pw = request.args[:confirm_password]
-        recaptcha_response = request.args[:recaptcha]
+        name = request.args['name']
+        pw = request.args['password']
+        confirm_pw = request.args['confirm_password']
+        recaptcha_response = request.args['recaptcha']
+        turnstile_response = request.args['turnstile']
         
         Global.logger.info "#{name} registered from web from #{request.ip_addr}."
       
-        if (recaptcha.is_enabled? && !recaptcha.verify(recaptcha_response))
-          return { error: t('login.recaptcha_failed') }
+        if (turnstile.is_enabled?)
+          if (!turnstile.verify(turnstile_response))
+            return { error: t('login.captcha_failed') }
+          end
+        elsif (recaptcha.is_enabled?)
+          if (!recaptcha.verify(recaptcha_response))
+            return { error: t('login.captcha_failed') }
+          end
         end
       
         name_error = Character.check_name(name)
@@ -54,11 +61,7 @@ module AresMUSH
               
         Global.dispatcher.queue_event CharCreatedEvent.new(nil, char.id)
       
-        {
-          token: char.login_api_token,
-          name: char.name,
-          id: char.id
-        }
+        Login.web_session_info(char)
       end
     end
   end

@@ -3,8 +3,8 @@ module AresMUSH
     class JobDeleteReplyRequestHandler
       def handle(request)
         enactor = request.enactor
-        job = Job[request.args[:id]]
-      	reply = JobReply[request.args[:reply_id]]
+        job = Job[request.args['id']]
+      	reply = JobReply[request.args['reply_id']]
         
         error = Website.check_login(request)
         return error if error

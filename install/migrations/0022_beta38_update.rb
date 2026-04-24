@@ -14,7 +14,7 @@ module AresMUSH
         
         Global.logger.debug "Adding trending scenes config."
         config = DatabaseMigrator.read_config_file("scenes.yml")
-        config['scenes']['trending_scenes_category'] = "Cookie Awards"
+        config['scenes']['trending_scenes_category'] = "System"
         config['scenes']['trending_scenes_cron'] = { 'hour' => [19], 'minute' => [15], 'day_of_week' => [ 'Mon' ] }
         DatabaseMigrator.write_config_file("scenes.yml", config)    
   

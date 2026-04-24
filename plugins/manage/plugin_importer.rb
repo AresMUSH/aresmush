@@ -9,6 +9,7 @@ module AresMUSH
       end
       
       def plugin_name
+        # Same as the 'keyname' property in AresCentral
         @repo_name.after("-").before("-")
       end
       
@@ -52,7 +53,7 @@ module AresMUSH
           return false
         end
         
-        if (!File.exists?(File.join(plugin_dir, "#{self.plugin_name}.rb")))
+        if (!File.exist?(File.join(plugin_dir, "#{self.plugin_name}.rb")))
           raise "ERROR! Plugin module file #{self.plugin_name}.rb not found.  This plugin can't be automatically imported."
           return false
         end

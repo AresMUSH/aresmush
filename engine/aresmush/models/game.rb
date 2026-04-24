@@ -12,9 +12,21 @@ module AresMUSH
     attribute :player_api_keys, :type => DataType::Hash, :default => {}
     attribute :applied_migrations, :type => DataType::Array, :default => []
     
+    attribute :banned_sites, :type => DataType::Hash, :default => {}
+    
     # There's only one game document and this is it!
     def self.master
       Game[1]
+    end
+    
+    def is_banned_site?(ip_addr, hostname)
+      banned = self.banned_sites || {}
+      banned.each do |s, desc|
+        if (Client.is_site_match?(ip_addr, hostname, s, s))
+          return true
+        end
+      end
+      return false
     end
     
     def is_special_char?(char)

@@ -38,7 +38,7 @@ module AresMUSH
     def self.check_login(request, allow_anonymous = false)
       return nil if allow_anonymous
       return { error: "You need to log in first." } if !request.enactor
-      token = request.auth[:token]
+      token = request.token
       if !request.enactor.is_valid_api_token?(token)
         return { error: t('webportal.session_expired') } 
       end
@@ -74,12 +74,19 @@ module AresMUSH
     
     
     def self.rebuild_css
-      engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
-      scss_path = File.join(engine_styles_path, 'ares.scss')
-      css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
-      load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
-      css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
-      File.open(css_path, "wb") {|f| f.write(css) }
+      begin
+        Global.logger.debug "Rebuilding CSS."
+        engine_styles_path = File.join(AresMUSH.engine_path, 'styles')
+        scss_path = File.join(engine_styles_path, 'ares.scss')
+        css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
+        load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
+        css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
+        File.open(css_path, "wb") {|f| f.write(css) }
+	return nil
+      rescue Exception => e
+        Global.logger.error "Error loading CSS: error=#{e} backtrace=#{e.backtrace[0,10]}."
+        return t('webportal.error_compiling_styles')
+      end
     end
     
     def self.deploy_portal(client = nil)
@@ -88,12 +95,13 @@ module AresMUSH
     
     def self.redeploy_portal(enactor, from_web)
       Global.dispatcher.spawn("Deploying website", nil) do
-        Website.rebuild_css
+        style_error = Website.rebuild_css
+       
         install_path = Global.read_config('website', 'website_code_path')
         Dir.chdir(install_path) do
 
           output = `bin/deploy 2>&1`
-          Global.logger.info "Deployed web portal: #{output}"
+          Global.logger.info "Deployed web portal: #{output} #{style_error}"
           message = t('webportal.portal_deployed', :output => output)
           if (from_web)
             Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message), false) do |c|
@@ -116,10 +124,12 @@ module AresMUSH
     end
     
     def self.can_edit_wiki_file?(actor, folder)
+      folder = (folder || "").downcase
       return false if !actor
       return true if Website.can_manage_wiki?(actor)
-      return true if folder.downcase == FilenameSanitizer.sanitize(actor.name)
-      return true if ((folder.downcase == "theme_images") && Website.can_manage_theme?(actor))
+      return true if AresCentral.alts(actor).map { |a| FilenameSanitizer.sanitize(a.name) }.include?(folder)
+      return true if ((folder == "theme_images") && Website.can_manage_theme?(actor))
+      return true if (Global.read_config("website", "public_wiki_folders") || [ "misc" ]).map { |f| f.downcase }.include?(folder)
       return false
     end
     
@@ -191,8 +201,8 @@ module AresMUSH
           name: "Profile Display",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'profile-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom-tabs.hbs'),  
-            'profile-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom.hbs'),  
+            'profile-custom-tabs.hbs' => File.join(web_code_path, 'components', 'profile-custom-tabs.hbs'),  
+            'profile-custom.hbs' => File.join(web_code_path, 'components', 'profile-custom.hbs'),  
             'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -202,8 +212,8 @@ module AresMUSH
           name: "Profile Editing",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom-tabs.hbs'),
-            'char-edit-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom.hbs'),
+            'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'components', 'char-edit-custom-tabs.hbs'),
+            'char-edit-custom.hbs' => File.join(web_code_path, 'components', 'char-edit-custom.hbs'),
             'char-edit-custom.js' => File.join(web_code_path, 'components', 'char-edit-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -214,8 +224,8 @@ module AresMUSH
           name: "Chargen",
           help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
           files: {
-            'chargen-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom.hbs'),  
-            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom-tabs.hbs'),  
+            'chargen-custom.hbs' => File.join(web_code_path, 'components', 'chargen-custom.hbs'),  
+            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'components', 'chargen-custom-tabs.hbs'),  
             'chargen-custom.js' => File.join(web_code_path, 'components', 'chargen-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
           }
@@ -241,9 +251,9 @@ module AresMUSH
           name: "Scene Actions",
           help: "https://aresmush.com/tutorials/code/hooks/scene-buttons.html",
           files: {
-            'live-scene-custom-play.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-play.hbs'),  
+            'live-scene-custom-play.hbs' => File.join(web_code_path, 'components', 'live-scene-custom-play.hbs'),  
             'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
-            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
+            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.hbs'),  
             'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
             'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
             
@@ -254,11 +264,17 @@ module AresMUSH
           name: "Scene Character Cards",
           help: "https://aresmush.com/tutorials/code/hooks/char-cards.html",
           files: {
-            'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),  
+            'char-card-custom.hbs' => File.join(web_code_path, 'components', 'char-card-custom.hbs'),  
+            'char-card-custom-tabs.hbs' => File.join(web_code_path, 'components', 'char-card-custom-tabs.hbs'),  
+            'char-card-custom-tabs-content.hbs' => File.join(web_code_path, 'components', 'char-card-custom-tabs-content.hbs'),  
             'char-card-custom.js' => File.join(web_code_path, 'components', 'char-card-custom.js'),
+            'char-card-custom-tabs.js' => File.join(web_code_path, 'components', 'char-card-custom-tabs.js'),
+            'char-card-custom-tabs-content.js' => File.join(web_code_path, 'components', 'char-card-custom-tabs-content.js'),
             'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),
           }
         },
+        
+        
         
         {
           name: "Combat Actions",
@@ -280,7 +296,7 @@ module AresMUSH
           name: "Job Actions",
           help: "https://aresmush.com/tutorials/code/hooks/job-menu.html",
           files: {
-            'job-menu-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'job-menu-custom.hbs'),  
+            'job-menu-custom.hbs' => File.join(web_code_path, 'components', 'job-menu-custom.hbs'),  
             'job-menu-custom.js' => File.join(web_code_path, 'components', 'job-menu-custom.js'),
             'custom_job_data.rb' => File.join(plugin_code_path, 'jobs', 'custom_job_data.rb'),            
           },
@@ -298,9 +314,17 @@ module AresMUSH
           name: "Web Portal Sidebar",
           help: "https://aresmush.com/tutorials/code/hooks/sidebar.html",
           files: {
-            'sidebar-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'sidebar-custom.hbs'),  
+            'sidebar-custom.hbs' => File.join(web_code_path, 'components', 'sidebar-custom.hbs'),  
             'sidebar-custom.js' => File.join(web_code_path, 'components', 'sidebar-custom.js'),
             'custom_web_data.rb' => File.join(plugin_code_path, 'website', 'custom_web_data.rb'),
+          },
+        },
+          
+        {
+          name: "Wiki Character Export",
+          help: "https://aresmush.com/tutorials/code/hooks/wiki-export.html",
+          files: {
+            'custom_wiki_char_export.rb' => File.join(plugin_code_path, 'website', 'custom_wiki_char_export.rb'),
           }
         },
         
@@ -311,6 +335,20 @@ module AresMUSH
       navbar = Global.read_config('website', 'top_navbar')
       navbar.select { |n| !n['roles'] || (viewer && viewer.has_any_role?(n['roles'])) }
     end
+    
+    def self.export_char(char)
+      exporter = WikiCharExporter.new(char)
+      result = exporter.export
+      error = result[:error]
+      if (error)
+        return error
+      end
+      
+      backup = WikiCharBackup.create(char: char, file: result[:file])
+      char.update(wiki_char_backup: backup)
+      nil
+    end
+      
       
   end
 end

@@ -2,11 +2,11 @@ module AresMUSH
   module Scenes
     class AddScenePoseRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        scene = Scene[request.args['id']]
         enactor = request.enactor
-        pose = (request.args[:pose] || "").chomp
-        pose_char = request.args[:pose_char]
-        pose_type = request.args[:pose_type]
+        pose = (request.args['pose'] || "").chomp
+        pose_char = request.args['pose_char']
+        pose_type = request.args['pose_type']
         
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -58,9 +58,7 @@ module AresMUSH
         end
         
         # Update last online time for alts who maybe didn't log in directly
-        if (Time.now - char.last_on > 86400)
-          Login.update_site_info(request.ip_addr, request.hostname, char)
-        end
+        Login.web_last_online_update(char, request)
         
         {}
       end

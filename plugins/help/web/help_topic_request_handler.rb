@@ -2,7 +2,7 @@ module AresMUSH
   module Help
     class HelpTopicRequestHandler
       def handle(request)
-        topic_id = request.args[:topic]
+        topic_id = request.args['topic']
         topics = Help.find_topic(topic_id)
 
         enactor = request.enactor

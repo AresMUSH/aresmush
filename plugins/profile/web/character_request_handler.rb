@@ -2,7 +2,7 @@ module AresMUSH
   module Profile
     class CharacterRequestHandler
       def handle(request)
-        char = Character.find_one_by_name request.args[:id]
+        char = Character.find_one_by_name request.args['id']
         enactor = request.enactor
         
         if (!char)
@@ -49,6 +49,7 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),
+          timezone: char.timezone,
           profile_gallery: gallery_files.map { |g| Website.get_file_info(g) },
           playerbit: char.is_playerbit?,
           files: files,

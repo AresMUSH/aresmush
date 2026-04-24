@@ -3,7 +3,7 @@ module AresMUSH
     class GetLogRequestHandler
       def handle(request)
         enactor = request.enactor
-        filename = request.args[:file]
+        filename = request.args['file']
         
         error = Website.check_login(request)
         return error if error
@@ -14,7 +14,7 @@ module AresMUSH
         
         path = File.join(AresMUSH.game_path, "logs", filename)
         
-        if (!File.exists?(path))
+        if (!File.exist?(path))
           return { error: t('webportal.not_found') }
         end
         

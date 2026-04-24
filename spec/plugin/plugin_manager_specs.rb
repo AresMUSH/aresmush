@@ -19,8 +19,8 @@ module AresMUSH
         plugin = double
         allow(plugin).to receive(:plugin_dir) { "A" }
         allow(locale).to receive(:locale_order) { [ "l1", "l2" ]}
-        allow(File).to receive(:exists?).with("A/locales/locale_l1.yml") { true }
-        allow(File).to receive(:exists?).with("A/locales/locale_l2.yml") { true }
+        allow(File).to receive(:exist?).with("A/locales/locale_l1.yml") { true }
+        allow(File).to receive(:exist?).with("A/locales/locale_l2.yml") { true }
         expect(locale).to receive(:add_locale_file).with("A/locales/locale_l1.yml")
         expect(locale).to receive(:add_locale_file).with("A/locales/locale_l2.yml")
         @manager.load_plugin_locale plugin
@@ -30,8 +30,8 @@ module AresMUSH
         plugin = double
         allow(plugin).to receive(:plugin_dir) { "A" }
         allow(locale).to receive(:locale_order) { [ "l1", "l2" ]}
-        allow(File).to receive(:exists?).with("A/locales/locale_l1.yml") { true }
-        allow(File).to receive(:exists?).with("A/locales/locale_l2.yml") { false }
+        allow(File).to receive(:exist?).with("A/locales/locale_l1.yml") { true }
+        allow(File).to receive(:exist?).with("A/locales/locale_l2.yml") { false }
         expect(locale).to receive(:add_locale_file).with("A/locales/locale_l1.yml")
         expect(locale).to_not receive(:add_locale_file).with("A/locales/locale_l2.yml")
         @manager.load_plugin_locale plugin

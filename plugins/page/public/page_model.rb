@@ -9,6 +9,10 @@ module AresMUSH
     
     before_delete :delete_pages
     
+    def names
+      self.characters.to_a.map { |c| c.name }
+    end
+    
     def delete_pages
       self.page_messages.each { |p| p.delete }
     end

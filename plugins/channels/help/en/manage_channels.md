@@ -22,7 +22,6 @@ Channel admins can create, edit and delete channels.  Go to [Admin -> Setup -> S
 `channel/create <channel>`
 `channel/delete <channel>`
 `channel/rename <channel>=<new name>` - Be cautious renaming channels since peoples' aliases may no longer make sense.
-`channel/clear <channel>` - Clears the recall history.
 `channel/describe <channel>=<description>`
 `channel/defaultcolor <channel>=<ansi prefix>` - Sets a channel's default color.
 `channel/joinroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.

@@ -3,8 +3,8 @@ module AresMUSH
     class JoinChannelRequestHandler
       def handle(request)
         enactor = request.enactor
-        channel_name = request.args[:channel]
-        char = Character.named(request.args[:char])
+        channel_name = request.args['channel']
+        char = Character.named(request.args['char'])
         channel = Channel.find_one_by_name(channel_name)
         
         error = Website.check_login(request)

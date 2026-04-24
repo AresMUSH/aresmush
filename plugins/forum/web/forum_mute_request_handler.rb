@@ -3,7 +3,7 @@ module AresMUSH
     class ForumMuteRequestHandler
       def handle(request)
                 
-        option = (request.args[:muted] || "").to_bool
+        option = (request.args['muted'] || "").to_bool
         enactor = request.enactor
         
         error = Website.check_login(request)

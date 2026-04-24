@@ -15,35 +15,35 @@ module AresMUSH
         end
         
         it "should return true if char names are the same" do
-          @char1.stub(:name) { "Bob" }
-          @char2.stub(:name) { "Bob" }
+          allow(@char1).to receive(:name) { "Bob" }
+          allow(@char2).to receive(:name) { "Bob" }
           expect(AresCentral.is_alt?(@char1, @char2)).to be true
         end
         
         it "should return false if char names are different with no handles for either" do
-          @char1.stub(:name) { "Bob" }
-          @char2.stub(:name) { "Mary" }
-          @char1.stub(:handle) { nil }
-          @char2.stub(:handle) { nil }
+          allow(@char1).to receive(:name) { "Bob" }
+          allow(@char2).to receive(:name) { "Mary" }
+          allow(@char1).to receive(:handle) { nil }
+          allow(@char2).to receive(:handle) { nil }
           expect(AresCentral.is_alt?(@char1, @char2)).to be false
         end
         
         it "should return if char names are different with no handle for one" do
-          @char1.stub(:name) { "Bob" }
-          @char2.stub(:name) { "Mary" }
-          @char1.stub(:handle) { @handle1 }
-          @char2.stub(:handle) { nil }
+          allow(@char1).to receive(:name) { "Bob" }
+          allow(@char2).to receive(:name) { "Mary" }
+          allow(@char1).to receive(:handle) { @handle1 }
+          allow(@char2).to receive(:handle) { nil }
           expect(AresCentral.is_alt?(@char1, @char2)).to be false
           expect(AresCentral.is_alt?(@char2, @char1)).to be false
         end
         
         it "should return true handles are same" do
-          @char1.stub(:name) { "Bob" }
-          @char2.stub(:name) { "Mary" }
-          @char1.stub(:handle) { @handle1 }
-          @char2.stub(:handle) { @handle2 }
-          @handle1.stub(:name) { "CoolGuy" }
-          @handle2.stub(:name) { "CoolGuy" }
+          allow(@char1).to receive(:name) { "Bob" }
+          allow(@char2).to receive(:name) { "Mary" }
+          allow(@char1).to receive(:handle) { @handle1 }
+          allow(@char2).to receive(:handle) { @handle2 }
+          allow(@handle1).to receive(:name) { "CoolGuy" }
+          allow(@handle2).to receive(:name) { "CoolGuy" }
           expect(AresCentral.is_alt?(@char1, @char2)).to be true
         end
       end

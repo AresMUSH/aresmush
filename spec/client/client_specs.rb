@@ -8,6 +8,7 @@ module AresMUSH
     include GlobalTestHelper
 
     before do
+      @char = double
       @connection = double
       allow(@connection).to receive(:ip_addr) { "1.2.3.4" }
       allow(Resolv::DNS).to receive(:open) { "fake host" }
@@ -25,7 +26,6 @@ module AresMUSH
 
     describe :emit do
       before do
-        @char = double
         @client.char_id = 5
         allow(@client).to receive(:char) { @char }
       end
@@ -145,12 +145,23 @@ module AresMUSH
     end 
     
     describe :idle_secs do
-      it "should track the time since last activity" do
+      it "should track the time since last activity for a game client" do
+        allow(@client).to receive(:is_web_client?) { false }
         @client.last_activity = Time.parse("2011-1-2 10:59:01")
         fake_now = Time.parse("2011-1-2 11:00:00")
         allow(Time).to receive(:now) { fake_now }
         expect(@client.idle_secs).to eq 59
       end
+      
+      it "should track last online time for a web client xxx" do
+        
+        allow(@client).to receive(:is_web_client?) { true }
+        allow(@connection).to receive(:connected_at) { Time.parse("2011-1-2 10:59:01") }
+        fake_now = Time.parse("2011-1-2 11:00:00")
+        allow(Time).to receive(:now) { fake_now }
+        expect(@client.idle_secs).to eq 59
+      end
+      
     end
     
     describe :connected_secs do
@@ -186,6 +197,33 @@ module AresMUSH
         @client.char_id = nil
         expect(@client.char).to eq nil
       end
+    end
+    
+    describe :is_site_match? do
+      it "should match an IP" do
+        expect(Client.is_site_match?("123.45.67.89", "", "123.45.67.89", "somesite.com")).to eq true
+      end
+
+      it "should match a host" do
+        expect(Client.is_site_match?("", "somesite.com", "111", "somesite.com")).to eq true
+      end
+
+      it "should match a partial IP" do
+        expect(Client.is_site_match?("123.45.67.89.111", "", "123.45", "somesite.com")).to eq true
+      end
+
+      it "should match a partial host" do
+        expect(Client.is_site_match?("", "pa.142.xyz.abc.somesite.com", "123.45", "somesite.com")).to eq true
+      end
+      
+      it "should not match a different IP" do
+        expect(Client.is_site_match?("234.56.78.90", "", "123.45.67.89", "somesite.com")).to eq false
+      end
+
+      it "should not match a different host" do
+        expect(Client.is_site_match?("othersite.com", "", "123.45.67.89", "somesite.com")).to eq false
+      end
+      
     end
   end
 end

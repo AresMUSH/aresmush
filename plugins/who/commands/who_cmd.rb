@@ -16,7 +16,10 @@ module AresMUSH
       def handle        
         online_chars = Who.all_online
         if (self.search)
-          online_chars = online_chars.select { |char| char.name =~ /^#{self.search}/ }
+          online_chars = online_chars.select { |char| 
+            self.search.start_with?("@") ? 
+            char.handle && char.handle.name.downcase == self.search.after("@").downcase : 
+            char.name =~ /^#{self.search}/i }
         end
         
         template = WhoTemplate.new online_chars

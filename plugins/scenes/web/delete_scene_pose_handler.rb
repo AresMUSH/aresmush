@@ -2,8 +2,8 @@ module AresMUSH
   module Scenes
     class DeleteScenePoseRequestHandler
       def handle(request)
-        scene = Scene[request.args[:scene_id]]
-        scene_pose = ScenePose[request.args[:pose_id]]
+        scene = Scene[request.args['scene_id']]
+        scene_pose = ScenePose[request.args['pose_id']]
         enactor = request.enactor
         
         if (!scene || !scene_pose)

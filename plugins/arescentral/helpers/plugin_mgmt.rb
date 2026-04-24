@@ -1,8 +1,6 @@
 module AresMUSH
   module AresCentral
     def self.register_plugin(name)
-      return if !AresCentral.is_registered?
-      
       Global.logger.info "Registering plugin import."
       
       connector = AresCentral::AresConnector.new

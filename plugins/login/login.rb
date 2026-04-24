@@ -155,10 +155,14 @@ module AresMUSH
         return LoginInfoRequestHandler
       when "register"
         return RegisterRequestHandler
+      when "tour"
+        return TourRequestHandler        
       when "updateAccountInfo"
         return UpdateAccountInfoRequestHandler
       when "changePassword"
         return ChangePasswordRequestHandler
+      when "resetPassword"
+        return ResetPasswordRequestHandler
       when "accountInfo"
         return AccountInfoRequestHandler
       when "loginNotices"
@@ -177,6 +181,10 @@ module AresMUSH
         return BanPlayerRequestHandler
       when "bootPlayer"
         return BootPlayerRequestHandler
+      when "saveMotd"
+        return SaveMotdRequestHandler
+      when "editMotd"
+        return EditMotdRequestHandler
       end
       nil
     end

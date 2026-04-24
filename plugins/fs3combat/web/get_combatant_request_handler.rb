@@ -3,9 +3,9 @@ module AresMUSH
     class GetCombatantRequestHandler
       def handle(request)
         enactor = request.enactor
-        id = request.args[:id]
+        id = request.args['id']
 
-        combatant_type = request.args[:combatant_type] || FS3Combat.default_combatant_type
+        combatant_type = request.args['combatant_type'] || FS3Combat.default_combatant_type
         
         error = Website.check_login(request)
         return error if error

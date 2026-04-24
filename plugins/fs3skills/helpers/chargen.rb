@@ -114,6 +114,13 @@ module AresMUSH
       starting_skills.each do |k, v|
         set_starting_skills(char, k, v)
       end
+      
+      starting_specialties = StartingSkills.get_specialties_for_char(char)
+      starting_specialties.each do |skill_name, specs|
+        specs.each do |spec|
+          FS3Skills.add_specialty(char, skill_name, spec)
+        end
+      end
     end
       
     def self.set_starting_skills(char, group, skill_config)
@@ -125,6 +132,28 @@ module AresMUSH
       skills.each do |k, v|
         FS3Skills.set_ability(char, k, v)
       end
+    end
+    
+    def self.add_specialty(char, skill_name, spec_name)
+      ability = FS3Skills.find_ability(char, skill_name)
+      if (!ability)
+        return t('fs3skills.ability_not_found')
+      end
+    
+      specialties = FS3Skills.action_specialties(skill_name)
+    
+      if (!specialties.include?(spec_name))   
+        return t('fs3skills.invalid_specialty', :names => specialties.join(", "))
+      end
+    
+      if (ability.specialties.include?(spec_name))
+        return t('fs3skills.specialty_already_exists', :name => char.name)
+      end
+    
+      new_specs = ability.specialties
+      new_specs << spec_name
+      ability.update(specialties: new_specs)
+      return nil
     end
   end
 end

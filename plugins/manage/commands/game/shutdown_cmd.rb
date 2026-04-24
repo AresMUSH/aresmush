@@ -21,7 +21,7 @@ module AresMUSH
           true
         end
         
-        Global.client_monitor.clients.each do |c|
+        Global.client_monitor.all_clients.each do |c|
           c.disconnect
         end
         

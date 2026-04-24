@@ -2,9 +2,9 @@ module AresMUSH
   module Website
     class SaveTextFileRequestHandler
       def handle(request)
-        file = request.args[:file]
-        text = request.args[:text]
-        file_type = request.args[:file_type]
+        file = request.args['file']
+        text = request.args['text']
+        file_type = request.args['file_type']
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -27,7 +27,7 @@ module AresMUSH
           path = Website.find_code_file_path(file)
         end
                 
-        if (!File.exists?(path))
+        if (!File.exist?(path))
           return { error: t('webportal.not_found') }
         end
         
@@ -46,7 +46,10 @@ module AresMUSH
         
         begin
           if (file_type == "style")
-            Website.rebuild_css
+            error = Website.rebuild_css
+            if (error)
+              return { :warnings => error }
+            end
           else
             error = Manage.reload_config     
             if (error)

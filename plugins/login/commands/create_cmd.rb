@@ -35,8 +35,8 @@ module AresMUSH
       end
       
       def check_creation_disabled
-        reason = Global.read_config('login', 'creation_not_allowed_message')
-        return t('login.creation_restricted', :reason => reason) if !Login.creation_allowed?
+        reason = Global.read_config('login', 'registration_not_allowed_message')
+        return t('login.registration_restricted', :reason => reason) if !Login.allow_game_registration?
         return nil
       end
       
@@ -57,21 +57,10 @@ module AresMUSH
         
         client.program.delete(:login_cmd)
         
-        char = Character.new
-        char.name = charname
-        char.change_password(password)
-        char.room = Game.master.welcome_room
-
-        if (terms_of_service)
-          char.terms_of_service_acknowledged = Time.now
-        end
-        
-        char.save
+        Login.register_and_login_char(self.charname, self.password, terms_of_service, client)
         
         client.emit_success(t('login.created_and_logged_in', :name => charname))
-        client.char_id = char.id
-        Global.dispatcher.queue_event CharCreatedEvent.new(client, char.id)
-        Global.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
+        
       end
       
       def log_command

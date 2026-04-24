@@ -1,3 +1,4 @@
+require 'rexml'
 require 'aws-sdk-s3'
 
 module AresMUSH

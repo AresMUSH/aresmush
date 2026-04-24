@@ -38,6 +38,8 @@ module AresMUSH
           return EventSignupCmd
         when "cancel"
           return EventCancelCmd
+        when "scene"
+          return EventCreateSceneCmd
         end
       end
       
@@ -62,6 +64,8 @@ module AresMUSH
          return EventRequestHandler
        when "createEvent"
          return CreateEventRequestHandler
+       when "createEventScene"
+         return CreateEventSceneRequestHandler
        when "editEvent"
          return EditEventRequestHandler
        when "deleteEvent"

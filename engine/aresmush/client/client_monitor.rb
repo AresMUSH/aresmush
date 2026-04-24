@@ -8,76 +8,85 @@ module AresMUSH
     attr_reader :clients, :client_id
 
     def emit_all(msg)
-      @clients.each do |c|
+      self.game_clients.each do |c|
         c.emit msg
       end
     end
-    
-    def emit_all_ooc(msg)
-      @clients.each do |c|
-        c.emit_ooc msg
-      end
-    end
-    
-    def emit(msg, &trigger_block)
-      @clients.each do |c|
-        if ( yield c.char )
-          c.emit msg
-        end
-      end
-    end
-    
-    def emit_ooc(msg)
-      @clients.each do |c|
+
+    def emit_all_ooc(msg, &trigger_block)
+      self.game_clients.each do |c|
         if ( yield c.char )
           c.emit_ooc msg
         end
       end
     end
+ 
     
     def notify_web_clients(type, msg, is_data, &trigger_block)
       Global.dispatcher.spawn("Notifying web clients", nil) do
-        @clients.each do |c|    
-          if ( yield Character[c.web_char_id] )
-            c.web_notify type, msg, is_data
+        self.web_clients.each do |c|    
+          if ( yield c.character )
+            c.send_web_notification type, msg, is_data
           end
         end
       end
     end
     
+    def all_clients
+      @clients
+    end
+    
+    def game_clients
+      @clients.select { |c| !c.is_web_client? }
+    end
+      
     def web_clients
-      @clients.select { |c| c.web_char_id }
+      @clients.select { |c| c.is_web_client? }
     end
 
     def logged_in_clients
-      @clients.select { |c| c.logged_in? }
+      self.game_clients.select { |c| c.logged_in? }
     end
     
-    def logged_in
+    # Hash mapping client to char - only for logged in game clients.
+    def client_to_char_map
       players = {}
-      @clients.each do |c|
-        char = c.char
-        next if !char
-        players[c] = char
+      
+      self.logged_in_clients.each do |client|
+        players[client] = client.char
       end
       players
     end
     
-    def find_client(char)
-      @clients.select { |c| c.char_id == char.id }.first
+    def find_game_client(char)
+      self.game_clients.select { |c| c.char_id == char.id }.first
     end
     
     def find_web_client(char)
-      @clients.select { |c| c.web_char_id == char.id }.sort_by { |c| c.idle_secs }.first
+      self.web_clients.select { |c| c.char_id == char.id }.sort_by { |c| c.idle_secs }.first
+    end
+    
+    def total_connections(ip_addr)
+      self.all_clients.select { |c| c.ip_addr == ip_addr }.count
     end
     
     # @engineinternal true
     def connection_established(connection)
       begin
+        max_connections = Global.read_config("sites", "max_connections") || 20
+        if (self.total_connections(connection.ip_addr) > max_connections)
+          Global.logger.debug "Too many connections from #{connection.ip_addr}."
+          connection.close_connection
+          return
+        end
+        
         client = @client_factory.create_client(connection)
         @clients << client
         client.connected
-        Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
+        
+        if (!client.is_web_client?)
+          Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
+        end
       rescue Exception => e
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end

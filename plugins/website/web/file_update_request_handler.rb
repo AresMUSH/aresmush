@@ -6,11 +6,11 @@ module AresMUSH
     class FileUpdateRequestHandler
       def handle(request)
         enactor = request.enactor
-        name = request.args[:name]
-        folder = request.args[:folder]
-        new_description = Website.format_input_for_mush(request.args[:new_description])
-        new_name = (request.args[:new_name] || "").downcase
-        new_folder = (request.args[:new_folder] || "").downcase
+        name = request.args['name']
+        folder = request.args['folder']
+        new_description = Website.format_input_for_mush(request.args['new_description'])
+        new_name = (request.args['new_name'] || "").downcase
+        new_folder = (request.args['new_folder'] || "").downcase
 
         error = Website.check_login(request)
         return error if error
@@ -18,8 +18,17 @@ module AresMUSH
         request.log_request
         
         if (!Website.can_edit_wiki_file?(enactor, folder))
-          return { error: t('dispatcher.not_allowed') }
+          return { error: t('webportal.no_folder_permissions') }
         end
+        
+        if (!Website.can_edit_wiki_file?(enactor, new_folder))
+          return { error: t('webportal.no_folder_permissions') }
+        end
+                
+        if (new_folder.include?("/"))
+          return { error: t('webportal.subfolders_not_allowed') }
+        end
+        
         
         new_name = AresMUSH::Website::FilenameSanitizer.sanitize new_name
         new_folder = AresMUSH::Website::FilenameSanitizer.sanitize new_folder
@@ -28,20 +37,16 @@ module AresMUSH
         new_folder_path = File.join(AresMUSH.website_uploads_path, new_folder)
         new_path = File.join(new_folder_path, new_name)
         
-        if (!File.exists?(path))
+        if (!File.exist?(path))
           return { error: t('webportal.not_found') }
         end
         
         if (new_name.blank? || new_folder.blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.missing_required_fields', :fields => "name, folder") }
         end
         
-        if (File.exists?(new_path) && path != new_path)
+        if (File.exist?(new_path) && path != new_path)
           return { error: t('webportal.file_already_exists')  }
-        end
-        
-        if (folder == "theme_images" && !enactor.is_admin?)
-          return { error: t('webportal.theme_locked_to_admin') }
         end
         
         if (!Dir.exist?(new_folder_path))

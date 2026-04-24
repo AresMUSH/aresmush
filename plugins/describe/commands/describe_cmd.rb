@@ -24,7 +24,7 @@ module AresMUSH
             return
           end
           
-          model.update(description: self.description)
+          model.update_desc(self.description)
           client.emit_success(t('describe.desc_set', :name => model.name))
         end
       end

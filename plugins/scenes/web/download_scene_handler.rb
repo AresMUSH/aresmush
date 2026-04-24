@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class DownloadSceneRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
-        show_ooc = (request.args[:show_ooc] || "false").to_bool
-        show_system = (request.args[:show_system] || "true").to_bool
+        scene = Scene[request.args['id']]
+        show_ooc = (request.args['show_ooc'] || "false").to_bool
+        show_system = (request.args['show_system'] || "true").to_bool
         enactor = request.enactor
 
         error = Website.check_login(request, true)

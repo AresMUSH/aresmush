@@ -2,7 +2,7 @@ module AresMUSH
   module Help
     class HelpRestoreRequestHandler
       def handle(request)
-        topic_id = request.args[:topic]
+        topic_id = request.args['topic']
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -15,7 +15,7 @@ module AresMUSH
         end
         
         path = File.join(AresMUSH.game_path, "help", "en", "#{topic_id}.md")
-        if (File.exists?(path))
+        if (File.exist?(path))
           FileUtils.rm(path)
           Help.reload_help
         else

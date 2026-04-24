@@ -14,6 +14,7 @@ module AresMUSH
         @validator.require_in_list("app_resubmit_status", Jobs.status_vals)
         @validator.require_list("app_review_commands")
         @validator.require_text("approval_message")
+        @validator.require_text("intro_blurb")
         @validator.require_text("bg_blurb")
         @validator.require_text("demographics_blurb")
         @validator.require_text("desc_blurb")

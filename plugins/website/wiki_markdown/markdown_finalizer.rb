@@ -33,14 +33,9 @@ module AresMUSH
               tab_name = nil
             elsif (line =~ /^(<p>)?(<br>)?\[\[\/gallery\]\]/)
               in_gallery = false
-            
-              template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image_gallery.hbs'))
-        
-              data = {
-                "gallery" => gallery
-              }
-        
-              html << template.render(data)     
+              
+              template = ImageGalleryExtensionTemplate.new(gallery)
+              html << template.render    
             
             elsif (line =~ /^(<p>)?(<br>)?\[\[\/tabview\]\]/)
               html << '<ul class="nav nav-tabs" role="tablist">'

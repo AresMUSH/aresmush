@@ -60,7 +60,10 @@ module AresMUSH
           EventMachine::WebSocket.start(websocket_options) do |websocket|
             AresMUSH.with_error_handling(nil, "Web connection established") do
               WebConnection.new(websocket) do |connection|
-                Global.client_monitor.connection_established(connection)
+	        # Connection will be nil if the connection attempt has been rejected
+                if (connection)
+                  Global.client_monitor.connection_established(connection)
+                end
               end
             end
           end

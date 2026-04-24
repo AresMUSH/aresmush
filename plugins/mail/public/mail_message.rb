@@ -10,7 +10,9 @@ module AresMUSH
     attribute :to_list
     
     attribute :read, :type => DataType::Boolean
-    attribute :tags, :type => DataType::Array
+    attribute :tags, :type => DataType::Array, :default => []
+    
+    attribute :trashed_time, :type => DataType::Time
         
     index :read
     
@@ -24,6 +26,10 @@ module AresMUSH
     
     def created_date_str(viewer)
       OOCTime.local_short_timestr(viewer, self.created_at)
+    end
+    
+    def in_trash?
+      (self.tags || []).include?(Mail.trashed_tag)
     end
   end
 end

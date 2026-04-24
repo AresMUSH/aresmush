@@ -18,4 +18,4 @@ The `outfit` command lets you manage multiple outfits for your character.
 `outfit/set <name>=<description>` - Creates a new outfit, or replaces an old one.
 `outfit/delete <name>` - Deletes an outfit.
 
-`wear <list of outfits>` - Wear outfits.
+`wear <list of outfits>` - Wear outfits. This will REPLACE your existing desc with the combined outfits.

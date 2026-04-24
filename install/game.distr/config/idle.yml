@@ -4,7 +4,6 @@ idle:
   - admin
   - builder
   - coder
-  - guest
   monthly_reminder_cron:
     hour:
     - 15
@@ -16,7 +15,7 @@ idle:
   monthly_reminder: It's time to run the idle sweep!
   reminder_category: MISC
   use_roster: true
-  idle_category: Announcements
+  idle_category: System Notices
   days_before_idle: 30
   arrivals_category: New Arrivals
   default_contact: Admin

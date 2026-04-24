@@ -27,7 +27,7 @@ module AresMUSH
         DatabaseMigrator.write_config_file("plugins.yml", config)  
         
         map_config = File.join(AresMUSH.game_path, "config", "maps.yml")
-        if (File.exists?(map_config))
+        if (File.exist?(map_config))
           File.delete(map_config)
         end
       end
