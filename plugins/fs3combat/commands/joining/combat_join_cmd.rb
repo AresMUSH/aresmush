@@ -26,7 +26,7 @@ module AresMUSH
       
       def check_type
         return nil if !self.combatant_type       
-        return t('fs3combat.invalid_combatant_type') if !FS3Combat.combatant_types.include?(self.combatant_type)
+        return t('fs3combat.invalid_combatant_type') if !FS3Combat.is_valid_combatant_type?(self.combatant_type)
         return t('fs3combat.use_vehicle_type_cmd') if FS3Combat.passenger_types.include?(self.combatant_type)
         return nil
       end

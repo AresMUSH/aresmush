@@ -233,7 +233,7 @@ module AresMUSH
         @validator.require_boolean('allow_mounts')
         @validator.require_hash('stances')
         @validator.require_hash('combatant_types')
-        @validator.require_in_list('default_type', FS3Combat.combatant_types.keys)
+        @validator.require_in_list('default_type', FS3Combat.combatant_type_names)
 
         Global.read_config('fs3combat', 'stances').each do |name, mods|
           mods.each do |mod, value|
