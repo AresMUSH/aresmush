@@ -25,7 +25,7 @@ gem 'thin', "~> 2.0.1"
 gem 'erubis', '~> 2.7.0'
 
 # Pasword hashing
-gem 'bcrypt', '~> 3.1.11'
+gem 'bcrypt', '~> 3.1.22'
 
 # Server engine
 gem 'eventmachine', '~> 1.2.7'
