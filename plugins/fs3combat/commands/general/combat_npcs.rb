@@ -8,10 +8,12 @@ module AresMUSH
         text = ""
         
         types.each do |name, values|
-          text << "\n%xh#{name}%xn\n"
-          values.each do |skill, rating|
-            text << "     #{skill}: #{rating.to_s.ljust(3)}"
+          text << "\n%xh#{name}%xn"
+          values.each_with_index do |(skill, rating), index|
+            separator = index % 3 == 0 ? "%R" : ""
+            text << "#{separator}#{skill.ljust(21, '.')}#{rating.to_s.ljust(5)}"
           end
+          text << "\n"
         end
         
         template = BorderedDisplayTemplate.new text, t('fs3combat.npcs_title')

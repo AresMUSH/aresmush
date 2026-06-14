@@ -108,8 +108,16 @@ module AresMUSH
       end
     end
     
+    def self.combatant_type_names
+      FS3Combat.combatant_types.keys
+    end
+    
+    def self.is_valid_combatant_type?(name)
+      !!FS3Combat.combatant_types.select { |k, v| k.upcase == name.upcase }.first
+    end
+    
     def self.combatant_type_stat(type, stat)
-      type_config = FS3Combat.combatant_types[type]
+      type_config = FS3Combat.combatant_types.select { |k, v| k.upcase == type.upcase }.map { |k, v| v }.first
       type_config[stat]
     end
     
@@ -258,7 +266,7 @@ module AresMUSH
         id: combat.id,
         organizer: combat.organizer.name,
         can_manage: can_manage,
-        combatant_types: FS3Combat.combatant_types.keys,
+        combatant_types: FS3Combat.combatant_type_names,
         teams: teams,
         in_combat: viewer_in_combat,
         messages: Website.format_markdown_for_html(combat.messages.join("\n")),

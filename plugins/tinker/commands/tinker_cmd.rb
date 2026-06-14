@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       def check_can_manage
-        return t('dispatcher.not_allowed') if !enactor.has_permission?("tinker")
+        return t('dispatcher.not_allowed') if !enactor.is_coder?
         return nil
       end
       

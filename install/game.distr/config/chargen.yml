@@ -113,6 +113,6 @@ chargen:
     submit_app: Can submit chargen application.
   app_notes_prompt: If you want to make any special notes about your application,
     you can enter them below.
-  max_bg_length: 50
+  max_bg_length: 2000
   intro_blurb: The online character creation tool will guide you through creating
     your character.

@@ -23,7 +23,7 @@ module AresMUSH
               can_talk: channel.talk_roles.map { |r| r.name },
               discord_channel: channel.discord_channel,
               discord_webhook: channel.discord_webhook,
-              default_alias: channel.default_alias
+              default_alias: (channel.default_alias || []).join(",")
               
             },
             roles: Role.all.to_a.sort_by { |r| r.name }.map { |r| r.name }

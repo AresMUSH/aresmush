@@ -56,6 +56,7 @@ All combat commands accept combatant name(s) so you can force NPCs (or idle PCs)
 `combat/unko` - Un-KO's someone who shouldn't have been
 `combat/ammo <name>=<ammo>` - Adjusts remaining ammo.
 `combat/npc <name>=<level>` - Adjusts a NPC's skill level.  See `combat/npcs` for a list of options.
+`combat/npcs` - Shows NPC types.
 
 ## Setting Modifiers
 
