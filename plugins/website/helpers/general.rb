@@ -255,6 +255,8 @@ module AresMUSH
             'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
             'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.hbs'),  
             'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+            'play-custom-sidebar.hbs' => File.join(web_code_path, 'components', 'play-custom-sidebar.hbs'),  
+            'play-custom-sidebar.js' => File.join(web_code_path, 'components', 'play-custom-sidebar.js'),
             'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
             
           }
@@ -273,8 +275,6 @@ module AresMUSH
             'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),
           }
         },
-        
-        
         
         {
           name: "Combat Actions",
