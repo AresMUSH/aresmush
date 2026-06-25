@@ -342,8 +342,12 @@ module AresMUSH
     end
     
     
+    def self.guest_names
+      Global.read_config("names", "guest") || []
+    end
+    
     def self.create_temp_char_name
-      names = (Global.read_config("names", "guest") || []).shuffle
+      names = Login.guest_names.shuffle
       while (!names.empty?)
         name = names.shift
         
