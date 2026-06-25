@@ -319,6 +319,14 @@ module AresMUSH
             'custom_web_data.rb' => File.join(plugin_code_path, 'website', 'custom_web_data.rb'),
           },
         },
+        
+        {
+          name: "Who Fields",
+          help: "https://aresmush.com/tutorials/code/hooks/who-fields.html",
+          files: {
+            'custom_who_fields.rb' => File.join(plugin_code_path, 'who', 'custom_who_fields.rb'),
+          }
+        },
           
         {
           name: "Wiki Character Export",
