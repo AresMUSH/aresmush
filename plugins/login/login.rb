@@ -100,9 +100,11 @@ module AresMUSH
       when "tos"
         case cmd.switch
         when "agree"
-          return TosCmd
+          return TosAgreeCmd
         when "reset"
           return TosResetCmd
+        else
+          return TosCmd
         end
       when "tour"
         return TourCmd
