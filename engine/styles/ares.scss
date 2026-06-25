@@ -1199,8 +1199,13 @@ footer {
     font-size: 0.9em;
     color: $faded-text-color;    
     margin-top: 10px;
-    padding: 20px;
+    padding: 10px;
 }
+
+footer a {
+  color: $border-color;
+}
+
 
 
 /* -------------------------
