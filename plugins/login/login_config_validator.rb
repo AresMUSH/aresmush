@@ -14,11 +14,13 @@ module AresMUSH
         @validator.require_boolean('allow_game_tour')
         @validator.require_boolean('allow_web_tour')
         @validator.check_cron('blacklist_cron')
+        @validator.check_cron('cleanup_guests_cron')
         @validator.require_text('registration_not_allowed_message')
         @validator.require_text('tour_not_allowed_message')
         @validator.require_text('login_not_allowed_message')
         @validator.check_cron('notice_cleanup_cron')
         @validator.require_int('notice_timeout_days', 1)
+        @validator.require_int('idle_guest_days', 2)
         @validator.require_boolean('portal_requires_registration')
         @validator.require_boolean('disable_nonadmin_logins')
 
