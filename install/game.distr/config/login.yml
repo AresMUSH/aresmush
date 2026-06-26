@@ -47,3 +47,11 @@ login:
     Your temporary name is %{name} and password is %{password}
 
     If you wish to keep this character, you can rename them and change their password. See `help tour` for details. Otherwise, just log out and the character will be recycled.
+  idle_guest_days: 7
+  cleanup_guests_cron:
+    day_of_week:
+    - Tue
+    hour:
+    - 2
+    minute:
+    - 14
