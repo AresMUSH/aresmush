@@ -277,6 +277,10 @@ MARKDOWN EDITOR (Toast UI)
     background-color: transparent;
 }
 
+.card.markdown-editor {
+  margin-bottom: 5px;
+}
+
 .markdown-editor > textarea {
     margin: 0;
     width: 100%;
@@ -3093,6 +3097,11 @@ ul.reference-help-list > li:not(:last-child)::after {
 	.scene-pose-select {
 		width: 100%;
 	}
+  
+  .markdown-format-controls {
+    font-size: .8em;
+    
+  }
   
 }
 
