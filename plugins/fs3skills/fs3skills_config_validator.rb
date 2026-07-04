@@ -100,7 +100,7 @@ module AresMUSH
             end
           end
           if (!FS3Skills.attr_names.include?(s['linked_attr']))
-            @validator.add_error "fs3skills:action_skills #{spec} cannot contain special characters."
+            @validator.add_error "fs3skills:action_skills #{name} has an invalid linked attribute."
           end
         end
       end
