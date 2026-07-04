@@ -24,7 +24,7 @@ module AresMUSH
         if (file_meta && file_meta.uploaded_by)
           uploaded_by = {
               name: file_meta.author_name,
-              icon: Website.icon_for_char(uploaded_by)
+              icon: Website.icon_for_char(file_meta.uploaded_by)
             }
         else
           uploaded_by = nil
