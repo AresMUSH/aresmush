@@ -26,8 +26,13 @@ module AresMUSH
         value = field_config["value"]
         width = field_config["width"]
         
-        field_eval = Profile.general_field(char, field, value)
-        left(field_eval, width)
+        # Check custom fields first
+        field_eval = Who.custom_who_field(char, field, value, width)
+        if (!field_eval)
+          field_eval = Profile.general_field(char, field, value)
+          return left(field_eval, width)
+        end
+        field_eval
       end
       
       def show_title(field_config)

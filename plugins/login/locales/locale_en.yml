@@ -21,7 +21,7 @@ en:
        password_changed: "You change your password."
        password_reset: "%{name}'s password has been reset to %{password}"
        cant_reset_master_admin_password: "You can't reset the master admin's password."
-       tos_agreement_not_pending: "You aren't looking at the terms of service."
+       tos_agreement_not_pending: "You don't have a ToS acknowledgement pending."
        tos_agree: "Type %xctos/agree%xn to agree to these terms of service."
        temp_name: "Your character name has been assigned a temporary name of %{name} and password %{password}. You can change these should you choose to stay. See `help tour` for details."
        tour_welcome_subject: "Welcome!"

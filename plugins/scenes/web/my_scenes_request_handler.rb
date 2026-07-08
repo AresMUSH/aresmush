@@ -1,5 +1,6 @@
 module AresMUSH
   module Scenes
+    # aka PlayScreenHandler
     class MyScenesRequestHandler
       def handle(request)
         enactor = request.enactor
