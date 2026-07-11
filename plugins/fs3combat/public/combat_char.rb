@@ -3,7 +3,7 @@ module AresMUSH
     collection :damage, "AresMUSH::Damage"
     attribute :combats_participated_in, :type => DataType::Integer
     
-    before_delete :delete_damage
+    before_delete :cleanup_combat
       
     def combatant
       Combatant.find(character_id: self.id).first
@@ -11,6 +11,13 @@ module AresMUSH
     
     def delete_damage
       self.damage.each { |d| d.delete }
+    end
+    
+    def cleanup_combat
+      self.delete_damage
+      if (self.combatant)
+        self.combatant.delete
+      end
     end
     
     def patients
