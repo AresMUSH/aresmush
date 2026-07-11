@@ -29,12 +29,12 @@ module AresMUSH
       input.gsub(/%r/i, "\n")
     end
     
-    def self.avatar_info(char, viewer = nil)
+    def self.avatar_info(char)
       {
         "name" => char.name,
         "nick" => char.nick,
         "icon" => Website.icon_for_char(char),
-        "classes" => Website::Hooks.custom_icon_classes(char, viewer) || ""
+        "classes" => Website::Hooks.custom_icon_classes(char) || ""
       }
     end
     
