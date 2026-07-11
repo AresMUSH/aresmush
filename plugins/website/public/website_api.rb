@@ -29,14 +29,16 @@ module AresMUSH
       input.gsub(/%r/i, "\n")
     end
     
-    def self.avatar_info(char)
+    def self.avatar_info(char, viewer = nil)
       {
-        name: char.name,
-        nick: char.nick,
-        icon: Website.icon_for_char(char)
+        "name" => char.name,
+        "nick" => char.nick,
+        "icon" => Website.icon_for_char(char),
+        "classes" => Website::Hooks.custom_icon_classes(char, viewer) || ""
       }
     end
     
+    # NOTE: Should generally only be used in the context of avatar_info
     def self.icon_for_char(char)
       if (char)
         icon = char.profile_icon
@@ -48,11 +50,6 @@ module AresMUSH
       end
         
       icon.blank? ? nil : icon
-    end
-    
-    def self.icon_for_name(name)
-      char = Character.find_one_by_name(name)
-      Website.icon_for_char(char)
     end
     
     def self.web_char_marker

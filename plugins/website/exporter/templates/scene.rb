@@ -31,8 +31,16 @@ module AresMUSH
         "#{clean_date}-#{filename}.html"
       end
       
+      def avatar(char)
+        Website.avatar_info(char)
+      end
+      
       def icon(char)
-        Website.icon_for_char(char)
+        avatar(char)["icon"]
+      end
+      
+      def icon_classes(char)
+        avatar(char)["classes"]
       end
     end
   end

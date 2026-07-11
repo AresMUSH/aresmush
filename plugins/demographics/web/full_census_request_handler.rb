@@ -14,7 +14,7 @@ module AresMUSH
           char_data = {}
           char_data['char'] = {
                name: c.name,
-               icon:  Website.icon_for_char(c)  }
+               avatar:  Website.avatar_info(c)  }
           fields.each do |field_config|
             field = field_config["field"]
             title = field_config["title"]

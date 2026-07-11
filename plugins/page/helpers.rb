@@ -91,7 +91,7 @@ module AresMUSH
             id: thread.id,
             key: thread.id,
             title: thread.title_customized(char),
-            author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
+            author: {name: enactor.name, avatar: Website.avatar_info(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
 	    poseable_chars: Page.build_poseable_web_chars_data(char, thread),
             message_id: page_message.id,
@@ -214,7 +214,7 @@ module AresMUSH
             timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at),
             author: {
               name: p.author_name,
-              icon: p.author ? Website.icon_for_char(p.author) : nil }
+              avatar: p.author ? Website.avatar_info(p.author) : nil }
             }}        
       end
       
@@ -237,7 +237,7 @@ module AresMUSH
          who: thread.characters.map { |c| {
           name: c.name,
           ooc_name: c.ooc_name,
-          icon: Website.icon_for_char(c),
+          avatar: Website.avatar_info(c),
           muted: false
          }},
          poseable_chars: Page.build_poseable_web_chars_data(enactor, thread),
@@ -252,7 +252,7 @@ module AresMUSH
         .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
         .map { |a| {
                  name: a.name,
-                 icon: Website.icon_for_char(a),
+                 avatar: Website.avatar_info(a),
                  id: a.id
                }}
     end

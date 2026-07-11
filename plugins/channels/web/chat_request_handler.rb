@@ -23,7 +23,7 @@ module AresMUSH
                end
           end
           
-          alts <<  { id: char.id, name: char.name, icon: Website.icon_for_char(char) }
+          alts <<  { id: char.id, name: char.name, avatar: Website.avatar_info(char) }
         end
 
         Login.mark_notices_read(enactor, :pm)

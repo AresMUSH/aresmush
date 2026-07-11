@@ -205,6 +205,7 @@ module AresMUSH
             'profile-custom.hbs' => File.join(web_code_path, 'components', 'profile-custom.hbs'),  
             'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
             'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+            'custom_icon_classes.rb' => File.join(plugin_code_path, 'website', 'custom_icon_classes.rb'),
           }
         },
 

@@ -23,7 +23,7 @@ module AresMUSH
       def build_web_who_data(char)
         {
           name: char.name,
-          icon: Website.icon_for_char(char),
+          avatar: Website.avatar_info(char),
           status: Website.activity_status(char)
         }
       end

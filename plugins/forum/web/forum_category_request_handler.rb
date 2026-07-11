@@ -27,7 +27,7 @@ module AresMUSH
              date: p.created_date_str(enactor),
              author: { 
               name: p.author_name, 
-              icon: p.author ? Website.icon_for_char(p.author) : nil },
+              avatar: p.author ? Website.avatar_info(p.author) : nil },
              last_activity: OOCTime.local_long_timestr(enactor, p.last_updated),
              last_updated_by: p.last_updated_by,
              is_pinned: p.is_pinned?,

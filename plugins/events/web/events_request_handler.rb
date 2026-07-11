@@ -13,7 +13,7 @@ module AresMUSH
           organizer: { 
             name: e.character.name, 
             id: e.character.id, 
-            icon: Website.icon_for_char(e.character) },
+            avatar: Website.avatar_info(e.character) },
           start_datetime_local: e.start_datetime_local(enactor),
           start_time_standard: e.start_time_standard,
           content_warning: e.content_warning,

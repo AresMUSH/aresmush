@@ -48,13 +48,13 @@ module AresMUSH
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
           is_roster_job: roster_char && job.is_open?,
           roster_name: roster_char ? roster_char.name : nil,
-          author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
-          assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
+          author: { name: job.author_name, id: job.author ? job.author.id : nil, avatar: Website.avatar_info(job.author) },
+          assigned_to: job.assigned_to ? { name: job.assigned_to.name, avatar: Website.avatar_info(job.assigned_to) } : nil,
           description: description,
           tags: edit_mode ? job.content_tags.join(" ") : job.content_tags,
           unread_jobs_count: is_job_admin ? enactor.unread_jobs.count : enactor.unread_requests.count,
           replies: Jobs.visible_replies(enactor, job).map { |r| {
-            author: { name: r.author_name, icon: Website.icon_for_char(r.author) },
+            author: { name: r.author_name, avatar: Website.avatar_info(r.author) },
             message: Website.format_markdown_for_html(r.message),
             created: r.created_date_str(enactor),
             admin_only: r.admin_only,
@@ -62,7 +62,7 @@ module AresMUSH
           }},
           participants: job.participants.map { |p| {
             name: p.name,
-            icon: Website.icon_for_char(p),
+            avatar: Website.avatar_info(p),
             id: p.id
           }},
           job_admins: job_admins.map { |c|  { 

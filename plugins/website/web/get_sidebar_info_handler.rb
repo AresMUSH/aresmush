@@ -24,7 +24,7 @@ module AresMUSH
                 alt_data << {
                 name: alt.name,
                 id: alt.id,
-                icon: Website.icon_for_char(alt)
+                avatar: Website.avatar_info(alt)
                 }
                 if (alt != enactor)
                   notifications += alt.unread_notifications.count

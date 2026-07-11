@@ -19,7 +19,7 @@ module AresMUSH
           name: p.name,
           chars: p.characters.map { |c| {
             name: c.name,
-            icon: Website.icon_for_char(c)
+            avatar: Website.avatar_info(c)
           }}
         }}
         

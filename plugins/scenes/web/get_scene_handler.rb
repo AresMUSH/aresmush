@@ -38,7 +38,7 @@ module AresMUSH
         
         participants = scene.participants.to_a
             .sort_by {|p| p.name }
-            .map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
+            .map { |p| { name: p.name, id: p.id, avatar: Website.avatar_info(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
             
         {
           id: scene.id,

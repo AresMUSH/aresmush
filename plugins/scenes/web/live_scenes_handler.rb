@@ -45,7 +45,7 @@ module AresMUSH
                  name: p.name,
                  nick: p.nick,
                  id: p.id, 
-                 icon: Website.icon_for_char(p), 
+                 avatar: Website.avatar_info(p), 
                  status: Website.activity_status(p),
                  online: Login.is_online?(p),
                  last_posed: s.last_posed == p }},

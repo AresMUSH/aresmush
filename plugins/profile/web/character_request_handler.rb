@@ -40,7 +40,7 @@ module AresMUSH
           profile_title: Profile.profile_title(char),
           name_and_nickname: Demographics.name_and_nickname(char),
           fullname: char.fullname,
-          icon: Website.icon_for_char(char),
+          avatar: Website.avatar_info(char),
           profile_image: Website.get_file_info(char.profile_image),
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),

@@ -166,7 +166,7 @@ module AresMUSH
         job_id: job.id,
         reply_id: reply.id,
         admin_only: admin_only,
-        author: { name: author.name, icon: Website.icon_for_char(author), id: author.id},
+        author: { name: author.name, avatar: Website.avatar_info(author), id: author.id},
         message: Website.format_markdown_for_html(message),
         type: 'job_reply'
       }

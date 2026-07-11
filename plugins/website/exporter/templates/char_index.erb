@@ -9,7 +9,7 @@
       <a href="<%= c.name %>.html">
       <div class="char-icon-container">
 
-      <div class="log-icon-container">
+      <div class="log-icon-container <%= icon_classes(c) %>">
              <% if icon(c) %>
               <img  class="log-icon" src="game/uploads/<%= icon(c) %>" >
              <% else %>
