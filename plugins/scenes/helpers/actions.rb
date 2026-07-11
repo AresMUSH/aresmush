@@ -159,8 +159,13 @@ module AresMUSH
       command = pose.after("/").before(" ")
       args = pose.after(" ")
 
-      custom = CustomSceneCommands.new
-      message = custom.handle(enactor, char, scene, command, args)
+      if (Global.plugin_manager.hooks_version == 1)
+        custom = CustomSceneCommands.new
+        message = custom.handle(enactor, char, scene, command, args)
+      else
+        message = Scenes::Hooks.handle_scene_command(enactor, char, scene, command, args)
+      end
+      
       if (message)
         return message
       end

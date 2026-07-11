@@ -97,7 +97,7 @@ module AresMUSH
           fs3: fs3,
           traits: traits,
           rpg: rpg,
-          custom: Profile::CustomCharFields.get_fields_for_chargen(char)
+          custom: Chargen::Hooks.edit_fields(char)
         }
       end
     end

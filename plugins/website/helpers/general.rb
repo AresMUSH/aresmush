@@ -204,7 +204,7 @@ module AresMUSH
             'profile-custom-tabs.hbs' => File.join(web_code_path, 'components', 'profile-custom-tabs.hbs'),  
             'profile-custom.hbs' => File.join(web_code_path, 'components', 'profile-custom.hbs'),  
             'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
-            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+            'view_fields.rb' => File.join(plugin_code_path, 'profile', 'hooks', 'view_fields.rb'),
           }
         },
 
@@ -215,7 +215,8 @@ module AresMUSH
             'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'components', 'char-edit-custom-tabs.hbs'),
             'char-edit-custom.hbs' => File.join(web_code_path, 'components', 'char-edit-custom.hbs'),
             'char-edit-custom.js' => File.join(web_code_path, 'components', 'char-edit-custom.js'),
-            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+            'edit_fields.rb' => File.join(plugin_code_path, 'profile', 'hooks', 'edit_fields.rb'),
+            'save_fields.rb' => File.join(plugin_code_path, 'profile', 'hooks', 'save_fields.rb'),            
           }
         },
 
@@ -227,7 +228,8 @@ module AresMUSH
             'chargen-custom.hbs' => File.join(web_code_path, 'components', 'chargen-custom.hbs'),  
             'chargen-custom-tabs.hbs' => File.join(web_code_path, 'components', 'chargen-custom-tabs.hbs'),  
             'chargen-custom.js' => File.join(web_code_path, 'components', 'chargen-custom.js'),
-            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+            'edit_fields.rb' => File.join(plugin_code_path, 'chargen', 'hooks', 'edit_fields.rb'),
+            'save_fields.rb' => File.join(plugin_code_path, 'chargen', 'hooks', 'save_fields.rb'),            
           }
         },
         
@@ -235,7 +237,7 @@ module AresMUSH
           name: "Chargen App Review",
           help: "https://aresmush.com/tutorials/code/hooks/app-review.html",
           files: {
-            'custom_app_review.rb' => File.join(plugin_code_path, 'chargen', 'custom_app_review.rb'),
+            'app_review.rb' => File.join(plugin_code_path, 'chargen', 'hooks', 'app_review.rb'),            
           }
         },
         
@@ -243,7 +245,7 @@ module AresMUSH
           name: "Chargen Approval Triggers",
           help: "https://aresmush.com/tutorials/code/hooks/approval-triggers.html",
           files: {
-            'custom_approval.rb' => File.join(plugin_code_path, 'chargen', 'custom_approval.rb'),
+            'approval.rb' => File.join(plugin_code_path, 'chargen', 'hooks', 'approval.rb'),
           }
         },
         
@@ -335,6 +337,18 @@ module AresMUSH
             'custom_wiki_char_export.rb' => File.join(plugin_code_path, 'website', 'custom_wiki_char_export.rb'),
           }
         },
+        
+        {
+          name: "DEPRECATED - will be removed in a future version",
+          help: '',
+          fields {
+            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),           
+            'custom_app_review.rb' => File.join(plugin_code_path, 'chargen', 'custom_app_review.rb'),
+            'custom_approval.rb' => File.join(plugin_code_path, 'chargen', 'custom_approval.rb'),
+            'custom_scene_data.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_data.rb'),
+            'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),            
+          }
+        }
         
       ]
     end

@@ -33,7 +33,13 @@ module AresMUSH
         end
           
         prefs = Manage.is_extra_installed?("prefs") ? Website.format_markdown_for_html(char.rp_prefs) : nil
-          
+        
+        if (Global.plugin_manager.hooks_version == 1)
+	  custom = CustomCharFields.get_fields_for_viewing(char, enactor)
+	else
+	  custom = Profile::Hooks.view_fields(char, enactor)
+	end
+    
         profile_data = {
           id: char.id,
           name: char.name,
@@ -57,7 +63,7 @@ module AresMUSH
           show_notes: char == enactor || Utils.can_manage_notes?(enactor),
           siteinfo: siteinfo,
           rp_prefs: prefs,
-          custom: CustomCharFields.get_fields_for_viewing(char, enactor),
+          custom: custom
         }
         
         add_to_profile profile_data, Demographics.build_web_profile_data(char, enactor)

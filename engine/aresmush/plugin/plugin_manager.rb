@@ -190,6 +190,10 @@ module AresMUSH
     
     def find_plugin_const(name)
       AresMUSH.constants.select { |c| c.upcase == name.to_sym.upcase }.first
-    end    
+    end 
+    
+    def self.hooks_version
+      Global.read_config("plugins", "hooks_version") || 1
+    end   
   end
 end

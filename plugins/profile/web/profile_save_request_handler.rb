@@ -89,7 +89,11 @@ module AresMUSH
           return { error: error }
         end
         
-        errors = CustomCharFields.save_fields_from_profile_edit2(char, enactor, request.args) || []
+        if (Global.plugin_manager.hooks_version == 1)
+          errors = CustomCharFields.save_fields_from_profile_edit2(char, enactor, request.args) || []
+        else
+          errors = Profile::Hooks.save_fields(char, enactor, request.args) || []
+        end
         if (errors.class == Array && errors.any?)
           return { error: errors.join("\n") }
         end

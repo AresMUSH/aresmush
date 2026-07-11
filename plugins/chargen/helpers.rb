@@ -143,7 +143,11 @@ module AresMUSH
         end
       end
       
-      errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data) || []
+      if (Global.plugin_manager.hooks_version == 1)
+        errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data) || []
+      else
+	errors = Chargen::Hooks.save_fields(char, chargen_data) || []
+      end
       if (errors.class == Array && errors.any?)
         alerts.concat errors
       end

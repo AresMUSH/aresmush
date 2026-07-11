@@ -49,7 +49,12 @@ module AresMUSH
         files = Profile.character_page_files(char)
         files = files.sort.map { |f| Website.get_file_info(f) }
         
-        
+        if (Global.plugin_manager.hooks_version == 1)
+	  custom = CustomCharFields.get_fields_for_editing(char, enactor)
+	else
+	  custom = Profile::Hooks.edit_fields(char, enactor)
+	end
+
         profile_data = {
           id: char.id,
           name: char.name,
@@ -62,7 +67,7 @@ module AresMUSH
           profile_image: char.profile_image ? Website.get_file_info(char.profile_image) : nil,
           profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,
           profile_order: char.profile_order.join(","),
-          custom: CustomCharFields.get_fields_for_editing(char, enactor)
+          custom: custom
         }
         
         add_to_profile profile_data, Demographics.build_web_profile_edit_data(char, enactor, profile_manager)
