@@ -33,7 +33,9 @@ module AresMUSH
       stats = FS3Combat.npc_type(self.level)
       rating = stats[ability]
       default = stats["Default"] || 4
+      
       return rating if rating
+      
       if (FS3Skills.get_ability_type(ability) == :attribute)
         return (default / 2).floor
       else

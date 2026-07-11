@@ -243,6 +243,16 @@
           <% end %>
         </ul>
         
+        <% if fs3_data[:advantages] %>
+          <h3>Advantages</h3>
+       
+          <ul>
+            <% fs3_data[:advantages].each do |skill| %>
+              <li><b><%= skill[:name] %></b> <%= skill[:rating_name] %> (<%= skill[:rating] %>)</li>
+            <% end %>
+          </ul>
+        <% end %>
+        
       </div>
     <% end %>
 
