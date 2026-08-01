@@ -1,25 +1,17 @@
 # Static background reference data.
-# Lookup: Pf2e.read_data("backgrounds", "farmhand")
+# Lookup: Pf2e.read_data("backgrounds", "guard")
 #
-# Sheet stores only the chosen slug on Pf2eSheet#background.
-# Chargen applies boosts → abilities, skills → ranks, feat → feats[].
+# skills:         always trained on cg/background
+# skill_choices:  player resolves later via cg/bgskill (do not auto-train)
 #
-# Fields:
-#   name        — display name
-#   boosts:
-#     fixed     — ability keys applied automatically (rare on backgrounds)
-#     free      — number of player-chosen boosts
-#     options   — if present, free boosts must be chosen from this list
-#                 (omit options = any ability)
-#   skills      — skill slugs granted at Trained (missing on sheet = Untrained)
-#   lore        — optional Lore specialty string (stored/displayed as needed;
-#                 mechanical training may map to a skill slug like "lore")
-#   feat        — skill feat slug granted (must exist in feats.yml when enforced)
-#   traits      — optional tags for filtering later
-#   effect      — short human-readable summary (not full rules text)
-#
-# Keep this parallel to ancestry.yml / feats.yml: structured where code cares,
-# prose only for unique wording.
+# skill_choices entry shapes:
+#   type: list  — pick N from options (closed set)
+#     pick: 1
+#     options: [legal_lore, warfare_lore]
+#   type: lore  — open Lore specialty (Nomad-style)
+#     pick: 1
+#     category: home_terrain   # UI/help hint only; not hard-validated
+#     Player supplies a specialty (e.g. forest); we train forest_lore.
 
 backgrounds:
   farmhand:
@@ -31,7 +23,7 @@ backgrounds:
     skills:
       - athletics
       - labor_lore
-    lore: Labor
+    skill_choices: []
     feat: assured_identification
     traits: []
     effect: >
@@ -47,7 +39,7 @@ backgrounds:
     skills:
       - society
       - diplomacy
-    lore: null
+    skill_choices: []
     feat: multicultural
     traits: []
     effect: >
@@ -63,7 +55,7 @@ backgrounds:
     skills:
       - intimidation
       - warfare_lore
-    lore: Warfare
+    skill_choices: []
     feat: intimidating_glare
     traits: []
     effect: >
@@ -79,9 +71,66 @@ backgrounds:
     skills:
       - arcana
       - academia_lore
-    lore: Academia
+    skill_choices: []
     feat: assurance
     traits: []
     effect: >
       Study shaped your early life. You know how to learn quickly and
       apply book knowledge under pressure.
+
+  # Closed choice: Intimidation + (Legal Lore or Warfare Lore)
+  guard:
+    name: Guard
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, cha]
+    skills:
+      - intimidation
+    skill_choices:
+      - type: list
+        pick: 1
+        options: [legal_lore, warfare_lore]
+    feat: quick_coercion
+    traits: []
+    effect: >
+      You served as a guard. You know how to lean on people and how the
+      law — or the battlefield — is organized where you worked.
+
+  # Closed choice: Society + (Diplomacy or a court-related Lore)
+  noble:
+    name: Noble
+    boosts:
+      fixed: []
+      free: 2
+      options: [int, cha]
+    skills:
+      - society
+    skill_choices:
+      - type: list
+        pick: 1
+        options: [diplomacy, genealogy_lore, heraldry_lore]
+    feat: courtly_graces
+    traits: []
+    effect: >
+      You were raised among privilege and expectation. Courts, lineage,
+      and careful words are familiar ground.
+
+  # Open Lore: specialty tied to home terrain (player-defined)
+  nomad:
+    name: Nomad
+    boosts:
+      fixed: []
+      free: 2
+      options: [con, wis]
+    skills:
+      - survival
+    skill_choices:
+      - type: lore
+        pick: 1
+        category: home_terrain
+    feat: assurance
+    traits: []
+    effect: >
+      You grew up moving with the land. Survival is second nature, and
+      you know the lore of the terrain you call home.

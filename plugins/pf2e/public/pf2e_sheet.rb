@@ -10,10 +10,11 @@ module AresMUSH
     attribute :charclass,     :type => DataType::Hash,    :default => {}
 
     # Free ability boost picks by source (slug lists).
-    # Fixed boosts/flaws come from data at recalc time.
-    # Example: { "ancestry" => ["str"], "background" => ["str", "con"], "heritage" => [] }
-    # Within one source list, each ability may appear at most once.
     attribute :ability_boosts, :type => DataType::Hash, :default => {}
+
+    # Resolved background skill_choices, in choice-index order.
+    # e.g. ["warfare_lore"] or ["forest_lore"]
+    attribute :background_skill_picks, :type => DataType::Array, :default => []
 
     # Abilities: [base, current]
     attribute :abilities,     :type => DataType::Hash,    :default => {
@@ -25,15 +26,10 @@ module AresMUSH
       "cha" => [10, 10]
     }
 
-    # Skills & saves (sparse — missing key = Untrained)
-    # Perception lives in saves
     attribute :skills,        :type => DataType::Hash,    :default => {}
     attribute :saves,         :type => DataType::Hash,    :default => {}
-
-    # Feats (list of slugs)
     attribute :feats,         :type => DataType::Array,   :default => []
 
-    # Combat / resources
     attribute :hp,            :type => DataType::Hash,    :default => {
       "current" => 0,
       "max"     => 0,
@@ -43,8 +39,6 @@ module AresMUSH
     attribute :hero_points,   :type => DataType::Integer, :default => 1
     attribute :speed,         :type => DataType::Integer, :default => 25
     attribute :conditions,    :type => DataType::Hash,    :default => {}
-
-    # Magic (keyed by source: "wizard", "druid-dedication", etc.)
     attribute :magic,         :type => DataType::Hash,    :default => {}
   end
 end
