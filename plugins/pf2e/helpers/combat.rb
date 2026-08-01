@@ -91,7 +91,18 @@ module AresMUSH
     #                 (default :success)
     #   damage_type:  optional label stored on the result
     #
-    # Returns hash with :total, :degree, :damage_type, :parts
+    # Returns:
+    # {
+    #   total: 15,
+    #   degree: :critical_success,
+    #   damage_type: "slashing",
+    #   parts: [
+    #     { raw: "2d8", type: :weapon_dice, rolls: [5, 7], value: 12 },  # doubled
+    #     { raw: "ability", type: :ability, value: 3 },
+    #     { raw: "1d6", type: :extra_dice, rolls: [4], value: 4 },
+    #     { raw: "bonus", type: :flat, value: 0 }
+    #   ]
+    # }
     def self.damage_roll(damage_dice:, ability_mod: 0, extra_dice: [], other_bonus: 0, degree: :success, damage_type: nil)
       degree = degree.to_sym
 
@@ -174,6 +185,8 @@ module AresMUSH
         damage_type: dmg["type"]
       )
     end
+
+
 
     # -------------------------------------------------
     # Multiple attack penalty

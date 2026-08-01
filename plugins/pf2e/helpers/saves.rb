@@ -2,10 +2,11 @@ module AresMUSH
   module Pf2e
 
     # -------------------------------------------------
-    # Save / Perception helpers
+    # Save & Perception helpers
+    # Perception is stored in the same sheet.saves hash.
     # -------------------------------------------------
 
-    # Normalize a save/perception name to the canonical key.
+    # Normalize save/perception name to the canonical key used in data + sheet.
     # Accepts "fort", "fortitude", "ref", "reflex", "will", "perc", "perception", etc.
     def self.save_key(name)
       return nil if name.nil?
