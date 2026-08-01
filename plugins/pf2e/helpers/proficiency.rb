@@ -14,7 +14,7 @@ module AresMUSH
       "E" => 4, "EXPERT"    => 4,
       "M" => 6, "MASTER"    => 6,
       "L" => 8, "LEGENDARY" => 8
-    }.freeze
+    }.freeze unless const_defined?(:TEML_BONUS)
 
     def self.teml_to_bonus(rank)
       return 0 if rank.nil? || rank.to_s.strip.empty?

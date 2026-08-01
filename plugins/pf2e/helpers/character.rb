@@ -7,7 +7,7 @@ module AresMUSH
     # -------------------------------------------------
 
     # Canonical ability keys used in the sheet hash.
-    ABILITY_KEYS = %w[str dex con int wis cha].freeze
+    ABILITY_KEYS = %w[str dex con int wis cha].freeze unless const_defined?(:ABILITY_KEYS)
 
     # Map common aliases → canonical key.
     ABILITY_ALIASES = {
@@ -17,7 +17,7 @@ module AresMUSH
       "int" => "int", "intelligence" => "int",
       "wis" => "wis", "wisdom"       => "wis",
       "cha" => "cha", "charisma"     => "cha"
-    }.freeze
+    }.freeze unless const_defined?(:ABILITY_ALIASES)
 
     # Normalize any reasonable ability name/symbol to the canonical key ("str", etc.).
     # Returns nil if the input is not a recognized ability.
