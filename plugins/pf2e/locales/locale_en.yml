@@ -11,6 +11,7 @@ en:
     cg_class_usage: "Usage: cg/class <slug> [key ability]"
     cg_boost_usage: "Usage: cg/boost <ancestry|heritage|background> <ability> [ability...]"
     cg_skill_usage: "Usage: cg/skill <skill> [skill...]  (or cg/skill with no args for status)"
+    cg_bgskill_usage: "Usage: cg/bgskill <option or lore specialty>  (or cg/bgskill with no args for status)"
 
     cg_unknown_ancestry: "Unknown ancestry. Check data/ancestry.yml slugs."
     cg_unknown_heritage: "Unknown heritage. Check data/heritage.yml slugs."
@@ -37,10 +38,17 @@ en:
     cg_skill_already_trained: "One or more of those skills are already trained."
     cg_skill_no_picks: "Not enough skill picks remaining."
 
+    cg_bgskill_none: "This background has no skill choices to resolve."
+    cg_bgskill_none_pending: "All background skill choices are already resolved."
+    cg_bgskill_not_in_options: "That is not a valid option for the current background skill choice."
+    cg_bgskill_bad_lore: "Provide a terrain/specialty name for this Lore (e.g. forest or forest_lore)."
+
     cg_ancestry_set: "Ancestry set to %{name}."
     cg_heritage_set: "Heritage set to %{name}."
-    cg_background_set: "Background set to %{name}. Skills/feat from the background have been applied."
+    cg_background_set: "Background set to %{name}. Fixed skills/feat applied; resolve skill choices with cg/bgskill if any."
     cg_class_set: "Class set to %{name} (key ability: %{ability})."
     cg_boost_set: "Free boosts for %{source} set to: %{list}."
     cg_skill_set: "Trained in: %{list}. Skill picks remaining: %{remaining}."
     cg_skill_status: "Skill picks %{used}/%{total} used (%{remaining} left). Forced: %{forced}. Trained: %{trained}."
+    cg_bgskill_set: "Background skill choice set to %{skill}. Remaining choices: %{remaining}."
+    cg_bgskill_status: "Background skill choices — resolved: %{resolved}. Pending: %{pending}. Remaining: %{remaining}."
