@@ -9,14 +9,13 @@ module AresMUSH
     attribute :background
     attribute :charclass,     :type => DataType::Hash,    :default => {}
 
-    # Free ability boost picks by source (slug lists).
-    attribute :ability_boosts, :type => DataType::Hash, :default => {}
+    # Stage A lock: once true, ancestry/heritage/background/class cannot change
+    # without cg/reset (chargen only; blocked for approved characters).
+    attribute :identity_locked, :type => DataType::Boolean, :default => false
 
-    # Resolved background skill_choices, in choice-index order.
-    # e.g. ["warfare_lore"] or ["forest_lore"]
+    attribute :ability_boosts, :type => DataType::Hash, :default => {}
     attribute :background_skill_picks, :type => DataType::Array, :default => []
 
-    # Abilities: [base, current]
     attribute :abilities,     :type => DataType::Hash,    :default => {
       "str" => [10, 10],
       "dex" => [10, 10],

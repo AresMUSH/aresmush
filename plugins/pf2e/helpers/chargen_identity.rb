@@ -1,0 +1,234 @@
+module AresMUSH
+  module Pf2e
+
+    # -------------------------------------------------
+    # Stage A: identity (ancestry / heritage / background / class)
+    # Freely mutable until commit. After lock, only cg/reset
+    # (and only if the character is not approved).
+    # -------------------------------------------------
+
+    def self.cg_identity_locked?(sheet)
+      return false unless sheet
+      val = sheet.identity_locked
+      val == true || val.to_s == "true" || val.to_s == "1"
+    end
+
+    def self.cg_char_approved?(char)
+      return false unless char
+      if char.respond_to?(:is_approved?)
+        return true if char.is_approved?
+      end
+      if defined?(Chargen)
+        if Chargen.respond_to?(:is_approved?)
+          return true if Chargen.is_approved?(char)
+        end
+        if Chargen.respond_to?(:check_chargen_locked)
+          # check_chargen_locked returns an error string when locked/approved
+          msg = Chargen.check_chargen_locked(char)
+          return true if msg
+        end
+      end
+      false
+    end
+
+    def self.cg_require_identity_unlocked(sheet)
+      return { ok: false, error: "pf2e.cg_identity_locked", sheet: sheet } if cg_identity_locked?(sheet)
+      nil
+    end
+
+    def self.cg_require_identity_locked(sheet)
+      return { ok: false, error: "pf2e.cg_identity_not_locked", sheet: sheet } unless cg_identity_locked?(sheet)
+      nil
+    end
+
+    # Wipe mechanical sheet fields to defaults; keep the Ohm row + character link.
+    def self.cg_reset_sheet(char)
+      result = cg_ensure_sheet(char)
+      return result unless result[:ok]
+
+      if cg_char_approved?(char)
+        return { ok: false, error: "pf2e.cg_reset_approved", sheet: result[:sheet] }
+      end
+
+      sheet = result[:sheet]
+      sheet.update(
+        level: 1,
+        ancestry: nil,
+        heritage: nil,
+        background: nil,
+        charclass: {},
+        identity_locked: false,
+        ability_boosts: {},
+        background_skill_picks: [],
+        abilities: {
+          "str" => [10, 10],
+          "dex" => [10, 10],
+          "con" => [10, 10],
+          "int" => [10, 10],
+          "wis" => [10, 10],
+          "cha" => [10, 10]
+        },
+        skills: {},
+        saves: {},
+        feats: [],
+        hp: { "current" => 0, "max" => 0, "temp" => 0 },
+        focus_points: 0,
+        hero_points: 1,
+        speed: 25,
+        conditions: {},
+        magic: {}
+      )
+
+      { ok: true, error: nil, sheet: sheet }
+    end
+
+    # Preview of current identity + grants from data (Stage A).
+    def self.cg_identity_summary(char)
+      result = cg_ensure_sheet(char)
+      return result unless result[:ok]
+
+      sheet = result[:sheet]
+      anc = cg_ancestry_entry(sheet.ancestry)
+      her = cg_heritage_entry(sheet.heritage)
+      bg  = cg_background_entry(sheet.background)
+      cc  = sheet.charclass || {}
+      class_entry = cg_class_entry(cc["slug"] || cc[:slug])
+
+      fixed_skills = []
+      skill_choices = []
+      feat = nil
+      if bg.is_a?(Hash)
+        fixed_skills = Array(bg["skills"]).map(&:to_s)
+        skill_choices = Array(bg["skill_choices"])
+        feat = bg["feat"]
+      end
+
+      class_additional = []
+      trained_count = 0
+      if class_entry.is_a?(Hash)
+        class_additional = Array((class_entry["skills"] || {})["additional"]).map(&:to_s)
+        trained_count = ((class_entry["skills"] || {})["trained_count"] || 0).to_i
+      end
+
+      boosts_preview = {}
+      if anc.is_a?(Hash)
+        boosts_preview[:ancestry_fixed] = Array((anc["boosts"] || {})["fixed"])
+        boosts_preview[:ancestry_free] = (anc["boosts"] || {})["free"].to_i
+        boosts_preview[:ancestry_flaws] = Array((anc["flaws"] || {})["fixed"])
+      end
+      if bg.is_a?(Hash)
+        boosts_preview[:background_free] = (bg["boosts"] || {})["free"].to_i
+        boosts_preview[:background_options] = (bg["boosts"] || {})["options"]
+      end
+      if her.is_a?(Hash)
+        boosts_preview[:heritage_free] = ((her["boosts"] || {})["free"] || 0).to_i
+      end
+      boosts_preview[:class_key] = cc["key_ability"] || cc[:key_ability]
+
+      {
+        ok: true,
+        error: nil,
+        sheet: sheet,
+        locked: cg_identity_locked?(sheet),
+        ancestry: sheet.ancestry,
+        ancestry_name: anc.is_a?(Hash) ? anc["name"] : nil,
+        heritage: sheet.heritage,
+        heritage_name: her.is_a?(Hash) ? her["name"] : nil,
+        background: sheet.background,
+        background_name: bg.is_a?(Hash) ? bg["name"] : nil,
+        charclass: cc["slug"] || cc[:slug],
+        charclass_name: cc["name"] || (class_entry.is_a?(Hash) ? class_entry["name"] : nil),
+        key_ability: cc["key_ability"] || cc[:key_ability],
+        speed: anc.is_a?(Hash) ? anc["speed"] : sheet.speed,
+        hp_ancestry: anc.is_a?(Hash) ? anc["hp"] : nil,
+        hp_class: class_entry.is_a?(Hash) ? class_entry["hp"] : nil,
+        fixed_skills: fixed_skills,
+        skill_choices: skill_choices,
+        background_feat: feat,
+        class_additional_skills: class_additional,
+        class_trained_count: trained_count,
+        boosts: boosts_preview,
+        complete: !sheet.ancestry.blank? && !sheet.heritage.blank? &&
+                  !sheet.background.blank? && !(cc["slug"] || cc[:slug]).to_s.empty?
+      }
+    end
+
+    # Lock identity and apply fixed grants from data (Stage A → Stage B).
+    def self.cg_commit_identity(char)
+      result = cg_ensure_sheet(char)
+      return result unless result[:ok]
+
+      sheet = result[:sheet]
+      if cg_identity_locked?(sheet)
+        return { ok: false, error: "pf2e.cg_identity_locked", sheet: sheet }
+      end
+
+      if sheet.ancestry.blank?
+        return { ok: false, error: "pf2e.cg_need_ancestry", sheet: sheet }
+      end
+      if sheet.heritage.blank?
+        return { ok: false, error: "pf2e.cg_need_heritage", sheet: sheet }
+      end
+      if sheet.background.blank?
+        return { ok: false, error: "pf2e.cg_need_background", sheet: sheet }
+      end
+      cc = sheet.charclass || {}
+      if (cc["slug"] || cc[:slug]).to_s.empty?
+        return { ok: false, error: "pf2e.cg_need_class", sheet: sheet }
+      end
+
+      # Clean derived state before applying fixed grants
+      sheet.update(
+        ability_boosts: {},
+        background_skill_picks: [],
+        skills: {},
+        saves: {},
+        feats: [],
+        abilities: {
+          "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10],
+          "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10]
+        }
+      )
+
+      anc = cg_ancestry_entry(sheet.ancestry)
+      if anc.is_a?(Hash) && anc["speed"]
+        sheet.update(speed: anc["speed"].to_i)
+      end
+
+      bg = cg_background_entry(sheet.background)
+      if bg.is_a?(Hash)
+        Array(bg["skills"]).each do |sk|
+          sk_key = sk.to_s.strip.downcase
+          next if sk_key.empty?
+          set_skill_rank(sheet, sk_key, "T")
+        end
+        feat = bg["feat"].to_s.strip.downcase
+        if !feat.empty? && feat != "null"
+          sheet.update(feats: [feat])
+        end
+      end
+
+      class_entry = cg_class_entry(cc["slug"] || cc[:slug])
+      if class_entry.is_a?(Hash)
+        if class_entry["perception"]
+          set_save_rank(sheet, "perception", class_entry["perception"])
+        end
+        (class_entry["saves"] || {}).each do |save_name, rank|
+          set_save_rank(sheet, save_name, rank)
+        end
+        Array(((class_entry["skills"] || {})["additional"]) || []).each do |sk|
+          sk_key = sk.to_s.strip.downcase
+          next if sk_key.empty?
+          set_skill_rank(sheet, sk_key, "T") if skill_rank(sheet, sk_key) == "U"
+        end
+      end
+
+      cg_recalc_abilities(sheet)
+      cg_recalc_hp(sheet)
+      sheet.update(identity_locked: true)
+
+      { ok: true, error: nil, sheet: sheet }
+    end
+
+  end
+end
