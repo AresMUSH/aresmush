@@ -1,0 +1,17 @@
+# Static save / perception reference data.
+# Sparse on the character sheet — missing key = Untrained.
+# Perception is stored in the same hash as the three saves.
+
+saves:
+  fortitude:
+    ability: con
+    short: fort
+  reflex:
+    ability: dex
+    short: ref
+  will:
+    ability: wis
+    short: will
+  perception:
+    ability: wis
+    short: perc
