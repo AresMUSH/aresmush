@@ -4,15 +4,23 @@
 # Fields:
 #   name          — display name
 #   category      — unarmored | light | medium | heavy
+#                   (drives which armor proficiency rank applies)
 #   ac_bonus      — item bonus to AC
 #   dex_cap       — max Dex modifier allowed (null = no cap)
 #   check_penalty — penalty to Str- and Dex-based skill checks (0 or negative)
 #   speed_penalty — penalty to Speed in feet (0 or negative)
 #   strength      — minimum Strength score to ignore check/speed penalties
+#                   (null if none)
 #   bulk          — L / 1 / 2 / etc.
-#   group         — armor group
-#   traits        — array of trait slugs
+#   group         — armor group (leather, composite, plate, …) for future effects
+#   traits        — array of trait slugs (comfortable, noisy, …)
 #   price         — optional, in sp
+#
+# Proficiency rank is NOT stored here — it comes from the character
+# (trained in light armor, etc.). The category tells the caller which
+# rank field to read once we store armor proficiencies on the sheet.
+#
+# Unarmored entries exist so the same lookup path works for "no armor".
 
 armor:
   explorers_clothing:

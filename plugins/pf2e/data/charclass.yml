@@ -1,5 +1,17 @@
 # Static class reference data.
 # Lookup: Pf2e.read_data("charclasses", "fighter")
+#
+# key_ability:
+#   options — list of allowed key ability keys (player picks one if multiple)
+# hp        — HP per level (ancestry HP is separate, added at level 1)
+# perception / saves — initial proficiency ranks (T/E/M/L)
+# skills:
+#   trained_count — number of trained skills at 1st (plus INT modifier usually)
+#   additional    — skill slugs always trained by the class
+# attacks / defenses — initial proficiency by category
+# class_dc — initial rank for class DC
+# spellcasting — null if none; otherwise tradition + initial rank + type
+# features_by_level — level → list of feature slugs (fill out over time)
 
 charclasses:
   fighter:
@@ -65,6 +77,7 @@ charclasses:
       tradition: arcane
       rank: T
       type: prepared
+      # slots / spells known live on the sheet under magic[]
     features_by_level:
       1:
         - arcane_spellcasting

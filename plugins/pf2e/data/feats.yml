@@ -1,7 +1,42 @@
 # Static feat reference data.
 # Lookup: Pf2e.read_data("feats", "power_attack")
+#
+# ---------------------------------------------------------------------------
+# Design notes
+# ---------------------------------------------------------------------------
+# Feats are the messiest PF2e data. This structure prioritizes:
+#   1. Chargen / level-up eligibility (level, traits, prerequisites)
+#   2. Display / help text
+#   3. Light mechanical tags the code can act on later
+#
+# It does NOT try to encode every effect as executable logic. Complex or
+# unique effects stay in `effect` (human-readable) and optional `tags`
+# until we have a real reason to automate them.
+#
+# Fields:
+#   name          — display name
+#   level         — minimum level required
+#   traits        — array of trait slugs (fighter, general, skill, ancestry, …)
+#   category      — ancestry | class | skill | general | archetype | dedication
+#   # category is redundant with traits for some feats but makes filtering easy
+#   action        — null | free | reaction | 1 | 2 | 3
+#   frequency     — null | "once per round" | "once per day" | etc.
+#   prerequisites — structured requirements (all must be met unless noted)
+#     level       — usually same as feat level; optional override
+#     feats       — list of feat slugs already required
+#     skills      — { skill_slug: min_rank }  e.g. athletics: T
+#     saves       — { save_slug: min_rank }
+#     attacks     — { category: min_rank }    e.g. martial: T
+#     attributes  — { ability: min_score }    e.g. str: 16  (rare)
+#     features    — class/ancestry feature slugs
+#     special     — free-text prereq the code cannot auto-check
+#   effect        — short rules summary (not full Nethys text)
+#   tags          — optional machine-oriented hints, e.g.
+#                   [map_friendly, damage_bonus, skill_bonus, dedication]
+# ---------------------------------------------------------------------------
 
 feats:
+  # --- Skill feat ---
   assurance:
     name: Assurance
     level: 1
@@ -10,6 +45,7 @@ feats:
     action: null
     frequency: null
     prerequisites:
+      skills: {}          # "trained in at least one skill" — enforced in special
       special: "trained in at least one skill"
     effect: >
       Choose a skill you're trained in. You can forgo rolling to instead
@@ -32,6 +68,7 @@ feats:
       increase the vertical distance vertically when applicable.
     tags: [skill_bonus]
 
+  # --- General feat ---
   toughness:
     name: Toughness
     level: 1
@@ -45,6 +82,7 @@ feats:
       recovery checks by 1.
     tags: [hp_bonus, recovery]
 
+  # --- Class feat (Fighter) ---
   power_attack:
     name: Power Attack
     level: 1
@@ -68,9 +106,11 @@ feats:
     prerequisites: {}
     effect: >
       Trigger: An enemy hits you with a melee Strike while you have a shield raised.
-      You can use Shield Block as a reaction.
+      You can use Shield Block as a reaction even though it is not your turn's reaction budget
+      in the usual way — follow published text for exact trigger/resolution.
     tags: [reaction, shield]
 
+  # --- Ancestry feat ---
   rock_runner:
     name: Rock Runner
     level: 1
@@ -85,6 +125,7 @@ feats:
       treat higher earth/stone obstacles more favorably when Climbing.
     tags: [movement]
 
+  # --- Dedication / archetype (shape only) ---
   barbarian_dedication:
     name: Barbarian Dedication
     level: 2
@@ -100,5 +141,5 @@ feats:
     effect: >
       You become trained in light armor, medium armor, unarmed attacks, and
       the Athletics skill (or another skill if already trained). You gain
-      access to barbarian archetype feats.
+      access to barbarian archetype feats. You do not gain rage yet.
     tags: [dedication, multiclass]
