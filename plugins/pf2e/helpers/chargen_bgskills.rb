@@ -3,8 +3,9 @@ module AresMUSH
 
     # -------------------------------------------------
     # Background skill_choices
-    # list  — pick from closed options (Guard, Noble)
+    # list  — pick from closed options (Guard, Noble, Martial Disciple)
     # lore  — open specialty → trains <specialty>_lore (Nomad)
+    # Optional feats: map option slug → feat slug granted with that pick
     # -------------------------------------------------
 
     def self.cg_background_skill_choice_entries(sheet)
@@ -13,7 +14,6 @@ module AresMUSH
       Array(bg["skill_choices"])
     end
 
-    # Expand each choice entry into `pick` slots (usually 1 each).
     def self.cg_background_skill_slots(sheet)
       slots = []
       cg_background_skill_choice_entries(sheet).each_with_index do |entry, idx|
@@ -66,13 +66,23 @@ module AresMUSH
         cat = slot["category"].to_s
         cat.empty? ? "open lore" : "open lore (#{cat})"
       else
-        opts = Array(slot["options"]).join(", ")
-        "choose: #{opts}"
+        opts = Array(slot["options"]).map(&:to_s)
+        feat_map = slot["feats"] || {}
+        if feat_map.is_a?(Hash) && !feat_map.empty?
+          bits = opts.map do |o|
+            f = feat_map[o] || feat_map[o.to_sym]
+            f ? "#{o}→#{f}" : o
+          end
+          "choose: #{bits.join(", ")}"
+        else
+          "choose: #{opts.join(", ")}"
+        end
       end
     end
 
     # Resolve the next pending skill_choice slot.
     # arg: option slug for type:list, or specialty / specialty_lore for type:lore
+    # If the slot has feats: { option => feat_slug }, that feat is added.
     def self.cg_resolve_background_skill(char, arg)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -115,11 +125,29 @@ module AresMUSH
       new_picks = picks + [skill_key]
       sheet.update(background_skill_picks: new_picks)
 
+      granted_feat = nil
+      feat_map = slot["feats"]
+      if feat_map.is_a?(Hash)
+        # Match on the option key the player chose (list) or full skill key
+        feat_slug = feat_map[skill_key] || feat_map[skill_key.to_sym] ||
+                    feat_map[raw] || feat_map[raw.to_sym]
+        feat_slug = feat_slug.to_s.strip.downcase if feat_slug
+        if feat_slug && !feat_slug.empty?
+          feats = Array(sheet.feats).map { |f| f.to_s }
+          unless feats.include?(feat_slug)
+            feats << feat_slug
+            sheet.update(feats: feats)
+          end
+          granted_feat = feat_slug
+        end
+      end
+
       {
         ok: true,
         error: nil,
         sheet: sheet,
         skill: skill_key,
+        feat: granted_feat,
         remaining: cg_background_skill_slots_remaining(sheet)
       }
     end

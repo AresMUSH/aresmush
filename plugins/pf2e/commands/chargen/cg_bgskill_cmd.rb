@@ -37,9 +37,16 @@ module AresMUSH
           return
         end
 
-        client.emit_success t('pf2e.cg_bgskill_set',
-                             :skill => result[:skill],
-                             :remaining => result[:remaining])
+        if result[:feat]
+          client.emit_success t('pf2e.cg_bgskill_set_with_feat',
+                               :skill => result[:skill],
+                               :feat => result[:feat],
+                               :remaining => result[:remaining])
+        else
+          client.emit_success t('pf2e.cg_bgskill_set',
+                               :skill => result[:skill],
+                               :remaining => result[:remaining])
+        end
       end
     end
   end

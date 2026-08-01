@@ -51,4 +51,5 @@ en:
     cg_skill_set: "Trained in: %{list}. Skill picks remaining: %{remaining}."
     cg_skill_status: "Skill picks %{used}/%{total} used (%{remaining} left). Forced: %{forced}. Trained: %{trained}."
     cg_bgskill_set: "Background skill choice set to %{skill}. Remaining choices: %{remaining}."
+    cg_bgskill_set_with_feat: "Background skill choice set to %{skill} (feat: %{feat}). Remaining choices: %{remaining}."
     cg_bgskill_status: "Background skill choices — resolved: %{resolved}. Pending: %{pending}. Remaining: %{remaining}."

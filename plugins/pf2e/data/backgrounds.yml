@@ -3,15 +3,19 @@
 #
 # skills:         always trained on cg/background
 # skill_choices:  player resolves later via cg/bgskill (do not auto-train)
+# feat:           unconditional skill feat (optional; null if none)
 #
 # skill_choices entry shapes:
-#   type: list  — pick N from options (closed set)
+#   type: list
 #     pick: 1
-#     options: [legal_lore, warfare_lore]
-#   type: lore  — open Lore specialty (Nomad-style)
+#     options: [acrobatics, athletics]
+#     feats:                    # optional — option slug → feat slug
+#       acrobatics: cat_fall
+#       athletics: quick_jump
+#   type: lore
 #     pick: 1
-#     category: home_terrain   # UI/help hint only; not hard-validated
-#     Player supplies a specialty (e.g. forest); we train forest_lore.
+#     category: home_terrain   # UI/help hint only
+#     # player supplies specialty → trains specialty_lore
 
 backgrounds:
   farmhand:
@@ -78,7 +82,6 @@ backgrounds:
       Study shaped your early life. You know how to learn quickly and
       apply book knowledge under pressure.
 
-  # Closed choice: Intimidation + (Legal Lore or Warfare Lore)
   guard:
     name: Guard
     boosts:
@@ -97,7 +100,6 @@ backgrounds:
       You served as a guard. You know how to lean on people and how the
       law — or the battlefield — is organized where you worked.
 
-  # Closed choice: Society + (Diplomacy or a court-related Lore)
   noble:
     name: Noble
     boosts:
@@ -116,7 +118,6 @@ backgrounds:
       You were raised among privilege and expectation. Courts, lineage,
       and careful words are familiar ground.
 
-  # Open Lore: specialty tied to home terrain (player-defined)
   nomad:
     name: Nomad
     boosts:
@@ -134,3 +135,25 @@ backgrounds:
     effect: >
       You grew up moving with the land. Survival is second nature, and
       you know the lore of the terrain you call home.
+
+  # Choice skill + feat gated by that choice; Warfare Lore fixed
+  martial_disciple:
+    name: Martial Disciple
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, dex]
+    skills:
+      - warfare_lore
+    skill_choices:
+      - type: list
+        pick: 1
+        options: [acrobatics, athletics]
+        feats:
+          acrobatics: cat_fall
+          athletics: quick_jump
+    feat: null
+    traits: []
+    effect: >
+      You trained under a martial tradition. You specialize in either
+      fluid movement or explosive power, and you know warfare as a craft.
