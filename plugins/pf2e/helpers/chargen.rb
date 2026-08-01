@@ -41,10 +41,6 @@ module AresMUSH
 
     # -------------------------------------------------
     # Ability boost / flaw math (PF2e core)
-    # Boost: +2 if score < 18, otherwise +1
-    # Flaw:  -2
-    # Same ability may not be boosted twice by the *same source*.
-    # Different sources may stack on one ability (10 → 18 is four +2s).
     # -------------------------------------------------
 
     def self.cg_apply_boost(score)
@@ -56,15 +52,12 @@ module AresMUSH
       score.to_i - 2
     end
 
-    # Rebuild current ability scores from base 10 + all sources.
-    # Writes abilities as [base, current] with base left at 10 for chargen.
     def self.cg_recalc_abilities(sheet)
       return unless sheet
 
       scores = {}
       ABILITY_KEYS.each { |k| scores[k] = 10 }
 
-      # Ancestry fixed boosts + flaws (from data)
       anc = cg_ancestry_entry(sheet.ancestry)
       if anc.is_a?(Hash)
         Array((anc["boosts"] || {})["fixed"]).each do |raw|
@@ -77,7 +70,6 @@ module AresMUSH
         end
       end
 
-      # Free boosts stored on the sheet (ancestry / heritage / background)
       stored = sheet.ability_boosts || {}
       CG_BOOST_SOURCES.each do |source|
         Array(stored[source] || stored[source.to_sym]).each do |raw|
@@ -86,7 +78,6 @@ module AresMUSH
         end
       end
 
-      # Class key ability (one boost)
       cc = sheet.charclass || {}
       key_abil = ability_key(cc["key_ability"] || cc[:key_ability])
       scores[key_abil] = cg_apply_boost(scores[key_abil]) if key_abil
@@ -100,8 +91,6 @@ module AresMUSH
       scores
     end
 
-    # Expected free-boost count and optional ability options for a source.
-    # Returns [count, options_or_nil]
     def self.cg_free_boost_requirements(sheet, source)
       source = source.to_s.strip.downcase
       case source
@@ -125,10 +114,6 @@ module AresMUSH
       end
     end
 
-    # Set free boost picks for one source.
-    # abilities: array of ability names/keys
-    # Enforces: known abilities, no duplicates within source, exact free count,
-    #           membership in options when the data lists options.
     def self.cg_set_boosts(char, source, abilities)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -173,7 +158,6 @@ module AresMUSH
         end
       end
 
-      # Also cannot overlap ancestry *fixed* boosts for ancestry free picks
       if source == "ancestry"
         anc = cg_ancestry_entry(sheet.ancestry)
         fixed = Array((anc && anc["boosts"] || {})["fixed"]).map { |a| ability_key(a) }.compact
@@ -189,6 +173,119 @@ module AresMUSH
       cg_recalc_hp(sheet)
 
       { ok: true, error: nil, sheet: sheet, boosts: keys }
+    end
+
+    # -------------------------------------------------
+    # Skills (chargen remaining trainings)
+    #
+    # Class grants: trained_count + INT modifier free picks,
+    # plus any skills listed under skills.additional.
+    # Background skills are free and do not consume picks.
+    # -------------------------------------------------
+
+    def self.cg_forced_skills(sheet)
+      forced = []
+
+      bg = cg_background_entry(sheet.background)
+      if bg.is_a?(Hash)
+        Array(bg["skills"]).each { |s| forced << s.to_s.strip.downcase }
+      end
+
+      cc = sheet.charclass || {}
+      class_entry = cg_class_entry(cc["slug"] || cc[:slug])
+      if class_entry.is_a?(Hash)
+        additional = ((class_entry["skills"] || {})["additional"]) || []
+        Array(additional).each { |s| forced << s.to_s.strip.downcase }
+      end
+
+      forced.reject(&:empty?).uniq
+    end
+
+    # How many free skill trainings the class still owes the player.
+    def self.cg_skill_picks_total(sheet)
+      cc = sheet.charclass || {}
+      class_entry = cg_class_entry(cc["slug"] || cc[:slug])
+      return 0 unless class_entry.is_a?(Hash)
+
+      trained_count = ((class_entry["skills"] || {})["trained_count"] || 0).to_i
+      int_mod = ability_mod(sheet, "int")
+      [trained_count + int_mod, 0].max
+    end
+
+    def self.cg_skill_picks_used(sheet)
+      forced = cg_forced_skills(sheet)
+      trained = (sheet.skills || {}).keys.map { |k| k.to_s.strip.downcase }
+      trained = trained.select { |k| skill_rank(sheet, k) != "U" }
+      (trained - forced).size
+    end
+
+    def self.cg_skill_picks_remaining(sheet)
+      [cg_skill_picks_total(sheet) - cg_skill_picks_used(sheet), 0].max
+    end
+
+    def self.cg_skill_status(char)
+      result = cg_ensure_sheet(char)
+      return result unless result[:ok]
+
+      sheet = result[:sheet]
+      if sheet.charclass.blank? || (sheet.charclass["slug"].to_s.empty? && sheet.charclass[:slug].to_s.empty?)
+        return { ok: false, error: "pf2e.cg_need_class", sheet: sheet }
+      end
+
+      trained = (sheet.skills || {}).keys.map(&:to_s).sort
+      {
+        ok: true,
+        error: nil,
+        sheet: sheet,
+        total: cg_skill_picks_total(sheet),
+        used: cg_skill_picks_used(sheet),
+        remaining: cg_skill_picks_remaining(sheet),
+        forced: cg_forced_skills(sheet),
+        trained: trained
+      }
+    end
+
+    # Train one or more skills (rank T) using remaining class picks.
+    def self.cg_train_skills(char, skill_slugs)
+      result = cg_ensure_sheet(char)
+      return result unless result[:ok]
+
+      sheet = result[:sheet]
+      if sheet.charclass.blank? || (sheet.charclass["slug"].to_s.empty? && sheet.charclass[:slug].to_s.empty?)
+        return { ok: false, error: "pf2e.cg_need_class", sheet: sheet }
+      end
+
+      slugs = Array(skill_slugs).map { |s| s.to_s.strip.downcase }.reject(&:empty?)
+      return { ok: false, error: "pf2e.cg_skill_usage", sheet: sheet } if slugs.empty?
+
+      if slugs.size != slugs.uniq.size
+        return { ok: false, error: "pf2e.cg_skill_duplicate", sheet: sheet }
+      end
+
+      data = read_data("skills") || {}
+      slugs.each do |sk|
+        unless data.key?(sk)
+          return { ok: false, error: "pf2e.cg_unknown_skill", sheet: sheet }
+        end
+        if skill_rank(sheet, sk) != "U"
+          return { ok: false, error: "pf2e.cg_skill_already_trained", sheet: sheet }
+        end
+      end
+
+      remaining = cg_skill_picks_remaining(sheet)
+      if slugs.size > remaining
+        return { ok: false, error: "pf2e.cg_skill_no_picks", sheet: sheet }
+      end
+
+      slugs.each { |sk| set_skill_rank(sheet, sk, "T") }
+
+      {
+        ok: true,
+        error: nil,
+        sheet: sheet,
+        trained: slugs,
+        remaining: cg_skill_picks_remaining(sheet)
+      }
     end
 
     # -------------------------------------------------
@@ -217,7 +314,6 @@ module AresMUSH
         updates[:speed] = entry["speed"].to_i
       end
 
-      # Clear free boost picks that no longer apply
       stored = (sheet.ability_boosts || {}).dup
       stored.delete("ancestry")
       stored.delete("heritage") if updates.key?(:heritage)

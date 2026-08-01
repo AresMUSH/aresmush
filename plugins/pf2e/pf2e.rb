@@ -1,10 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Plugin interface
-    # -------------------------------------------------
-
     def self.plugin_dir
       File.dirname(__FILE__)
     end
@@ -13,7 +9,6 @@ module AresMUSH
       Global.read_config("pf2e", "shortcuts")
     end
 
-    # Called by the engine when the plugin is loaded / reloaded.
     def self.load
       load_data
     end
@@ -43,6 +38,8 @@ module AresMUSH
           return CgClassCmd
         when "boost"
           return CgBoostCmd
+        when "skill"
+          return CgSkillCmd
         end
       end
       nil
@@ -55,10 +52,6 @@ module AresMUSH
     def self.get_web_request_handler(request)
       nil
     end
-
-    # -------------------------------------------------
-    # Static data loader
-    # -------------------------------------------------
 
     @@data = {}
 
@@ -110,11 +103,6 @@ module AresMUSH
   end
 end
 
-# Load all helper files (they reopen AresMUSH::Pf2e)
 require File.join(File.dirname(__FILE__), 'helpers')
-
-# Template renderers (ErbTemplateRenderer subclasses)
 Dir[File.join(File.dirname(__FILE__), 'templates', '*_template.rb')].sort.each { |f| require f }
-
-# Command handlers (recursive — supports commands/<domain>/*_cmd.rb)
 Dir[File.join(File.dirname(__FILE__), 'commands', '**', '*_cmd.rb')].sort.each { |f| require f }
