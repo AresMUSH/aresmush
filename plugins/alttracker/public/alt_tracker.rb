@@ -3,13 +3,14 @@ module AresMUSH
     attribute :player_email
     index :player_email
 
-    attribute :banned, :type => AresMUSH::DataType::Boolean, :default => false
+    # Stored as string; treat as boolean in helpers ("true"/"false"/nil)
+    attribute :banned, :default => false
 
-    # nil = permanent ban; otherwise a Time when the ban ends
-    attribute :ban_expires, :type => AresMUSH::DataType::Time
+    # nil = permanent ban; otherwise a Time string when the ban ends
+    attribute :ban_expires
 
-    # Array of ban/unban events (oldest → newest)
-    attribute :ban_history, :type => AresMUSH::DataType::Array, :default => []
+    # Array of ban/unban events (oldest → newest). Ohm will serialize.
+    attribute :ban_history, :default => []
 
     attribute :code_word
 
