@@ -40,6 +40,8 @@ module AresMUSH
           return CgBoostCmd
         when "skill"
           return CgSkillCmd
+        when "bgskill"
+          return CgBgskillCmd
         end
       end
       nil
