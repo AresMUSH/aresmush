@@ -1,0 +1,77 @@
+# Static weapon reference data.
+# Populated later; this file defines the shape helpers expect.
+#
+# Lookup: Pf2e.read_data("weapons", "longsword")
+#
+# Fields:
+#   name       — display name
+#   category   — unarmed | simple | martial | advanced
+#   damage     — { dice:, sides:, type: }  base weapon damage
+#   hands      — 1 or 2
+#   group      — weapon group (sword, bow, …) for critical specialization later
+#   traits     — array of trait slugs (finesse, agile, versatile_p, propulsive, …)
+#   range      — nil for melee; feet for ranged
+#   reload     — nil or actions required to reload
+#   bulk       — L / 1 / 2 / etc. (string or number as convenient)
+#   price      — optional, in sp
+#
+# Ability for the attack is NOT stored here; finesse/propulsive traits
+# tell the caller they *may* use Dex / half Str, but the sheet/command
+# decides which ability is actually applied.
+
+weapons:
+  longsword:
+    name: Longsword
+    category: martial
+    damage:
+      dice: 1
+      sides: 8
+      type: slashing
+    hands: 1
+    group: sword
+    traits: [versatile_p]
+    range: null
+    reload: null
+    bulk: 1
+
+  shortsword:
+    name: Shortsword
+    category: martial
+    damage:
+      dice: 1
+      sides: 6
+      type: piercing
+    hands: 1
+    group: sword
+    traits: [agile, finesse, versatile_s]
+    range: null
+    reload: null
+    bulk: L
+
+  dagger:
+    name: Dagger
+    category: simple
+    damage:
+      dice: 1
+      sides: 4
+      type: piercing
+    hands: 1
+    group: knife
+    traits: [agile, finesse, thrown_10, versatile_s]
+    range: null
+    reload: null
+    bulk: L
+
+  unarmed:
+    name: Fist
+    category: unarmed
+    damage:
+      dice: 1
+      sides: 4
+      type: bludgeoning
+    hands: 1
+    group: brawling
+    traits: [agile, finesse, nonlethal, unarmed]
+    range: null
+    reload: null
+    bulk: 0

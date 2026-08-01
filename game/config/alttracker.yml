@@ -1,0 +1,4 @@
+alttracker:
+  shortcuts:
+    ban: register/ban
+    unban: register/unban

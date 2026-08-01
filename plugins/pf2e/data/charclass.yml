@@ -1,0 +1,124 @@
+# Static class reference data.
+# Lookup: Pf2e.read_data("charclasses", "fighter")
+#
+# key_ability:
+#   options — list of allowed key ability keys (player picks one if multiple)
+# hp        — HP per level (ancestry HP is separate, added at level 1)
+# perception / saves — initial proficiency ranks (T/E/M/L)
+# skills:
+#   trained_count — number of trained skills at 1st (plus INT modifier usually)
+#   additional    — skill slugs always trained by the class
+# attacks / defenses — initial proficiency by category
+# class_dc — initial rank for class DC
+# spellcasting — null if none; otherwise tradition + initial rank + type
+# features_by_level — level → list of feature slugs (fill out over time)
+
+charclasses:
+  fighter:
+    name: Fighter
+    key_ability:
+      options: [str, dex]
+    hp: 10
+    perception: T
+    saves:
+      fortitude: E
+      reflex: T
+      will: T
+    skills:
+      trained_count: 3
+      additional: []
+    attacks:
+      simple: T
+      martial: T
+      unarmed: T
+      advanced: U
+    defenses:
+      unarmored: T
+      light: T
+      medium: T
+      heavy: T
+    class_dc: T
+    spellcasting: null
+    features_by_level:
+      1:
+        - attack_of_opportunity
+        - fighter_feat
+        - shield_block
+      2:
+        - fighter_feat
+        - skill_feat
+
+  wizard:
+    name: Wizard
+    key_ability:
+      options: [int]
+    hp: 6
+    perception: T
+    saves:
+      fortitude: T
+      reflex: T
+      will: E
+    skills:
+      trained_count: 2
+      additional:
+        - arcana
+    attacks:
+      simple: T
+      martial: U
+      unarmed: T
+      advanced: U
+    defenses:
+      unarmored: T
+      light: U
+      medium: U
+      heavy: U
+    class_dc: T
+    spellcasting:
+      tradition: arcane
+      rank: T
+      type: prepared
+      # slots / spells known live on the sheet under magic[]
+    features_by_level:
+      1:
+        - arcane_spellcasting
+        - arcane_school
+        - arcane_bond
+        - wizard_feat
+      2:
+        - wizard_feat
+        - skill_feat
+
+  rogue:
+    name: Rogue
+    key_ability:
+      options: [dex]
+    hp: 8
+    perception: E
+    saves:
+      fortitude: T
+      reflex: E
+      will: T
+    skills:
+      trained_count: 7
+      additional:
+        - stealth
+    attacks:
+      simple: T
+      martial: T
+      unarmed: T
+      advanced: U
+    defenses:
+      unarmored: T
+      light: T
+      medium: U
+      heavy: U
+    class_dc: T
+    spellcasting: null
+    features_by_level:
+      1:
+        - rogue_feat
+        - sneak_attack
+        - surprise_attack
+      2:
+        - rogue_feat
+        - skill_feat

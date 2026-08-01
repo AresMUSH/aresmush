@@ -1,0 +1,12 @@
+<%= line_with_text("Alt Tracker Status") %>
+%xhEmail:%xn <%= email %>
+%xhBanned:%xn <%= banned_display %>
+<%= line_with_text("Characters on this tracker") %>
+<% if characters.empty? %>
+  (none)
+<% else %>
+<% characters.each do |c| %>
+<%= char_line(c) %>
+<% end %>
+<% end %>
+<%= line_with_text("Total alts: #{total_alts}") %>

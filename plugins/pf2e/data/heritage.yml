@@ -1,0 +1,45 @@
+# Static heritage reference data.
+# Lookup: Pf2e.read_data("heritages", "versatile_heritage")
+#
+# ancestry — parent ancestry slug (must appear in that ancestry's heritages list)
+# Optional overrides only when the heritage changes baseline ancestry stats.
+# boosts.free — extra free boosts granted by the heritage (e.g. Versatile)
+
+heritages:
+  versatile_heritage:
+    name: Versatile Heritage
+    ancestry: human
+    boosts:
+      free: 1
+    features: []
+
+  skilled_heritage:
+    name: Skilled Heritage
+    ancestry: human
+    # Grants training in one skill; resolved in chargen, not numeric here
+    features:
+      - skilled_heritage
+
+  ancient_blooded:
+    name: Ancient-Blooded Dwarf
+    ancestry: dwarf
+    features:
+      - ancient_blooded
+
+  strong_blooded:
+    name: Strong-Blooded Dwarf
+    ancestry: dwarf
+    features:
+      - strong_blooded
+
+  ancient_elf:
+    name: Ancient Elf
+    ancestry: elf
+    features:
+      - ancient_elf
+
+  woodland_elf:
+    name: Woodland Elf
+    ancestry: elf
+    features:
+      - woodland_elf

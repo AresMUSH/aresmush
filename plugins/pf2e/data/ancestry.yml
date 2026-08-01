@@ -1,0 +1,75 @@
+# Static ancestry reference data.
+# Lookup: Pf2e.read_data("ancestries", "dwarf")
+#
+# boosts/flaws:
+#   fixed — ability keys applied automatically
+#   free  — number of player-chosen boosts/flaws
+# heritages — slugs into heritage.yml
+# features  — slugs for later feature/feat wiring (keep light)
+
+ancestries:
+  human:
+    name: Human
+    hp: 8
+    size: medium
+    speed: 25
+    boosts:
+      fixed: []
+      free: 2
+    flaws:
+      fixed: []
+      free: 0
+    traits: [human, humanoid]
+    languages:
+      starting: [common]
+      additional_per_int: true
+    vision: normal
+    heritages:
+      - skilled_heritage
+      - versatile_heritage
+    features: []
+
+  dwarf:
+    name: Dwarf
+    hp: 10
+    size: medium
+    speed: 20
+    boosts:
+      fixed: [con, wis]
+      free: 1
+    flaws:
+      fixed: [cha]
+      free: 0
+    traits: [dwarf, humanoid]
+    languages:
+      starting: [common, dwarven]
+      additional_per_int: true
+    vision: darkvision
+    heritages:
+      - ancient_blooded
+      - strong_blooded
+    features:
+      - darkvision
+      - clan_dagger
+
+  elf:
+    name: Elf
+    hp: 6
+    size: medium
+    speed: 30
+    boosts:
+      fixed: [dex, int]
+      free: 1
+    flaws:
+      fixed: [con]
+      free: 0
+    traits: [elf, humanoid]
+    languages:
+      starting: [common, elven]
+      additional_per_int: true
+    vision: low_light
+    heritages:
+      - ancient_elf
+      - woodland_elf
+    features:
+      - low_light_vision

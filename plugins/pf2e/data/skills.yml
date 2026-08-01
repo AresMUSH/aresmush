@@ -1,0 +1,36 @@
+# Static skill reference data.
+# Sparse on the character sheet — missing key = Untrained.
+
+skills:
+  acrobatics:
+    ability: dex
+  arcana:
+    ability: int
+  athletics:
+    ability: str
+  crafting:
+    ability: int
+  deception:
+    ability: cha
+  diplomacy:
+    ability: cha
+  intimidation:
+    ability: cha
+  medicine:
+    ability: wis
+  nature:
+    ability: wis
+  occultism:
+    ability: int
+  performance:
+    ability: cha
+  religion:
+    ability: wis
+  society:
+    ability: int
+  stealth:
+    ability: dex
+  survival:
+    ability: wis
+  thievery:
+    ability: dex

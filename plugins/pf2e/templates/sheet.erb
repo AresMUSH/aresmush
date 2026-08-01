@@ -1,0 +1,22 @@
+<%= line_with_text("#{name} — Level #{level}") %>
+%xhAncestry:%xn <%= ancestry_display %>   %xhHeritage:%xn <%= heritage_display %>
+%xhClass:%xn <%= class_display %>
+
+<%= line_with_text("Abilities") %>
+<%= ability_block %>
+
+<%= line_with_text("Combat") %>
+%xhHP:%xn <%= hp_display %>   %xhAC:%xn <%= ac_display %>   %xhSpeed:%xn <%= speed %>
+%xhHero Points:%xn <%= hero_points %>   %xhFocus:%xn <%= focus_points %>
+
+<%= line_with_text("Saves & Perception") %>
+<%= saves_block %>
+
+<%= line_with_text("Skills") %>
+<%= skills_block %>
+
+<%= line_with_text("Feats") %>
+<%= feats_block %>
+
+<%= line_with_text("Conditions") %>
+<%= conditions_block %>
