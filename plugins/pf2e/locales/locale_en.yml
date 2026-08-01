@@ -1,3 +1,5 @@
----
 en:
-  pf2e: {}
+  pf2e:
+    no_sheet: "No PF2e sheet found for that character."
+    character_not_found: "That character was not found."
+    roll_usage: "Usage: roll <expression> [vs <dc>]"
