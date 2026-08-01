@@ -6,9 +6,9 @@ module AresMUSH
       attr_accessor :slug, :key_ability
 
       def parse_args
-        args = cmd.parse_args(/(?<slug>[^=\s]+)(?:\s+(?<ability>\S+))?/)
-        self.slug = args.slug ? args.slug.strip.downcase : nil
-        self.key_ability = args.ability ? args.ability.strip.downcase : nil
+        parts = cmd.args.to_s.split
+        self.slug = parts[0] ? parts[0].strip.downcase : nil
+        self.key_ability = parts[1] ? parts[1].strip.downcase : nil
       end
 
       def check_args
