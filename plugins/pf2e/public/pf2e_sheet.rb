@@ -6,6 +6,7 @@ module AresMUSH
     attribute :level,         :type => DataType::Integer, :default => 1
     attribute :ancestry
     attribute :heritage
+    attribute :background
     attribute :charclass,     :type => DataType::Hash,    :default => {}
 
     # Abilities: [base, current]
