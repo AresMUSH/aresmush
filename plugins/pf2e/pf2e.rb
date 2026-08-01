@@ -29,6 +29,19 @@ module AresMUSH
         end
       when "roll"
         return RollCmd if cmd.switch.nil?
+      when "cg"
+        case cmd.switch
+        when "start"
+          return CgStartCmd
+        when "ancestry"
+          return CgAncestryCmd
+        when "heritage"
+          return CgHeritageCmd
+        when "background"
+          return CgBackgroundCmd
+        when "class"
+          return CgClassCmd
+        end
       end
       nil
     end

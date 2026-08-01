@@ -3,3 +3,23 @@ en:
     no_sheet: "No PF2e sheet found for that character."
     character_not_found: "That character was not found."
     roll_usage: "Usage: roll <expression> [vs <dc>]"
+
+    cg_sheet_ready: "PF2e sheet ready. Set ancestry, heritage, background, and class with cg/<step>."
+    cg_ancestry_usage: "Usage: cg/ancestry <slug>"
+    cg_heritage_usage: "Usage: cg/heritage <slug>"
+    cg_background_usage: "Usage: cg/background <slug>"
+    cg_class_usage: "Usage: cg/class <slug> [key ability]"
+
+    cg_unknown_ancestry: "Unknown ancestry. Check data/ancestry.yml slugs."
+    cg_unknown_heritage: "Unknown heritage. Check data/heritage.yml slugs."
+    cg_unknown_background: "Unknown background. Check data/backgrounds.yml slugs."
+    cg_unknown_class: "Unknown class. Check data/charclass.yml slugs."
+    cg_need_ancestry: "Set an ancestry first (cg/ancestry <slug>)."
+    cg_heritage_not_for_ancestry: "That heritage is not valid for your current ancestry."
+    cg_need_key_ability: "That class needs a key ability. Usage: cg/class <slug> <ability>"
+    cg_invalid_key_ability: "That ability is not a valid key ability option for this class."
+
+    cg_ancestry_set: "Ancestry set to %{name}."
+    cg_heritage_set: "Heritage set to %{name}."
+    cg_background_set: "Background set to %{name}. Skills/feat from the background have been applied."
+    cg_class_set: "Class set to %{name} (key ability: %{ability})."
