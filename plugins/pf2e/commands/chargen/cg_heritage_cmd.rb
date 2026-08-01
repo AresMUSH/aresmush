@@ -12,7 +12,7 @@ module AresMUSH
       def handle
         if self.slug.blank?
           rows = Pf2e.cg_list_heritages(enactor)
-          sheet = Pf2e.find_sheet(enactor)
+          sheet = Pf2e.sheet_for(enactor)
           title =
             if sheet && !sheet.ancestry.blank?
               t('pf2e.cg_list_heritages_for', :ancestry => sheet.ancestry)
