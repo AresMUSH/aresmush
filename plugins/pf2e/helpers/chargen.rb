@@ -1,13 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Chargen helpers
-    # Pure logic for sheet setup. Commands and (later) web
-    # both call these; they return a result hash:
-    #   { ok: true/false, error: "locale key or message", sheet: Pf2eSheet }
-    # -------------------------------------------------
-
     CG_BOOST_SOURCES = %w[ancestry heritage background].freeze
 
     def self.cg_ensure_sheet(char)
@@ -115,6 +108,9 @@ module AresMUSH
       return result unless result[:ok]
 
       sheet = result[:sheet]
+      locked = cg_require_identity_locked(sheet)
+      return locked if locked
+
       source = source.to_s.strip.downcase
       unless CG_BOOST_SOURCES.include?(source)
         return { ok: false, error: "pf2e.cg_bad_boost_source", sheet: sheet }
@@ -138,11 +134,9 @@ module AresMUSH
       if keys.any?(&:nil?)
         return { ok: false, error: "pf2e.cg_unknown_ability", sheet: sheet }
       end
-
       if keys.size != keys.uniq.size
         return { ok: false, error: "pf2e.cg_duplicate_boost", sheet: sheet }
       end
-
       if keys.size != needed
         return { ok: false, error: "pf2e.cg_boost_count", sheet: sheet }
       end
@@ -173,24 +167,18 @@ module AresMUSH
 
     def self.cg_forced_skills(sheet)
       forced = []
-
       bg = cg_background_entry(sheet.background)
       if bg.is_a?(Hash)
         Array(bg["skills"]).each { |s| forced << s.to_s.strip.downcase }
       end
-
-      # Resolved skill_choices (Guard lore pick, Nomad terrain lore, etc.)
-      Array(sheet.background_skill_picks).each do |s|
-        forced << s.to_s.strip.downcase
-      end
-
+      Array(sheet.background_skill_picks).each { |s| forced << s.to_s.strip.downcase }
       cc = sheet.charclass || {}
       class_entry = cg_class_entry(cc["slug"] || cc[:slug])
       if class_entry.is_a?(Hash)
-        additional = ((class_entry["skills"] || {})["additional"]) || []
-        Array(additional).each { |s| forced << s.to_s.strip.downcase }
+        Array(((class_entry["skills"] || {})["additional"]) || []).each do |s|
+          forced << s.to_s.strip.downcase
+        end
       end
-
       forced.reject(&:empty?).uniq
     end
 
@@ -198,10 +186,8 @@ module AresMUSH
       cc = sheet.charclass || {}
       class_entry = cg_class_entry(cc["slug"] || cc[:slug])
       return 0 unless class_entry.is_a?(Hash)
-
       trained_count = ((class_entry["skills"] || {})["trained_count"] || 0).to_i
-      int_mod = ability_mod(sheet, "int")
-      [trained_count + int_mod, 0].max
+      [trained_count + ability_mod(sheet, "int"), 0].max
     end
 
     def self.cg_skill_picks_used(sheet)
@@ -218,17 +204,12 @@ module AresMUSH
     def self.cg_skill_status(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
-
       sheet = result[:sheet]
-      if sheet.charclass.blank? || (sheet.charclass["slug"].to_s.empty? && sheet.charclass[:slug].to_s.empty?)
-        return { ok: false, error: "pf2e.cg_need_class", sheet: sheet }
-      end
-
+      locked = cg_require_identity_locked(sheet)
+      return locked if locked
       trained = (sheet.skills || {}).keys.map(&:to_s).sort
       {
-        ok: true,
-        error: nil,
-        sheet: sheet,
+        ok: true, error: nil, sheet: sheet,
         total: cg_skill_picks_total(sheet),
         used: cg_skill_picks_used(sheet),
         remaining: cg_skill_picks_remaining(sheet),
@@ -240,27 +221,20 @@ module AresMUSH
     def self.cg_train_skills(char, skill_slugs)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
-
       sheet = result[:sheet]
-      if sheet.charclass.blank? || (sheet.charclass["slug"].to_s.empty? && sheet.charclass[:slug].to_s.empty?)
-        return { ok: false, error: "pf2e.cg_need_class", sheet: sheet }
-      end
+      locked = cg_require_identity_locked(sheet)
+      return locked if locked
 
       slugs = Array(skill_slugs).map { |s| s.to_s.strip.downcase }.reject(&:empty?)
       return { ok: false, error: "pf2e.cg_skill_usage", sheet: sheet } if slugs.empty?
-
       if slugs.size != slugs.uniq.size
         return { ok: false, error: "pf2e.cg_skill_duplicate", sheet: sheet }
       end
 
       data = read_data("skills") || {}
       slugs.each do |sk|
-        unless data.key?(sk)
-          return { ok: false, error: "pf2e.cg_unknown_skill", sheet: sheet }
-        end
-        if skill_rank(sheet, sk) != "U"
-          return { ok: false, error: "pf2e.cg_skill_already_trained", sheet: sheet }
-        end
+        return { ok: false, error: "pf2e.cg_unknown_skill", sheet: sheet } unless data.key?(sk)
+        return { ok: false, error: "pf2e.cg_skill_already_trained", sheet: sheet } if skill_rank(sheet, sk) != "U"
       end
 
       remaining = cg_skill_picks_remaining(sheet)
@@ -269,198 +243,109 @@ module AresMUSH
       end
 
       slugs.each { |sk| set_skill_rank(sheet, sk, "T") }
-
-      {
-        ok: true,
-        error: nil,
-        sheet: sheet,
-        trained: slugs,
-        remaining: cg_skill_picks_remaining(sheet)
-      }
+      { ok: true, error: nil, sheet: sheet, trained: slugs, remaining: cg_skill_picks_remaining(sheet) }
     end
+
+    # ---- Stage A identity setters (unlocked only; grants applied on commit) ----
 
     def self.cg_set_ancestry(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
+      sheet = result[:sheet]
+      locked = cg_require_identity_unlocked(sheet)
+      return locked if locked
 
       key = slug.to_s.strip.downcase
       entry = cg_ancestry_entry(key)
-      unless entry.is_a?(Hash)
-        return { ok: false, error: "pf2e.cg_unknown_ancestry", sheet: result[:sheet] }
-      end
+      return { ok: false, error: "pf2e.cg_unknown_ancestry", sheet: sheet } unless entry.is_a?(Hash)
 
-      sheet = result[:sheet]
       updates = { ancestry: key }
-
       allowed = Array(entry["heritages"]).map { |h| h.to_s }
       if sheet.heritage && !allowed.include?(sheet.heritage.to_s)
         updates[:heritage] = nil
       end
-
-      if entry["speed"]
-        updates[:speed] = entry["speed"].to_i
-      end
-
-      stored = (sheet.ability_boosts || {}).dup
-      stored.delete("ancestry")
-      stored.delete("heritage") if updates.key?(:heritage)
-      updates[:ability_boosts] = stored
-
       sheet.update(updates)
-      cg_recalc_abilities(sheet)
-      cg_recalc_hp(sheet)
-
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
     def self.cg_set_heritage(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
-
       sheet = result[:sheet]
-      if sheet.ancestry.blank?
-        return { ok: false, error: "pf2e.cg_need_ancestry", sheet: sheet }
-      end
+      locked = cg_require_identity_unlocked(sheet)
+      return locked if locked
+      return { ok: false, error: "pf2e.cg_need_ancestry", sheet: sheet } if sheet.ancestry.blank?
 
       key = slug.to_s.strip.downcase
       entry = cg_heritage_entry(key)
-      unless entry.is_a?(Hash)
-        return { ok: false, error: "pf2e.cg_unknown_heritage", sheet: sheet }
-      end
+      return { ok: false, error: "pf2e.cg_unknown_heritage", sheet: sheet } unless entry.is_a?(Hash)
 
       anc = cg_ancestry_entry(sheet.ancestry)
       allowed = Array(anc && anc["heritages"]).map { |h| h.to_s }
-      unless allowed.include?(key)
-        return { ok: false, error: "pf2e.cg_heritage_not_for_ancestry", sheet: sheet }
-      end
+      return { ok: false, error: "pf2e.cg_heritage_not_for_ancestry", sheet: sheet } unless allowed.include?(key)
 
       parent = entry["ancestry"].to_s
       if !parent.empty? && parent != sheet.ancestry.to_s
         return { ok: false, error: "pf2e.cg_heritage_not_for_ancestry", sheet: sheet }
       end
 
-      stored = (sheet.ability_boosts || {}).dup
-      stored.delete("heritage")
-      sheet.update(heritage: key, ability_boosts: stored)
-      cg_recalc_abilities(sheet)
-      cg_recalc_hp(sheet)
-
+      sheet.update(heritage: key)
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
     def self.cg_set_background(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
+      sheet = result[:sheet]
+      locked = cg_require_identity_unlocked(sheet)
+      return locked if locked
 
       key = slug.to_s.strip.downcase
       entry = cg_background_entry(key)
-      unless entry.is_a?(Hash)
-        return { ok: false, error: "pf2e.cg_unknown_background", sheet: result[:sheet] }
-      end
+      return { ok: false, error: "pf2e.cg_unknown_background", sheet: sheet } unless entry.is_a?(Hash)
 
-      sheet = result[:sheet]
-      stored = (sheet.ability_boosts || {}).dup
-      stored.delete("background")
-      # Fixed skills only; skill_choices resolved via cg/bgskill
-      sheet.update(
-        background: key,
-        ability_boosts: stored,
-        background_skill_picks: []
-      )
-
-      Array(entry["skills"]).each do |sk|
-        sk_key = sk.to_s.strip.downcase
-        next if sk_key.empty?
-        current = skill_rank(sheet, sk_key)
-        set_skill_rank(sheet, sk_key, "T") if current == "U"
-      end
-
-      feat = entry["feat"].to_s.strip.downcase
-      if !feat.empty?
-        feats = Array(sheet.feats).map { |f| f.to_s }
-        unless feats.include?(feat)
-          feats << feat
-          sheet.update(feats: feats)
-        end
-      end
-
-      cg_recalc_abilities(sheet)
-      cg_recalc_hp(sheet)
-
+      sheet.update(background: key)
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
     def self.cg_set_class(char, slug, key_ability: nil)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
+      sheet = result[:sheet]
+      locked = cg_require_identity_unlocked(sheet)
+      return locked if locked
 
       key = slug.to_s.strip.downcase
       entry = cg_class_entry(key)
-      unless entry.is_a?(Hash)
-        return { ok: false, error: "pf2e.cg_unknown_class", sheet: result[:sheet] }
-      end
+      return { ok: false, error: "pf2e.cg_unknown_class", sheet: sheet } unless entry.is_a?(Hash)
 
-      sheet = result[:sheet]
       options = Array((entry["key_ability"] || {})["options"]).map { |a| ability_key(a) || a.to_s }
-
       chosen = key_ability ? ability_key(key_ability) : nil
-      if options.size == 1
-        chosen ||= options.first
-      end
+      chosen ||= options.first if options.size == 1
 
       if options.any?
-        if chosen.nil?
-          return { ok: false, error: "pf2e.cg_need_key_ability", sheet: sheet }
-        end
-        unless options.include?(chosen)
-          return { ok: false, error: "pf2e.cg_invalid_key_ability", sheet: sheet }
-        end
+        return { ok: false, error: "pf2e.cg_need_key_ability", sheet: sheet } if chosen.nil?
+        return { ok: false, error: "pf2e.cg_invalid_key_ability", sheet: sheet } unless options.include?(chosen)
       end
 
-      charclass = {
+      sheet.update(charclass: {
         "slug" => key,
         "name" => entry["name"] || key,
         "key_ability" => chosen
-      }
-      sheet.update(charclass: charclass)
-
-      if entry["perception"]
-        set_save_rank(sheet, "perception", entry["perception"])
-      end
-      saves = entry["saves"] || {}
-      saves.each do |save_name, rank|
-        set_save_rank(sheet, save_name, rank)
-      end
-
-      additional = ((entry["skills"] || {})["additional"]) || []
-      Array(additional).each do |sk|
-        sk_key = sk.to_s.strip.downcase
-        next if sk_key.empty?
-        current = skill_rank(sheet, sk_key)
-        set_skill_rank(sheet, sk_key, "T") if current == "U"
-      end
-
-      cg_recalc_abilities(sheet)
-      cg_recalc_hp(sheet)
-
+      })
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
     def self.cg_recalc_hp(sheet)
       return unless sheet
-
       level = [sheet.level.to_i, 1].max
       anc = cg_ancestry_entry(sheet.ancestry)
       anc_hp = anc.is_a?(Hash) ? anc["hp"].to_i : 0
-
       cc = sheet.charclass || {}
       class_entry = cg_class_entry(cc["slug"] || cc[:slug])
       class_hp = class_entry.is_a?(Hash) ? class_entry["hp"].to_i : 0
-
       con_mod = ability_mod(sheet, "con")
-      max = anc_hp + (class_hp + con_mod) * level
-      max = [max, 1].max
-
+      max = [anc_hp + (class_hp + con_mod) * level, 1].max
       hp = (sheet.hp || {}).dup
       hp["max"] = max
       if hp["current"].to_i <= 0

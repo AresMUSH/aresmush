@@ -1,13 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Background skill_choices
-    # list  — pick from closed options (Guard, Noble, Martial Disciple)
-    # lore  — open specialty → trains <specialty>_lore (Nomad)
-    # Optional feats: map option slug → feat slug granted with that pick
-    # -------------------------------------------------
-
     def self.cg_background_skill_choice_entries(sheet)
       bg = cg_background_entry(sheet.background)
       return [] unless bg.is_a?(Hash)
@@ -35,11 +28,10 @@ module AresMUSH
     def self.cg_background_skill_status(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
-
       sheet = result[:sheet]
-      if sheet.background.blank?
-        return { ok: false, error: "pf2e.cg_need_background", sheet: sheet }
-      end
+      locked = cg_require_identity_locked(sheet)
+      return locked if locked
+      return { ok: false, error: "pf2e.cg_need_background", sheet: sheet } if sheet.background.blank?
 
       slots = cg_background_skill_slots(sheet)
       picks = cg_background_skill_picks(sheet)
@@ -50,13 +42,9 @@ module AresMUSH
       end
 
       {
-        ok: true,
-        error: nil,
-        sheet: sheet,
-        total: slots.size,
-        resolved: picks,
-        remaining: pending.size,
-        pending: pending
+        ok: true, error: nil, sheet: sheet,
+        total: slots.size, resolved: picks,
+        remaining: pending.size, pending: pending
       }
     end
 
@@ -80,26 +68,20 @@ module AresMUSH
       end
     end
 
-    # Resolve the next pending skill_choice slot.
-    # arg: option slug for type:list, or specialty / specialty_lore for type:lore
-    # If the slot has feats: { option => feat_slug }, that feat is added.
     def self.cg_resolve_background_skill(char, arg)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
-
       sheet = result[:sheet]
-      if sheet.background.blank?
-        return { ok: false, error: "pf2e.cg_need_background", sheet: sheet }
-      end
+      locked = cg_require_identity_locked(sheet)
+      return locked if locked
+      return { ok: false, error: "pf2e.cg_need_background", sheet: sheet } if sheet.background.blank?
 
       raw = arg.to_s.strip.downcase
       return { ok: false, error: "pf2e.cg_bgskill_usage", sheet: sheet } if raw.empty?
 
       slots = cg_background_skill_slots(sheet)
       picks = cg_background_skill_picks(sheet)
-      if picks.size >= slots.size
-        return { ok: false, error: "pf2e.cg_bgskill_none_pending", sheet: sheet }
-      end
+      return { ok: false, error: "pf2e.cg_bgskill_none_pending", sheet: sheet } if picks.size >= slots.size
 
       slot = slots[picks.size]
       type = slot["type"].to_s
@@ -111,26 +93,19 @@ module AresMUSH
           "#{specialty}_lore"
         else
           options = Array(slot["options"]).map { |o| o.to_s.strip.downcase }
-          unless options.include?(raw)
-            return { ok: false, error: "pf2e.cg_bgskill_not_in_options", sheet: sheet }
-          end
+          return { ok: false, error: "pf2e.cg_bgskill_not_in_options", sheet: sheet } unless options.include?(raw)
           raw
         end
 
-      if skill_rank(sheet, skill_key) != "U"
-        return { ok: false, error: "pf2e.cg_skill_already_trained", sheet: sheet }
-      end
+      return { ok: false, error: "pf2e.cg_skill_already_trained", sheet: sheet } if skill_rank(sheet, skill_key) != "U"
 
       set_skill_rank(sheet, skill_key, "T")
-      new_picks = picks + [skill_key]
-      sheet.update(background_skill_picks: new_picks)
+      sheet.update(background_skill_picks: picks + [skill_key])
 
       granted_feat = nil
       feat_map = slot["feats"]
       if feat_map.is_a?(Hash)
-        # Match on the option key the player chose (list) or full skill key
-        feat_slug = feat_map[skill_key] || feat_map[skill_key.to_sym] ||
-                    feat_map[raw] || feat_map[raw.to_sym]
+        feat_slug = feat_map[skill_key] || feat_map[skill_key.to_sym] || feat_map[raw] || feat_map[raw.to_sym]
         feat_slug = feat_slug.to_s.strip.downcase if feat_slug
         if feat_slug && !feat_slug.empty?
           feats = Array(sheet.feats).map { |f| f.to_s }
@@ -143,11 +118,8 @@ module AresMUSH
       end
 
       {
-        ok: true,
-        error: nil,
-        sheet: sheet,
-        skill: skill_key,
-        feat: granted_feat,
+        ok: true, error: nil, sheet: sheet,
+        skill: skill_key, feat: granted_feat,
         remaining: cg_background_skill_slots_remaining(sheet)
       }
     end

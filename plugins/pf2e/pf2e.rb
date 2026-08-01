@@ -17,31 +17,24 @@ module AresMUSH
       case cmd.root
       when "sheet"
         case cmd.switch
-        when "combat"
-          return SheetCombatCmd
-        when nil
-          return SheetCmd
+        when "combat" then return SheetCombatCmd
+        when nil then return SheetCmd
         end
       when "roll"
         return RollCmd if cmd.switch.nil?
       when "cg"
         case cmd.switch
-        when "start"
-          return CgStartCmd
-        when "ancestry"
-          return CgAncestryCmd
-        when "heritage"
-          return CgHeritageCmd
-        when "background"
-          return CgBackgroundCmd
-        when "class"
-          return CgClassCmd
-        when "boost"
-          return CgBoostCmd
-        when "skill"
-          return CgSkillCmd
-        when "bgskill"
-          return CgBgskillCmd
+        when "start" then return CgStartCmd
+        when "ancestry" then return CgAncestryCmd
+        when "heritage" then return CgHeritageCmd
+        when "background" then return CgBackgroundCmd
+        when "class" then return CgClassCmd
+        when "identity" then return CgIdentityCmd
+        when "commit" then return CgCommitCmd
+        when "reset" then return CgResetCmd
+        when "boost" then return CgBoostCmd
+        when "skill" then return CgSkillCmd
+        when "bgskill" then return CgBgskillCmd
         end
       end
       nil
@@ -64,7 +57,6 @@ module AresMUSH
     def self.load_data
       @@data = {}
       return unless Dir.exist?(data_dir)
-
       Dir[File.join(data_dir, "*.yml")].sort.each do |path|
         begin
           raw = YAML.load_file(path)
@@ -74,19 +66,15 @@ module AresMUSH
           Global.logger.error "Pf2e data load failed for #{path}: #{e.message}"
         end
       end
-
       Global.logger.info "Pf2e loaded static data from #{Dir[File.join(data_dir, '*.yml')].size} file(s)."
     end
 
     def self.read_data(section = nil, key = nil)
       load_data if @@data.empty? && Dir.exist?(data_dir)
-
       return @@data if section.nil?
-
       section_data = @@data[section]
       return nil if section_data.nil?
       return section_data if key.nil?
-
       section_data[key]
     end
 
