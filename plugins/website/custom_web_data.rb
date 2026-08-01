@@ -13,7 +13,13 @@ module AresMUSH
     #    NOTE!! The sidebar is called A LOT because it's on every page, so be very mindful
     #    about performance. Avoid intensive database queries here.
     def self.custom_sidebar_data(viewer)
-      return {}
+      # Anonymous / not-logged-in visitors get an empty hash
+      return {} if !viewer
+
+      {
+        # true if this character is already linked to an AltTracker
+        alt_tracker_registered: !!viewer.alt_tracker
+      }
     end
   end
 end
