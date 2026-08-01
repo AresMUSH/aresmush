@@ -1,0 +1,104 @@
+# Static feat reference data.
+# Lookup: Pf2e.read_data("feats", "power_attack")
+
+feats:
+  assurance:
+    name: Assurance
+    level: 1
+    traits: [general, skill]
+    category: skill
+    action: null
+    frequency: null
+    prerequisites:
+      special: "trained in at least one skill"
+    effect: >
+      Choose a skill you're trained in. You can forgo rolling to instead
+      receive a result of 10 + proficiency bonus (do not apply ability mod,
+      item, circumstance, or status bonuses/penalties).
+    tags: [skill_action]
+
+  powerful_leap:
+    name: Powerful Leap
+    level: 2
+    traits: [general, skill]
+    category: skill
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        athletics: T
+    effect: >
+      When you Leap, you can jump 5 feet further horizontally, and
+      increase the vertical distance vertically when applicable.
+    tags: [skill_bonus]
+
+  toughness:
+    name: Toughness
+    level: 1
+    traits: [general]
+    category: general
+    action: null
+    frequency: null
+    prerequisites: {}
+    effect: >
+      Increase your maximum HP by your level. You reduce the DC for
+      recovery checks by 1.
+    tags: [hp_bonus, recovery]
+
+  power_attack:
+    name: Power Attack
+    level: 1
+    traits: [fighter]
+    category: class
+    action: 2
+    frequency: null
+    prerequisites: {}
+    effect: >
+      Make a melee Strike with the required number of actions. If you hit,
+      you deal an extra weapon damage die. Count as two attacks toward MAP.
+    tags: [strike, extra_weapon_die, map_counts_two]
+
+  reactive_shield:
+    name: Reactive Shield
+    level: 1
+    traits: [fighter]
+    category: class
+    action: reaction
+    frequency: null
+    prerequisites: {}
+    effect: >
+      Trigger: An enemy hits you with a melee Strike while you have a shield raised.
+      You can use Shield Block as a reaction.
+    tags: [reaction, shield]
+
+  rock_runner:
+    name: Rock Runner
+    level: 1
+    traits: [dwarf]
+    category: ancestry
+    action: null
+    frequency: null
+    prerequisites:
+      special: "dwarf ancestry"
+    effect: >
+      You ignore difficult terrain caused by stone or earth, and you can
+      treat higher earth/stone obstacles more favorably when Climbing.
+    tags: [movement]
+
+  barbarian_dedication:
+    name: Barbarian Dedication
+    level: 2
+    traits: [archetype, dedication, multiclass]
+    category: dedication
+    action: null
+    frequency: null
+    prerequisites:
+      level: 2
+      attributes:
+        str: 14
+      special: "not already a barbarian"
+    effect: >
+      You become trained in light armor, medium armor, unarmed attacks, and
+      the Athletics skill (or another skill if already trained). You gain
+      access to barbarian archetype feats.
+    tags: [dedication, multiclass]

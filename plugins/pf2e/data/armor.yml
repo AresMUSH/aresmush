@@ -1,0 +1,107 @@
+# Static armor reference data.
+# Lookup: Pf2e.read_data("armor", "leather")
+#
+# Fields:
+#   name          — display name
+#   category      — unarmored | light | medium | heavy
+#   ac_bonus      — item bonus to AC
+#   dex_cap       — max Dex modifier allowed (null = no cap)
+#   check_penalty — penalty to Str- and Dex-based skill checks (0 or negative)
+#   speed_penalty — penalty to Speed in feet (0 or negative)
+#   strength      — minimum Strength score to ignore check/speed penalties
+#   bulk          — L / 1 / 2 / etc.
+#   group         — armor group
+#   traits        — array of trait slugs
+#   price         — optional, in sp
+
+armor:
+  explorers_clothing:
+    name: "Explorer's Clothing"
+    category: unarmored
+    ac_bonus: 0
+    dex_cap: null
+    check_penalty: 0
+    speed_penalty: 0
+    strength: null
+    bulk: L
+    group: cloth
+    traits: [comfort]
+    price: 1
+
+  leather:
+    name: Leather Armor
+    category: light
+    ac_bonus: 1
+    dex_cap: 4
+    check_penalty: -1
+    speed_penalty: 0
+    strength: 10
+    bulk: 1
+    group: leather
+    traits: []
+    price: 20
+
+  studded_leather:
+    name: Studded Leather Armor
+    category: light
+    ac_bonus: 2
+    dex_cap: 3
+    check_penalty: -1
+    speed_penalty: 0
+    strength: 12
+    bulk: 1
+    group: leather
+    traits: []
+    price: 30
+
+  chain_mail:
+    name: Chain Mail
+    category: medium
+    ac_bonus: 4
+    dex_cap: 1
+    check_penalty: -2
+    speed_penalty: -5
+    strength: 16
+    bulk: 2
+    group: chain
+    traits: [flexible, noisy]
+    price: 60
+
+  breastplate:
+    name: Breastplate
+    category: medium
+    ac_bonus: 4
+    dex_cap: 1
+    check_penalty: -2
+    speed_penalty: -5
+    strength: 16
+    bulk: 2
+    group: plate
+    traits: []
+    price: 80
+
+  half_plate:
+    name: Half Plate
+    category: heavy
+    ac_bonus: 5
+    dex_cap: 1
+    check_penalty: -3
+    speed_penalty: -10
+    strength: 16
+    bulk: 3
+    group: plate
+    traits: []
+    price: 80
+
+  full_plate:
+    name: Full Plate
+    category: heavy
+    ac_bonus: 6
+    dex_cap: 0
+    check_penalty: -3
+    speed_penalty: -10
+    strength: 18
+    bulk: 4
+    group: plate
+    traits: [bulwark]
+    price: 300
