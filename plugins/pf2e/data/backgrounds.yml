@@ -1,0 +1,87 @@
+# Static background reference data.
+# Lookup: Pf2e.read_data("backgrounds", "farmhand")
+#
+# Sheet stores only the chosen slug on Pf2eSheet#background.
+# Chargen applies boosts → abilities, skills → ranks, feat → feats[].
+#
+# Fields:
+#   name        — display name
+#   boosts:
+#     fixed     — ability keys applied automatically (rare on backgrounds)
+#     free      — number of player-chosen boosts
+#     options   — if present, free boosts must be chosen from this list
+#                 (omit options = any ability)
+#   skills      — skill slugs granted at Trained (missing on sheet = Untrained)
+#   lore        — optional Lore specialty string (stored/displayed as needed;
+#                 mechanical training may map to a skill slug like "lore")
+#   feat        — skill feat slug granted (must exist in feats.yml when enforced)
+#   traits      — optional tags for filtering later
+#   effect      — short human-readable summary (not full rules text)
+#
+# Keep this parallel to ancestry.yml / feats.yml: structured where code cares,
+# prose only for unique wording.
+
+backgrounds:
+  farmhand:
+    name: Farmhand
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, con]
+    skills:
+      - athletics
+      - labor_lore
+    lore: Labor
+    feat: assured_identification
+    traits: []
+    effect: >
+      You come from hard outdoor work. Your background prepares you for
+      sustained physical effort and practical problem-solving.
+
+  emissary:
+    name: Emissary
+    boosts:
+      fixed: []
+      free: 2
+      options: [int, cha]
+    skills:
+      - society
+      - diplomacy
+    lore: null
+    feat: multicultural
+    traits: []
+    effect: >
+      You represent interests across borders or courts. You are practiced
+      at reading rooms and speaking for others.
+
+  warrior:
+    name: Warrior
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, con]
+    skills:
+      - intimidation
+      - warfare_lore
+    lore: Warfare
+    feat: intimidating_glare
+    traits: []
+    effect: >
+      You were trained for battle long before adventuring. Violence and
+      discipline are familiar tools.
+
+  scholar:
+    name: Scholar
+    boosts:
+      fixed: []
+      free: 2
+      options: [int, wis]
+    skills:
+      - arcana
+      - academia_lore
+    lore: Academia
+    feat: assurance
+    traits: []
+    effect: >
+      Study shaped your early life. You know how to learn quickly and
+      apply book knowledge under pressure.
