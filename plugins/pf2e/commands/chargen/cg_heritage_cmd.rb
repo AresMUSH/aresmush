@@ -9,12 +9,20 @@ module AresMUSH
         self.slug = cmd.args ? cmd.args.strip.downcase : nil
       end
 
-      def check_args
-        return t('pf2e.cg_heritage_usage') if self.slug.blank?
-        nil
-      end
-
       def handle
+        if self.slug.blank?
+          rows = Pf2e.cg_list_heritages(enactor)
+          sheet = Pf2e.find_sheet(enactor)
+          title =
+            if sheet && !sheet.ancestry.blank?
+              t('pf2e.cg_list_heritages_for', :ancestry => sheet.ancestry)
+            else
+              t('pf2e.cg_list_heritages_all')
+            end
+          client.emit Pf2e.cg_format_option_list(title, rows)
+          return
+        end
+
         result = Pf2e.cg_set_heritage(enactor, self.slug)
         if !result[:ok]
           client.emit_failure t(result[:error])

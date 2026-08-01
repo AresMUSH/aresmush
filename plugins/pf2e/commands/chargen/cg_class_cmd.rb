@@ -11,12 +11,13 @@ module AresMUSH
         self.key_ability = parts[1] ? parts[1].strip.downcase : nil
       end
 
-      def check_args
-        return t('pf2e.cg_class_usage') if self.slug.blank?
-        nil
-      end
-
       def handle
+        if self.slug.blank?
+          rows = Pf2e.cg_list_classes
+          client.emit Pf2e.cg_format_option_list(t('pf2e.cg_list_classes'), rows)
+          return
+        end
+
         result = Pf2e.cg_set_class(enactor, self.slug, key_ability: self.key_ability)
         if !result[:ok]
           client.emit_failure t(result[:error])

@@ -9,12 +9,13 @@ module AresMUSH
         self.slug = cmd.args ? cmd.args.strip.downcase : nil
       end
 
-      def check_args
-        return t('pf2e.cg_ancestry_usage') if self.slug.blank?
-        nil
-      end
-
       def handle
+        if self.slug.blank?
+          rows = Pf2e.cg_list_ancestries
+          client.emit Pf2e.cg_format_option_list(t('pf2e.cg_list_ancestries'), rows)
+          return
+        end
+
         result = Pf2e.cg_set_ancestry(enactor, self.slug)
         if !result[:ok]
           client.emit_failure t(result[:error])
