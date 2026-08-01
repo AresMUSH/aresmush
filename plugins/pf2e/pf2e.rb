@@ -41,6 +41,8 @@ module AresMUSH
           return CgBackgroundCmd
         when "class"
           return CgClassCmd
+        when "boost"
+          return CgBoostCmd
         end
       end
       nil
@@ -56,17 +58,6 @@ module AresMUSH
 
     # -------------------------------------------------
     # Static data loader
-    #
-    # All static PF2e reference data (classes, feats, skills,
-    # spells, etc.) lives in YAML files under data/.
-    # Multiple files may contribute to the same top-level
-    # section; they are deep-merged, exactly like Global
-    # config files under a single section key.
-    #
-    # Usage mirrors Global.read_config:
-    #   Pf2e.read_data                  → entire data hash
-    #   Pf2e.read_data("skills")        → skills section
-    #   Pf2e.read_data("skills", "athletics") → one entry
     # -------------------------------------------------
 
     @@data = {}
@@ -92,7 +83,6 @@ module AresMUSH
       Global.logger.info "Pf2e loaded static data from #{Dir[File.join(data_dir, '*.yml')].size} file(s)."
     end
 
-    # Mirrors Global.read_config(section, key = nil)
     def self.read_data(section = nil, key = nil)
       load_data if @@data.empty? && Dir.exist?(data_dir)
 
@@ -105,8 +95,6 @@ module AresMUSH
       section_data[key]
     end
 
-    # Simple recursive deep merge (hashes only; arrays/values from the
-    # second hash win). Keeps the loader dependency-free.
     def self.deep_merge(base, overlay)
       result = base.dup
       overlay.each do |k, v|

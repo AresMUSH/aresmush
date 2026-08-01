@@ -8,6 +8,8 @@ module AresMUSH
     #   { ok: true/false, error: "locale key or message", sheet: Pf2eSheet }
     # -------------------------------------------------
 
+    CG_BOOST_SOURCES = %w[ancestry heritage background].freeze
+
     def self.cg_ensure_sheet(char)
       return { ok: false, error: "pf2e.character_not_found", sheet: nil } if char.nil?
 
@@ -37,8 +39,162 @@ module AresMUSH
       read_data("charclasses", slug.to_s.strip.downcase)
     end
 
-    # Set ancestry slug. Clears heritage if it is no longer valid.
-    # Applies ancestry speed. HP is recalculated when class is known.
+    # -------------------------------------------------
+    # Ability boost / flaw math (PF2e core)
+    # Boost: +2 if score < 18, otherwise +1
+    # Flaw:  -2
+    # Same ability may not be boosted twice by the *same source*.
+    # Different sources may stack on one ability (10 → 18 is four +2s).
+    # -------------------------------------------------
+
+    def self.cg_apply_boost(score)
+      s = score.to_i
+      s >= 18 ? s + 1 : s + 2
+    end
+
+    def self.cg_apply_flaw(score)
+      score.to_i - 2
+    end
+
+    # Rebuild current ability scores from base 10 + all sources.
+    # Writes abilities as [base, current] with base left at 10 for chargen.
+    def self.cg_recalc_abilities(sheet)
+      return unless sheet
+
+      scores = {}
+      ABILITY_KEYS.each { |k| scores[k] = 10 }
+
+      # Ancestry fixed boosts + flaws (from data)
+      anc = cg_ancestry_entry(sheet.ancestry)
+      if anc.is_a?(Hash)
+        Array((anc["boosts"] || {})["fixed"]).each do |raw|
+          k = ability_key(raw)
+          scores[k] = cg_apply_boost(scores[k]) if k
+        end
+        Array((anc["flaws"] || {})["fixed"]).each do |raw|
+          k = ability_key(raw)
+          scores[k] = cg_apply_flaw(scores[k]) if k
+        end
+      end
+
+      # Free boosts stored on the sheet (ancestry / heritage / background)
+      stored = sheet.ability_boosts || {}
+      CG_BOOST_SOURCES.each do |source|
+        Array(stored[source] || stored[source.to_sym]).each do |raw|
+          k = ability_key(raw)
+          scores[k] = cg_apply_boost(scores[k]) if k
+        end
+      end
+
+      # Class key ability (one boost)
+      cc = sheet.charclass || {}
+      key_abil = ability_key(cc["key_ability"] || cc[:key_ability])
+      scores[key_abil] = cg_apply_boost(scores[key_abil]) if key_abil
+
+      abilities = {}
+      ABILITY_KEYS.each do |k|
+        base = (sheet.abilities[k] && sheet.abilities[k][0]) ? sheet.abilities[k][0].to_i : 10
+        abilities[k] = [base, scores[k]]
+      end
+      sheet.update(abilities: abilities)
+      scores
+    end
+
+    # Expected free-boost count and optional ability options for a source.
+    # Returns [count, options_or_nil]
+    def self.cg_free_boost_requirements(sheet, source)
+      source = source.to_s.strip.downcase
+      case source
+      when "ancestry"
+        entry = cg_ancestry_entry(sheet.ancestry)
+        return [0, nil] unless entry.is_a?(Hash)
+        boosts = entry["boosts"] || {}
+        [boosts["free"].to_i, boosts["options"]]
+      when "heritage"
+        entry = cg_heritage_entry(sheet.heritage)
+        return [0, nil] unless entry.is_a?(Hash)
+        boosts = entry["boosts"] || {}
+        [boosts["free"].to_i, boosts["options"]]
+      when "background"
+        entry = cg_background_entry(sheet.background)
+        return [0, nil] unless entry.is_a?(Hash)
+        boosts = entry["boosts"] || {}
+        [boosts["free"].to_i, boosts["options"]]
+      else
+        [0, nil]
+      end
+    end
+
+    # Set free boost picks for one source.
+    # abilities: array of ability names/keys
+    # Enforces: known abilities, no duplicates within source, exact free count,
+    #           membership in options when the data lists options.
+    def self.cg_set_boosts(char, source, abilities)
+      result = cg_ensure_sheet(char)
+      return result unless result[:ok]
+
+      sheet = result[:sheet]
+      source = source.to_s.strip.downcase
+      unless CG_BOOST_SOURCES.include?(source)
+        return { ok: false, error: "pf2e.cg_bad_boost_source", sheet: sheet }
+      end
+
+      case source
+      when "ancestry"
+        return { ok: false, error: "pf2e.cg_need_ancestry", sheet: sheet } if sheet.ancestry.blank?
+      when "heritage"
+        return { ok: false, error: "pf2e.cg_need_heritage", sheet: sheet } if sheet.heritage.blank?
+      when "background"
+        return { ok: false, error: "pf2e.cg_need_background", sheet: sheet } if sheet.background.blank?
+      end
+
+      needed, options = cg_free_boost_requirements(sheet, source)
+      if needed <= 0
+        return { ok: false, error: "pf2e.cg_no_free_boosts", sheet: sheet }
+      end
+
+      keys = Array(abilities).map { |a| ability_key(a) }
+      if keys.any?(&:nil?)
+        return { ok: false, error: "pf2e.cg_unknown_ability", sheet: sheet }
+      end
+
+      if keys.size != keys.uniq.size
+        return { ok: false, error: "pf2e.cg_duplicate_boost", sheet: sheet }
+      end
+
+      if keys.size != needed
+        return { ok: false, error: "pf2e.cg_boost_count", sheet: sheet }
+      end
+
+      if options.is_a?(Array) && !options.empty?
+        allowed = options.map { |o| ability_key(o) || o.to_s }
+        unless keys.all? { |k| allowed.include?(k) }
+          return { ok: false, error: "pf2e.cg_boost_not_in_options", sheet: sheet }
+        end
+      end
+
+      # Also cannot overlap ancestry *fixed* boosts for ancestry free picks
+      if source == "ancestry"
+        anc = cg_ancestry_entry(sheet.ancestry)
+        fixed = Array((anc && anc["boosts"] || {})["fixed"]).map { |a| ability_key(a) }.compact
+        if keys.any? { |k| fixed.include?(k) }
+          return { ok: false, error: "pf2e.cg_boost_overlaps_fixed", sheet: sheet }
+        end
+      end
+
+      stored = (sheet.ability_boosts || {}).dup
+      stored[source] = keys
+      sheet.update(ability_boosts: stored)
+      cg_recalc_abilities(sheet)
+      cg_recalc_hp(sheet)
+
+      { ok: true, error: nil, sheet: sheet, boosts: keys }
+    end
+
+    # -------------------------------------------------
+    # Choice setters
+    # -------------------------------------------------
+
     def self.cg_set_ancestry(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -52,7 +208,6 @@ module AresMUSH
       sheet = result[:sheet]
       updates = { ancestry: key }
 
-      # Drop heritage if it does not belong to the new ancestry
       allowed = Array(entry["heritages"]).map { |h| h.to_s }
       if sheet.heritage && !allowed.include?(sheet.heritage.to_s)
         updates[:heritage] = nil
@@ -62,13 +217,19 @@ module AresMUSH
         updates[:speed] = entry["speed"].to_i
       end
 
+      # Clear free boost picks that no longer apply
+      stored = (sheet.ability_boosts || {}).dup
+      stored.delete("ancestry")
+      stored.delete("heritage") if updates.key?(:heritage)
+      updates[:ability_boosts] = stored
+
       sheet.update(updates)
+      cg_recalc_abilities(sheet)
       cg_recalc_hp(sheet)
 
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
-    # Set heritage; must match current ancestry's list.
     def self.cg_set_heritage(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -90,18 +251,20 @@ module AresMUSH
         return { ok: false, error: "pf2e.cg_heritage_not_for_ancestry", sheet: sheet }
       end
 
-      # Optional parent check on the heritage record itself
       parent = entry["ancestry"].to_s
       if !parent.empty? && parent != sheet.ancestry.to_s
         return { ok: false, error: "pf2e.cg_heritage_not_for_ancestry", sheet: sheet }
       end
 
-      sheet.update(heritage: key)
+      stored = (sheet.ability_boosts || {}).dup
+      stored.delete("heritage")
+      sheet.update(heritage: key, ability_boosts: stored)
+      cg_recalc_abilities(sheet)
+      cg_recalc_hp(sheet)
+
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
-    # Set background slug. Trains listed skills (if still U) and adds feat slug.
-    # Free ability boosts are not auto-applied (separate step / web UI).
     def self.cg_set_background(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -113,7 +276,9 @@ module AresMUSH
       end
 
       sheet = result[:sheet]
-      sheet.update(background: key)
+      stored = (sheet.ability_boosts || {}).dup
+      stored.delete("background")
+      sheet.update(background: key, ability_boosts: stored)
 
       Array(entry["skills"]).each do |sk|
         sk_key = sk.to_s.strip.downcase
@@ -131,11 +296,12 @@ module AresMUSH
         end
       end
 
+      cg_recalc_abilities(sheet)
+      cg_recalc_hp(sheet)
+
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
-    # Set class. key_ability must be one of the class options when provided.
-    # Applies starting Perception/save ranks and class-granted skill training.
     def self.cg_set_class(char, slug, key_ability: nil)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -170,7 +336,6 @@ module AresMUSH
       }
       sheet.update(charclass: charclass)
 
-      # Starting perception / saves from class data
       if entry["perception"]
         set_save_rank(sheet, "perception", entry["perception"])
       end
@@ -179,7 +344,6 @@ module AresMUSH
         set_save_rank(sheet, save_name, rank)
       end
 
-      # Class-granted skills
       additional = ((entry["skills"] || {})["additional"]) || []
       Array(additional).each do |sk|
         sk_key = sk.to_s.strip.downcase
@@ -188,12 +352,12 @@ module AresMUSH
         set_skill_rank(sheet, sk_key, "T") if current == "U"
       end
 
+      cg_recalc_abilities(sheet)
       cg_recalc_hp(sheet)
 
       { ok: true, error: nil, sheet: sheet, entry: entry }
     end
 
-    # Ancestry HP + class HP/level + CON mod per level (level 1 for now).
     def self.cg_recalc_hp(sheet)
       return unless sheet
 
@@ -211,7 +375,6 @@ module AresMUSH
 
       hp = (sheet.hp || {}).dup
       hp["max"] = max
-      # Only fill current if it was zero / unset so we do not clobber damage mid-play
       if hp["current"].to_i <= 0
         hp["current"] = max
       elsif hp["current"].to_i > max

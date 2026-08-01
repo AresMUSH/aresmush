@@ -9,6 +9,12 @@ module AresMUSH
     attribute :background
     attribute :charclass,     :type => DataType::Hash,    :default => {}
 
+    # Free ability boost picks by source (slug lists).
+    # Fixed boosts/flaws come from data at recalc time.
+    # Example: { "ancestry" => ["str"], "background" => ["str", "con"], "heritage" => [] }
+    # Within one source list, each ability may appear at most once.
+    attribute :ability_boosts, :type => DataType::Hash, :default => {}
+
     # Abilities: [base, current]
     attribute :abilities,     :type => DataType::Hash,    :default => {
       "str" => [10, 10],
