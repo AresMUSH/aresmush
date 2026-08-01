@@ -39,10 +39,6 @@ module AresMUSH
       read_data("charclasses", slug.to_s.strip.downcase)
     end
 
-    # -------------------------------------------------
-    # Ability boost / flaw math (PF2e core)
-    # -------------------------------------------------
-
     def self.cg_apply_boost(score)
       s = score.to_i
       s >= 18 ? s + 1 : s + 2
@@ -175,20 +171,17 @@ module AresMUSH
       { ok: true, error: nil, sheet: sheet, boosts: keys }
     end
 
-    # -------------------------------------------------
-    # Skills (chargen remaining trainings)
-    #
-    # Class grants: trained_count + INT modifier free picks,
-    # plus any skills listed under skills.additional.
-    # Background skills are free and do not consume picks.
-    # -------------------------------------------------
-
     def self.cg_forced_skills(sheet)
       forced = []
 
       bg = cg_background_entry(sheet.background)
       if bg.is_a?(Hash)
         Array(bg["skills"]).each { |s| forced << s.to_s.strip.downcase }
+      end
+
+      # Resolved skill_choices (Guard lore pick, Nomad terrain lore, etc.)
+      Array(sheet.background_skill_picks).each do |s|
+        forced << s.to_s.strip.downcase
       end
 
       cc = sheet.charclass || {}
@@ -201,7 +194,6 @@ module AresMUSH
       forced.reject(&:empty?).uniq
     end
 
-    # How many free skill trainings the class still owes the player.
     def self.cg_skill_picks_total(sheet)
       cc = sheet.charclass || {}
       class_entry = cg_class_entry(cc["slug"] || cc[:slug])
@@ -245,7 +237,6 @@ module AresMUSH
       }
     end
 
-    # Train one or more skills (rank T) using remaining class picks.
     def self.cg_train_skills(char, skill_slugs)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -287,10 +278,6 @@ module AresMUSH
         remaining: cg_skill_picks_remaining(sheet)
       }
     end
-
-    # -------------------------------------------------
-    # Choice setters
-    # -------------------------------------------------
 
     def self.cg_set_ancestry(char, slug)
       result = cg_ensure_sheet(char)
@@ -374,7 +361,12 @@ module AresMUSH
       sheet = result[:sheet]
       stored = (sheet.ability_boosts || {}).dup
       stored.delete("background")
-      sheet.update(background: key, ability_boosts: stored)
+      # Fixed skills only; skill_choices resolved via cg/bgskill
+      sheet.update(
+        background: key,
+        ability_boosts: stored,
+        background_skill_picks: []
+      )
 
       Array(entry["skills"]).each do |sk|
         sk_key = sk.to_s.strip.downcase
