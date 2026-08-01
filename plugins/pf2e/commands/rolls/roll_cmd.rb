@@ -72,6 +72,8 @@ module AresMUSH
         when :dice
           rolls = Array(part[:rolls]).join(",")
           val = part[:value]
+          sign = val < 0 ? "" : "+"
+          # value already includes sign multiplier for negative terms
           if val < 0
             "#{part[:raw]}(#{rolls})=#{val}"
           else

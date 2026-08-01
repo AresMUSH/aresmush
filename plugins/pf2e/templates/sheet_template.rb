@@ -89,6 +89,7 @@ module AresMUSH
           rank = Pf2e.skill_rank(sheet, sk)
           mod = Pf2e.skill_mod(sheet, sk)
           mod_str = mod >= 0 ? "+#{mod}" : mod.to_s
+          # Only emphasize trained+ ranks for readability
           if rank == "U"
             "  #{sk.tr('_', ' ')} #{mod_str}"
           else
