@@ -3,13 +3,13 @@ module AresMUSH
     attribute :player_email
     index :player_email
 
-    attribute :banned, :type => DataType::Boolean, :default => false
+    attribute :banned, :type => AresMUSH::DataType::Boolean, :default => false
 
     # nil = permanent ban; otherwise a Time when the ban ends
-    attribute :ban_expires, :type => DataType::Time
+    attribute :ban_expires, :type => AresMUSH::DataType::Time
 
     # Array of ban/unban events (oldest → newest)
-    attribute :ban_history, :type => DataType::Array, :default => []
+    attribute :ban_history, :type => AresMUSH::DataType::Array, :default => []
 
     attribute :code_word
 
