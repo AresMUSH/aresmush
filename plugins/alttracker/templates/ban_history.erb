@@ -1,0 +1,11 @@
+<%= line_with_text("Ban History — #{char_name}") %>
+%xhEmail:%xn <%= email %>
+<%= line_with_text("Events (oldest → newest)") %>
+<% if history.empty? %>
+  (no ban history)
+<% else %>
+<% history.each do |entry| %>
+<%= format_entry(entry) %>
+<% end %>
+<% end %>
+<%= line_with_text("Total events: #{history.size}") %>
