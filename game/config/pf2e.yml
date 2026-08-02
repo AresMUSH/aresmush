@@ -11,5 +11,9 @@ pf2e:
     inventory/equip: gear/equip
     inv/unequip: gear/unequip
     inventory/unequip: gear/unequip
+    inv/stow: gear/stow
+    inventory/stow: gear/stow
+    inv/retrieve: gear/retrieve
+    inventory/retrieve: gear/retrieve
   # When true, bulk is calculated and shown; society-account coin is excluded.
   use_encumbrance: true

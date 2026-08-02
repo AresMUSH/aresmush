@@ -63,7 +63,13 @@ module AresMUSH
       end
 
       def carried_block
-        rows = items.reject { |e| e["equipped"] }
+        rows = items.reject { |e| e["equipped"] || e["contained_in"].to_s.strip != "" }
+        return "  (none)" if rows.empty?
+        rows.map { |e| "  #{Pf2e.format_item_line(e)}" }.join("%r")
+      end
+
+      def stowed_block
+        rows = items.select { |e| e["contained_in"].to_s.strip != "" }
         return "  (none)" if rows.empty?
         rows.map { |e| "  #{Pf2e.format_item_line(e)}" }.join("%r")
       end

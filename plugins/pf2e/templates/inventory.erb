@@ -10,4 +10,7 @@
 <%= line_with_text("Carried") %>
 <%= carried_block %>
 
-%x(Use gear/add <slug> [qty], gear/drop <id> [qty], gear/equip <id>, gear/unequip <id>. Shortcuts: inv, inventory.)%xn
+<%= line_with_text("Stowed") %>
+<%= stowed_block %>
+
+%x(gear/stow <item> <bag>  |  gear/retrieve <item>  |  Society gear cannot be stowed.)%xn
