@@ -1,42 +1,29 @@
 # Static feat reference data.
 # Lookup: Pf2e.read_data("feats", "power_attack")
 #
-# ---------------------------------------------------------------------------
-# Design notes
-# ---------------------------------------------------------------------------
-# Feats are the messiest PF2e data. This structure prioritizes:
-#   1. Chargen / level-up eligibility (level, traits, prerequisites)
-#   2. Display / help text
-#   3. Light mechanical tags the code can act on later
+# prerequisites / prereqs — either shape works:
 #
-# It does NOT try to encode every effect as executable logic. Complex or
-# unique effects stay in `effect` (human-readable) and optional `tags`
-# until we have a real reason to automate them.
+# Flat:
+#   prerequisites:
+#     level: 2
+#     skills: { athletics: T }
+#     attributes: { str: 14 }
+#     feats: [some_feat]
+#     special: "not auto-checked"
 #
-# Fields:
-#   name          — display name
-#   level         — minimum level required
-#   traits        — array of trait slugs (fighter, general, skill, ancestry, …)
-#   category      — ancestry | class | skill | general | archetype | dedication
-#   # category is redundant with traits for some feats but makes filtering easy
-#   action        — null | free | reaction | 1 | 2 | 3
-#   frequency     — null | "once per round" | "once per day" | etc.
-#   prerequisites — structured requirements (all must be met unless noted)
-#     level       — usually same as feat level; optional override
-#     feats       — list of feat slugs already required
-#     skills      — { skill_slug: min_rank }  e.g. athletics: T
-#     saves       — { save_slug: min_rank }
-#     attacks     — { category: min_rank }    e.g. martial: T
-#     attributes  — { ability: min_score }    e.g. str: 16  (rare)
-#     features    — class/ancestry feature slugs
-#     special     — free-text prereq the code cannot auto-check
-#   effect        — short rules summary (not full Nethys text)
-#   tags          — optional machine-oriented hints, e.g.
-#                   [map_friendly, damage_bonus, skill_bonus, dedication]
-# ---------------------------------------------------------------------------
+# Structured:
+#   prerequisites:
+#     all:
+#       - type: skill
+#         skill: athletics
+#         rank: T
+#     any:
+#       - type: feat
+#         slug: foo
+#
+# Omit prerequisites (or {}) for feats with no gate beyond feat.level.
 
 feats:
-  # --- Skill feat ---
   assurance:
     name: Assurance
     level: 1
@@ -45,7 +32,6 @@ feats:
     action: null
     frequency: null
     prerequisites:
-      skills: {}          # "trained in at least one skill" — enforced in special
       special: "trained in at least one skill"
     effect: >
       Choose a skill you're trained in. You can forgo rolling to instead
@@ -68,7 +54,50 @@ feats:
       increase the vertical distance vertically when applicable.
     tags: [skill_bonus]
 
-  # --- General feat ---
+  cat_fall:
+    name: Cat Fall
+    level: 1
+    traits: [general, skill]
+    category: skill
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        acrobatics: T
+    effect: >
+      Your ability to fall safely increases with your Acrobatics proficiency.
+    tags: [skill_bonus]
+
+  quick_jump:
+    name: Quick Jump
+    level: 1
+    traits: [general, skill]
+    category: skill
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        athletics: T
+    effect: >
+      You can use High Jump and Long Jump as a single action instead of 2.
+    tags: [skill_bonus]
+
+  intimidating_glare:
+    name: Intimidating Glare
+    level: 1
+    traits: [general, skill]
+    category: skill
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        intimidation: T
+    effect: >
+      You can Demoralize with a glare; your Demoralize loses the auditory
+      trait and gains the visual trait, and you don't take a penalty when
+      the target doesn't understand your language.
+    tags: [skill_action]
+
   toughness:
     name: Toughness
     level: 1
@@ -82,7 +111,6 @@ feats:
       recovery checks by 1.
     tags: [hp_bonus, recovery]
 
-  # --- Class feat (Fighter) ---
   power_attack:
     name: Power Attack
     level: 1
@@ -90,7 +118,10 @@ feats:
     category: class
     action: 2
     frequency: null
-    prerequisites: {}
+    prerequisites:
+      all:
+        - type: class
+          slug: fighter
     effect: >
       Make a melee Strike with the required number of actions. If you hit,
       you deal an extra weapon damage die. Count as two attacks toward MAP.
@@ -103,14 +134,15 @@ feats:
     category: class
     action: reaction
     frequency: null
-    prerequisites: {}
+    prerequisites:
+      all:
+        - type: class
+          slug: fighter
     effect: >
-      Trigger: An enemy hits you with a melee Strike while you have a shield raised.
-      You can use Shield Block as a reaction even though it is not your turn's reaction budget
-      in the usual way — follow published text for exact trigger/resolution.
+      Trigger: An enemy hits you with a melee Strike. You can Raise a Shield
+      and gain its benefits against the triggering attack.
     tags: [reaction, shield]
 
-  # --- Ancestry feat ---
   rock_runner:
     name: Rock Runner
     level: 1
@@ -119,13 +151,14 @@ feats:
     action: null
     frequency: null
     prerequisites:
-      special: "dwarf ancestry"
+      all:
+        - type: ancestry
+          slug: dwarf
     effect: >
       You ignore difficult terrain caused by stone or earth, and you can
       treat higher earth/stone obstacles more favorably when Climbing.
     tags: [movement]
 
-  # --- Dedication / archetype (shape only) ---
   barbarian_dedication:
     name: Barbarian Dedication
     level: 2

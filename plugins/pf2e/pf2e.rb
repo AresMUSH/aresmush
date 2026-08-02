@@ -36,6 +36,7 @@ module AresMUSH
         when "skill" then return CgSkillCmd
         when "bgskill" then return CgBgskillCmd
         when "language" then return CgLanguageCmd
+        when "feat" then return CgFeatCmd
         end
       end
       nil
