@@ -38,6 +38,18 @@ en:
     vendor_not_for_sale: "That item is not for sale."
     vendor_buy_ok: "Bought %{name} x%{qty} (%{id}) for %{spent}. Purse now: %{purse}."
 
+    stow_ok: "Stowed %{item} (%{item_id}) in %{bag} (%{bag_id})."
+    retrieve_ok: "Retrieved %{item} (%{item_id}) from %{bag_id}."
+    stow_society_blocked: "Society-issued gear cannot be stowed. Keep it on your person or turn it back in."
+    stow_not_container: "That item is not a container."
+    stow_full: "That container is full."
+    stow_equipped: "Unequip the item before stowing it."
+    stow_already: "That item is already stowed."
+    stow_self: "You cannot stow a container inside itself."
+    stow_no_nested: "Containers cannot be stowed inside other containers."
+    retrieve_not_stowed: "That item is not stowed."
+    equip_stowed: "Retrieve the item from its bag before equipping it."
+
     cg_sheet_ready: "PF2e sheet ready. Stage A: set ancestry/heritage/background/class, then cg/identity and cg/commit."
     cg_ancestry_usage: "Usage: cg/ancestry <slug>  (or cg/ancestry to list)"
     cg_heritage_usage: "Usage: cg/heritage <slug>  (or cg/heritage to list)"
