@@ -98,7 +98,7 @@ en:
     cg_feat_eligible_header_slot: "Eligible feats for open %{slot} slots:"
     cg_feat_slots_header: "Feat slots:"
     cg_feat_no_slot: "No open feat slots match this feat."
-    cg_feat_bad_slot: "Slot type must be general, combat, class, or skill."
+    cg_feat_bad_slot: "Slot type must be ancestry, general, class, or skill."
     cg_feat_slot_required: "This feat can use more than one open slot type. Specify one: %{slots}. Usage: cg/feat <slug> <slot>"
     cg_feat_slot_unavailable: "That slot is not available for this feat. Open matching slots: %{slots}."
     cg_dedication_has_dependents: "Remove other feats from this archetype before removing the dedication."
