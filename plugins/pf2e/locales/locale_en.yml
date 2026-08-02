@@ -37,6 +37,12 @@ en:
     vendor_not_stocked: "That vendor does not stock that item."
     vendor_not_for_sale: "That item is not for sale."
     vendor_buy_ok: "Bought %{name} x%{qty} (%{id}) for %{spent}. Purse now: %{purse}."
+    vendor_sell_ok: "Sold %{name} x%{qty} (%{id}) for %{credited}. Purse now: %{purse}."
+    vendor_sell_society: "Society-issued gear cannot be sold to a shop. Turn it in through staff."
+    vendor_sell_unique: "Unique, runed, or magic items cannot be sold to a mundane vendor."
+    vendor_sell_stowed: "Retrieve the item from its bag before selling it."
+    vendor_sell_equipped: "Unequip the item before selling it."
+    vendor_sell_no_price: "That item has no catalog price and cannot be sold here."
 
     stow_ok: "Stowed %{item} (%{item_id}) in %{bag} (%{bag_id})."
     retrieve_ok: "Retrieved %{item} (%{item_id}) from %{bag_id}."
