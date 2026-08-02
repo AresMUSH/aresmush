@@ -4,11 +4,11 @@ module AresMUSH
     # -------------------------------------------------
     # Staff sheet maintenance
     # Bypasses chargen locks / approval gates.
-    # Permission: manage_abilities (same family as FS3).
+    # Permission: manage_pf2e (assign on roles in roles.yml).
     # -------------------------------------------------
 
     def self.can_manage_pf2e?(actor)
-      actor && actor.has_permission?("manage_abilities")
+      actor && actor.has_permission?("manage_pf2e")
     end
 
     def self.staff_require_permission(actor)
@@ -31,29 +31,6 @@ module AresMUSH
       { ok: true, error: nil, char: char, sheet: sheet }
     end
 
-    # field_path examples:
-    #   level / 5
-    #   skill / athletics / T
-    #   save / fortitude / E
-    #   ability / str / 16          (sets current; base left alone unless base:)
-    #   ability / str / base / 14
-    #   ability / str / current / 16
-    #   feat / add / cat_fall
-    #   feat / remove / cat_fall
-    #   language / add / askharian
-    #   language / remove / askharian
-    #   hp / current / 12
-    #   hp / max / 20
-    #   hp / temp / 0
-    #   speed / 30
-    #   hero / 3
-    #   focus / 1
-    #   ancestry / human
-    #   heritage / versatile_human
-    #   background / guard_warfare
-    #   class / fighter / str
-    #   identity / lock
-    #   identity / unlock
     def self.staff_set(enactor, char_name, field_path)
       blocked = staff_require_permission(enactor)
       return blocked if blocked
