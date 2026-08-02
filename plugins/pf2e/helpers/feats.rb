@@ -138,16 +138,23 @@ module AresMUSH
       feat_level = entry["level"].to_i
       failures << "Need level #{feat_level}" if feat_level > 0 && sheet.level.to_i < feat_level
 
-      # Multiclass dedication: not already that class
       pair = archetype_for_dedication_feat(key)
       if pair
         arch_slug, = pair
         if archetype_multiclass_blocked?(sheet, arch_slug)
           failures << "Already class #{arch_slug} (cannot take multiclass dedication)"
         end
+        # Player-path dedication limits (eligible list / prereq display)
+        unless has_archetype?(sheet, arch_slug)
+          count = dedication_count(sheet)
+          if count >= DEDICATION_ABSOLUTE_MAX
+            failures << "Third dedication is not allowed"
+          elsif count >= DEDICATION_PLAYER_MAX
+            failures << "Second dedication requires staff approval"
+          end
+        end
       end
 
-      # Archetype feats require the dedication even if YAML forgot the prereq
       arch = feat_archetype_slug(entry)
       if arch && !dedication_feat_for_entry?(entry, key)
         unless has_archetype?(sheet, arch)
@@ -285,6 +292,9 @@ module AresMUSH
 
       owned = Array(sheet.feats).map { |f| f.to_s.strip.downcase }
       return { ok: false, error: "pf2e.cg_feat_owned", sheet: sheet } if owned.include?(key)
+
+      limit = dedication_limit_block(sheet, key, staff: false)
+      return limit if limit
 
       check = feat_prereqs_met?(sheet, key)
       unless check[:ok]

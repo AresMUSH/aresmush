@@ -3,9 +3,14 @@ module AresMUSH
 
     # -------------------------------------------------
     # Archetypes / dedications
-    # Sheet.archetypes = list of archetype slugs the character has dedicated into.
-    # Taking a dedication feat registers the archetype and applies YAML grants.
+    # Policy (Tapestry):
+    #   1st dedication — free via chargen/player tools
+    #   2nd dedication — staff approval only (pf2e/set)
+    #   3rd dedication — never approved (blocked for staff too)
     # -------------------------------------------------
+
+    DEDICATION_PLAYER_MAX = 1
+    DEDICATION_ABSOLUTE_MAX = 2
 
     def self.archetype_entry(slug)
       return nil if slug.nil? || slug.to_s.strip.empty?
@@ -26,7 +31,30 @@ module AresMUSH
       sheet_archetypes(char_or_sheet).include?(slug.to_s.strip.downcase)
     end
 
-    # Find archetype whose dedication_feat matches this feat slug.
+    def self.dedication_count(char_or_sheet)
+      sheet_archetypes(char_or_sheet).size
+    end
+
+    # Returns nil if allowed, or { ok: false, error: "..." } for player path.
+    # staff: true allows second dedication; third always blocked.
+    def self.dedication_limit_block(sheet, feat_slug, staff: false)
+      pair = archetype_for_dedication_feat(feat_slug)
+      return nil unless pair
+      arch_slug, = pair
+
+      # Replacing / already has this archetype: not a new dedication
+      return nil if has_archetype?(sheet, arch_slug)
+
+      count = dedication_count(sheet)
+      if count >= DEDICATION_ABSOLUTE_MAX
+        return { ok: false, error: "pf2e.dedication_third_blocked", sheet: sheet }
+      end
+      if count >= DEDICATION_PLAYER_MAX && !staff
+        return { ok: false, error: "pf2e.dedication_second_needs_staff", sheet: sheet }
+      end
+      nil
+    end
+
     def self.archetype_for_dedication_feat(feat_slug)
       key = feat_slug.to_s.strip.downcase
       archetype_data.each do |slug, entry|
@@ -38,7 +66,6 @@ module AresMUSH
       nil
     end
 
-    # Archetype slug referenced by a feat (traits include archetype name, or archetype: key).
     def self.feat_archetype_slug(entry)
       return nil unless entry.is_a?(Hash)
       explicit = entry["archetype"].to_s.strip.downcase
@@ -47,7 +74,6 @@ module AresMUSH
       traits = Array(entry["traits"]).map { |t| t.to_s.strip.downcase }
       return nil unless traits.include?("archetype") || traits.include?("dedication")
 
-      # Prefer a trait that matches a known archetype key
       data = archetype_data
       traits.each do |t|
         next if %w[archetype dedication multiclass].include?(t)
@@ -61,18 +87,17 @@ module AresMUSH
       return false unless entry.is_a?(Hash)
       traits = Array(entry["traits"]).map { |t| t.to_s.downcase }
       return true if traits.include?("dedication")
-      !archetype_for_dedication_feat(entry_or_slug.is_a?(Hash) ? nil : entry_or_slug).nil? rescue false
+      slug = entry_or_slug.is_a?(Hash) ? nil : entry_or_slug
+      slug ? !archetype_for_dedication_feat(slug).nil? : false
     end
 
     def self.dedication_feat_for_entry?(entry, slug)
       return false unless entry.is_a?(Hash)
       traits = Array(entry["traits"]).map { |t| t.to_s.downcase }
       return true if traits.include?("dedication")
-      pair = archetype_for_dedication_feat(slug)
-      !pair.nil?
+      !archetype_for_dedication_feat(slug).nil?
     end
 
-    # Multiclass rule: cannot take dedication for a class you already are.
     def self.archetype_multiclass_blocked?(sheet, arch_slug)
       entry = archetype_entry(arch_slug)
       return false unless entry.is_a?(Hash)
@@ -96,7 +121,6 @@ module AresMUSH
       end
     end
 
-    # Called after a dedication feat is successfully taken.
     def self.archetype_on_dedication_taken(sheet, feat_slug)
       pair = archetype_for_dedication_feat(feat_slug)
       return nil unless pair
@@ -111,7 +135,6 @@ module AresMUSH
       arch_slug
     end
 
-    # Feats belonging to this archetype (excluding the dedication itself).
     def self.archetype_dependent_feat_slugs(arch_slug)
       arch_slug = arch_slug.to_s.strip.downcase
       entry = archetype_entry(arch_slug)
@@ -129,13 +152,11 @@ module AresMUSH
       deps
     end
 
-    # True if sheet still owns non-dedication feats from this archetype.
     def self.archetype_has_dependent_feats?(sheet, arch_slug)
       owned = Array(sheet.feats).map { |f| f.to_s.strip.downcase }
       archetype_dependent_feat_slugs(arch_slug).any? { |s| owned.include?(s) }
     end
 
-    # Called before removing a dedication feat. Returns error hash or nil.
     def self.archetype_can_remove_dedication?(sheet, feat_slug)
       pair = archetype_for_dedication_feat(feat_slug)
       return nil unless pair
