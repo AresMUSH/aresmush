@@ -13,16 +13,12 @@ module AresMUSH
     #   bulk       — string/number override; else from catalog
     #   equipped   — worn/wielded
     #   unique     — true for magic, runed, or one-off named items
+    #   society    — true if issued/brokered by Society (staff grant path)
     #   runes      — { "potency"=>1, "striking"=>1, "resilient"=>0,
-    #                  "property"=>["flaming"] } (weapons/armor as applicable)
+    #                  "property"=>["flaming"] }
     #   magic      — freeform hash for innate magic item data
     #   notes      — player/staff string
     #   price_cp   — optional residual value in copper
-    #
-    # Catalog lookups:
-    #   weapons.yml → kind weapon
-    #   armor.yml   → kind armor
-    #   items.yml   → kind gear/consumable/etc.
     # -------------------------------------------------
 
     ITEM_KINDS = %w[weapon armor shield gear consumable custom].freeze
@@ -105,7 +101,6 @@ module AresMUSH
       bits.empty? ? nil : bits.join(", ")
     end
 
-    # One-line display for inventory lists.
     def self.format_item_line(entry)
       name = item_display_name(entry)
       qty = entry["qty"].to_i
@@ -115,7 +110,8 @@ module AresMUSH
       rune_bit = format_runes_brief(entry)
       rune_bit = rune_bit ? " [#{rune_bit}]" : ""
       unique_bit = entry["unique"] ? " *" : ""
-      "%xh#{entry['id']}%xn  #{name}#{qty_bit}#{rune_bit}#{unique_bit}  (#{kind}, Bulk #{bulk})"
+      soc_bit = entry["society"] ? " %x[Society]%xn" : ""
+      "%xh#{entry['id']}%xn  #{name}#{qty_bit}#{rune_bit}#{unique_bit}#{soc_bit}  (#{kind}, Bulk #{bulk})"
     end
 
     def self.item_unit_bulk(entry)
@@ -141,6 +137,7 @@ module AresMUSH
       e["magic"] = raw["magic"].is_a?(Hash) ? raw["magic"] : {}
       e["notes"] = raw["notes"].to_s
       e["price_cp"] = raw["price_cp"]
+      e["society"] = !!raw["society"]
       e["unique"] = raw.key?("unique") ? !!raw["unique"] : item_is_unique?(e)
       e["qty"] = 1 if e["unique"]
       e
@@ -172,7 +169,8 @@ module AresMUSH
         "magic" => opts[:magic] || opts["magic"] || {},
         "notes" => opts[:notes] || opts["notes"] || "",
         "price_cp" => opts[:price_cp] || opts["price_cp"],
-        "unique" => opts[:unique] || opts["unique"]
+        "unique" => opts[:unique] || opts["unique"],
+        "society" => opts[:society] || opts["society"]
       }
       item = normalize_item(raw)
 
@@ -184,6 +182,7 @@ module AresMUSH
             e["kind"] == item["kind"] &&
             e["name"] == item["name"] &&
             !e["equipped"] && !item["equipped"] &&
+            !!e["society"] == !!item["society"] &&
             (e["runes"] || {}) == (item["runes"] || {}) &&
             (e["magic"] || {}) == (item["magic"] || {})
         end
@@ -199,8 +198,7 @@ module AresMUSH
       { ok: true, error: nil, item: item, inventory: sheet_inventory(sheet) }
     end
 
-    # Player-facing add: catalog slug only.
-    def self.inventory_add_from_catalog(char_or_sheet, slug, qty: 1)
+    def self.inventory_add_from_catalog(char_or_sheet, slug, qty: 1, society: false)
       key = slug.to_s.strip.downcase
       return { ok: false, error: "pf2e.item_unknown_slug" } unless slug_in_catalog?(key)
 
@@ -209,7 +207,30 @@ module AresMUSH
       name = cat.is_a?(Hash) ? cat["name"] : nil
       bulk = cat.is_a?(Hash) ? cat["bulk"] : nil
 
-      inventory_add(char_or_sheet, slug: key, kind: kind, qty: qty, name: name, bulk: bulk)
+      inventory_add(char_or_sheet,
+                    slug: key, kind: kind, qty: qty, name: name, bulk: bulk,
+                    society: society)
+    end
+
+    # Staff: pure custom (or named unique) instance. Always unique.
+    def self.inventory_add_custom(char_or_sheet, opts = {})
+      name = (opts[:name] || opts["name"]).to_s.strip
+      return { ok: false, error: "pf2e.item_need_name" } if name.empty?
+
+      kind = (opts[:kind] || opts["kind"] || "custom").to_s.downcase
+      kind = "custom" unless ITEM_KINDS.include?(kind)
+
+      inventory_add(char_or_sheet,
+                    slug: opts[:slug] || opts["slug"],
+                    kind: kind,
+                    name: name,
+                    qty: 1,
+                    bulk: opts[:bulk] || opts["bulk"],
+                    runes: opts[:runes] || opts["runes"] || {},
+                    magic: opts[:magic] || opts["magic"] || {},
+                    notes: opts[:notes] || opts["notes"] || "",
+                    unique: true,
+                    society: opts.fetch(:society, true))
     end
 
     def self.inventory_remove(char_or_sheet, item_id, qty: nil)
@@ -245,7 +266,6 @@ module AresMUSH
       return { ok: false, error: "pf2e.item_not_found" } unless entry
 
       if equipped
-        # One armor / one shield at a time (simple exclusivity).
         if entry["kind"] == "armor"
           list.each { |e| e["equipped"] = false if e["kind"] == "armor" && e["id"] != entry["id"] }
         elsif entry["kind"] == "shield"
@@ -267,14 +287,22 @@ module AresMUSH
       entry = list.find { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless entry
 
-      entry["runes"] = runes_hash.is_a?(Hash) ? runes_hash : {}
+      current = entry["runes"].is_a?(Hash) ? entry["runes"].dup : {}
+      merge = runes_hash.is_a?(Hash) ? runes_hash : {}
+      # property can be additive list
+      if merge["property"]
+        props = Array(current["property"]) + Array(merge["property"])
+        merge = merge.dup
+        merge["property"] = props.map(&:to_s).uniq
+      end
+      entry["runes"] = current.merge(merge)
       entry["unique"] = true
       entry["qty"] = 1
       save_inventory(sheet, list)
       { ok: true, error: nil, item: entry, inventory: sheet_inventory(sheet) }
     end
 
-    def self.inventory_set_magic(char_or_sheet, item_id, magic_hash)
+    def self.inventory_set_magic(char_or_sheet, item_id, magic_hash, replace: false)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
 
@@ -283,11 +311,64 @@ module AresMUSH
       entry = list.find { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless entry
 
-      entry["magic"] = magic_hash.is_a?(Hash) ? magic_hash : {}
+      incoming = magic_hash.is_a?(Hash) ? magic_hash : {}
+      entry["magic"] = if replace
+                         incoming
+                       else
+                         (entry["magic"].is_a?(Hash) ? entry["magic"] : {}).merge(incoming)
+                       end
       entry["unique"] = true if entry["magic"] && !entry["magic"].empty?
       entry["qty"] = 1 if entry["unique"]
       save_inventory(sheet, list)
       { ok: true, error: nil, item: entry, inventory: sheet_inventory(sheet) }
+    end
+
+    def self.inventory_set_notes(char_or_sheet, item_id, notes)
+      sheet = sheet_for(char_or_sheet)
+      return { ok: false, error: "pf2e.no_sheet" } unless sheet
+
+      list = sheet_inventory(sheet)
+      id = item_id.to_s.strip.downcase
+      entry = list.find { |e| e["id"].to_s.downcase == id }
+      return { ok: false, error: "pf2e.item_not_found" } unless entry
+
+      entry["notes"] = notes.to_s
+      save_inventory(sheet, list)
+      { ok: true, error: nil, item: entry, inventory: sheet_inventory(sheet) }
+    end
+
+    # Parse staff path tokens like potency:1 property:flaming bulk:L into hashes.
+    def self.parse_item_kv_tokens(tokens)
+      runes = {}
+      magic = {}
+      meta = {}
+      Array(tokens).each do |tok|
+        next if tok.nil? || tok.to_s.strip.empty?
+        k, v = tok.to_s.split(":", 2)
+        next if k.nil? || v.nil?
+        key = k.strip.downcase
+        val = v.strip
+        case key
+        when "potency", "striking", "resilient"
+          runes[key] = val.to_i
+        when "property", "prop"
+          runes["property"] ||= []
+          runes["property"] << val.downcase
+        when "bulk"
+          meta["bulk"] = val
+        when "qty", "quantity"
+          meta["qty"] = val.to_i
+        when "notes", "note"
+          meta["notes"] = val.tr("_", " ")
+        when "slug"
+          meta["slug"] = val.downcase
+        when "kind"
+          meta["kind"] = val.downcase
+        else
+          magic[key] = val
+        end
+      end
+      { runes: runes, magic: magic, meta: meta }
     end
 
     def self.equipped_items(char_or_sheet, kind: nil)
