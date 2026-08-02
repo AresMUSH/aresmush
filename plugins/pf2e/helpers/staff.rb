@@ -165,6 +165,61 @@ module AresMUSH
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
         end
 
+      when "money", "coin", "coins"
+        # money/add/[society|purse/]<amounts...>   — default destination: society
+        # money/remove/[society|purse/]<amounts...>
+        # Examples:
+        #   pf2e/set Bob=money/add/50gp
+        #   pf2e/set Bob=money/add/society/1pp/10gp
+        #   pf2e/set Bob=money/add/purse/5gp
+        #   pf2e/set Bob=money/remove/20gp
+        action = parts[1]
+        return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil?
+
+        rest = parts[2..-1] || []
+        dest = "society"
+        if rest.first && %w[society account hall].include?(rest.first)
+          dest = "society"
+          rest = rest[1..-1] || []
+        elsif rest.first && %w[purse person coin coins].include?(rest.first)
+          dest = "purse"
+          rest = rest[1..-1] || []
+        end
+
+        amount = parse_coin_string(rest.join(" "))
+        if amount.nil?
+          return { ok: false, error: "pf2e.money_bad_amount", char: char, sheet: sheet }
+        end
+
+        if action == "add" || action == "grant"
+          if dest == "purse"
+            r = adjust_money(sheet, amount)
+            return r.merge(char: char, sheet: sheet) unless r[:ok]
+            { ok: true, error: nil, char: char, sheet: sheet,
+              summary: "purse +#{format_money(amount)} → #{format_money(r[:money])}" }
+          else
+            r = adjust_society_account(sheet, amount)
+            return r.merge(char: char, sheet: sheet) unless r[:ok]
+            { ok: true, error: nil, char: char, sheet: sheet,
+              summary: "society +#{format_money(amount)} → #{format_money(r[:society_account])}" }
+          end
+        elsif action == "remove" || action == "take"
+          neg = COIN_KEYS.each_with_object({}) { |k, h| h[k] = -amount[k] }
+          if dest == "purse"
+            r = adjust_money(sheet, neg)
+            return r.merge(char: char, sheet: sheet) unless r[:ok]
+            { ok: true, error: nil, char: char, sheet: sheet,
+              summary: "purse -#{format_money(amount)} → #{format_money(r[:money])}" }
+          else
+            r = adjust_society_account(sheet, neg)
+            return r.merge(char: char, sheet: sheet) unless r[:ok]
+            { ok: true, error: nil, char: char, sheet: sheet,
+              summary: "society -#{format_money(amount)} → #{format_money(r[:society_account])}" }
+          end
+        else
+          { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
+        end
+
       when "hp"
         which = parts[1]
         val = parts[2].to_i
