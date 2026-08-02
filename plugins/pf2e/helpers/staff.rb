@@ -97,6 +97,8 @@ module AresMUSH
         end
 
       when "feat"
+        # feat/add/<slug>[/<slot>] — second dedication allowed (staff); third blocked
+        # feat/remove/<slug>
         action = parts[1]
         slug = parts[2]
         slot = parts[3]
@@ -104,17 +106,25 @@ module AresMUSH
         feats = Array(sheet.feats).map { |f| f.to_s.strip.downcase }
         map = (sheet.feat_slot_map || {}).dup
         if action == "add"
+          limit = dedication_limit_block(sheet, slug, staff: true)
+          return limit.merge(char: char) if limit
+
           feats << slug unless feats.include?(slug)
           if slot && feat_slot_type?(slot)
             map[slug] = slot
           end
           sheet.update(feats: feats, feat_slot_map: map)
+          arch = archetype_on_dedication_taken(sheet, slug)
           note = slot ? " (#{slot})" : " (no slot)"
+          note += " [#{arch}]" if arch
           { ok: true, error: nil, char: char, sheet: sheet, summary: "feat +#{slug}#{note}" }
         elsif action == "remove"
+          dep = archetype_can_remove_dedication?(sheet, slug)
+          return dep.merge(char: char) if dep
           feats.delete(slug)
           map.delete(slug)
           sheet.update(feats: feats, feat_slot_map: map)
+          archetype_on_dedication_removed(sheet, slug)
           { ok: true, error: nil, char: char, sheet: sheet, summary: "feat -#{slug}" }
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
@@ -276,6 +286,7 @@ module AresMUSH
         feats: [],
         feat_slot_map: {},
         features: [],
+        archetypes: [],
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
