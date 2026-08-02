@@ -5,23 +5,20 @@ module AresMUSH
     # Inventory
     #
     # Each entry is an *instance* hash:
-    #   id         — unique instance id ("i12")
-    #   slug       — catalog key (weapons/armor/items) or nil for pure custom
-    #   kind       — weapon | armor | shield | gear | consumable | custom
-    #   name       — display name (override or from catalog)
-    #   qty        — stack size (always 1 if unique/magic/runed)
-    #   bulk       — string/number override; else from catalog
-    #   equipped   — worn/wielded
-    #   unique     — true for magic, runed, or one-off named items
-    #   society    — true if issued/brokered by Society (staff grant path)
-    #   runes      — { "potency"=>1, "striking"=>1, "resilient"=>0,
-    #                  "property"=>["flaming"] }
-    #   magic      — freeform hash for innate magic item data
-    #   notes      — player/staff string
-    #   price_cp   — optional residual value in copper
+    #   id           — unique instance id ("i12")
+    #   slug         — catalog key or nil for pure custom
+    #   kind         — weapon | armor | shield | gear | consumable | alchemical | custom
+    #   name         — display name
+    #   qty          — stack size (1 if unique)
+    #   bulk         — override; else from catalog
+    #   equipped     — worn/wielded
+    #   contained_in — container instance id, or nil/empty if carried
+    #   unique       — magic, runed, or one-off
+    #   society      — Hall issued/brokered (cannot be stowed)
+    #   runes / magic / notes / price_cp
     # -------------------------------------------------
 
-    ITEM_KINDS = %w[weapon armor shield gear consumable custom].freeze
+    ITEM_KINDS = %w[weapon armor shield gear consumable alchemical custom].freeze
 
     def self.next_item_id(sheet)
       seq = sheet.item_seq.to_i + 1
@@ -111,7 +108,12 @@ module AresMUSH
       rune_bit = rune_bit ? " [#{rune_bit}]" : ""
       unique_bit = entry["unique"] ? " *" : ""
       soc_bit = entry["society"] ? " %x[Society]%xn" : ""
-      "%xh#{entry['id']}%xn  #{name}#{qty_bit}#{rune_bit}#{unique_bit}#{soc_bit}  (#{kind}, Bulk #{bulk})"
+      stow_bit = if entry["contained_in"].to_s.strip != ""
+                   " %xin #{entry['contained_in']}%xn"
+                 else
+                   ""
+                 end
+      "%xh#{entry['id']}%xn  #{name}#{qty_bit}#{rune_bit}#{unique_bit}#{soc_bit}#{stow_bit}  (#{kind}, Bulk #{bulk})"
     end
 
     def self.item_unit_bulk(entry)
@@ -133,6 +135,8 @@ module AresMUSH
       e["qty"] = [raw["qty"].to_i, 1].max
       e["bulk"] = raw.key?("bulk") ? raw["bulk"] : nil
       e["equipped"] = !!raw["equipped"]
+      cin = raw["contained_in"].to_s.strip.downcase
+      e["contained_in"] = cin.empty? ? nil : cin
       e["runes"] = raw["runes"].is_a?(Hash) ? raw["runes"] : {}
       e["magic"] = raw["magic"].is_a?(Hash) ? raw["magic"] : {}
       e["notes"] = raw["notes"].to_s
@@ -165,6 +169,7 @@ module AresMUSH
         "qty" => qty,
         "bulk" => opts[:bulk] || opts["bulk"],
         "equipped" => opts[:equipped] || opts["equipped"] || false,
+        "contained_in" => nil,
         "runes" => opts[:runes] || opts["runes"] || {},
         "magic" => opts[:magic] || opts["magic"] || {},
         "notes" => opts[:notes] || opts["notes"] || "",
@@ -182,6 +187,7 @@ module AresMUSH
             e["kind"] == item["kind"] &&
             e["name"] == item["name"] &&
             !e["equipped"] && !item["equipped"] &&
+            e["contained_in"].to_s.empty? &&
             !!e["society"] == !!item["society"] &&
             (e["runes"] || {}) == (item["runes"] || {}) &&
             (e["magic"] || {}) == (item["magic"] || {})
@@ -212,7 +218,6 @@ module AresMUSH
                     society: society)
     end
 
-    # Staff: pure custom (or named unique) instance. Always unique.
     def self.inventory_add_custom(char_or_sheet, opts = {})
       name = (opts[:name] || opts["name"]).to_s.strip
       return { ok: false, error: "pf2e.item_need_name" } if name.empty?
@@ -265,6 +270,10 @@ module AresMUSH
       entry = list.find { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless entry
 
+      if equipped && entry["contained_in"].to_s.strip != ""
+        return { ok: false, error: "pf2e.equip_stowed" }
+      end
+
       if equipped
         if entry["kind"] == "armor"
           list.each { |e| e["equipped"] = false if e["kind"] == "armor" && e["id"] != entry["id"] }
@@ -289,7 +298,6 @@ module AresMUSH
 
       current = entry["runes"].is_a?(Hash) ? entry["runes"].dup : {}
       merge = runes_hash.is_a?(Hash) ? runes_hash : {}
-      # property can be additive list
       if merge["property"]
         props = Array(current["property"]) + Array(merge["property"])
         merge = merge.dup
@@ -337,7 +345,6 @@ module AresMUSH
       { ok: true, error: nil, item: entry, inventory: sheet_inventory(sheet) }
     end
 
-    # Parse staff path tokens like potency:1 property:flaming bulk:L into hashes.
     def self.parse_item_kv_tokens(tokens)
       runes = {}
       magic = {}
