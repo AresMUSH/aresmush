@@ -21,6 +21,8 @@ en:
     society_insufficient: "There is not enough on your Society account."
     money_deposit_ok: "Deposited %{amount} to Society account. Purse: %{purse}. Account: %{account}."
     money_withdraw_ok: "Withdrew %{amount} to purse. Purse: %{purse}. Account: %{account}."
+    money_optimize_ok: "Purse optimized. Kept %{kept} (%{coins} coins). Deposited %{deposited} to Society. Account: %{account}."
+    money_optimize_rebreak_only: "Purse rebroken for fewest coins: %{kept} (%{coins} coins). Nothing to deposit."
 
     cg_sheet_ready: "PF2e sheet ready. Stage A: set ancestry/heritage/background/class, then cg/identity and cg/commit."
     cg_ancestry_usage: "Usage: cg/ancestry <slug>  (or cg/ancestry to list)"
