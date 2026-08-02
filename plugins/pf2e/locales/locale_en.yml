@@ -93,7 +93,7 @@ en:
     cg_approved_locked: "Approved characters cannot change their PF2e sheet via chargen commands."
     cg_reset_approved: "Approved characters cannot reset their PF2e sheet."
     cg_reset_ok: "PF2e sheet reset to defaults. Stage A unlocked."
-    cg_commit_ok: "Identity locked. Fixed skills/saves/feat/languages applied. Continue with boosts, bgskill, skills, languages, and feats."
+    cg_commit_ok: "Identity locked. Fixed skills/saves/feat/languages applied. Starting wealth %{wealth} placed in %{where}. Continue with boosts, bgskill, skills, languages, and feats. Withdraw from Society to shop."
 
     cg_identity_header: "PF2e identity [%{lock}]"
     cg_identity_line: "  %{label}: %{value}"
