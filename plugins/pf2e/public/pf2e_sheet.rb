@@ -15,7 +15,6 @@ module AresMUSH
     attribute :ability_boosts, :type => DataType::Hash, :default => {}
     attribute :background_skill_picks, :type => DataType::Array, :default => []
 
-    # Language slugs known (from languages.yml). Free Int picks stored here too.
     attribute :languages,     :type => DataType::Array,   :default => []
 
     attribute :abilities,     :type => DataType::Hash,    :default => {
@@ -30,14 +29,14 @@ module AresMUSH
     attribute :skills,        :type => DataType::Hash,    :default => {}
     attribute :saves,         :type => DataType::Hash,    :default => {}
 
-    # Feat slugs known (owned). Granted + chosen.
     attribute :feats,         :type => DataType::Array,   :default => []
-    # Which slot paid for each chosen feat: { "assurance" => "skill" }
-    # Granted feats are absent from this map — they cost no slot.
     attribute :feat_slot_map, :type => DataType::Hash,    :default => {}
 
-    # Automatic ancestry/class features (not player picks). e.g. darkvision, attack_of_opportunity
+    # Automatic ancestry/class features
     attribute :features,      :type => DataType::Array,   :default => []
+
+    # Archetype dedications taken (slugs from archetypes.yml)
+    attribute :archetypes,    :type => DataType::Array,   :default => []
 
     attribute :hp,            :type => DataType::Hash,    :default => {
       "current" => 0,

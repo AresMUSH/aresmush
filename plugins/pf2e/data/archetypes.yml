@@ -1,0 +1,43 @@
+# Archetype catalog.
+# Lookup: Pf2e.read_data("archetypes", "barbarian")
+#
+# dedication_feat — slug of the dedication feat in feats.yml (required)
+# multiclass      — if true, blocked when charclass matches class_slug
+# class_slug      — linked class for multiclass exclusion (optional)
+# traits          — tags for filtering
+# grants          — applied once when dedication is taken (skills to train, etc.)
+#
+# Archetype *feats* live in feats.yml with:
+#   traits: [archetype, <archetype_slug>]
+#   prerequisites requiring the dedication feat (or type: archetype)
+
+archetypes:
+  barbarian:
+    name: Barbarian
+    dedication_feat: barbarian_dedication
+    multiclass: true
+    class_slug: barbarian
+    traits: [multiclass, martial]
+    grants:
+      skills:
+        - athletics
+      # armor/weapon trainings are narrative for now; model later if needed
+
+  fighter:
+    name: Fighter
+    dedication_feat: fighter_dedication
+    multiclass: true
+    class_slug: fighter
+    traits: [multiclass, martial]
+    grants:
+      skills: []
+
+  rogue:
+    name: Rogue
+    dedication_feat: rogue_dedication
+    multiclass: true
+    class_slug: rogue
+    traits: [multiclass]
+    grants:
+      skills:
+        - stealth

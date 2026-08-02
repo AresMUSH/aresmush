@@ -51,6 +51,11 @@ module AresMUSH
         cc = sheet.charclass || {}
         have = (cc["slug"] || cc[:slug]).to_s.strip.downcase
         have == need ? nil : "Need class: #{need}"
+      when "not_class"
+        need = node["slug"].to_s.strip.downcase
+        cc = sheet.charclass || {}
+        have = (cc["slug"] || cc[:slug]).to_s.strip.downcase
+        have != need ? nil : "Cannot be class: #{need}"
       when "ancestry"
         need = node["slug"].to_s.strip.downcase
         have = sheet.ancestry.to_s.strip.downcase
@@ -63,9 +68,13 @@ module AresMUSH
         min = node["min"].to_i
         lvl = sheet.level.to_i
         lvl >= min ? nil : "Need level #{min} (have #{lvl})"
+      when "archetype", "dedication"
+        need = node["slug"].to_s.strip.downcase
+        has_archetype?(sheet, need) ? nil : "Need #{need} dedication"
       when "trait"
         trait = node["trait"].to_s.strip.downcase
         bag = [sheet.ancestry, sheet.heritage, (sheet.charclass || {})["slug"]].map { |s| s.to_s.strip.downcase }
+        bag.concat(sheet_archetypes(sheet))
         bag.include?(trait) ? nil : "Need trait/source: #{trait}"
       when "group"
         Array(node["all"]).each do |child|
@@ -129,6 +138,23 @@ module AresMUSH
       feat_level = entry["level"].to_i
       failures << "Need level #{feat_level}" if feat_level > 0 && sheet.level.to_i < feat_level
 
+      # Multiclass dedication: not already that class
+      pair = archetype_for_dedication_feat(key)
+      if pair
+        arch_slug, = pair
+        if archetype_multiclass_blocked?(sheet, arch_slug)
+          failures << "Already class #{arch_slug} (cannot take multiclass dedication)"
+        end
+      end
+
+      # Archetype feats require the dedication even if YAML forgot the prereq
+      arch = feat_archetype_slug(entry)
+      if arch && !dedication_feat_for_entry?(entry, key)
+        unless has_archetype?(sheet, arch)
+          failures << "Need #{arch} dedication"
+        end
+      end
+
       prereqs = feat_prereq_block(entry)
       if prereqs.nil? || prereqs == {} || prereqs == []
         return { ok: failures.empty?, failures: failures }
@@ -154,8 +180,6 @@ module AresMUSH
       { ok: failures.empty?, failures: failures }
     end
 
-    # Eligible feats the character can take right now (prereqs + at least one open matching slot).
-    # slot_filter: only feats that can spend this slot type (and have remaining of it).
     def self.feat_eligible_list(char_or_sheet, category: nil, trait: nil, slot: nil, include_owned: false, max_level: nil)
       sheet = sheet_for(char_or_sheet)
       return [] unless sheet
@@ -195,7 +219,8 @@ module AresMUSH
           slots: allowed_slots,
           open_slots: open_slots,
           traits: Array(entry["traits"]).map(&:to_s),
-          action: entry["action"]
+          action: entry["action"],
+          archetype: feat_archetype_slug(entry)
         }
       end
       rows.sort_by { |r| r[:name].to_s.downcase }
@@ -215,20 +240,20 @@ module AresMUSH
         traits = Array(entry["traits"]).map(&:to_s)
         effect = entry["effect"].to_s
         tags = Array(entry["tags"]).map(&:to_s)
+        arch = feat_archetype_slug(entry).to_s
         if !q.empty?
           if q =~ /\A\d+\z/
             next unless level == q.to_i
           else
-            haystack = [slug, name.downcase, category.downcase, slots.join(" "), traits.map(&:downcase).join(" "), tags.map(&:downcase).join(" "), effect.downcase].join(" ")
+            haystack = [slug, name.downcase, category.downcase, slots.join(" "), traits.map(&:downcase).join(" "), tags.map(&:downcase).join(" "), arch, effect.downcase].join(" ")
             next unless haystack.include?(q)
           end
         end
-        rows << { slug: slug, name: name, level: level, category: category, slots: slots, traits: traits, action: entry["action"], effect: effect.strip.gsub(/\s+/, " ") }
+        rows << { slug: slug, name: name, level: level, category: category, slots: slots, traits: traits, action: entry["action"], effect: effect.strip.gsub(/\s+/, " "), archetype: arch }
       end
       rows.sort_by { |r| r[:name].to_s.downcase }
     end
 
-    # Feats granted by background (unconditional feat:) or bgskill feats maps — not player-removable, cost no slot.
     def self.cg_granted_feat_slugs(sheet)
       granted = []
       bg = cg_background_entry(sheet.background)
@@ -245,8 +270,6 @@ module AresMUSH
       granted.reject(&:empty?).uniq
     end
 
-    # Take a feat, spending a matching feat slot.
-    # slot_type: optional; required when the feat can use more than one open type.
     def self.cg_take_feat(char, slug, slot_type: nil)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -303,6 +326,8 @@ module AresMUSH
       map[key] = chosen
       sheet.update(feats: owned, feat_slot_map: map)
 
+      arch = archetype_on_dedication_taken(sheet, key)
+
       {
         ok: true,
         error: nil,
@@ -310,6 +335,7 @@ module AresMUSH
         feat: key,
         name: entry["name"] || key,
         slot: chosen,
+        archetype: arch,
         remaining: feat_slots_remaining(sheet)
       }
     end
@@ -331,12 +357,17 @@ module AresMUSH
         return { ok: false, error: "pf2e.cg_feat_granted_locked", sheet: sheet }
       end
 
+      dep_block = archetype_can_remove_dedication?(sheet, key)
+      return dep_block if dep_block
+
       entry = feat_entry(key)
       name = (entry && entry["name"]) || key
       owned.delete(key)
       map = (sheet.feat_slot_map || {}).dup
       spent = map.delete(key)
       sheet.update(feats: owned, feat_slot_map: map)
+
+      archetype_on_dedication_removed(sheet, key)
 
       {
         ok: true,

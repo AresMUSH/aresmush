@@ -1,13 +1,13 @@
 # Static feat reference data.
 # Lookup: Pf2e.read_data("feats", "power_attack")
 #
-# slots: which feat-slot types may pay for this feat (required economy).
-#   Allowed values: general | combat | class | skill
-#   A feat may list more than one; the player chooses which available slot to spend.
-#   If omitted, slots are inferred from category (see feat_slot_types_for).
+# slots: general | combat | class | skill
+# archetype: optional explicit archetype slug for non-dedication archetype feats
 #
-# prerequisites / prereqs — either shape works (flat or structured all/any/none).
-# Omit prerequisites (or {}) for feats with no gate beyond feat.level.
+# Structured prereq nodes include:
+#   type: archetype  — must have this dedication (slug: barbarian)
+#   type: not_class  — must NOT be this class (slug: barbarian)
+#   type: dedication — alias of needing the dedication feat for an archetype
 
 feats:
   assurance:
@@ -171,21 +171,113 @@ feats:
       treat higher earth/stone obstacles more favorably when Climbing.
     tags: [movement]
 
+  # ---- Multiclass dedications ----
   barbarian_dedication:
     name: Barbarian Dedication
     level: 2
-    traits: [archetype, dedication, multiclass]
+    traits: [archetype, dedication, multiclass, barbarian]
     category: class
     slots: [class]
+    archetype: barbarian
     action: null
     frequency: null
     prerequisites:
-      level: 2
-      attributes:
-        str: 14
-      special: "not already a barbarian"
+      all:
+        - type: level
+          min: 2
+        - type: ability
+          ability: str
+          min: 14
+        - type: not_class
+          slug: barbarian
     effect: >
-      You become trained in light armor, medium armor, unarmed attacks, and
-      the Athletics skill (or another skill if already trained). You gain
-      access to barbarian archetype feats. You do not gain rage yet.
+      You become trained in Athletics (or another skill if already trained).
+      You gain access to barbarian archetype feats. You do not gain rage yet.
     tags: [dedication, multiclass]
+
+  fighter_dedication:
+    name: Fighter Dedication
+    level: 2
+    traits: [archetype, dedication, multiclass, fighter]
+    category: class
+    slots: [class]
+    archetype: fighter
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: level
+          min: 2
+        - type: ability
+          ability: str
+          min: 14
+        - type: not_class
+          slug: fighter
+    # Note: real fighter dedication also allows Dex 14 path; simplified sample.
+    effect: >
+      You become trained in simple and martial weapons. You gain access to
+      fighter archetype feats.
+    tags: [dedication, multiclass]
+
+  rogue_dedication:
+    name: Rogue Dedication
+    level: 2
+    traits: [archetype, dedication, multiclass, rogue]
+    category: class
+    slots: [class]
+    archetype: rogue
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: level
+          min: 2
+        - type: ability
+          ability: dex
+          min: 14
+        - type: not_class
+          slug: rogue
+    effect: >
+      You become trained in Stealth (or another skill if already trained)
+      and gain access to rogue archetype feats.
+    tags: [dedication, multiclass]
+
+  # ---- Sample archetype feats (require dedication) ----
+  barbarian_resilience:
+    name: Barbarian Resiliency
+    level: 4
+    traits: [archetype, barbarian]
+    category: class
+    slots: [class]
+    archetype: barbarian
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: archetype
+          slug: barbarian
+        - type: level
+          min: 4
+    effect: >
+      You gain 3 additional Hit Points for each class level you have in
+      classes that grant fewer HP than barbarian.
+    tags: [hp_bonus, multiclass]
+
+  basic_fury:
+    name: Basic Fury
+    level: 4
+    traits: [archetype, barbarian]
+    category: class
+    slots: [class]
+    archetype: barbarian
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: feat
+          slug: barbarian_dedication
+        - type: level
+          min: 4
+    effect: >
+      You gain a 1st- or 2nd-level barbarian feat.
+    tags: [multiclass]
