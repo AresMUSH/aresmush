@@ -108,6 +108,8 @@ module AresMUSH
       return result unless result[:ok]
 
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_locked(sheet)
       return locked if locked
 
@@ -222,6 +224,8 @@ module AresMUSH
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_locked(sheet)
       return locked if locked
 
@@ -246,12 +250,12 @@ module AresMUSH
       { ok: true, error: nil, sheet: sheet, trained: slugs, remaining: cg_skill_picks_remaining(sheet) }
     end
 
-    # ---- Stage A identity setters (unlocked only; grants applied on commit) ----
-
     def self.cg_set_ancestry(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_unlocked(sheet)
       return locked if locked
 
@@ -272,6 +276,8 @@ module AresMUSH
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_unlocked(sheet)
       return locked if locked
       return { ok: false, error: "pf2e.cg_need_ancestry", sheet: sheet } if sheet.ancestry.blank?
@@ -297,6 +303,8 @@ module AresMUSH
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_unlocked(sheet)
       return locked if locked
 
@@ -312,6 +320,8 @@ module AresMUSH
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_unlocked(sheet)
       return locked if locked
 

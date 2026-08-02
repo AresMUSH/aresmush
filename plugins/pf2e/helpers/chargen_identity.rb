@@ -24,6 +24,14 @@ module AresMUSH
       false
     end
 
+    # All sheet-modifying cg helpers must call this.
+    def self.cg_require_not_approved(char, sheet = nil)
+      if cg_char_approved?(char)
+        return { ok: false, error: "pf2e.cg_approved_locked", sheet: sheet }
+      end
+      nil
+    end
+
     def self.cg_require_identity_unlocked(sheet)
       return { ok: false, error: "pf2e.cg_identity_locked", sheet: sheet } if cg_identity_locked?(sheet)
       nil
@@ -38,9 +46,8 @@ module AresMUSH
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
 
-      if cg_char_approved?(char)
-        return { ok: false, error: "pf2e.cg_reset_approved", sheet: result[:sheet] }
-      end
+      blocked = cg_require_not_approved(char, result[:sheet])
+      return blocked if blocked
 
       sheet = result[:sheet]
       sheet.update(
@@ -160,6 +167,9 @@ module AresMUSH
       return result unless result[:ok]
 
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
+
       if cg_identity_locked?(sheet)
         return { ok: false, error: "pf2e.cg_identity_locked", sheet: sheet }
       end
@@ -224,7 +234,6 @@ module AresMUSH
         end
       end
 
-      # Languages: Tradetongue + ancestry + class + Ruin-cant (society)
       cg_apply_granted_languages(sheet)
 
       cg_recalc_abilities(sheet)
