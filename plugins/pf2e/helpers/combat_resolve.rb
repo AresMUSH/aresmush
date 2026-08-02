@@ -20,7 +20,8 @@ module AresMUSH
     def self.sheet_class_slug(sheet)
       return nil unless sheet
       cc = sheet.charclass || {}
-      (cc["slug"] || cc[:slug]).to_s.strip.downcase.presence
+      slug = (cc["slug"] || cc[:slug]).to_s.strip.downcase
+      slug.empty? ? nil : slug
     end
 
     def self.sheet_key_ability(sheet)
@@ -35,7 +36,6 @@ module AresMUSH
       read_data("charclasses", slug)
     end
 
-    # Best attack proficiency among listed categories (TEML order).
     def self.best_attack_rank(sheet, *categories)
       entry = sheet_class_entry(sheet)
       attacks = (entry.is_a?(Hash) && entry["attacks"].is_a?(Hash)) ? entry["attacks"] : {}
@@ -60,7 +60,6 @@ module AresMUSH
       return nil if sc.nil? || sc == false
       return nil unless sc.is_a?(Hash)
 
-      # Key ability for spells: class key ability (wizard = int, etc.)
       abil = sheet_key_ability(sheet)
       {
         ability: abil,
@@ -70,7 +69,6 @@ module AresMUSH
       }
     end
 
-    # Numeric Class DC (10 + key ability + proficiency + level).
     def self.resolve_class_dc(char_or_sheet, other_bonus: 0)
       sheet = sheet_for(char_or_sheet)
       abil = sheet_key_ability(sheet)
@@ -92,14 +90,12 @@ module AresMUSH
       spell_attack_mod(sheet, ability: info[:ability], rank: info[:rank], other_bonus: other_bonus)
     end
 
-    # Melee Strike mod: STR + best of unarmed/simple/martial (no weapon YAML required).
     def self.resolve_melee_attack_mod(char_or_sheet, other_bonus: 0)
       sheet = sheet_for(char_or_sheet)
       rank = best_attack_rank(sheet, "unarmed", "simple", "martial")
       attack_mod(sheet, ability: "str", rank: rank, other_bonus: other_bonus)
     end
 
-    # Ranged Strike mod: DEX + best of simple/martial.
     def self.resolve_ranged_attack_mod(char_or_sheet, other_bonus: 0)
       sheet = sheet_for(char_or_sheet)
       rank = best_attack_rank(sheet, "simple", "martial")
@@ -112,8 +108,6 @@ module AresMUSH
       attack_mod(sheet, ability: "str", rank: rank, other_bonus: other_bonus)
     end
 
-    # Evaluate a combat keyword → integer modifier or DC value.
-    # DC keywords return the DC number (for use after "vs" or as a term).
     def self.resolve_combat_keyword(token, char_or_sheet)
       key = token.to_s.strip.downcase
       case key
