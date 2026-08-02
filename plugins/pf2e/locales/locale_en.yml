@@ -13,6 +13,7 @@ en:
     cg_skill_usage: "Usage: cg/skill <skill> [skill...]  (or cg/skill with no args for status)"
     cg_bgskill_usage: "Usage: cg/bgskill <option or lore specialty>  (or cg/bgskill with no args for status)"
     cg_reset_confirm: "This wipes your PF2e sheet. Type: cg/reset confirm"
+    cg_feat_remove_usage: "Usage: cg/unfeat <slug>"
 
     cg_list_ancestries: "Available ancestries:"
     cg_list_heritages_for: "Heritages for %{ancestry}:"
@@ -37,6 +38,7 @@ en:
 
     cg_identity_locked: "Identity is locked. Use cg/reset confirm to start over (chargen only)."
     cg_identity_not_locked: "Commit your identity first with cg/commit."
+    cg_approved_locked: "Approved characters cannot change their PF2e sheet via chargen commands."
     cg_reset_approved: "Approved characters cannot reset their PF2e sheet."
     cg_reset_ok: "PF2e sheet reset to defaults. Stage A unlocked."
     cg_commit_ok: "Identity locked. Fixed skills/saves/feat/languages applied. Continue with boosts, bgskill, skills, languages, and feats."
@@ -72,8 +74,11 @@ en:
     cg_language_status: "Languages known: %{known}. Free picks %{used}/%{total} (%{remaining} left). Options: %{options}."
 
     cg_feat_owned: "You already have that feat."
+    cg_feat_not_owned: "You do not have that feat on your sheet."
+    cg_feat_granted_locked: "That feat was granted by your background and cannot be removed. Use cg/reset to start over."
     cg_feat_prereq: "Prerequisites not met: %{reasons}"
     cg_feat_set: "Took feat: %{name}."
+    cg_feat_removed: "Removed feat: %{name}."
     cg_feat_none_eligible: "No eligible feats for your current sheet."
     cg_feat_eligible_header: "Eligible feats:"
     cg_feat_eligible_header_cat: "Eligible %{category} feats:"

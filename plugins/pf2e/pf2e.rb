@@ -38,17 +38,8 @@ module AresMUSH
         when "skill" then return CgSkillCmd
         when "bgskill" then return CgBgskillCmd
         when "language" then return CgLanguageCmd
-        when "feat"
-          if cmd.switch_is?("feat") && cmd.args.to_s.strip.downcase.start_with?("remove ")
-            # handled below via separate switch
-          end
-          return CgFeatCmd
-        when "feat/remove", "unfeat"
-          return CgFeatRemoveCmd
-        end
-        # Ares uses nested switches as "feat" with further path sometimes as args
-        if cmd.switch == "feat" && cmd.args.to_s =~ /\Aremove\s+(.+)\z/i
-          # Prefer explicit cg/feat/remove — also support cg/feat remove <slug> via args in remove cmd
+        when "feat" then return CgFeatCmd
+        when "unfeat" then return CgFeatRemoveCmd
         end
       end
       nil
