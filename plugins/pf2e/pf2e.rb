@@ -25,6 +25,7 @@ module AresMUSH
         when nil then return MoneyCmd
         when "deposit" then return MoneyDepositCmd
         when "withdraw" then return MoneyWithdrawCmd
+        when "optimize" then return MoneyOptimizeCmd
         end
       when "roll"
         case cmd.switch
