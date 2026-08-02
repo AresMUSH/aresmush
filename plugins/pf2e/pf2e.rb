@@ -21,7 +21,10 @@ module AresMUSH
         when nil then return SheetCmd
         end
       when "roll"
-        return RollCmd if cmd.switch.nil?
+        case cmd.switch
+        when nil then return RollCmd
+        when "job" then return RollJobCmd
+        end
       when "feats"
         return FeatSearchCmd if cmd.switch.nil?
       when "cg"

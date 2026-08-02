@@ -52,66 +52,13 @@ module AresMUSH
           degree = Pf2e.degree_of_success(result[:total], dc, d20: d20_face)
         end
 
-        message = format_result(result, degree, dc)
+        message = Pf2e.format_roll_message(enactor, result, degree: degree, dc: dc, dc_label: self.dc_raw)
 
-        # Room OOC emit (everyone present sees the roll)
         enactor_room.emit_ooc message
 
-        # If this room has an active scene, log the roll as OOC pose.
-        # Scenes.add_to_scene does not notify clients — emit covers that.
-        # Signature: (scene, pose, character, is_setpose, is_ooc)
         scene = enactor_room.scene
         if scene && !scene.completed
           Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
-        end
-      end
-
-      def format_result(result, degree, dc)
-        parts_str = result[:parts].map { |p| format_part(p) }.join(" ")
-
-        lines = []
-        lines << "#{enactor.name} rolls #{result[:expression]}"
-        lines << "  #{parts_str}"
-        lines << "  Total: #{result[:total]}"
-
-        if !degree.nil?
-          label = self.dc_raw
-          lines << "  vs DC #{dc} (#{label}): #{format_degree(degree)}"
-        end
-
-        lines.join("\n")
-      end
-
-      def format_part(part)
-        case part[:type]
-        when :dice
-          rolls = Array(part[:rolls]).join(",")
-          val = part[:value]
-          if val < 0
-            "#{part[:raw]}(#{rolls})=#{val}"
-          else
-            "+#{part[:raw]}(#{rolls})=#{val}"
-          end
-        when :flat
-          val = part[:value]
-          val < 0 ? "#{val}" : "+#{val}"
-        when :ability, :skill, :save, :attack, :spell_attack, :dc
-          val = part[:value]
-          label = part[:raw]
-          val < 0 ? "#{label}(#{val})" : "+#{label}(#{val})"
-        else
-          val = part[:value]
-          val < 0 ? "#{part[:raw]}(#{val})" : "+#{part[:raw]}(#{val})"
-        end
-      end
-
-      def format_degree(degree)
-        case degree
-        when :critical_success then "Critical Success"
-        when :success          then "Success"
-        when :failure          then "Failure"
-        when :critical_failure then "Critical Failure"
-        else degree.to_s
         end
       end
     end

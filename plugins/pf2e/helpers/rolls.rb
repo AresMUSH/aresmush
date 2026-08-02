@@ -1,19 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Roll parsing & evaluation
-    # -------------------------------------------------
-
-    # Evaluate a dice expression string.
-    # Examples:
-    #   "1d20 + str + 1d6 - 2"
-    #   "athletics"           → auto 1d20 + skill mod
-    #   "melee"               → auto 1d20 + melee attack
-    #   "spell_attack"        → auto 1d20 + spell attack
-    #   "fortitude + 2"
-    #
-    # Returns { expression:, total:, parts: [...] }
     def self.roll(expression, char_or_sheet = nil)
       expr = expression.to_s.strip
 
@@ -43,14 +30,55 @@ module AresMUSH
       Array.new(count) { rand(1..sides) }
     end
 
-    # Resolve a DC that may be a number or a combat keyword (class_dc, spell_dc).
-    # Returns integer or nil.
     def self.resolve_dc_argument(raw, char_or_sheet = nil)
       return nil if raw.nil?
       s = raw.to_s.strip.downcase
       return s.to_i if s =~ /\A\d+\z/
       return resolve_combat_keyword(s, char_or_sheet) if combat_keyword?(s) && combat_keyword_type(s) == :dc
       nil
+    end
+
+    # Shared display string for CLI, scene, and job comments.
+    def self.format_roll_message(enactor, result, degree: nil, dc: nil, dc_label: nil)
+      parts_str = result[:parts].map { |p| format_roll_part(p) }.join(" ")
+
+      lines = []
+      lines << "#{enactor.name} rolls #{result[:expression]}"
+      lines << "  #{parts_str}"
+      lines << "  Total: #{result[:total]}"
+
+      if !degree.nil?
+        label = dc_label || dc
+        lines << "  vs DC #{dc} (#{label}): #{format_degree_label(degree)}"
+      end
+
+      lines.join("\n")
+    end
+
+    def self.format_roll_part(part)
+      case part[:type]
+      when :dice
+        rolls = Array(part[:rolls]).join(",")
+        val = part[:value]
+        val < 0 ? "#{part[:raw]}(#{rolls})=#{val}" : "+#{part[:raw]}(#{rolls})=#{val}"
+      when :flat
+        val = part[:value]
+        val < 0 ? "#{val}" : "+#{val}"
+      else
+        val = part[:value]
+        label = part[:raw]
+        val < 0 ? "#{label}(#{val})" : "+#{label}(#{val})"
+      end
+    end
+
+    def self.format_degree_label(degree)
+      case degree
+      when :critical_success then "Critical Success"
+      when :success          then "Success"
+      when :failure          then "Failure"
+      when :critical_failure then "Critical Failure"
+      else degree.to_s
+      end
     end
 
     def self.tokenize(expr)
