@@ -78,6 +78,9 @@ en:
     cg_feat_eligible_header: "Eligible feats:"
     cg_feat_eligible_header_cat: "Eligible %{category} feats:"
 
+    feat_search_title_all: "PF2e Feats"
+    feat_search_title_query: "PF2e Feats matching '%{query}'"
+
     cg_ancestry_set: "Ancestry set to %{name}."
     cg_heritage_set: "Heritage set to %{name}."
     cg_background_set: "Background set to %{name}."

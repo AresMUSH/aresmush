@@ -22,6 +22,8 @@ module AresMUSH
         end
       when "roll"
         return RollCmd if cmd.switch.nil?
+      when "feats"
+        return FeatSearchCmd if cmd.switch.nil?
       when "cg"
         case cmd.switch
         when "start" then return CgStartCmd

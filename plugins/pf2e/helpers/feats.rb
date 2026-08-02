@@ -3,28 +3,7 @@ module AresMUSH
 
     # -------------------------------------------------
     # Feat helpers
-    # Prerequisites, eligibility lists, chargen take-feat.
-    #
-    # Supports two YAML shapes (both under prerequisites: or prereqs:):
-    #
-    # Flat (legacy / compact):
-    #   prerequisites:
-    #     level: 2
-    #     skills: { athletics: T }
-    #     attributes: { str: 14 }
-    #     feats: [some_feat]
-    #     saves: { will: E }
-    #     special: "free text, not auto-checked"
-    #
-    # Structured (all / any / none):
-    #   prerequisites:
-    #     all:
-    #       - type: skill
-    #         skill: athletics
-    #         rank: T
-    #     any:
-    #       - type: feat
-    #         slug: foo
+    # Prerequisites, eligibility lists, search, chargen.
     # -------------------------------------------------
 
     def self.feat_entry(slug)
@@ -37,8 +16,6 @@ module AresMUSH
       entry["prerequisites"] || entry["prereqs"]
     end
 
-    # Evaluate one structured prereq node.
-    # Returns nil if met, or a failure string if not.
     def self.feat_check_prereq_node(sheet, node)
       return nil unless node.is_a?(Hash)
 
@@ -102,7 +79,6 @@ module AresMUSH
         lvl >= min ? nil : "Need level #{min} (have #{lvl})"
 
       when "trait"
-        # Soft check: ancestry slug, class slug, or heritage as stand-ins for traits
         trait = node["trait"].to_s.strip.downcase
         bag = [
           sheet.ancestry.to_s,
@@ -113,7 +89,6 @@ module AresMUSH
         bag.include?(trait) ? nil : "Need trait/source: #{trait}"
 
       when "group"
-        # Nested all/any/none
         failures = []
         Array(node["all"]).each do |child|
           msg = feat_check_prereq_node(sheet, child)
@@ -134,12 +109,10 @@ module AresMUSH
         nil
 
       else
-        # Unknown type — do not block, but note it
         nil
       end
     end
 
-    # Flat-format checks (skills/attributes/feats/saves/level hashes).
     def self.feat_check_flat_prereqs(sheet, prereqs)
       failures = []
       return failures unless prereqs.is_a?(Hash)
@@ -154,7 +127,6 @@ module AresMUSH
       if skills.is_a?(Hash)
         skills.each do |skill, rank|
           next if skill.to_s.empty?
-          # Empty hash value / special case: skip (handled by special text)
           next if rank.nil? || rank.to_s.strip.empty?
           actual = skill_rank(sheet, skill)
           unless teml_at_least?(actual, rank)
@@ -194,13 +166,9 @@ module AresMUSH
         end
       end
 
-      # special: free-text — not auto-checked (informational only)
       failures
     end
 
-    # Main entry: { ok:, failures: [] }
-    # Missing/empty prereqs → ok.
-    # Always enforces feat.level minimum when present.
     def self.feat_prereqs_met?(char_or_sheet, feat_slug)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, failures: ["No sheet"] } unless sheet
@@ -211,7 +179,6 @@ module AresMUSH
 
       failures = []
 
-      # Top-level minimum level (feat.level)
       feat_level = entry["level"].to_i
       if feat_level > 0 && sheet.level.to_i < feat_level
         failures << "Need level #{feat_level} (have #{sheet.level.to_i})"
@@ -219,7 +186,6 @@ module AresMUSH
 
       prereqs = feat_prereq_block(entry)
 
-      # No prereqs / empty → only level gate above matters
       if prereqs.nil? || prereqs == {} || prereqs == []
         return { ok: failures.empty?, failures: failures }
       end
@@ -254,12 +220,6 @@ module AresMUSH
       { ok: failures.empty?, failures: failures }
     end
 
-    # List feats the character qualifies for.
-    # opts:
-    #   category: "skill" | "general" | "class" | "ancestry" | ...
-    #   trait:    filter traits array contains this
-    #   include_owned: if true, keep feats already on the sheet (default false)
-    #   max_level: override level ceiling (default sheet.level)
     def self.feat_eligible_list(char_or_sheet, category: nil, trait: nil, include_owned: false, max_level: nil)
       sheet = sheet_for(char_or_sheet)
       return [] unless sheet
@@ -304,7 +264,51 @@ module AresMUSH
       rows.sort_by { |r| [r[:level], r[:name].to_s.downcase] }
     end
 
-    # Chargen: take a feat if prereqs met and not already owned.
+    # Search feats by name/slug, level, category/trait, or free text in effect.
+    # query blank → all feats sorted by level then name.
+    def self.feat_search(query = nil)
+      data = read_data("feats") || {}
+      q = query.to_s.strip.downcase
+
+      rows = []
+      data.each do |slug, entry|
+        next unless entry.is_a?(Hash)
+        slug = slug.to_s
+        name = (entry["name"] || slug).to_s
+        level = entry["level"].to_i
+        category = entry["category"].to_s
+        traits = Array(entry["traits"]).map(&:to_s)
+        effect = entry["effect"].to_s
+        tags = Array(entry["tags"]).map(&:to_s)
+
+        if !q.empty?
+          if q =~ /\A\d+\z/
+            next unless level == q.to_i
+          else
+            haystack = [
+              slug, name.downcase, category.downcase,
+              traits.map(&:downcase).join(" "),
+              tags.map(&:downcase).join(" "),
+              effect.downcase
+            ].join(" ")
+            next unless haystack.include?(q)
+          end
+        end
+
+        rows << {
+          slug: slug,
+          name: name,
+          level: level,
+          category: category,
+          traits: traits,
+          action: entry["action"],
+          effect: effect.strip.gsub(/\s+/, " ")
+        }
+      end
+
+      rows.sort_by { |r| [r[:level], r[:name].to_s.downcase] }
+    end
+
     def self.cg_take_feat(char, slug)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]

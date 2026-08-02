@@ -1,0 +1,17 @@
+<%= header %>
+%xh<%= title %>%xn
+<%= divider %>
+<% if paginator.out_of_bounds? %>
+<%= paginator.out_of_bounds_msg %>
+<% else %>
+<% paginator.page_items.each do |f| %>
+%xh<%= f[:slug] %>%xn — <%= f[:name] %>  [L<%= f[:level] %><% if !f[:category].to_s.empty? %>/<%= f[:category] %><% end %>]
+  Traits: <%= f[:traits].empty? ? "—" : f[:traits].join(", ") %>
+<% if f[:effect] && !f[:effect].empty? %>
+  <%= left(f[:effect], 76) %>
+<% end %>
+
+<% end %>
+<%= paginator.page_footer %>
+<% end %>
+<%= footer %>
