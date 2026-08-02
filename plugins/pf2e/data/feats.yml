@@ -1,13 +1,18 @@
-# Static feat reference data.
+# Static feat reference data (PF2e Remaster naming).
 # Lookup: Pf2e.read_data("feats", "power_attack")
 #
-# slots: general | combat | class | skill
+# slots: ancestry | general | class | skill
+#        (legacy "combat" is accepted as an alias of ancestry)
+# category: ancestry | general | class | skill | dedication | archetype
 # archetype: optional explicit archetype slug for non-dedication archetype feats
 #
 # Structured prereq nodes include:
 #   type: archetype  — must have this dedication (slug: barbarian)
 #   type: not_class  — must NOT be this class (slug: barbarian)
 #   type: dedication — alias of needing the dedication feat for an archetype
+#
+# Terminology: attribute scores still stored as str/dex/…; conditions use
+# Remaster names in prose (off-guard, not flat-footed).
 
 feats:
   assurance:
@@ -22,8 +27,8 @@ feats:
       special: "trained in at least one skill"
     effect: >
       Choose a skill you're trained in. You can forgo rolling to instead
-      receive a result of 10 + proficiency bonus (do not apply ability mod,
-      item, circumstance, or status bonuses/penalties).
+      receive a result of 10 + your proficiency bonus (do not apply attribute
+      modifier, item, circumstance, or status bonuses/penalties).
     tags: [skill_action]
 
   powerful_leap:
@@ -99,7 +104,7 @@ feats:
     frequency: null
     prerequisites: {}
     effect: >
-      Increase your maximum HP by your level. You reduce the DC for
+      Increase your maximum Hit Points by your level. You reduce the DC for
       recovery checks by 1.
     tags: [hp_bonus, recovery]
 
@@ -133,7 +138,7 @@ feats:
         - type: class
           slug: fighter
     effect: >
-      Trigger: An enemy hits you with a melee Strike. You can Raise a Shield
+      Trigger: An enemy hits you with a melee Strike. You Raise a Shield
       and gain its benefits against the triggering attack.
     tags: [reaction, shield]
 
@@ -142,7 +147,7 @@ feats:
     level: 1
     traits: [fighter, flourish]
     category: class
-    slots: [class, combat]
+    slots: [class]
     action: 2
     frequency: null
     prerequisites:
@@ -158,8 +163,8 @@ feats:
     name: Rock Runner
     level: 1
     traits: [dwarf]
-    category: combat
-    slots: [combat]
+    category: ancestry
+    slots: [ancestry]
     action: null
     frequency: null
     prerequisites:

@@ -1,11 +1,13 @@
-# Language catalog for TapestryMUSH / PF2e plugin.
+# Language catalog for TapestryMUSH / PF2e plugin (Remaster-compatible).
 # Lookup: Pf2e.read_data("languages", "tradetongue")
 #
 # rarity: common | uncommon | secret
 # spoken / written: default true; Precursor is written-only
-# restricted: true → only granted by a specific source (e.g. Druidic),
+# restricted: true → only granted by a specific source (e.g. Wildsong),
 #             never chosen as a free Int-language pick
 # society: true → granted to all PCs at chargen (Ruin-cant)
+#
+# Remaster: Druidic → Wildsong (druidic kept as alias key pointing at same entry shape)
 
 languages:
   # ---- Common (everyone may learn; Tradetongue is universal baseline) ----
@@ -113,11 +115,21 @@ languages:
     spoken: true
     written: true
 
-  # ---- Secret ----
-  druidic:
-    name: Druidic
+  # ---- Secret (Remaster: Wildsong replaces classic Druidic) ----
+  wildsong:
+    name: Wildsong
     rarity: secret
     spoken: true
     written: true
     restricted: true
-    note: "Class-granted only. Druid PCs may not be open at launch."
+    note: "Druid class language (Remaster). Class-granted only. Druid PCs may not be open at launch."
+
+  # Alias for classic text / imports
+  druidic:
+    name: Wildsong
+    rarity: secret
+    spoken: true
+    written: true
+    restricted: true
+    alias_of: wildsong
+    note: "Legacy alias for Wildsong."

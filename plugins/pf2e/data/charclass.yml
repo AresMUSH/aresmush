@@ -1,11 +1,14 @@
-# Static class reference data.
+# Static class reference data (PF2e Remaster / Player Core naming).
 # Lookup: Pf2e.read_data("charclasses", "fighter")
 #
 # languages (optional):
-#   starting   — always known when this class is committed (e.g. druidic)
+#   starting   — always known when this class is committed (e.g. wildsong)
 #   additional — flat extra free picks granted by the class (rare)
 # Restricted languages (restricted: true in languages.yml) may only appear
 # under starting (or explicit grants), never as open Int picks.
+#
+# Feature slugs use Remaster names where they differ from classic
+# (reactive_strike, wizard_spellcasting, wildsong, etc.).
 
 charclasses:
   fighter:
@@ -38,7 +41,7 @@ charclasses:
     spellcasting: null
     features_by_level:
       1:
-        - attack_of_opportunity
+        - reactive_strike
         - fighter_feat
         - shield_block
       2:
@@ -77,11 +80,13 @@ charclasses:
       tradition: arcane
       rank: T
       type: prepared
+      # Remaster: spell rank (not "spell level"); curriculum replaces classic schools
     features_by_level:
       1:
-        - arcane_spellcasting
-        - arcane_school
+        - wizard_spellcasting
+        - arcane_school          # Remaster curriculum school (School of Mentalism, etc.)
         - arcane_bond
+        - arcane_thesis
         - wizard_feat
       2:
         - wizard_feat
@@ -121,6 +126,7 @@ charclasses:
         - rogue_feat
         - sneak_attack
         - surprise_attack
+        - rogues_racket
       2:
         - rogue_feat
         - skill_feat
@@ -141,7 +147,7 @@ charclasses:
       additional:
         - nature
     languages:
-      starting: [druidic]
+      starting: [wildsong]
       additional: 0
     attacks:
       simple: T
@@ -160,9 +166,10 @@ charclasses:
       type: prepared
     features_by_level:
       1:
-        - primal_spellcasting
+        - druid_spellcasting
         - anathema
-        - druidic_language
+        - wildsong
+        - druidic_order
         - druid_feat
       2:
         - druid_feat
