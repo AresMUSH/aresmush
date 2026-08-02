@@ -97,8 +97,6 @@ module AresMUSH
         end
 
       when "feat"
-        # feat/add/<slug>[/<slot>] — second dedication allowed (staff); third blocked
-        # feat/remove/<slug>
         action = parts[1]
         slug = parts[2]
         slot = parts[3]
@@ -287,6 +285,10 @@ module AresMUSH
         feat_slot_map: {},
         features: [],
         archetypes: [],
+        money: { "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0 },
+        society_account: { "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0 },
+        inventory: [],
+        item_seq: 0,
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
