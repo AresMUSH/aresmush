@@ -29,7 +29,6 @@ module AresMUSH
       end
     end
 
-    # Parse "5gp 10sp", "5 gp, 3 pp", "100cp" → purse hash. Nil if nothing valid.
     def self.parse_coin_string(str)
       return nil if str.nil?
       text = str.to_s.strip.downcase
@@ -243,6 +242,45 @@ module AresMUSH
         money: sheet_money(sheet),
         society_account: sheet_society_account(sheet),
         withdrawn: amount
+      }
+    end
+
+    # Keep target_value (purse hash or cp integer) on person in fewest coins;
+    # deposit any excess value to Society account. Society total is also rebroken.
+    def self.optimize_purse(char_or_sheet, target_value)
+      sheet = sheet_for(char_or_sheet)
+      return { ok: false, error: "pf2e.no_sheet" } unless sheet
+
+      target_cp = if target_value.is_a?(Hash)
+                    purse_to_cp(target_value)
+                  else
+                    target_value.to_i
+                  end
+      return { ok: false, error: "pf2e.money_bad_amount" } if target_cp < 0
+
+      have_cp = purse_to_cp(sheet_money(sheet))
+      keep_cp = [have_cp, target_cp].min
+      excess_cp = have_cp - keep_cp
+
+      new_purse = cp_to_purse(keep_cp)
+      set_money(sheet, new_purse)
+
+      deposited = empty_purse
+      if excess_cp > 0
+        deposited = cp_to_purse(excess_cp)
+        account_cp = purse_to_cp(sheet_society_account(sheet)) + excess_cp
+        set_society_account(sheet, cp_to_purse(account_cp))
+      end
+
+      {
+        ok: true,
+        error: nil,
+        money: sheet_money(sheet),
+        society_account: sheet_society_account(sheet),
+        deposited: deposited,
+        deposited_cp: excess_cp,
+        kept_cp: keep_cp,
+        coin_count: coin_count(sheet)
       }
     end
 
