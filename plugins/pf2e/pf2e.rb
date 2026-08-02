@@ -20,6 +20,8 @@ module AresMUSH
         when "combat" then return SheetCombatCmd
         when nil then return SheetCmd
         end
+      when "money"
+        return MoneyCmd if cmd.switch.nil?
       when "roll"
         case cmd.switch
         when nil then return RollCmd
