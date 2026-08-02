@@ -88,6 +88,45 @@ module AresMUSH
       { ok: true, error: nil, sheet: sheet }
     end
 
+    # PF2e Remaster baseline is 15 gp. Destination defaults to Society account
+    # (Tapestry: Hall ledger; withdraw to shop). Override in pf2e.yml:
+    #   starting_wealth: "15gp"
+    #   starting_wealth_to: society | purse
+    def self.cg_starting_wealth_purse
+      raw = Global.read_config("pf2e", "starting_wealth")
+      raw = "15gp" if raw.nil? || raw.to_s.strip.empty?
+      parsed = parse_coin_string(raw.to_s)
+      return parsed if parsed
+      # bare number = gold pieces
+      if raw.to_s.strip =~ /\A\d+\z/
+        return normalize_purse("gp" => raw.to_i)
+      end
+      normalize_purse("gp" => 15)
+    end
+
+    def self.cg_grant_starting_wealth(sheet)
+      return nil unless sheet
+      amount = cg_starting_wealth_purse
+      dest = Global.read_config("pf2e", "starting_wealth_to").to_s.strip.downcase
+      dest = "society" if dest.empty?
+
+      # Clear both so a re-commit after cg/reset is deterministic.
+      set_money(sheet, empty_purse)
+      set_society_account(sheet, empty_purse)
+
+      if dest == "purse"
+        set_money(sheet, amount)
+      else
+        set_society_account(sheet, amount)
+      end
+
+      {
+        amount: amount,
+        destination: dest == "purse" ? "purse" : "society",
+        display: format_money(amount)
+      }
+    end
+
     def self.cg_identity_summary(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -269,9 +308,18 @@ module AresMUSH
 
       cg_recalc_abilities(sheet)
       cg_recalc_hp(sheet)
+
+      wealth = cg_grant_starting_wealth(sheet)
+
       sheet.update(identity_locked: true)
 
-      { ok: true, error: nil, sheet: sheet, features: sheet_features(sheet) }
+      {
+        ok: true,
+        error: nil,
+        sheet: sheet,
+        features: sheet_features(sheet),
+        starting_wealth: wealth
+      }
     end
 
   end
