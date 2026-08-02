@@ -11,7 +11,6 @@ module AresMUSH
         self.dc_raw = nil
         return if raw.blank?
 
-        # "melee vs 20" or "athletics vs class_dc" or "spell_attack vs spell_dc"
         if raw =~ /\A(.+?)\s+vs\s+(\S+)\z/i
           self.expression = $1.strip
           self.dc_raw = $2.strip
@@ -53,23 +52,34 @@ module AresMUSH
           degree = Pf2e.degree_of_success(result[:total], dc, d20: d20_face)
         end
 
-        client.emit format_result(result, degree, dc)
+        message = format_result(result, degree, dc)
+
+        # Room OOC emit (everyone present sees the roll)
+        enactor_room.emit_ooc message
+
+        # If this room has an active scene, log the roll as OOC pose.
+        # Scenes.add_to_scene does not notify clients — emit covers that.
+        # Signature: (scene, pose, character, is_setpose, is_ooc)
+        scene = enactor_room.scene
+        if scene && !scene.completed
+          Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+        end
       end
 
       def format_result(result, degree, dc)
         parts_str = result[:parts].map { |p| format_part(p) }.join(" ")
 
         lines = []
-        lines << "%xh#{enactor.name} rolls%xn #{result[:expression]}"
+        lines << "#{enactor.name} rolls #{result[:expression]}"
         lines << "  #{parts_str}"
-        lines << "  %xhTotal:%xn #{result[:total]}"
+        lines << "  Total: #{result[:total]}"
 
         if !degree.nil?
           label = self.dc_raw
-          lines << "  %xhvs DC #{dc}%xn (#{label}): #{format_degree(degree)}"
+          lines << "  vs DC #{dc} (#{label}): #{format_degree(degree)}"
         end
 
-        lines.join("%r")
+        lines.join("\n")
       end
 
       def format_part(part)
@@ -97,10 +107,10 @@ module AresMUSH
 
       def format_degree(degree)
         case degree
-        when :critical_success then "%xgCritical Success%xn"
-        when :success          then "%xgSuccess%xn"
-        when :failure          then "%xyFailure%xn"
-        when :critical_failure then "%xrCritical Failure%xn"
+        when :critical_success then "Critical Success"
+        when :success          then "Success"
+        when :failure          then "Failure"
+        when :critical_failure then "Critical Failure"
         else degree.to_s
         end
       end
