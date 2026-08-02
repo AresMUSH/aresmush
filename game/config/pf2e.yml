@@ -17,3 +17,7 @@ pf2e:
     inventory/retrieve: gear/retrieve
   # When true, bulk is calculated and shown; society-account coin is excluded.
   use_encumbrance: true
+  # Granted once at cg/commit (identity lock). Re-granted after cg/reset + commit.
+  starting_wealth: "15gp"
+  # society = Hall ledger (default); purse = coins on person
+  starting_wealth_to: society
