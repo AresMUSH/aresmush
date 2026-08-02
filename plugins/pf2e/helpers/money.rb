@@ -21,12 +21,31 @@ module AresMUSH
       k = name.to_s.strip.downcase
       return k if COIN_KEYS.include?(k)
       case k
-      when "platinum", "plat" then "pp"
-      when "gold" then "gp"
-      when "silver" then "sp"
-      when "copper", "copperpiece", "copperpieces" then "cp"
+      when "platinum", "plat", "p" then "pp"
+      when "gold", "g" then "gp"
+      when "silver", "s" then "sp"
+      when "copper", "copperpiece", "copperpieces", "c" then "cp"
       else nil
       end
+    end
+
+    # Parse "5gp 10sp", "5 gp, 3 pp", "100cp" → purse hash. Nil if nothing valid.
+    def self.parse_coin_string(str)
+      return nil if str.nil?
+      text = str.to_s.strip.downcase
+      return nil if text.empty?
+
+      out = empty_purse
+      found = false
+      text.scan(/(\d+)\s*(pp|gp|sp|cp|platinum|plat|gold|silver|copper|p|g|s|c)\b/) do |num, unit|
+        key = coin_key(unit)
+        next unless key
+        out[key] += num.to_i
+        found = true
+      end
+      return nil unless found
+      return nil if COIN_KEYS.all? { |k| out[k] == 0 }
+      out
     end
 
     def self.empty_purse
@@ -58,20 +77,17 @@ module AresMUSH
       { "pp" => pp, "gp" => gp, "sp" => sp, "cp" => cp }
     end
 
-    # Compact: omit zero denominations. e.g. "2 gp, 5 sp"
     def self.format_money(hash)
       p = normalize_purse(hash)
       parts = COIN_KEYS.map { |k| p[k] > 0 ? "#{p[k]} #{k}" : nil }.compact
       parts.empty? ? "0 cp" : parts.join(", ")
     end
 
-    # Always show all four denominations (for the money command).
     def self.format_purse_lines(hash, indent = "  ")
       p = normalize_purse(hash)
       COIN_KEYS.map { |k| "#{indent}#{p[k]} #{k}" }.join("%r")
     end
 
-    # Full status block for `money` command.
     def self.format_money_status(char_or_sheet)
       sheet = sheet_for(char_or_sheet)
       name = if char_or_sheet.respond_to?(:name)
