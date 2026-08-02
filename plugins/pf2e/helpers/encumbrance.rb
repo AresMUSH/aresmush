@@ -10,6 +10,8 @@ module AresMUSH
     #   - Negligible / 0 = 0
     #   - 1000 coins on person = 1 Bulk (society_account excluded)
     #   - Worn armor: Bulk reduced by 1 (min 1, except light/unarmored may reach 0)
+    #   - Items inside a container do not count separately; the container
+    #     contributes bag bulk + contents after ignore_bulk
     #   - Comfortable limit = 5 + Str mod
     #   - Maximum = 10 + Str mod
     # -------------------------------------------------
@@ -19,7 +21,6 @@ module AresMUSH
       val == true || val.to_s == "true" || val.to_s == "1"
     end
 
-    # Parse bulk token to numeric bulk (Float).
     def self.parse_bulk(value)
       return 0.0 if value.nil?
       s = value.to_s.strip.downcase
@@ -33,7 +34,6 @@ module AresMUSH
     def self.format_bulk(num)
       n = num.to_f
       return "0" if n <= 0
-      # Prefer whole numbers; otherwise one decimal for L totals
       if (n - n.round).abs < 0.001
         n.round.to_s
       else
@@ -59,8 +59,17 @@ module AresMUSH
       total
     end
 
+    # Top-level carried bulk only (skip items already inside a bag).
     def self.inventory_bulk(char_or_sheet)
-      sheet_inventory(char_or_sheet).sum { |e| item_effective_bulk(e) }
+      list = sheet_inventory(char_or_sheet)
+      list.sum do |e|
+        next 0.0 if e["contained_in"].to_s.strip != ""
+        if container?(e)
+          container_carried_bulk(char_or_sheet, e)
+        else
+          item_effective_bulk(e)
+        end
+      end
     end
 
     def self.coin_bulk(char_or_sheet)
@@ -79,7 +88,6 @@ module AresMUSH
       10 + ability_mod(char_or_sheet, "str")
     end
 
-    # :ok | :encumbered | :over_max
     def self.encumbrance_status(char_or_sheet)
       return :ok unless use_encumbrance?
       bulk = total_bulk(char_or_sheet)
