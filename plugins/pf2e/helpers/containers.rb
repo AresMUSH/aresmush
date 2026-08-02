@@ -13,7 +13,10 @@ module AresMUSH
     # Inventory instances:
     #   contained_in: "i3"   # id of container instance (nil = carried)
     #
-    # Policy: Society-flagged items cannot be stowed (anti-hoarding).
+    # Policy: All bags live on the PC and count toward encumbrance.
+    # There is no Hall "storage account" for physical gear — only coin
+    # has a Society ledger. Society-flagged items may be stowed in bags
+    # like anything else; the load still sits on the character.
     # -------------------------------------------------
 
     def self.container_rules_for(entry)
@@ -79,11 +82,6 @@ module AresMUSH
 
       unless container?(bag)
         return { ok: false, error: "pf2e.stow_not_container" }
-      end
-
-      # Society gear stays on the person — no packing it away.
-      if item["society"]
-        return { ok: false, error: "pf2e.stow_society_blocked" }
       end
 
       # Do not nest containers (keeps capacity simple and readable).
