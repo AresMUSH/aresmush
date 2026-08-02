@@ -154,12 +154,17 @@ module AresMUSH
       { ok: failures.empty?, failures: failures }
     end
 
-    def self.feat_eligible_list(char_or_sheet, category: nil, trait: nil, include_owned: false, max_level: nil)
+    # Eligible feats the character can take right now (prereqs + at least one open matching slot).
+    # slot_filter: only feats that can spend this slot type (and have remaining of it).
+    def self.feat_eligible_list(char_or_sheet, category: nil, trait: nil, slot: nil, include_owned: false, max_level: nil)
       sheet = sheet_for(char_or_sheet)
       return [] unless sheet
       data = read_data("feats") || {}
       owned = Array(sheet.feats).map { |f| f.to_s.strip.downcase }
       level_cap = max_level.nil? ? sheet.level.to_i : max_level.to_i
+      remaining = feat_slots_remaining(sheet)
+      slot_filter = slot ? slot.to_s.strip.downcase : nil
+
       rows = []
       data.each do |slug, entry|
         next unless entry.is_a?(Hash)
@@ -171,8 +176,27 @@ module AresMUSH
         if trait
           next unless Array(entry["traits"]).map { |t| t.to_s.downcase }.include?(trait.to_s.downcase)
         end
+
+        allowed_slots = feat_slot_types_for(entry)
+        open_slots = allowed_slots.select { |t| remaining[t].to_i > 0 }
+        next if open_slots.empty?
+
+        if slot_filter
+          next unless open_slots.include?(slot_filter)
+        end
+
         next unless feat_prereqs_met?(sheet, slug)[:ok]
-        rows << { slug: slug, name: entry["name"] || slug, level: feat_level, category: entry["category"].to_s, traits: Array(entry["traits"]).map(&:to_s), action: entry["action"] }
+
+        rows << {
+          slug: slug,
+          name: entry["name"] || slug,
+          level: feat_level,
+          category: entry["category"].to_s,
+          slots: allowed_slots,
+          open_slots: open_slots,
+          traits: Array(entry["traits"]).map(&:to_s),
+          action: entry["action"]
+        }
       end
       rows.sort_by { |r| r[:name].to_s.downcase }
     end
@@ -187,6 +211,7 @@ module AresMUSH
         name = (entry["name"] || slug).to_s
         level = entry["level"].to_i
         category = entry["category"].to_s
+        slots = feat_slot_types_for(entry)
         traits = Array(entry["traits"]).map(&:to_s)
         effect = entry["effect"].to_s
         tags = Array(entry["tags"]).map(&:to_s)
@@ -194,16 +219,16 @@ module AresMUSH
           if q =~ /\A\d+\z/
             next unless level == q.to_i
           else
-            haystack = [slug, name.downcase, category.downcase, traits.map(&:downcase).join(" "), tags.map(&:downcase).join(" "), effect.downcase].join(" ")
+            haystack = [slug, name.downcase, category.downcase, slots.join(" "), traits.map(&:downcase).join(" "), tags.map(&:downcase).join(" "), effect.downcase].join(" ")
             next unless haystack.include?(q)
           end
         end
-        rows << { slug: slug, name: name, level: level, category: category, traits: traits, action: entry["action"], effect: effect.strip.gsub(/\s+/, " ") }
+        rows << { slug: slug, name: name, level: level, category: category, slots: slots, traits: traits, action: entry["action"], effect: effect.strip.gsub(/\s+/, " ") }
       end
       rows.sort_by { |r| r[:name].to_s.downcase }
     end
 
-    # Feats granted by background (unconditional feat:) or bgskill feats maps — not player-removable.
+    # Feats granted by background (unconditional feat:) or bgskill feats maps — not player-removable, cost no slot.
     def self.cg_granted_feat_slugs(sheet)
       granted = []
       bg = cg_background_entry(sheet.background)
@@ -220,7 +245,9 @@ module AresMUSH
       granted.reject(&:empty?).uniq
     end
 
-    def self.cg_take_feat(char, slug)
+    # Take a feat, spending a matching feat slot.
+    # slot_type: optional; required when the feat can use more than one open type.
+    def self.cg_take_feat(char, slug, slot_type: nil)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
@@ -241,9 +268,50 @@ module AresMUSH
         return { ok: false, error: "pf2e.cg_feat_prereq", sheet: sheet, failures: check[:failures] }
       end
 
+      open_slots = feat_available_slots_for(sheet, key)
+      if open_slots.empty?
+        return { ok: false, error: "pf2e.cg_feat_no_slot", sheet: sheet }
+      end
+
+      chosen = slot_type ? slot_type.to_s.strip.downcase : nil
+      if chosen
+        unless feat_slot_type?(chosen)
+          return { ok: false, error: "pf2e.cg_feat_bad_slot", sheet: sheet }
+        end
+        unless open_slots.include?(chosen)
+          return {
+            ok: false,
+            error: "pf2e.cg_feat_slot_unavailable",
+            sheet: sheet,
+            open_slots: open_slots
+          }
+        end
+      else
+        if open_slots.size > 1
+          return {
+            ok: false,
+            error: "pf2e.cg_feat_slot_required",
+            sheet: sheet,
+            open_slots: open_slots
+          }
+        end
+        chosen = open_slots.first
+      end
+
       owned << key
-      sheet.update(feats: owned)
-      { ok: true, error: nil, sheet: sheet, feat: key, name: entry["name"] || key }
+      map = (sheet.feat_slot_map || {}).dup
+      map[key] = chosen
+      sheet.update(feats: owned, feat_slot_map: map)
+
+      {
+        ok: true,
+        error: nil,
+        sheet: sheet,
+        feat: key,
+        name: entry["name"] || key,
+        slot: chosen,
+        remaining: feat_slots_remaining(sheet)
+      }
     end
 
     def self.cg_remove_feat(char, slug)
@@ -266,8 +334,19 @@ module AresMUSH
       entry = feat_entry(key)
       name = (entry && entry["name"]) || key
       owned.delete(key)
-      sheet.update(feats: owned)
-      { ok: true, error: nil, sheet: sheet, feat: key, name: name }
+      map = (sheet.feat_slot_map || {}).dup
+      spent = map.delete(key)
+      sheet.update(feats: owned, feat_slot_map: map)
+
+      {
+        ok: true,
+        error: nil,
+        sheet: sheet,
+        feat: key,
+        name: name,
+        slot: spent,
+        remaining: feat_slots_remaining(sheet)
+      }
     end
 
   end

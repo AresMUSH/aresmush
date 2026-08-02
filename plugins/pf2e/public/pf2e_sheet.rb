@@ -29,7 +29,12 @@ module AresMUSH
 
     attribute :skills,        :type => DataType::Hash,    :default => {}
     attribute :saves,         :type => DataType::Hash,    :default => {}
+
+    # Feat slugs known (owned). Granted + chosen.
     attribute :feats,         :type => DataType::Array,   :default => []
+    # Which slot paid for each chosen feat: { "assurance" => "skill", "power_attack" => "class" }
+    # Granted feats (background, etc.) are absent from this map — they cost no slot.
+    attribute :feat_slot_map, :type => DataType::Hash,    :default => {}
 
     attribute :hp,            :type => DataType::Hash,    :default => {
       "current" => 0,

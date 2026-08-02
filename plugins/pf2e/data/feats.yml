@@ -1,26 +1,12 @@
 # Static feat reference data.
 # Lookup: Pf2e.read_data("feats", "power_attack")
 #
-# prerequisites / prereqs — either shape works:
+# slots: which feat-slot types may pay for this feat (required economy).
+#   Allowed values: general | combat | class | skill
+#   A feat may list more than one; the player chooses which available slot to spend.
+#   If omitted, slots are inferred from category (see feat_slot_types_for).
 #
-# Flat:
-#   prerequisites:
-#     level: 2
-#     skills: { athletics: T }
-#     attributes: { str: 14 }
-#     feats: [some_feat]
-#     special: "not auto-checked"
-#
-# Structured:
-#   prerequisites:
-#     all:
-#       - type: skill
-#         skill: athletics
-#         rank: T
-#     any:
-#       - type: feat
-#         slug: foo
-#
+# prerequisites / prereqs — either shape works (flat or structured all/any/none).
 # Omit prerequisites (or {}) for feats with no gate beyond feat.level.
 
 feats:
@@ -29,6 +15,7 @@ feats:
     level: 1
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
@@ -44,6 +31,7 @@ feats:
     level: 2
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
@@ -59,6 +47,7 @@ feats:
     level: 1
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
@@ -73,6 +62,7 @@ feats:
     level: 1
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
@@ -87,6 +77,7 @@ feats:
     level: 1
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
@@ -103,6 +94,7 @@ feats:
     level: 1
     traits: [general]
     category: general
+    slots: [general]
     action: null
     frequency: null
     prerequisites: {}
@@ -116,6 +108,7 @@ feats:
     level: 1
     traits: [fighter]
     category: class
+    slots: [class]
     action: 2
     frequency: null
     prerequisites:
@@ -132,6 +125,7 @@ feats:
     level: 1
     traits: [fighter]
     category: class
+    slots: [class]
     action: reaction
     frequency: null
     prerequisites:
@@ -143,11 +137,29 @@ feats:
       and gain its benefits against the triggering attack.
     tags: [reaction, shield]
 
+  sudden_charge:
+    name: Sudden Charge
+    level: 1
+    traits: [fighter, flourish]
+    category: class
+    slots: [class, combat]
+    action: 2
+    frequency: null
+    prerequisites:
+      all:
+        - type: class
+          slug: fighter
+    effect: >
+      Stride twice. If you end your movement within melee reach of an enemy,
+      you can make a melee Strike against that enemy.
+    tags: [movement, strike]
+
   rock_runner:
     name: Rock Runner
     level: 1
     traits: [dwarf]
-    category: ancestry
+    category: combat
+    slots: [combat]
     action: null
     frequency: null
     prerequisites:
@@ -163,7 +175,8 @@ feats:
     name: Barbarian Dedication
     level: 2
     traits: [archetype, dedication, multiclass]
-    category: dedication
+    category: class
+    slots: [class]
     action: null
     frequency: null
     prerequisites:
