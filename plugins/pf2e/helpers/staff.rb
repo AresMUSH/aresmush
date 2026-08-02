@@ -1,13 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Staff sheet maintenance
-    # Bypasses chargen locks / approval gates.
-    # Permission: manage_pf2e (assign on roles in roles.yml).
-    # Viewing others' sheets: view_sheet (e.g. Storyteller).
-    # -------------------------------------------------
-
     def self.can_manage_pf2e?(actor)
       actor && actor.has_permission?("manage_pf2e")
     end
@@ -62,6 +55,7 @@ module AresMUSH
         level = parts[1].to_i
         return { ok: false, error: "pf2e.staff_bad_value", char: char, sheet: sheet } if level < 1
         sheet.update(level: level)
+        cg_apply_granted_features(sheet)
         cg_recalc_hp(sheet)
         { ok: true, error: nil, char: char, sheet: sheet, summary: "level=#{level}" }
 
@@ -103,8 +97,6 @@ module AresMUSH
         end
 
       when "feat"
-        # feat/add/<slug>[/<slot>]  — staff may force without a slot (omit slot)
-        # feat/remove/<slug>
         action = parts[1]
         slug = parts[2]
         slot = parts[3]
@@ -124,6 +116,23 @@ module AresMUSH
           map.delete(slug)
           sheet.update(feats: feats, feat_slot_map: map)
           { ok: true, error: nil, char: char, sheet: sheet, summary: "feat -#{slug}" }
+        else
+          { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
+        end
+
+      when "feature"
+        action = parts[1]
+        slug = parts[2]
+        return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil? || slug.nil?
+        list = sheet_features(sheet)
+        if action == "add"
+          list << slug unless list.include?(slug)
+          sheet.update(features: list)
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "feature +#{slug}" }
+        elsif action == "remove"
+          list.delete(slug)
+          sheet.update(features: list)
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "feature -#{slug}" }
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
         end
@@ -184,6 +193,7 @@ module AresMUSH
         entry = cg_ancestry_entry(slug)
         return { ok: false, error: "pf2e.cg_unknown_ancestry", char: char, sheet: sheet } unless entry
         sheet.update(ancestry: slug)
+        cg_apply_granted_features(sheet)
         { ok: true, error: nil, char: char, sheet: sheet, summary: "ancestry=#{slug}" }
 
       when "heritage"
@@ -192,6 +202,7 @@ module AresMUSH
         entry = cg_heritage_entry(slug)
         return { ok: false, error: "pf2e.cg_unknown_heritage", char: char, sheet: sheet } unless entry
         sheet.update(heritage: slug)
+        cg_apply_granted_features(sheet)
         { ok: true, error: nil, char: char, sheet: sheet, summary: "heritage=#{slug}" }
 
       when "background"
@@ -216,6 +227,7 @@ module AresMUSH
           "name" => entry["name"] || slug,
           "key_ability" => chosen
         })
+        cg_apply_granted_features(sheet)
         { ok: true, error: nil, char: char, sheet: sheet, summary: "class=#{slug} key=#{chosen}" }
 
       when "identity"
@@ -263,6 +275,7 @@ module AresMUSH
         saves: {},
         feats: [],
         feat_slot_map: {},
+        features: [],
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
