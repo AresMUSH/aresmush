@@ -38,6 +38,22 @@ module AresMUSH
     # Archetype dedications taken (slugs from archetypes.yml)
     attribute :archetypes,    :type => DataType::Array,   :default => []
 
+    # -------------------------------------------------
+    # Wealth & gear
+    # money          — coins on person (count toward encumbrance when enabled)
+    # society_account — Hall ledger; PC-owned; not coin; not encumbrance
+    # inventory      — array of item instance hashes (see inventory.rb)
+    # item_seq       — monotonic id counter for unique instances
+    # -------------------------------------------------
+    attribute :money,           :type => DataType::Hash,  :default => {
+      "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0
+    }
+    attribute :society_account, :type => DataType::Hash,  :default => {
+      "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0
+    }
+    attribute :inventory,       :type => DataType::Array, :default => []
+    attribute :item_seq,        :type => DataType::Integer, :default => 0
+
     attribute :hp,            :type => DataType::Hash,    :default => {
       "current" => 0,
       "max"     => 0,

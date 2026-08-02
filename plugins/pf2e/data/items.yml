@@ -1,0 +1,56 @@
+# General gear / consumables catalog.
+# Lookup: Pf2e.read_data("items", "rope_50")
+#
+# kind: gear | consumable | shield | custom
+# bulk: L | 0 | 1 | 2 | …
+# price: in sp (optional; convert in helpers if needed)
+# hands: optional
+# traits: optional array
+
+items:
+  backpack:
+    name: Backpack
+    kind: gear
+    bulk: "-"          # worn container; treated as negligible when worn (override in play)
+    price: 1
+    traits: [container]
+
+  rope_50:
+    name: "Rope (50 feet)"
+    kind: gear
+    bulk: L
+    price: 5
+
+  torch:
+    name: Torch
+    kind: gear
+    bulk: L
+    price: 1
+
+  rations:
+    name: Rations (1 week)
+    kind: consumable
+    bulk: L
+    price: 4
+
+  healers_tools:
+    name: "Healer's Tools"
+    kind: gear
+    bulk: 1
+    price: 50
+
+  thieves_tools:
+    name: "Thieves' Tools"
+    kind: gear
+    bulk: L
+    price: 30
+
+  steel_shield:
+    name: "Steel Shield"
+    kind: shield
+    bulk: 1
+    price: 20
+    ac_bonus: 2
+    hardness: 5
+    hp: 20
+    bt: 10

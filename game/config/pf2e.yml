@@ -1,3 +1,5 @@
 pf2e:
   shortcuts:
     csheet: sheet/combat
+  # When true, bulk is calculated and shown; society-account coin is excluded.
+  use_encumbrance: true
