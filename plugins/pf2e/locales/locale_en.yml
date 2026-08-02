@@ -25,6 +25,7 @@ en:
     cg_unknown_background: "Unknown background. Check data/backgrounds.yml slugs."
     cg_unknown_class: "Unknown class. Check data/charclass.yml slugs."
     cg_unknown_skill: "Unknown skill. Check data/skills.yml slugs."
+    cg_unknown_language: "Unknown language. Check data/languages.yml slugs."
     cg_need_ancestry: "Set an ancestry first (cg/ancestry <slug>)."
     cg_need_heritage: "Set a heritage first (cg/heritage <slug>)."
     cg_need_background: "Set a background first (cg/background <slug>)."
@@ -37,7 +38,7 @@ en:
     cg_identity_not_locked: "Commit your identity first with cg/commit."
     cg_reset_approved: "Approved characters cannot reset their PF2e sheet."
     cg_reset_ok: "PF2e sheet reset to defaults. Stage A unlocked."
-    cg_commit_ok: "Identity locked. Fixed skills/saves/feat applied. Continue with boosts, bgskill, and skills."
+    cg_commit_ok: "Identity locked. Fixed skills/saves/feat/languages applied. Continue with boosts, bgskill, skills, and languages."
 
     cg_identity_header: "PF2e identity [%{lock}]"
     cg_identity_line: "  %{label}: %{value}"
@@ -61,6 +62,13 @@ en:
     cg_bgskill_none_pending: "All background skill choices are already resolved."
     cg_bgskill_not_in_options: "That is not a valid option for the current background skill choice."
     cg_bgskill_bad_lore: "Provide a terrain/specialty name for this Lore (e.g. forest or forest_lore)."
+
+    cg_language_restricted: "That language is restricted and cannot be chosen as a free pick."
+    cg_language_known: "You already know that language."
+    cg_language_no_picks: "No free language picks remaining."
+    cg_language_not_allowed: "That language is not available as a free pick (common non-restricted only, unless options are narrowed)."
+    cg_language_set: "Learned %{language}. Free language picks remaining: %{remaining}."
+    cg_language_status: "Languages known: %{known}. Free picks %{used}/%{total} (%{remaining} left). Options: %{options}."
 
     cg_ancestry_set: "Ancestry set to %{name}."
     cg_heritage_set: "Heritage set to %{name}."
