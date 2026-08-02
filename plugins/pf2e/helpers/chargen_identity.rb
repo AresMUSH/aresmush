@@ -1,12 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Stage A: identity (ancestry / heritage / background / class)
-    # Freely mutable until commit. After lock, only cg/reset
-    # (and only if the character is not approved).
-    # -------------------------------------------------
-
     def self.cg_identity_locked?(sheet)
       return false unless sheet
       val = sheet.identity_locked
@@ -23,7 +17,6 @@ module AresMUSH
           return true if Chargen.is_approved?(char)
         end
         if Chargen.respond_to?(:check_chargen_locked)
-          # check_chargen_locked returns an error string when locked/approved
           msg = Chargen.check_chargen_locked(char)
           return true if msg
         end
@@ -41,7 +34,6 @@ module AresMUSH
       nil
     end
 
-    # Wipe mechanical sheet fields to defaults; keep the Ohm row + character link.
     def self.cg_reset_sheet(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -60,6 +52,7 @@ module AresMUSH
         identity_locked: false,
         ability_boosts: {},
         background_skill_picks: [],
+        languages: [],
         abilities: {
           "str" => [10, 10],
           "dex" => [10, 10],
@@ -82,7 +75,6 @@ module AresMUSH
       { ok: true, error: nil, sheet: sheet }
     end
 
-    # Preview of current identity + grants from data (Stage A).
     def self.cg_identity_summary(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -105,9 +97,16 @@ module AresMUSH
 
       class_additional = []
       trained_count = 0
+      class_langs = []
       if class_entry.is_a?(Hash)
         class_additional = Array((class_entry["skills"] || {})["additional"]).map(&:to_s)
         trained_count = ((class_entry["skills"] || {})["trained_count"] || 0).to_i
+        class_langs = Array((class_entry["languages"] || {})["starting"]).map(&:to_s)
+      end
+
+      anc_langs = []
+      if anc.is_a?(Hash)
+        anc_langs = Array((anc["languages"] || {})["starting"]).map(&:to_s)
       end
 
       boosts_preview = {}
@@ -147,13 +146,15 @@ module AresMUSH
         background_feat: feat,
         class_additional_skills: class_additional,
         class_trained_count: trained_count,
+        languages_ancestry: anc_langs,
+        languages_class: class_langs,
+        languages_society: cg_society_languages,
         boosts: boosts_preview,
         complete: !sheet.ancestry.blank? && !sheet.heritage.blank? &&
                   !sheet.background.blank? && !(cc["slug"] || cc[:slug]).to_s.empty?
       }
     end
 
-    # Lock identity and apply fixed grants from data (Stage A → Stage B).
     def self.cg_commit_identity(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -177,10 +178,10 @@ module AresMUSH
         return { ok: false, error: "pf2e.cg_need_class", sheet: sheet }
       end
 
-      # Clean derived state before applying fixed grants
       sheet.update(
         ability_boosts: {},
         background_skill_picks: [],
+        languages: [],
         skills: {},
         saves: {},
         feats: [],
@@ -222,6 +223,9 @@ module AresMUSH
           set_skill_rank(sheet, sk_key, "T") if skill_rank(sheet, sk_key) == "U"
         end
       end
+
+      # Languages: Tradetongue + ancestry + class + Ruin-cant (society)
+      cg_apply_granted_languages(sheet)
 
       cg_recalc_abilities(sheet)
       cg_recalc_hp(sheet)
