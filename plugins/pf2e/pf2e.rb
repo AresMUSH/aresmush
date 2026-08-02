@@ -41,6 +41,7 @@ module AresMUSH
         case cmd.switch
         when nil then return ShopCmd
         when "buy" then return ShopBuyCmd
+        when "sell" then return ShopSellCmd
         end
       when "roll"
         case cmd.switch

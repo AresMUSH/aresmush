@@ -3,9 +3,12 @@ module AresMUSH
 
     # -------------------------------------------------
     # Vendors (mundane gear)
-    # Buy from purse only — Society account must be withdrawn first.
-    # Prices in catalog are in silver pieces (sp); spend_cp converts.
+    # Buy/sell from purse only — Society account must be withdrawn first.
+    # Catalog prices in silver pieces (sp).
+    # Sell-back: half catalog price (floor), society/unique/runed not sold here.
     # -------------------------------------------------
+
+    SELL_RATE = 0.5
 
     def self.vendor_list
       data = read_data("vendors") || {}
@@ -29,7 +32,22 @@ module AresMUSH
       (price_sp.to_f * 10).round
     end
 
-    # Resolve a stock line to display/buy info.
+    def self.item_catalog_price_sp(entry)
+      return nil unless entry.is_a?(Hash)
+      slug = entry["slug"].to_s.strip.downcase
+      return nil if slug.empty?
+      kind = entry["kind"].to_s
+      section = case kind
+                when "weapon" then "weapons"
+                when "armor", "shield" then "armor"
+                else "items"
+                end
+      price = catalog_price_sp(section, slug)
+      return price unless price.nil?
+      # shields live under items sometimes
+      catalog_price_sp("items", slug) || catalog_price_sp("weapons", slug) || catalog_price_sp("armor", slug)
+    end
+
     def self.vendor_stock_line(line)
       section = (line["section"] || line[:section]).to_s
       slug = (line["slug"] || line[:slug]).to_s.strip.downcase
@@ -72,7 +90,7 @@ module AresMUSH
 
       lines = []
       lines << "%xh#{vendor['name']}%xn — #{vendor['description']}"
-      lines << "%x(Prices in sp. Pay from purse only; withdraw from Society first.)%xn"
+      lines << "%x(Prices in sp. Pay from purse. Sell-back is half price for mundane catalog gear.)%xn"
       stock = vendor_catalog(vendor_slug)
       if stock.empty?
         lines << "  (no stock listed)"
@@ -90,8 +108,6 @@ module AresMUSH
       lines.join("%r")
     end
 
-    # Purchase one catalog item from a vendor into inventory.
-    # Returns { ok:, error:, item:, money:, spent_cp: }
     def self.vendor_buy(char_or_sheet, vendor_slug, item_slug, qty: 1)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -114,7 +130,6 @@ module AresMUSH
       spend = spend_cp(sheet, total_cp)
       return spend unless spend[:ok]
 
-      # Map section → inventory kind
       kind = case info[:section]
              when "weapons" then "weapon"
              when "armor" then (info[:entry]["kind"] == "shield" ? "shield" : "armor")
@@ -129,7 +144,6 @@ module AresMUSH
                           bulk: info[:bulk],
                           society: false)
       unless add[:ok]
-        # refund
         adjust_money(sheet, cp_to_purse(total_cp))
         return add
       end
@@ -141,6 +155,55 @@ module AresMUSH
         money: sheet_money(sheet),
         spent_cp: total_cp,
         price_sp: info[:price_sp] * qty
+      }
+    end
+
+    # Sell an inventory instance (or qty from a stack) back to a vendor.
+    # Mundane catalog only; Society / unique / runed / magic blocked.
+    def self.vendor_sell(char_or_sheet, item_id, qty: 1)
+      sheet = sheet_for(char_or_sheet)
+      return { ok: false, error: "pf2e.no_sheet" } unless sheet
+
+      qty = [qty.to_i, 1].max
+      item = find_item(sheet, item_id)
+      return { ok: false, error: "pf2e.item_not_found" } unless item
+
+      if item["society"]
+        return { ok: false, error: "pf2e.vendor_sell_society" }
+      end
+      if item["unique"] || item_is_unique?(item)
+        return { ok: false, error: "pf2e.vendor_sell_unique" }
+      end
+      if item["contained_in"].to_s.strip != ""
+        return { ok: false, error: "pf2e.vendor_sell_stowed" }
+      end
+      if item["equipped"]
+        return { ok: false, error: "pf2e.vendor_sell_equipped" }
+      end
+
+      price_sp = item_catalog_price_sp(item)
+      return { ok: false, error: "pf2e.vendor_sell_no_price" } if price_sp.nil?
+
+      unit_cp = (price_sp_to_cp(price_sp) * SELL_RATE).floor
+      return { ok: false, error: "pf2e.vendor_sell_no_price" } if unit_cp <= 0
+
+      have_qty = item["qty"].to_i
+      qty = [qty, have_qty].min
+
+      remove = inventory_remove(sheet, item["id"], qty: qty)
+      return remove unless remove[:ok]
+
+      credit_cp = unit_cp * qty
+      have = purse_to_cp(sheet_money(sheet))
+      set_money(sheet, cp_to_purse(have + credit_cp))
+
+      {
+        ok: true,
+        error: nil,
+        item: remove[:item],
+        money: sheet_money(sheet),
+        credited_cp: credit_cp,
+        qty: qty
       }
     end
 
