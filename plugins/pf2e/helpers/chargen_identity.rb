@@ -71,6 +71,7 @@ module AresMUSH
         saves: {},
         feats: [],
         feat_slot_map: {},
+        features: [],
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
@@ -131,6 +132,26 @@ module AresMUSH
       end
       boosts_preview[:class_key] = cc["key_ability"] || cc[:key_ability]
 
+      # Preview automatic features that would be granted on commit
+      feature_preview = []
+      if anc.is_a?(Hash)
+        feature_preview.concat(Array(anc["features"]).map(&:to_s))
+      end
+      if her.is_a?(Hash)
+        feature_preview.concat(Array(her["features"]).map(&:to_s))
+      end
+      if class_entry.is_a?(Hash)
+        level = [sheet.level.to_i, 1].max
+        (class_entry["features_by_level"] || {}).each do |lvl_key, features|
+          next if lvl_key.to_i > level
+          Array(features).each do |fk|
+            k = fk.to_s
+            next if feat_slot_marker?(k)
+            feature_preview << k
+          end
+        end
+      end
+
       {
         ok: true,
         error: nil,
@@ -157,6 +178,7 @@ module AresMUSH
         languages_class: class_langs,
         languages_society: cg_society_languages,
         boosts: boosts_preview,
+        features_preview: feature_preview.uniq,
         complete: !sheet.ancestry.blank? && !sheet.heritage.blank? &&
                   !sheet.background.blank? && !(cc["slug"] || cc[:slug]).to_s.empty?
       }
@@ -196,6 +218,7 @@ module AresMUSH
         saves: {},
         feats: [],
         feat_slot_map: {},
+        features: [],
         abilities: {
           "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10],
           "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10]
@@ -237,12 +260,13 @@ module AresMUSH
       end
 
       cg_apply_granted_languages(sheet)
+      cg_apply_granted_features(sheet)
 
       cg_recalc_abilities(sheet)
       cg_recalc_hp(sheet)
       sheet.update(identity_locked: true)
 
-      { ok: true, error: nil, sheet: sheet }
+      { ok: true, error: nil, sheet: sheet, features: sheet_features(sheet) }
     end
 
   end

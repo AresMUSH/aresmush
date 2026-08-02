@@ -32,9 +32,12 @@ module AresMUSH
 
     # Feat slugs known (owned). Granted + chosen.
     attribute :feats,         :type => DataType::Array,   :default => []
-    # Which slot paid for each chosen feat: { "assurance" => "skill", "power_attack" => "class" }
-    # Granted feats (background, etc.) are absent from this map — they cost no slot.
+    # Which slot paid for each chosen feat: { "assurance" => "skill" }
+    # Granted feats are absent from this map — they cost no slot.
     attribute :feat_slot_map, :type => DataType::Hash,    :default => {}
+
+    # Automatic ancestry/class features (not player picks). e.g. darkvision, attack_of_opportunity
+    attribute :features,      :type => DataType::Array,   :default => []
 
     attribute :hp,            :type => DataType::Hash,    :default => {
       "current" => 0,
