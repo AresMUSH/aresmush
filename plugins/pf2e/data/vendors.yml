@@ -1,0 +1,53 @@
+# Mundane vendor catalogs.
+# Lookup: Pf2e.read_data("vendors", "armorer")
+#
+# Each vendor lists stock as catalog section + slug.
+# price comes from the catalog entry (sp); missing price = not for sale.
+# stock: null / omit = unlimited; integer = limited quantity (future).
+#
+# buy_currency: purse only (must withdraw from Society account first).
+
+vendors:
+  general:
+    name: General Goods
+    description: Rope, rations, tools, common kits.
+    categories: [gear, consumable]
+    stock:
+      - { section: items, slug: backpack }
+      - { section: items, slug: rope_50 }
+      - { section: items, slug: torch }
+      - { section: items, slug: rations }
+      - { section: items, slug: healers_tools }
+      - { section: items, slug: thieves_tools }
+
+  weaponsmith:
+    name: Weaponsmith
+    description: Simple and martial weapons.
+    categories: [weapon]
+    stock:
+      - { section: weapons, slug: longsword }
+      - { section: weapons, slug: shortsword }
+      - { section: weapons, slug: dagger }
+
+  armorer:
+    name: Armorer
+    description: Armor and shields.
+    categories: [armor, shield]
+    stock:
+      - { section: armor, slug: explorers_clothing }
+      - { section: armor, slug: leather }
+      - { section: armor, slug: studded_leather }
+      - { section: armor, slug: chain_mail }
+      - { section: armor, slug: breastplate }
+      - { section: armor, slug: half_plate }
+      - { section: armor, slug: full_plate }
+      - { section: items, slug: steel_shield }
+
+  alchemist:
+    name: Alchemist Shop
+    description: Alchemical items (expand catalog as data is added).
+    categories: [alchemical, consumable]
+    stock:
+      - { section: items, slug: minor_elixir_of_life }
+      - { section: items, slug: lesser_antidote }
+      - { section: items, slug: acid_flask_lesser }

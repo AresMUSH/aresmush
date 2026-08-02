@@ -1,9 +1,15 @@
 # General gear / consumables catalog.
 # Lookup: Pf2e.read_data("items", "rope_50")
 #
-# kind: gear | consumable | shield | custom
-# bulk: L | 0 | 1 | 2 | …
-# price: in sp (optional; convert in helpers if needed)
+# kind: gear | consumable | shield | alchemical | custom
+# bulk: L | 0 | 1 | 2 | … | "-" for worn-container negligible
+# price: in sp (vendor uses this; convert to cp at purchase)
+# container: optional capacity rules for bags/packs
+#   capacity      — max Bulk the container can hold
+#   ignore_bulk   — first N Bulk of contents do not count toward carrier Bulk
+#                   (PF2e backpack: capacity 4, ignore_bulk 2)
+#   worn_bulk     — bulk of the container itself when worn (usually 0 / L / -)
+#
 # hands: optional
 # traits: optional array
 
@@ -11,9 +17,35 @@ items:
   backpack:
     name: Backpack
     kind: gear
-    bulk: "-"          # worn container; treated as negligible when worn (override in play)
+    bulk: "-"
     price: 1
     traits: [container]
+    container:
+      capacity: 4
+      ignore_bulk: 2
+      worn_bulk: 0
+
+  satchel:
+    name: Satchel
+    kind: gear
+    bulk: L
+    price: 1
+    traits: [container]
+    container:
+      capacity: 2
+      ignore_bulk: 0
+      worn_bulk: 0.1
+
+  belt_pouch:
+    name: Belt Pouch
+    kind: gear
+    bulk: "-"
+    price: 0.4
+    traits: [container]
+    container:
+      capacity: 0.4   # 4 L
+      ignore_bulk: 0
+      worn_bulk: 0
 
   rope_50:
     name: "Rope (50 feet)"
@@ -54,3 +86,25 @@ items:
     hardness: 5
     hp: 20
     bt: 10
+
+  # Sample alchemicals (expand later)
+  minor_elixir_of_life:
+    name: "Minor Elixir of Life"
+    kind: alchemical
+    bulk: L
+    price: 20
+    traits: [alchemical, consumable, elixir, healing]
+
+  lesser_antidote:
+    name: "Lesser Antidote"
+    kind: alchemical
+    bulk: L
+    price: 10
+    traits: [alchemical, consumable, elixir]
+
+  acid_flask_lesser:
+    name: "Acid Flask (Lesser)"
+    kind: alchemical
+    bulk: L
+    price: 3
+    traits: [alchemical, bomb, consumable, splash]
