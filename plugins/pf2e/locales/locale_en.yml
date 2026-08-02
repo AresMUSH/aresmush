@@ -102,6 +102,8 @@ en:
     cg_feat_slot_required: "This feat can use more than one open slot type. Specify one: %{slots}. Usage: cg/feat <slug> <slot>"
     cg_feat_slot_unavailable: "That slot is not available for this feat. Open matching slots: %{slots}."
     cg_dedication_has_dependents: "Remove other feats from this archetype before removing the dedication."
+    dedication_second_needs_staff: "You already have a dedication. A second requires staff approval (ask staff; they use pf2e/set)."
+    dedication_third_blocked: "A third dedication is not allowed."
 
     feat_search_title_all: "PF2e Feats"
     feat_search_title_query: "PF2e Feats matching '%{query}'"
