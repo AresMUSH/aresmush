@@ -72,6 +72,7 @@ module AresMUSH
         feats: [],
         feat_slot_map: {},
         features: [],
+        archetypes: [],
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
@@ -132,7 +133,6 @@ module AresMUSH
       end
       boosts_preview[:class_key] = cc["key_ability"] || cc[:key_ability]
 
-      # Preview automatic features that would be granted on commit
       feature_preview = []
       if anc.is_a?(Hash)
         feature_preview.concat(Array(anc["features"]).map(&:to_s))
@@ -179,6 +179,7 @@ module AresMUSH
         languages_society: cg_society_languages,
         boosts: boosts_preview,
         features_preview: feature_preview.uniq,
+        archetypes: sheet_archetypes(sheet),
         complete: !sheet.ancestry.blank? && !sheet.heritage.blank? &&
                   !sheet.background.blank? && !(cc["slug"] || cc[:slug]).to_s.empty?
       }
@@ -219,6 +220,7 @@ module AresMUSH
         feats: [],
         feat_slot_map: {},
         features: [],
+        archetypes: [],
         abilities: {
           "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10],
           "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10]
@@ -239,7 +241,6 @@ module AresMUSH
         end
         feat = bg["feat"].to_s.strip.downcase
         if !feat.empty? && feat != "null"
-          # Granted feats cost no slot — omit from feat_slot_map
           sheet.update(feats: [feat])
         end
       end
