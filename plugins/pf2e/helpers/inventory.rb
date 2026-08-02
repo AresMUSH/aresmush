@@ -40,8 +40,8 @@ module AresMUSH
     end
 
     def self.find_item(char_or_sheet, item_id)
-      id = item_id.to_s.strip
-      sheet_inventory(char_or_sheet).find { |e| e["id"].to_s == id }
+      id = item_id.to_s.strip.downcase
+      sheet_inventory(char_or_sheet).find { |e| e["id"].to_s.downcase == id }
     end
 
     def self.catalog_entry(kind, slug)
@@ -57,10 +57,19 @@ module AresMUSH
     def self.infer_kind_from_slug(slug)
       key = slug.to_s.strip.downcase
       return "weapon" if read_data("weapons", key)
-      return "armor" if read_data("armor", key)
+      arm = read_data("armor", key)
+      if arm.is_a?(Hash)
+        return arm["kind"].to_s == "shield" ? "shield" : "armor"
+      end
       entry = read_data("items", key)
       return entry["kind"].to_s if entry.is_a?(Hash) && entry["kind"]
       "gear"
+    end
+
+    def self.slug_in_catalog?(slug)
+      key = slug.to_s.strip.downcase
+      return false if key.empty?
+      !!(read_data("weapons", key) || read_data("armor", key) || read_data("items", key))
     end
 
     def self.item_is_unique?(entry)
@@ -85,7 +94,30 @@ module AresMUSH
       slug.empty? ? entry["id"].to_s : slug
     end
 
-    # Resolve bulk string/number for one instance (qty applied by caller for stacks).
+    def self.format_runes_brief(entry)
+      runes = entry["runes"]
+      return nil unless runes.is_a?(Hash) && !runes.empty?
+      bits = []
+      bits << "+#{runes["potency"]}" if runes["potency"].to_i > 0
+      bits << "striking#{runes["striking"].to_i > 1 ? runes["striking"].to_i : ''}" if runes["striking"].to_i > 0
+      bits << "resilient#{runes["resilient"].to_i > 1 ? runes["resilient"].to_i : ''}" if runes["resilient"].to_i > 0
+      Array(runes["property"]).each { |p| bits << p.to_s }
+      bits.empty? ? nil : bits.join(", ")
+    end
+
+    # One-line display for inventory lists.
+    def self.format_item_line(entry)
+      name = item_display_name(entry)
+      qty = entry["qty"].to_i
+      qty_bit = qty > 1 ? " x#{qty}" : ""
+      bulk = format_bulk(item_effective_bulk(entry))
+      kind = entry["kind"].to_s
+      rune_bit = format_runes_brief(entry)
+      rune_bit = rune_bit ? " [#{rune_bit}]" : ""
+      unique_bit = entry["unique"] ? " *" : ""
+      "%xh#{entry['id']}%xn  #{name}#{qty_bit}#{rune_bit}#{unique_bit}  (#{kind}, Bulk #{bulk})"
+    end
+
     def self.item_unit_bulk(entry)
       if !entry["bulk"].nil? && entry["bulk"].to_s != ""
         return entry["bulk"]
@@ -97,7 +129,7 @@ module AresMUSH
 
     def self.normalize_item(raw)
       e = {}
-      e["id"] = raw["id"].to_s
+      e["id"] = raw["id"].to_s.downcase
       e["slug"] = raw["slug"] ? raw["slug"].to_s.strip.downcase : nil
       e["kind"] = (raw["kind"] || "gear").to_s.strip.downcase
       e["kind"] = "gear" unless ITEM_KINDS.include?(e["kind"])
@@ -119,7 +151,6 @@ module AresMUSH
       sheet_inventory(sheet)
     end
 
-    # Add from catalog or fully custom. Forces unique when runes/magic present.
     def self.inventory_add(char_or_sheet, opts = {})
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -145,7 +176,6 @@ module AresMUSH
       }
       item = normalize_item(raw)
 
-      # Stack identical non-unique catalog items
       list = sheet_inventory(sheet)
       unless item["unique"]
         existing = list.find do |e|
@@ -169,12 +199,26 @@ module AresMUSH
       { ok: true, error: nil, item: item, inventory: sheet_inventory(sheet) }
     end
 
+    # Player-facing add: catalog slug only.
+    def self.inventory_add_from_catalog(char_or_sheet, slug, qty: 1)
+      key = slug.to_s.strip.downcase
+      return { ok: false, error: "pf2e.item_unknown_slug" } unless slug_in_catalog?(key)
+
+      kind = infer_kind_from_slug(key)
+      cat = catalog_entry(kind, key)
+      name = cat.is_a?(Hash) ? cat["name"] : nil
+      bulk = cat.is_a?(Hash) ? cat["bulk"] : nil
+
+      inventory_add(char_or_sheet, slug: key, kind: kind, qty: qty, name: name, bulk: bulk)
+    end
+
     def self.inventory_remove(char_or_sheet, item_id, qty: nil)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
 
       list = sheet_inventory(sheet)
-      idx = list.index { |e| e["id"].to_s == item_id.to_s }
+      id = item_id.to_s.strip.downcase
+      idx = list.index { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless idx
 
       entry = list[idx]
@@ -196,21 +240,31 @@ module AresMUSH
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
 
       list = sheet_inventory(sheet)
-      entry = list.find { |e| e["id"].to_s == item_id.to_s }
+      id = item_id.to_s.strip.downcase
+      entry = list.find { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless entry
+
+      if equipped
+        # One armor / one shield at a time (simple exclusivity).
+        if entry["kind"] == "armor"
+          list.each { |e| e["equipped"] = false if e["kind"] == "armor" && e["id"] != entry["id"] }
+        elsif entry["kind"] == "shield"
+          list.each { |e| e["equipped"] = false if e["kind"] == "shield" && e["id"] != entry["id"] }
+        end
+      end
 
       entry["equipped"] = !!equipped
       save_inventory(sheet, list)
       { ok: true, error: nil, item: entry, inventory: sheet_inventory(sheet) }
     end
 
-    # Apply or update runes — forces unique and qty 1.
     def self.inventory_set_runes(char_or_sheet, item_id, runes_hash)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
 
       list = sheet_inventory(sheet)
-      entry = list.find { |e| e["id"].to_s == item_id.to_s }
+      id = item_id.to_s.strip.downcase
+      entry = list.find { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless entry
 
       entry["runes"] = runes_hash.is_a?(Hash) ? runes_hash : {}
@@ -225,7 +279,8 @@ module AresMUSH
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
 
       list = sheet_inventory(sheet)
-      entry = list.find { |e| e["id"].to_s == item_id.to_s }
+      id = item_id.to_s.strip.downcase
+      entry = list.find { |e| e["id"].to_s.downcase == id }
       return { ok: false, error: "pf2e.item_not_found" } unless entry
 
       entry["magic"] = magic_hash.is_a?(Hash) ? magic_hash : {}
