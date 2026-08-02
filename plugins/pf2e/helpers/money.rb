@@ -4,7 +4,8 @@ module AresMUSH
     # -------------------------------------------------
     # Currency
     # Denominations: pp, gp, sp, cp (1 pp = 10 gp = 100 sp = 1000 cp)
-    # money           — purse (on person)
+    # Stored on the sheet as a hash of coin counts — not a single total.
+    # money           — purse (on person; counts toward encumbrance)
     # society_account — Hall ledger (PC-owned, not coin, not encumbrance)
     # -------------------------------------------------
 
@@ -46,7 +47,6 @@ module AresMUSH
       COIN_KEYS.sum { |k| p[k] * COIN_TO_CP[k] }
     end
 
-    # Convert copper pieces to a normalized purse (largest denominations first).
     def self.cp_to_purse(total_cp)
       total = [total_cp.to_i, 0].max
       pp = total / 1000
@@ -58,11 +58,49 @@ module AresMUSH
       { "pp" => pp, "gp" => gp, "sp" => sp, "cp" => cp }
     end
 
-    # Display string: omit zero denominations. e.g. "2 gp, 5 sp"
+    # Compact: omit zero denominations. e.g. "2 gp, 5 sp"
     def self.format_money(hash)
       p = normalize_purse(hash)
       parts = COIN_KEYS.map { |k| p[k] > 0 ? "#{p[k]} #{k}" : nil }.compact
       parts.empty? ? "0 cp" : parts.join(", ")
+    end
+
+    # Always show all four denominations (for the money command).
+    def self.format_purse_lines(hash, indent = "  ")
+      p = normalize_purse(hash)
+      COIN_KEYS.map { |k| "#{indent}#{p[k]} #{k}" }.join("%r")
+    end
+
+    # Full status block for `money` command.
+    def self.format_money_status(char_or_sheet)
+      sheet = sheet_for(char_or_sheet)
+      name = if char_or_sheet.respond_to?(:name)
+               char_or_sheet.name
+             elsif sheet && sheet.character
+               sheet.character.name
+             else
+               "Character"
+             end
+
+      purse = sheet_money(sheet)
+      account = sheet_society_account(sheet)
+      purse_cp = purse_to_cp(purse)
+      account_cp = purse_to_cp(account)
+
+      lines = []
+      lines << "%xh#{name} — Wealth%xn"
+      lines << "%xhOn person (coin)%xn  [#{format_money(purse)}]  (~#{purse_cp} cp value)"
+      lines << format_purse_lines(purse)
+      lines << "%xhSociety account%xn  [#{format_money(account)}]  (~#{account_cp} cp value)"
+      lines << format_purse_lines(account)
+      lines << "%x(Society funds are not physical coin and do not count toward Bulk.)%xn"
+
+      if use_encumbrance?
+        coins = coin_count(sheet)
+        lines << "%xhCoin bulk%xn  #{coins} coins on person → #{format_bulk(coin_bulk(sheet))} Bulk (1000 coins = 1)"
+      end
+
+      lines.join("%r")
     end
 
     def self.sheet_money(char_or_sheet)
@@ -91,9 +129,6 @@ module AresMUSH
       sheet_society_account(sheet)
     end
 
-    # Add coins to purse (positive) or remove (negative amounts in delta hash).
-    # Returns { ok:, error:, money: } — fails if resulting any denomination would go negative
-    # unless allow_negative (internal use only).
     def self.adjust_money(char_or_sheet, delta, allow_negative: false)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -128,7 +163,6 @@ module AresMUSH
       { ok: true, error: nil, society_account: next_purse }
     end
 
-    # Spend from purse by total value in cp (auto-makes change across denominations).
     def self.spend_cp(char_or_sheet, cost_cp)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -142,7 +176,6 @@ module AresMUSH
       { ok: true, error: nil, money: sheet_money(sheet), spent_cp: cost }
     end
 
-    # Deposit purse coins into Society account (must have the coins on person).
     def self.society_deposit(char_or_sheet, amount_hash)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -157,7 +190,6 @@ module AresMUSH
 
       put = adjust_society_account(sheet, amount)
       unless put[:ok]
-        # rollback purse
         adjust_money(sheet, amount)
         return put
       end
@@ -171,7 +203,6 @@ module AresMUSH
       }
     end
 
-    # Withdraw from Society account into purse (converts ledger → coin for spending).
     def self.society_withdraw(char_or_sheet, amount_hash)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -199,7 +230,6 @@ module AresMUSH
       }
     end
 
-    # Coin count for encumbrance (1000 coins = 1 Bulk). Society account excluded.
     def self.coin_count(char_or_sheet)
       p = sheet_money(char_or_sheet)
       COIN_KEYS.sum { |k| p[k] }
