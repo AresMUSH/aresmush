@@ -261,11 +261,11 @@ module AresMUSH
         }
       end
 
-      rows.sort_by { |r| [r[:level], r[:name].to_s.downcase] }
+      rows.sort_by { |r| r[:name].to_s.downcase }
     end
 
     # Search feats by name/slug, level, category/trait, or free text in effect.
-    # query blank → all feats sorted by level then name.
+    # Results sorted alphabetically by name.
     def self.feat_search(query = nil)
       data = read_data("feats") || {}
       q = query.to_s.strip.downcase
@@ -306,7 +306,7 @@ module AresMUSH
         }
       end
 
-      rows.sort_by { |r| [r[:level], r[:name].to_s.downcase] }
+      rows.sort_by { |r| r[:name].to_s.downcase }
     end
 
     def self.cg_take_feat(char, slug)
