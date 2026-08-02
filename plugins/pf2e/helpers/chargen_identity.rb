@@ -24,7 +24,6 @@ module AresMUSH
       false
     end
 
-    # All sheet-modifying cg helpers must call this.
     def self.cg_require_not_approved(char, sheet = nil)
       if cg_char_approved?(char)
         return { ok: false, error: "pf2e.cg_approved_locked", sheet: sheet }
@@ -71,6 +70,7 @@ module AresMUSH
         skills: {},
         saves: {},
         feats: [],
+        feat_slot_map: {},
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
@@ -195,6 +195,7 @@ module AresMUSH
         skills: {},
         saves: {},
         feats: [],
+        feat_slot_map: {},
         abilities: {
           "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10],
           "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10]
@@ -215,6 +216,7 @@ module AresMUSH
         end
         feat = bg["feat"].to_s.strip.downcase
         if !feat.empty? && feat != "null"
+          # Granted feats cost no slot — omit from feat_slot_map
           sheet.update(feats: [feat])
         end
       end
