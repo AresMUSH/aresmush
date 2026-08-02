@@ -72,6 +72,8 @@ module AresMUSH
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
       sheet = result[:sheet]
+      blocked = cg_require_not_approved(char, sheet)
+      return blocked if blocked
       locked = cg_require_identity_locked(sheet)
       return locked if locked
       return { ok: false, error: "pf2e.cg_need_background", sheet: sheet } if sheet.background.blank?
