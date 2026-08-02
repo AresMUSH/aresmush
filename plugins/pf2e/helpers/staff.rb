@@ -44,7 +44,9 @@ module AresMUSH
 
       sheet = result[:sheet]
       char = result[:char]
-      parts = field_path.to_s.strip.split("/").map { |p| p.strip.downcase }.reject(&:empty?)
+      # Preserve original path for display names; only normalize separators.
+      raw_parts = field_path.to_s.strip.split("/").map { |p| p.strip }.reject(&:empty?)
+      parts = raw_parts.map { |p| p.downcase }
       return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if parts.empty?
 
       field = parts[0]
@@ -166,13 +168,6 @@ module AresMUSH
         end
 
       when "money", "coin", "coins"
-        # money/add/[society|purse/]<amounts...>   — default destination: society
-        # money/remove/[society|purse/]<amounts...>
-        # Examples:
-        #   pf2e/set Bob=money/add/50gp
-        #   pf2e/set Bob=money/add/society/1pp/10gp
-        #   pf2e/set Bob=money/add/purse/5gp
-        #   pf2e/set Bob=money/remove/20gp
         action = parts[1]
         return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil?
 
@@ -216,6 +211,112 @@ module AresMUSH
             { ok: true, error: nil, char: char, sheet: sheet,
               summary: "society -#{format_money(amount)} → #{format_money(r[:society_account])}" }
           end
+        else
+          { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
+        end
+
+      when "item", "gear", "inv"
+        # Society requisition / brokerage path (always society-flagged on grant).
+        #
+        # Catalog:  item/add/<slug>[/qty][/potency:1][/property:flaming]...
+        # Custom:   item/custom/<kind>/<Name_With_Underscores>[/bulk:1][/potency:1]...
+        # Remove:   item/remove/<id>[/qty]
+        # Runes:    item/runes/<id>/potency:1/striking:1/property:flaming
+        # Magic:    item/magic/<id>/invested:true/level:5
+        # Notes:    item/notes/<id>/Plot_gear_from_Hall
+        action = parts[1]
+        return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil?
+
+        case action
+        when "add", "grant"
+          slug = parts[2]
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if slug.nil?
+          parsed = parse_item_kv_tokens(parts[3..-1])
+          qty = parsed[:meta]["qty"] || 1
+          qty = parts[3].to_i if parts[3] && parts[3] =~ /^\d+$/
+
+          r = inventory_add_from_catalog(sheet, slug, qty: qty, society: true)
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+
+          item = r[:item]
+          if parsed[:runes].any?
+            inventory_set_runes(sheet, item["id"], parsed[:runes])
+            item = find_item(sheet, item["id"])
+          end
+          if parsed[:magic].any?
+            inventory_set_magic(sheet, item["id"], parsed[:magic])
+            item = find_item(sheet, item["id"])
+          end
+          if parsed[:meta]["notes"]
+            inventory_set_notes(sheet, item["id"], parsed[:meta]["notes"])
+            item = find_item(sheet, item["id"])
+          end
+
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "item +#{item_display_name(item)} (#{item['id']}) [Society]" }
+
+        when "custom"
+          kind = parts[2] || "custom"
+          name_token = raw_parts[3] # preserve case from original path segment
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if name_token.nil?
+          name = name_token.tr("_", " ")
+          parsed = parse_item_kv_tokens(parts[4..-1])
+
+          r = inventory_add_custom(sheet,
+                                  kind: kind,
+                                  name: name,
+                                  bulk: parsed[:meta]["bulk"],
+                                  slug: parsed[:meta]["slug"],
+                                  runes: parsed[:runes],
+                                  magic: parsed[:magic],
+                                  notes: parsed[:meta]["notes"] || "Society issue",
+                                  society: true)
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          item = r[:item]
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "custom +#{item_display_name(item)} (#{item['id']}) [Society]" }
+
+        when "remove", "drop", "take"
+          id = parts[2]
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
+          qty = parts[3] && parts[3] =~ /^\d+$/ ? parts[3].to_i : nil
+          r = inventory_remove(sheet, id, qty: qty)
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          item = r[:item]
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "item -#{item_display_name(item)} (#{item['id']})" }
+
+        when "runes", "rune"
+          id = parts[2]
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
+          parsed = parse_item_kv_tokens(parts[3..-1])
+          return { ok: false, error: "pf2e.staff_bad_value", char: char, sheet: sheet } if parsed[:runes].empty?
+          r = inventory_set_runes(sheet, id, parsed[:runes])
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          item = r[:item]
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "runes on #{item_display_name(item)} (#{item['id']}): #{format_runes_brief(item)}" }
+
+        when "magic"
+          id = parts[2]
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
+          parsed = parse_item_kv_tokens(parts[3..-1])
+          return { ok: false, error: "pf2e.staff_bad_value", char: char, sheet: sheet } if parsed[:magic].empty?
+          r = inventory_set_magic(sheet, id, parsed[:magic])
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          item = r[:item]
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "magic on #{item_display_name(item)} (#{item['id']})" }
+
+        when "notes", "note"
+          id = parts[2]
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
+          note = raw_parts[3..-1].join(" ").tr("_", " ")
+          r = inventory_set_notes(sheet, id, note)
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "notes on #{id}" }
+
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
         end
