@@ -10,7 +10,16 @@ module AresMUSH
           return
         end
 
-        client.emit_success t('pf2e.cg_commit_ok')
+        wealth = result[:starting_wealth]
+        if wealth
+          client.emit_success t('pf2e.cg_commit_ok',
+                               :wealth => wealth[:display],
+                               :where => wealth[:destination])
+        else
+          client.emit_success t('pf2e.cg_commit_ok',
+                               :wealth => '0 cp',
+                               :where => 'society')
+        end
       end
     end
   end
