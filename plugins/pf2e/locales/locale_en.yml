@@ -7,6 +7,14 @@ en:
     roll_bad_dc: "Could not resolve DC '%{dc}'. Use a number, class_dc, or spell_dc."
     roll_job_ok: "Roll posted to job #%{number}."
 
+    staff_no_permission: "You do not have permission to manage PF2e sheets."
+    staff_set_usage: "Usage: pf2e/set <name>=<field>/<value>[/...]  (see help)"
+    staff_unknown_field: "Unknown staff set field."
+    staff_bad_value: "Invalid value for that field."
+    staff_set_ok: "Updated %{name}: %{summary}"
+    staff_reset_confirm: "This wipes %{name}'s PF2e sheet. Type: pf2e/reset %{name}=confirm"
+    staff_reset_ok: "PF2e sheet for %{name} reset to defaults."
+
     cg_sheet_ready: "PF2e sheet ready. Stage A: set ancestry/heritage/background/class, then cg/identity and cg/commit."
     cg_ancestry_usage: "Usage: cg/ancestry <slug>  (or cg/ancestry to list)"
     cg_heritage_usage: "Usage: cg/heritage <slug>  (or cg/heritage to list)"

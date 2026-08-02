@@ -27,6 +27,11 @@ module AresMUSH
         end
       when "feats"
         return FeatSearchCmd if cmd.switch.nil?
+      when "pf2e"
+        case cmd.switch
+        when "set" then return Pf2eSetCmd
+        when "reset" then return Pf2eResetCmd
+        end
       when "cg"
         case cmd.switch
         when "start" then return CgStartCmd
