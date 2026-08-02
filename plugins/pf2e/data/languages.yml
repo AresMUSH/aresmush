@@ -1,0 +1,123 @@
+# Language catalog for TapestryMUSH / PF2e plugin.
+# Lookup: Pf2e.read_data("languages", "tradetongue")
+#
+# rarity: common | uncommon | secret
+# spoken / written: default true; Precursor is written-only
+# restricted: true → only granted by a specific source (e.g. Druidic),
+#             never chosen as a free Int-language pick
+# society: true → granted to all PCs at chargen (Ruin-cant)
+
+languages:
+  # ---- Common (everyone may learn; Tradetongue is universal baseline) ----
+  tradetongue:
+    name: Tradetongue
+    rarity: common
+    spoken: true
+    written: true
+    note: "Common trade tongue; all characters start with this."
+
+  draconic:
+    name: Draconic
+    rarity: common
+    spoken: true
+    written: true
+
+  dwarven:
+    name: Dwarven
+    rarity: common
+    spoken: true
+    written: true
+
+  iliari:
+    name: Iliari
+    rarity: common
+    spoken: true
+    written: true
+    note: "Language of the Homelands / Iliari peoples."
+
+  goblin:
+    name: Goblin
+    rarity: common
+    spoken: true
+    written: true
+
+  jotun:
+    name: Jotun
+    rarity: common
+    spoken: true
+    written: true
+
+  orcish:
+    name: Orcish
+    rarity: common
+    spoken: true
+    written: true
+
+  sylvan:
+    name: Sylvan
+    rarity: common
+    spoken: true
+    written: true
+
+  # ---- Regional (common rarity; local to specific realms) ----
+  askharian:
+    name: Askharian
+    rarity: common
+    spoken: true
+    written: true
+    regional: true
+    note: "Askharia. Other realms lean on Tradetongue or Iliari."
+
+  nuoran:
+    name: Nuoran
+    rarity: common
+    spoken: true
+    written: true
+    regional: true
+    note: "Griona Nuor."
+
+  # ---- Society (all PCs) ----
+  ruin_cant:
+    name: Ruin-cant
+    rarity: secret
+    spoken: false
+    written: false
+    signed: true
+    society: true
+    restricted: true
+    note: "Society hand signals for silent communication. All PCs receive this at chargen."
+
+  # ---- Uncommon ----
+  celestial:
+    name: Celestial
+    rarity: uncommon
+    spoken: true
+    written: true
+
+  precursor:
+    name: Precursor
+    rarity: uncommon
+    spoken: false
+    written: true
+    note: "Read only — not spoken."
+
+  shadow_speak:
+    name: Shadow-speak
+    rarity: uncommon
+    spoken: true
+    written: true
+
+  infernal:
+    name: Infernal
+    rarity: uncommon
+    spoken: true
+    written: true
+
+  # ---- Secret ----
+  druidic:
+    name: Druidic
+    rarity: secret
+    spoken: true
+    written: true
+    restricted: true
+    note: "Class-granted only. Druid PCs may not be open at launch."

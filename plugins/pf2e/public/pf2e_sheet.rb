@@ -9,12 +9,14 @@ module AresMUSH
     attribute :background
     attribute :charclass,     :type => DataType::Hash,    :default => {}
 
-    # Stage A lock: once true, ancestry/heritage/background/class cannot change
-    # without cg/reset (chargen only; blocked for approved characters).
+    # Stage A lock
     attribute :identity_locked, :type => DataType::Boolean, :default => false
 
     attribute :ability_boosts, :type => DataType::Hash, :default => {}
     attribute :background_skill_picks, :type => DataType::Array, :default => []
+
+    # Language slugs known (from languages.yml). Free Int picks stored here too.
+    attribute :languages,     :type => DataType::Array,   :default => []
 
     attribute :abilities,     :type => DataType::Hash,    :default => {
       "str" => [10, 10],

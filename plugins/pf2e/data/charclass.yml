@@ -1,17 +1,11 @@
 # Static class reference data.
 # Lookup: Pf2e.read_data("charclasses", "fighter")
 #
-# key_ability:
-#   options — list of allowed key ability keys (player picks one if multiple)
-# hp        — HP per level (ancestry HP is separate, added at level 1)
-# perception / saves — initial proficiency ranks (T/E/M/L)
-# skills:
-#   trained_count — number of trained skills at 1st (plus INT modifier usually)
-#   additional    — skill slugs always trained by the class
-# attacks / defenses — initial proficiency by category
-# class_dc — initial rank for class DC
-# spellcasting — null if none; otherwise tradition + initial rank + type
-# features_by_level — level → list of feature slugs (fill out over time)
+# languages (optional):
+#   starting   — always known when this class is committed (e.g. druidic)
+#   additional — flat extra free picks granted by the class (rare)
+# Restricted languages (restricted: true in languages.yml) may only appear
+# under starting (or explicit grants), never as open Int picks.
 
 charclasses:
   fighter:
@@ -27,6 +21,9 @@ charclasses:
     skills:
       trained_count: 3
       additional: []
+    languages:
+      starting: []
+      additional: 0
     attacks:
       simple: T
       martial: T
@@ -62,6 +59,9 @@ charclasses:
       trained_count: 2
       additional:
         - arcana
+    languages:
+      starting: []
+      additional: 0
     attacks:
       simple: T
       martial: U
@@ -77,7 +77,6 @@ charclasses:
       tradition: arcane
       rank: T
       type: prepared
-      # slots / spells known live on the sheet under magic[]
     features_by_level:
       1:
         - arcane_spellcasting
@@ -102,6 +101,9 @@ charclasses:
       trained_count: 7
       additional:
         - stealth
+    languages:
+      starting: []
+      additional: 0
     attacks:
       simple: T
       martial: T
@@ -121,4 +123,47 @@ charclasses:
         - surprise_attack
       2:
         - rogue_feat
+        - skill_feat
+
+  # Sample only — may not be open to PCs at launch.
+  druid:
+    name: Druid
+    key_ability:
+      options: [wis]
+    hp: 8
+    perception: T
+    saves:
+      fortitude: T
+      reflex: T
+      will: E
+    skills:
+      trained_count: 2
+      additional:
+        - nature
+    languages:
+      starting: [druidic]
+      additional: 0
+    attacks:
+      simple: T
+      martial: U
+      unarmed: T
+      advanced: U
+    defenses:
+      unarmored: T
+      light: T
+      medium: U
+      heavy: U
+    class_dc: T
+    spellcasting:
+      tradition: primal
+      rank: T
+      type: prepared
+    features_by_level:
+      1:
+        - primal_spellcasting
+        - anathema
+        - druidic_language
+        - druid_feat
+      2:
+        - druid_feat
         - skill_feat

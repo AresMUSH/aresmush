@@ -1,11 +1,12 @@
 # Static ancestry reference data.
 # Lookup: Pf2e.read_data("ancestries", "dwarf")
 #
-# boosts/flaws:
-#   fixed — ability keys applied automatically
-#   free  — number of player-chosen boosts/flaws
-# heritages — slugs into heritage.yml
-# features  — slugs for later feature/feat wiring (keep light)
+# languages:
+#   starting          — always known (plus Tradetongue is also forced globally)
+#   additional_per_int — if true, player picks ability_mod(int) extra languages
+#                        from common (and uncommon if you later allow)
+#   additional_options — optional closed list for those free picks; omit = any
+#                        non-restricted language of allowed rarities
 
 ancestries:
   human:
@@ -21,7 +22,7 @@ ancestries:
       free: 0
     traits: [human, humanoid]
     languages:
-      starting: [common]
+      starting: [tradetongue]
       additional_per_int: true
     vision: normal
     heritages:
@@ -42,7 +43,7 @@ ancestries:
       free: 0
     traits: [dwarf, humanoid]
     languages:
-      starting: [common, dwarven]
+      starting: [tradetongue, dwarven]
       additional_per_int: true
     vision: darkvision
     heritages:
@@ -65,7 +66,7 @@ ancestries:
       free: 0
     traits: [elf, humanoid]
     languages:
-      starting: [common, elven]
+      starting: [tradetongue, iliari]
       additional_per_int: true
     vision: low_light
     heritages:
