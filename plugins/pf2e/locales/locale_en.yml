@@ -27,6 +27,7 @@ en:
     item_not_found: "No inventory item with that id."
     item_bad_qty: "Invalid quantity."
     item_unknown_slug: "Unknown item slug. Check weapons.yml, armor.yml, or items.yml."
+    item_need_name: "Custom items need a name (use underscores for spaces)."
     gear_add_ok: "Added %{name} (%{id}), qty %{qty}."
     gear_drop_ok: "Dropped %{name} (%{id}), qty %{qty}."
     gear_equip_ok: "Equipped %{name} (%{id})."
