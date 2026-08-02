@@ -8,24 +8,15 @@ module AresMUSH
     # Evaluate a dice expression string.
     # Examples:
     #   "1d20 + str + 1d6 - 2"
-    #   "athletics"          → auto 1d20 + skill mod
-    #   "fortitude + 2"      → auto 1d20 + save mod + 2
-    #   "str"                → auto 1d20 + ability mod
+    #   "athletics"           → auto 1d20 + skill mod
+    #   "melee"               → auto 1d20 + melee attack
+    #   "spell_attack"        → auto 1d20 + spell attack
+    #   "fortitude + 2"
     #
-    # Returns a hash:
-    # {
-    #   expression: final expression used,
-    #   total:      integer final result,
-    #   parts: [
-    #     { raw: "1d20",      type: :dice,    rolls: [14], value: 14 },
-    #     { raw: "athletics", type: :skill,   value: 7 },
-    #     ...
-    #   ]
-    # }
+    # Returns { expression:, total:, parts: [...] }
     def self.roll(expression, char_or_sheet = nil)
       expr = expression.to_s.strip
 
-      # No dice notation present → this is a check; prepend 1d20
       unless expr =~ /\d*d\d+/i
         expr = "1d20 + #{expr}"
       end
@@ -46,17 +37,22 @@ module AresMUSH
       }
     end
 
-    # Roll NdS and return the individual results as an array.
     def self.roll_dice(count, sides)
       count = [count.to_i, 0].max
       sides = [sides.to_i, 1].max
       Array.new(count) { rand(1..sides) }
     end
 
-    # ---------- internals ----------
+    # Resolve a DC that may be a number or a combat keyword (class_dc, spell_dc).
+    # Returns integer or nil.
+    def self.resolve_dc_argument(raw, char_or_sheet = nil)
+      return nil if raw.nil?
+      s = raw.to_s.strip.downcase
+      return s.to_i if s =~ /\A\d+\z/
+      return resolve_combat_keyword(s, char_or_sheet) if combat_keyword?(s) && combat_keyword_type(s) == :dc
+      nil
+    end
 
-    # Split expression into [sign, token] pairs.
-    # "1d20 + str - 2" → [["+", "1d20"], ["+", "str"], ["-", "2"]]
     def self.tokenize(expr)
       s = expr.gsub(/\s+/, "")
       s = "+#{s}" unless s.start_with?("+", "-")
@@ -72,7 +68,6 @@ module AresMUSH
       multiplier = (sign == "-") ? -1 : 1
       raw = token
 
-      # Dice: NdS or dS
       if token =~ /\A(\d*)d(\d+)\z/i
         count = $1.empty? ? 1 : $1.to_i
         sides = $2.to_i
@@ -81,31 +76,35 @@ module AresMUSH
         return { raw: raw, type: :dice, rolls: rolls, value: value }
       end
 
-      # Flat integer
       if token =~ /\A\d+\z/
         value = token.to_i * multiplier
         return { raw: raw, type: :flat, value: value }
       end
 
-      # Ability (str, dex, …)
       if ability_key(token)
         mod = ability_mod(char_or_sheet, token)
         return { raw: raw, type: :ability, value: mod * multiplier }
       end
 
-      # Skill (athletics, stealth, …)
       if skill_ability(token)
         mod = skill_mod(char_or_sheet, token)
         return { raw: raw, type: :skill, value: mod * multiplier }
       end
 
-      # Save / Perception (fortitude, reflex, will, perception)
       if save_key(token)
         mod = save_mod(char_or_sheet, token)
         return { raw: raw, type: :save, value: mod * multiplier }
       end
 
-      # Unknown term → 0 so the roll still completes
+      if combat_keyword?(token)
+        mod = resolve_combat_keyword(token, char_or_sheet)
+        return {
+          raw: raw,
+          type: combat_keyword_type(token),
+          value: mod * multiplier
+        }
+      end
+
       { raw: raw, type: :unknown, value: 0 }
     end
 

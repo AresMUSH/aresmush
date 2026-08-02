@@ -2,7 +2,8 @@ en:
   pf2e:
     no_sheet: "No PF2e sheet found for that character."
     character_not_found: "That character was not found."
-    roll_usage: "Usage: roll <expression> [vs <dc>]"
+    roll_usage: "Usage: roll <expression> [vs <dc|class_dc|spell_dc>]"
+    roll_bad_dc: "Could not resolve DC '%{dc}'. Use a number, class_dc, or spell_dc."
 
     cg_sheet_ready: "PF2e sheet ready. Stage A: set ancestry/heritage/background/class, then cg/identity and cg/commit."
     cg_ancestry_usage: "Usage: cg/ancestry <slug>  (or cg/ancestry to list)"
