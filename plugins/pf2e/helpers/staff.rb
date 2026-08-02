@@ -16,7 +16,6 @@ module AresMUSH
       actor && actor.has_permission?("view_sheet")
     end
 
-    # May view target's sheet if self, or has view_sheet.
     def self.can_view_char_sheet?(viewer, target)
       return false unless viewer && target
       return true if viewer == target
@@ -104,17 +103,26 @@ module AresMUSH
         end
 
       when "feat"
+        # feat/add/<slug>[/<slot>]  — staff may force without a slot (omit slot)
+        # feat/remove/<slug>
         action = parts[1]
         slug = parts[2]
+        slot = parts[3]
         return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil? || slug.nil?
         feats = Array(sheet.feats).map { |f| f.to_s.strip.downcase }
+        map = (sheet.feat_slot_map || {}).dup
         if action == "add"
           feats << slug unless feats.include?(slug)
-          sheet.update(feats: feats)
-          { ok: true, error: nil, char: char, sheet: sheet, summary: "feat +#{slug}" }
+          if slot && feat_slot_type?(slot)
+            map[slug] = slot
+          end
+          sheet.update(feats: feats, feat_slot_map: map)
+          note = slot ? " (#{slot})" : " (no slot)"
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "feat +#{slug}#{note}" }
         elsif action == "remove"
           feats.delete(slug)
-          sheet.update(feats: feats)
+          map.delete(slug)
+          sheet.update(feats: feats, feat_slot_map: map)
           { ok: true, error: nil, char: char, sheet: sheet, summary: "feat -#{slug}" }
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
@@ -254,6 +262,7 @@ module AresMUSH
         skills: {},
         saves: {},
         feats: [],
+        feat_slot_map: {},
         hp: { "current" => 0, "max" => 0, "temp" => 0 },
         focus_points: 0,
         hero_points: 1,
