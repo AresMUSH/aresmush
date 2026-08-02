@@ -2,6 +2,7 @@ en:
   pf2e:
     no_sheet: "No PF2e sheet found for that character."
     character_not_found: "That character was not found."
+    view_sheet_denied: "You do not have permission to view another character's PF2e sheet."
     roll_usage: "Usage: roll <expression> [vs <dc|class_dc|spell_dc>]"
     roll_job_usage: "Usage: roll/job <job number>=<expression> [vs <dc|class_dc|spell_dc>]"
     roll_bad_dc: "Could not resolve DC '%{dc}'. Use a number, class_dc, or spell_dc."

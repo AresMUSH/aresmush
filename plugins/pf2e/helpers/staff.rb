@@ -5,10 +5,22 @@ module AresMUSH
     # Staff sheet maintenance
     # Bypasses chargen locks / approval gates.
     # Permission: manage_pf2e (assign on roles in roles.yml).
+    # Viewing others' sheets: view_sheet (e.g. Storyteller).
     # -------------------------------------------------
 
     def self.can_manage_pf2e?(actor)
       actor && actor.has_permission?("manage_pf2e")
+    end
+
+    def self.can_view_sheet?(actor)
+      actor && actor.has_permission?("view_sheet")
+    end
+
+    # May view target's sheet if self, or has view_sheet.
+    def self.can_view_char_sheet?(viewer, target)
+      return false unless viewer && target
+      return true if viewer == target
+      can_view_sheet?(viewer)
     end
 
     def self.staff_require_permission(actor)
