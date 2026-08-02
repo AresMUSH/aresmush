@@ -27,6 +27,15 @@ module AresMUSH
         when "withdraw" then return MoneyWithdrawCmd
         when "optimize" then return MoneyOptimizeCmd
         end
+      when "gear", "inv", "inventory"
+        # Primary root is gear; inv/inventory are aliases (avoid core collisions via shortcuts too).
+        case cmd.switch
+        when nil then return GearCmd
+        when "add" then return GearAddCmd
+        when "drop" then return GearDropCmd
+        when "equip" then return GearEquipCmd
+        when "unequip" then return GearUnequipCmd
+        end
       when "roll"
         case cmd.switch
         when nil then return RollCmd

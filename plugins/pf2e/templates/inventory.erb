@@ -1,0 +1,13 @@
+<%= line_with_text("#{name} — Gear") %>
+%xhPurse:%xn <%= purse_display %>   %xhSociety:%xn <%= society_display %>
+<% if encumbrance_enabled %>
+%xhBulk:%xn <%= bulk_display %> / <%= bulk_limit %> (max <%= bulk_maximum %>)  %xhLoad:%xn <%= load_label %>
+<% end %>
+
+<%= line_with_text("Equipped") %>
+<%= equipped_block %>
+
+<%= line_with_text("Carried") %>
+<%= carried_block %>
+
+%x(Use gear/add <slug> [qty], gear/drop <id> [qty], gear/equip <id>, gear/unequip <id>. Shortcuts: inv, inventory.)%xn

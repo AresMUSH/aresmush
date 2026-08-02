@@ -1,5 +1,15 @@
 pf2e:
   shortcuts:
     csheet: sheet/combat
+    inv: gear
+    inventory: gear
+    inv/add: gear/add
+    inventory/add: gear/add
+    inv/drop: gear/drop
+    inventory/drop: gear/drop
+    inv/equip: gear/equip
+    inventory/equip: gear/equip
+    inv/unequip: gear/unequip
+    inventory/unequip: gear/unequip
   # When true, bulk is calculated and shown; society-account coin is excluded.
   use_encumbrance: true
