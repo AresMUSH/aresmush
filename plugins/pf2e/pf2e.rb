@@ -21,7 +21,11 @@ module AresMUSH
         when nil then return SheetCmd
         end
       when "money"
-        return MoneyCmd if cmd.switch.nil?
+        case cmd.switch
+        when nil then return MoneyCmd
+        when "deposit" then return MoneyDepositCmd
+        when "withdraw" then return MoneyWithdrawCmd
+        end
       when "roll"
         case cmd.switch
         when nil then return RollCmd
