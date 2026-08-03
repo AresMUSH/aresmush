@@ -83,5 +83,10 @@ module AresMUSH
         end
       end
     end
+    
+    def self.check_api_key(key)
+      return true if Website.engine_api_keys.include?(key)
+      return Game.master.player_api_keys && Game.master.player_api_keys.has_key?(key)
+    end
   end
 end
