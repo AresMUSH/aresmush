@@ -67,6 +67,15 @@ module AresMUSH
         end
       end
 
+      # Level ability boosts: ability_boosts["level_5"] = [str, dex, ...]
+      stored.each do |source, list|
+        next unless source.to_s =~ /\Alevel_\d+\z/
+        Array(list).each do |raw|
+          k = ability_key(raw)
+          scores[k] = cg_apply_boost(scores[k]) if k
+        end
+      end
+
       cc = sheet.charclass || {}
       key_abil = ability_key(cc["key_ability"] || cc[:key_ability])
       scores[key_abil] = cg_apply_boost(scores[key_abil]) if key_abil
