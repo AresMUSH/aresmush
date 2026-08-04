@@ -107,7 +107,6 @@ module AresMUSH
       
       begin
         json_message = JSON.parse(message)
-        puts json_message
         api_key = json_message["api_key"]
         auth = json_message["auth"]
         enactor = nil
