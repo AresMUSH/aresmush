@@ -1,14 +1,24 @@
 # Static class reference data (PF2e Remaster / Player Core naming).
 # Lookup: Pf2e.read_data("charclasses", "fighter")
 #
-# languages (optional):
-#   starting   — always known when this class is committed (e.g. wildsong)
-#   additional — flat extra free picks granted by the class (rare)
-# Restricted languages (restricted: true in languages.yml) may only appear
-# under starting (or explicit grants), never as open Int picks.
+# advancement[level] keys (all optional):
+#   features: [slug]           — automatic features (not feat slots)
+#   class_feat / skill_feat / general_feat / ancestry_feat: Integer
+#   skill_increase / ability_boost: Integer  — extras beyond universal table
+#   proficiency: { perception, class_dc, fortitude/reflex/will,
+#                  attacks: { simple|martial|unarmed|advanced },
+#                  defenses: { unarmored|light|medium|heavy },
+#                  skills: { slug: TEML } }
+#   choice: { id, pick, options } or list of those
+#   spellcasting: { rank, slots, focus, ... }  — filled when spells land
+#   notes: staff-facing only
 #
-# Feature slugs use Remaster names where they differ from classic
-# (reactive_strike, wizard_spellcasting, wildsong, etc.).
+# Universal (code, not repeated per class):
+#   skill_increase at every level 2..20
+#   ability_boost ×4 at 5, 10, 15, 20
+#   ancestry feat slots 1/5/9/13/17; general 3/7/11/15/19
+#
+# Legacy features_by_level still readable; prefer advancement.
 
 charclasses:
   fighter:
@@ -39,14 +49,107 @@ charclasses:
       heavy: T
     class_dc: T
     spellcasting: null
-    features_by_level:
+    advancement:
       1:
-        - reactive_strike
-        - fighter_feat
-        - shield_block
+        features: [reactive_strike, shield_block]
+        class_feat: 1
       2:
-        - fighter_feat
-        - skill_feat
+        class_feat: 1
+        skill_feat: 1
+      3:
+        features: [bravery]
+        class_feat: 1
+        proficiency:
+          will: E
+      4:
+        class_feat: 1
+        skill_feat: 1
+      5:
+        features: [fighter_weapon_mastery]
+        class_feat: 1
+        proficiency:
+          attacks:
+            simple: E
+            martial: E
+            unarmed: E
+      6:
+        class_feat: 1
+        skill_feat: 1
+      7:
+        features: [battlefield_surveyor, weapon_specialization]
+        class_feat: 1
+        proficiency:
+          perception: E
+          class_dc: E
+      8:
+        class_feat: 1
+        skill_feat: 1
+      9:
+        features: [combat_flexibility, jogging_dodge]
+        class_feat: 1
+      10:
+        class_feat: 1
+        skill_feat: 1
+      11:
+        features: [fighter_expertise, battle_hardened]
+        class_feat: 1
+        proficiency:
+          fortitude: M
+          attacks:
+            simple: M
+            martial: M
+            unarmed: M
+          class_dc: E
+      12:
+        class_feat: 1
+        skill_feat: 1
+      13:
+        features: [weapon_legend, armor_expertise]
+        class_feat: 1
+        proficiency:
+          attacks:
+            simple: M
+            martial: M
+            unarmed: M
+            advanced: T
+          defenses:
+            light: E
+            medium: E
+            heavy: E
+            unarmored: E
+      14:
+        class_feat: 1
+        skill_feat: 1
+      15:
+        features: [greater_weapon_specialization, improved_flexibility]
+        class_feat: 1
+      16:
+        class_feat: 1
+        skill_feat: 1
+      17:
+        features: [armor_mastery]
+        class_feat: 1
+        proficiency:
+          defenses:
+            light: M
+            medium: M
+            heavy: M
+            unarmored: M
+      18:
+        class_feat: 1
+        skill_feat: 1
+      19:
+        features: [versatile_legend]
+        class_feat: 1
+        proficiency:
+          attacks:
+            simple: L
+            martial: L
+            unarmed: L
+          class_dc: M
+      20:
+        class_feat: 1
+        skill_feat: 1
 
   wizard:
     name: Wizard
@@ -80,17 +183,58 @@ charclasses:
       tradition: arcane
       rank: T
       type: prepared
-      # Remaster: spell rank (not "spell level"); curriculum replaces classic schools
-    features_by_level:
+    advancement:
       1:
-        - wizard_spellcasting
-        - arcane_school          # Remaster curriculum school (School of Mentalism, etc.)
-        - arcane_bond
-        - arcane_thesis
-        - wizard_feat
+        features: [wizard_spellcasting, arcane_school, arcane_bond, arcane_thesis]
+        class_feat: 1
+        spellcasting:
+          rank: 1
       2:
-        - wizard_feat
-        - skill_feat
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 1
+      3:
+        features: [general_feat_note]
+        # general feat is universal at 3; no extra here
+        spellcasting:
+          rank: 2
+        notes: "General feat slot from universal table; 2nd-rank spells."
+      4:
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 2
+      5:
+        features: [reflexive_shield_optional_skip]
+        spellcasting:
+          rank: 3
+        proficiency:
+          spellcasting_rank: E
+        notes: "Expert spellcasting proficiency typical at 5; ability boosts universal."
+      6:
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 3
+      7:
+        spellcasting:
+          rank: 4
+        proficiency:
+          expert_spellcaster: true
+      8:
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 4
+      9:
+        spellcasting:
+          rank: 5
+      10:
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 5
 
   rogue:
     name: Rogue
@@ -121,15 +265,32 @@ charclasses:
       heavy: U
     class_dc: T
     spellcasting: null
-    features_by_level:
+    advancement:
       1:
-        - rogue_feat
-        - sneak_attack
-        - surprise_attack
-        - rogues_racket
+        features: [sneak_attack, surprise_attack, rogues_racket]
+        class_feat: 1
+        choice:
+          id: rogues_racket
+          pick: 1
+          options: [thief, ruffian, scoundrel]
       2:
-        - rogue_feat
-        - skill_feat
+        class_feat: 1
+        skill_feat: 1
+      3:
+        features: [deny_advantage]
+        skill_feat: 1
+        notes: "Rogues gain skill feats at odd levels as well as even in many builds; confirm table — skill_feat here is class grant beyond universal skill increase."
+      4:
+        class_feat: 1
+        skill_feat: 1
+      5:
+        features: [weapon_trickster]
+        skill_feat: 1
+        proficiency:
+          attacks:
+            simple: E
+            martial: E
+            unarmed: E
 
   # Sample only — may not be open to PCs at launch.
   druid:
@@ -147,7 +308,7 @@ charclasses:
       additional:
         - nature
     languages:
-      starting: [wildsong]
+      starting: [wildsong]   # Remaster (classic: Druidic)
       additional: 0
     attacks:
       simple: T
@@ -164,13 +325,29 @@ charclasses:
       tradition: primal
       rank: T
       type: prepared
-    features_by_level:
+    advancement:
       1:
-        - druid_spellcasting
-        - anathema
-        - wildsong
-        - druidic_order
-        - druid_feat
+        features: [druid_spellcasting, anathema, druidic_order]
+        class_feat: 1
+        choice:
+          id: druidic_order
+          pick: 1
+          options: [animal, leaf, storm, wild]
+        spellcasting:
+          rank: 1
       2:
-        - druid_feat
-        - skill_feat
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 1
+      3:
+        spellcasting:
+          rank: 2
+      4:
+        class_feat: 1
+        skill_feat: 1
+        spellcasting:
+          rank: 2
+      5:
+        spellcasting:
+          rank: 3

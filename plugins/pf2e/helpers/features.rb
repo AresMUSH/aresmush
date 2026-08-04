@@ -3,21 +3,16 @@ module AresMUSH
 
     # -------------------------------------------------
     # Automatic ancestry / class feature grants
-    # Slot markers (skill_feat, fighter_feat, …) are NOT features —
-    # they only add to the feat-slot budget. Everything else under
-    # features_by_level and ancestry.features is stored on sheet.features.
+    #
+    # Prefer class entry["advancement"][level]["features"].
+    # Legacy entry["features_by_level"] still loads: real feature
+    # slugs only; *_feat markers are slots, not features.
     # -------------------------------------------------
-
-    # Keys that grant a feat *slot* rather than a fixed feature.
-    FEAT_SLOT_MARKERS = %w[
-      skill_feat class_feat general_feat combat_feat ancestry_feat
-    ].freeze
 
     def self.feat_slot_marker?(key)
       k = key.to_s.strip.downcase
-      return true if FEAT_SLOT_MARKERS.include?(k)
-      # fighter_feat, wizard_feat, rogue_feat, druid_feat, …
-      k.end_with?("_feat")
+      return true if slot_type_for_marker(k)
+      false
     end
 
     def self.sheet_features(char_or_sheet)
@@ -36,43 +31,49 @@ module AresMUSH
       true
     end
 
-    # Ancestry baseline features (darkvision, clan_dagger, …).
     def self.ancestry_feature_slugs(sheet)
       anc = cg_ancestry_entry(sheet.ancestry)
       return [] unless anc.is_a?(Hash)
       Array(anc["features"]).map { |s| s.to_s.strip.downcase }.reject(&:empty?)
     end
 
-    # Heritage optional features list if present.
     def self.heritage_feature_slugs(sheet)
       her = cg_heritage_entry(sheet.heritage)
       return [] unless her.is_a?(Hash)
       Array(her["features"]).map { |s| s.to_s.strip.downcase }.reject(&:empty?)
     end
 
-    # Class features at or below current level, excluding slot markers.
     def self.class_feature_slugs(sheet)
-      cc = sheet.charclass || {}
-      class_slug = (cc["slug"] || cc[:slug]).to_s.strip.downcase
-      return [] if class_slug.empty?
-      entry = read_data("charclasses", class_slug)
-      return [] unless entry.is_a?(Hash)
-
+      entry = class_entry_for_sheet(sheet)
+      return [] unless entry
       level = [sheet.level.to_i, 1].max
       granted = []
-      (entry["features_by_level"] || {}).each do |lvl_key, features|
-        next if lvl_key.to_i > level
-        Array(features).each do |feat_key|
-          key = feat_key.to_s.strip.downcase
-          next if key.empty?
-          next if feat_slot_marker?(key)
-          granted << key
+
+      adv = entry["advancement"]
+      if adv.is_a?(Hash)
+        adv.each do |lvl_key, package|
+          next if lvl_key.to_i > level
+          next unless package.is_a?(Hash)
+          Array(package["features"]).each do |feat_key|
+            key = feat_key.to_s.strip.downcase
+            next if key.empty? || feat_slot_marker?(key)
+            granted << key
+          end
+        end
+      else
+        # Legacy features_by_level
+        (entry["features_by_level"] || {}).each do |lvl_key, features|
+          next if lvl_key.to_i > level
+          Array(features).each do |feat_key|
+            key = feat_key.to_s.strip.downcase
+            next if key.empty? || feat_slot_marker?(key)
+            granted << key
+          end
         end
       end
       granted.uniq
     end
 
-    # Full set of automatic features the sheet should have right now.
     def self.expected_feature_slugs(sheet)
       (
         ancestry_feature_slugs(sheet) +
@@ -81,8 +82,6 @@ module AresMUSH
       ).uniq
     end
 
-    # Rebuild sheet.features from ancestry + heritage + class (≤ level).
-    # Does not touch feats / feat_slot_map.
     def self.cg_apply_granted_features(sheet)
       return [] unless sheet
       expected = expected_feature_slugs(sheet)
@@ -92,6 +91,15 @@ module AresMUSH
 
     def self.has_feature?(char_or_sheet, slug)
       sheet_features(char_or_sheet).include?(slug.to_s.strip.downcase)
+    end
+
+    def self.class_entry_for_sheet(sheet)
+      return nil unless sheet
+      cc = sheet.charclass || {}
+      class_slug = (cc["slug"] || cc[:slug]).to_s.strip.downcase
+      return nil if class_slug.empty?
+      entry = read_data("charclasses", class_slug)
+      entry.is_a?(Hash) ? entry : nil
     end
 
   end

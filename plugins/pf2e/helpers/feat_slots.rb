@@ -4,26 +4,20 @@ module AresMUSH
     # -------------------------------------------------
     # Feat slot economy (PF2e Remaster)
     # Types: ancestry, general, class, skill
-    # Universal cadence matches Player Core:
+    # Universal cadence:
     #   ancestry feats — 1, 5, 9, 13, 17
     #   general feats  — 3, 7, 11, 15, 19
-    # Class and skill slots come from class features_by_level
-    # markers (class_feat / fighter_feat / skill_feat / …).
+    # Class/skill slots from advancement[level] integer keys
+    # (class_feat, skill_feat) or legacy features_by_level markers.
     # -------------------------------------------------
 
     FEAT_SLOT_TYPES = %w[ancestry general class skill].freeze
-
-    # Legacy alias: older YAML used "combat" for ancestry-feat slots.
-    FEAT_SLOT_ALIASES = {
-      "combat" => "ancestry"
-    }.freeze
 
     UNIVERSAL_FEAT_SLOT_LEVELS = {
       "ancestry" => [1, 5, 9, 13, 17].freeze,
       "general"  => [3, 7, 11, 15, 19].freeze
     }.freeze
 
-    # Which feat categories may be paid for by each slot type.
     SLOT_ALLOWED_CATEGORIES = {
       "general"  => %w[general skill].freeze,
       "skill"    => %w[skill].freeze,
@@ -32,8 +26,7 @@ module AresMUSH
     }.freeze
 
     def self.normalize_feat_slot(name)
-      key = name.to_s.strip.downcase
-      FEAT_SLOT_ALIASES[key] || key
+      remaster_slot(name)
     end
 
     def self.feat_slot_type?(name)
@@ -44,13 +37,11 @@ module AresMUSH
       entry = entry_or_slug.is_a?(Hash) ? entry_or_slug : feat_entry(entry_or_slug)
       return "" unless entry.is_a?(Hash)
       cat = entry["category"].to_s.strip.downcase
-      # Legacy category "combat" → ancestry
-      cat == "combat" ? "ancestry" : cat
+      remaster_slot(cat) # combat → ancestry
     end
 
     def self.feat_category_allows_slot?(category, slot_type)
-      cat = category.to_s.strip.downcase
-      cat = "ancestry" if cat == "combat"
+      cat = remaster_slot(category.to_s.strip.downcase)
       slot = normalize_feat_slot(slot_type)
       allowed = SLOT_ALLOWED_CATEGORIES[slot]
       return false unless allowed
@@ -91,30 +82,36 @@ module AresMUSH
         totals[slot_type] = levels.count { |lvl| lvl <= level }
       end
 
-      cc = sheet.charclass || {}
-      class_slug = (cc["slug"] || cc[:slug]).to_s.strip.downcase
-      entry = read_data("charclasses", class_slug) if !class_slug.empty?
-
-      if entry.is_a?(Hash)
-        fbl = entry["features_by_level"] || {}
-        fbl.each do |lvl_key, features|
-          next if lvl_key.to_i > level
-          Array(features).each do |feat_key|
-            key = feat_key.to_s.strip.downcase
-            if key == "skill_feat"
-              totals["skill"] += 1
-            elsif key == "general_feat"
-              totals["general"] += 1
-            elsif key == "ancestry_feat" || key == "combat_feat"
-              totals["ancestry"] += 1
-            elsif key.end_with?("_feat") || key == "class_feat"
-              totals["class"] += 1
-            end
-          end
-        end
+      entry = class_entry_for_sheet(sheet)
+      if entry
+        add_class_slot_grants!(totals, entry, level)
       end
 
       totals
+    end
+
+    def self.add_class_slot_grants!(totals, entry, level)
+      adv = entry["advancement"]
+      if adv.is_a?(Hash)
+        adv.each do |lvl_key, package|
+          next if lvl_key.to_i > level
+          next unless package.is_a?(Hash)
+          totals["class"] += package["class_feat"].to_i
+          totals["skill"] += package["skill_feat"].to_i
+          totals["general"] += package["general_feat"].to_i
+          totals["ancestry"] += package["ancestry_feat"].to_i
+        end
+        return
+      end
+
+      # Legacy features_by_level markers
+      (entry["features_by_level"] || {}).each do |lvl_key, features|
+        next if lvl_key.to_i > level
+        Array(features).each do |feat_key|
+          slot = slot_type_for_marker(feat_key)
+          totals[slot] += 1 if slot && totals.key?(slot)
+        end
+      end
     end
 
     def self.feat_slots_used(char_or_sheet)
@@ -154,12 +151,6 @@ module AresMUSH
       allowed = feat_slot_types_for(entry)
       remaining = feat_slots_remaining(char_or_sheet)
       allowed.select { |t| remaining[t].to_i > 0 }
-    end
-
-    def self.feat_slot_marker?(key)
-      k = key.to_s.strip.downcase
-      return true if %w[skill_feat general_feat class_feat ancestry_feat combat_feat].include?(k)
-      k.end_with?("_feat")
     end
 
   end

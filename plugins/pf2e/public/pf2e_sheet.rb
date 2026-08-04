@@ -29,22 +29,22 @@ module AresMUSH
     attribute :skills,        :type => DataType::Hash,    :default => {}
     attribute :saves,         :type => DataType::Hash,    :default => {}
 
+    # Sheet-side proficiency overlay (attacks/defenses bumps from advancement).
+    # Effective rank = max(class root, overlay) when helpers look up categories.
+    attribute :proficiencies, :type => DataType::Hash,    :default => {}
+
     attribute :feats,         :type => DataType::Array,   :default => []
     attribute :feat_slot_map, :type => DataType::Hash,    :default => {}
 
-    # Automatic ancestry/class features
     attribute :features,      :type => DataType::Array,   :default => []
-
-    # Archetype dedications taken (slugs from archetypes.yml)
     attribute :archetypes,    :type => DataType::Array,   :default => []
 
-    # -------------------------------------------------
-    # Wealth & gear
-    # money          — coins on person (count toward encumbrance when enabled)
-    # society_account — Hall ledger; PC-owned; not coin; not encumbrance
-    # inventory      — array of item instance hashes (see inventory.rb)
-    # item_seq       — monotonic id counter for unique instances
-    # -------------------------------------------------
+    # Advancement spend ledger (unspent picks after level-up autos apply).
+    # Keys: skill_increase, ability_boost, class_feat, skill_feat, general_feat, ancestry_feat
+    attribute :pending_advancement, :type => DataType::Hash, :default => {}
+    # Structured non-feat choices: { "weapon_group" => "swords", ... }
+    attribute :advancement_picks,   :type => DataType::Hash, :default => {}
+
     attribute :money,           :type => DataType::Hash,  :default => {
       "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0
     }
