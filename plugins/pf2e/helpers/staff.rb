@@ -44,7 +44,6 @@ module AresMUSH
 
       sheet = result[:sheet]
       char = result[:char]
-      # Preserve original path for display names; only normalize separators.
       raw_parts = field_path.to_s.strip.split("/").map { |p| p.strip }.reject(&:empty?)
       parts = raw_parts.map { |p| p.downcase }
       return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if parts.empty?
@@ -60,6 +59,37 @@ module AresMUSH
         cg_apply_granted_features(sheet)
         cg_recalc_hp(sheet)
         { ok: true, error: nil, char: char, sheet: sheet, summary: "level=#{level}" }
+
+      when "xp", "experience"
+        # xp/add/100  xp/grant/50  xp/remove/20  xp/set/0
+        action = parts[1]
+        return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil? || parts[2].nil?
+
+        if action == "set"
+          val = parts[2].to_i
+          return { ok: false, error: "pf2e.staff_bad_value", char: char, sheet: sheet } if val < 0
+          before = sheet_xp(sheet)
+          sheet.update(xp: val)
+          threshold = xp_to_level
+          note = (val >= threshold && !advancing?(sheet)) ? " [ready to adv/start]" : ""
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "xp #{before} → #{val}/#{threshold}#{note}" }
+        elsif %w[add grant give].include?(action)
+          amount = parts[2].to_i
+          r = grant_xp(sheet, amount, source: "staff", reason: "pf2e/set by #{enactor ? enactor.name : 'staff'}")
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          note = r[:can_level] ? " [ready to adv/start]" : ""
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "xp +#{r[:amount]} → #{r[:after]}/#{r[:threshold]}#{note}" }
+        elsif %w[remove take subtract].include?(action)
+          amount = -parts[2].to_i
+          r = grant_xp(sheet, amount, source: "staff", reason: "pf2e/set by #{enactor ? enactor.name : 'staff'}")
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          { ok: true, error: nil, char: char, sheet: sheet,
+            summary: "xp #{r[:amount]} → #{r[:after]}/#{r[:threshold]}" }
+        else
+          { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
+        end
 
       when "skill"
         skill = parts[1]
@@ -216,14 +246,6 @@ module AresMUSH
         end
 
       when "item", "gear", "inv"
-        # Society requisition / brokerage path (always society-flagged on grant).
-        #
-        # Catalog:  item/add/<slug>[/qty][/potency:1][/property:flaming]...
-        # Custom:   item/custom/<kind>/<Name_With_Underscores>[/bulk:1][/potency:1]...
-        # Remove:   item/remove/<id>[/qty]
-        # Runes:    item/runes/<id>/potency:1/striking:1/property:flaming
-        # Magic:    item/magic/<id>/invested:true/level:5
-        # Notes:    item/notes/<id>/Plot_gear_from_Hall
         action = parts[1]
         return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil?
 
@@ -257,7 +279,7 @@ module AresMUSH
 
         when "custom"
           kind = parts[2] || "custom"
-          name_token = raw_parts[3] # preserve case from original path segment
+          name_token = raw_parts[3]
           return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if name_token.nil?
           name = name_token.tr("_", " ")
           parsed = parse_item_kv_tokens(parts[4..-1])
@@ -423,6 +445,10 @@ module AresMUSH
 
       sheet.update(
         level: 1,
+        xp: 0,
+        advancing: false,
+        pending_advancement: {},
+        advancement_picks: {},
         ancestry: nil,
         heritage: nil,
         background: nil,
