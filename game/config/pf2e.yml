@@ -25,9 +25,10 @@ pf2e:
   # -------------------------------------------------
   # Experience (PF2e Remaster / Player Core)
   # XP on the sheet is progress toward the *next* level only.
-  # On level-up: level += 1, xp -= xp_to_level (remainder carries).
-  # There is no cumulative lifetime table in core rules.
+  # On level-up finish: xp -= xp_to_level (remainder carries).
   # -------------------------------------------------
-  # Advancement speeds from GM Core / Core Rulebook:
-  #   fast: 800 | standard: 1000 | slow: 1200
+  # Advancement speeds: fast 800 | standard 1000 | slow 1200
   xp_to_level: 1000
+  # Default award when a logged/shared scene grants XP to participants.
+  # Used by Pf2e.grant_scene_xp (hook later). Staff can still grant any amount.
+  scene_xp: 10
