@@ -8,6 +8,9 @@ module AresMUSH
     # Does NOT auto-level. When XP crosses the threshold the
     # character uses adv/start → spends → adv/finish.
     #
+    # Crossing notify: only when before < threshold and after >= threshold
+    # (and not already advancing). One message, not on every later grant.
+    #
     # Scene awards are idempotent per sheet via xp_awarded_scenes.
     # -------------------------------------------------
 
@@ -38,9 +41,21 @@ module AresMUSH
       list
     end
 
+    def self.notify_ready_to_level(char)
+      return unless char && defined?(Login)
+      begin
+        Login.emit_ooc_if_logged_in(char, t('pf2e.xp_ready_to_level'))
+      rescue => e
+        Global.logger.warn "Pf2e ready-to-level notify failed: #{e.message}"
+      end
+    end
+
     # Award (or remove) XP on one character/sheet.
     # amount may be negative. XP is floored at 0.
-    def self.grant_xp(char_or_sheet, amount, source: nil, reason: nil)
+    #
+    # notify: if true (default), send a one-time OOC when the award *crosses*
+    # the level threshold. Already-over-threshold grants stay silent.
+    def self.grant_xp(char_or_sheet, amount, source: nil, reason: nil, notify: true)
       amount = amount.to_i
       return { ok: false, error: "pf2e.xp_bad_amount", amount: amount } if amount == 0
 
@@ -56,13 +71,18 @@ module AresMUSH
 
       return { ok: false, error: "pf2e.no_sheet", char: char, sheet: nil } unless sheet
 
+      threshold = xp_to_level
       before = sheet_xp(sheet)
       after = before + amount
       after = 0 if after < 0
 
       sheet.update(xp: after)
 
-      threshold = xp_to_level
+      can_level = after >= threshold && !advancing?(sheet)
+      # One notify only: must newly cross into ready-to-level territory.
+      crossed = notify && can_level && before < threshold && after >= threshold
+      notify_ready_to_level(char) if crossed
+
       {
         ok: true,
         error: nil,
@@ -73,20 +93,21 @@ module AresMUSH
         amount: after - before,
         requested: amount,
         threshold: threshold,
-        can_level: after >= threshold && !advancing?(sheet),
+        can_level: can_level,
+        crossed_threshold: crossed,
         source: source.to_s,
         reason: reason.to_s
       }
     end
 
-    def self.grant_xp_to_many(chars, amount, source: nil, reason: nil)
+    def self.grant_xp_to_many(chars, amount, source: nil, reason: nil, notify: true)
       results = []
       granted = []
       failed = []
       skipped = []
 
       Array(chars).compact.each do |c|
-        r = grant_xp(c, amount, source: source, reason: reason)
+        r = grant_xp(c, amount, source: source, reason: reason, notify: notify)
         results << r
         if r[:ok]
           name = r[:char] ? r[:char].name : "?"
@@ -109,9 +130,7 @@ module AresMUSH
     end
 
     # Award scene XP to participants with per-character idempotency.
-    # Each sheet records the scene id in xp_awarded_scenes; re-share is a no-op.
-    #
-    # force: true bypasses the already-awarded check (staff tools only).
+    # Ready-to-level notify is handled inside grant_xp (threshold cross only).
     def self.grant_scene_xp(participants, scene_id:, amount: nil, force: false, notify: true)
       return { ok: false, error: "pf2e.xp_no_scene_id" } if scene_id.nil? || scene_id.to_s.empty?
 
@@ -143,13 +162,14 @@ module AresMUSH
           next
         end
 
-        r = grant_xp(sheet, amt, source: "scene", reason: reason)
+        r = grant_xp(sheet, amt, source: "scene", reason: reason, notify: notify)
         results << r
         if r[:ok]
           mark_scene_xp_awarded!(sheet, scene_id)
           name = char.respond_to?(:name) ? char.name : "?"
           granted << name
 
+          # Scene-specific award line only (ready-to-level comes from grant_xp).
           if notify
             begin
               msg = t('pf2e.scene_xp_awarded',
@@ -158,9 +178,6 @@ module AresMUSH
                      :need => r[:threshold],
                      :scene => scene_id)
               Login.emit_ooc_if_logged_in(char, msg) if defined?(Login)
-              if r[:can_level] && defined?(Login)
-                Login.emit_ooc_if_logged_in(char, t('pf2e.scene_xp_ready_to_level'))
-              end
             rescue => e
               Global.logger.warn "Pf2e scene XP notify failed for #{name}: #{e.message}"
             end
@@ -183,7 +200,6 @@ module AresMUSH
       }
     end
 
-    # Entry point for SceneSharedEvent / manual staff re-run.
     def self.award_xp_for_shared_scene(scene)
       return { ok: false, error: "pf2e.xp_scene_missing" } unless scene
       return { ok: false, error: "pf2e.xp_scene_disabled" } unless scene_xp_enabled?
