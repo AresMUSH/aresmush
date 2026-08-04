@@ -4,9 +4,10 @@ module AresMUSH
 
     # Core
     attribute :level,         :type => DataType::Integer, :default => 1
-    # XP toward the *next* level (PF2e resets by subtracting threshold on level-up).
-    # Not lifetime total. Default 0.
+    # XP toward the *next* level (PF2e subtracts threshold on finish).
     attribute :xp,            :type => DataType::Integer, :default => 0
+    # True between adv/start and adv/finish. Spend commands require this.
+    attribute :advancing,     :type => DataType::Boolean, :default => false
     attribute :ancestry
     attribute :heritage
     attribute :background
@@ -32,8 +33,6 @@ module AresMUSH
     attribute :skills,        :type => DataType::Hash,    :default => {}
     attribute :saves,         :type => DataType::Hash,    :default => {}
 
-    # Sheet-side proficiency overlay (attacks/defenses bumps from advancement).
-    # Effective rank = max(class root, overlay) when helpers look up categories.
     attribute :proficiencies, :type => DataType::Hash,    :default => {}
 
     attribute :feats,         :type => DataType::Array,   :default => []
@@ -42,10 +41,8 @@ module AresMUSH
     attribute :features,      :type => DataType::Array,   :default => []
     attribute :archetypes,    :type => DataType::Array,   :default => []
 
-    # Advancement spend ledger (unspent picks after level-up autos apply).
-    # Keys: skill_increase, ability_boost, class_feat, skill_feat, general_feat, ancestry_feat
+    # Unspent picks for the current advancement (skill_increase, ability_boost, *_feat).
     attribute :pending_advancement, :type => DataType::Hash, :default => {}
-    # Structured non-feat choices: { "weapon_group" => "swords", ... }
     attribute :advancement_picks,   :type => DataType::Hash, :default => {}
 
     attribute :money,           :type => DataType::Hash,  :default => {
