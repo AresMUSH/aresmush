@@ -4,6 +4,9 @@ module AresMUSH
 
     # Core
     attribute :level,         :type => DataType::Integer, :default => 1
+    # XP toward the *next* level (PF2e resets by subtracting threshold on level-up).
+    # Not lifetime total. Default 0.
+    attribute :xp,            :type => DataType::Integer, :default => 0
     attribute :ancestry
     attribute :heritage
     attribute :background
