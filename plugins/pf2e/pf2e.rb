@@ -55,6 +55,15 @@ module AresMUSH
         when "set" then return Pf2eSetCmd
         when "reset" then return Pf2eResetCmd
         end
+      when "adv", "level"
+        case cmd.switch
+        when nil, "status" then return AdvStatusCmd
+        when "start" then return AdvStartCmd
+        when "finish", "done" then return AdvFinishCmd
+        when "skill" then return AdvSkillCmd
+        when "boost" then return AdvBoostCmd
+        when "feat" then return AdvFeatCmd
+        end
       when "cg"
         case cmd.switch
         when "start" then return CgStartCmd
