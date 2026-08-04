@@ -189,7 +189,7 @@ en:
     adv_feat_ok: "Took feat: %{name} (spent %{slot} slot)."
 
     scene_xp_awarded: "Logged scene #%{scene}: +%{amount} XP (now %{xp}/%{need} toward next level)."
-    scene_xp_ready_to_level: "You have enough XP to level up. Type adv/start when ready."
+    xp_ready_to_level: "You are ready to level! Type adv (or adv/start) to get started."
     xp_bad_amount: "XP amount must be a non-zero integer."
     xp_no_scene_id: "Scene id is required for scene XP awards."
     xp_scene_missing: "Scene not found."
