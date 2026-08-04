@@ -159,7 +159,6 @@ en:
     cg_bgskill_set_with_feat: "Background skill choice set to %{skill} (feat: %{feat}). Remaining choices: %{remaining}."
     cg_bgskill_status: "Background skill choices — resolved: %{resolved}. Pending: %{pending}. Remaining: %{remaining}."
 
-    # ---- Advancement ----
     adv_insufficient_xp: "Not enough XP to level up (have %{xp}, need %{need})."
     adv_not_advancing: "You are not in an advancement. Use adv/start when you have enough XP."
     adv_already_advancing: "You are already advancing. Finish with adv/finish before starting another level."
@@ -188,3 +187,10 @@ en:
     adv_skill_ok: "%{skill}: %{from} → %{to}. Skill increases remaining: %{left}."
     adv_boost_ok: "Ability boosts (%{source}): %{list}."
     adv_feat_ok: "Took feat: %{name} (spent %{slot} slot)."
+
+    scene_xp_awarded: "Logged scene #%{scene}: +%{amount} XP (now %{xp}/%{need} toward next level)."
+    scene_xp_ready_to_level: "You have enough XP to level up. Type adv/start when ready."
+    xp_bad_amount: "XP amount must be a non-zero integer."
+    xp_no_scene_id: "Scene id is required for scene XP awards."
+    xp_scene_missing: "Scene not found."
+    xp_scene_disabled: "Scene XP awards are disabled in pf2e.yml."
