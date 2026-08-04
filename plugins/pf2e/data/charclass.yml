@@ -195,23 +195,19 @@ charclasses:
         spellcasting:
           rank: 1
       3:
-        features: [general_feat_note]
-        # general feat is universal at 3; no extra here
         spellcasting:
           rank: 2
-        notes: "General feat slot from universal table; 2nd-rank spells."
+        notes: "General feat from universal table; 2nd-rank spells."
       4:
         class_feat: 1
         skill_feat: 1
         spellcasting:
           rank: 2
       5:
-        features: [reflexive_shield_optional_skip]
+        features: [expert_spellcaster]
         spellcasting:
           rank: 3
-        proficiency:
-          spellcasting_rank: E
-        notes: "Expert spellcasting proficiency typical at 5; ability boosts universal."
+        notes: "Ability boosts from universal table."
       6:
         class_feat: 1
         skill_feat: 1
@@ -220,8 +216,6 @@ charclasses:
       7:
         spellcasting:
           rank: 4
-        proficiency:
-          expert_spellcaster: true
       8:
         class_feat: 1
         skill_feat: 1
@@ -279,12 +273,12 @@ charclasses:
       3:
         features: [deny_advantage]
         skill_feat: 1
-        notes: "Rogues gain skill feats at odd levels as well as even in many builds; confirm table — skill_feat here is class grant beyond universal skill increase."
+        notes: "Rogue skill feats on odd levels are class grants (in addition to universal skill increases)."
       4:
         class_feat: 1
         skill_feat: 1
       5:
-        features: [weapon_trickster]
+        features: [weapon_tricks]
         skill_feat: 1
         proficiency:
           attacks:
@@ -308,7 +302,7 @@ charclasses:
       additional:
         - nature
     languages:
-      starting: [wildsong]   # Remaster (classic: Druidic)
+      starting: [wildsong]
       additional: 0
     attacks:
       simple: T
