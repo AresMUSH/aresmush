@@ -27,8 +27,7 @@ pf2e:
   # XP on the sheet is progress toward the *next* level only.
   # On level-up finish: xp -= xp_to_level (remainder carries).
   # -------------------------------------------------
-  # Advancement speeds: fast 800 | standard 1000 | slow 1200
   xp_to_level: 1000
-  # Default award when a logged/shared scene grants XP to participants.
-  # Used by Pf2e.grant_scene_xp (hook later). Staff can still grant any amount.
+  # Logged/shared scenes: SceneSharedEvent awards scene_xp to participants once.
+  scene_xp_enabled: true
   scene_xp: 10

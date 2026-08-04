@@ -8,6 +8,8 @@ module AresMUSH
     attribute :xp,            :type => DataType::Integer, :default => 0
     # True between adv/start and adv/finish. Spend commands require this.
     attribute :advancing,     :type => DataType::Boolean, :default => false
+    # Scene IDs that already granted XP to this sheet (idempotency for share hook).
+    attribute :xp_awarded_scenes, :type => DataType::Array, :default => []
     attribute :ancestry
     attribute :heritage
     attribute :background
@@ -41,7 +43,6 @@ module AresMUSH
     attribute :features,      :type => DataType::Array,   :default => []
     attribute :archetypes,    :type => DataType::Array,   :default => []
 
-    # Unspent picks for the current advancement (skill_increase, ability_boost, *_feat).
     attribute :pending_advancement, :type => DataType::Hash, :default => {}
     attribute :advancement_picks,   :type => DataType::Hash, :default => {}
 

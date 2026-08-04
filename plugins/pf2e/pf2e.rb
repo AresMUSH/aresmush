@@ -86,6 +86,10 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name)
+      case event_name
+      when "SceneSharedEvent"
+        return SceneSharedEventHandler
+      end
       nil
     end
 
@@ -141,3 +145,4 @@ end
 require File.join(File.dirname(__FILE__), 'helpers')
 Dir[File.join(File.dirname(__FILE__), 'templates', '*_template.rb')].sort.each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), 'commands', '**', '*_cmd.rb')].sort.each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'events', '**', '*_handler.rb')].sort.each { |f| require f }
