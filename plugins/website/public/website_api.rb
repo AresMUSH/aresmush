@@ -30,6 +30,7 @@ module AresMUSH
     end
     
     def self.avatar_info(char)
+      return {} if !char
       {
         "name" => char.name,
         "nick" => char.nick,
