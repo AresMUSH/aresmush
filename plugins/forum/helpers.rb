@@ -90,7 +90,7 @@ module AresMUSH
         data = {
           category: category.id,
           post: new_post.id,
-          author: {name: author_name, icon: Website.icon_for_char(author), id: author.id},
+          author: {name: author_name, avatar: Website.avatar_info(author), id: author.id},
           subject: subject,
           message: Website.format_markdown_for_html(message),
           raw_message: Website.format_input_for_html(message),
@@ -127,7 +127,7 @@ module AresMUSH
           category: category.id,
           post: post.id,
           reply: new_reply.id,
-          author: { name: author.name, icon: Website.icon_for_char(author), id: author.id },
+          author: { name: author.name, avatar: Website.avatar_info(author), id: author.id },
           subject: post.subject,
           message: Website.format_markdown_for_html(reply),
           raw_message: Website.format_input_for_html(reply),
@@ -253,7 +253,7 @@ module AresMUSH
       data = {
         category: category.id,
         post: post.id,
-        author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
+        author: {name: enactor.name, avatar: Website.avatar_info(enactor), id: enactor.id},
         subject: post.subject,
         message: Website.format_markdown_for_html(message),
         raw_message: Website.format_input_for_html(message),
@@ -280,7 +280,7 @@ module AresMUSH
         post: post.id,
         reply: reply.id,
         subject: post.subject,
-        author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
+        author: {name: enactor.name, avatar: Website.avatar_info(enactor), id: enactor.id},
         message: Website.format_markdown_for_html(message),
         raw_message: Website.format_input_for_html(message),
         type: 'reply_edited'
@@ -313,7 +313,7 @@ module AresMUSH
       authors.uniq
         .select { |p| Forum.can_write_to_category?(p, category)}
         .sort_by { |p| [ p == char ? 0 : 1, p.name ]}
-        .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
+        .map { |p| { id: p.id, name: p.name, avatar: Website.avatar_info(p) }}   
      end
      
      def self.update_tags(post)

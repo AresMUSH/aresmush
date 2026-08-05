@@ -24,7 +24,7 @@ module AresMUSH
                     name: p.name,
                     nick: p.nick,
                     id: p.id, 
-                    icon: Website.icon_for_char(p)
+                    avatar: Website.avatar_info(p)
                   }},
              id: s.id,
              location: s.location.blank? ? nil : s.location,

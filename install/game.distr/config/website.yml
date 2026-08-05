@@ -228,14 +228,6 @@ website:
   - ".png"
   - ".gif"
   - ".jpeg"
-  auto_wiki_export: true
-  wiki_export_cron:
-    day_of_week:
-    - Tue
-    hour:
-    - 4
-    minute:
-    - 37
   char_backup_cleanup_cron:
     hour:
     - 3

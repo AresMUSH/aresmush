@@ -17,7 +17,7 @@ module AresMUSH
         if (room.room_owners.any?)
           owners = room.room_owners.map { |o| {
             name: o.name, 
-            icon: Website.icon_for_char(o)
+            avatar: Website.avatar_info(o)
             }}
         else
           owners = nil

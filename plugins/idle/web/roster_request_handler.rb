@@ -65,7 +65,7 @@ module AresMUSH
             id: char.id,
             profile_title: Ranks.is_enabled? ? Profile.profile_title(char) : char.fullname,
             fields: fields,
-            icon: Website.icon_for_char(char),
+            avatar: Website.avatar_info(char),
             roster_notes: Website.format_markdown_for_html(char.roster_notes || ""),
             previously_played: char.roster_played,
             app_required: Idle.roster_app_required?(char),

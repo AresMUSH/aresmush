@@ -9,7 +9,7 @@ module AresMUSH
           chars: chars.map { |c| {
             name: c.name,
             id: c.id,
-            icon: Website.icon_for_char(c),
+            avatar: Website.avatar_info(c),
             title: c.role_admin_note
           }}
         }}

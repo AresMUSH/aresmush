@@ -107,7 +107,7 @@ module AresMUSH
         id: channel.id,
         key: channel.name.downcase,
         title: channel.name,
-        author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
+        author: {name: enactor.name, avatar: Website.avatar_info(enactor), id: enactor.id},
         message: Website.format_markdown_for_html(formatted_msg),
         message_id: channel_message.id,
         is_page: false
@@ -405,7 +405,7 @@ module AresMUSH
             timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
             author: {
               name: m.author_name,
-              icon: m.author ? Website.icon_for_char(m.author) : nil }
+              avatar: m.author ? Website.avatar_info(m.author) : nil }
             }
           }
         end
@@ -427,7 +427,7 @@ module AresMUSH
           who: Channels.channel_who(channel).map { |w| {
             name: w.name,
             ooc_name: w.ooc_name,
-            icon: Website.icon_for_char(w),
+            avatar: Website.avatar_info(w),
             muted: Channels.is_muted?(w, channel),
             status: Website.activity_status(w)
             }},
@@ -435,7 +435,7 @@ module AresMUSH
             .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
             .map { |a| {
               name: a.name,
-              icon: Website.icon_for_char(a),
+              avatar: Website.avatar_info(a),
               id: a.id
               }},
               messages: messages,

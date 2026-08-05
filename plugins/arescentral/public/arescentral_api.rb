@@ -22,11 +22,7 @@ module AresMUSH
     end
     
     def self.is_alt?(char1, char2)
-      return false if !char1 || !char2
-      return true if char1.name == char2.name
-      return false if !char1.handle
-      return false if !char2.handle
-      char1.handle.name == char2.handle.name
+      Character.is_alt?(char1, char2)
     end
     
     def self.is_registered?

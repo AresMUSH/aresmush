@@ -27,7 +27,7 @@ module AresMUSH
         include_all = helper.or_tags.include?('all') || helper.required_tags.include?('all')
         
         matches = Character.all.select { |c| self.match_tags(c, helper, include_all) }
-        chars = matches.sort_by { |c| c.name }.map { |c| { name: c.name, icon: Website.icon_for_char(c) }}
+        chars = matches.sort_by { |c| c.name }.map { |c| { name: c.name, avatar: Website.avatar_info(c) }}
         
         template = CharGalleryExtensionTemplate.new(chars)
         template.render

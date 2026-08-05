@@ -5,7 +5,7 @@ module AresMUSH
       {
         char: { name: pose.character ? pose.character.name : t('global.deleted_character'), 
                 nick: pose.character ? pose.character.nick : t('global.deleted_character'), 
-                icon: Website.icon_for_char(pose.character),
+                avatar: Website.avatar_info(pose.character),
                 id: pose.character ? pose.character.id : 0 }, 
         order: pose.order, 
         id: pose.id,
@@ -30,7 +30,7 @@ module AresMUSH
             name: p.name, 
             nick: p.nick,
             id: p.id, 
-            icon: Website.icon_for_char(p), 
+            avatar: Website.avatar_info(p), 
             status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p),
@@ -42,7 +42,7 @@ module AresMUSH
           name: p.name,
           chars: p.characters.map { |c| {
             name: c.name,
-            icon: Website.icon_for_char(c)
+            avatar: Website.avatar_info(c)
           }}
         }}
       else
@@ -106,7 +106,7 @@ module AresMUSH
         icdate: scene.icdate,
         likes: scene.likes,
         participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p| 
-          { name: p.name, nick: p.nick, id: p.id, icon: Website.icon_for_char(p) }},
+          { name: p.name, nick: p.nick, id: p.id, avatar: Website.avatar_info(p) }},
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
         scene_pacing: scene.scene_pacing,
         limit: scene.limit,
@@ -145,7 +145,7 @@ module AresMUSH
          
       pose_chars.uniq
          .sort_by { |p| [ Scenes.poseable_char_order(scene, enactor, p), p.name ]}
-         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
+         .map { |p| { id: p.id, name: p.name, avatar: Website.avatar_info(p) }}   
     end
     
     def self.poseable_char_order(scene, enactor, char)
@@ -211,14 +211,14 @@ module AresMUSH
       if (!char)
         return {
           name: t('global.deleted_character'),
-          icon: Website.icon_for_char(char),
+          avatar: Website.avatar_info(char),
           id: nil
         }
       end
       
       {
         name: char.name,
-        icon: Website.icon_for_char(char),
+        avatar: Website.avatar_info(char),
         id: char.id,
         all_fields: Demographics.build_web_all_fields_data(char, viewer),
         demographics: Demographics.build_web_demographics_data(char, viewer),
