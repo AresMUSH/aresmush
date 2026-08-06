@@ -27,7 +27,7 @@ module AresMUSH
       def handle
         # Should not get here based on prior checks
         if self.charname.downcase == "guest"
-          raise "Ended up in connect handlef as guest"
+          raise "Ended up in connect handler as guest"
         end
 
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
