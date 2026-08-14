@@ -61,3 +61,12 @@ end
 
 # Load helpers (module methods)
 require File.join(File.dirname(__FILE__), 'helpers.rb')
+
+# Web request handlers (portal API)
+Dir[File.join(File.dirname(__FILE__), 'web', '*.rb')].sort.each { |f| require f }
+
+# Command handlers
+Dir[File.join(File.dirname(__FILE__), 'commands', '**', '*_cmd.rb')].sort.each { |f| require f }
+
+# Template renderers
+Dir[File.join(File.dirname(__FILE__), 'templates', '*_template.rb')].sort.each { |f| require f }
