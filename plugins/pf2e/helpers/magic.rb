@@ -13,15 +13,67 @@ module AresMUSH
     #   attribute:   int|wis|cha (spell attack / DC key ability)
     #   proficiency: TEML rank for spell attack and spell DC
     #   cantrips:    [slug, ...]   known/available cantrips
+    #   cantrips_max: Integer
     #   spellbook:   [slug, ...]   prepared casters only (library)
     #   repertoire:  { "1" => [slug], "2" => [...] }  spontaneous known
     #   prepared:    { "cantrip" => [slug], "1" => [slug] }  today's list
     #   slots:       { "1" => { "max" => 2, "used" => 0 }, ... }
     #   focus_spells:[slug, ...]   focus tradition spells on this source
+    #   progression: full | bounded | none
     #
     # Focus *points* are character-level: sheet.focus_points
     # (single shared pool in PF2e).
     # -------------------------------------------------
+
+    # Full spellcaster slot table (Player Core: wizard, cleric, druid, witch,
+    # sorcerer, oracle, bard, psychic, etc.). Values are [cantrips_max, slots_hash].
+    FULL_CASTER_SLOTS = {
+      1  => [5, { 1 => 2 }],
+      2  => [5, { 1 => 3 }],
+      3  => [5, { 1 => 3, 2 => 2 }],
+      4  => [5, { 1 => 3, 2 => 3 }],
+      5  => [5, { 1 => 3, 2 => 3, 3 => 2 }],
+      6  => [5, { 1 => 3, 2 => 3, 3 => 3 }],
+      7  => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 2 }],
+      8  => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3 }],
+      9  => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 2 }],
+      10 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3 }],
+      11 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 2 }],
+      12 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3 }],
+      13 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 2 }],
+      14 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3 }],
+      15 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 2 }],
+      16 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3 }],
+      17 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 2 }],
+      18 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 3 }],
+      19 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 3, 10 => 1 }],
+      20 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 3, 10 => 1 }]
+    }.freeze unless const_defined?(:FULL_CASTER_SLOTS)
+
+    # Bounded casters (magus, summoner, some dedications) — simplified sample.
+    # Override via class spellcasting.slots_by_level in data if needed.
+    BOUNDED_CASTER_SLOTS = {
+      1  => [2, { 1 => 1 }],
+      2  => [3, { 1 => 2 }],
+      3  => [3, { 1 => 2 }],
+      4  => [3, { 1 => 2, 2 => 1 }],
+      5  => [3, { 1 => 2, 2 => 1 }],
+      6  => [3, { 1 => 2, 2 => 2 }],
+      7  => [3, { 1 => 2, 2 => 2, 3 => 1 }],
+      8  => [3, { 1 => 2, 2 => 2, 3 => 1 }],
+      9  => [3, { 1 => 2, 2 => 2, 3 => 2 }],
+      10 => [3, { 1 => 2, 2 => 2, 3 => 2, 4 => 1 }],
+      11 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 1 }],
+      12 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2 }],
+      13 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 1 }],
+      14 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 1 }],
+      15 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 2 }],
+      16 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 2, 6 => 1 }],
+      17 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 2, 6 => 1 }],
+      18 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 2, 6 => 2 }],
+      19 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 2, 6 => 2, 7 => 1 }],
+      20 => [4, { 1 => 2, 2 => 2, 3 => 2, 4 => 2, 5 => 2, 6 => 2, 7 => 1 }]
+    }.freeze unless const_defined?(:BOUNDED_CASTER_SLOTS)
 
     def self.magic_hash(char_or_sheet)
       sheet = sheet_for(char_or_sheet)
@@ -47,10 +99,6 @@ module AresMUSH
       s.empty? ? nil : s
     end
 
-    # Resolve which source to use for DC / attack.
-    # - explicit source wins
-    # - if only one source, use it
-    # - if multiple and none given → error hash
     def self.resolve_magic_source(char_or_sheet, source = nil)
       sources = magic_sources(char_or_sheet)
       return { ok: false, error: "pf2e.magic_no_sources", sources: [] } if sources.empty?
@@ -75,8 +123,6 @@ module AresMUSH
       read_data("spells", slug.to_s.strip.downcase)
     end
 
-    # --- Attack / DC from a source ---
-
     def self.magic_spell_dc(char_or_sheet, source = nil, other_bonus: 0)
       resolved = resolve_magic_source(char_or_sheet, source)
       return resolved unless resolved[:ok]
@@ -99,7 +145,6 @@ module AresMUSH
       resolved.merge(value: mod, ability: ability, rank: rank, kind: :spell_attack)
     end
 
-    # Convenience integers for roll keywords (nil on ambiguity/error)
     def self.spell_dc_for(char_or_sheet, source = nil)
       r = magic_spell_dc(char_or_sheet, source)
       r[:ok] ? r[:value] : nil
@@ -109,8 +154,6 @@ module AresMUSH
       r = magic_spell_attack_mod(char_or_sheet, source)
       r[:ok] ? r[:value] : nil
     end
-
-    # --- Mutators ---
 
     def self.set_magic_source(char_or_sheet, source, attrs)
       sheet = sheet_for(char_or_sheet)
@@ -132,7 +175,9 @@ module AresMUSH
         "casting" => "prepared",
         "attribute" => "cha",
         "proficiency" => "T",
+        "progression" => "full",
         "cantrips" => [],
+        "cantrips_max" => 0,
         "spellbook" => [],
         "repertoire" => {},
         "prepared" => {},
@@ -141,8 +186,170 @@ module AresMUSH
       }
     end
 
-    # Daily / rest: clear slot usage; do NOT clear prepared list.
-    # Focus points restored to max if focus_max provided or inferred.
+    # -------------------------------------------------
+    # Class / level-driven source + slots
+    # -------------------------------------------------
+
+    def self.slot_table_for(progression)
+      case progression.to_s.strip.downcase
+      when "bounded" then BOUNDED_CASTER_SLOTS
+      when "none", "focus" then {}
+      else FULL_CASTER_SLOTS
+      end
+    end
+
+    # Returns { cantrips_max:, slots: { "1" => max, ... } }
+    def self.slots_for_level(level, progression: "full", override_table: nil)
+      lvl = [[level.to_i, 1].max, 20].min
+      if override_table.is_a?(Hash)
+        row = override_table[lvl] || override_table[lvl.to_s]
+        if row.is_a?(Hash)
+          cantrips = row["cantrips"].to_i
+          slots = {}
+          (row["slots"] || {}).each { |r, n| slots[r.to_s] = n.to_i }
+          return { cantrips_max: cantrips, slots: slots }
+        end
+      end
+
+      table = slot_table_for(progression)
+      row = table[lvl]
+      return { cantrips_max: 0, slots: {} } unless row
+
+      cantrips, slots_h = row
+      slots = {}
+      slots_h.each { |r, n| slots[r.to_s] = n.to_i }
+      { cantrips_max: cantrips.to_i, slots: slots }
+    end
+
+    # Build / refresh the primary class magic source from charclass.yml.
+    # Preserves cantrips, spellbook, repertoire, prepared, focus_spells, used counts
+    # when the source already exists.
+    def self.sync_class_magic_source(sheet)
+      return nil unless sheet
+      cc = sheet.charclass || {}
+      class_slug = (cc["slug"] || cc[:slug]).to_s.strip.downcase
+      return nil if class_slug.empty?
+
+      class_entry = class_entry_for_sheet(sheet) || cg_class_entry(class_slug)
+      return nil unless class_entry.is_a?(Hash)
+
+      sc = class_entry["spellcasting"]
+      return nil if sc.nil? || sc == false || sc == "null"
+      return nil unless sc.is_a?(Hash)
+
+      source_key = normalize_magic_source(sc["source"] || class_slug)
+      casting = (sc["type"] || sc["casting"] || "prepared").to_s.downcase
+      progression = (sc["progression"] || (casting == "focus" ? "none" : "full")).to_s.downcase
+      tradition = sc["tradition"].to_s.downcase
+      proficiency = (sc["rank"] || sc["proficiency"] || "T").to_s.upcase
+
+      attribute = sc["attribute"] || sc["ability"]
+      if attribute.nil? || attribute.to_s.empty?
+        attribute = cc["key_ability"] || cc[:key_ability]
+      end
+      if attribute.nil? || attribute.to_s.empty?
+        opts = ((class_entry["key_ability"] || {})["options"] || [])
+        attribute = opts.first
+      end
+      attribute = ability_key(attribute) || "cha"
+
+      level = [sheet.level.to_i, 1].max
+      table_override = sc["slots_by_level"]
+      prog = slots_for_level(level, progression: progression, override_table: table_override)
+
+      existing = magic_source(sheet, source_key) || {}
+      slots = {}
+      prog[:slots].each do |rank, max|
+        prev_used = 0
+        if existing["slots"].is_a?(Hash) && existing["slots"][rank].is_a?(Hash)
+          prev_used = existing["slots"][rank]["used"].to_i
+        end
+        slots[rank] = { "max" => max, "used" => [prev_used, max].min }
+      end
+
+      attrs = {
+        "tradition" => tradition.empty? ? nil : tradition,
+        "casting" => casting,
+        "attribute" => attribute,
+        "proficiency" => proficiency,
+        "progression" => progression,
+        "cantrips_max" => prog[:cantrips_max],
+        "slots" => slots,
+        "cantrips" => Array(existing["cantrips"]),
+        "spellbook" => Array(existing["spellbook"]),
+        "repertoire" => existing["repertoire"].is_a?(Hash) ? existing["repertoire"] : {},
+        "prepared" => existing["prepared"].is_a?(Hash) ? existing["prepared"] : {},
+        "focus_spells" => Array(existing["focus_spells"])
+      }
+
+      # Advancement package may raise spell proficiency (expert_spellcaster etc.)
+      adv_prof = class_spell_proficiency_at_level(class_entry, level)
+      if adv_prof && teml_rank_value(adv_prof) > teml_rank_value(proficiency)
+        attrs["proficiency"] = adv_prof.to_s.upcase
+      elsif existing["proficiency"]
+        # Keep higher of class baseline, existing, or adv
+        best = [proficiency, existing["proficiency"].to_s, adv_prof.to_s].max_by { |r| teml_rank_value(r) }
+        attrs["proficiency"] = best.upcase if best && !best.empty?
+      end
+
+      set_magic_source(sheet, source_key, attrs)
+    end
+
+    # Optional: class advancement notes proficiency bumps on spellcasting.
+    # Looks for features expert_spellcaster / master_spellcaster / legendary_spellcaster
+    # or advancement[N].spellcasting.proficiency.
+    def self.class_spell_proficiency_at_level(class_entry, level)
+      return nil unless class_entry.is_a?(Hash)
+      best = nil
+      adv = class_entry["advancement"]
+      if adv.is_a?(Hash)
+        adv.each do |lvl_key, pkg|
+          next if lvl_key.to_i > level.to_i
+          next unless pkg.is_a?(Hash)
+          sc = pkg["spellcasting"]
+          if sc.is_a?(Hash) && sc["proficiency"]
+            r = sc["proficiency"].to_s.upcase
+            best = r if best.nil? || teml_rank_value(r) > teml_rank_value(best)
+          end
+          Array(pkg["features"]).each do |f|
+            case f.to_s.strip.downcase
+            when "expert_spellcaster", "expert_spellcasting"
+              best = "E" if best.nil? || teml_rank_value("E") > teml_rank_value(best)
+            when "master_spellcaster", "master_spellcasting"
+              best = "M" if best.nil? || teml_rank_value("M") > teml_rank_value(best)
+            when "legendary_spellcaster", "legendary_spellcasting"
+              best = "L" if best.nil? || teml_rank_value("L") > teml_rank_value(best)
+            end
+          end
+        end
+      end
+      best
+    end
+
+    # Sync every existing source that has a progression table (class + future dedications).
+    def self.sync_all_magic_slots(sheet)
+      return unless sheet
+      sync_class_magic_source(sheet)
+
+      magic_hash(sheet).each do |src, entry|
+        next unless entry.is_a?(Hash)
+        next if src.to_s == ((sheet.charclass || {})["slug"]).to_s
+        prog = entry["progression"] || "full"
+        next if prog.to_s == "none"
+        level = [sheet.level.to_i, 1].max
+        info = slots_for_level(level, progression: prog)
+        slots = {}
+        info[:slots].each do |rank, max|
+          prev = 0
+          if entry["slots"].is_a?(Hash) && entry["slots"][rank].is_a?(Hash)
+            prev = entry["slots"][rank]["used"].to_i
+          end
+          slots[rank] = { "max" => max, "used" => [prev, max].min }
+        end
+        set_magic_source(sheet, src, "slots" => slots, "cantrips_max" => info[:cantrips_max])
+      end
+    end
+
     def self.magic_daily_reset(char_or_sheet, restore_focus: true)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -172,21 +379,15 @@ module AresMUSH
     end
 
     def self.magic_focus_max(char_or_sheet)
-      # Character-level pool. Prefer explicit sheet value if higher;
-      # otherwise at least 1 if any focus spells exist, else 0.
       sheet = sheet_for(char_or_sheet)
       return 0 unless sheet
       has_focus = magic_hash(sheet).any? do |_, e|
         e.is_a?(Hash) && Array(e["focus_spells"]).any?
       end
       return 0 unless has_focus
-      # PF2e default: start with 1; features may raise. Staff/class code sets
-      # focus_points max via features later. Use current max of (1, current).
       [sheet.focus_points.to_i, 1].max
     end
 
-    # Prepare spells for a prepared source (replaces that rank's prepared list).
-    # ranks_hash: { "cantrip" => ["shield", "light"], "1" => ["magic_missile"] }
     def self.magic_prepare(char_or_sheet, source, ranks_hash)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -201,16 +402,10 @@ module AresMUSH
       end
 
       prepared = (entry["prepared"] || {}).dup
-      library = (
-        Array(entry["cantrips"]) + Array(entry["spellbook"])
-      ).map { |s| s.to_s.strip.downcase }.uniq
 
       Array(ranks_hash).each do |rank, slugs|
         rank_key = rank.to_s.strip.downcase
         list = Array(slugs).map { |s| s.to_s.strip.downcase }.reject(&:empty?)
-        unknown = list.reject { |s| library.include?(s) || spell_entry(s) }
-        # Allow catalog spells even if not yet in spellbook during early data fill;
-        # still warn by requiring spell_entry existence.
         missing_catalog = list.reject { |s| spell_entry(s) }
         if missing_catalog.any?
           return {
@@ -229,7 +424,6 @@ module AresMUSH
       { ok: true, source: resolved[:source], prepared: prepared }
     end
 
-    # Add spell to spellbook (prepared) or repertoire (spontaneous).
     def self.magic_learn(char_or_sheet, source, spell_slug, rank: nil)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -317,6 +511,7 @@ module AresMUSH
         cast = entry["casting"] || "-"
         abil = (entry["attribute"] || entry["ability"] || "?").to_s.upcase
         rank = entry["proficiency"] || "T"
+        cmax = entry["cantrips_max"].to_i
 
         lines << "%xh#{src}%xn  #{trad}/#{cast}  #{abil} #{rank}  DC #{dc}  Attack +#{atk}"
 
@@ -330,7 +525,8 @@ module AresMUSH
         end
 
         cantrips = Array(entry["cantrips"])
-        lines << "  Cantrips: #{cantrips.empty? ? '-' : cantrips.join(', ')}"
+        c_label = cmax > 0 ? "#{cantrips.size}/#{cmax}" : cantrips.size.to_s
+        lines << "  Cantrips (#{c_label}): #{cantrips.empty? ? '-' : cantrips.join(', ')}"
 
         prepared = entry["prepared"] || {}
         if prepared.any?
@@ -359,7 +555,7 @@ module AresMUSH
       end
 
       if sources.size > 1
-        lines << "%xhNote:%xn Multiple sources — use spell_dc:<source> / spell_attack:<source> when rolling."
+        lines << "%xhNote:%xn Multiple sources - use spell_dc:<source> / spell_attack:<source> when rolling."
       end
 
       lines.join("%r")
