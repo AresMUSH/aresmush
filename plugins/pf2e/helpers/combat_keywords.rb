@@ -5,7 +5,7 @@ module AresMUSH
     # Combat / derived roll keywords for the roll parser
     # Supports: melee, ranged, unarmed, ac, class_dc,
     # spell_dc, spell_attack, and source-qualified forms:
-    #   spell_dc:wizard  spell_attack:bard_dedication
+    #   spell_dc:wizard  spell_attack:innate
     # -------------------------------------------------
 
     def self.combat_keyword?(token)
@@ -61,13 +61,32 @@ module AresMUSH
     end
 
     def self.resolve_spell_keyword_value(sheet, kind, source)
+      key = source.to_s.strip.downcase
+      if key == "innate" || key.empty? && magic_sources(sheet) == ["innate"]
+        result = if kind == :dc
+                   innate_spell_dc(sheet)
+                 else
+                   innate_spell_attack_mod(sheet)
+                 end
+        return result[:value] if result[:ok]
+      end
+
+      if key == "innate"
+        result = if kind == :dc
+                   innate_spell_dc(sheet)
+                 else
+                   innate_spell_attack_mod(sheet)
+                 end
+        return result[:value] if result[:ok]
+        return 0
+      end
+
       result = if kind == :dc
                  magic_spell_dc(sheet, source)
                else
                  magic_spell_attack_mod(sheet, source)
                end
       return result[:value] if result[:ok]
-      # Ambiguous / missing → 0 so the roll still completes; CLI can warn separately.
       0
     end
 
@@ -75,7 +94,6 @@ module AresMUSH
       return 10 unless sheet
       cc = sheet.charclass || {}
       ability = cc["key_ability"] || cc["key"] || "str"
-      # Prefer class DC proficiency from proficiencies hash if present
       rank = "T"
       if sheet.proficiencies.is_a?(Hash)
         rank = (sheet.proficiencies["class_dc"] || sheet.proficiencies["class"] || "T").to_s
