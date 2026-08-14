@@ -88,16 +88,11 @@ module AresMUSH
       { ok: true, error: nil, sheet: sheet }
     end
 
-    # PF2e Remaster baseline is 15 gp. Destination defaults to Society account
-    # (Tapestry: Hall ledger; withdraw to shop). Override in pf2e.yml:
-    #   starting_wealth: "15gp"
-    #   starting_wealth_to: society | purse
     def self.cg_starting_wealth_purse
       raw = Global.read_config("pf2e", "starting_wealth")
       raw = "15gp" if raw.nil? || raw.to_s.strip.empty?
       parsed = parse_coin_string(raw.to_s)
       return parsed if parsed
-      # bare number = gold pieces
       if raw.to_s.strip =~ /\A\d+\z/
         return normalize_purse("gp" => raw.to_i)
       end
@@ -110,7 +105,6 @@ module AresMUSH
       dest = Global.read_config("pf2e", "starting_wealth_to").to_s.strip.downcase
       dest = "society" if dest.empty?
 
-      # Clear both so a re-commit after cg/reset is deterministic.
       set_money(sheet, empty_purse)
       set_society_account(sheet, empty_purse)
 
@@ -264,6 +258,7 @@ module AresMUSH
         feat_slot_map: {},
         features: [],
         archetypes: [],
+        magic: {},
         abilities: {
           "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10],
           "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10]
@@ -306,6 +301,9 @@ module AresMUSH
       cg_apply_granted_languages(sheet)
       cg_apply_granted_features(sheet)
 
+      # Spellcasting source + level-1 slots from class data (if any)
+      sync_class_magic_source(sheet)
+
       cg_recalc_abilities(sheet)
       cg_recalc_hp(sheet)
 
@@ -318,7 +316,8 @@ module AresMUSH
         error: nil,
         sheet: sheet,
         features: sheet_features(sheet),
-        starting_wealth: wealth
+        starting_wealth: wealth,
+        magic_sources: magic_sources(sheet)
       }
     end
 
