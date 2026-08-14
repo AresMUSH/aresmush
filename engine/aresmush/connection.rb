@@ -76,20 +76,27 @@ module AresMUSH
           data = "#{@input_buf}#{data}"
           @input_buf = ""
         end
-           
+
+        if (data.length > 16384)
+          # Excessively long string with no terminator yet - assume that something has gone wrong.
+          Global.logger.warn "Telnet buffer overflow for client #{self.client ? self.client.id : self.ip_addr} #{data.length}"
+          self.close_connection
+          return
+        end
+                   
         data_terminated = data.end_with?("\n") || data.end_with?("\r")
-         
+                  
         if (!data_terminated)
           if (!@input_buf)
             @input_buf = ""
           end
           @input_buf << data
-          
+                    
           if (@negotiator.is_control?(@input_buf))
             #telnet_debug(@input_buf, "RECV")
             @input_buf = @negotiator.handle_input(@input_buf)
           end
-         
+          
           return
         end
          

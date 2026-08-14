@@ -82,6 +82,14 @@ module AresMUSH
       Handle.find_any_by_name(handle.name).map { |h| h.character }
     end
 
+    def self.is_alt?(char1, char2)
+      return false if !char1 || !char2
+      return true if char1.name == char2.name
+      return false if !char1.handle
+      return false if !char2.handle
+      char1.handle.name == char2.handle.name
+    end
+    
     # -----------------------------------
     # INSTANCE METHODS
     # -----------------------------------
@@ -170,6 +178,9 @@ module AresMUSH
       return tracker
     end  
 
+    def alt_of?(other_char)
+      Character.is_alt?(self, other_char)
+    end
 
     # -----------------------------------
     # CALLBACKS

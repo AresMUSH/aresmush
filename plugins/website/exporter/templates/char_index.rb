@@ -9,8 +9,16 @@ module AresMUSH
         super File.dirname(__FILE__) + "/char_index.erb"
       end
       
+      def avatar(char)
+        Website.avatar_info(char)
+      end
+      
       def icon(char)
-        Website.icon_for_char(char)
+        avatar(char)["icon"]
+      end
+      
+      def icon_classes(char)
+        avatar(char)["classes"]
       end
     end
   end

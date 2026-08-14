@@ -12,7 +12,7 @@ module AresMUSH
             .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ] }
             .map { |a| {
               name: a.name,
-              icon: Website.icon_for_char(a),
+              avatar: Website.avatar_info(a),
               id: a.id
               } }
         }
