@@ -6,16 +6,18 @@ module AresMUSH
     # -------------------------------------------------
 
     # Return the ability key associated with a skill (from static data).
-    # e.g. "athletics" → "str"
+    # Lore skills (slug ends in _lore, or exact "lore") default to Int.
     def self.skill_ability(skill)
       return nil if skill.nil?
       key = skill.to_s.strip.downcase
       entry = read_data("skills", key)
-      return nil unless entry.is_a?(Hash)
-      entry["ability"]
+      if entry.is_a?(Hash) && entry["ability"]
+        return entry["ability"]
+      end
+      return "int" if key == "lore" || key.end_with?("_lore")
+      nil
     end
 
-    # TEML rank for a skill on the sheet. Missing key = Untrained ("U").
     def self.skill_rank(char_or_sheet, skill)
       sheet = sheet_for(char_or_sheet)
       return "U" unless sheet
@@ -25,9 +27,6 @@ module AresMUSH
       rank.nil? || rank.to_s.strip.empty? ? "U" : rank.to_s.strip.upcase
     end
 
-    # Full skill modifier (PF2e core rules).
-    # Untrained  → ability mod only
-    # Trained+   → ability mod + proficiency bonus + level
     def self.skill_mod(char_or_sheet, skill)
       sheet = sheet_for(char_or_sheet)
       return 0 unless sheet
@@ -46,20 +45,6 @@ module AresMUSH
       end
     end
 
-    # Make a skill check.
-    # Returns a hash shaped like Pf2e.roll / attack_roll:
-    # {
-    #   expression: "1d20 + athletics",
-    #   total:      17,
-    #   modifier:   5,
-    #   d20:        12,
-    #   skill:      "athletics",
-    #   parts:      [ ... ],
-    #   degree:     :success   # only present when dc: is given
-    # }
-    #
-    # other_bonus: circumstance/status/etc. already summed (default 0)
-    # dc:          optional DC for degree of success (applies nat 20 / nat 1)
     def self.skill_roll(char_or_sheet, skill, other_bonus: 0, dc: nil)
       key = skill.to_s.strip.downcase
       mod = skill_mod(char_or_sheet, key) + other_bonus.to_i

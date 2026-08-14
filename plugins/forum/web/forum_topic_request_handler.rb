@@ -27,7 +27,7 @@ module AresMUSH
           { id: r.id,
             author: {
             name: r.author_name,
-            icon: r.author ? Website.icon_for_char(r.author) : nil },
+            avatar: r.author ? Website.avatar_info(r.author) : nil },
             message: Website.format_markdown_for_html(r.message),
             raw_message: Website.format_input_for_html(r.message),
             date: r.created_date_str(enactor),
@@ -54,7 +54,7 @@ module AresMUSH
              date: topic.created_date_str(enactor),
              author: {
                name: topic.author_name,
-               icon: topic.author ? Website.icon_for_char(topic.author) : nil },
+               avatar: topic.author ? Website.avatar_info(topic.author) : nil },
              message: Website.format_markdown_for_html(topic.message),
              raw_message: Website.format_input_for_html(topic.message),
              replies: replies,

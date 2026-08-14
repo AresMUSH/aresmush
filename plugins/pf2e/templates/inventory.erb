@@ -1,0 +1,16 @@
+<%= line_with_text("#{name} — Gear") %>
+%xhPurse:%xn <%= purse_display %>   %xhSociety:%xn <%= society_display %>
+<% if encumbrance_enabled %>
+%xhBulk:%xn <%= bulk_display %> / <%= bulk_limit %> (max <%= bulk_maximum %>)  %xhLoad:%xn <%= load_label %>
+<% end %>
+
+<%= line_with_text("Equipped") %>
+<%= equipped_block %>
+
+<%= line_with_text("Carried") %>
+<%= carried_block %>
+
+<%= line_with_text("Stowed") %>
+<%= stowed_block %>
+
+%x(gear/stow <item> <bag>  |  gear/retrieve <item>  |  Bags stay on you — no Hall storage for gear.)%xn

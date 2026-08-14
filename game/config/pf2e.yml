@@ -1,3 +1,33 @@
 pf2e:
   shortcuts:
     csheet: sheet/combat
+    inv: gear
+    inventory: gear
+    inv/add: gear/add
+    inventory/add: gear/add
+    inv/drop: gear/drop
+    inventory/drop: gear/drop
+    inv/equip: gear/equip
+    inventory/equip: gear/equip
+    inv/unequip: gear/unequip
+    inventory/unequip: gear/unequip
+    inv/stow: gear/stow
+    inventory/stow: gear/stow
+    inv/retrieve: gear/retrieve
+    inventory/retrieve: gear/retrieve
+  # When true, bulk is calculated and shown; society-account coin is excluded.
+  use_encumbrance: true
+  # Granted once at cg/commit (identity lock). Re-granted after cg/reset + commit.
+  starting_wealth: "15gp"
+  # society = Hall ledger (default); purse = coins on person
+  starting_wealth_to: society
+
+  # -------------------------------------------------
+  # Experience (PF2e Remaster / Player Core)
+  # XP on the sheet is progress toward the *next* level only.
+  # On level-up finish: xp -= xp_to_level (remainder carries).
+  # -------------------------------------------------
+  xp_to_level: 1000
+  # Logged/shared scenes: SceneSharedEvent awards scene_xp to participants once.
+  scene_xp_enabled: true
+  scene_xp: 10

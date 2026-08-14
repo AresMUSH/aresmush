@@ -39,7 +39,7 @@ module AresMUSH
       end
       
       def alt_char_data(char)
-        {name: char.name, icon: Website.icon_for_char(char), is_handle: !!char.handle }
+        {name: char.name, avatar: Website.avatar_info(char), is_handle: !!char.handle }
       end
     end
   end

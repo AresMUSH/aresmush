@@ -32,14 +32,14 @@ module AresMUSH
           {
             char: {
                     name: s.char_name,
-                    icon: s.character ? Website.icon_for_char(s.character) : nil
+                    avatar: s.character ? Website.avatar_info(s.character) : nil
                   },
             comment: s.comment,
             author: enactor && s.character == enactor,
             can_edit: Events.can_manage_signup?(event, s.character, enactor)
             }}
         if (enactor)
-          signupChars = AresCentral.alts(enactor).map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
+          signupChars = AresCentral.alts(enactor).map { |p| { id: p.id, name: p.name, avatar: Website.avatar_info(p) }}   
         else
           sigupChars = []
         end
@@ -49,7 +49,7 @@ module AresMUSH
           title: event.title,
           organizer: { 
             name: event.character.name, 
-            icon: Website.icon_for_char(event.character) },
+            avatar: Website.avatar_info(event.character) },
           description: description,
           date: datetime.before(' '),
           time: datetime.after( ' '),

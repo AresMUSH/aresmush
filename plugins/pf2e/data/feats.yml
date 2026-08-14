@@ -1,56 +1,34 @@
-# Static feat reference data.
+# Static feat reference data (PF2e Remaster naming).
 # Lookup: Pf2e.read_data("feats", "power_attack")
 #
-# ---------------------------------------------------------------------------
-# Design notes
-# ---------------------------------------------------------------------------
-# Feats are the messiest PF2e data. This structure prioritizes:
-#   1. Chargen / level-up eligibility (level, traits, prerequisites)
-#   2. Display / help text
-#   3. Light mechanical tags the code can act on later
+# slots: ancestry | general | class | skill
+#        (legacy "combat" is accepted as an alias of ancestry)
+# category: ancestry | general | class | skill | dedication | archetype
+# archetype: optional explicit archetype slug for non-dedication archetype feats
 #
-# It does NOT try to encode every effect as executable logic. Complex or
-# unique effects stay in `effect` (human-readable) and optional `tags`
-# until we have a real reason to automate them.
+# Structured prereq nodes include:
+#   type: archetype  — must have this dedication (slug: barbarian)
+#   type: not_class  — must NOT be this class (slug: barbarian)
+#   type: dedication — alias of needing the dedication feat for an archetype
 #
-# Fields:
-#   name          — display name
-#   level         — minimum level required
-#   traits        — array of trait slugs (fighter, general, skill, ancestry, …)
-#   category      — ancestry | class | skill | general | archetype | dedication
-#   # category is redundant with traits for some feats but makes filtering easy
-#   action        — null | free | reaction | 1 | 2 | 3
-#   frequency     — null | "once per round" | "once per day" | etc.
-#   prerequisites — structured requirements (all must be met unless noted)
-#     level       — usually same as feat level; optional override
-#     feats       — list of feat slugs already required
-#     skills      — { skill_slug: min_rank }  e.g. athletics: T
-#     saves       — { save_slug: min_rank }
-#     attacks     — { category: min_rank }    e.g. martial: T
-#     attributes  — { ability: min_score }    e.g. str: 16  (rare)
-#     features    — class/ancestry feature slugs
-#     special     — free-text prereq the code cannot auto-check
-#   effect        — short rules summary (not full Nethys text)
-#   tags          — optional machine-oriented hints, e.g.
-#                   [map_friendly, damage_bonus, skill_bonus, dedication]
-# ---------------------------------------------------------------------------
+# Terminology: attribute scores still stored as str/dex/…; conditions use
+# Remaster names in prose (off-guard, not flat-footed).
 
 feats:
-  # --- Skill feat ---
   assurance:
     name: Assurance
     level: 1
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
-      skills: {}          # "trained in at least one skill" — enforced in special
       special: "trained in at least one skill"
     effect: >
       Choose a skill you're trained in. You can forgo rolling to instead
-      receive a result of 10 + proficiency bonus (do not apply ability mod,
-      item, circumstance, or status bonuses/penalties).
+      receive a result of 10 + your proficiency bonus (do not apply attribute
+      modifier, item, circumstance, or status bonuses/penalties).
     tags: [skill_action]
 
   powerful_leap:
@@ -58,6 +36,7 @@ feats:
     level: 2
     traits: [general, skill]
     category: skill
+    slots: [skill, general]
     action: null
     frequency: null
     prerequisites:
@@ -68,29 +47,79 @@ feats:
       increase the vertical distance vertically when applicable.
     tags: [skill_bonus]
 
-  # --- General feat ---
+  cat_fall:
+    name: Cat Fall
+    level: 1
+    traits: [general, skill]
+    category: skill
+    slots: [skill, general]
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        acrobatics: T
+    effect: >
+      Your ability to fall safely increases with your Acrobatics proficiency.
+    tags: [skill_bonus]
+
+  quick_jump:
+    name: Quick Jump
+    level: 1
+    traits: [general, skill]
+    category: skill
+    slots: [skill, general]
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        athletics: T
+    effect: >
+      You can use High Jump and Long Jump as a single action instead of 2.
+    tags: [skill_bonus]
+
+  intimidating_glare:
+    name: Intimidating Glare
+    level: 1
+    traits: [general, skill]
+    category: skill
+    slots: [skill, general]
+    action: null
+    frequency: null
+    prerequisites:
+      skills:
+        intimidation: T
+    effect: >
+      You can Demoralize with a glare; your Demoralize loses the auditory
+      trait and gains the visual trait, and you don't take a penalty when
+      the target doesn't understand your language.
+    tags: [skill_action]
+
   toughness:
     name: Toughness
     level: 1
     traits: [general]
     category: general
+    slots: [general]
     action: null
     frequency: null
     prerequisites: {}
     effect: >
-      Increase your maximum HP by your level. You reduce the DC for
+      Increase your maximum Hit Points by your level. You reduce the DC for
       recovery checks by 1.
     tags: [hp_bonus, recovery]
 
-  # --- Class feat (Fighter) ---
   power_attack:
     name: Power Attack
     level: 1
     traits: [fighter]
     category: class
+    slots: [class]
     action: 2
     frequency: null
-    prerequisites: {}
+    prerequisites:
+      all:
+        - type: class
+          slug: fighter
     effect: >
       Make a melee Strike with the required number of actions. If you hit,
       you deal an extra weapon damage die. Count as two attacks toward MAP.
@@ -101,45 +130,159 @@ feats:
     level: 1
     traits: [fighter]
     category: class
+    slots: [class]
     action: reaction
     frequency: null
-    prerequisites: {}
+    prerequisites:
+      all:
+        - type: class
+          slug: fighter
     effect: >
-      Trigger: An enemy hits you with a melee Strike while you have a shield raised.
-      You can use Shield Block as a reaction even though it is not your turn's reaction budget
-      in the usual way — follow published text for exact trigger/resolution.
+      Trigger: An enemy hits you with a melee Strike. You Raise a Shield
+      and gain its benefits against the triggering attack.
     tags: [reaction, shield]
 
-  # --- Ancestry feat ---
+  sudden_charge:
+    name: Sudden Charge
+    level: 1
+    traits: [fighter, flourish]
+    category: class
+    slots: [class]
+    action: 2
+    frequency: null
+    prerequisites:
+      all:
+        - type: class
+          slug: fighter
+    effect: >
+      Stride twice. If you end your movement within melee reach of an enemy,
+      you can make a melee Strike against that enemy.
+    tags: [movement, strike]
+
   rock_runner:
     name: Rock Runner
     level: 1
     traits: [dwarf]
     category: ancestry
+    slots: [ancestry]
     action: null
     frequency: null
     prerequisites:
-      special: "dwarf ancestry"
+      all:
+        - type: ancestry
+          slug: dwarf
     effect: >
       You ignore difficult terrain caused by stone or earth, and you can
       treat higher earth/stone obstacles more favorably when Climbing.
     tags: [movement]
 
-  # --- Dedication / archetype (shape only) ---
+  # ---- Multiclass dedications ----
   barbarian_dedication:
     name: Barbarian Dedication
     level: 2
-    traits: [archetype, dedication, multiclass]
-    category: dedication
+    traits: [archetype, dedication, multiclass, barbarian]
+    category: class
+    slots: [class]
+    archetype: barbarian
     action: null
     frequency: null
     prerequisites:
-      level: 2
-      attributes:
-        str: 14
-      special: "not already a barbarian"
+      all:
+        - type: level
+          min: 2
+        - type: ability
+          ability: str
+          min: 14
+        - type: not_class
+          slug: barbarian
     effect: >
-      You become trained in light armor, medium armor, unarmed attacks, and
-      the Athletics skill (or another skill if already trained). You gain
-      access to barbarian archetype feats. You do not gain rage yet.
+      You become trained in Athletics (or another skill if already trained).
+      You gain access to barbarian archetype feats. You do not gain rage yet.
     tags: [dedication, multiclass]
+
+  fighter_dedication:
+    name: Fighter Dedication
+    level: 2
+    traits: [archetype, dedication, multiclass, fighter]
+    category: class
+    slots: [class]
+    archetype: fighter
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: level
+          min: 2
+        - type: ability
+          ability: str
+          min: 14
+        - type: not_class
+          slug: fighter
+    # Note: real fighter dedication also allows Dex 14 path; simplified sample.
+    effect: >
+      You become trained in simple and martial weapons. You gain access to
+      fighter archetype feats.
+    tags: [dedication, multiclass]
+
+  rogue_dedication:
+    name: Rogue Dedication
+    level: 2
+    traits: [archetype, dedication, multiclass, rogue]
+    category: class
+    slots: [class]
+    archetype: rogue
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: level
+          min: 2
+        - type: ability
+          ability: dex
+          min: 14
+        - type: not_class
+          slug: rogue
+    effect: >
+      You become trained in Stealth (or another skill if already trained)
+      and gain access to rogue archetype feats.
+    tags: [dedication, multiclass]
+
+  # ---- Sample archetype feats (require dedication) ----
+  barbarian_resilience:
+    name: Barbarian Resiliency
+    level: 4
+    traits: [archetype, barbarian]
+    category: class
+    slots: [class]
+    archetype: barbarian
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: archetype
+          slug: barbarian
+        - type: level
+          min: 4
+    effect: >
+      You gain 3 additional Hit Points for each class level you have in
+      classes that grant fewer HP than barbarian.
+    tags: [hp_bonus, multiclass]
+
+  basic_fury:
+    name: Basic Fury
+    level: 4
+    traits: [archetype, barbarian]
+    category: class
+    slots: [class]
+    archetype: barbarian
+    action: null
+    frequency: null
+    prerequisites:
+      all:
+        - type: feat
+          slug: barbarian_dedication
+        - type: level
+          min: 4
+    effect: >
+      You gain a 1st- or 2nd-level barbarian feat.
+    tags: [multiclass]

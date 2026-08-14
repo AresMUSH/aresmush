@@ -1,0 +1,159 @@
+# Static background reference data.
+# Lookup: Pf2e.read_data("backgrounds", "guard")
+#
+# skills:         always trained on cg/background
+# skill_choices:  player resolves later via cg/bgskill (do not auto-train)
+# feat:           unconditional skill feat (optional; null if none)
+#
+# skill_choices entry shapes:
+#   type: list
+#     pick: 1
+#     options: [acrobatics, athletics]
+#     feats:                    # optional — option slug → feat slug
+#       acrobatics: cat_fall
+#       athletics: quick_jump
+#   type: lore
+#     pick: 1
+#     category: home_terrain   # UI/help hint only
+#     # player supplies specialty → trains specialty_lore
+
+backgrounds:
+  farmhand:
+    name: Farmhand
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, con]
+    skills:
+      - athletics
+      - labor_lore
+    skill_choices: []
+    feat: assured_identification
+    traits: []
+    effect: >
+      You come from hard outdoor work. Your background prepares you for
+      sustained physical effort and practical problem-solving.
+
+  emissary:
+    name: Emissary
+    boosts:
+      fixed: []
+      free: 2
+      options: [int, cha]
+    skills:
+      - society
+      - diplomacy
+    skill_choices: []
+    feat: multicultural
+    traits: []
+    effect: >
+      You represent interests across borders or courts. You are practiced
+      at reading rooms and speaking for others.
+
+  warrior:
+    name: Warrior
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, con]
+    skills:
+      - intimidation
+      - warfare_lore
+    skill_choices: []
+    feat: intimidating_glare
+    traits: []
+    effect: >
+      You were trained for battle long before adventuring. Violence and
+      discipline are familiar tools.
+
+  scholar:
+    name: Scholar
+    boosts:
+      fixed: []
+      free: 2
+      options: [int, wis]
+    skills:
+      - arcana
+      - academia_lore
+    skill_choices: []
+    feat: assurance
+    traits: []
+    effect: >
+      Study shaped your early life. You know how to learn quickly and
+      apply book knowledge under pressure.
+
+  guard:
+    name: Guard
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, cha]
+    skills:
+      - intimidation
+    skill_choices:
+      - type: list
+        pick: 1
+        options: [legal_lore, warfare_lore]
+    feat: quick_coercion
+    traits: []
+    effect: >
+      You served as a guard. You know how to lean on people and how the
+      law — or the battlefield — is organized where you worked.
+
+  noble:
+    name: Noble
+    boosts:
+      fixed: []
+      free: 2
+      options: [int, cha]
+    skills:
+      - society
+    skill_choices:
+      - type: list
+        pick: 1
+        options: [diplomacy, genealogy_lore, heraldry_lore]
+    feat: courtly_graces
+    traits: []
+    effect: >
+      You were raised among privilege and expectation. Courts, lineage,
+      and careful words are familiar ground.
+
+  nomad:
+    name: Nomad
+    boosts:
+      fixed: []
+      free: 2
+      options: [con, wis]
+    skills:
+      - survival
+    skill_choices:
+      - type: lore
+        pick: 1
+        category: home_terrain
+    feat: assurance
+    traits: []
+    effect: >
+      You grew up moving with the land. Survival is second nature, and
+      you know the lore of the terrain you call home.
+
+  # Choice skill + feat gated by that choice; Warfare Lore fixed
+  martial_disciple:
+    name: Martial Disciple
+    boosts:
+      fixed: []
+      free: 2
+      options: [str, dex]
+    skills:
+      - warfare_lore
+    skill_choices:
+      - type: list
+        pick: 1
+        options: [acrobatics, athletics]
+        feats:
+          acrobatics: cat_fall
+          athletics: quick_jump
+    feat: null
+    traits: []
+    effect: >
+      You trained under a martial tradition. You specialize in either
+      fluid movement or explosive power, and you know warfare as a craft.

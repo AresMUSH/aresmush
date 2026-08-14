@@ -36,7 +36,15 @@ module AresMUSH
       end
 
       def ac_display
-        Pf2e.ac(sheet, rank: "U", item_bonus: 0, dex_cap: nil).to_s
+        Pf2e.character_ac(sheet).to_s
+      end
+
+      def weapon_line
+        w = Pf2e.primary_weapon(sheet)
+        return "%xhWeapon:%xn (none equipped)" unless w
+        mod = Pf2e.weapon_attack_mod_from_item(sheet, w)
+        mod_s = mod >= 0 ? "+#{mod}" : mod.to_s
+        "%xhWeapon:%xn #{Pf2e.item_display_name(w)} (#{w['id']}) atk #{mod_s}"
       end
 
       def saves_one_line

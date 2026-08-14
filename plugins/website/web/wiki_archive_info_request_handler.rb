@@ -10,7 +10,6 @@ module AresMUSH
         export_available = File.exist?(backup_path)
         
         {
-          auto_export: Global.read_config("website", "auto_wiki_export"),
           export_available: export_available,
           last_exported: export_available ? OOCTime.local_long_timestr(enactor, File.ctime(backup_path)) : nil
         }

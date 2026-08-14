@@ -11,7 +11,7 @@ module AresMUSH
       self.connected_at = Time.now
       websocket.onopen { |handshake| connection_opened(handshake) }
       websocket.onclose { connection_closed }
-      websocket.onmessage { |msg| receive_data(msg) }
+      websocket.onmessage { |msg| receive_message(msg) }
     end
 
     def ping
@@ -83,11 +83,12 @@ module AresMUSH
       raise "Tried to send raw text to web client."     
     end
     
-    # Just announces that the websocket was closed.
     def connection_closed
+      # Announces that the websocket was closed.
       if (@client)
         @client.connection_closed        
       end
+      @char_id = nil
     end
     
     def close_connection(dummy = nil)  # Dummy for compatibility with the other connection class.
@@ -98,35 +99,84 @@ module AresMUSH
       end
     end
     
-    def receive_data(data)
+
+    private
+    
+    def receive_message(message)
       return if !@client
       
       begin
-        json_input = JSON.parse(data)
+        json_message = JSON.parse(message)
+        api_key = json_message["api_key"]
+        auth = json_message["auth"]
+        enactor = nil
+        
+        if (!Website.check_api_key(api_key))
+          Global.logger.warn "Unexpected websocket client from IP #{self.get_ip}"
+          self.close_connection
+          return;
+        end
+        
+        if (auth['id'])
+          enactor = self.check_token(auth['id'], auth['token'])
+          if (!enactor)            
+            self.close_connection
+            return
+          end
+        end
         
         @client.last_activity = Time.now
         
-        if (json_input["type"] == "input")
-          @client.handle_input(json_input["message"] + "\r\n")        
-        elsif (json_input["type"] == "identify")
-          data = json_input["data"]
-          @char_id = data ? data["id"] : nil
-          if (@client)
-            @client.char_id = @char_id
-          end
+        if (json_message["type"] == "identify")
+          handle_identify(json_message, enactor)
         else
-          Global.logger.warn "Unexpected input from web client: #{data}"
+          Global.logger.warn "Unexpected input from websocket: #{data}"
         end
         
       rescue Exception => e
         Global.logger.warn "Error receiving data:  error=#{e} backtrace=#{e.backtrace[0,10]}."
       end
     end
-
-    private 
-
+    
+    def handle_identify(json_message, enactor)
+      data = json_message["data"]
+      id = data ? data["id"] : nil
+      
+      # Double checking in case of race condition
+      if (@client)
+        if (id)
+          id_char = Character[id]
+        
+          if (!enactor || !id_char || !Character.is_alt?(id_char, enactor))
+            Global.logger.warn "Websocket invalid character ID #{id} #{enactor ? enactor.id : 'None'}"
+            self.close_connection
+            return              
+          end
+          @char_id = id
+        end
+        Global.logger.debug "Websocket char ID updated #{@char_id || 'None'}"
+        @client.char_id = @char_id
+      else
+        @char_id = nil
+      end
+    end
+    
+    def check_token(char_id, token)
+      Global.logger.debug "Websocket checking token #{char_id}"
+      char = Character[char_id]
+      if (!char || !char.is_valid_api_token?(token))
+        Global.logger.warn "Websocket session invalid #{char_id}."
+        return nil
+      end
+      return char
+    end  
+    
     def get_ip
-      self.websocket.get_peername[2,6].unpack('nC4')[1..4].join('.')
-    end    
+      begin
+        return self.websocket.get_peername[2,6].unpack('nC4')[1..4].join('.')
+      rescue
+        return ""
+      end
+    end
   end
 end

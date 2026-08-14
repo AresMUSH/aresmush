@@ -1,23 +1,6 @@
 # Static weapon reference data.
-# Populated later; this file defines the shape helpers expect.
-#
 # Lookup: Pf2e.read_data("weapons", "longsword")
-#
-# Fields:
-#   name       — display name
-#   category   — unarmed | simple | martial | advanced
-#   damage     — { dice:, sides:, type: }  base weapon damage
-#   hands      — 1 or 2
-#   group      — weapon group (sword, bow, …) for critical specialization later
-#   traits     — array of trait slugs (finesse, agile, versatile_p, propulsive, …)
-#   range      — nil for melee; feet for ranged
-#   reload     — nil or actions required to reload
-#   bulk       — L / 1 / 2 / etc. (string or number as convenient)
-#   price      — optional, in sp
-#
-# Ability for the attack is NOT stored here; finesse/propulsive traits
-# tell the caller they *may* use Dex / half Str, but the sheet/command
-# decides which ability is actually applied.
+# price — in sp (for vendors)
 
 weapons:
   longsword:
@@ -33,6 +16,7 @@ weapons:
     range: null
     reload: null
     bulk: 1
+    price: 10
 
   shortsword:
     name: Shortsword
@@ -47,6 +31,7 @@ weapons:
     range: null
     reload: null
     bulk: L
+    price: 9
 
   dagger:
     name: Dagger
@@ -61,6 +46,7 @@ weapons:
     range: null
     reload: null
     bulk: L
+    price: 2
 
   unarmed:
     name: Fist
@@ -75,3 +61,4 @@ weapons:
     range: null
     reload: null
     bulk: 0
+    # no price — not for sale

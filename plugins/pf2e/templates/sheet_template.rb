@@ -54,10 +54,8 @@ module AresMUSH
         "#{cur}/#{max}#{temp_bit}"
       end
 
-      # AC needs armor rank/item/dex_cap once equipped gear is on the sheet.
-      # Until then, unarmored baseline: rank U, no item bonus, no dex cap.
       def ac_display
-        Pf2e.ac(sheet, rank: "U", item_bonus: 0, dex_cap: nil).to_s
+        Pf2e.character_ac(sheet).to_s
       end
 
       def ability_block
@@ -89,7 +87,6 @@ module AresMUSH
           rank = Pf2e.skill_rank(sheet, sk)
           mod = Pf2e.skill_mod(sheet, sk)
           mod_str = mod >= 0 ? "+#{mod}" : mod.to_s
-          # Only emphasize trained+ ranks for readability
           if rank == "U"
             "  #{sk.tr('_', ' ')} #{mod_str}"
           else

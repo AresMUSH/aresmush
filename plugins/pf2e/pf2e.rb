@@ -1,10 +1,6 @@
 module AresMUSH
   module Pf2e
 
-    # -------------------------------------------------
-    # Plugin interface
-    # -------------------------------------------------
-
     def self.plugin_dir
       File.dirname(__FILE__)
     end
@@ -13,7 +9,6 @@ module AresMUSH
       Global.read_config("pf2e", "shortcuts")
     end
 
-    # Called by the engine when the plugin is loaded / reloaded.
     def self.load
       load_data
     end
@@ -22,39 +17,85 @@ module AresMUSH
       case cmd.root
       when "sheet"
         case cmd.switch
-        when "combat"
-          return SheetCombatCmd
-        when nil
-          return SheetCmd
+        when "combat" then return SheetCombatCmd
+        when nil then return SheetCmd
+        end
+      when "money"
+        case cmd.switch
+        when nil then return MoneyCmd
+        when "deposit" then return MoneyDepositCmd
+        when "withdraw" then return MoneyWithdrawCmd
+        when "optimize" then return MoneyOptimizeCmd
+        end
+      when "gear", "inv", "inventory"
+        case cmd.switch
+        when nil then return GearCmd
+        when "add" then return GearAddCmd
+        when "drop" then return GearDropCmd
+        when "equip" then return GearEquipCmd
+        when "unequip" then return GearUnequipCmd
+        when "stow" then return GearStowCmd
+        when "retrieve" then return GearRetrieveCmd
+        end
+      when "shop"
+        case cmd.switch
+        when nil then return ShopCmd
+        when "buy" then return ShopBuyCmd
+        when "sell" then return ShopSellCmd
         end
       when "roll"
-        return RollCmd if cmd.switch.nil?
+        case cmd.switch
+        when nil then return RollCmd
+        when "job" then return RollJobCmd
+        end
+      when "feats"
+        return FeatSearchCmd if cmd.switch.nil?
+      when "pf2e"
+        case cmd.switch
+        when "set" then return Pf2eSetCmd
+        when "reset" then return Pf2eResetCmd
+        end
+      when "adv", "level"
+        case cmd.switch
+        when nil, "status" then return AdvStatusCmd
+        when "start" then return AdvStartCmd
+        when "finish", "done" then return AdvFinishCmd
+        when "skill" then return AdvSkillCmd
+        when "boost" then return AdvBoostCmd
+        when "feat" then return AdvFeatCmd
+        end
+      when "cg"
+        case cmd.switch
+        when "start" then return CgStartCmd
+        when "ancestry" then return CgAncestryCmd
+        when "heritage" then return CgHeritageCmd
+        when "background" then return CgBackgroundCmd
+        when "class" then return CgClassCmd
+        when "identity" then return CgIdentityCmd
+        when "commit" then return CgCommitCmd
+        when "reset" then return CgResetCmd
+        when "boost" then return CgBoostCmd
+        when "skill" then return CgSkillCmd
+        when "bgskill" then return CgBgskillCmd
+        when "language" then return CgLanguageCmd
+        when "feat" then return CgFeatCmd
+        when "unfeat" then return CgFeatRemoveCmd
+        end
       end
       nil
     end
 
     def self.get_event_handler(event_name)
+      case event_name
+      when "SceneSharedEvent"
+        return SceneSharedEventHandler
+      end
       nil
     end
 
     def self.get_web_request_handler(request)
       nil
     end
-
-    # -------------------------------------------------
-    # Static data loader
-    #
-    # All static PF2e reference data (classes, feats, skills,
-    # spells, etc.) lives in YAML files under data/.
-    # Multiple files may contribute to the same top-level
-    # section; they are deep-merged, exactly like Global
-    # config files under a single section key.
-    #
-    # Usage mirrors Global.read_config:
-    #   Pf2e.read_data                  → entire data hash
-    #   Pf2e.read_data("skills")        → skills section
-    #   Pf2e.read_data("skills", "athletics") → one entry
-    # -------------------------------------------------
 
     @@data = {}
 
@@ -65,7 +106,6 @@ module AresMUSH
     def self.load_data
       @@data = {}
       return unless Dir.exist?(data_dir)
-
       Dir[File.join(data_dir, "*.yml")].sort.each do |path|
         begin
           raw = YAML.load_file(path)
@@ -75,25 +115,18 @@ module AresMUSH
           Global.logger.error "Pf2e data load failed for #{path}: #{e.message}"
         end
       end
-
       Global.logger.info "Pf2e loaded static data from #{Dir[File.join(data_dir, '*.yml')].size} file(s)."
     end
 
-    # Mirrors Global.read_config(section, key = nil)
     def self.read_data(section = nil, key = nil)
       load_data if @@data.empty? && Dir.exist?(data_dir)
-
       return @@data if section.nil?
-
       section_data = @@data[section]
       return nil if section_data.nil?
       return section_data if key.nil?
-
       section_data[key]
     end
 
-    # Simple recursive deep merge (hashes only; arrays/values from the
-    # second hash win). Keeps the loader dependency-free.
     def self.deep_merge(base, overlay)
       result = base.dup
       overlay.each do |k, v|
@@ -109,11 +142,7 @@ module AresMUSH
   end
 end
 
-# Load all helper files (they reopen AresMUSH::Pf2e)
 require File.join(File.dirname(__FILE__), 'helpers')
-
-# Template renderers (ErbTemplateRenderer subclasses)
 Dir[File.join(File.dirname(__FILE__), 'templates', '*_template.rb')].sort.each { |f| require f }
-
-# Command handlers (recursive — supports commands/<domain>/*_cmd.rb)
 Dir[File.join(File.dirname(__FILE__), 'commands', '**', '*_cmd.rb')].sort.each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'events', '**', '*_handler.rb')].sort.each { |f| require f }

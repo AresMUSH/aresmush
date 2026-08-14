@@ -30,7 +30,7 @@ module AresMUSH
             category_id: p.bbs_board.id,
             author: {
               name: p.author_name,
-              icon: p.author ? Website.icon_for_char(p.author) : nil
+              avatar: p.author ? Website.avatar_info(p.author) : nil
              },
             date: p.created_date_str_short(enactor),
             subject: p.subject,
@@ -43,7 +43,7 @@ module AresMUSH
             category_id: p.bbs_board.id,
             author: {
               name: last_reply.author_name,
-              icon: last_reply.author ? Website.icon_for_char(last_reply.author) : nil
+              avatar: last_reply.author ? Website.avatar_info(last_reply.author) : nil
              },
             date: last_reply.created_date_str_short(enactor),
             subject: p.subject,
