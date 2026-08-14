@@ -8,7 +8,7 @@
 %xh<%= f[:slug] %>%xn - <%= f[:name] %>  [L<%= f[:level] %><% if !f[:category].to_s.empty? %>/<%= f[:category] %><% end %>]
   Traits: <%= f[:traits].empty? ? "-" : f[:traits].join(", ") %>
 <% if f[:effect] && !f[:effect].empty? %>
-  <%= left(f[:effect], 76) %>
+<%= wrap_effect(f[:effect]) %>
 <% end %>
 
 <% end %>
