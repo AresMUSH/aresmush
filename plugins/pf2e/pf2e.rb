@@ -43,6 +43,13 @@ module AresMUSH
         when "buy" then return ShopBuyCmd
         when "sell" then return ShopSellCmd
         end
+      when "spells", "spell"
+        case cmd.switch
+        when nil then return SpellsCmd
+        when "daily", "rest" then return SpellsDailyCmd
+        when "prepare", "prep" then return SpellsPrepareCmd
+        when "learn" then return SpellsLearnCmd
+        end
       when "roll"
         case cmd.switch
         when nil then return RollCmd
