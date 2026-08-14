@@ -1,5 +1,7 @@
 module AresMUSH
   class Pf2eSheet < Ohm::Model
+    include ObjectModel
+
     reference :character, "AresMUSH::Character"
 
     # Core
