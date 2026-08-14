@@ -246,7 +246,6 @@ module AresMUSH
       }
     end
 
-    # Begin a level-up. Does NOT subtract XP (that happens on finish).
     def self.adv_start(char)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -282,6 +281,9 @@ module AresMUSH
       merge_proficiency_overlay!(sheet, pkg["proficiency"])
       cg_recalc_hp(sheet)
 
+      # Rebuild class spell source slots / proficiency for the new level
+      sync_all_magic_slots(sheet)
+
       pending = empty_pending
       pending["skill_increase"] = pkg["skill_increase"].to_i
       pending["ability_boost"] = pkg["ability_boost"].to_i
@@ -291,7 +293,6 @@ module AresMUSH
       pending["ancestry_feat"] = pkg["ancestry_feat"].to_i
       set_pending(sheet, pending)
 
-      # Stash structured choices for this level if any
       if pkg["choice"]
         picks = (sheet.advancement_picks || {}).dup
         picks["_pending_choice"] = pkg["choice"]
@@ -307,7 +308,8 @@ module AresMUSH
         pending: sheet_pending(sheet),
         features: sheet_features(sheet),
         xp: sheet_xp(sheet),
-        xp_to_level: threshold
+        xp_to_level: threshold,
+        magic_sources: magic_sources(sheet)
       }
     end
 
@@ -330,7 +332,6 @@ module AresMUSH
       threshold = xp_to_level
       xp = sheet_xp(sheet)
       if xp < threshold
-        # Should not happen if start gated correctly; still safe-guard.
         return {
           ok: false,
           error: "pf2e.adv_insufficient_xp",
@@ -411,8 +412,6 @@ module AresMUSH
       }
     end
 
-    # Ability boosts from leveling (source key level_5, level_10, …).
-    # All boosts for this level must be assigned in one command (count = pending).
     def self.adv_ability_boosts(char, abilities)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -458,7 +457,6 @@ module AresMUSH
       }
     end
 
-    # Take a feat while advancing (approved chars OK). Slot rules unchanged.
     def self.adv_take_feat(char, slug, slot_type: nil)
       result = cg_ensure_sheet(char)
       return result unless result[:ok]
@@ -518,7 +516,6 @@ module AresMUSH
       sheet.update(feats: owned, feat_slot_map: map)
       archetype_on_dedication_taken(sheet, key)
 
-      # Decrement guidance counters when present
       pending = sheet_pending(sheet)
       case chosen
       when "class" then pending["class_feat"] = [pending["class_feat"] - 1, 0].max
