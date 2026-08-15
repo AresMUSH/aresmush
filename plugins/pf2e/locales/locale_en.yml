@@ -220,6 +220,18 @@ en:
     magic_no_slot_rank: "No slots defined for rank %{rank}."
     magic_slots_exhausted: "No remaining slots at rank %{rank}."
 
+    magic_cast_usage: "Usage: cast [<source>=]<spell> [rank]   (also spells/cast)"
+    magic_not_known: "You do not know %{spell} on source %{source}."
+    magic_not_prepared_spell: "%{spell} is not prepared at rank %{rank} on %{source}."
+    magic_rank_too_low: "Cannot cast %{spell} at rank %{rank} (base rank %{base})."
+
+    cast_innate: "%{name} casts innate %{spell} (%{slug}). Uses %{used}/%{max}. DC %{dc}, Attack +%{attack}."
+    cast_innate_atwill: "%{name} casts innate %{spell} (%{slug}, at-will). DC %{dc}, Attack +%{attack}."
+    cast_focus: "%{name} casts focus %{spell} (%{slug}) from %{source} (R%{rank}). FP %{fp}/%{fp_max}. DC %{dc}, Attack +%{attack}."
+    cast_cantrip: "%{name} casts cantrip %{spell} (%{slug}) from %{source}. DC %{dc}, Attack +%{attack}."
+    cast_slot: "%{name} casts %{spell} (%{slug}) from %{source} at rank %{rank}%{height}. Slots %{used}/%{max}. DC %{dc}, Attack +%{attack}."
+    cast_heightened_note: " (heightened from R%{base})"
+
     innate_cast_usage: "Usage: spells/cast <innate spell slug>"
     innate_not_found: "No innate spell '%{spell}' on your sheet."
     innate_exhausted: "%{spell} has no uses left today (%{used}/%{max})."
