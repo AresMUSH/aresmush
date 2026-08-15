@@ -1,0 +1,86 @@
+# Spell items — deep-merged under items:
+# Lookup: Pf2e.read_data("items", "scroll_fireball_3")
+#
+# kind: scroll | wand | staff
+# spell: payload copied onto the inventory instance at grant/buy
+
+items:
+  scroll_heal_1:
+    name: "Scroll of Heal (1st)"
+    kind: scroll
+    bulk: L
+    price: 4
+    traits: [consumable, magical, scroll]
+    spell:
+      type: scroll
+      slug: heal
+      rank: 1
+      tradition: divine
+
+  scroll_fireball_3:
+    name: "Scroll of Fireball (3rd)"
+    kind: scroll
+    bulk: L
+    price: 30
+    traits: [consumable, magical, scroll]
+    spell:
+      type: scroll
+      slug: fireball
+      rank: 3
+      tradition: arcane
+
+  scroll_miststep_2:
+    name: "Scroll of Mist Step (2nd)"
+    kind: scroll
+    bulk: L
+    price: 12
+    traits: [consumable, magical, scroll]
+    spell:
+      type: scroll
+      slug: mist_step
+      rank: 2
+      tradition: arcane
+
+  wand_heal_1:
+    name: "Wand of Heal (1st)"
+    kind: wand
+    bulk: L
+    price: 60
+    traits: [magical, wand]
+    spell:
+      type: wand
+      slug: heal
+      rank: 1
+      tradition: divine
+      charges_max: 1
+      daily: true
+
+  wand_force_barrage_1:
+    name: "Wand of Force Barrage (1st)"
+    kind: wand
+    bulk: L
+    price: 60
+    traits: [magical, wand]
+    spell:
+      type: wand
+      slug: force_barrage
+      rank: 1
+      tradition: arcane
+      charges_max: 1
+      daily: true
+
+  staff_fire:
+    name: "Staff of Fire"
+    kind: staff
+    bulk: 1
+    price: 230
+    traits: [magical, staff]
+    spell:
+      type: staff
+      tradition: arcane
+      charges_max: 5
+      daily: true
+      cantrips: [ignition]
+      spells:
+        - { slug: breathe_fire, rank: 1, cost: 1 }
+        - { slug: fireball, rank: 3, cost: 3 }
