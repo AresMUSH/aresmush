@@ -1,0 +1,206 @@
+# Player Core from Foundry (Pathfinder Player Core)
+spells:
+  mystic_beacon:
+    name: Mystic Beacon
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 willing creature
+    duration: until the start of your next turn
+  natures_bounty:
+    name: Nature's Bounty
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - plant
+    - vitality
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+  needle_of_vengeance:
+    name: Needle of Vengeance
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - mental
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 enemy
+    duration: 1 minute (sustained)
+  nudge_fate:
+    name: Nudge Fate
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - concentrate
+    - hex
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute
+  ode_to_ouroboros:
+    name: Ode to Ouroboros
+    rank: 5
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: the triggering creature
+  overstuff:
+    name: Overstuff
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 living creature
+  patrons_puppet:
+    name: Patron's Puppet
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - witch
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  perfected_body:
+    name: Perfected Body
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  perfected_mind:
+    name: Perfected Mind
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+  personal_blizzard:
+    name: Personal Blizzard
+    rank: 3
+    category: focus
+    traits:
+    - cold
+    - focus
+    - hex
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  phase_familiar:
+    name: Phase Familiar
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: your familiar
+  pied_piping:
+    name: Pied Piping
+    rank: 10
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    - incapacitation
+    - mental
+    - sonic
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 minute
+  precious_metals:
+    name: Precious Metals
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - metal
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 metal shield or weapon, 1 suit of metal armor, or up to 1 Bulk of metal material (such as coins or metal-tipped ammunition)
+    duration: 1 minute
+  primal_summons:
+    name: Primal Summons
+    rank: 6
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  protective_wards:
+    name: Protective Wards
+    rank: 1
+    category: focus
+    traits:
+    - aura
+    - focus
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 5
+    duration: 1 minute (sustained)
