@@ -22,6 +22,7 @@ This game uses **Pathfinder 2e (Remaster / Player Core)** for character building
 * Coin purse, Society account, encumbrance
 * Inventory, bags (stow/retrieve), mundane vendors
 * Staff tools to fix sheets and issue Society gear
+* Focus Points pool and Refocus (`focus`, `refocus`)
 
 Combat is **not** fully automated. Rolls and sheet numbers support table play; you still narrate the fight.
 
@@ -36,6 +37,7 @@ Combat is **not** fully automated. Rolls and sheet numbers support table play; y
 | Gear | `gear` (also `inv` / `inventory`) |
 | Shops | `shop` |
 | Feats list | `feats` |
+| Focus | `focus`, `refocus` |
 | Staff | [Managing PF2e](/help/manage_pf2e) |
 
 ## Degrees of success
@@ -62,4 +64,5 @@ Ranks use TEML letters: **U** Untrained, **T** Trained, **E** Expert, **M** Mast
 [Gear](/help/gear)
 [Shop](/help/shop)
 [Feats](/help/feats)
+[Focus Points](/help/focus)
 [Managing PF2e](/help/manage_pf2e) (staff)
