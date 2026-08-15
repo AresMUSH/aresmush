@@ -213,3 +213,8 @@ en:
     innate_exhausted: "%{spell} has no uses left today (%{used}/%{max})."
     innate_cast_ok: "Cast innate %{spell}. Uses %{used}/%{max}. DC %{dc}, Attack +%{attack}."
     innate_cast_atwill: "Cast innate %{spell} (at-will). DC %{dc}, Attack +%{attack}."
+
+    focus_no_pool: "You have no Focus Point pool (max is 0). Ask staff if you should have focus spells."
+    focus_already_full: "Your Focus Points are already full (%{current}/%{max})."
+    focus_exhausted: "Not enough Focus Points (have %{current}, need %{needed})."
+    refocus_ok: "Refocused. Focus Points: %{before} -> %{after} / %{max}."
