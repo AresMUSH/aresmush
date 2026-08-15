@@ -1,0 +1,236 @@
+# Spell catalog (PF2e Remaster) - Pathfinder Player Core
+# From Foundry VTT pf2e packs/pf2e/spells (publication.title == Pathfinder Player Core).
+# Lookup: Pf2e.read_data("spells", "<slug>")
+#
+spells:
+  community_restoration:
+    name: Community Restoration
+    rank: 4
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - healing
+    - wizard
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  competitive_edge:
+    name: Competitive Edge
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute (sustained)
+  cornucopia:
+    name: Cornucopia
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - healing
+    - manipulate
+    - plant
+    - vitality
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 10 minutes
+  counter_performance:
+    name: Counter Performance
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    - fortune
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    area: emanation 60
+  courageous_anthem:
+    name: Courageous Anthem
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 round
+  creative_splash:
+    name: Creative Splash
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - illusion
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    area: burst 5
+    duration: varies
+  cry_of_destruction:
+    name: Cry of Destruction
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - sonic
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: cone 15
+  curse_of_death:
+    name: Curse of Death
+    rank: 5
+    category: focus
+    traits:
+    - concentrate
+    - curse
+    - death
+    - focus
+    - hex
+    - manipulate
+    - void
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  darkened_sight:
+    name: Darkened Sight
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - darkness
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 creature
+    duration: 1 minute
+  dazzling_flash:
+    name: Dazzling Flash
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - light
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: cone 15
+  deaths_call:
+    name: Death's Call
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    duration: 1 minute
+  deceivers_cloak:
+    name: Deceiver's Cloak
+    rank: 3
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - hex
+    - illusion
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 hour
+  delusional_pride:
+    name: Delusional Pride
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  destructive_aura:
+    name: Destructive Aura
+    rank: 4
+    category: focus
+    traits:
+    - aura
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: emanation 15
+    duration: 1 minute
+  dirge_of_doom:
+    name: Dirge of Doom
+    rank: 3
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - fear
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 30
+    duration: 1 round
