@@ -1,1 +1,454 @@
-PLACEHOLDER
+# Spell catalog (PF2e Remaster) - Pathfinder Player Core
+# From Foundry VTT pf2e packs/pf2e/spells (publication.title == Pathfinder Player Core).
+# Lookup: Pf2e.read_data("spells", "<slug>")
+# rank 0 = cantrip; category: cantrip | spell | focus | ritual
+# Mechanical fields only (no full rules text - use AON at table for prose).
+#
+spells:
+  caustic_blast:
+    name: Caustic Blast
+    rank: 0
+    category: cantrip
+    traits:
+    - acid
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 30 feet
+    area: burst 5
+  daze:
+    name: Daze
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    - mental
+    - nonlethal
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 60 feet
+    target: 1 creature
+  detect_magic:
+    name: Detect Magic
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - detection
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    area: emanation 30
+  divine_lance:
+    name: Divine Lance
+    rank: 0
+    category: cantrip
+    traits:
+    - attack
+    - cantrip
+    - concentrate
+    - manipulate
+    - sanctified
+    - spirit
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 60 feet
+    target: 1 creature
+  electric_arc:
+    name: Electric Arc
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - electricity
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 30 feet
+    target: 1 or 2 creatures
+  figment:
+    name: Figment
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - illusion
+    - manipulate
+    - subtle
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    duration: sustained
+  forbidding_ward:
+    name: Forbidding Ward
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    range: 30 feet
+    target: 1 ally and 1 enemy
+    duration: sustained up to 1 minute
+  frostbite:
+    name: Frostbite
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - cold
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 60 feet
+    target: 1 creature
+  gouging_claw:
+    name: Gouging Claw
+    rank: 0
+    category: cantrip
+    traits:
+    - attack
+    - cantrip
+    - concentrate
+    - manipulate
+    - morph
+    rarity: common
+    cast: 1
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: touch
+    target: 1 creature
+  guidance:
+    name: Guidance
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 1
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    - primal
+    range: 30 feet
+    target: 1 creature
+    duration: until the start of your next turn
+  ignition:
+    name: Ignition
+    rank: 0
+    category: cantrip
+    traits:
+    - attack
+    - cantrip
+    - concentrate
+    - fire
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 30 feet
+    target: 1 creature
+  know_the_way:
+    name: Know the Way
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - detection
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    - primal
+    duration: 1 day
+  light:
+    name: Light
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - light
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: 120 feet
+    target: 1 object of 1 Bulk or less, either unattended or possessed by you or a willing ally
+    duration: until the next time you make your daily preparations
+  message:
+    name: Message
+    rank: 0
+    category: cantrip
+    traits:
+    - auditory
+    - cantrip
+    - concentrate
+    - linguistic
+    - manipulate
+    - mental
+    - subtle
+    rarity: common
+    cast: 1
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 120 feet
+    target: 1 creature
+  prestidigitation:
+    name: Prestidigitation
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: 10 feet
+    duration: sustained
+  read_aura:
+    name: Read Aura
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - detection
+    - manipulate
+    rarity: common
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: 30 feet
+  shield:
+    name: Shield
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - force
+    rarity: common
+    cast: 1
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    duration: until the start of your next turn
+  sigil:
+    name: Sigil
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: touch
+    target: 1 creature or object
+    duration: unlimited (see text)
+  stabilize:
+    name: Stabilize
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - healing
+    - manipulate
+    - vitality
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - primal
+    range: 30 feet
+    target: 1 dying creature
+  summon_instrument:
+    name: Summon Instrument
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    duration: 1 hour
+  tangle_vine:
+    name: Tangle Vine
+    rank: 0
+    category: cantrip
+    traits:
+    - attack
+    - cantrip
+    - concentrate
+    - manipulate
+    - plant
+    - wood
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 30 feet
+    target: 1 creature
+    duration: until the start of your next turn
+  telekinetic_hand:
+    name: Telekinetic Hand
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 unattended object of light Bulk or less
+    duration: sustained
+  telekinetic_projectile:
+    name: Telekinetic Projectile
+    rank: 0
+    category: cantrip
+    traits:
+    - attack
+    - cantrip
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+  vitality_lash:
+    name: Vitality Lash
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    - vitality
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - primal
+    range: 30 feet
+    target: 1 creature that has void healing
+  void_warp:
+    name: Void Warp
+    rank: 0
+    category: cantrip
+    traits:
+    - cantrip
+    - concentrate
+    - manipulate
+    - void
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 30 feet
+    target: 1 living creature
