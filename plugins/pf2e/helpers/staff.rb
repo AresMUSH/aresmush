@@ -61,7 +61,6 @@ module AresMUSH
         { ok: true, error: nil, char: char, sheet: sheet, summary: "level=#{level}" }
 
       when "xp", "experience"
-        # xp/add/100  xp/grant/50  xp/remove/20  xp/set/0
         action = parts[1]
         return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil? || parts[2].nil?
 
@@ -73,20 +72,20 @@ module AresMUSH
           threshold = xp_to_level
           note = (val >= threshold && !advancing?(sheet)) ? " [ready to adv/start]" : ""
           { ok: true, error: nil, char: char, sheet: sheet,
-            summary: "xp #{before} → #{val}/#{threshold}#{note}" }
+            summary: "xp #{before} -> #{val}/#{threshold}#{note}" }
         elsif %w[add grant give].include?(action)
           amount = parts[2].to_i
           r = grant_xp(sheet, amount, source: "staff", reason: "pf2e/set by #{enactor ? enactor.name : 'staff'}")
           return r.merge(char: char, sheet: sheet) unless r[:ok]
           note = r[:can_level] ? " [ready to adv/start]" : ""
           { ok: true, error: nil, char: char, sheet: sheet,
-            summary: "xp +#{r[:amount]} → #{r[:after]}/#{r[:threshold]}#{note}" }
+            summary: "xp +#{r[:amount]} -> #{r[:after]}/#{r[:threshold]}#{note}" }
         elsif %w[remove take subtract].include?(action)
           amount = -parts[2].to_i
           r = grant_xp(sheet, amount, source: "staff", reason: "pf2e/set by #{enactor ? enactor.name : 'staff'}")
           return r.merge(char: char, sheet: sheet) unless r[:ok]
           { ok: true, error: nil, char: char, sheet: sheet,
-            summary: "xp #{r[:amount]} → #{r[:after]}/#{r[:threshold]}" }
+            summary: "xp #{r[:amount]} -> #{r[:after]}/#{r[:threshold]}" }
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
         end
@@ -221,12 +220,12 @@ module AresMUSH
             r = adjust_money(sheet, amount)
             return r.merge(char: char, sheet: sheet) unless r[:ok]
             { ok: true, error: nil, char: char, sheet: sheet,
-              summary: "purse +#{format_money(amount)} → #{format_money(r[:money])}" }
+              summary: "purse +#{format_money(amount)} -> #{format_money(r[:money])}" }
           else
             r = adjust_society_account(sheet, amount)
             return r.merge(char: char, sheet: sheet) unless r[:ok]
             { ok: true, error: nil, char: char, sheet: sheet,
-              summary: "society +#{format_money(amount)} → #{format_money(r[:society_account])}" }
+              summary: "society +#{format_money(amount)} -> #{format_money(r[:society_account])}" }
           end
         elsif action == "remove" || action == "take"
           neg = COIN_KEYS.each_with_object({}) { |k, h| h[k] = -amount[k] }
@@ -234,12 +233,12 @@ module AresMUSH
             r = adjust_money(sheet, neg)
             return r.merge(char: char, sheet: sheet) unless r[:ok]
             { ok: true, error: nil, char: char, sheet: sheet,
-              summary: "purse -#{format_money(amount)} → #{format_money(r[:money])}" }
+              summary: "purse -#{format_money(amount)} -> #{format_money(r[:money])}" }
           else
             r = adjust_society_account(sheet, neg)
             return r.merge(char: char, sheet: sheet) unless r[:ok]
             { ok: true, error: nil, char: char, sheet: sheet,
-              summary: "society -#{format_money(amount)} → #{format_money(r[:society_account])}" }
+              summary: "society -#{format_money(amount)} -> #{format_money(r[:society_account])}" }
           end
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
@@ -427,6 +426,10 @@ module AresMUSH
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
         end
+
+      when "magic", "spell", "spells"
+        # Spellcasting / innate seed & grant (see helpers/staff_magic.rb)
+        staff_set_magic(enactor, char, sheet, parts, raw_parts)
 
       else
         { ok: false, error: "pf2e.staff_unknown_field", char: char, sheet: sheet }
