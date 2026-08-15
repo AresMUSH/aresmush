@@ -92,7 +92,7 @@ module AresMUSH
       slug = entry["slug"] || ""
       name = entry["name"] || slug
       rank = entry["rank"].to_i
-      cast = entry["cast"] || "—"
+      cast = entry["cast"] || "-"
       rarity = entry["rarity"] || "common"
       skills = ritual_primary_skills(entry)
       skill_bit = skills.any? ? " skill=#{skills.join('|')}" : ""
@@ -103,13 +103,13 @@ module AresMUSH
     def self.format_ritual_detail(entry)
       lines = []
       lines << "%xh#{entry['name'] || entry['slug']}%xn  (#{entry['slug']})"
-      lines << "  Rank #{entry['rank']} ritual  |  Cast: #{entry['cast'] || '—'}  |  Rarity: #{entry['rarity'] || 'common'}"
+      lines << "  Rank #{entry['rank']} ritual  |  Cast: #{entry['cast'] || '-'}  |  Rarity: #{entry['rarity'] || 'common'}"
       lines << "  DC #{ritual_dc(entry)} (override in data with dc: N if fixed in the text)"
       skills = ritual_primary_skills(entry)
       if skills.any?
         lines << "  Primary skill(s): #{skills.join(', ')} (min #{ritual_min_proficiency(entry)})"
       else
-        lines << "  Primary skill(s): not set in data — pass skill on rituals/check"
+        lines << "  Primary skill(s): not set in data - pass skill on rituals/check"
       end
       lines << "  Cost (gp): #{entry['cost_gp']}" if entry["cost_gp"]
       lines << "  Secondary casters: #{entry['secondary_casters']}" if entry["secondary_casters"]
@@ -124,7 +124,7 @@ module AresMUSH
       lines.join("%r")
     end
 
-    # Primary ritual check. Does not spend slots/focus/items — table narration owns the rest.
+    # Primary ritual check. Does not spend slots/focus/items - table narration owns the rest.
     def self.ritual_primary_check(char_or_sheet, slug, skill: nil, other_bonus: 0, dc: nil)
       sheet = sheet_for(char_or_sheet)
       return { ok: false, error: "pf2e.no_sheet" } unless sheet
@@ -165,7 +165,7 @@ module AresMUSH
 
       min_rank = ritual_min_proficiency(entry)
       have = skill_rank(sheet, chosen)
-      if teml_to_bonus(have) < teml_to_bonus(min_rank)
+      unless teml_at_least?(have, min_rank)
         return {
           ok: false,
           error: "pf2e.ritual_skill_rank",
@@ -189,7 +189,7 @@ module AresMUSH
         dc: target_dc,
         total: roll[:total],
         d20: roll[:d20],
-        mod: roll[:mod],
+        mod: roll[:modifier],
         degree: roll[:degree],
         breakdown: roll,
         cast: entry["cast"],

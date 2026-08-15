@@ -1,0 +1,19 @@
+# Deep-merged under en.pf2e when load merges all locale files?
+# Ares locales are typically one locale_en.yml — these keys must live there.
+# This file is a source snippet; keys are also appended to locale_en.yml.
+
+en:
+  pf2e:
+    ritual_none: "No rituals matched."
+    ritual_list_title: "PF2e Rituals"
+    ritual_search_title: "Rituals matching '%{query}'"
+    ritual_list_hint: "Use rituals/info <slug> for detail, rituals/check <slug> [skill] for the primary check."
+    ritual_info_usage: "Usage: rituals/info <slug>"
+    ritual_check_usage: "Usage: rituals/check <slug> [skill]"
+    ritual_unknown: "Unknown ritual '%{ritual}'."
+    ritual_skill_required: "That ritual has no primary skill in data. Pass one: rituals/check %{ritual} <skill>"
+    ritual_skill_ambiguous: "Choose a skill for %{ritual}: %{skills}"
+    ritual_skill_not_listed: "Skill %{skill} is not listed for this ritual. Use: %{skills}"
+    ritual_skill_rank: "%{skill} is %{have}; this ritual needs at least %{need}."
+    ritual_check_ok: "Ritual %{name}: %{skill} %{total} vs DC %{dc} — %{degree}"
+    ritual_check_scene: "%{name} ritual check (%{ritual}, %{skill}): %{total} vs DC %{dc} — %{degree}"

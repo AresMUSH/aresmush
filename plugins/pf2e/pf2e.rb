@@ -52,6 +52,12 @@ module AresMUSH
         when "learn" then return SpellsLearnCmd
         when "cast" then return SpellsCastCmd
         end
+      when "rituals", "ritual"
+        case cmd.switch
+        when nil then return RitualsCmd
+        when "info", "show" then return RitualsInfoCmd
+        when "check", "cast" then return RitualsCheckCmd
+        end
       when "roll"
         case cmd.switch
         when nil then return RollCmd
@@ -78,9 +84,6 @@ module AresMUSH
         when "feat" then return AdvFeatCmd
         end
       when "cg"
-        # NOTE: Base Chargen owns cg (nil), cg/prev, cg/next, and cg/start.
-        # Dispatcher walks plugins alphabetically; Chargen wins those switches.
-        # PF2e only claims sheet-building switches that base does not define.
         case cmd.switch
         when "ancestry" then return CgAncestryCmd
         when "heritage" then return CgHeritageCmd
@@ -95,7 +98,6 @@ module AresMUSH
         when "language" then return CgLanguageCmd
         when "feat" then return CgFeatCmd
         when "unfeat" then return CgFeatRemoveCmd
-        # intentionally no cg/start — base ChargenStartCmd
         end
       end
       nil

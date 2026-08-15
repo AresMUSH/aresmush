@@ -10,7 +10,6 @@ module AresMUSH
       end
 
       def handle
-        # rituals/info handled via switch; root lists/searches
         results = Pf2e.ritual_search(self.search)
         page = cmd.page || 1
         paginator = Paginator.paginate(results, page, 5)
@@ -67,7 +66,6 @@ module AresMUSH
 
       def parse_args
         args = cmd.args.to_s.strip
-        # rituals/check <slug> [skill]   or  rituals/check <slug>=<skill>
         if args =~ /\A([^=\s]+)\s*=\s*(\S+)\z/
           self.slug = Regexp.last_match(1).downcase
           self.skill = Regexp.last_match(2).downcase
@@ -118,16 +116,17 @@ module AresMUSH
                               :dc => result[:dc],
                               :degree => degree)
 
-        # Optional scene OOC if in a scene (same pattern as roll)
-        if enactor_room && enactor_room.scene
-          msg = t('pf2e.ritual_check_scene',
-                  :name => enactor.name,
-                  :ritual => result[:name],
-                  :skill => result[:skill],
-                  :total => result[:total],
-                  :dc => result[:dc],
-                  :degree => degree)
-          Scenes.add_to_scene(enactor_room.scene, msg, enactor, nil, true)
+        msg = t('pf2e.ritual_check_scene',
+                :name => enactor.name,
+                :ritual => result[:name],
+                :skill => result[:skill],
+                :total => result[:total],
+                :dc => result[:dc],
+                :degree => degree)
+        enactor_room.emit_ooc msg
+        scene = enactor_room.scene
+        if scene && !scene.completed
+          Scenes.add_to_scene(scene, msg, Game.master.system_character, false, true)
         end
       end
     end
