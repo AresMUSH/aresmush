@@ -1,0 +1,218 @@
+# Player Core from Foundry (Pathfinder Player Core)
+spells:
+  ignite_ambition:
+    name: Ignite Ambition
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - mental
+    - subtle
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: one creature being influenced
+  impaling_briars:
+    name: Impaling Briars
+    rank: 8
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    - plant
+    - wood
+    rarity: uncommon
+    cast: 3
+    source: Pathfinder Player Core
+    area: emanation 100
+    duration: 1 minute (sustained)
+  interdisciplinary_incantation:
+    name: Interdisciplinary Incantation
+    rank: 4
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - wizard
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  invisibility_cloak:
+    name: Invisibility Cloak
+    rank: 4
+    category: focus
+    traits:
+    - focus
+    - illusion
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 minute
+  know_the_enemy:
+    name: Know the Enemy
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  life_boost:
+    name: Life Boost
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - healing
+    - hex
+    - manipulate
+    - vitality
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 4 rounds
+  lingering_composition:
+    name: Lingering Composition
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - concentrate
+    - focus
+    - spellshape
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  localized_quake:
+    name: Localized Quake
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - earth
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+  loremasters_etude:
+    name: Loremaster's Etude
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - composition
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: you or the triggering ally
+  lucky_break:
+    name: Lucky Break
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - fortune
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  magic_hide:
+    name: Magic Hide
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - manipulate
+    - ranger
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: your animal companion
+    duration: 1 minute
+  magics_vessel:
+    name: Magic's Vessel
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+    duration: 1 minute (sustained)
+  malicious_shadow:
+    name: Malicious Shadow
+    rank: 3
+    category: focus
+    traits:
+    - attack
+    - concentrate
+    - focus
+    - hex
+    - manipulate
+    - shadow
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  malignant_sustenance:
+    name: Malignant Sustenance
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - void
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 willing undead creature
+    duration: 1 minute
+  moonbeam:
+    name: Moonbeam
+    rank: 1
+    category: focus
+    traits:
+    - attack
+    - cleric
+    - concentrate
+    - fire
+    - focus
+    - light
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 120 feet
+    target: 1 creature

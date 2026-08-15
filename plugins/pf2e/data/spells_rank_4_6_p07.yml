@@ -1,0 +1,98 @@
+# Player Core from Foundry (Pathfinder Player Core)
+spells:
+  wall_of_force:
+    name: Wall of Force
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - force
+    - manipulate
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    duration: 1 minute
+  wall_of_ice:
+    name: Wall of Ice
+    rank: 5
+    category: spell
+    traits:
+    - cold
+    - concentrate
+    - manipulate
+    - water
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+    duration: 1 minute
+  wall_of_stone:
+    name: Wall of Stone
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+  wave_of_despair:
+    name: Wave of Despair
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - emotion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    area: cone 30
+    duration: 1 or more rounds
+  weapon_storm:
+    name: Weapon Storm
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+  zealous_conviction:
+    name: Zealous Conviction
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - emotion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    range: 30 feet
+    target: up to 10 willing creatures
+    duration: 10 minutes
