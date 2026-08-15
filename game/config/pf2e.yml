@@ -1,6 +1,7 @@
 pf2e:
   shortcuts:
     csheet: sheet/combat
+    cast: spells/cast
     inv: gear
     inventory: gear
     inv/add: gear/add

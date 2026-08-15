@@ -1,10 +1,11 @@
 ---
 toc: PF2e
 order: 40
-summary: Spellcasting sources, daily prep, prepare/learn, and innate spells.
+summary: Spellcasting sources, daily prep, prepare/learn, cast (slots, focus, innate).
 aliases:
 - spells
 - spell
+- cast
 - innate
 - spells/cast
 - spells/daily
@@ -13,7 +14,7 @@ aliases:
 ---
 # Spells and Innate Magic
 
-Spellcasting is tracked per **source** on the sheet (`wizard`, `cleric`, a dedication slug, or `innate`). Multiclass characters can have more than one source; rolls and prepare/learn need a source when more than one exists.
+Spellcasting is tracked per **source** on the sheet (`wizard`, `cleric`, a dedication slug, or `innate`). Multiclass characters can have more than one source; rolls and prepare/learn/cast need a source when more than one exists.
 
 ## Commands
 
@@ -23,9 +24,35 @@ Spellcasting is tracked per **source** on the sheet (`wizard`, `cleric`, a dedic
 | `spells/daily` | Daily preparations: clear spent slots, restore innate uses, restore Focus Points |
 | `spells/prepare [<source>=]<rank>/<spell> [spell...]` | Set prepared spells for a rank (prepared casters) |
 | `spells/learn [<source>=]<spell> [rank]` | Add a spell to spellbook / repertoire / cantrips |
-| `spells/cast <slug>` | Cast an **innate** spell (spends a daily use if limited) |
+| `spells/cast` / `cast` | Cast a spell (see below) |
 
-Focus Points still use `focus` / `refocus` when those commands are enabled; daily prep also restores focus when the sheet has focus spells.
+## Casting
+
+```
+cast <spell>
+cast <spell> <rank>
+cast <source>=<spell>
+cast <source>=<spell> <rank>
+spells/cast ...   (same)
+```
+
+**What it does**
+
+| Kind | Resource | Notes |
+|------|----------|--------|
+| **Innate** | Daily uses (or at-will) | Prefer `innate` source if the slug is only innate |
+| **Focus** | 1 Focus Point | Slug must be on a source's `focus_spells` list |
+| **Cantrip** | None | Must be on the source cantrip list |
+| **Prepared** | Slot at cast rank | Must be **prepared at that rank** |
+| **Spontaneous** | Slot at cast rank | Must be in **repertoire**; rank may be heightened |
+
+Heightening: pass a rank higher than the spell's base rank (spontaneous) or prepare the spell at the higher rank (prepared).
+
+Cast emits OOC to the room and, if you are in an open scene, logs to the scene.
+
+Follow with `roll spell_attack` / `roll spell_dc` (or `spell_dc:<source>`) when the table needs a check.
+
+Focus Points also use `focus` / `refocus`; daily prep restores focus when the sheet has a pool.
 
 ## Rolling spell DC / attack
 
@@ -49,17 +76,7 @@ Staff grant:
     pf2e/set Bob=magic/innate/add/heal/divine/1/per_day/1
     pf2e/set Bob=magic/innate/remove/detect_magic
 
-Ancestry and heritage YAML may list automatic grants:
-
-```yaml
-innate_spells:
-  - slug: detect_magic
-    tradition: arcane
-    frequency: at_will
-    rank: 0
-```
-
-Those apply when features are refreshed (identity commit, staff ancestry/heritage/level set).
+Ancestry and heritage YAML may list automatic grants under `innate_spells` (applied on identity commit / feature refresh).
 
 ## Staff seed (class slots)
 
