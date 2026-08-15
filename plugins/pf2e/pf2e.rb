@@ -50,6 +50,10 @@ module AresMUSH
         end
       when "feats"
         return FeatSearchCmd if cmd.switch.nil?
+      when "focus"
+        return FocusCmd if cmd.switch.nil?
+      when "refocus"
+        return RefocusCmd if cmd.switch.nil?
       when "pf2e"
         case cmd.switch
         when "set" then return Pf2eSetCmd
