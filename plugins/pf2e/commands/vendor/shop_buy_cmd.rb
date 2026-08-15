@@ -21,7 +21,15 @@ module AresMUSH
       def handle
         result = Pf2e.vendor_buy(enactor, self.vendor_slug, self.item_slug, qty: self.qty)
         unless result[:ok]
-          client.emit_failure t(result[:error])
+          if result[:error] == "pf2e.vendor_level_too_high"
+            client.emit_failure t('pf2e.vendor_level_too_high',
+                                 :slug => result[:slug] || self.item_slug,
+                                 :item_level => result[:item_level],
+                                 :char_level => result[:char_level],
+                                 :max_level => result[:max_level])
+          else
+            client.emit_failure t(result[:error])
+          end
           return
         end
 
