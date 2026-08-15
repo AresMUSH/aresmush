@@ -37,25 +37,18 @@ module AresMUSH
         if src_key
           focus_hits = focus_hits.select { |e| e[:source] == src_key }
           if focus_hits.empty?
-            return { ok: false, error: "pf2e.magic_not_known", spell: slug, source: src_key }
-          end
-        elsif focus_hits.map { |e| e[:source] }.uniq.size > 1 && !class_known_spell?(sheet, slug, exclude_focus: true)
-          sources = focus_hits.map { |e| e[:source] }.uniq.sort
-          return { ok: false, error: "pf2e.magic_source_required", sources: sources }
-        end
-
-        # Prefer focus when the spell is listed as focus (even if also known as a slot spell).
-        # Explicit non-focus source with the same slug casts via slots instead.
-        unless src_key && !focus_hits.any? { |e| e[:source] == src_key }
-          if src_key.nil? || focus_hits.any? { |e| e[:source] == src_key }
+            # Explicit source that is not a focus owner for this slug: fall through to slots
+          else
             return magic_cast_focus(sheet, slug, source: focus_hits.first[:source], catalog: catalog, base_rank: base_rank)
           end
+        else
+          if focus_hits.map { |e| e[:source] }.uniq.size > 1 && !class_known_spell?(sheet, slug, exclude_focus: true)
+            sources = focus_hits.map { |e| e[:source] }.uniq.sort
+            return { ok: false, error: "pf2e.magic_source_required", sources: sources }
+          end
+          # Prefer focus when the spell is listed as focus
+          return magic_cast_focus(sheet, slug, source: focus_hits.first[:source], catalog: catalog, base_rank: base_rank)
         end
-      end
-
-      # ----- Explicit innate when source was given -----
-      if src_key == INNATE_SOURCE
-        return magic_cast_innate(sheet, slug)
       end
 
       # ----- Class / dedication slot casting -----
@@ -69,7 +62,6 @@ module AresMUSH
         return magic_cast_innate(sheet, slug)
       end
 
-      # Focus-only source with no slots still uses focus list
       if Array(entry["focus_spells"]).map { |s| s.to_s.downcase }.include?(slug)
         return magic_cast_focus(sheet, slug, source: resolved[:source], catalog: catalog, base_rank: base_rank)
       end
@@ -230,14 +222,10 @@ module AresMUSH
       if casting == "spontaneous"
         rep = entry["repertoire"]
         return false unless rep.is_a?(Hash)
-        # Known if listed at base rank or any repertoire rank <= cast rank
-        keys = rep.keys.map(&:to_s)
-        keys.each do |k|
-          next if k.to_i > cast_rank.to_i && k.to_i > 0
-          list = Array(rep[k] || rep[k.to_i]).map { |s| s.to_s.downcase }
-          return true if list.include?(slug)
+        rep.each do |k, list|
+          next if k.to_s.to_i > cast_rank.to_i && k.to_s.to_i > 0
+          return true if Array(list).map { |s| s.to_s.downcase }.include?(slug)
         end
-        # Also allow listing only at base rank while casting heightened
         if base_rank
           list = Array(rep[base_rank.to_s] || rep[base_rank]).map { |s| s.to_s.downcase }
           return true if list.include?(slug)
@@ -245,7 +233,6 @@ module AresMUSH
         return false
       end
 
-      # Prepared: known via spellbook or already prepared somewhere
       book = Array(entry["spellbook"]).map { |s| s.to_s.downcase }
       return true if book.include?(slug)
 
@@ -258,15 +245,17 @@ module AresMUSH
       false
     end
 
-    # True if any non-innate source knows this slug as cantrip, spellbook, repertoire, or prepared.
+    # True if any non-innate source knows this slug as cantrip, spellbook, repertoire, prepared, or focus.
     def self.class_known_spell?(char_or_sheet, slug, exclude_focus: false)
       slug = slug.to_s.downcase
-      magic_hash(char_or_sheet).any? do |src, entry|
-        next false unless entry.is_a?(Hash)
-        next false if src.to_s == INNATE_SOURCE || entry["casting"].to_s.downcase == "innate"
-        next true if !exclude_focus && Array(entry["focus_spells"]).map { |s| s.to_s.downcase }.include?(slug)
-        next true if Array(entry["cantrips"]).map { |s| s.to_s.downcase }.include?(slug)
-        next true if Array(entry["spellbook"]).map { |s| s.to_s.downcase }.include?(slug)
+      magic_hash(char_or_sheet).each do |src, entry|
+        next unless entry.is_a?(Hash)
+        next if src.to_s == INNATE_SOURCE || entry["casting"].to_s.downcase == "innate"
+        unless exclude_focus
+          return true if Array(entry["focus_spells"]).map { |s| s.to_s.downcase }.include?(slug)
+        end
+        return true if Array(entry["cantrips"]).map { |s| s.to_s.downcase }.include?(slug)
+        return true if Array(entry["spellbook"]).map { |s| s.to_s.downcase }.include?(slug)
         if entry["repertoire"].is_a?(Hash)
           entry["repertoire"].each_value do |list|
             return true if Array(list).map { |s| s.to_s.downcase }.include?(slug)
@@ -277,8 +266,8 @@ module AresMUSH
             return true if Array(list).map { |s| s.to_s.downcase }.include?(slug)
           end
         end
-        false
       end
+      false
     end
 
     def self.format_cast_message(enactor, result)
