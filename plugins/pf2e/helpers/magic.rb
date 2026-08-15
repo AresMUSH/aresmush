@@ -3,30 +3,9 @@ module AresMUSH
 
     # -------------------------------------------------
     # Spellcasting sources (multi-tradition / multiclass)
-    #
-    # sheet.magic is a hash keyed by source slug:
-    #   "wizard", "bard", "druid_dedication", ...
-    #
-    # Each source:
-    #   tradition:   arcane|divine|occult|primal
-    #   casting:     prepared|spontaneous|focus
-    #   attribute:   int|wis|cha (spell attack / DC key ability)
-    #   proficiency: TEML rank for spell attack and spell DC
-    #   cantrips:    [slug, ...]   known/available cantrips
-    #   cantrips_max: Integer
-    #   spellbook:   [slug, ...]   prepared casters only (library)
-    #   repertoire:  { "1" => [slug], "2" => [...] }  spontaneous known
-    #   prepared:    { "cantrip" => [slug], "1" => [slug] }  today's list
-    #   slots:       { "1" => { "max" => 2, "used" => 0 }, ... }
-    #   focus_spells:[slug, ...]   focus tradition spells on this source
-    #   progression: full | bounded | none
-    #
-    # Focus *points* are character-level: sheet.focus_points
-    # (single shared pool in PF2e).
+    # See also helpers/innate.rb for innate grants.
     # -------------------------------------------------
 
-    # Full spellcaster slot table (Player Core: wizard, cleric, druid, witch,
-    # sorcerer, oracle, bard, psychic, etc.). Values are [cantrips_max, slots_hash].
     FULL_CASTER_SLOTS = {
       1  => [5, { 1 => 2 }],
       2  => [5, { 1 => 3 }],
@@ -50,8 +29,6 @@ module AresMUSH
       20 => [5, { 1 => 3, 2 => 3, 3 => 3, 4 => 3, 5 => 3, 6 => 3, 7 => 3, 8 => 3, 9 => 3, 10 => 1 }]
     }.freeze unless const_defined?(:FULL_CASTER_SLOTS)
 
-    # Bounded casters (magus, summoner, some dedications) — simplified sample.
-    # Override via class spellcasting.slots_by_level in data if needed.
     BOUNDED_CASTER_SLOTS = {
       1  => [2, { 1 => 1 }],
       2  => [3, { 1 => 2 }],
@@ -124,10 +101,19 @@ module AresMUSH
     end
 
     def self.magic_spell_dc(char_or_sheet, source = nil, other_bonus: 0)
+      key = normalize_magic_source(source)
+      if key == "innate" || (key.nil? && magic_sources(char_or_sheet) == ["innate"])
+        return innate_spell_dc(char_or_sheet, other_bonus: other_bonus)
+      end
+
       resolved = resolve_magic_source(char_or_sheet, source)
       return resolved unless resolved[:ok]
 
       entry = resolved[:entry]
+      if entry["casting"].to_s.downcase == "innate"
+        return innate_spell_dc(char_or_sheet, other_bonus: other_bonus)
+      end
+
       ability = entry["attribute"] || entry["ability"] || "cha"
       rank = (entry["proficiency"] || "T").to_s
       dc = spell_dc(char_or_sheet, ability: ability, rank: rank, other_bonus: other_bonus)
@@ -135,10 +121,19 @@ module AresMUSH
     end
 
     def self.magic_spell_attack_mod(char_or_sheet, source = nil, other_bonus: 0)
+      key = normalize_magic_source(source)
+      if key == "innate" || (key.nil? && magic_sources(char_or_sheet) == ["innate"])
+        return innate_spell_attack_mod(char_or_sheet, other_bonus: other_bonus)
+      end
+
       resolved = resolve_magic_source(char_or_sheet, source)
       return resolved unless resolved[:ok]
 
       entry = resolved[:entry]
+      if entry["casting"].to_s.downcase == "innate"
+        return innate_spell_attack_mod(char_or_sheet, other_bonus: other_bonus)
+      end
+
       ability = entry["attribute"] || entry["ability"] || "cha"
       rank = (entry["proficiency"] || "T").to_s
       mod = spell_attack_mod(char_or_sheet, ability: ability, rank: rank, other_bonus: other_bonus)
@@ -186,10 +181,6 @@ module AresMUSH
       }
     end
 
-    # -------------------------------------------------
-    # Class / level-driven source + slots
-    # -------------------------------------------------
-
     def self.slot_table_for(progression)
       case progression.to_s.strip.downcase
       when "bounded" then BOUNDED_CASTER_SLOTS
@@ -198,7 +189,6 @@ module AresMUSH
       end
     end
 
-    # Returns { cantrips_max:, slots: { "1" => max, ... } }
     def self.slots_for_level(level, progression: "full", override_table: nil)
       lvl = [[level.to_i, 1].max, 20].min
       if override_table.is_a?(Hash)
@@ -221,9 +211,6 @@ module AresMUSH
       { cantrips_max: cantrips.to_i, slots: slots }
     end
 
-    # Build / refresh the primary class magic source from charclass.yml.
-    # Preserves cantrips, spellbook, repertoire, prepared, focus_spells, used counts
-    # when the source already exists.
     def self.sync_class_magic_source(sheet)
       return nil unless sheet
       cc = sheet.charclass || {}
@@ -282,12 +269,10 @@ module AresMUSH
         "focus_spells" => Array(existing["focus_spells"])
       }
 
-      # Advancement package may raise spell proficiency (expert_spellcaster etc.)
       adv_prof = class_spell_proficiency_at_level(class_entry, level)
       if adv_prof && teml_rank_value(adv_prof) > teml_rank_value(proficiency)
         attrs["proficiency"] = adv_prof.to_s.upcase
       elsif existing["proficiency"]
-        # Keep higher of class baseline, existing, or adv
         best = [proficiency, existing["proficiency"].to_s, adv_prof.to_s].max_by { |r| teml_rank_value(r) }
         attrs["proficiency"] = best.upcase if best && !best.empty?
       end
@@ -295,9 +280,6 @@ module AresMUSH
       set_magic_source(sheet, source_key, attrs)
     end
 
-    # Optional: class advancement notes proficiency bumps on spellcasting.
-    # Looks for features expert_spellcaster / master_spellcaster / legendary_spellcaster
-    # or advancement[N].spellcasting.proficiency.
     def self.class_spell_proficiency_at_level(class_entry, level)
       return nil unless class_entry.is_a?(Hash)
       best = nil
@@ -326,7 +308,6 @@ module AresMUSH
       best
     end
 
-    # Sync every existing source that has a progression table (class + future dedications).
     def self.sync_all_magic_slots(sheet)
       return unless sheet
       sync_class_magic_source(sheet)
@@ -334,6 +315,7 @@ module AresMUSH
       magic_hash(sheet).each do |src, entry|
         next unless entry.is_a?(Hash)
         next if src.to_s == ((sheet.charclass || {})["slug"]).to_s
+        next if src.to_s == "innate" || entry["casting"].to_s.downcase == "innate"
         prog = entry["progression"] || "full"
         next if prog.to_s == "none"
         level = [sheet.level.to_i, 1].max
@@ -357,6 +339,7 @@ module AresMUSH
       magic = magic_hash(sheet).dup
       magic.each do |src, entry|
         next unless entry.is_a?(Hash)
+        next if src.to_s == "innate" || entry["casting"].to_s.downcase == "innate"
         e = entry.dup
         slots = (e["slots"] || {}).dup
         slots.each do |rank, slot|
@@ -370,12 +353,15 @@ module AresMUSH
       end
       sheet.update(magic: magic)
 
+      # Innate uses refresh on daily preparations (Player Core).
+      innate_daily_reset!(sheet)
+
       if restore_focus
         max_fp = magic_focus_max(sheet)
         sheet.update(focus_points: max_fp) if max_fp > 0
       end
 
-      { ok: true, sources: magic.keys.map(&:to_s), focus_points: sheet.focus_points.to_i }
+      { ok: true, sources: magic_sources(sheet), focus_points: sheet.focus_points.to_i }
     end
 
     def self.magic_focus_max(char_or_sheet)
@@ -503,6 +489,11 @@ module AresMUSH
       sources.each do |src|
         entry = magic_source(sheet, src)
         next unless entry
+        if src == "innate" || entry["casting"].to_s.downcase == "innate"
+          lines.concat format_innate_lines(sheet)
+          next
+        end
+
         dc_info = magic_spell_dc(sheet, src)
         atk_info = magic_spell_attack_mod(sheet, src)
         dc = dc_info[:ok] ? dc_info[:value] : "?"
