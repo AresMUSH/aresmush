@@ -13,7 +13,7 @@ module AresMUSH
         if self.vendor_slug.blank?
           client.emit Pf2e.format_vendor_list
         else
-          text = Pf2e.format_vendor_stock(self.vendor_slug)
+          text = Pf2e.format_vendor_stock(self.vendor_slug, enactor)
           client.emit text
         end
       end
