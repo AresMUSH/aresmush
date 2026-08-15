@@ -1,0 +1,168 @@
+# Player Core from Foundry (Pathfinder Player Core)
+spells:
+  uplifting_overture:
+    name: Uplifting Overture
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 ally
+    duration: 1 round
+  veil_of_confidence:
+    name: Veil of Confidence
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  veil_of_dreams:
+    name: Veil of Dreams
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - mental
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  vibrant_thorns:
+    name: Vibrant Thorns
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - morph
+    - plant
+    - wood
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  waking_nightmare:
+    name: Waking Nightmare
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - fear
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  weapon_surge:
+    name: Weapon Surge
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - sanctified
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 weapon you're wielding
+  whispering_quiet:
+    name: Whispering Quiet
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - sonic
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 60 feet
+    area: burst 15
+    duration: 1 minute
+  wilding_word:
+    name: Wilding Word
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - hex
+    - mental
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  word_of_freedom:
+    name: Word of Freedom
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 round
+  word_of_truth:
+    name: Word of Truth
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute (sustained)
+  zeal_for_battle:
+    name: Zeal for Battle
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - fortune
+    - mental
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: you and the triggering ally

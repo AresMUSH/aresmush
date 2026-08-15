@@ -1,0 +1,217 @@
+# Player Core from Foundry (Pathfinder Player Core)
+spells:
+  take_its_course:
+    name: Take its Course
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+  tempest_surge:
+    name: Tempest Surge
+    rank: 1
+    category: focus
+    traits:
+    - air
+    - concentrate
+    - druid
+    - electricity
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+  tempt_fate:
+    name: Tempt Fate
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 120 feet
+    target: the triggering creature
+  terrain_transposition:
+    name: Terrain Transposition
+    rank: 5
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - ranger
+    - teleportation
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 90 feet
+  tidal_surge:
+    name: Tidal Surge
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - water
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 creature
+  touch_of_obedience:
+    name: Touch of Obedience
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 living creature
+    duration: varies
+  touch_of_the_moon:
+    name: Touch of the Moon
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - light
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+    duration: 1 minute
+  touch_of_undeath:
+    name: Touch of Undeath
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - void
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 living creature
+  travelers_transit:
+    name: Traveler's Transit
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 5 minutes
+  tricksters_twin:
+    name: Trickster's Twin
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - illusion
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute
+  triple_time:
+    name: Triple Time
+    rank: 2
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - emotion
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 round
+  unimpeded_stride:
+    name: Unimpeded Stride
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+  unity:
+    name: Unity
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - fortune
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: each ally targeted by the triggering spell
+  untamed_form:
+    name: Untamed Form
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    - polymorph
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: varies
+  untamed_shift:
+    name: Untamed Shift
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    - morph
+    rarity: uncommon
+    cast: 1 or 2
+    source: Pathfinder Player Core
+    duration: 1 minute
