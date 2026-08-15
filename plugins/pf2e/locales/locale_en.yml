@@ -204,6 +204,12 @@ en:
     magic_learn_usage: "Usage: spells/learn [<source>=]<spell> [rank]"
     magic_prepare_ok: "Prepared on %{source} (rank %{rank}): %{list}"
     magic_learn_ok: "Learned %{spell} (rank %{rank}) on %{source}."
-    magic_daily_ok: "Daily spell reset complete. Focus points: %{focus}. Slot usage cleared; prepared list kept."
+    magic_daily_ok: "Daily prep complete. Focus: %{focus}. Slot and innate uses cleared; prepared list kept."
     magic_no_slot_rank: "No slots defined for rank %{rank}."
     magic_slots_exhausted: "No remaining slots at rank %{rank}."
+
+    innate_cast_usage: "Usage: spells/cast <innate spell slug>"
+    innate_not_found: "No innate spell '%{spell}' on your sheet."
+    innate_exhausted: "%{spell} has no uses left today (%{used}/%{max})."
+    innate_cast_ok: "Cast innate %{spell}. Uses %{used}/%{max}. DC %{dc}, Attack +%{attack}."
+    innate_cast_atwill: "Cast innate %{spell} (at-will). DC %{dc}, Attack +%{attack}."
