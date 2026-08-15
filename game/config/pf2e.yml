@@ -31,3 +31,13 @@ pf2e:
   # Logged/shared scenes: SceneSharedEvent awards scene_xp to participants once.
   scene_xp_enabled: true
   scene_xp: 10
+
+  # -------------------------------------------------
+  # Vendors
+  # Item level must be <= character level + offset to buy from a coded shop.
+  # Higher-level gear: staff job + staff issue only (pf2e/set item/...).
+  # Catalog entries use level: N; missing level counts as 0 (mundane).
+  # Spell items without level derive 2*rank-1 from the spell payload.
+  # -------------------------------------------------
+  vendor_level_lock: true
+  vendor_level_offset: 0
