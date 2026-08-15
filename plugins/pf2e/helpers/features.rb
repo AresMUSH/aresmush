@@ -7,6 +7,15 @@ module AresMUSH
     # Prefer class entry["advancement"][level]["features"].
     # Legacy entry["features_by_level"] still loads: real feature
     # slugs only; *_feat markers are slots, not features.
+    #
+    # Ancestry / heritage may also list innate_spells:
+    #   innate_spells:
+    #     - slug: detect_magic
+    #       tradition: arcane
+    #       frequency: at_will   # or per_day
+    #       per_day: 1
+    #       rank: 0
+    #       attribute: cha       # optional
     # -------------------------------------------------
 
     def self.feat_slot_marker?(key)
@@ -86,7 +95,70 @@ module AresMUSH
       return [] unless sheet
       expected = expected_feature_slugs(sheet)
       sheet.update(features: expected)
+      apply_identity_innate_spells!(sheet)
       expected
+    end
+
+    # Pull innate_spells lists from ancestry + heritage YAML and grant them.
+    # Does not remove staff- or feat-granted innates that are not in the lists.
+    def self.apply_identity_innate_spells!(sheet)
+      return unless sheet
+
+      grants = []
+      anc = cg_ancestry_entry(sheet.ancestry)
+      if anc.is_a?(Hash)
+        Array(anc["innate_spells"]).each do |row|
+          grants << normalize_innate_grant_row(row, "ancestry:#{sheet.ancestry}")
+        end
+      end
+      her = cg_heritage_entry(sheet.heritage)
+      if her.is_a?(Hash)
+        Array(her["innate_spells"]).each do |row|
+          grants << normalize_innate_grant_row(row, "heritage:#{sheet.heritage}")
+        end
+      end
+
+      grants.compact.each do |g|
+        innate_grant(
+          sheet,
+          slug: g[:slug],
+          tradition: g[:tradition],
+          rank: g[:rank],
+          frequency: g[:frequency],
+          per_day: g[:per_day],
+          attribute: g[:attribute],
+          grant: g[:grant]
+        )
+      end
+    end
+
+    def self.normalize_innate_grant_row(row, grant_label)
+      return nil if row.nil?
+      if row.is_a?(String)
+        return {
+          slug: row.to_s.strip.downcase,
+          tradition: nil,
+          rank: nil,
+          frequency: nil,
+          per_day: 1,
+          attribute: nil,
+          grant: grant_label
+        }
+      end
+      return nil unless row.is_a?(Hash)
+
+      slug = (row["slug"] || row["spell"] || row[:slug] || row[:spell]).to_s.strip.downcase
+      return nil if slug.empty?
+
+      {
+        slug: slug,
+        tradition: row["tradition"] || row[:tradition],
+        rank: row.key?("rank") || row.key?(:rank) ? (row["rank"] || row[:rank]).to_i : nil,
+        frequency: row["frequency"] || row[:frequency],
+        per_day: (row["per_day"] || row[:per_day] || 1).to_i,
+        attribute: row["attribute"] || row["ability"] || row[:attribute],
+        grant: grant_label
+      }
     end
 
     def self.has_feature?(char_or_sheet, slug)
