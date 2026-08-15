@@ -43,6 +43,7 @@ en:
     vendor_sell_stowed: "Retrieve the item from its bag before selling it."
     vendor_sell_equipped: "Unequip the item before selling it."
     vendor_sell_no_price: "That item has no catalog price and cannot be sold here."
+    vendor_level_too_high: "%{slug} is item level %{item_level}; you can buy up to level %{max_level} (character level %{char_level}). Higher-level gear requires a staff job and staff issue."
 
     stow_ok: "Stowed %{item} (%{item_id}) in %{bag} (%{bag_id})."
     retrieve_ok: "Retrieved %{item} (%{item_id}) from %{bag_id}."
