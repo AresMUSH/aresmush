@@ -1,76 +1,11 @@
-# Spell catalog (PF2e Remaster naming).
-# Lookup: Pf2e.read_data("spells", "magic_missile")
+# Spell catalog (PF2e Remaster) - Pathfinder Player Core
+# From Foundry VTT pf2e packs/spells (publication: Pathfinder Player Core).
+# Lookup: Pf2e.read_data("spells", "force_barrage")
+# rank 0 = cantrip; category cantrip|spell|focus|ritual
 #
-# rank: 0 = cantrip; 1-10 spell rank
-# traditions: arcane | divine | occult | primal
-# Casting type is on the *source* on the sheet (prepared/spontaneous),
-# not on the individual spell entry.
-
-spells:
-  shield:
-    name: Shield
-    rank: 0
-    traditions: [arcane, divine, occult]
-    traits: [cantrip, concentrate, manipulate]
-    cast: 1
-    effect: >
-      You raise a magical shield of force that grants +1 circumstance
-      bonus to AC until the start of your next turn. You can use the
-      Shield Block reaction while it lasts.
-
-  light:
-    name: Light
-    rank: 0
-    traditions: [arcane, divine, occult, primal]
-    traits: [cantrip, concentrate, light, manipulate]
-    cast: 2
-    effect: >
-      An object or creature glows with light in a 20-foot radius
-      (dim light for the next 20 feet).
-
-  detect_magic:
-    name: Detect Magic
-    rank: 0
-    traditions: [arcane, divine, occult, primal]
-    traits: [cantrip, concentrate, detection, manipulate]
-    cast: 2
-    effect: >
-      You detect the presence of magic within 30 feet. Details depend
-      on further exploration and rank.
-
-  magic_missile:
-    name: Magic Missile
-    rank: 1
-    traditions: [arcane, occult]
-    traits: [attack, force, manipulate]
-    cast: 1
-    heighten: "+1"
-    effect: >
-      You fire a dart of force that automatically hits for 1d4+1 force
-      damage. At higher ranks, fire additional missiles.
-
-  heal:
-    name: Heal
-    rank: 1
-    traditions: [divine, primal]
-    traits: [healing, manipulate, vitality]
-    cast: 1
-    heighten: "+1"
-    effect: >
-      Restore Hit Points to a living creature, or damage undead.
-      Area and potency scale with actions spent and rank.
-
-  fear:
-    name: Fear
-    rank: 1
-    traditions: [arcane, divine, occult, primal]
-    traits: [emotion, fear, mental]
-    cast: 2
-    effect: >
-      A creature must attempt a Will save against your spell DC or
-      become frightened.
-
-# Tradition metadata (optional helpers / display)
+# Meta only; spell entries live in spells_*.yml (deep-merged on load).
+# Remaster renames apply (e.g. Magic Missile -> force_barrage).
+#
 traditions:
   arcane:
     name: Arcane
