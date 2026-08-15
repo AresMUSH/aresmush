@@ -137,7 +137,6 @@ module AresMUSH
         if action == "add"
           limit = dedication_limit_block(sheet, slug, staff: true)
           return limit.merge(char: char) if limit
-
           feats << slug unless feats.include?(slug)
           if slot && feat_slot_type?(slot)
             map[slug] = slot
@@ -199,7 +198,6 @@ module AresMUSH
       when "money", "coin", "coins"
         action = parts[1]
         return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil?
-
         rest = parts[2..-1] || []
         dest = "society"
         if rest.first && %w[society account hall].include?(rest.first)
@@ -209,12 +207,10 @@ module AresMUSH
           dest = "purse"
           rest = rest[1..-1] || []
         end
-
         amount = parse_coin_string(rest.join(" "))
         if amount.nil?
           return { ok: false, error: "pf2e.money_bad_amount", char: char, sheet: sheet }
         end
-
         if action == "add" || action == "grant"
           if dest == "purse"
             r = adjust_money(sheet, amount)
@@ -247,7 +243,6 @@ module AresMUSH
       when "item", "gear", "inv"
         action = parts[1]
         return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if action.nil?
-
         case action
         when "add", "grant"
           slug = parts[2]
@@ -255,10 +250,8 @@ module AresMUSH
           parsed = parse_item_kv_tokens(parts[3..-1])
           qty = parsed[:meta]["qty"] || 1
           qty = parts[3].to_i if parts[3] && parts[3] =~ /^\d+$/
-
           r = inventory_add_from_catalog(sheet, slug, qty: qty, society: true)
           return r.merge(char: char, sheet: sheet) unless r[:ok]
-
           item = r[:item]
           if parsed[:runes].any?
             inventory_set_runes(sheet, item["id"], parsed[:runes])
@@ -272,31 +265,19 @@ module AresMUSH
             inventory_set_notes(sheet, item["id"], parsed[:meta]["notes"])
             item = find_item(sheet, item["id"])
           end
-
           { ok: true, error: nil, char: char, sheet: sheet,
             summary: "item +#{item_display_name(item)} (#{item['id']}) [Society]" }
-
         when "custom"
           kind = parts[2] || "custom"
           name_token = raw_parts[3]
           return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if name_token.nil?
           name = name_token.tr("_", " ")
           parsed = parse_item_kv_tokens(parts[4..-1])
-
-          r = inventory_add_custom(sheet,
-                                  kind: kind,
-                                  name: name,
-                                  bulk: parsed[:meta]["bulk"],
-                                  slug: parsed[:meta]["slug"],
-                                  runes: parsed[:runes],
-                                  magic: parsed[:magic],
-                                  notes: parsed[:meta]["notes"] || "Society issue",
-                                  society: true)
+          r = inventory_add_custom(sheet, kind: kind, name: name, bulk: parsed[:meta]["bulk"], slug: parsed[:meta]["slug"], runes: parsed[:runes], magic: parsed[:magic], notes: parsed[:meta]["notes"] || "Society issue", society: true)
           return r.merge(char: char, sheet: sheet) unless r[:ok]
           item = r[:item]
           { ok: true, error: nil, char: char, sheet: sheet,
             summary: "custom +#{item_display_name(item)} (#{item['id']}) [Society]" }
-
         when "remove", "drop", "take"
           id = parts[2]
           return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
@@ -306,7 +287,6 @@ module AresMUSH
           item = r[:item]
           { ok: true, error: nil, char: char, sheet: sheet,
             summary: "item -#{item_display_name(item)} (#{item['id']})" }
-
         when "runes", "rune"
           id = parts[2]
           return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
@@ -317,7 +297,6 @@ module AresMUSH
           item = r[:item]
           { ok: true, error: nil, char: char, sheet: sheet,
             summary: "runes on #{item_display_name(item)} (#{item['id']}): #{format_runes_brief(item)}" }
-
         when "magic"
           id = parts[2]
           return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
@@ -328,16 +307,13 @@ module AresMUSH
           item = r[:item]
           { ok: true, error: nil, char: char, sheet: sheet,
             summary: "magic on #{item_display_name(item)} (#{item['id']})" }
-
         when "notes", "note"
           id = parts[2]
           return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if id.nil?
           note = raw_parts[3..-1].join(" ").tr("_", " ")
           r = inventory_set_notes(sheet, id, note)
           return r.merge(char: char, sheet: sheet) unless r[:ok]
-          { ok: true, error: nil, char: char, sheet: sheet,
-            summary: "notes on #{id}" }
-
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "notes on #{id}" }
         else
           { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet }
         end
@@ -367,10 +343,27 @@ module AresMUSH
         { ok: true, error: nil, char: char, sheet: sheet, summary: "hero_points=#{val}" }
 
       when "focus", "focus_points"
-        val = parts[1].to_i
-        return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if parts[1].nil?
-        sheet.update(focus_points: val)
-        { ok: true, error: nil, char: char, sheet: sheet, summary: "focus_points=#{val}" }
+        sub = parts[1]
+        return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if sub.nil?
+        if sub == "max"
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if parts[2].nil?
+          r = set_focus_max(sheet, parts[2])
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "focus_max=#{r[:max]} (current=#{r[:current]})" }
+        elsif sub == "current"
+          return { ok: false, error: "pf2e.staff_set_usage", char: char, sheet: sheet } if parts[2].nil?
+          r = set_focus_current(sheet, parts[2])
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "focus_points=#{r[:current]}/#{r[:max]}" }
+        elsif sub == "restore" || sub == "full" || sub == "reset"
+          r = restore_focus_to_max!(sheet)
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "focus restored #{r[:current]}/#{r[:max]}" }
+        else
+          r = set_focus_current(sheet, sub)
+          return r.merge(char: char, sheet: sheet) unless r[:ok]
+          { ok: true, error: nil, char: char, sheet: sheet, summary: "focus_points=#{r[:current]}/#{r[:max]}" }
+        end
 
       when "ancestry"
         slug = parts[1]
@@ -407,11 +400,7 @@ module AresMUSH
         chosen = key_abil ? ability_key(key_abil) : nil
         options = Array((entry["key_ability"] || {})["options"]).map { |a| ability_key(a) || a.to_s }
         chosen ||= options.first if options.size == 1
-        sheet.update(charclass: {
-          "slug" => slug,
-          "name" => entry["name"] || slug,
-          "key_ability" => chosen
-        })
+        sheet.update(charclass: { "slug" => slug, "name" => entry["name"] || slug, "key_ability" => chosen })
         cg_apply_granted_features(sheet)
         { ok: true, error: nil, char: char, sheet: sheet, summary: "class=#{slug} key=#{chosen}" }
 
@@ -439,49 +428,21 @@ module AresMUSH
     def self.staff_reset_sheet(enactor, char_name)
       blocked = staff_require_permission(enactor)
       return blocked if blocked
-
       result = staff_ensure_sheet(char_name)
       return result unless result[:ok]
-
       sheet = result[:sheet]
       char = result[:char]
-
       sheet.update(
-        level: 1,
-        xp: 0,
-        advancing: false,
-        pending_advancement: {},
-        advancement_picks: {},
-        ancestry: nil,
-        heritage: nil,
-        background: nil,
-        charclass: {},
-        identity_locked: false,
-        ability_boosts: {},
-        background_skill_picks: [],
-        languages: [],
-        abilities: {
-          "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10],
-          "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10]
-        },
-        skills: {},
-        saves: {},
-        feats: [],
-        feat_slot_map: {},
-        features: [],
-        archetypes: [],
+        level: 1, xp: 0, advancing: false, pending_advancement: {}, advancement_picks: {},
+        ancestry: nil, heritage: nil, background: nil, charclass: {}, identity_locked: false,
+        ability_boosts: {}, background_skill_picks: [], languages: [],
+        abilities: { "str" => [10, 10], "dex" => [10, 10], "con" => [10, 10], "int" => [10, 10], "wis" => [10, 10], "cha" => [10, 10] },
+        skills: {}, saves: {}, feats: [], feat_slot_map: {}, features: [], archetypes: [],
         money: { "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0 },
         society_account: { "pp" => 0, "gp" => 0, "sp" => 0, "cp" => 0 },
-        inventory: [],
-        item_seq: 0,
-        hp: { "current" => 0, "max" => 0, "temp" => 0 },
-        focus_points: 0,
-        hero_points: 1,
-        speed: 25,
-        conditions: {},
-        magic: {}
+        inventory: [], item_seq: 0, hp: { "current" => 0, "max" => 0, "temp" => 0 },
+        focus_points: 0, focus_max: 0, hero_points: 1, speed: 25, conditions: {}, magic: {}
       )
-
       { ok: true, error: nil, char: char, sheet: sheet }
     end
 

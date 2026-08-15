@@ -39,7 +39,10 @@ Staff tools are **CLI-only** by design.
 | `feature/add/<slug>` / `feature/remove/<slug>` | Features list |
 | `language/add/<slug>` / `language/remove/<slug>` | Languages |
 | `hp/current/<n>` `hp/max/<n>` `hp/temp/<n>` | Hit points |
-| `speed/<n>` `hero/<n>` `focus/<n>` | Resources |
+| `speed/<n>` `hero/<n>` | Resources |
+| `focus/<n>` `focus/current/<n>` | Set current Focus Points (clamped to max) |
+| `focus/max/<n>` | Set Focus Point pool maximum |
+| `focus/restore` | Restore current Focus Points to max |
 | `ancestry/<slug>` `heritage/<slug>` `background/<slug>` | Identity pieces |
 | `class/<slug>[/<key abil>]` | Class |
 | `identity/lock` / `identity/unlock` | Chargen lock flag |
