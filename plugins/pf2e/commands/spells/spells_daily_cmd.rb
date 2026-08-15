@@ -9,7 +9,8 @@ module AresMUSH
           client.emit_failure t(result[:error] || 'pf2e.no_sheet')
           return
         end
-        client.emit_success t('pf2e.magic_daily_ok', :focus => result[:focus_points])
+        focus_label = "#{result[:focus_points]}/#{result[:focus_max]}"
+        client.emit_success t('pf2e.magic_daily_ok', :focus => focus_label)
         client.emit Pf2e.format_magic_status(enactor)
       end
     end
