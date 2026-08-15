@@ -1,1 +1,207 @@
-PLACEHOLDER
+# Spell catalog (PF2e Remaster) - Pathfinder Player Core
+# From Foundry VTT pf2e packs/spells (publication.title == Pathfinder Player Core).
+# Lookup: Pf2e.read_data("spells", "force_barrage")
+# rank 0 = cantrip; category: cantrip | spell | focus | ritual
+# Mechanical fields only (no full rules text - use AON at table for prose).
+# Remaster names: Magic Missile -> force_barrage, etc.
+#
+spells:
+  animate_object:
+    name: Animate Object
+    rank: 2
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: 1 object
+  consecrate:
+    name: Consecrate
+    rank: 2
+    category: ritual
+    traits:
+    - consecration
+    rarity: uncommon
+    cast: 3 days
+    source: Pathfinder Player Core
+    range: 40 feet
+    area: burst 40
+    duration: 1 year
+  create_undead:
+    name: Create Undead
+    rank: 2
+    category: ritual
+    traits:
+    - unholy
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: 1 dead creature
+  geas:
+    name: Geas
+    rank: 3
+    category: ritual
+    traits:
+    - curse
+    - mental
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: 1 creature of a level no greater than double the geas ritual's rank
+    duration: see text
+  rune_trap:
+    name: Rune Trap
+    rank: 3
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 object or a 10-foot-by-10-foot area
+  atone:
+    name: Atone
+    rank: 4
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: another creature of up to 8th level who is a worshipper of the same deity or philosophy as you
+  blight:
+    name: Blight
+    rank: 4
+    category: ritual
+    traits:
+    - plant
+    - void
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    duration: 1 year
+  plant_growth:
+    name: Plant Growth
+    rank: 4
+    category: ritual
+    traits:
+    - plant
+    - vitality
+    - wood
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    duration: 1 year
+  call_spirit:
+    name: Call Spirit
+    rank: 5
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 hour
+    source: Pathfinder Player Core
+    duration: up to 10 minutes
+  planar_servitor:
+    name: Planar Servitor
+    rank: 5
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    duration: see text
+  resurrect:
+    name: Resurrect
+    rank: 5
+    category: ritual
+    traits:
+    - healing
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: 1 dead creature of up to 10th level
+  awaken_animal:
+    name: Awaken Animal
+    rank: 6
+    category: ritual
+    traits:
+    - mental
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: 1 animal up to the level on the table
+  binding_circle:
+    name: Binding Circle
+    rank: 6
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: interplanar
+    target: 1 extraplanar creature
+    duration: varies
+  commune:
+    name: Commune
+    rank: 6
+    category: ritual
+    traits:
+    - prediction
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    duration: up to 10 minutes
+  primal_call:
+    name: Primal Call
+    rank: 6
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 100 miles
+    target: 1 animal, beast, fey, fungus, or plant
+    duration: see text
+  collective_memories:
+    name: Collective Memories
+    rank: 7
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+  planar_displacement:
+    name: Planar Displacement
+    rank: 7
+    category: ritual
+    traits:
+    - teleportation
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 20 feet
+    area: burst 20
+  control_weather:
+    name: Control Weather
+    rank: 8
+    category: ritual
+    traits: []
+    rarity: uncommon
+    cast: 1 day
+    source: Pathfinder Player Core
+    duration: 4d12 hours
+  wish:
+    name: Wish
+    rank: 10
+    category: ritual
+    traits: []
+    rarity: rare
+    cast: 1 day
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: 1 creature
