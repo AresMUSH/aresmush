@@ -36,6 +36,7 @@ module AresMUSH
         when "unequip" then return GearUnequipCmd
         when "stow" then return GearStowCmd
         when "retrieve" then return GearRetrieveCmd
+        when "activate", "use" then return GearActivateCmd
         end
       when "shop"
         case cmd.switch
