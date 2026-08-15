@@ -1,0 +1,1607 @@
+# Spell catalog (PF2e Remaster) - Pathfinder Player Core
+# From Foundry VTT pf2e packs/pf2e/spells (publication.title == Pathfinder Player Core).
+# Lookup: Pf2e.read_data("spells", "<slug>")
+# rank 0 = cantrip; category: cantrip | spell | focus | ritual
+# Mechanical fields only (no full rules text - use AON at table for prose).
+#
+spells:
+  aerial_form:
+    name: Aerial Form
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - polymorph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    duration: 1 minute
+  clairvoyance:
+    name: Clairvoyance
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - scrying
+    rarity: common
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 500 feet
+    duration: 10 minutes
+  confusion:
+    name: Confusion
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - emotion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute
+  creation:
+    name: Creation
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 0 feet
+    duration: 1 hour
+  detect_scrying:
+    name: Detect Scrying
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - detection
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    area: emanation 30
+    duration: 1 hour
+  dinosaur_form:
+    name: Dinosaur Form
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - polymorph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+    duration: 1 minute
+  dispelling_globe:
+    name: Dispelling Globe
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    area: burst 10
+    duration: 10 minutes
+  divine_wrath:
+    name: Divine Wrath
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - sanctified
+    - spirit
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 120 feet
+    area: burst 20
+  fire_shield:
+    name: Fire Shield
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - fire
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    duration: 1 minute
+  flicker:
+    name: Flicker
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - teleportation
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    duration: 1 minute
+  fly:
+    name: Fly
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: touch
+    target: 1 creature
+    duration: 5 minutes
+  honeyed_words:
+    name: Honeyed Words
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - occult
+    duration: 10 minutes
+  hydraulic_torrent:
+    name: Hydraulic Torrent
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - water
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+    area: line 60
+  liminal_doorway:
+    name: Liminal Doorway
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - extradimensional
+    - manipulate
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: touch
+    duration: 8 hours
+  mirage:
+    name: Mirage
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - illusion
+    - manipulate
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    - primal
+    range: 500 feet
+    area: burst 50
+    duration: until your next daily preparations
+  mountain_resilience:
+    name: Mountain Resilience
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: touch
+    target: 1 creature
+    duration: 20 minutes
+  nightmare:
+    name: Nightmare
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - illusion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: planetary
+    target: 1 creature you know by name
+    duration: 1 day
+  outcasts_curse:
+    name: Outcast's Curse
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - curse
+    - manipulate
+    - mental
+    - misfortune
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: touch
+    target: 1 creature
+  peaceful_bubble:
+    name: Peaceful Bubble
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: touch
+    area: burst 100
+    duration: 24 hours
+  planar_tether:
+    name: Planar Tether
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  read_omens:
+    name: Read Omens
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - prediction
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+  rewrite_memory:
+    name: Rewrite Memory
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: unlimited
+  shape_stone:
+    name: Shape Stone
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: touch
+    target: cube of stone 10 feet across or smaller
+  suggestion:
+    name: Suggestion
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - incapacitation
+    - linguistic
+    - manipulate
+    - mental
+    - subtle
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  talking_corpse:
+    name: Talking Corpse
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    range: touch
+    target: 1 corpse
+    duration: 10 minutes
+  telepathy:
+    name: Telepathy
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - linguistic
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    duration: 10 minutes
+  translocate:
+    name: Translocate
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - teleportation
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 120 feet
+  unfettered_movement:
+    name: Unfettered Movement
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - primal
+    range: touch
+    target: 1 creature touched
+    duration: 10 minutes
+  vapor_form:
+    name: Vapor Form
+    rank: 4
+    category: spell
+    traits:
+    - air
+    - concentrate
+    - manipulate
+    - polymorph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    - primal
+    range: touch
+    target: 1 willing creature
+    duration: 5 minutes
+  vision_of_death:
+    name: Vision of Death
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - death
+    - emotion
+    - fear
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 120 feet
+    target: 1 living creature
+  vital_beacon:
+    name: Vital Beacon
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - healing
+    - manipulate
+    - vitality
+    rarity: common
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - primal
+    duration: until your next daily preparations
+  wall_of_fire:
+    name: Wall of Fire
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - fire
+    - manipulate
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+    duration: 1 minute
+  weapon_storm:
+    name: Weapon Storm
+    rank: 4
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+  banishment:
+    name: Banishment
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - incapacitation
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: 30 feet
+    target: 1 creature that isn't on its home plane
+  breath_of_life:
+    name: Breath of Life
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - healing
+    - vitality
+    rarity: common
+    cast: reaction
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 60 feet
+    target: the triggering creature
+  control_water:
+    name: Control Water
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - water
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 500 feet
+    duration: 1 hour
+  divine_immolation:
+    name: Divine Immolation
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - fire
+    - manipulate
+    - sanctified
+    - spirit
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 120 feet
+    area: burst 20
+  dreaming_potential:
+    name: Dreaming Potential
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - mental
+    rarity: common
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - occult
+    range: touch
+    target: 1 willing sleeping creature
+    duration: 8 hours
+  elemental_form:
+    name: Elemental Form
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - polymorph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    duration: 1 minute
+  false_vision:
+    name: False Vision
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - illusion
+    - manipulate
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: touch
+    area: burst 100
+    duration: until your next daily preparations
+  hallucination:
+    name: Hallucination
+    rank: 5
+    category: spell
+    traits:
+    - illusion
+    - incapacitation
+    - manipulate
+    - mental
+    - subtle
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: 1 hour
+  howling_blizzard:
+    name: Howling Blizzard
+    rank: 5
+    category: spell
+    traits:
+    - air
+    - cold
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    area: cone 60
+  illusory_scene:
+    name: Illusory Scene
+    rank: 5
+    category: spell
+    traits:
+    - auditory
+    - concentrate
+    - illusion
+    - manipulate
+    - olfactory
+    - visual
+    rarity: common
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 500 feet
+    area: burst 30
+    duration: 1 hour
+  impaling_spike:
+    name: Impaling Spike
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - metal
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute
+  invoke_spirits:
+    name: Invoke Spirits
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - emotion
+    - fear
+    - manipulate
+    - mental
+    - void
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 120 feet
+    area: burst 10
+    duration: 1 minute (sustained)
+  magic_passage:
+    name: Magic Passage
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: touch
+    duration: 1 hour
+  mariners_curse:
+    name: Mariner's Curse
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - curse
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    - primal
+    range: touch
+    target: 1 creature
+  mind_probe:
+    name: Mind Probe
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - linguistic
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  moon_frenzy:
+    name: Moon Frenzy
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - morph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+    range: 30 feet
+    target: up to 5 willing creatures
+    duration: 1 minute
+  natures_pathway:
+    name: Nature's Pathway
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - mental
+    - plant
+    - teleportation
+    rarity: uncommon
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+  plant_form:
+    name: Plant Form
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - plant
+    - polymorph
+    - wood
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+    duration: 1 minute
+  scouting_eye:
+    name: Scouting Eye
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - scrying
+    rarity: common
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: see text
+    duration: sustained
+  sending:
+    name: Sending
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - mental
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: planetary
+    target: 1 creature you know well
+  shadow_blast:
+    name: Shadow Blast
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - shadow
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    range: varies
+  slither:
+    name: Slither
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - shadow
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 120 feet
+    area: burst 20
+    duration: 1 minute
+  speak_with_stones:
+    name: Speak with Stones
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    - primal
+    duration: 1 hour
+  spiritual_guardian:
+    name: Spiritual Guardian
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - sanctified
+    - spirit
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 120 feet
+    duration: 1 minute (sustained)
+  subconscious_suggestion:
+    name: Subconscious Suggestion
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - incapacitation
+    - linguistic
+    - manipulate
+    - mental
+    - subtle
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  summon_celestial:
+    name: Summon Celestial
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - summon
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 30 feet
+    duration: 1 minute (sustained)
+  summon_dragon:
+    name: Summon Dragon
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - summon
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    range: 30 feet
+    duration: 1 minute (sustained)
+  summon_entity:
+    name: Summon Entity
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - summon
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - occult
+    range: 30 feet
+    duration: 1 minute (sustained)
+  summon_fiend:
+    name: Summon Fiend
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - summon
+    - unholy
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 30 feet
+    duration: 1 minute (sustained)
+  summon_giant:
+    name: Summon Giant
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - summon
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+    range: 30 feet
+    duration: 1 minute (sustained)
+  summon_monitor:
+    name: Summon Monitor
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - summon
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 30 feet
+    duration: 1 minute (sustained)
+  synaptic_pulse:
+    name: Synaptic Pulse
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - incapacitation
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - occult
+    area: emanation 30
+    duration: 1 round
+  telekinetic_haul:
+    name: Telekinetic Haul
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 120 feet
+    target: 1 unattended object of up to 80 Bulk with no dimension longer than 20 feet
+    duration: 1 minute (sustained)
+  toxic_cloud:
+    name: Toxic Cloud
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - death
+    - manipulate
+    - poison
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+    area: burst 20
+    duration: 1 minute
+  truespeech:
+    name: Truespeech
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: touch
+    target: 1 creature
+    duration: 1 hour
+  umbral_journey:
+    name: Umbral Journey
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - shadow
+    - teleportation
+    rarity: uncommon
+    cast: 1 minute
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: touch
+    target: you and up to 10 willing creatures touched
+    duration: 8 hours
+  wall_of_ice:
+    name: Wall of Ice
+    rank: 5
+    category: spell
+    traits:
+    - cold
+    - concentrate
+    - manipulate
+    - water
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+    duration: 1 minute
+  wall_of_stone:
+    name: Wall of Stone
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+  wave_of_despair:
+    name: Wave of Despair
+    rank: 5
+    category: spell
+    traits:
+    - concentrate
+    - emotion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    area: cone 30
+    duration: 1 or more rounds
+  blessed_boundary:
+    name: Blessed Boundary
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - force
+    - manipulate
+    - sanctified
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 120 feet
+    area: burst 60
+    duration: 1 minute
+  chain_lightning:
+    name: Chain Lightning
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - electricity
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 500 feet
+    target: 1 creature, plus any number of additional creatures
+  cursed_metamorphosis:
+    name: Cursed Metamorphosis
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - curse
+    - incapacitation
+    - manipulate
+    - polymorph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    - primal
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  disintegrate:
+    name: Disintegrate
+    rank: 6
+    category: spell
+    traits:
+    - attack
+    - concentrate
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    range: 120 feet
+    target: 1 creature, unattended object, or force construct
+  dominate:
+    name: Dominate
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - incapacitation
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: until the next time you make your daily preparations
+  dragon_form:
+    name: Dragon Form
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - polymorph
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    duration: 1 minute
+  field_of_life:
+    name: Field of Life
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - healing
+    - manipulate
+    - vitality
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - primal
+    range: 30 feet
+    area: burst 20
+    duration: 1 minute (sustained)
+  mislead:
+    name: Mislead
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - illusion
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    duration: 1 minute (sustained)
+  never_mind:
+    name: Never Mind
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - curse
+    - incapacitation
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  petrify:
+    name: Petrify
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - earth
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 120 feet
+    target: 1 creature made of organic material
+    duration: varies
+  phantasmal_calamity:
+    name: Phantasmal Calamity
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - illusion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 500 feet
+    area: burst 30
+  raise_dead:
+    name: Raise Dead
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - healing
+    - manipulate
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    range: 10 feet
+    target: 1 dead creature of 13th level or lower
+    cost: gemstones worth a total value of the target's level (minimum 1) × 200 gp
+  repulsion:
+    name: Repulsion
+    rank: 6
+    category: spell
+    traits:
+    - aura
+    - concentrate
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: emanation up to 40-feet
+    duration: 1 minute
+  scrying:
+    name: Scrying
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - scrying
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: planetary
+    target: 1 creature
+    duration: 10 minutes (sustained)
+  spellwrack:
+    name: Spellwrack
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - curse
+    - force
+    - manipulate
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    range: 30 feet
+    target: 1 creature
+  spirit_blast:
+    name: Spirit Blast
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - spirit
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    range: 30 feet
+    target: 1 creature
+  tangling_creepers:
+    name: Tangling Creepers
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - plant
+    - wood
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - primal
+    range: 500 feet
+    area: burst 40
+    duration: 10 minutes
+  teleport:
+    name: Teleport
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - teleportation
+    rarity: uncommon
+    cast: 10 minutes
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 100 miles
+    target: you and up to 4 targets touched, either willing creatures or objects roughly the size of a
+      creature.
+  tree_of_seasons:
+    name: Tree of Seasons
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - plant
+    - wood
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - primal
+    range: 60 feet
+    duration: 1 minute
+  truesight:
+    name: Truesight
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - manipulate
+    - revelation
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    - primal
+    duration: 10 minutes
+  vampiric_exsanguination:
+    name: Vampiric Exsanguination
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - death
+    - manipulate
+    - void
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - divine
+    - occult
+    area: cone 30
+  vibrant_pattern:
+    name: Vibrant Pattern
+    rank: 6
+    category: spell
+    traits:
+    - illusion
+    - incapacitation
+    - manipulate
+    - subtle
+    - visual
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 120 feet
+    area: burst 10
+    duration: 1 minute (sustained)
+  wall_of_force:
+    name: Wall of Force
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - force
+    - manipulate
+    rarity: common
+    cast: 3
+    source: Pathfinder Player Core
+    traditions:
+    - arcane
+    - occult
+    range: 30 feet
+    duration: 1 minute
+  zealous_conviction:
+    name: Zealous Conviction
+    rank: 6
+    category: spell
+    traits:
+    - concentrate
+    - emotion
+    - manipulate
+    - mental
+    rarity: common
+    cast: 2
+    source: Pathfinder Player Core
+    traditions:
+    - divine
+    - occult
+    range: 30 feet
+    target: up to 10 willing creatures
+    duration: 10 minutes

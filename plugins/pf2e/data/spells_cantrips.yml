@@ -128,7 +128,7 @@ spells:
     - occult
     range: 30 feet
     target: 1 ally and 1 enemy
-    duration: sustained up to 1 minute
+    duration: 1 minute (sustained)
   frostbite:
     name: Frostbite
     rank: 0
@@ -157,7 +157,7 @@ spells:
     - manipulate
     - morph
     rarity: common
-    cast: 1
+    cast: 2
     source: Pathfinder Player Core
     traditions:
     - arcane
@@ -171,7 +171,6 @@ spells:
     traits:
     - cantrip
     - concentrate
-    - manipulate
     rarity: common
     cast: 1
     source: Pathfinder Player Core
@@ -216,7 +215,6 @@ spells:
     - divine
     - occult
     - primal
-    duration: 1 day
   light:
     name: Light
     rank: 0
@@ -235,8 +233,7 @@ spells:
     - occult
     - primal
     range: 120 feet
-    target: 1 object of 1 Bulk or less, either unattended or possessed by you or a willing ally
-    duration: until the next time you make your daily preparations
+    duration: until your next daily preparations
   message:
     name: Message
     rank: 0
@@ -245,8 +242,8 @@ spells:
     - auditory
     - cantrip
     - concentrate
+    - illusion
     - linguistic
-    - manipulate
     - mental
     - subtle
     rarity: common
@@ -258,6 +255,7 @@ spells:
     - occult
     range: 120 feet
     target: 1 creature
+    duration: see below
   prestidigitation:
     name: Prestidigitation
     rank: 0
@@ -275,6 +273,7 @@ spells:
     - occult
     - primal
     range: 10 feet
+    target: 1 object (cook, lift, or tidy only)
     duration: sustained
   read_aura:
     name: Read Aura
@@ -294,6 +293,7 @@ spells:
     - occult
     - primal
     range: 30 feet
+    target: 1 object
   shield:
     name: Shield
     rank: 0
@@ -328,7 +328,7 @@ spells:
     - primal
     range: touch
     target: 1 creature or object
-    duration: unlimited (see text)
+    duration: unlimited
   stabilize:
     name: Stabilize
     rank: 0
@@ -382,7 +382,6 @@ spells:
     - primal
     range: 30 feet
     target: 1 creature
-    duration: until the start of your next turn
   telekinetic_hand:
     name: Telekinetic Hand
     rank: 0
@@ -433,7 +432,7 @@ spells:
     - divine
     - primal
     range: 30 feet
-    target: 1 creature that has void healing
+    target: 1 creature that is undead or otherwise has void healing
   void_warp:
     name: Void Warp
     rank: 0

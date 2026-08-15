@@ -27,7 +27,7 @@ spells:
     range: 40 feet
     area: burst 40
     duration: 1 year
-    cost: rare incense and offerings worth a total value of 20 gp x the spell rank
+    cost: rare incense and offerings worth a total value of 20 gp × the spell rank
   create_undead:
     name: Create Undead
     rank: 2
@@ -73,7 +73,7 @@ spells:
     range: 10 feet
     target: another creature of up to 8th level who is a worshipper of the same deity or philosophy as
       you
-    cost: rare incense and offerings worth a total value of 20 gp x the target's level
+    cost: rare incense and offerings worth a total value of 20 gp × the target's level
   blight:
     name: Blight
     rank: 4
@@ -114,7 +114,7 @@ spells:
     cast: 1 day
     source: Pathfinder Player Core
     duration: see text
-    cost: rare incense and offerings worth a total value of 2 gp x the spell rank x the target's level,
+    cost: rare incense and offerings worth a total value of 2 gp × the spell rank × the target's level,
       see text for more details
   resurrect:
     name: Resurrect
@@ -127,7 +127,7 @@ spells:
     source: Pathfinder Player Core
     range: 10 feet
     target: 1 dead creature of up to 10th level
-    cost: gemstones worth a total value of 75 gp x the target's level
+    cost: gemstones worth a total value of 75 gp × the target's level
   awaken_animal:
     name: Awaken Animal
     rank: 6
@@ -150,7 +150,7 @@ spells:
     range: interplanar
     target: 1 extraplanar creature
     duration: varies
-    cost: warding circle ingredients worth a total value of 2 gp x the spell rank x the target's level
+    cost: warding circle ingredients worth a total value of 2 gp × the spell rank × the target's level
   commune:
     name: Commune
     rank: 6
@@ -172,7 +172,7 @@ spells:
     range: 100 miles
     target: 1 animal, beast, fey, fungus, or plant
     duration: see text
-    cost: faerie circle ingredients worth a total value of 1 gp x the spell rank x the target's level
+    cost: faerie circle ingredients worth a total value of 1 gp × the spell rank × the target's level
   collective_memories:
     name: Collective Memories
     rank: 7

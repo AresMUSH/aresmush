@@ -1,0 +1,2156 @@
+# Spell catalog (PF2e Remaster) - Pathfinder Player Core
+# From Foundry VTT pf2e packs/pf2e/spells (publication.title == Pathfinder Player Core).
+# Lookup: Pf2e.read_data("spells", "<slug>")
+# rank 0 = cantrip; category: cantrip | spell | focus | ritual
+# Mechanical fields only (no full rules text - use AON at table for prose).
+#
+spells:
+  agile_feet:
+    name: Agile Feet
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: until the end of the current turn
+  appearance_of_wealth:
+    name: Appearance of Wealth
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - illusion
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    area: burst 5
+    duration: 1 minute (sustained)
+  athletic_rush:
+    name: Athletic Rush
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 round
+  bit_of_luck:
+    name: Bit of Luck
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 willing creature
+    duration: 1 minute
+  blood_ward:
+    name: Blood Ward
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  cackle:
+    name: Cackle
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - hex
+    - witch
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  charming_push:
+    name: Charming Push
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - incapacitation
+    - mental
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: until the start of your next turn
+  charming_touch:
+    name: Charming Touch
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - emotion
+    - focus
+    - incapacitation
+    - manipulate
+    - mental
+    - subtle
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature that could find you attractive
+    duration: 10 minutes
+  clinging_ice:
+    name: Clinging Ice
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - cold
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  cloak_of_shadow:
+    name: Cloak of Shadow
+    rank: 1
+    category: focus
+    traits:
+    - aura
+    - cleric
+    - darkness
+    - focus
+    - manipulate
+    - shadow
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 willing creature
+    duration: 1 minute
+  cornucopia:
+    name: Cornucopia
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - healing
+    - manipulate
+    - plant
+    - vitality
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 10 minutes
+  counter_performance:
+    name: Counter Performance
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    - fortune
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    area: emanation 60
+  courageous_anthem:
+    name: Courageous Anthem
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 round
+  creative_splash:
+    name: Creative Splash
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - illusion
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    area: burst 5
+    duration: varies
+  cry_of_destruction:
+    name: Cry of Destruction
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - sonic
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: cone 15
+  dazzling_flash:
+    name: Dazzling Flash
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - light
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: cone 15
+  deaths_call:
+    name: Death's Call
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    duration: 1 minute
+  discern_secrets:
+    name: Discern Secrets
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  earthworks:
+    name: Earthworks
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - earth
+    - focus
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 1 to 3
+    source: Pathfinder Player Core
+    range: 60 feet
+    duration: 1 minute
+  elemental_betrayal:
+    name: Elemental Betrayal
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - hex
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  evil_eye:
+    name: Evil Eye
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - curse
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  face_in_the_crowd:
+    name: Face in the Crowd
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  fire_ray:
+    name: Fire Ray
+    rank: 1
+    category: focus
+    traits:
+    - attack
+    - cleric
+    - concentrate
+    - fire
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 creature
+    duration: until the end of the target's next turn
+  force_bolt:
+    name: Force Bolt
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - force
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+  fortify_summoning:
+    name: Fortify Summoning
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature you summoned
+  gravity_weapon:
+    name: Gravity Weapon
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - ranger
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  hand_of_the_apprentice:
+    name: Hand of the Apprentice
+    rank: 1
+    category: focus
+    traits:
+    - attack
+    - focus
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 500 feet
+    target: 1 creature
+  heal_animal:
+    name: Heal Animal
+    rank: 1
+    category: focus
+    traits:
+    - druid
+    - focus
+    - healing
+    - manipulate
+    - vitality
+    rarity: uncommon
+    cast: 1 or 2
+    source: Pathfinder Player Core
+    range: varies
+    target: 1 willing living animal
+  heal_companion:
+    name: Heal Companion
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - healing
+    - ranger
+    - vitality
+    rarity: uncommon
+    cast: 1 or 2
+    source: Pathfinder Player Core
+    range: touch or 30 feet
+    target: your animal companion
+  healers_blessing:
+    name: Healer's Blessing
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 willing living creature
+    duration: 1 minute
+  hurtling_stone:
+    name: Hurtling Stone
+    rank: 1
+    category: focus
+    traits:
+    - attack
+    - cleric
+    - earth
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 creature
+  hymn_of_healing:
+    name: Hymn of Healing
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    - healing
+    - vitality
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: you or 1 ally
+    duration: 4 rounds (sustained)
+  ignite_ambition:
+    name: Ignite Ambition
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - mental
+    - subtle
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: one creature being influenced
+  life_boost:
+    name: Life Boost
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - healing
+    - hex
+    - manipulate
+    - vitality
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 4 rounds
+  lingering_composition:
+    name: Lingering Composition
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - concentrate
+    - focus
+    - spellshape
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  loremasters_etude:
+    name: Loremaster's Etude
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - composition
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: you or the triggering ally
+  magic_hide:
+    name: Magic Hide
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - manipulate
+    - ranger
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: your animal companion
+    duration: 1 minute
+  magics_vessel:
+    name: Magic's Vessel
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+    duration: 1 minute (sustained)
+  moonbeam:
+    name: Moonbeam
+    rank: 1
+    category: focus
+    traits:
+    - attack
+    - cleric
+    - concentrate
+    - fire
+    - focus
+    - light
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 120 feet
+    target: 1 creature
+  needle_of_vengeance:
+    name: Needle of Vengeance
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - mental
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 enemy
+    duration: 1 minute (sustained)
+  nudge_fate:
+    name: Nudge Fate
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - concentrate
+    - hex
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute
+  overstuff:
+    name: Overstuff
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 living creature
+  patrons_puppet:
+    name: Patron's Puppet
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - witch
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  perfected_mind:
+    name: Perfected Mind
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+  phase_familiar:
+    name: Phase Familiar
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: your familiar
+  protective_wards:
+    name: Protective Wards
+    rank: 1
+    category: focus
+    traits:
+    - aura
+    - focus
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 5
+    duration: 1 minute (sustained)
+  protectors_sacrifice:
+    name: Protector's Sacrifice
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 30 feet
+  pushing_gust:
+    name: Pushing Gust
+    rank: 1
+    category: focus
+    traits:
+    - air
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 500 feet
+    target: 1 creature
+  read_fate:
+    name: Read Fate
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - prediction
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature other than you
+  savor_the_sting:
+    name: Savor the Sting
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - mental
+    - nonlethal
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+  scholarly_recollection:
+    name: Scholarly Recollection
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - fortune
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  scramble_body:
+    name: Scramble Body
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 living creature
+  shroud_of_night:
+    name: Shroud of Night
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - darkness
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  song_of_strength:
+    name: Song of Strength
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 round
+  soothing_words:
+    name: Soothing Words
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 ally
+    duration: 1 minute
+  stoke_the_heart:
+    name: Stoke the Heart
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - concentrate
+    - emotion
+    - hex
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  sudden_shift:
+    name: Sudden Shift
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    duration: until the end of your next turn
+  sweet_dream:
+    name: Sweet Dream
+    rank: 1
+    category: focus
+    traits:
+    - auditory
+    - cleric
+    - concentrate
+    - focus
+    - linguistic
+    - manipulate
+    - mental
+    - sleep
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 willing creature
+    duration: 1 hour
+  tempest_surge:
+    name: Tempest Surge
+    rank: 1
+    category: focus
+    traits:
+    - air
+    - concentrate
+    - druid
+    - electricity
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+  tidal_surge:
+    name: Tidal Surge
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - water
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 creature
+  touch_of_obedience:
+    name: Touch of Obedience
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 living creature
+    duration: varies
+  touch_of_undeath:
+    name: Touch of Undeath
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - void
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 living creature
+  unimpeded_stride:
+    name: Unimpeded Stride
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+  untamed_form:
+    name: Untamed Form
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    - polymorph
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: varies
+  untamed_shift:
+    name: Untamed Shift
+    rank: 1
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    - morph
+    rarity: uncommon
+    cast: 1 or 2
+    source: Pathfinder Player Core
+    duration: 1 minute
+  uplifting_overture:
+    name: Uplifting Overture
+    rank: 1
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 ally
+    duration: 1 round
+  veil_of_confidence:
+    name: Veil of Confidence
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  veil_of_dreams:
+    name: Veil of Dreams
+    rank: 1
+    category: focus
+    traits:
+    - focus
+    - hex
+    - manipulate
+    - mental
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  vibrant_thorns:
+    name: Vibrant Thorns
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - morph
+    - plant
+    - wood
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  waking_nightmare:
+    name: Waking Nightmare
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - fear
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  weapon_surge:
+    name: Weapon Surge
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - sanctified
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 weapon you're wielding
+  whispering_quiet:
+    name: Whispering Quiet
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - sonic
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 60 feet
+    area: burst 15
+    duration: 1 minute
+  wilding_word:
+    name: Wilding Word
+    rank: 1
+    category: focus
+    traits:
+    - cantrip
+    - hex
+    - mental
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  word_of_truth:
+    name: Word of Truth
+    rank: 1
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute (sustained)
+  animal_feature:
+    name: Animal Feature
+    rank: 2
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - morph
+    - ranger
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  enlarge_companion:
+    name: Enlarge Companion
+    rank: 2
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - polymorph
+    - ranger
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: your animal companion
+    duration: 1 minute
+  hunters_luck:
+    name: Hunter's Luck
+    rank: 2
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - fortune
+    - ranger
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  rallying_anthem:
+    name: Rallying Anthem
+    rank: 2
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 round
+  soothing_mist:
+    name: Soothing Mist
+    rank: 2
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - healing
+    - manipulate
+    - ranger
+    - vitality
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 willing living creature or 1 undead creature
+  triple_time:
+    name: Triple Time
+    rank: 2
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - emotion
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 round
+  deceivers_cloak:
+    name: Deceiver's Cloak
+    rank: 3
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - hex
+    - illusion
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 hour
+  dirge_of_doom:
+    name: Dirge of Doom
+    rank: 3
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - fear
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 30
+    duration: 1 round
+  ephemeral_tracking:
+    name: Ephemeral Tracking
+    rank: 3
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - ranger
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 hour
+  malicious_shadow:
+    name: Malicious Shadow
+    rank: 3
+    category: focus
+    traits:
+    - attack
+    - concentrate
+    - focus
+    - hex
+    - manipulate
+    - shadow
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  personal_blizzard:
+    name: Personal Blizzard
+    rank: 3
+    category: focus
+    traits:
+    - cold
+    - focus
+    - hex
+    - witch
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  rangers_bramble:
+    name: Ranger's Bramble
+    rank: 3
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - plant
+    - ranger
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 100 feet
+    area: burst 5
+    duration: 1 minute
+  song_of_marching:
+    name: Song of Marching
+    rank: 3
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 60
+    duration: 1 hour (sustained)
+  artistic_flourish:
+    name: Artistic Flourish
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 15 feet
+    target: 1 item or work of art that fits entirely within the range
+    duration: 10 minutes
+  captivating_adoration:
+    name: Captivating Adoration
+    rank: 4
+    category: focus
+    traits:
+    - aura
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - manipulate
+    - mental
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: emanation 15
+    duration: 1 minute
+  commanding_lash:
+    name: Commanding Lash
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - linguistic
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 100 feet
+    target: A creature you dealt damage to on your most recent action.
+    duration: until the end of your target's next turn
+  community_restoration:
+    name: Community Restoration
+    rank: 4
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - healing
+    - wizard
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  competitive_edge:
+    name: Competitive Edge
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute (sustained)
+  darkened_sight:
+    name: Darkened Sight
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - darkness
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: 1 creature
+    duration: 1 minute
+  delusional_pride:
+    name: Delusional Pride
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  destructive_aura:
+    name: Destructive Aura
+    rank: 4
+    category: focus
+    traits:
+    - aura
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: emanation 15
+    duration: 1 minute
+  disperse_into_air:
+    name: Disperse into Air
+    rank: 4
+    category: focus
+    traits:
+    - air
+    - cleric
+    - focus
+    - manipulate
+    - polymorph
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  downpour:
+    name: Downpour
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - water
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 120 feet
+    area: burst 30
+    duration: 1 minute
+  dreamers_call:
+    name: Dreamer's Call
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - illusion
+    - incapacitation
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: until the end of the target's next turn
+  enduring_might:
+    name: Enduring Might
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  energy_absorption:
+    name: Energy Absorption
+    rank: 4
+    category: focus
+    traits:
+    - focus
+    - wizard
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  eradicate_undeath:
+    name: Eradicate Undeath
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - vitality
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: cone 30
+  flame_barrier:
+    name: Flame Barrier
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: the creature that would take fire damage
+  fortissimo_composition:
+    name: Fortissimo Composition
+    rank: 4
+    category: focus
+    traits:
+    - bard
+    - concentrate
+    - focus
+    - spellshape
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  glimpse_the_truth:
+    name: Glimpse the Truth
+    rank: 4
+    category: focus
+    traits:
+    - aura
+    - cleric
+    - focus
+    - manipulate
+    - revelation
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    area: emanation 30
+    duration: 1 round
+  interdisciplinary_incantation:
+    name: Interdisciplinary Incantation
+    rank: 4
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - wizard
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  invisibility_cloak:
+    name: Invisibility Cloak
+    rank: 4
+    category: focus
+    traits:
+    - focus
+    - illusion
+    - manipulate
+    - wizard
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 minute
+  know_the_enemy:
+    name: Know the Enemy
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  localized_quake:
+    name: Localized Quake
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - earth
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+  lucky_break:
+    name: Lucky Break
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - fortune
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  malignant_sustenance:
+    name: Malignant Sustenance
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - void
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 willing undead creature
+    duration: 1 minute
+  mystic_beacon:
+    name: Mystic Beacon
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 willing creature
+    duration: until the start of your next turn
+  natures_bounty:
+    name: Nature's Bounty
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - plant
+    - vitality
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+  perfected_body:
+    name: Perfected Body
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+  precious_metals:
+    name: Precious Metals
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - metal
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 metal shield or weapon, 1 suit of metal armor, or up to 1 Bulk of metal material (such as
+      coins or metal-tipped ammunition)
+    duration: 1 minute
+  protectors_sphere:
+    name: Protector's Sphere
+    rank: 4
+    category: focus
+    traits:
+    - aura
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: emanation 15
+    duration: 1 minute (sustained)
+  pulse_of_civilization:
+    name: Pulse of Civilization
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - scrying
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 25 miles
+    duration: 8 hours
+  rebuke_death:
+    name: Rebuke Death
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - healing
+    - manipulate
+    - vitality
+    rarity: uncommon
+    cast: 1 to 3
+    source: Pathfinder Player Core
+    target: 1 living creature per action spent to Cast this Spell
+    area: emanation 20
+  retributive_pain:
+    name: Retributive Pain
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - manipulate
+    - mental
+    - nonlethal
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: the triggering creature
+  rune_of_observation:
+    name: Rune of Observation
+    rank: 4
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 500 feet
+    duration: 1 hour
+  safeguard_secret:
+    name: Safeguard Secret
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: you and any number of willing allies
+    duration: 1 hour
+  shared_nightmare:
+    name: Shared Nightmare
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - incapacitation
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: varies
+  shifting_form:
+    name: Shifting Form
+    rank: 4
+    category: focus
+    traits:
+    - focus
+    - manipulate
+    - morph
+    - wizard
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    duration: 1 minute
+  spiral_of_horrors:
+    name: Spiral of Horrors
+    rank: 4
+    category: focus
+    traits:
+    - aura
+    - concentrate
+    - emotion
+    - fear
+    - focus
+    - manipulate
+    - mental
+    - wizard
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: emanation 30
+    duration: 1 minute (sustained)
+  stormwind_flight:
+    name: Stormwind Flight
+    rank: 4
+    category: focus
+    traits:
+    - air
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 minute
+  take_its_course:
+    name: Take its Course
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+  tempt_fate:
+    name: Tempt Fate
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - fortune
+    - manipulate
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 120 feet
+    target: the triggering creature
+  touch_of_the_moon:
+    name: Touch of the Moon
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - focus
+    - light
+    - manipulate
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    target: 1 creature
+    duration: 1 minute
+  travelers_transit:
+    name: Traveler's Transit
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 5 minutes
+  tricksters_twin:
+    name: Trickster's Twin
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - illusion
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute
+  unity:
+    name: Unity
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - fortune
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: each ally targeted by the triggering spell
+  word_of_freedom:
+    name: Word of Freedom
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 round
+  zeal_for_battle:
+    name: Zeal for Battle
+    rank: 4
+    category: focus
+    traits:
+    - cleric
+    - concentrate
+    - emotion
+    - focus
+    - fortune
+    - mental
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 10 feet
+    target: you and the triggering ally
+  curse_of_death:
+    name: Curse of Death
+    rank: 5
+    category: focus
+    traits:
+    - concentrate
+    - curse
+    - death
+    - focus
+    - hex
+    - manipulate
+    - void
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+    duration: 1 minute (sustained)
+  house_of_imaginary_walls:
+    name: House of Imaginary Walls
+    rank: 5
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - illusion
+    - manipulate
+    - visual
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: touch
+    duration: 1 round
+  hunters_vision:
+    name: Hunter's Vision
+    rank: 5
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - ranger
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 hunted prey
+    duration: 10 minutes
+  ode_to_ouroboros:
+    name: Ode to Ouroboros
+    rank: 5
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    rarity: uncommon
+    cast: reaction
+    source: Pathfinder Player Core
+    range: 60 feet
+    target: the triggering creature
+  restorative_moment:
+    name: Restorative Moment
+    rank: 5
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - hex
+    - manipulate
+    - witch
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+  symphony_of_the_unfettered_heart:
+    name: Symphony of the Unfettered Heart
+    rank: 5
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: you or 1 ally
+  terrain_transposition:
+    name: Terrain Transposition
+    rank: 5
+    category: focus
+    traits:
+    - concentrate
+    - focus
+    - manipulate
+    - ranger
+    - teleportation
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 90 feet
+  primal_summons:
+    name: Primal Summons
+    rank: 6
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    rarity: uncommon
+    cast: free
+    source: Pathfinder Player Core
+  allegro:
+    name: Allegro
+    rank: 7
+    category: focus
+    traits:
+    - bard
+    - cantrip
+    - composition
+    - concentrate
+    - emotion
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 ally
+    duration: 1 round
+  soothing_ballad:
+    name: Soothing Ballad
+    rank: 7
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - emotion
+    - focus
+    - healing
+    - manipulate
+    - mental
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: you and up to 9 allies
+  impaling_briars:
+    name: Impaling Briars
+    rank: 8
+    category: focus
+    traits:
+    - concentrate
+    - druid
+    - focus
+    - manipulate
+    - plant
+    - wood
+    rarity: uncommon
+    cast: 3
+    source: Pathfinder Player Core
+    area: emanation 100
+    duration: 1 minute (sustained)
+  storm_lord:
+    name: Storm Lord
+    rank: 9
+    category: focus
+    traits:
+    - air
+    - concentrate
+    - druid
+    - electricity
+    - focus
+    - manipulate
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    area: emanation 100
+    duration: 1 minute (sustained)
+  fatal_aria:
+    name: Fatal Aria
+    rank: 10
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - death
+    - emotion
+    - focus
+    - mental
+    rarity: uncommon
+    cast: 1
+    source: Pathfinder Player Core
+    range: 30 feet
+    target: 1 creature
+  pied_piping:
+    name: Pied Piping
+    rank: 10
+    category: focus
+    traits:
+    - bard
+    - composition
+    - concentrate
+    - focus
+    - incapacitation
+    - mental
+    - sonic
+    rarity: uncommon
+    cast: 2
+    source: Pathfinder Player Core
+    duration: 1 minute
