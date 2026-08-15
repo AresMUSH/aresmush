@@ -35,6 +35,11 @@ module AresMUSH
       TEML_ORDER[rank.to_s.strip.upcase] || 0
     end
 
+    # Alias used by magic/innate helpers (same scale as teml_order).
+    def self.teml_rank_value(rank)
+      teml_order(rank)
+    end
+
     # True if actual rank is at least the required rank.
     def self.teml_at_least?(actual, required)
       teml_order(actual) >= teml_order(required)
