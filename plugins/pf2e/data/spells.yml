@@ -1,17 +1,13 @@
 # Spell catalog (PF2e Remaster) - Pathfinder Player Core
-# From Foundry VTT pf2e packs/spells (publication: Pathfinder Player Core).
+# From Foundry VTT pf2e packs/spells (publication.title == Pathfinder Player Core).
 # Lookup: Pf2e.read_data("spells", "force_barrage")
-# rank 0 = cantrip; category cantrip|spell|focus|ritual
-#
-# Meta only; spell entries live in spells_*.yml (deep-merged on load).
-# Remaster renames apply (e.g. Magic Missile -> force_barrage).
+# rank 0 = cantrip; category: cantrip | spell | focus | ritual
+# Mechanical fields only (no full rules text - use AON at table for prose).
+# Remaster names: Magic Missile -> force_barrage, etc.
+# Spell entries live in spells_*.yml and deep-merge under the spells: key.
 #
 traditions:
-  arcane:
-    name: Arcane
-  divine:
-    name: Divine
-  occult:
-    name: Occult
-  primal:
-    name: Primal
+  arcane: {name: Arcane}
+  divine: {name: Divine}
+  occult: {name: Occult}
+  primal: {name: Primal}
