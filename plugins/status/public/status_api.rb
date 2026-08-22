@@ -39,5 +39,22 @@ module AresMUSH
         status == 'web-active' || status == 'game-active'
       end
       
+      def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+        {
+          show_status_tab: Status.can_manage_status?(viewer),
+          is_npc: char.is_npc,
+          is_playerbit: char.is_playerbit            
+        }
+      end
+      
+      def self.save_web_profile_data(char, enactor, args)
+        if Status.can_manage_status?(enactor)
+          char.update(is_npc: (args["is_npc"] || "").to_bool)
+        end
+        
+        char.update(is_playerbit: (args["is_playerbit"] || "").to_bool)
+        return nil
+      end
+      
   end  
 end
