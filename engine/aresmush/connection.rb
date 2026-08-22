@@ -169,6 +169,7 @@ module AresMUSH
         42 => "CHARSET",
         31 => "NAWS",
         24 => "TTYPE",
+        70 => "MSSP",
         '\r'.ord => "CR",
         '\n'.ord => "LF",
         20 => "_"
