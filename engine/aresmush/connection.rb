@@ -23,6 +23,7 @@ module AresMUSH
 
       @negotiator.send_naws_request
       @negotiator.send_charset_request
+      @negotiator.send_mssp_avail
     end
 
     def ping

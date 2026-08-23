@@ -60,9 +60,6 @@ module AresMUSH
         # Will charset
         if (op == CHARSET)
           send_telnet_control [ INTERPRET_AS_CONTROL, START_SUB_NEGOTIATION, CHARSET, REQUEST, 32, 'u'.ord, 't'.ord, 'f'.ord, '-'.ord, '8'.ord, INTERPRET_AS_CONTROL, END_SUB_NEGOTIATION ]
-        # Will MSSP
-        elsif (op == MSSP)
-          send_telnet_control [ INTERPRET_AS_CONTROL, DO, MSSP ]
         end
         
       elsif (chars[0].ord == WONT && chars.length > 1)
@@ -87,6 +84,10 @@ module AresMUSH
       return handle_input(chars.join)
     end
 
+    def send_mssp_avail
+      send_telnet_control [ INTERPRET_AS_CONTROL, WILL, MSSP ]
+    end
+    
     def send_naws_request
       send_telnet_control [ INTERPRET_AS_CONTROL, DO, NAWS ]        
     end
