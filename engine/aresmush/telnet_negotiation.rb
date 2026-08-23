@@ -116,13 +116,14 @@ module AresMUSH
         mssp_response = mssp_response.concat [ MSSP_VAR, k, MSSP_VAL, v ]
       end
       mssp_response = mssp_response.concat [ INTERPRET_AS_CONTROL, END_SUB_NEGOTIATION ]
+      
       send_telnet_control mssp_response
     end
     
     private
     
     def send_telnet_control(data)
-      @connection.send_data data.map { |c| c.chr }.join 
+      @connection.send_data data.map { |c| c.class == Integer ? c.chr : c }.join 
     end
   end
 end
