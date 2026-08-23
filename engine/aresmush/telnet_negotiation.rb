@@ -76,6 +76,12 @@ module AresMUSH
         if (op == MSSP)
           send_mssp
         end
+
+      elsif (chars[0].ord == DONT && chars.length > 1)
+        chars.shift # Ditch the don't code
+        op = chars.shift.ord
+
+        # Don't care about any DONT indications currently.
         
       elsif (chars[0].ord == NOP)
         # No-op: Do nothing
@@ -124,7 +130,7 @@ module AresMUSH
     private
     
     def send_telnet_control(data)
-      @connection.send_data data.map { |c| c.class == Integer ? c.chr : c }.join 
+      @connection.send_data data.map { |c| c.is_a?(String) ? c : c.chr }.join 
     end
   end
 end
