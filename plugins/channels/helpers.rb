@@ -389,58 +389,59 @@ module AresMUSH
             Global.logger.debug "Discord response: #{response}"
           end
         end
-      end
+    end
     
-      def self.build_channel_web_data(channel, enactor, lazy_load = false)
-        chars_on_channel = Channels.alts_on_channel(enactor, channel)
-        if (lazy_load || chars_on_channel.empty?)
-          messages = []
-        else
-          messages = channel.sorted_channel_messages
-            .select { |m| Channels.is_message_visible?(enactor, m) }
-            .map { |m| {
-            message: Website.format_markdown_for_html(m.message),
-            id: m.id,
-            flagged: m.flagged,
-            timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
-            author: {
-              name: m.author_name,
-              avatar: m.author ? Website.avatar_info(m.author) : nil }
-            }
+    def self.build_channel_web_data(channel, enactor, lazy_load = false)
+      chars_on_channel = Channels.alts_on_channel(enactor, channel)
+      if (lazy_load || chars_on_channel.empty?)
+        messages = []
+      else
+        messages = channel.sorted_channel_messages
+          .select { |m| Channels.is_message_visible?(enactor, m) }
+          .map { |m| {
+          message: Website.format_markdown_for_html(m.message),
+          id: m.id,
+          flagged: m.flagged,
+          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
+          author: {
+            name: m.author_name,
+            avatar: m.author ? Website.avatar_info(m.author) : nil }
           }
-        end
-      
-        alts = AresCentral.play_screen_alts(enactor)
-      
-        {
-          key: channel.name.downcase,
-          title: channel.name,
-          desc: channel.description,
-          enabled: chars_on_channel.any?,
-          can_join: alts.map { |a| Channels.can_join_channel?(a, channel) }.any?,
-          can_talk: alts.map { |a| Channels.can_talk_on_channel?(a, channel) }.any?,
-          can_manage: Channels.can_manage_channels?(enactor),
-          muted: Channels.is_muted?(enactor, channel),
-          last_activity: channel.last_activity,
-          is_recent: channel.last_activity ? (Time.now - channel.last_activity < (86400 * 2)) : false,
-          is_page: false,
-          who: Channels.channel_who(channel).map { |w| {
-            name: w.name,
-            ooc_name: w.ooc_name,
-            avatar: Website.avatar_info(w),
-            muted: Channels.is_muted?(w, channel),
-            status: Website.activity_status(w)
-            }},
-            poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }
-            .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
-            .map { |a| {
-              name: a.name,
-              avatar: Website.avatar_info(a),
-              id: a.id
-              }},
-              messages: messages,
-              lazy_loaded: lazy_load
-            }
-          end
-        end
+        }
       end
+      
+    
+      alts = AresCentral.play_screen_alts(enactor)
+    
+      {
+        key: channel.name.downcase,
+        title: channel.name,
+        desc: channel.description,
+        enabled: chars_on_channel.any?,
+        can_join: alts.map { |a| Channels.can_join_channel?(a, channel) }.any?,
+        can_talk: alts.map { |a| Channels.can_talk_on_channel?(a, channel) }.any?,
+        can_manage: Channels.can_manage_channels?(enactor),
+        muted: Channels.is_muted?(enactor, channel),
+        last_activity: channel.last_activity,
+        is_recent: channel.last_activity ? (Time.now - channel.last_activity < (86400 * 2)) : false,
+        is_page: false,
+        who: Channels.channel_who(channel).map { |w| {
+          name: w.name,
+          ooc_name: w.ooc_name,
+          avatar: Website.avatar_info(w),
+          muted: Channels.is_muted?(w, channel),
+          status: Website.activity_status(w)
+          }},
+        poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }
+          .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
+          .map { |a| {
+            name: a.name,
+            avatar: Website.avatar_info(a),
+            id: a.id
+            }},
+        messages: messages,
+        lazy_loaded: lazy_load
+        }
+    end
+  end
+end
