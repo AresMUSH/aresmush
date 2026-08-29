@@ -7,10 +7,10 @@
 
       <div class="log-icon-container">
           <a href="/char/<%= char[:name] %>">
-             <% if char[:icon] %>
-              <img class="log-icon" src="/game/uploads/<%= char[:icon] %>" />
+             <% if char[:avatar] %>
+              <img class="log-icon" src="/game/uploads/<%= char[:avatar]['icon'] %>" alt="<%= char[:name] %>'s icon" %> />
              <% else %>
-             <img class="log-icon" src="/game/uploads/theme_images/noicon.png" />
+             <img class="log-icon" src="/game/uploads/theme_images/noicon.png" alt="<%= char[:name] %>'s icon"  />
              <% end %>
           </a>
       </div>
