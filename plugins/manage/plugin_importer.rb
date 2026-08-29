@@ -111,6 +111,7 @@ module AresMUSH
         end
       end
       
+      
       def update_extras
         Manage.add_extra_plugin_to_config(self.plugin_name)
       end

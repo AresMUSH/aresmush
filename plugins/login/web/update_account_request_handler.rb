@@ -57,11 +57,9 @@ module AresMUSH
         end
         
         enactor.update(alias: char_alias.blank? ? nil : char_alias)
-        enactor.update(website_editor: editor)
         
         AresCentral.alts(enactor).each do |alt|
           alt.update(unified_play_screen: unified_play_screen)
-          alt.update(website_editor: editor)
         end
         
         {

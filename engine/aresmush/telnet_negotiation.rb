@@ -19,7 +19,11 @@ module AresMUSH
     CHARSET = 42  # x2A
     NAWS = 31     # x1f
     TTYPE = 24    # x18
+    MSSP = 70     # x46
     SGA = 3       # x3  Suppress Go Ahead
+    
+    MSSP_VAR = 1
+    MSSP_VAL = 2
     
     def is_control?(data)
       chars = data.split("")
@@ -68,6 +72,17 @@ module AresMUSH
         chars.shift # Ditch the do code
         op = chars.shift.ord
         
+        # DO MSSP
+        if (op == MSSP)
+          send_mssp
+        end
+
+      elsif (chars[0].ord == DONT && chars.length > 1)
+        chars.shift # Ditch the don't code
+        op = chars.shift.ord
+
+        # Don't care about any DONT indications currently.
+        
       elsif (chars[0].ord == NOP)
         # No-op: Do nothing
         chars.shift
@@ -75,6 +90,10 @@ module AresMUSH
       return handle_input(chars.join)
     end
 
+    def send_mssp_avail
+      send_telnet_control [ INTERPRET_AS_CONTROL, WILL, MSSP ]
+    end
+    
     def send_naws_request
       send_telnet_control [ INTERPRET_AS_CONTROL, DO, NAWS ]        
     end
@@ -83,10 +102,35 @@ module AresMUSH
       send_telnet_control [ INTERPRET_AS_CONTROL, DO, CHARSET ]
     end   
     
+    def send_mssp      
+      mssp_vars = {
+        "NAME" => Global.read_config("game", "name") || "",
+        "PLAYERS" => Global.client_monitor.game_clients.count.to_s,
+        "UPTIME" => Global.server_start.to_i.to_s,
+        "CHARSET" => "UTF-8",
+        "CODEBASE" => "AresMUSH v#{AresMUSH.version}",
+        "HOSTNAME" => Global.read_config("server", "hostname") || "",
+        "PORT" => "#{Global.read_config("server", "port")}",
+        "WEBSITE" => Game.web_portal_url || "",
+        "FAMILY" => "AresMUSH",
+        "GENRE" => Global.read_config("game", "category") || "",
+        "ANSI" => "1",
+        "UTF-8" => "1",
+        "XTERM 256 COLORS" => "1"
+      }
+      mssp_response = [ INTERPRET_AS_CONTROL, START_SUB_NEGOTIATION, MSSP ]
+      mssp_vars.each do |k, v|
+        mssp_response = mssp_response.concat [ MSSP_VAR, k, MSSP_VAL, v ]
+      end
+      mssp_response = mssp_response.concat [ INTERPRET_AS_CONTROL, END_SUB_NEGOTIATION ]
+      
+      send_telnet_control mssp_response
+    end
+    
     private
     
     def send_telnet_control(data)
-      @connection.send_data data.map { |c| c.chr }.join 
+      @connection.send_data data.map { |c| c.is_a?(String) ? c : c.chr }.join 
     end
   end
 end

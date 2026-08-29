@@ -32,7 +32,7 @@ module AresMUSH
       when "boot"
         return BootCmd
       when "connect"
-        if (cmd.args && cmd.args.start_with?("guest"))
+        if Login.is_guest_connect?(client, cmd)
           return TourCmd
         else
           return ConnectCmd
@@ -112,14 +112,14 @@ module AresMUSH
         return WatchCmd
       end
          
-      # Special check to allow 'c' to be used for tour or connect when not logged in.
-      if (!client.logged_in?)
-        if (cmd.args && (cmd.root_is?("c") || cmd.root_is?("co")))
-          if (cmd.args.start_with?("guest"))
-            return TourCmd
-          else
-            return ConnectCmd
-          end
+      # Special check to allow shortcuts to be used for tour or 
+      # connect when not logged in, while allowing those shortcuts
+      # for other things (like channels) when logged in
+      if Login.is_connect_shortcut?(client, cmd)
+        if Login.is_guest_connect?(client, cmd)
+          return TourCmd
+        else
+          return ConnectCmd
         end
       end
       nil
@@ -194,6 +194,6 @@ module AresMUSH
     def self.check_config
       validator = LoginConfigValidator.new
       validator.validate
-    end
+    end    
   end
 end

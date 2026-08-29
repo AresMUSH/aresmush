@@ -34,5 +34,63 @@ module AresMUSH
         expect(@negotaitor.handle_input(str)).to eq "012"
       end
     end
+    
+    describe "MSSP" do
+      it "should send MSSP to the client" do
+        data = [ 255, 253, 70 ]
+        str = data.map { |d| d.chr }.join
+        expect(@connection).to receive(:send_data) do |response|
+          expect(response[0]).to eq 255.chr
+          expect(response[1]).to eq 250.chr
+          expect(response[2]).to eq 70.chr
+          # Unnecessary to check specific game data.
+        end
+        expect(@negotaitor.handle_input(str)).to eq ""
+      end
+    end
+    
+    describe "Negotiation" do
+      it "should strip off a do negotiation from the front of a command" do
+        data = [ 255, 253, 1, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off a don't negotiation from the front of a command" do
+        data = [ 255, 253, 1, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off a do negotiation from the front of a command" do
+        data = [ 255, 254, 1, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off a will negotiation from the front of a command" do
+        data = [ 255, 251, 1, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off a won't negotiation from the front of a command" do
+        data = [ 255, 252, 1, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off a nop negotiation from the front of a command" do
+        data = [ 255, 241, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off multiple negotiations in a row from the front of a command" do
+        data = [ 255, 241, 255, 252, 1, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      it "should strip off a subnegotiation from the front of a command" do
+        data = [ 255, 250, 1, 255, 240, "w".ord, "h".ord, "o".ord ]
+        str = data.map { |d| d.chr }.join
+        expect(@negotaitor.handle_input(str)).to eq "who"        
+      end
+      
+    end
   end
 end

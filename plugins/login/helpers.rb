@@ -395,7 +395,18 @@ module AresMUSH
       welcome_message = (Global.read_config("login", "tour_welcome_message") || "") % { name: char.name, password: password }
       Mail.send_mail([char.name], t('login.tour_welcome_subject'), welcome_message, nil)
     end
-      
     
+    def self.is_connect_shortcut?(client, cmd)
+      return false if !cmd.args
+      return false if client.logged_in?
+      
+      cmd.root_is?("c") || cmd.root_is?("co") || cmd.root_is?("connect")
+    end
+    
+    def self.is_guest_connect?(client, cmd)
+      return false if !is_connect_shortcut?(client, cmd)
+      return false if !cmd.args
+      cmd.args.downcase == "guest"
+    end
   end
 end

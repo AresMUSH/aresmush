@@ -54,6 +54,7 @@ module AresMUSH
            id: player.id,
            handle: player.handle ? player.handle.name : nil,
            name: player.name,
+           profile_image: Website.get_file_info(player.profile_image),
            avatar: Website.avatar_info(player),
            alts: player.alts.map { |a| {name: a.name, avatar: Website.avatar_info(a)} },
            can_manage: enactor && Profile.can_manage_char_profile?(enactor, player),

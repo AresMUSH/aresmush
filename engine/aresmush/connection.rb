@@ -23,6 +23,7 @@ module AresMUSH
 
       @negotiator.send_naws_request
       @negotiator.send_charset_request
+      @negotiator.send_mssp_avail
     end
 
     def ping
@@ -169,6 +170,7 @@ module AresMUSH
         42 => "CHARSET",
         31 => "NAWS",
         24 => "TTYPE",
+        70 => "MSSP",
         '\r'.ord => "CR",
         '\n'.ord => "LF",
         20 => "_"
@@ -179,10 +181,14 @@ module AresMUSH
       chars.each do |c|
         val = c.to_i
 
-        if (special[val])
-          txt = special[val]
-        else
-          txt = val.chr
+        begin
+          if (special[val])
+            txt = special[val]
+          else
+            txt = val.chr
+          end
+        rescue 
+          text = val
         end
 
         if (val == 0 || val == 255)
@@ -193,7 +199,7 @@ module AresMUSH
 
       end
 
-      puts "#{prefix} ---------------"
+      puts "\n#{prefix} ---------------"
       puts "#{part.inspect.strip}#{output.join(" ")}"
       
     end

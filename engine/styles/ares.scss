@@ -2044,6 +2044,10 @@ table.char-ability-list {
     text-align: center;
 }
 
+.relationship-details {
+  flex-basis: 90%;
+}
+
 .relationship-row {
     margin: 10px;
     padding: 5px;
@@ -2392,7 +2396,7 @@ CHAT SCREEN
   background-color: transparent;
 }
 
-.play-selector:hover {
+.play-selector:hover, .play-selector:focus {
   background-color: $secondary-color;
   color: $secondary-words-color;
 }
