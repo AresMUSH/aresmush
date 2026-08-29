@@ -37,7 +37,6 @@ module AresMUSH
           import_game
         end
         import_portal
-        import_styles
         update_extras
         
         Global.logger.info "Plugin #{self.plugin_name} added."
@@ -112,23 +111,6 @@ module AresMUSH
         end
       end
       
-      def import_styles
-        
-        styles_dir = File.join(@source_dir, "styles")
-        dest_path = File.join(AresMUSH.root_path, "game", "styles")  
-        
-        if (!Dir.exist?(styles_dir))
-          Global.logger.debug "No style files to import."
-          return false
-        end
-        
-        style_files = Dir["#{styles_dir}/*"]
-        style_files.each do |f|
-          FileUtils.cp_r(f, dest_path)
-        end
-        
-      end
-        
       
       def update_extras
         Manage.add_extra_plugin_to_config(self.plugin_name)
