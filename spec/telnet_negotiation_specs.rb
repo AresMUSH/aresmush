@@ -35,7 +35,7 @@ module AresMUSH
       end
     end
     
-    describe "MSSB" do
+    describe "MSSP" do
       it "should send MSSP to the client" do
         data = [ 255, 253, 70 ]
         str = data.map { |d| d.chr }.join
