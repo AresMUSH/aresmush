@@ -290,6 +290,8 @@ module AresMUSH
         damage: FS3Combat.damage_list_web_data(combatant.associated_model, false),
         damage_mod: combatant.total_damage_mod.floor,
         vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
+        vehicle_damage: combatant.vehicle ? FS3Combat.damage_list_web_data(combatant.vehicle, false) : [],
+        vehicle_damage_mod: combatant.vehicle ? combatant.vehicle.total_damage_mod.floor : 0,
         mount: combatant.mount_type,
         stance: combatant.stance,
         action: combatant.action ? combatant.action.print_action_short : "",
