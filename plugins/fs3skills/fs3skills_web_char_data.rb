@@ -13,7 +13,8 @@ module AresMUSH
         end
         
         show_sheet = FS3Skills.can_view_sheets?(viewer) || is_owner
-        
+        can_manage_xp = FS3Skills.can_manage_xp?(viewer)
+                  
         if (FS3Skills.can_view_xp?(viewer, char))
           xp = {
             attributes: get_xp_list(char, char.fs3_attributes),
@@ -22,7 +23,7 @@ module AresMUSH
             languages: get_xp_list(char, char.fs3_languages),
             advantages: get_xp_list(char, char.fs3_advantages),
             xp_points: char.fs3_xp,
-            can_learn: AresCentral.is_alt?(char, viewer),
+            can_learn: can_manage_xp || AresCentral.is_alt?(char, viewer),
             allow_advantages_xp: Global.read_config("fs3skills", "allow_advantages_xp")
           }
         else

@@ -11,7 +11,8 @@ module AresMUSH
 
         request.log_request
 
-        if (!AresCentral.is_alt?(enactor, char))
+        can_manage_xp = FS3Skills.can_manage_xp?(enactor)
+        if (!(AresCentral.is_alt?(enactor, char) || can_manage_xp))
           return { error: t('dispatcher.not_allowed') }
         end
         
