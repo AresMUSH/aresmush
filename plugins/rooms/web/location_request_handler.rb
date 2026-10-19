@@ -65,7 +65,8 @@ module AresMUSH
             }},
           can_manage: Rooms.can_build?(enactor),
           areas: areas,
-          icon_types: Global.read_config('rooms', 'icon_types').keys
+          icon_types: Global.read_config('rooms', 'icon_types').keys,
+          tags: edit_mode ? room.content_tags.join(" ") : room.content_tags,
         }
       end
       

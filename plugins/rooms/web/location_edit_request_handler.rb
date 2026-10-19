@@ -9,6 +9,7 @@ module AresMUSH
         area_id = request.args['area_id']
         icon_type = request.args['icon_type']
         owner_names = request.args['owners'] || []
+        tags = (request.args['tags'] || "").split(" ")
         enactor = request.enactor
                 
         error = Website.check_login(request)
@@ -56,7 +57,8 @@ module AresMUSH
            shortdesc: Website.format_input_for_mush(summary),
            room_icon: icon_type.blank? ? nil : icon_type)
            
-         Describe.save_web_descs(room, descs)
+        Describe.save_web_descs(room, descs)
+        Website.update_tags(room, tags)
         
         {}
       end

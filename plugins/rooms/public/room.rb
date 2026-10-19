@@ -1,5 +1,7 @@
 module AresMUSH
   class Room
+    include HasContentTags
+     
     attribute :room_grid_x
     attribute :room_grid_y
     attribute :room_type, :default => "IC"

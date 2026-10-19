@@ -9,6 +9,7 @@ module AresMUSH
         area_id = request.args['area_id']
         icon_type = request.args['icon_type']
         owner_names = request.args['owners'] || []
+        tags = (request.args['tags'] || "").split(" ")
         enactor = request.enactor
                 
         error = Website.check_login(request)
@@ -52,6 +53,8 @@ module AresMUSH
              room.room_owners.add owner
            end
          end
+         
+         Website.update_tags(room, tags)
          
         
         { id: room.id }

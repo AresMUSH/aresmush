@@ -9,6 +9,8 @@ module AresMUSH
         return model.shared ? model.date_title : "##{model.id} - #{model.date_title}"
       elsif model.class == AresMUSH::BbsPost
         return "#{model.bbs_board.name} - #{model.subject}"
+      elsif model.class == AresMUSH::Room
+        return "#{model.name_and_area}"
       else
         return model.title
       end
@@ -50,6 +52,8 @@ module AresMUSH
         return "forum-topic"
       when "AresMUSH::Job"
         return "job"
+      when "AresMUSH::Room"
+        return "location"
       else
         throw "Unrecognized tag type: #{tag}"
       end
@@ -83,6 +87,8 @@ module AresMUSH
         return "Forum Posts"
       when "AresMUSH::Job"
         return "Jobs"
+      when "AresMUSH::Room"
+        return "Location"
       else
         throw "Unrecognized tag type: #{tag}"
       end
