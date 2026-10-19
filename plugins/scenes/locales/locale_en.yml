@@ -45,7 +45,7 @@ en:
         private_scene_in_public_room: "Having a private scene on the public grid is poor form, unless of course you're in a private residence."
         amended_pose: "%{name} has amended %{pronoun} last pose."
         no_pose_found: "You haven't posed yet."
-        deleted_pose: "%{name} has retracted %{pronoun} previous pose."
+        deleted_pose: "%{name} has retracted %{pronoun} previous pose: %{pose}"
         
         scene_types: "Available scene types are: %{types}."
         invalid_scene_type: "That is not a valid scene type.  Try one of these: %{types}."

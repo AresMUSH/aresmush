@@ -30,7 +30,8 @@ module AresMUSH
           
           last_pose.update(is_deleted: true)
           message = t('scenes.deleted_pose', :name => enactor_name,
-                        :pronoun => Demographics.possessive_pronoun(enactor))
+                        :pronoun => Demographics.possessive_pronoun(enactor),
+                        :pose => old_pose)
 
           Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
           scene.room.emit_ooc message
