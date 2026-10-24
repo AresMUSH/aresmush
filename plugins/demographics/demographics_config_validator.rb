@@ -73,6 +73,11 @@ module AresMUSH
       
       def check_census
         census = Global.read_config("demographics", "census_fields")
+        
+        if (!census.map { |f| f["field"] }.include?("name"))
+          @validator.add_error "demographics:census_fields doesn't include name"
+        end
+          
         errors = Profile.validate_general_field_config(census)
         errors.each do |e|
           @validator.add_error "demographics:census_fields #{e}"
