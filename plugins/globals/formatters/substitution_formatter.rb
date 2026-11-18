@@ -142,21 +142,29 @@ module AresMUSH
         end
       end
 
+      invalid_length_token = { :len => str.length, :str => str, :raw => str }
+      
       # Might be a function.
       if (str.start_with?("["))
         if (str =~ /\[space\(([\d]+)\)\]/)
+          return invalid_length_token if !check_length(str, $1)
           return { :len => $1, :str => " ".repeat($1.to_i), :raw => str }
         elsif (str =~ /\[center\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
+          return invalid_length_token if !check_length(str, $2)
           tmp = format($1)
           return { :len => $2, :str => center(tmp, $2.to_i, !$3 ? " " : $3), :raw => str }
         elsif (str =~ /\[left\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
+          return invalid_length_token if !check_length(str, $2)
           tmp = format($1)
           return { :len => $2, :str => left(tmp, $2.to_i, !$3 ? " " : $3), :raw => str }
         elsif (str =~ /\[right\((.+)\,([\d]+)(?:\,(.+))?\)\]/)
+          return invalid_length_token if !check_length(str, $2)
           tmp = format($1)
           return { :len => $2, :str => right(tmp, $2.to_i, !$3 ? " " : $3), :raw => str }
         elsif (str =~ /\[ansi\((.+)\,(.+)\)\]/)
-          raw_codes = $1.each_char.map { |c| "%x#{c}" }
+          ansi_codes = $1.each_char
+          return invalid_length_token if ansi_codes.count > 10
+          raw_codes = ansi_codes.map { |c| "%x#{c}" }
           tmp = format($2)
           ansi = raw_codes.map { |c| AnsiFormatter.get_code(c, display_settings.color_mode) }.join
           return { :len => $2.length, :str => "#{ansi}#{tmp}#{ANSI.reset}", :raw => "#{raw_codes.join}#{tmp}%xn"}
@@ -164,6 +172,10 @@ module AresMUSH
       end
 
       { :len => str.length, :str => str, :raw => str }
+    end
+    
+    def self.check_length(str, len)
+      return "#{len}".to_i <= 500
     end
   end
 end
