@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (8.0.4.1)
+    activesupport (8.0.5.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -10,7 +10,7 @@ GEM
       drb
       i18n (>= 1.6, < 2)
       logger (>= 1.4.2)
-      minitest (>= 5.1, < 6)
+      minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
@@ -37,9 +37,9 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
-    bigdecimal (4.0.1)
-    concurrent-ruby (1.3.7)
-    connection_pool (3.0.2)
+    bigdecimal (4.1.3)
+    concurrent-ruby (1.3.8)
+    connection_pool (3.0.3)
     daemons (1.4.1)
     dentaku (3.5.7)
       bigdecimal
@@ -67,7 +67,9 @@ GEM
     jmespath (1.6.2)
     json (2.3.1)
     logger (1.6.6)
-    minitest (5.27.0)
+    minitest (6.1.0)
+      drb (~> 2.0)
+      prism (>= 1.5, < 3)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     nest (3.2.0)
@@ -76,6 +78,12 @@ GEM
       nest (~> 3)
       redic (~> 1.5.0)
       stal
+    prism (2.1.0)
+    prism (2.1.0-aarch64-linux-gnu)
+    prism (2.1.0-arm-linux-gnu)
+    prism (2.1.0-arm64-darwin)
+    prism (2.1.0-x86_64-darwin)
+    prism (2.1.0-x86_64-linux-gnu)
     rack (3.2.6)
     rack-protection (4.2.1)
       base64 (>= 0.1.0)
@@ -128,7 +136,7 @@ GEM
     timezone (1.2.12)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (1.1.1)
+    uri (1.1.2)
 
 PLATFORMS
   arm64-darwin
@@ -137,7 +145,7 @@ PLATFORMS
   x86_64-darwin
 
 DEPENDENCIES
-  activesupport (~> 8.0.4.1)
+  activesupport (~> 8.0.5.2)
   ansi (~> 1.5)
   aws-sdk-s3 (~> 1.208)
   bcrypt (~> 3.1.22)
